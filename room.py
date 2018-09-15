@@ -66,6 +66,10 @@ class room():
         # the walls have to be spritelings in a group in order to properly register collision
         self.outer_walls = theme.build_walls(self.center.image.get_rect())
 
+        # this group will contain all the active players in the room. It starts out empty, and must be filled in main
+        self.players = sGroup()
+
+
     # core methods used to draw the contents of the room onto the main display window in the appropriate order
     # the default/expected order is: floors, outer walls, inner walls, enemies, players, enemy missiles, unaligned
     # missiles, player missiles
@@ -74,21 +78,31 @@ class room():
         self.floors.draw(disp)
         self.outer_walls.draw(disp)
 
+        self.players.draw(disp)
+
+    # super basic method atm, designed to be expanded as needed in later iterations
+    def add_players(self, players):
+        self.players.add(players)
+
+    def update(self):
+        self.outer_walls.update()
+        self.players.update()
+
     def draw_boxes(self, disp):
         for w in self.outer_walls:
             pygame.draw.rect(disp, config.green, w.rect, 4)
             pygame.draw.rect(disp, config.red, w.hitbox, 4)
-'''
-        for x in self.player:
+
+        for x in self.players:
             pygame.draw.rect(disp, config.green, x.rect, 4)
             pygame.draw.rect(disp, config.red, x.hitbox, 4)
-
+'''
         for y in self.enemies:
             pygame.draw.rect(disp, config.blue, y.rect, 8)
             pygame.draw.rect(disp, config.red, y.hitbox, 4)
             for xy in y.hitboxes:
                 pygame.draw.rect(disp, config.green, xy, 2)
-
+''''''
         for z in self.allProjectiles:
             pygame.draw.rect(disp, config.red, z.rect, 7)
             pygame.draw.rect(disp, config.green, z.hitbox, 4)

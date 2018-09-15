@@ -18,7 +18,7 @@ import pygame
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
 class spriteling(pygame.sprite.Sprite):
     def __init__(self, img, loc):
-        pygame.sprite.Sprite.__init__(self)
+        super().__init__()
         # this most basal constructor takes an image and a location, assigns the image to the sprite, builds a rectangle
         #  from the image, moves the rectangle to the location, then builds a hitbox the same size as the rect, and
         # places it directly on top of the rect

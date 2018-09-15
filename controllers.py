@@ -8,17 +8,40 @@ def prepare_joysticks():
     return joysticks
 
 
-# this method must be passed a list of all available joysticks, whereupon it will look thru all of them and pick one to
-# be player one. if no joysticks are passed, then it creates and returns a keyboard.
-def assign_player_one(*joysticks):
-    for x in range(0, len(joysticks)):
-        if 'Xbox One' in joysticks[x].get_name():
-            return xbone_gamepad(x)
-        elif 'Xbox 360' in joysticks[x].get_name():
-            return xb360_gamepad(x)
-        else:
-            return keyboard()
+# this method takes a joystick, and returns a properly initialized controller. it automagically determines what type of
+# joystick it has been passed. Currently it can distinguish between joysticks that are Xbox One controllers, and
+# joysticks that are not Xbox One controllers. The former is treated as an Xbox 360 controller.
+# note that the current usage of this method within main does not allow for the use of a keyboard.
+def auto_assign(x):
+    if 'Xbox One' in x.get_name():
+        return xbone_gamepad(x)
+    elif 'Xbox 360' in x.get_name():
+        return xb360_gamepad(x)
+    else:
+        return xb360_gamepad(x)
 
+
+# an intermediary class that attaches a player to a controller and maps keys on that controller
+class interface():
+    def __init__(self, controller):
+        self.controller = controller
+        # essentially, this class is a button to action translation device. It has several internal vars that pass
+        # themselves into the attached controller as lookups to determine if the button has been pressed
+        self.primary_fire = 'X'
+        self.secondary_fire = 'Y'
+        self.back = 'B'
+        self.accept = 'A'
+        self.r_spell = 'RB'
+        self.l_spell = 'LB'
+
+        # the moving field is important because the player class references it to determine if and how fast the player
+        # should be moving
+        self.moving = (0, 0)
+
+    def update(self):
+        self.controller.update()
+        self.moving = (self.controller.left_stick['X'], self.controller.left_stick['Y'])
+        print(self.moving)
 
 
 '''
@@ -43,11 +66,10 @@ right stick = 9
 '''
 
 class xbone_gamepad(object):
-    def __init__(self, number):
+    def __init__(self, jub):
         # I am unsure why, but I seemed to have named this controller jub
-        self.jub = pygame.joystick.Joystick(number)
+        self.jub = jub
         self.jub.init()
-        jub = self.jub
         print(jub.get_name())
 
         self.left_stick = {'X': jub.get_axis(0), 'Y': jub.get_axis(1)}
@@ -134,11 +156,10 @@ right stick = 9
 '''
 
 class xb360_gamepad(object):
-    def __init__(self, number):
+    def __init__(self, jub):
         # I am unsure why, but I seemed to have named this controller jub
-        self.jub = pygame.joystick.Joystick(number)
+        self.jub = jub
         self.jub.init()
-        jub = self.jub
         print(jub.get_name())
 
         self.left_stick = {'X': jub.get_axis(0), 'Y': jub.get_axis(1)}

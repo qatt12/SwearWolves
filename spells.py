@@ -29,9 +29,12 @@ electric_bookaloo_img = pygame.image.load("projectiles\img_book_of_elec.png")
 
 # spell book is a handler/container class meant to hold a bunch of spells
 class spell_book(spriteling.passive):
-    def __init__(self, *args):
+    def __init__(self,  *args):
         super().__init__(*args)
         self.spells = []
+        self.spell_key = []
+        self.length = 0
+        self.spell_selector = 0
 
     # spell_book is never supposed to exist on its own, only as part of a derived class, thus the below methods
     # reference vars that a plain spell book would lack
@@ -56,8 +59,9 @@ class spell_book(spriteling.passive):
         self.active_spell = self.spells[self.spell_selector](self.user.spell_slot)
 
     # unlocking a new spell in the book is done by passing a string into this method.
-    def add_spell(self, spell_name):
-        self.spells.append(self.spell_key[spell_name])
+    def add_spell(self, new_spell):
+        if new_spell.name is any in self.spell_key:
+            self.spells.append(new_spell)
 
 
 # each attack/spell has two components: the spell and the missile. the spell is basically just an image that follows the
@@ -66,10 +70,18 @@ class spell_book(spriteling.passive):
 # w/i the game files, I will shy away from using it unless I'm talking about that particular object
 
 # spells themselves don't do much, except for creating and launching missiles
+# by default, spells are semi-automatic, meaning the fire key has to be released in between shots
 class spell(spriteling.passive):
     def __init__(self, projectile, img, loc):
         super().__init__(img, loc)
         self.projectile = projectile
+
+    def update(self, interface, *args):
+        pass
+
+
+class charge_up(spell):
+    pass
 
 
 # ancestral class for missiles (things that fly out and hit other things)
@@ -78,68 +90,8 @@ class missile(spriteling.active):
         super().__init__(img, loc)
 
 
-########################################################################################################################
-#                       Bolts                                                                                          #
-########################################################################################################################
-# most basic projectile. just travels in a straight line
-class bolt(missile):
-    def __init__(self, dir, *args):
-        super().__init__(*args)
-        self.vel_mult = 4
-
-
-# the missile version of fire bolt (the part that actually travels towards and hits the enemy)
-class fire_bolt_m(bolt):
-    def __init__(self, *args):
-        super().__init__(fire_bolt_img, *args)
-
-
-# the spell version of fire bolt (just follows the player around and discharges the fire bolt missile)
-class fire_bolt_s(spell):
-    def __init__(self, *args):
-        super().__init__(fire_bolt_m, fire_bolt_spell_img, *args)
-
-
-# the missile version of frost bolt (the part that actually travels towards and hits the enemy)
-class frost_bolt_m(bolt):
-    def __init__(self, *args):
-        super().__init__(frost_bolt_img, *args)
-
-
-# the spell version of frost bolt (just follows the player around and discharges the frost bolt missile)
-class frost_bolt_s(spell):
-    def __init__(self, *args):
-        super().__init__(frost_bolt_m, frost_bolt_spell_img, *args)
-
-
-class lightning_bolt_m(bolt):
-    def __init__(self, *args):
-        super().__init__(frost_bolt_img, *args)
-
-
-class lightning_bolt_s(spell):
-    def __init__(self, *args):
-        super().__init__(lightning_bolt_m, lightning_bolt_spell_img, *args)
-
-########################################################################################################################
-#                       Barriers                                                                                       #
-########################################################################################################################
-
-
-
-class barrier(missile):
-    def __init__(self, *args):
-        super().__init__(*args)
-
-
-class fire_wall_s(spell):
+class fireball_s():
     pass
-
-
-class fire_wall_m(barrier):
-    pass
-
-
 
 
 # the book of fire contains fire spells.
@@ -149,11 +101,11 @@ class book_of_fire(spell_book):
 
         self.palette = 'red'
 
-        # each of the elemental books contains a lookup of all the possible spells, called the spell key
-        self.spell_key = {'bolt': fire_bolt_s, 'barrier': fire_wall_s}
+        # each of the elemental books contains a list of all the spells valid for this spellbook, called the spell key
+        self.spell_key = ['fireball', 'firewall']
 
         self.user = user
-        self.spells = [fire_bolt_s]
+        self.spells = [fireball_s]
         self.active_spell = self.spells[0](self.user.spell_slot)
         self.spell_selector = 0
         self.length = 1

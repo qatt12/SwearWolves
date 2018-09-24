@@ -3,53 +3,49 @@
 
 import spriteling, pygame, config
 
-# Straight up copy-pasted this stuff from my earlier project. it should work in here with limited modificcations
 
+# Straight up copy-pasted this stuff from my earlier project. it should work in here with limited modificcations
 class wall(spriteling.block):
     def __init__(self, facing, *args):
         super(wall, self).__init__(*args)
-        #hitbox_lookup = {'up': , 'down': , 'left': ,'right': }
         self.facing = facing
         self.damage = 0
-        if facing == 'up':
-            self.hitbox = self.rect.inflate(0, -(self.rect.height*.65))
-            self.hitbox.top = self.rect.top
-        elif facing == 'down':
-            self.hitbox = self.rect.inflate(0, -(self.rect.height * .65))
-            self.hitbox.bottom = self.rect.bottom
+        if facing == 'down':
+            self.hitboxes.add(spriteling.hitbox(self,
+                                                scale_y=-65, bottom_side=self.rect.bottom))
+        elif facing == 'top':
+            self.hitboxes.add(spriteling.hitbox(self,
+                                                scale_y=-65, top_side=self.rect.top))
         elif facing == 'left':
-            self.hitbox = self.rect.inflate(-(self.rect.width*0.65), 0)
-            self.hitbox.left = self.rect.left
+            self.hitboxes.add(spriteling.hitbox(self,
+                                                scale_x=-65, left_side=self.rect.left))
         elif facing == 'right':
-            self.hitbox = self.rect.inflate(-(self.rect.width*0.65), 0)
-            self.hitbox.right = self.rect.right
+            self.hitboxes.add(spriteling.hitbox(self,
+                                                scale_x=-65, right_side=self.rect.right))
 
 
 # this is for inward facing/concave corners.
 class corner(spriteling.block):
     def __init__(self, facing, *args):
         super().__init__(*args)
-        self.hitbox = self.rect.inflate(-(self.rect.width * 0.5), -(self.rect.height*0.5))
+
         if facing == 'top_left':
-            self.hitbox.top = self.rect.top
-            #self.hitbox.bottom = self.rect.bottom
-            self.hitbox.left = self.rect.left
-            #self.hitbox.right = self.rect.right
+            self.hitboxes.add(spriteling.hitbox(self,
+                                                scale_x=-50, scale_y=-50,
+                                                top_side=self.rect.top, left_side=self.rect.left))
         elif facing == 'top_right':
-            self.hitbox.top = self.rect.top
-            #self.hitbox.bottom = self.rect.bottom
-            #self.hitbox.left = self.rect.left
-            self.hitbox.right = self.rect.right
+            self.hitboxes.add(spriteling.hitbox(self,
+                                                scale_x=-50, scale_y=-50,
+                                                top_side=self.rect.top, right_side=self.rect.right))
         elif facing == 'bottom_right':
-            #self.hitbox.top = self.rect.top
-            self.hitbox.bottom = self.rect.bottom
-            #self.hitbox.left = self.rect.left
-            self.hitbox.right = self.rect.right
+            self.hitboxes.add(spriteling.hitbox(self,
+                                                scale_x=-50, scale_y=-50,
+                                                bottom_side=self.rect.bottom, right_side=self.rect.right))
         elif facing == 'bottom_left':
-            #self.hitbox.top = self.rect.top
-            self.hitbox.bottom = self.rect.bottom
-            self.hitbox.left = self.rect.left
-            #self.hitbox.right = self.rect.right
+            self.hitboxes.add(spriteling.hitbox(self,
+                                                scale_x=-50, scale_y=-50,
+                                                bottom_side=self.rect.bottom, left_side=self.rect.left))
+
 
 # the floor sprite is bit tricky, as it creates a rectangular floor of the size specified and sets it as its image
 # this is intended to be treated as the main image/surface of a/the room

@@ -1,4 +1,4 @@
-'''
+
 class test():
     def __init__(self):
         print('initializing')
@@ -52,12 +52,14 @@ t3.show()
 
 def kwargs_test(x, **kwargs):
     print('start w/ x = ', x)
-    x = kwargs['new_x']
+    if 'new' in kwargs:
+        x = kwargs['new']
     print('end w/ x = ', x)
 
 var = 1
 
-kwargs_test(var, old = 4)
+kwargs_test(var, old=4)
+
 '''
 import pygame
 
@@ -92,3 +94,4 @@ while (running):
         for x in range(0, n):
             if test_p1.get_axis(x):
                 print("pressing axes number: ", x, test_p1.get_axis(x))
+    '''

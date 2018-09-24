@@ -28,8 +28,8 @@ electric_bookaloo_img = pygame.image.load("projectiles\img_book_of_elec.png")
 
 
 # spell book is a handler/container class meant to hold a bunch of spells
-class spell_book(spriteling.passive):
-    def __init__(self,  *args):
+class spell_book(spriteling.spriteling):
+    def __init__(self, *args):
         super().__init__(*args)
         self.spells = []
         self.spell_key = []
@@ -42,6 +42,7 @@ class spell_book(spriteling.passive):
     # repositions the active spell to be on the user's spell_slot
     def update(self, *args):
         self.active_spell.rect.center = self.user.spell_slot
+        self.active_spell.update(self.user.interface)
 
     # returns the active spell (intended for use in conjunction with the draw method of room)
     def check_active_spell(self):
@@ -71,23 +72,57 @@ class spell_book(spriteling.passive):
 
 # spells themselves don't do much, except for creating and launching missiles
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
-class spell(spriteling.passive):
+class spell(spriteling.spriteling):
     def __init__(self, projectile, img, loc):
         super().__init__(img, loc)
+        # this is a functor, to be initialized just before its time to fire
         self.projectile = projectile
+        self.image = img
+        self.rect = self.image.get_rect()
+        self.rect.center = loc
+        self.live_missiles = pygame.sprite.Group()
 
     def update(self, interface, *args):
+        prev, now = interface.check_fire()
+        if now and not prev:
+            self.projectile(blank_img, self.rect.center)
+
+    def fire(self):
         pass
 
 
 class charge_up(spell):
+    def __init__(self, projectile, img, loc):
+        spell.__init__(self, projectile, img, loc)
+        self.charge = 0
+
+    def update(self, interface, *args):
+        prev, now = interface.check_fire()
+        # the fire key was pressed/held this frame and the previous frame = the spell charges
+        if now and prev:
+            self.charge += 1
+        # the spell fires
+        elif prev and not now:
+            # note: figure out which class handles the fire method
+            self.fire()
+        # the charging missile is created and placed into the live missiles
+        elif now and not prev:
+            self.live_missiles.add(self.projectile(self))
+
+
+class cool_down(spell):
+    pass
+
+class beam(spell):
     pass
 
 
 # ancestral class for missiles (things that fly out and hit other things)
-class missile(spriteling.active):
+class missile(spriteling.spriteling):
     def __init__(self, img, loc):
-        super().__init__(img, loc)
+        super().__init__(self, img, loc)
+        self.status = 'standby'
+
 
 
 class fireball_s():
@@ -138,11 +173,4 @@ class shocking_tome(spell_book):
         self.active_spell = self.spells[0](self.user.spell_slot)
         self.spell_selector = 0
         self.length = 1
-
-
-# a special super book containing the powers of all four lesser spell books! for use in single player
-class super_book(spell_book):
-    def __init__(self, user):
-        super().__init__(super_book_img, user.book_slot)
-
 

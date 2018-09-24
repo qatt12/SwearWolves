@@ -1,5 +1,7 @@
 import pygame
 
+deadzone = 0.3
+
 # this method is supposed to be called early on in the main method. It will check all available joysticks, hopefully
 # initialize them, and return them to main.
 def prepare_joysticks():
@@ -40,8 +42,15 @@ class interface():
 
     def update(self):
         self.controller.update()
-        self.moving = (self.controller.left_stick['X'], self.controller.left_stick['Y'])
-        print(self.moving)
+        #mov_x = float(self.controller.left_stick['X'])
+        #mov_y = float(self.controller.left_stick['Y'])
+        #self.moving = (mov_x, mov_y)
+        print(self.controller.jub.get_name())
+        #print(self.moving)
+
+    # checks if the fire key was pressed this frame or the previous frame
+    def check_fire(self):
+        return self.controller.pull_button(self.primary_fire)
 
 
 '''

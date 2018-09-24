@@ -90,12 +90,10 @@ class room():
 
     def draw_boxes(self, disp):
         for w in self.outer_walls:
-            pygame.draw.rect(disp, config.green, w.rect, 4)
-            pygame.draw.rect(disp, config.red, w.hitbox, 4)
+            w.draw_boxes(disp)
 
         for x in self.players:
-            pygame.draw.rect(disp, config.green, x.rect, 4)
-            pygame.draw.rect(disp, config.red, x.hitbox, 4)
+            x.draw_boxes(disp)
 '''
         for y in self.enemies:
             pygame.draw.rect(disp, config.blue, y.rect, 8)

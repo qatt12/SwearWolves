@@ -11,7 +11,7 @@
 # make a ton of sense to have things laid out this way, but......
 # almost everything here is subject to being renamed or altered in some way.
 
-import pygame
+import pygame, config
 
 
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
@@ -26,31 +26,62 @@ class spriteling(pygame.sprite.Sprite):
         self.loc = loc
         self.rect = self.image.get_rect()
         self.rect.center = (loc[0], loc[1])
-        self.hitbox = pygame.Rect.copy(self.rect)
-        self.hitbox.clamp(self.rect)
+        self.hitboxes = pygame.sprite.Group()
 
     def interact(self, other):
         # empty/default method to govern the behavior of this spriteling in reaction to other.
         pass
 
-
-class active(spriteling):
-    def __init__(self, *args):
-        super().__init__(*args)
-
-
-class passive(spriteling):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def draw_boxes(self, disp):
+        pygame.draw.rect(disp, config.green, self.rect, 4)
+        for each in self.hitboxes:
+            pygame.draw.rect(disp, config.red, each.rect, 4)
 
 
-class reactive(spriteling):
-    def __init__(self, *args):
-        super().__init__(*args)
+# basic hitbox class, designed to be contained in a group stored by a spriteling
+class hitbox(pygame.sprite.Sprite):
+    def __init__(self, subj, **kwargs):
+        super().__init__()
+        self.host = subj
+        # if a rect is already specified in the constructor, it copies and uses that one
+        if 'rect' in kwargs:
+            self.rect = pygame.Rect.copy(kwargs['rect'])
+        # if no rect is provided, it copies the rect of its host
+        else:
+            self.rect = pygame.Rect.copy(self.host.rect)
+
+        # the rect scales to the provided x and y proportions
+        if 'scale_x' in kwargs:
+            xscale = kwargs['scale_x']
+            print("found x_scale= ", xscale)
+        else:
+            xscale = 1
+        if 'scale_y' in kwargs:
+            yscale = kwargs['scale_y']
+        else:
+            yscale = 1
+
+        self.rect.inflate_ip(xscale, yscale)
+        print("inflated a rect ", self.rect)
+
+        if 'center' in kwargs:
+            self.rect.center = kwargs['center']
+        if 'left_side' in kwargs:
+            self.rect.left = kwargs['left_side']
+        if 'right_side' in kwargs:
+            self.rect.right = kwargs['right_side']
+        if 'bottom_side' in kwargs:
+            self.rect.bottom = kwargs['bottom_side']
+        if 'top_side' in kwargs:
+            self.rect.top = kwargs['top_side']
+
+    def update(self, **kwargs):
+        pass
+
 
 
 # class for stationary objects that are placed and then never moved.
-class block(reactive):
+class block(spriteling):
     def __init__(self, *args):
         super().__init__(*args)
         # if the block is rooted, it is attached to a fixed location; an (x, y) tuple
@@ -105,39 +136,3 @@ class block(reactive):
                     self.rect.top = self.link.rect.top
                 elif y == -2:
                     self.rect.bottom = self.link.rect.top
-
-
-# triggers are a special class that does almost nothing until acted upon (triggered)
-class trigger(reactive):
-    pass
-
-
-
-class player(active):
-    pass
-
-
-# enemies
-class enemy(active):
-    pass
-
-
-# missiles, like spells, are not just projectiles. Instead, think of these as the hitboxes and particle effects
-# accompanying an attack of some sort. missiles are created and deployed by spells.
-class missile(active):
-    pass
-
-
-# shinies are basically just environmental decorations that have some animation, usually just an idle animation
-class shiny(passive):
-    pass
-
-
-# despite being referred to as a spell, spell just indicates an attack of some sort, whether it be
-# melee, ranged, or even a shield/defensive move.
-# a spell proper acts as a root/core/dispenser of the actual projectiles (missile class objects)
-# a case can be made that spells are more passive than reactive, since they do next to nothing except follow their
-# caster around and serve as a visual indication of what missile/attack is about to happen. Furthermore, colliding
-# directly with the actual spell (and NOT the missile) doesn't really do anything.
-class spell(reactive):
-    pass

@@ -125,9 +125,12 @@ class missile(spriteling.spriteling):
 
 
 
-class fireball_s():
-    pass
+class fireball_s(spell):
+    def __init__(self, loc):
+        super().__init__(fireball_m, fire_bolt_spell_img, loc)
 
+
+class fireball_m(missile):
 
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):

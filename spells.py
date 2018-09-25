@@ -32,7 +32,9 @@ class spell_book(spriteling.spriteling):
     def __init__(self, *args):
         super().__init__(*args)
         self.spells = []
-        self.spell_key = ()
+        self.spell_key = {0: spell}
+        self.level_costs = {0: 1000, 1: 2000}
+        self.level = 0
         self.length = 0
         self.spell_selector = 0
 
@@ -60,9 +62,8 @@ class spell_book(spriteling.spriteling):
         self.active_spell = self.spells[self.spell_selector](self.user.spell_slot)
 
     # unlocking a new spell in the book is done by passing a string into this method.
-    def add_spell(self, new_spell):
-        if new_spell.name is any in self.spell_key:
-            self.spells.append(new_spell)
+    def add_spell(self):
+        self.level = self.level +1
 
 
 # each attack/spell has two components: the spell and the missile. the spell is basically just an image that follows the
@@ -80,15 +81,15 @@ class spell(spriteling.spriteling):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.center = loc
-        self.chamber = pygame.sprite.GroupSingle()
+        self.live_missiles = pygame.sprite.Group()
 
     def update(self, interface, *args):
         prev, now = interface.check_fire()
         if now and not prev:
-            self.chamber.add(self.projectile(interface.direction, self.rect.center))
+            self.live_missiles.add(self.fire(interface.direction))
 
-    def fire(self):
-        pass
+    def fire(self, direction):
+        return self.projectile(direction, self.rect.center)
 
 
 class charge_up(spell):
@@ -104,7 +105,7 @@ class charge_up(spell):
         # the spell fires
         elif prev and not now:
             # note: figure out which class handles the fire method
-            self.chamber.add(self.projectile(interface.direction, self.rect.center))
+            self.live_missiles.add(self.fire)
         # the charging missile is created and placed into the live missiles
         elif now and not prev:
             self.anim('t0')
@@ -129,7 +130,8 @@ class missile(spriteling.spriteling):
 
     def update(self, *args):
         self.rect.move_ip(self.velocity)
-        self.hitboxes
+        for each in self.hitboxes:
+            each.rect.center = self.rect.center
 
 
 

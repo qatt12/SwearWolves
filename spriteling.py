@@ -26,6 +26,8 @@ class spriteling(pygame.sprite.Sprite):
         self.loc = loc
         self.rect = self.image.get_rect()
         self.rect.center = (loc[0], loc[1])
+        # not sure I we should make all/most spritelings have only one hitbox by default, and just create a subclass
+        # with extra
         self.hitboxes = pygame.sprite.Group()
 
     def interact(self, other):
@@ -77,8 +79,8 @@ class hitbox(pygame.sprite.Sprite):
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
 
-    def update(self, **kwargs):
-        pass
+    def update(self, scroll, **kwargs):
+        self.rect = self.rect.move(scroll)
 
 
 

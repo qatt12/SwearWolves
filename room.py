@@ -69,7 +69,10 @@ class room():
 
         # this group will contain all the active players in the room. It starts out empty, and must be filled in main
         self.players = sGroup()
-
+        self.overlays = sGroup()
+        self.enemy_missiles = sGroup()
+        self.player_missiles = sGroup()
+        self.all_sprites = sGroup()
 
     # core methods used to draw the contents of the room onto the main display window in the appropriate order
     # the default/expected order is: floors, outer walls, inner walls, enemies, players, enemy missiles, unaligned
@@ -96,5 +99,7 @@ class room():
         for x in self.players:
             x.draw_boxes(disp)
 
+    # look into subclassing groups to make a more efficient version of this
     def scroll(self, x_scroll, y_scroll):
-        pass
+        for each in self.all_sprites:
+            each.rect = each.rect.move(x_scroll, y_scroll)

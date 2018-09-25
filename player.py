@@ -23,7 +23,7 @@ class player(spriteling.spriteling):
                       (0, 1): down, (-1, 0): left, (-1, -1): top_left, (-1, 1): bottom_left}
 
         self.hitboxes.add(spriteling.hitbox(self,
-                                            scale_x=-(self.rect.height*0.8), scale_y=-(self.rect.width*0.8)))
+                                            scale_x=-(self.rect.height*0.2), scale_y=-(self.rect.width*0.2)))
         self.vel = (0, 0)
         self.max_vel = 4
         self.facing = (0, 0)

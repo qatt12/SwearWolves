@@ -26,7 +26,7 @@ players = pygame.sprite.Group()
 
 for each in input_devices:
     if each.controller.pull_button(each.accept):
-        players.add(player.player(each))
+        players.add(player.player(each, (0, 0)))
 
 current_room.add_players(players)
 
@@ -46,7 +46,7 @@ while (running):
         current_room.draw_contents(disp)
         current_room.draw_boxes(disp)
 
-        #pygame.display.update()
-        pygame.display.flip()
+        pygame.display.update()
+        #pygame.display.flip()
 
-        #pygame.event.pump()
+        pygame.event.pump()

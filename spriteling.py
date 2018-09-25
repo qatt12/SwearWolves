@@ -69,6 +69,7 @@ class hitbox(pygame.sprite.Sprite):
             self.rect.center = kwargs['center']
         if 'left_side' in kwargs:
             self.rect.left = kwargs['left_side']
+
         if 'right_side' in kwargs:
             self.rect.right = kwargs['right_side']
         if 'bottom_side' in kwargs:

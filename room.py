@@ -97,10 +97,4 @@ class room():
             x.draw_boxes(disp)
 
     def scroll(self, x_scroll, y_scroll):
-
-
-
-class hallway(room):
-    def __init__(self, length, orientation, *args):
-        super().__init__(*args)
-
+        pass

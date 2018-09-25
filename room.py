@@ -29,6 +29,7 @@ class theme(object):
                              'tw': topWall, 'bw': btmWall, 'rw': rgtWall, 'lw': lftWall}
 
     # creates a simple rectangular outer wall, and returns a group with all the new wall spritelings
+    # NOTE: probably should modify this to make use of the attach method so walls can be conveniently scrolled around
     def build_walls(self, border):
         all_walls = sGroup()
         # spawns and positions the outer wall pieces. Note the i + 50 and j + 50: this cause the wall segments to
@@ -94,17 +95,10 @@ class room():
 
         for x in self.players:
             x.draw_boxes(disp)
-'''
-        for y in self.enemies:
-            pygame.draw.rect(disp, config.blue, y.rect, 8)
-            pygame.draw.rect(disp, config.red, y.hitbox, 4)
-            for xy in y.hitboxes:
-                pygame.draw.rect(disp, config.green, xy, 2)
-''''''
-        for z in self.allProjectiles:
-            pygame.draw.rect(disp, config.red, z.rect, 7)
-            pygame.draw.rect(disp, config.green, z.hitbox, 4)
-'''
+
+    def scroll(self, x_scroll, y_scroll):
+
+
 
 class hallway(room):
     def __init__(self, length, orientation, *args):

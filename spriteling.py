@@ -43,6 +43,7 @@ class hitbox(pygame.sprite.Sprite):
     def __init__(self, subj, **kwargs):
         super().__init__()
         self.host = subj
+        self.orientation = (0, 0)
         # if a rect is already specified in the constructor, it copies and uses that one
         if 'rect' in kwargs:
             self.rect = pygame.Rect.copy(kwargs['rect'])

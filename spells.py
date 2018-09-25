@@ -32,7 +32,7 @@ class spell_book(spriteling.spriteling):
     def __init__(self, *args):
         super().__init__(*args)
         self.spells = []
-        self.spell_key = []
+        self.spell_key = ()
         self.length = 0
         self.spell_selector = 0
 
@@ -80,12 +80,12 @@ class spell(spriteling.spriteling):
         self.image = img
         self.rect = self.image.get_rect()
         self.rect.center = loc
-        self.live_missiles = pygame.sprite.Group()
+        self.chamber = pygame.sprite.GroupSingle()
 
     def update(self, interface, *args):
         prev, now = interface.check_fire()
         if now and not prev:
-            self.projectile(blank_img, self.rect.center)
+            self.chamber.add(self.projectile(interface.direction, self.rect.center))
 
     def fire(self):
         pass
@@ -104,10 +104,13 @@ class charge_up(spell):
         # the spell fires
         elif prev and not now:
             # note: figure out which class handles the fire method
-            self.fire()
+            self.chamber.add(self.projectile(interface.direction, self.rect.center))
         # the charging missile is created and placed into the live missiles
         elif now and not prev:
-            self.live_missiles.add(self.projectile(self))
+            self.anim('t0')
+
+    def anim(self, stage):
+        pass
 
 
 class cool_down(spell):
@@ -118,10 +121,16 @@ class beam(spell):
 
 
 # ancestral class for missiles (things that fly out and hit other things)
+# missiles are fired (begin moving) immediately after begin created
 class missile(spriteling.spriteling):
-    def __init__(self, img, loc):
-        super().__init__(self, img, loc)
-        self.status = 'standby'
+    def __init__(self, img, loc, vel):
+        super().__init__(img, loc)
+        self.velocity = vel
+
+    def update(self, *args):
+        self.rect.move_ip(self.velocity)
+        self.hitboxes
+
 
 
 
@@ -131,6 +140,11 @@ class fireball_s(spell):
 
 
 class fireball_m(missile):
+    def __init__(self, dir, loc):
+        x_vel, y_vel = 4*dir[0], 4*dir[1]
+        missile.__init__(self, fire_bolt_img, loc, (x_vel, y_vel))
+        self.hitboxes.add(spriteling.hitbox(self))
+
 
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):
@@ -139,8 +153,8 @@ class book_of_fire(spell_book):
 
         self.palette = 'red'
 
-        # each of the elemental books contains a list of all the spells valid for this spellbook, called the spell key
-        self.spell_key = ['fireball', 'firewall']
+        # each of the elemental books contains a list of all the spells valid for this spell book, called the spell key
+        self.spell_key = ('fireball', 'firewall')
 
         self.user = user
         self.spells = [fireball_s]
@@ -148,7 +162,7 @@ class book_of_fire(spell_book):
         self.spell_selector = 0
         self.length = 1
 
-
+'''
 # duh
 class book_of_frost(spell_book):
     def __init__(self, user):
@@ -176,4 +190,4 @@ class shocking_tome(spell_book):
         self.active_spell = self.spells[0](self.user.spell_slot)
         self.spell_selector = 0
         self.length = 1
-
+'''

@@ -46,6 +46,7 @@ class hitbox(pygame.sprite.Sprite):
         super().__init__()
         self.host = subj
         self.orientation = (0, 0)
+        self.offset = (0, 0)
         # if a rect is already specified in the constructor, it copies and uses that one
         if 'rect' in kwargs:
             self.rect = pygame.Rect.copy(kwargs['rect'])
@@ -67,17 +68,21 @@ class hitbox(pygame.sprite.Sprite):
         self.rect.inflate_ip(xscale, yscale)
         print("inflated a rect ", self.rect)
 
+        x, y = 0, 0
         if 'center' in kwargs:
             self.rect.center = kwargs['center']
         if 'left_side' in kwargs:
             self.rect.left = kwargs['left_side']
-
+            x =-1
         if 'right_side' in kwargs:
             self.rect.right = kwargs['right_side']
+            x =1
         if 'bottom_side' in kwargs:
             self.rect.bottom = kwargs['bottom_side']
+            y =1
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
+            y =-1
 
     def update(self, **kwargs):
         # self.rect = self.rect.move(scroll)

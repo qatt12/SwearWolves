@@ -37,6 +37,7 @@ class player(spriteling.spriteling):
         self.input_device.update()
         self.vel = (int(self.input_device.moving[0] * self.max_vel), int(self.input_device.moving[1] * self.max_vel))
         self.rect.move_ip(self.vel)
+        self.hitboxes.update()
 
 
 class multiplayer(player):

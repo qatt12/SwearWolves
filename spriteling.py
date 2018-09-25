@@ -79,8 +79,9 @@ class hitbox(pygame.sprite.Sprite):
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
 
-    def update(self, scroll, **kwargs):
-        self.rect = self.rect.move(scroll)
+    def update(self, **kwargs):
+        # self.rect = self.rect.move(scroll)
+        self.rect.center = self.host.rect.center
 
 
 

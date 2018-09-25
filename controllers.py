@@ -42,10 +42,10 @@ class interface():
 
     def update(self):
         self.controller.update()
-        #mov_x = float(self.controller.left_stick['X'])
-        #mov_y = float(self.controller.left_stick['Y'])
-        #self.moving = (mov_x, mov_y)
-        print(self.controller.jub.get_name())
+        mov_x = float(self.controller.left_stick['X'])
+        mov_y = float(self.controller.left_stick['Y'])
+        self.moving = (mov_x, mov_y)
+        #print(self.controller.jub.get_name())
         #print(self.moving)
 
     # checks if the fire key was pressed this frame or the previous frame
@@ -107,26 +107,24 @@ class xbone_gamepad(object):
     # pressed and then released
 
     def update(self):
-        jub = self.jub
-
         self.buttons = self.new_buttons
         self.right_stick = self.new_right_stick
         self.left_stick = self.new_left_stick
         self.triggers = self.new_triggers
 
         self.new_buttons = {
-                               'A': jub.get_button(0), 'B': jub.get_button(1),
-                               'X': jub.get_button(2), 'Y': jub.get_button(3),
-                               'LB': jub.get_button(4), 'RB': jub.get_button(5),
-                               'Start': jub.get_button(7), 'Select': jub.get_button(6),
-                               'LStick': jub.get_button(8), 'RStick': jub.get_button(9)
+                               'A': self.jub.get_button(0), 'B': self.jub.get_button(1),
+                               'X': self.jub.get_button(2), 'Y': self.jub.get_button(3),
+                               'LB': self.jub.get_button(4), 'RB': self.jub.get_button(5),
+                               'Start': self.jub.get_button(7), 'Select': self.jub.get_button(6),
+                               'LStick': self.jub.get_button(8), 'RStick': self.jub.get_button(9)
                             }
-        self.new_left_stick = {'X': jub.get_axis(0), 'Y': jub.get_axis(1)}
-        self.new_right_stick = {'X': jub.get_axis(4), 'Y': jub.get_axis(3)}
+        self.new_left_stick = {'X': self.jub.get_axis(0), 'Y': self.jub.get_axis(1)}
+        self.new_right_stick = {'X': self.jub.get_axis(4), 'Y': self.jub.get_axis(3)}
 
         # the triggers are special, in that they are not 2 separate axes, but instead the signed difference between
         #  both triggers as a single axis. If RT is pressed, axis 2 is
-        self.new_triggers = {'Triggers': jub.get_axis(2)}
+        self.new_triggers = {'Triggers': self.jub.get_axis(2)}
 
     # returns the old and new input states for a single button (this allows button mapping at the player level)
     def pull_button(self, button_name):

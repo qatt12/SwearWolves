@@ -87,13 +87,16 @@ class room():
         self.players.draw(disp)
         self.player_missiles.draw(disp)
 
+
     # super basic method atm, designed to be expanded as needed in later iterations
     def add_players(self, players):
         self.players.add(players)
 
     def update(self):
         self.outer_walls.update()
-        self.players.update(self.player_missiles)
+        self.players.update()
+        for player in self.players:
+            self.player_missiles.add(player.get_live_missiles())
         self.player_missiles.update()
 
 

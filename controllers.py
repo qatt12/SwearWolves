@@ -46,18 +46,17 @@ class interface():
         mov_x = float(self.controller.left_stick['X'])
         mov_y = float(self.controller.left_stick['Y'])
         self.moving = (mov_x, mov_y)
+        dir_x, dir_y = 0, 0
         if (self.controller.right_stick['X']) > deadzone:
             dir_x = 1
         elif (self.controller.right_stick['X']) < -(deadzone):
             dir_x = -1
-        else:
-            dir_x = self.direction[0]
+
         if (self.controller.right_stick['Y']) > deadzone:
             dir_y = 1
         elif (self.controller.right_stick['Y']) < -(deadzone):
             dir_y = -1
-        else:
-            dir_y = self.direction[1]
+
         self.direction = (dir_x, dir_y)
 
 

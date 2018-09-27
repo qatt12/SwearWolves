@@ -38,7 +38,7 @@ while (running):
 
 
         clock.tick(fps)
-        #print(clock.get_fps())
+        print(clock.get_fps())
 
 
         current_room.update()
@@ -50,3 +50,4 @@ while (running):
         #pygame.display.flip()
 
         pygame.event.pump()
+        pygame.time.wait(0)

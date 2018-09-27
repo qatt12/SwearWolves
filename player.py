@@ -41,6 +41,7 @@ class player(spriteling.spriteling):
         self.book = spells.DEBUG_book(self)
 
         self.active_spell = pygame.sprite.GroupSingle(self.book.get_spell(input_device))
+        self.active_missiles = pygame.sprite.Group()
 
         # attaches the interface to the player
         self.input_device = input_device
@@ -48,13 +49,16 @@ class player(spriteling.spriteling):
         # missile layers are maintained on a per-player basis
        # self.missiles = pygame.sprite.Group()
 
-    def update(self, missile_layer, *args):
+    def update(self, *args):
         # its crucial to always update the input
         self.input_device.update()
         self.vel = (int(self.input_device.moving[0] * self.max_vel), int(self.input_device.moving[1] * self.max_vel))
         self.rect.move_ip(self.vel)
         self.hitboxes.update()
-        self.active_spell.update(self.rect.center, self.input_device, missile_layer)
+        self.active_spell.update(self.rect.center, self.input_device, self.active_missiles)
+
+    def get_live_missiles(self):
+        return self.active_missiles
 
 
 class multiplayer(player):

@@ -1,4 +1,4 @@
-import pygame, config
+import pygame, config, controllers
 pygame.init()
 
 disp = pygame.display.set_mode(config.screen_size)
@@ -11,6 +11,12 @@ while(start_loop):
         if event.type == pygame.QUIT:
             running = False
 
-
-        clock.tick(fps)
+        clock.tick(config.fps)
         print(clock.get_fps())
+
+        all_controllers = controllers.prepare_joysticks()
+
+        pygame.display.update()
+
+        pygame.event.pump()
+        pygame.time.wait(0)

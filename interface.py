@@ -12,3 +12,12 @@ class interface():
         else:
             self.book = None
 
+    def attach_player(self, user):
+        self.player = user
+
+    def attach_book(self, spellbook):
+        self.book = spellbook
+
+    def draw_contents(self, disp):
+        self.player.draw(disp)
+        self.book.draw(disp)

@@ -25,10 +25,8 @@ def auto_assign(x):
 
 # an intermediary class that attaches a player to a controller and maps keys on that controller
 class interface():
-    def __init__(self, controller, player, spellbook):
+    def __init__(self, controller):
         self.controller = controller
-        self.player = player
-        self.book = spellbook
 
         # essentially, this class is a button to action translation device. It has several internal vars that pass
         # themselves into the attached controller as lookups to determine if the button has been pressed

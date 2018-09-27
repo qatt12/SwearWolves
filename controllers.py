@@ -19,6 +19,8 @@ def auto_assign(x):
         return xbone_gamepad(x)
     elif 'Xbox 360' in x.get_name():
         return xb360_gamepad(x)
+    elif pygame.key.get_pressed()[pygame.K_SPACE]:
+        return keyboard()
     else:
         return xb360_gamepad(x)
 
@@ -163,6 +165,12 @@ class xbone_gamepad(object):
     def pull_right_stick(self):
         return self.right_stick, self.new_right_stick
 
+    def check_status(self):
+        if self.new_buttons['Start'] or self.buttons['Start']:
+            return True
+        else:
+            return False
+
 
 # after extensive testing, i have discovered that xbox 360 controllers are almost exactly the same as xbox one
 # controllers, the only real difference that I found is that 360 controllers have the ability to represent both triggers
@@ -258,6 +266,11 @@ class xb360_gamepad(object):
     def pull_right_stick(self):
         return self.right_stick, self.new_right_stick
 
+    def check_status(self):
+        if self.new_buttons['Start'] or self.buttons['Start']:
+            return True
+        else:
+            return False
 
 # super basice keyboard class for keyboard input. like the controllers, it stores two frames of input
 class keyboard():
@@ -268,3 +281,9 @@ class keyboard():
     def update(self):
         self.key = self.new_key
         self.new_key = pygame.key.get_pressed()
+
+    def check_status(self):
+        if self.key[pygame.K_SPACE] or self.new_key[pygame.K_SPACE]:
+            return True
+        else:
+            return False

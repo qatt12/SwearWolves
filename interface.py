@@ -1,6 +1,6 @@
-import pygame, player, spells, controllers
 
-class interface():
+
+class handler():
     def __init__(self, controller, **kwargs):
         self.controller = controller
         if 'player' in kwargs:
@@ -11,6 +11,11 @@ class interface():
             self.player = kwargs['book']
         else:
             self.book = None
+        if 'menu' in kwargs:
+            self.menu = kwargs['menu']
+        else:
+            self.menu = None
+        self.hud = None
 
     def attach_player(self, user):
         self.player = user

@@ -1,10 +1,13 @@
 import spriteling, pygame
+from config import fps as fps
 
 missile_sheet = pygame.image.load('projectiles\simple_missiles.png').convert_alpha()
 
 fire_bolt_img = pygame.image.load('projectiles\img_fire_bolt.png').convert()
 fire_bolt_spell_img = pygame.image.load('projectiles\img_fire_bolt_spell.png').convert()
 book_of_fire_img = pygame.image.load('projectiles\img_book_of_fire.png').convert()
+
+blank_book =  pygame.image.load('projectiles\img_book_of_fire.png').convert()
 
 '''
 frost_bolt_img = pygame.image.load("projectiles\img_frost_bolt.png")
@@ -29,41 +32,31 @@ electric_bookaloo_img = pygame.image.load("projectiles\img_book_of_elec.png")
 
 # spell book is a handler/container class meant to hold a bunch of spells
 class spell_book(spriteling.spriteling):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self):
+        super().__init__(blank_book, (0, 0))
+        # contains an instance of/ constructor for all unlocked spells
         self.spells = []
         self.spell_key = {0: spell}
         self.level_costs = {0: 1000, 1: 2000}
         self.level = 0
-        self.length = 0
         self.spell_selector = 0
+        self.length = 1
+        self.user = None
+        # the active spell is regularly updated
+        self.active_spell = pygame.sprite.GroupSingle()
+        # other live spells are updated but not drawn
+        self.other_spells = pygame.sprite.Group()
+        self.live_missiles = pygame.sprite.Group()
 
-    # spell_book is never supposed to exist on its own, only as part of a derived class, thus the below methods
-    # reference vars that a plain spell book would lack
+    # attaches this book to a player
+    def give_to_player(self, user):
+        self.user = user
+        self.rect.center = self.user.book_slot
+        self.active_spell.add(self.spells[0])
 
-    # repositions the active spell to be on the user's spell_slot
     def update(self, *args):
-        self.active_spell.rect.center = self.user.spell_slot
-        self.active_spell.update(self.user.interface)
+        self.active_spell.update(self.user.input_device, self.live_missiles)
 
-    # returns the active spell (intended for use in conjunction with the draw method of room)
-    def check_active_spell(self):
-        return self.active_spell
-
-    def next_spell(self):
-        if self.spell_selector == self.length - 1:
-            self.spell_selector = 0
-        else:
-            self.spell_selector += 1
-
-        # this is supposed to delete the old active spell once it is no longer selected.
-        # self.active_spell = None
-
-        self.active_spell = self.spells[self.spell_selector](self.user.spell_slot)
-
-    # unlocking a new spell in the book is done by passing a string into this method.
-    def add_spell(self):
-        self.level = self.level +1
 
 
 # each attack/spell has two components: the spell and the missile. the spell is basically just an image that follows the
@@ -83,19 +76,66 @@ class spell(spriteling.spriteling):
         self.rect.center = loc
         self.live_missiles = pygame.sprite.Group()
 
-    def update(self, interface, *args):
+    def update(self, interface, missile_layer, *args):
         prev, now = interface.check_fire()
         if now and not prev:
-            self.live_missiles.add(self.fire(interface.direction))
+            missile_layer.add(self.fire(interface.direction))
 
     def fire(self, direction):
         return self.projectile(direction, self.rect.center)
 
+# ancestral class for missiles (things that fly out and hit other things)
+# missiles are fired (begin moving) immediately after begin created
+class missile(spriteling.spriteling):
+    def __init__(self, img, loc, vel):
+        super().__init__(img, loc)
+        self.velocity = vel
 
+    def update(self, *args):
+        self.rect.move_ip(self.velocity)
+        for each in self.hitboxes:
+            each.rect.center = self.rect.center
+
+#  ___       _____
+# |    \    |   __|
+# | |\  \   |  |__
+# | |/  /   |  |__
+# |____/    |_____|
+
+class magic_s(spell):
+    def __init__(self, loc):
+        super().__init__(magic_m, fire_bolt_spell_img, loc)
+
+
+class magic_m(missile):
+    def __init__(self, dir, loc):
+        x_vel, y_vel = 4*dir[0], 4*dir[1]
+        missile.__init__(self, fire_bolt_img, loc, (x_vel, y_vel))
+        self.hitboxes.add(spriteling.hitbox(self))
+
+
+class DEBUG_book(spell_book):
+    def __init__(self, user):
+        super().__init__()
+        self.user = user
+        self.spell_key = {0: magic_s}
+        self.level_costs = {0: 1000, 1: 2000}
+        self.spells = [magic_s]
+
+
+#
+#
+#
+#
+#
+
+
+# charge_up spells need to be charged by holding the fire button until they are sufficiently charged
 class charge_up(spell):
     def __init__(self, projectile, img, loc):
         spell.__init__(self, projectile, img, loc)
         self.charge = 0
+        self.t1 = 4
 
     def update(self, interface, *args):
         prev, now = interface.check_fire()
@@ -110,6 +150,9 @@ class charge_up(spell):
         elif now and not prev:
             self.anim('t0')
 
+        if (self.charge/fps) >= self.t1:
+            self.anim('t1')
+
     def anim(self, stage):
         pass
 
@@ -117,28 +160,14 @@ class charge_up(spell):
 class cool_down(spell):
     pass
 
+
 class beam(spell):
     pass
 
 
-# ancestral class for missiles (things that fly out and hit other things)
-# missiles are fired (begin moving) immediately after begin created
-class missile(spriteling.spriteling):
-    def __init__(self, img, loc, vel):
-        super().__init__(img, loc)
-        self.velocity = vel
-
-    def update(self, *args):
-        self.rect.move_ip(self.velocity)
-        for each in self.hitboxes:
-            each.rect.center = self.rect.center
-
-
-
-
 class fireball_s(spell):
     def __init__(self, loc):
-        super().__init__(fireball_m, fire_bolt_spell_img, loc)
+        super().__init__(magic_m, fire_bolt_spell_img, loc)
 
 
 class fireball_m(missile):
@@ -150,19 +179,12 @@ class fireball_m(missile):
 
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):
-    def __init__(self, user):
-        super().__init__(book_of_fire_img, user.book_slot)
-
-        self.palette = 'red'
-
-        # each of the elemental books contains a list of all the spells valid for this spell book, called the spell key
-        self.spell_key = ('fireball', 'firewall')
-
-        self.user = user
-        self.spells = [fireball_s]
-        self.active_spell = self.spells[0](self.user.spell_slot)
-        self.spell_selector = 0
-        self.length = 1
+    def __init__(self):
+        super().__init__()
+        self.image = book_of_fire_img
+        self.user = None
+        self.spell_key = {0: fireball_s}
+        self.level_costs = {0: 1000, 1: 2000}
 
 '''
 # duh

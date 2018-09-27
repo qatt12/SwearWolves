@@ -45,8 +45,6 @@ class hitbox(pygame.sprite.Sprite):
     def __init__(self, subj, **kwargs):
         super().__init__()
         self.host = subj
-        self.orientation = (0, 0)
-        self.offset = (0, 0)
         # if a rect is already specified in the constructor, it copies and uses that one
         if 'rect' in kwargs:
             self.rect = pygame.Rect.copy(kwargs['rect'])
@@ -68,25 +66,32 @@ class hitbox(pygame.sprite.Sprite):
         self.rect.inflate_ip(xscale, yscale)
         print("inflated a rect ", self.rect)
 
-        x, y = 0, 0
         if 'center' in kwargs:
             self.rect.center = kwargs['center']
         if 'left_side' in kwargs:
             self.rect.left = kwargs['left_side']
-            x =-1
         if 'right_side' in kwargs:
             self.rect.right = kwargs['right_side']
-            x =1
         if 'bottom_side' in kwargs:
             self.rect.bottom = kwargs['bottom_side']
-            y =1
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
-            y =-1
 
+    # the ever crucial update method. By default, it just adjusts the hitbox to be centered on the host
     def update(self, **kwargs):
-        # self.rect = self.rect.move(scroll)
         self.rect.center = self.host.rect.center
+        # straight up copy-pasted from the init method, because why bother saving this to the hitbox when nearly
+        # everything has their hitbox centered by default?
+        if 'center' in kwargs:
+            self.rect.center = kwargs['center']
+        if 'left_side' in kwargs:
+            self.rect.left = kwargs['left_side']
+        if 'right_side' in kwargs:
+            self.rect.right = kwargs['right_side']
+        if 'bottom_side' in kwargs:
+            self.rect.bottom = kwargs['bottom_side']
+        if 'top_side' in kwargs:
+            self.rect.top = kwargs['top_side']
 
 
 

@@ -13,6 +13,12 @@ bottom_left = pygame.transform.flip(bottom_right, 1, 0)
 down = spritesheet.subsurface((257, 0), (38, 126))
 top = spritesheet.subsurface((299, 0), (38, 126))
 
+class menu_player_one(pygame.sprite.Sprite):
+    pass
+
+class menu_player():
+    pass
+
 class player(spriteling.spriteling):
     def __init__(self, input_device, loc):
         super().__init__(neutral, loc)
@@ -29,6 +35,11 @@ class player(spriteling.spriteling):
         self.facing = (0, 0)
         # end of testing code
 
+        # All of this stuff here will have to be fixed
+        self.book_slot = (0, 0)
+        self.spell_slot = self.rect.center
+        self.book = spells.DEBUG_book(self)
+
         # attaches the interface to the player
         self.input_device = input_device
 
@@ -38,25 +49,12 @@ class player(spriteling.spriteling):
         self.vel = (int(self.input_device.moving[0] * self.max_vel), int(self.input_device.moving[1] * self.max_vel))
         self.rect.move_ip(self.vel)
         self.hitboxes.update()
+        self.book.update()
 
 
 class multiplayer(player):
-    def __init__(self, number, book, *args):
-        super().__init__(*args)
-        self.player_number = number
-        if number == 1:
-            self.book_slot = 'top left corner of the screen'
-        elif number == 2:
-            self.book_slot = 'top right corner'
-        elif number == 3:
-            self.book_slot = 'bottom left'
-        elif number == 4:
-            self.book_slot = 'bottom right'
+    def __init__(self, input_dev, book, num):
+        super().__init__(input_dev, (0, 0))
+        self.book = book
 
-        self.spellbook = book(self)
 
-        self.spell_slot = self.rect.center
-        self.cast_point = self.rect.center
-
-        # this is temporary. a testing setup
-        self.image = self.spellbook.image

@@ -71,7 +71,9 @@ class room():
         self.players = sGroup()
         self.overlays = sGroup()
         self.enemy_missiles = sGroup()
+        self.enemy_spells = sGroup()
         self.player_missiles = sGroup()
+        self.player_spells = sGroup()
         self.all_sprites = sGroup()
 
     # core methods used to draw the contents of the room onto the main display window in the appropriate order
@@ -83,6 +85,7 @@ class room():
         self.outer_walls.draw(disp)
 
         self.players.draw(disp)
+        self.player_missiles.draw(disp)
 
     # super basic method atm, designed to be expanded as needed in later iterations
     def add_players(self, players):

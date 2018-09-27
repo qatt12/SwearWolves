@@ -45,8 +45,7 @@ class interface():
         mov_x = float(self.controller.left_stick['X'])
         mov_y = float(self.controller.left_stick['Y'])
         self.moving = (mov_x, mov_y)
-        #print(self.controller.jub.get_name())
-        #print(self.moving)
+
 
     # checks if the fire key was pressed this frame or the previous frame
     def check_fire(self):

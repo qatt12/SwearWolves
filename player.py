@@ -46,9 +46,6 @@ class player(spriteling.spriteling):
         # attaches the interface to the player
         self.input_device = input_device
 
-        # missile layers are maintained on a per-player basis
-       # self.missiles = pygame.sprite.Group()
-
     def update(self, *args):
         # its crucial to always update the input
         self.input_device.update()

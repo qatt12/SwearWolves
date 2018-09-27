@@ -21,7 +21,7 @@ class menu_player():
 
 class player(spriteling.spriteling):
     def __init__(self, input_device, loc):
-        super().__init__(neutral, loc)
+        super().__init__(image=neutral, loc=loc)
 
         # the following is testing code, copy-pasted from the earlier project so that I can get a testable instance of
         # the game running
@@ -40,16 +40,21 @@ class player(spriteling.spriteling):
         self.spell_slot = self.rect.center
         self.book = spells.DEBUG_book(self)
 
+        self.active_spell = pygame.sprite.GroupSingle(self.book.get_spell(input_device))
+
         # attaches the interface to the player
         self.input_device = input_device
 
-    def update(self, *args):
+        # missile layers are maintained on a per-player basis
+       # self.missiles = pygame.sprite.Group()
+
+    def update(self, missile_layer, *args):
         # its crucial to always update the input
         self.input_device.update()
         self.vel = (int(self.input_device.moving[0] * self.max_vel), int(self.input_device.moving[1] * self.max_vel))
         self.rect.move_ip(self.vel)
         self.hitboxes.update()
-        self.book.update()
+        self.active_spell.update(self.rect.center, self.input_device, missile_layer)
 
 
 class multiplayer(player):

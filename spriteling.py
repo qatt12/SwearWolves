@@ -13,19 +13,26 @@
 
 import pygame, config
 
+placeholder = pygame.image.load('projectiles\img_book_of_fire.png').convert()
 
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
 class spriteling(pygame.sprite.Sprite):
-    def __init__(self, img, loc):
+    def __init__(self, **kwargs):
         super().__init__()
+        #### new update: spriteling now takes kwargs, to make calling it less of a pain in the ass
         # this most basal constructor takes an image and a location, assigns the image to the sprite, builds a rectangle
-        #  from the image, moves the rectangle to the location, then builds a hitbox the same size as the rect, and
+        # from the image, moves the rectangle to the location, then builds a hitbox the same size as the rect, and
         # places it directly on top of the rect
-        self.image = img
-        self.loc = loc
+        if 'image' in kwargs:
+            self.image = kwargs['image']
+        else:
+            self.image = placeholder
         self.rect = self.image.get_rect()
-        self.rect.center = (loc[0], loc[1])
+        if 'loc' in kwargs:
+            self.loc = kwargs['loc']
+            self.rect.center = self.loc
+
         # not sure I we should make all/most spritelings have only one hitbox by default, and just create a subclass
         # with extra
         self.hitboxes = pygame.sprite.Group()
@@ -97,8 +104,8 @@ class hitbox(pygame.sprite.Sprite):
 
 # class for stationary objects that are placed and then never moved.
 class block(spriteling):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, img, loc):
+        super().__init__(image=img, loc=loc)
         # if the block is rooted, it is attached to a fixed location; an (x, y) tuple
         self.rooted = None
 

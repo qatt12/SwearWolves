@@ -93,7 +93,9 @@ class room():
 
     def update(self):
         self.outer_walls.update()
-        self.players.update()
+        self.players.update(self.player_missiles)
+        self.player_missiles.update()
+
 
     def draw_boxes(self, disp):
         for w in self.outer_walls:

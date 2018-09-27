@@ -33,31 +33,38 @@ electric_bookaloo_img = pygame.image.load("projectiles\img_book_of_elec.png")
 # spell book is a handler/container class meant to hold a bunch of spells
 class spell_book(spriteling.spriteling):
     def __init__(self):
-        super().__init__(blank_book, (0, 0))
+        super().__init__(image=blank_book)
         # contains an instance of/ constructor for all unlocked spells
         self.spells = []
         self.spell_key = {0: spell}
         self.level_costs = {0: 1000, 1: 2000}
         self.level = 0
-        self.spell_selector = 0
+
+        # selection stuff
+        self.index = 0
         self.length = 1
-        self.user = None
-        # the active spell is regularly updated
-        self.active_spell = pygame.sprite.GroupSingle()
-        # other live spells are updated but not drawn
+
+        # this is maintained so that spells not currently selected can still be updated (mostly fo spells that need to
+        # cool down; their cooldowns don't reset upon selecting a new spell
         self.other_spells = pygame.sprite.Group()
-        self.live_missiles = pygame.sprite.Group()
 
     # attaches this book to a player
+    # currently unfinished
     def give_to_player(self, user):
-        self.user = user
-        self.rect.center = self.user.book_slot
-        self.active_spell.add(self.spells[0])
+        self.rect.center = user.book_slot
 
-    def update(self, *args):
-        self.active_spell.update(self.user.input_device, self.live_missiles)
-
-
+    def get_spell(self, interface):
+        if interface.next_spell():
+            if self.index < len(self.spells)-1:
+                self.index += 1
+            else:
+                self.index = 0
+        elif interface.prev_spell():
+            if self.index == 0:
+                self.index -= 1
+            else:
+                self.index = len(self.spells)
+        return self.spells[self.index]
 
 # each attack/spell has two components: the spell and the missile. the spell is basically just an image that follows the
 # player around, while the missile is created and propelled by the spell.
@@ -68,15 +75,12 @@ class spell_book(spriteling.spriteling):
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
 class spell(spriteling.spriteling):
     def __init__(self, projectile, img, loc):
-        super().__init__(img, loc)
-        # this is a functor, to be initialized just before its time to fire
+        super().__init__(image=img, loc=loc)
+        # this is to be initialized just before its time to fire
         self.projectile = projectile
-        self.image = img
-        self.rect = self.image.get_rect()
-        self.rect.center = loc
-        self.live_missiles = pygame.sprite.Group()
 
-    def update(self, interface, missile_layer, *args):
+    def update(self, loc, interface, missile_layer, *args):
+        self.rect.center = loc
         prev, now = interface.check_fire()
         if now and not prev:
             missile_layer.add(self.fire(interface.direction))
@@ -88,7 +92,7 @@ class spell(spriteling.spriteling):
 # missiles are fired (begin moving) immediately after begin created
 class missile(spriteling.spriteling):
     def __init__(self, img, loc, vel):
-        super().__init__(img, loc)
+        super().__init__(image=img, loc=loc)
         self.velocity = vel
 
     def update(self, *args):
@@ -120,7 +124,7 @@ class DEBUG_book(spell_book):
         self.user = user
         self.spell_key = {0: magic_s}
         self.level_costs = {0: 1000, 1: 2000}
-        self.spells = [magic_s]
+        self.spells = [magic_s((0, 0))]
 
 
 #

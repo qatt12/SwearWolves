@@ -39,17 +39,45 @@ class interface():
         # the moving field is important because the player class references it to determine if and how fast the player
         # should be moving
         self.moving = (0, 0)
+        self.direction = (0, 0)
 
     def update(self):
         self.controller.update()
         mov_x = float(self.controller.left_stick['X'])
         mov_y = float(self.controller.left_stick['Y'])
         self.moving = (mov_x, mov_y)
+        if (self.controller.right_stick['X']) > deadzone:
+            dir_x = 1
+        elif (self.controller.right_stick['X']) < -(deadzone):
+            dir_x = -1
+        else:
+            dir_x = self.direction[0]
+        if (self.controller.right_stick['Y']) > deadzone:
+            dir_y = 1
+        elif (self.controller.right_stick['Y']) < -(deadzone):
+            dir_y = -1
+        else:
+            dir_y = self.direction[1]
+        self.direction = (dir_x, dir_y)
 
 
     # checks if the fire key was pressed this frame or the previous frame
     def check_fire(self):
         return self.controller.pull_button(self.primary_fire)
+
+    def next_spell(self):
+        then, now = self.controller.pull_button(self.r_spell)
+        if now and not then:
+            return True
+        else:
+            return False
+
+    def prev_spell(self):
+        then, now = self.controller.pull_button(self.l_spell)
+        if now and not then:
+            return True
+        else:
+            return False
 
 
 '''

@@ -3,6 +3,7 @@ from interface import handler as handler
 
 class controller_list():
     def __init__(self):
+        self.player_num = 0
         self.active_controllers = []
         self.standby_controllers = []
 

@@ -1,24 +1,11 @@
 import spriteling, pygame
 from config import fps as fps
 
-missile_sheet = pygame.image.load('projectiles\simple_missiles.png').convert_alpha()
-
 fire_bolt_img = pygame.image.load('projectiles\img_fire_bolt.png').convert()
 fire_bolt_spell_img = pygame.image.load('projectiles\img_fire_bolt_spell.png').convert()
 book_of_fire_img = pygame.image.load('projectiles\img_book_of_fire.png').convert()
 
-blank_book =  pygame.image.load('projectiles\img_book_of_fire.png').convert()
-
-'''
-frost_bolt_img = pygame.image.load("projectiles\img_frost_bolt.png")
-frost_bolt_spell_img = pygame.image.load("projectiles\img_frost_bolt_spell.png")
-book_of_frost_img = pygame.image.load("projectiles\img_book_of_frost.png")
-
-lightning_bolt_img = pygame.image.load("projectiles\img_elec_bolt.png")
-lightning_bolt_spell_img = pygame.image.load("projectiles\img_elec_bolt_spell.png")
-electric_bookaloo_img = pygame.image.load("projectiles\img_book_of_elec.png")
-'''
-
+blank_book = pygame.image.load('projectiles\img_book_of_fire.png').convert()
 
 # the arrangement of spells (or more generally, all attacks) goes like this: each player character gets a spell book,
 # and each spell book has a particular pre-defined list of spells attached to it (one spell for each category). To
@@ -48,11 +35,6 @@ class spell_book(spriteling.spriteling):
         # cool down; their cooldowns don't reset upon selecting a new spell
         self.other_spells = pygame.sprite.Group()
 
-    # attaches this book to a player
-    # currently unfinished
-    def give_to_player(self, user):
-        self.rect.center = user.book_slot
-
     def get_spell(self, interface):
         if interface.next_spell():
             if self.index < len(self.spells)-1:
@@ -74,8 +56,8 @@ class spell_book(spriteling.spriteling):
 # spells themselves don't do much, except for creating and launching missiles
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
 class spell(spriteling.spriteling):
-    def __init__(self, projectile, img, loc):
-        super().__init__(image=img, loc=loc)
+    def __init__(self, projectile, img):
+        super().__init__(image=img)
         # this is to be initialized just before its time to fire
         self.projectile = projectile
 
@@ -107,8 +89,8 @@ class missile(spriteling.spriteling):
 # |____/    |_____|
 
 class magic_s(spell):
-    def __init__(self, loc):
-        super().__init__(magic_m, fire_bolt_spell_img, loc)
+    def __init__(self):
+        super().__init__(magic_m, fire_bolt_spell_img)
 
 
 class magic_m(missile):
@@ -119,12 +101,12 @@ class magic_m(missile):
 
 
 class DEBUG_book(spell_book):
-    def __init__(self, user):
+    def __init__(self):
         super().__init__()
-        self.user = user
         self.spell_key = {0: magic_s}
         self.level_costs = {0: 1000, 1: 2000}
-        self.spells = [magic_s((0, 0))]
+        self.spells = [magic_s()]
+        self.index = 0
 
 
 #
@@ -170,8 +152,8 @@ class beam(spell):
 
 
 class fireball_s(spell):
-    def __init__(self, loc):
-        super().__init__(magic_m, fire_bolt_spell_img, loc)
+    def __init__(self):
+        super().__init__(magic_m, fire_bolt_spell_img)
 
 
 class fireball_m(missile):
@@ -186,36 +168,5 @@ class book_of_fire(spell_book):
     def __init__(self):
         super().__init__()
         self.image = book_of_fire_img
-        self.user = None
         self.spell_key = {0: fireball_s}
         self.level_costs = {0: 1000, 1: 2000}
-
-'''
-# duh
-class book_of_frost(spell_book):
-    def __init__(self, user):
-        super().__init__(book_of_frost_img, user.book_slot)
-
-        # each of the elemental books contains a lookup of all the possible spells, called the spell key
-        self.spell_key = {'bolt': frost_bolt_s, 'barrier': ice_wall_s}
-
-        self.user = user
-        self.spells = [frost_bolt_s]
-        self.active_spell = self.spells[0](self.user.spell_slot)
-        self.spell_selector = 0
-        self.length = 1
-
-
-class shocking_tome(spell_book):
-    def __init__(self, user):
-        super().__init__(electric_bookaloo_img, user.book_slot)
-
-        # each of the elemental books contains a lookup of all the possible spells, called the spell key
-        self.spell_key = {'bolt': lightning_bolt_s, 'barrier': thunder_ball_s}
-
-        self.user = user
-        self.spells = [frost_bolt_s]
-        self.active_spell = self.spells[0](self.user.spell_slot)
-        self.spell_selector = 0
-        self.length = 1
-'''

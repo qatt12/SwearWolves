@@ -25,63 +25,6 @@ def auto_assign(x):
         return xb360_gamepad(x)
 
 
-# an intermediary class that attaches a player to a controller and maps keys on that controller
-class interface():
-    def __init__(self, controller):
-        self.controller = controller
-
-        # essentially, this class is a button to action translation device. It has several internal vars that pass
-        # themselves into the attached controller as lookups to determine if the button has been pressed
-        self.primary_fire = 'X'
-        self.secondary_fire = 'Y'
-        self.back = 'B'
-        self.accept = 'A'
-        self.r_spell = 'RB'
-        self.l_spell = 'LB'
-
-        # the moving field is important because the player class references it to determine if and how fast the player
-        # should be moving
-        self.moving = (0, 0)
-        self.direction = (0, 0)
-
-    def update(self):
-        self.controller.update()
-        mov_x = float(self.controller.left_stick['X'])
-        mov_y = float(self.controller.left_stick['Y'])
-        self.moving = (mov_x, mov_y)
-        dir_x, dir_y = 0, 0
-        if (self.controller.right_stick['X']) > deadzone:
-            dir_x = 1
-        elif (self.controller.right_stick['X']) < -(deadzone):
-            dir_x = -1
-
-        if (self.controller.right_stick['Y']) > deadzone:
-            dir_y = 1
-        elif (self.controller.right_stick['Y']) < -(deadzone):
-            dir_y = -1
-
-        self.direction = (dir_x, dir_y)
-
-
-    # checks if the fire key was pressed this frame or the previous frame
-    def check_fire(self):
-        return self.controller.pull_button(self.primary_fire)
-
-    def next_spell(self):
-        then, now = self.controller.pull_button(self.r_spell)
-        if now and not then:
-            return True
-        else:
-            return False
-
-    def prev_spell(self):
-        then, now = self.controller.pull_button(self.l_spell)
-        if now and not then:
-            return True
-        else:
-            return False
-
-
 '''
 for the xbone controller:
 AXES

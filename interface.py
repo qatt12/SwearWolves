@@ -17,3 +17,7 @@ class handler():
             self.menu = None
         self.hud = None
 
+    def update(self, **kwargs):
+        if 'menu' in kwargs:
+            pass
+

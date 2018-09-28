@@ -58,9 +58,10 @@ class player(spriteling.spriteling):
         return self.active_missiles
 
 
-class multiplayer(player):
-    def __init__(self, input_dev, book, num):
-        super().__init__(input_dev, (0, 0))
-        self.book = book
+# a side/parallel class to player.
+class multiplayer(spriteling.spriteling):
+    def __init__(self, plyr_img, actv_spell):
+        super().__init__(image=plyr_img, loc=(0, 0))
+        self.active_spell = actv_spell
 
 

@@ -277,9 +277,9 @@ class xb360_gamepad(object):
         if abs(self.sticks['LY']) > 0.05:
             mov_y = self.sticks['LY']
         if abs(self.sticks['RX']) > 0.05:
-            dir_x = self.sticks['RX']
+            dir_x = self.sticks['RX']/abs(self.sticks['RX'])
         if abs(self.sticks['RY']) > 0.05:
-            dir_y = self.sticks['RY']
+            dir_y = self.sticks['RY']/abs(self.sticks['RY'])
         ret = {'move': (mov_x, mov_y),
                'look': (dir_x, dir_y)}
         return ret

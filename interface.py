@@ -46,6 +46,6 @@ class handler():
         self.controller.update()
 
     def begin_game(self, p_constr, starting_point):
-        self.player = p_constr(self.book)
+        self.player = p_constr(self.book, starting_point)
         pass
 

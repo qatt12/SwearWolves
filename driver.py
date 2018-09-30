@@ -146,6 +146,10 @@ player_sprites = pygame.sprite.Group()
 
 disp.fill((0, 0, 0))
 import room, player
+# scope tomfoolery
+plyr = player.player
+for each in all_players:
+    each.begin_game(plyr, (0, 0))
 
 while(game_loop and running):
     print("in game loop")

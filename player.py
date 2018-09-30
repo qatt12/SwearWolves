@@ -19,13 +19,7 @@ class player(spriteling.spriteling):
 
         self.hitboxes.add(spriteling.hitbox(self,
                                             scale_x=-(self.rect.height*0.2), scale_y=-(self.rect.width*0.2)))
-        self.vel = (0, 0)
-        self.max_vel = 4
-        self.facing = (0, 0)
-        # end of testing code
 
-        # All of this stuff here will have to be fixed
-        self.book_slot = (0, 0)
         self.spell_slot = self.rect.center
         self.book = book
 

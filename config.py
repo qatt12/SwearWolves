@@ -2,7 +2,7 @@
 #contains the important config/initialization params in a central location.
 #these act more as defaults, and can (likely will) be overwritten locally by main
 
-fps = 128
+fps = 6
 screen_size = (1900, 1000)
 
 tile_scalar = 100

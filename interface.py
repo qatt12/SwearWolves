@@ -21,3 +21,6 @@ class handler():
         if 'menu' in kwargs:
             pass
 
+class char_select_handler():
+    def __init__(self, p1):
+        pass

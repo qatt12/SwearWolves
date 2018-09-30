@@ -1,12 +1,14 @@
 import pygame
 
 deadzone = 0.3
+pygame.joystick.init()
 
 # this method is supposed to be called early on in the main method. It will check all available joysticks, hopefully
 # initialize them, and return them to main.
 def prepare_joysticks():
-    pygame.joystick.init()
+    #pygame.joystick.init()
     joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+    print("joysticks: ", joysticks)
     return joysticks
 
 
@@ -218,6 +220,7 @@ class xb360_gamepad(object):
 # super basice keyboard class for keyboard input. like the controllers, it stores two frames of input
 class keyboard():
     def __init__(self):
+        self.jub = dummy()
         self.key = pygame.key.get_pressed()
         self.new_key = pygame.key.get_pressed()
 
@@ -230,3 +233,9 @@ class keyboard():
             return True
         else:
             return False
+
+class dummy():
+    def __init__(self):
+        self.id = 9808797
+    def get_id(self):
+        return self.id

@@ -110,7 +110,6 @@ while(player_select_loop and running):
             player_four = cntrllr.get_next_player()
             screen.add(p4_char_select)
 
-
     screen.update()
     print("screen: ", screen)
     screen.draw(disp)

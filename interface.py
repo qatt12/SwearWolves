@@ -17,10 +17,5 @@ class handler():
             self.menu = None
         self.hud = None
 
-    def update(self, **kwargs):
-        if 'menu' in kwargs:
-            pass
-
-class char_select_handler():
-    def __init__(self, p1):
+    def update(self, *args):
         pass

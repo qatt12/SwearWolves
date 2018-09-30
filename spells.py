@@ -1,11 +1,17 @@
 import spriteling, pygame
 from config import fps as fps
 
-fire_bolt_img = pygame.image.load('projectiles\img_fire_bolt.png').convert()
-fire_bolt_spell_img = pygame.image.load('projectiles\img_fire_bolt_spell.png').convert()
-book_of_fire_img = pygame.image.load('projectiles\img_book_of_fire.png').convert()
+light_wave_img = pygame.image.load('projectiles\img_blast.png').convert_alpha()
+fire_ball_img = pygame.image.load('projectiles\img_fireball.png').convert_alpha()
+acid_ball_img = pygame.image.load('projectiles\img_poisonball.png').convert_alpha()
+icy_ball_img = pygame.image.load('projectiles\img_iceball.png').convert_alpha()
 
-blank_book = pygame.image.load('projectiles\img_book_of_fire.png').convert()
+basic_books = pygame.image.load('projectiles\img_basic_books').convert_alpha()
+ice_book_img = basic_books.subsurface((0, 0), (18, 18))
+fire_book_img = basic_books.subsurface((36, 0), (18, 18))
+acid_book_img = basic_books.subsurface((54, 0), (18, 18))
+light_book_img = basic_books.subsurface((72, 0), (18, 18))
+blank_book_img = basic_books.subsurface((72, 0), (18, 18))
 
 # the arrangement of spells (or more generally, all attacks) goes like this: each player character gets a spell book,
 # and each spell book has a particular pre-defined list of spells attached to it (one spell for each category). To
@@ -20,7 +26,7 @@ blank_book = pygame.image.load('projectiles\img_book_of_fire.png').convert()
 # spell book is a handler/container class meant to hold a bunch of spells
 class spell_book(spriteling.spriteling):
     def __init__(self):
-        super().__init__(image=blank_book)
+        super().__init__(image=blank_book_img)
         # contains an instance of/ constructor for all unlocked spells
         self.spells = []
         self.spell_key = {0: spell}
@@ -90,13 +96,13 @@ class missile(spriteling.spriteling):
 
 class magic_s(spell):
     def __init__(self):
-        super().__init__(magic_m, fire_bolt_spell_img)
+        super().__init__(magic_m, fire_ball_img)
 
 
 class magic_m(missile):
     def __init__(self, dir, loc):
         x_vel, y_vel = 4*dir[0], 4*dir[1]
-        missile.__init__(self, fire_bolt_img, loc, (x_vel, y_vel))
+        missile.__init__(self, light_wave_img, loc, (x_vel, y_vel))
         self.hitboxes.add(spriteling.hitbox(self))
 
 
@@ -118,30 +124,7 @@ class DEBUG_book(spell_book):
 
 # charge_up spells need to be charged by holding the fire button until they are sufficiently charged
 class charge_up(spell):
-    def __init__(self, projectile, img, loc):
-        spell.__init__(self, projectile, img, loc)
-        self.charge = 0
-        self.t1 = 4
-
-    def update(self, interface, *args):
-        prev, now = interface.check_fire()
-        # the fire key was pressed/held this frame and the previous frame = the spell charges
-        if now and prev:
-            self.charge += 1
-        # the spell fires
-        elif prev and not now:
-            # note: figure out which class handles the fire method
-            self.live_missiles.add(self.fire)
-        # the charging missile is created and placed into the live missiles
-        elif now and not prev:
-            self.anim('t0')
-
-        if (self.charge/fps) >= self.t1:
-            self.anim('t1')
-
-    def anim(self, stage):
-        pass
-
+    pass
 
 class cool_down(spell):
     pass
@@ -153,18 +136,46 @@ class beam(spell):
 
 class fireball_s(spell):
     def __init__(self):
-        super().__init__(magic_m, fire_bolt_spell_img)
+        super().__init__(fireball_m, fire_ball_img)
 
 
 class fireball_m(missile):
     def __init__(self, dir, loc):
         x_vel, y_vel = 4*dir[0], 4*dir[1]
-        missile.__init__(self, fire_bolt_img, loc, (x_vel, y_vel))
+        missile.__init__(self, fire_ball_img, loc, (x_vel, y_vel))
         self.hitboxes.add(spriteling.hitbox(self))
+
+
+class iceshard_s(spell):
+    def __init__(self):
+        super().__init__(magic_m, ice_book_img)
+
+class iceshard_m(missile):
+    def __init__(self, dir, loc):
+        x_vel, y_vel = 4 * dir[0], 4 * dir[1]
+        missile.__init__(self, icy_ball_img, loc, (x_vel, y_vel))
+        self.hitboxes.add(spriteling.hitbox(self))
+
 
 
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):
+    def __init__(self):
+        super().__init__()
+        self.image = fire_book_img
+        self.spell_key = {0: fireball_s}
+        self.level_costs = {0: 1000, 1: 2000}
+
+# the book of ice contains ice spells.
+class book_of_ice(spell_book):
+    def __init__(self):
+        super().__init__()
+        self.image = ice_book_img
+        self.spell_key = {0: iceshard_s}
+        self.level_costs = {0: 1000, 1: 2000}
+
+# the book of acid contains acid spells.
+class book_of_acid(spell_book):
     def __init__(self):
         super().__init__()
         self.image = book_of_fire_img

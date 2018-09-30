@@ -20,11 +20,15 @@ class menu(spriteling.spriteling):
 class player_select_menu(menu):
     def __init__(self, player_num, unlocked_books):
         super().__init__(p_lookup[player_num])
-        self.possible_books = unlocked_books
         self.index = 0
+        self.book_choice = unlocked_books
 
     def next_book(self):
         pass
+
+    def update(self, **kwargs):
+        if 'locked' in kwargs:
+            pass
 
 
 class button(spriteling.spriteling):

@@ -13,7 +13,7 @@
 
 import pygame, config
 
-placeholder = pygame.image.load('projectiles\img_book_of_fire.png').convert()
+placeholder = pygame.image.load('people\smol_silvia.png').convert_alpha()
 
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times

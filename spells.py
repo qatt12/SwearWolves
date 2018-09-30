@@ -136,8 +136,7 @@ class beam(spell):
 
 class fireball_s(spell):
     def __init__(self):
-        super().__init__(fireball_m, fire_ball_img)
-
+        super().__init__(fireball_m, fire_book_img)
 
 class fireball_m(missile):
     def __init__(self, dir, loc):
@@ -157,6 +156,25 @@ class iceshard_m(missile):
         self.hitboxes.add(spriteling.hitbox(self))
 
 
+class acidic_orb_s(spell):
+    def __init__(self):
+        super().__init__(acidic_orb_m, acid_book_img)
+
+class acidic_orb_m(missile):
+    def __init__(self, dir, loc):
+        x_vel, y_vel = 4*dir[0], 4*dir[1]
+        missile.__init__(self, acid_ball_img, loc, (x_vel, y_vel))
+        self.hitboxes.add(spriteling.hitbox(self))
+
+class light_wave_s(spell):
+    def __init__(self):
+        super().__init__(light_wave_img, light_book_img)
+
+class light_wave_m(missile):
+    def __init__(self, dir, loc):
+        x_vel, y_vel = 4*dir[0], 4*dir[1]
+        missile.__init__(self, light_wave_img, loc, (x_vel, y_vel))
+        self.hitboxes.add(spriteling.hitbox(self))
 
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):
@@ -178,6 +196,6 @@ class book_of_ice(spell_book):
 class book_of_acid(spell_book):
     def __init__(self):
         super().__init__()
-        self.image = book_of_fire_img
-        self.spell_key = {0: fireball_s}
+        self.image = acid_book_img
+        self.spell_key = {0: acidic_orb_s}
         self.level_costs = {0: 1000, 1: 2000}

@@ -15,13 +15,13 @@ class controller_list():
     def update(self):
         pygame.joystick.init()
         possible_controllers = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
-        print("possible: ", possible_controllers)
+        #print("possible: ", possible_controllers)
         standby_controllers = [controllers.auto_assign(each) for each in possible_controllers]
 
-        print("standby: ", standby_controllers)
-        print("keyboard: ", self.is_keyboard)
+        #print("standby: ", standby_controllers)
+        #print("keyboard: ", self.is_keyboard)
         for each in standby_controllers:
-            print("each: ", each)
+            #print("each: ", each)
             each.update()
             if each.check_status() and each.jub.get_id() not in self.used_joysticks:
                 self.active_controllers.append(each)
@@ -32,7 +32,7 @@ class controller_list():
             self.active_controllers.append(self.keyboard)
 
     def is_p1_ready(self):
-        print("is p1 ready")
+        #print("is p1 ready")
         if len(self.active_controllers) > 0:
             self.player_num += 1
             return True
@@ -40,19 +40,19 @@ class controller_list():
             return False
 
     def get_p1(self):
-        print("getting p1")
+        #print("getting p1")
         if self.active_controllers[0]:
             return handler(self.active_controllers[0])
 
     def get_next_player(self):
-        print("getting next")
+        #print("getting next")
         self.player_num += 1
         return handler(self.active_controllers[self.player_num-1])
 
     def is_next_ready(self):
-        print("is next ready")
-        print("active controllers: ", self.active_controllers)
-        print("active joysticks: ", self.used_joysticks)
+        #print("is next ready")
+        #print("active controllers: ", self.active_controllers)
+        #print("active joysticks: ", self.used_joysticks)
         if len(self.active_controllers) > self.player_num:
             return True
         return False
@@ -68,3 +68,13 @@ class player_list():
     def add_next_player(self, next_player):
         if self.player_two is None:
             self.player_two = next_player
+        elif self.player_three is None:
+            self.player_three = next_player
+        elif self.player_four is None:
+            self.player_four = next_player
+
+    def update(self, *args, **kwargs):
+        self.player_one.update(*args, **kwargs)
+        self.player_two.update(*args, **kwargs)
+        self.player_three.update(*args, **kwargs)
+        self.player_four.update(*args, **kwargs)

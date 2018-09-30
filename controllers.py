@@ -53,20 +53,20 @@ class xbone_gamepad(object):
         # I am unsure why, but I seemed to have named this controller jub
         self.jub = jub
         self.jub.init()
-        print(jub.get_name())
+        #print(jub.get_name())
 
-        self.left_stick = {'X': jub.get_axis(0), 'Y': jub.get_axis(1)}
-        self.right_stick = {'X': jub.get_axis(3), 'Y': jub.get_axis(4)}
-        self.triggers = {'RT': jub.get_axis(2)}
+        self.sticks = {'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+                       'RX': self.jub.get_axis(4), 'RY': self.jub.get_axis(3)}
+        self.triggers = jub.get_axis(2)
         self.buttons = {'A': jub.get_button(0), 'B': jub.get_button(1),
                         'X': jub.get_button(2), 'Y': jub.get_button(3),
                         'LB': jub.get_button(4), 'RB': jub.get_button(5),
                         'Start': jub.get_button(7), 'Select': jub.get_button(6),
                         'LStick': jub.get_button(8), 'RStick': jub.get_button(9)}
 
-        self.new_left_stick = {'X': jub.get_axis(0), 'Y': jub.get_axis(1)}
-        self.new_right_stick = {'X': jub.get_axis(3), 'Y': jub.get_axis(4)}
-        self.new_triggers = {'RT': jub.get_axis(2)}
+        self.new_sticks = {'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+                           'RX': self.jub.get_axis(4), 'RY': self.jub.get_axis(3)}
+        self.new_triggers = jub.get_axis(2)
         self.new_buttons = {'A': jub.get_button(0), 'B': jub.get_button(1),
                         'X': jub.get_button(2), 'Y': jub.get_button(3),
                         'LB': jub.get_button(4), 'RB': jub.get_button(5),
@@ -82,8 +82,7 @@ class xbone_gamepad(object):
 
     def update(self):
         self.buttons = self.new_buttons
-        self.right_stick = self.new_right_stick
-        self.left_stick = self.new_left_stick
+        self.sticks = self.new_sticks
         self.triggers = self.new_triggers
 
         self.new_buttons = {
@@ -93,22 +92,63 @@ class xbone_gamepad(object):
                                'Start': self.jub.get_button(7), 'Select': self.jub.get_button(6),
                                'LStick': self.jub.get_button(8), 'RStick': self.jub.get_button(9)
                             }
-        self.new_left_stick = {'X': self.jub.get_axis(0), 'Y': self.jub.get_axis(1)}
-        self.new_right_stick = {'X': self.jub.get_axis(4), 'Y': self.jub.get_axis(3)}
+        self.new_sticks = {'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+                           'RX': self.jub.get_axis(4), 'RY': self.jub.get_axis(3)}
 
         # the triggers are special, in that they are not 2 separate axes, but instead the signed difference between
         #  both triggers as a single axis. If RT is pressed, axis 2 is
-        self.new_triggers = {'Triggers': self.jub.get_axis(2)}
+        self.new_triggers = self.jub.get_axis(2)
 
     # returns the old and new input states for a single button (this allows button mapping at the player level)
     def pull_button(self, button_name):
         return self.buttons[button_name], self.new_buttons[button_name]
 
-    def pull_left_stick(self):
-        return self.left_stick, self.new_left_stick
+    def pull_sticks(self):
+        return self.sticks, self.new_sticks
 
-    def pull_right_stick(self):
-        return self.right_stick, self.new_right_stick
+    def pull_triggers(self):
+        rt, lt, nrt, nlt = False, False, False, False
+        if self.triggers>0.8:
+            lt = True
+        elif self.triggers<-0.8:
+            rt = True
+        if self.new_triggers>0.8:
+            nlt = True
+        elif self.new_triggers<-0.8:
+            nrt = True
+        return rt, lt, nrt, nlt
+
+
+    def pull_face(self, **kwargs):
+        ret = {'fire': self.pull_button('X'),
+               'interact': self.pull_button('Y'),
+               'accept': self.pull_button('A'),
+               'back': self.pull_button('B'),
+               'start': self.pull_button('Start'),
+               'select': self.pull_button('Select')}
+        return ret
+
+    def pull_selectors(self, **kwargs):
+        ret = {'prev': self.pull_button('LB'),
+               'next': self.pull_button('RB'),
+               'lock_aim': (self.pull_triggers()[0], self.pull_triggers()[2]),
+               'lock_feet': (self.pull_triggers()[1], self.pull_triggers()[3])
+               }
+        return ret
+
+    def pull_movement(self):
+        mov_x, mov_y, dir_x, dir_y = 0, 0, 0, 0
+        if abs(self.sticks['LX']) > 0.05:
+            mov_x = self.sticks['LX']
+        if abs(self.sticks['LY']) > 0.05:
+            mov_y = self.sticks['LY']
+        if abs(self.sticks['RX']) > 0.05:
+            dir_x = self.sticks['RX']
+        if abs(self.sticks['RY']) > 0.05:
+            dir_y = self.sticks['RY']
+        ret = {'move': (mov_x, mov_y),
+               'look': (dir_x, dir_y)}
+        return ret
 
     def check_status(self):
         if self.new_buttons['Start'] or self.buttons['Start']:
@@ -147,25 +187,25 @@ class xb360_gamepad(object):
         # I am unsure why, but I seemed to have named this controller jub
         self.jub = jub
         self.jub.init()
-        print(jub.get_name())
+        #print(jub.get_name())
 
-        self.left_stick = {'X': jub.get_axis(0), 'Y': jub.get_axis(1)}
-        self.right_stick = {'X': jub.get_axis(3), 'Y': jub.get_axis(4)}
-        self.triggers = {'Triggers': jub.get_axis(2)}
+        self.sticks = {'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+                       'RX': self.jub.get_axis(4), 'RY': self.jub.get_axis(3)}
+        self.triggers = jub.get_axis(2)
         self.buttons = {'A': jub.get_button(0), 'B': jub.get_button(1),
                         'X': jub.get_button(2), 'Y': jub.get_button(3),
                         'LB': jub.get_button(4), 'RB': jub.get_button(5),
                         'Start': jub.get_button(7), 'Select': jub.get_button(6),
                         'LStick': jub.get_button(8), 'RStick': jub.get_button(9)}
 
-        self.new_left_stick = {'X': jub.get_axis(0), 'Y': jub.get_axis(1)}
-        self.new_right_stick = {'X': jub.get_axis(3), 'Y': jub.get_axis(4)}
-        self.new_triggers = {'Triggers': jub.get_axis(2)}
+        self.new_sticks = {'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+                           'RX': self.jub.get_axis(4), 'RY': self.jub.get_axis(3)}
+        self.new_triggers = jub.get_axis(2)
         self.new_buttons = {'A': jub.get_button(0), 'B': jub.get_button(1),
-                            'X': jub.get_button(2), 'Y': jub.get_button(3),
-                            'LB': jub.get_button(4), 'RB': jub.get_button(5),
-                            'Start': jub.get_button(7), 'Select': jub.get_button(6),
-                            'LStick': jub.get_button(8), 'RStick': jub.get_button(9)}
+                        'X': jub.get_button(2), 'Y': jub.get_button(3),
+                        'LB': jub.get_button(4), 'RB': jub.get_button(5),
+                        'Start': jub.get_button(7), 'Select': jub.get_button(6),
+                        'LStick': jub.get_button(8), 'RStick': jub.get_button(9)}
 
 
     # the way jub works is like this: he gathers all the controller input once per frame and saves it to himself (when
@@ -175,41 +215,74 @@ class xb360_gamepad(object):
     # pressed and then released
 
     def update(self):
-        jub = self.jub
-
         self.buttons = self.new_buttons
-        self.right_stick = self.new_right_stick
-        self.left_stick = self.new_left_stick
+        self.sticks = self.new_sticks
         self.triggers = self.new_triggers
 
         self.new_buttons = {
-                               'A': jub.get_button(0), 'B': jub.get_button(1),
-                               'X': jub.get_button(2), 'Y': jub.get_button(3),
-                               'LB': jub.get_button(4), 'RB': jub.get_button(5),
-                               'Start': jub.get_button(7), 'Select': jub.get_button(6),
-                               'LStick': jub.get_button(8), 'RStick': jub.get_button(9)
+                               'A': self.jub.get_button(0), 'B': self.jub.get_button(1),
+                               'X': self.jub.get_button(2), 'Y': self.jub.get_button(3),
+                               'LB': self.jub.get_button(4), 'RB': self.jub.get_button(5),
+                               'Start': self.jub.get_button(7), 'Select': self.jub.get_button(6),
+                               'LStick': self.jub.get_button(8), 'RStick': self.jub.get_button(9)
                             }
-        self.new_left_stick = {'X': jub.get_axis(0), 'Y': jub.get_axis(1)}
-        self.new_right_stick = {'X': jub.get_axis(4), 'Y': jub.get_axis(3)}
+        self.new_sticks = {'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+                           'RX': self.jub.get_axis(4), 'RY': self.jub.get_axis(3)}
 
         # the triggers are special, in that they are not 2 separate axes, but instead the signed difference between
-        #  both triggers as a single axis
-        self.new_triggers = {'Triggers': jub.get_axis(2)}
+        #  both triggers as a single axis. If RT is pressed, axis 2 is
+        self.new_triggers = self.jub.get_axis(2)
 
-
-    # the following pull methods return the old and new input states for the given buttin/axis/stick
-    # (this allows button mapping at the player level)
-    # a single button
+    # returns the old and new input states for a single button (this allows button mapping at the player level)
     def pull_button(self, button_name):
         return self.buttons[button_name], self.new_buttons[button_name]
 
-    # the left stick
-    def pull_left_stick(self):
-        return self.left_stick, self.new_left_stick
+    def pull_sticks(self):
+        return self.sticks, self.new_sticks
 
-    # the right stick
-    def pull_right_stick(self):
-        return self.right_stick, self.new_right_stick
+    def pull_triggers(self):
+        rt, lt, nrt, nlt = False, False, False, False
+        if self.triggers>0.8:
+            lt = True
+        elif self.triggers<-0.8:
+            rt = True
+        if self.new_triggers>0.8:
+            nlt = True
+        elif self.new_triggers<-0.8:
+            nrt = True
+        return rt, lt, nrt, nlt
+
+
+    def pull_face(self, **kwargs):
+        ret = {'fire': self.pull_button('X'),
+               'interact': self.pull_button('Y'),
+               'accept': self.pull_button('A'),
+               'back': self.pull_button('B'),
+               'start': self.pull_button('Start'),
+               'select': self.pull_button('Select')}
+        return ret
+
+    def pull_selectors(self, **kwargs):
+        ret = {'prev': self.pull_button('LB'),
+               'next': self.pull_button('RB'),
+               'lock_aim': (self.pull_triggers()[0], self.pull_triggers()[2]),
+               'lock_feet': (self.pull_triggers()[1], self.pull_triggers()[3])
+               }
+        return ret
+
+    def pull_movement(self):
+        mov_x, mov_y, dir_x, dir_y = 0, 0, 0, 0
+        if abs(self.sticks['LX']) > 0.05:
+            mov_x = self.sticks['LX']
+        if abs(self.sticks['LY']) > 0.05:
+            mov_y = self.sticks['LY']
+        if abs(self.sticks['RX']) > 0.05:
+            dir_x = self.sticks['RX']
+        if abs(self.sticks['RY']) > 0.05:
+            dir_y = self.sticks['RY']
+        ret = {'move': (mov_x, mov_y),
+               'look': (dir_x, dir_y)}
+        return ret
 
     def check_status(self):
         if self.new_buttons['Start'] or self.buttons['Start']:
@@ -217,12 +290,16 @@ class xb360_gamepad(object):
         else:
             return False
 
+
+
 # super basice keyboard class for keyboard input. like the controllers, it stores two frames of input
 class keyboard():
     def __init__(self):
         self.jub = dummy()
         self.key = pygame.key.get_pressed()
         self.new_key = pygame.key.get_pressed()
+        self.shift_held = False
+        self.shift_released = True
 
     def update(self):
         self.key = self.new_key
@@ -233,6 +310,53 @@ class keyboard():
             return True
         else:
             return False
+
+    def pull_key(self, key_name):
+        lookup = {'a': pygame.K_e,
+                  'b': pygame.K_e,
+                  'c': pygame.K_e,
+                  'd': pygame.K_e
+                  }
+
+    def pull_face(self, **kwargs):
+        ret = {'fire': (self.key[pygame.K_f], self.key[pygame.K_f]),
+               'interact': (self.key[pygame.K_e], self.key[pygame.K_e]),
+               'accept': (self.key[pygame.K_SPACE], self.key[pygame.K_SPACE]),
+               'back': (self.key[pygame.K_1], self.key[pygame.K_1]),
+               'start': (self.key[pygame.K_SPACE], self.key[pygame.K_SPACE]),
+               'select': (self.key[pygame.K_TAB], self.key[pygame.K_TAB])}
+        return ret
+
+    def pull_selectors(self, **kwargs):
+        ret = {'next': (self.key[pygame.K_3], self.new_key[pygame.K_3]),
+               'prev': (self.key[pygame.K_2], self.new_key[pygame.K_2]),
+               'lock_aim': (self.key[pygame.K_LSHIFT], self.key[pygame.K_LSHIFT]),
+               'lock_feet': (self.key[pygame.K_LCTRL], self.key[pygame.K_LCTRL])}
+        return ret
+
+    def pull_movement(self, **kwargs):
+        mov_x, mov_y, dir_x, dir_y = 0, 0, 0, 0
+        if self.key[pygame.K_a]:
+            mov_x = -1
+        elif self.key[pygame.K_d]:
+            mov_x = 1
+        if self.key[pygame.K_w]:
+            mov_y = -1
+        elif self.key[pygame.K_s]:
+            mov_y = 1
+
+        if self.key[pygame.K_LEFT]:
+            dir_x = -1
+        elif self.key[pygame.K_RIGHT]:
+            dir_x = 1
+        if self.key[pygame.K_DOWN]:
+            dir_y = -1
+        elif self.key[pygame.K_UP]:
+            dir_y = 1
+
+        ret = {'move': (mov_x, mov_y),
+               'look': (dir_x, dir_y)}
+        return ret
 
 class dummy():
     def __init__(self):

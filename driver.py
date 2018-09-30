@@ -51,16 +51,18 @@ cntrllr = c_list()
 
 start_menu = menu.menu(disp.get_rect())
 screen = pygame.sprite.Group(start_menu)
+player_one = None
+all_players = []
 
 while(start_loop and running):
     print("in start loop")
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-            start_loop = running
+            running = False
 
     if cntrllr.is_p1_ready():
         player_one = cntrllr.get_p1()
-        all_players = p_list(player_one)
+        all_players.append(player_one)
         start_loop = False
         start_menu.kill()
 
@@ -88,33 +90,55 @@ p4_char_select = menu.player_select_menu(4, unlocked_books)
 
 screen.add(p1_char_select)
 print(screen)
+ready_players = 0
+player_one.attach(menu=p1_char_select)
+banned_list = []
 
 while(player_select_loop and running):
     print("in char select loop")
+    print("number of players= ", player_num, "ready players= ", ready_players)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
 
-    print("num joysticks: ", pygame.joystick.get_count())
+    if ready_players >= player_num:
+        player_select_loop = False
 
     cntrllr.update()
     if cntrllr.is_next_ready():
         if player_num == 1:
             player_num = 2
             player_two = cntrllr.get_next_player()
+            player_two.attach(menu=p2_char_select)
             screen.add(p2_char_select)
+            all_players.append(player_two)
         elif player_num == 2:
             player_num = 3
             player_three = cntrllr.get_next_player()
+            player_three.attach(menu=p3_char_select)
             screen.add(p3_char_select)
+            all_players.append(player_three)
         elif player_num == 3:
             player_num = 4
             player_four = cntrllr.get_next_player()
+            player_four.attach(menu=p4_char_select)
             screen.add(p4_char_select)
+            all_players.append(player_four)
 
     screen.update()
-    print("screen: ", screen)
+    for each in screen:
+        pick = each.is_ready()
+        if pick != -1 and pick not in banned_list:
+            ready_players += 1
+            banned_list.append(pick)
+            #for each in screen:
+                #each.ban_book(pick)
+    for each in all_players:
+        each.update_menu()
+
     screen.draw(disp)
+
+
 
     clock.tick(config.fps)
     pygame.display.update()

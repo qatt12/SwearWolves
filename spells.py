@@ -19,11 +19,11 @@ bb_size = bigger_books.get_rect()
 h = bb_size.height
 onfr = h/4
 w = bb_size.width
-big_ice_book_img   = basic_books.subsurface(( 0, onfr*0), (w, onfr))
-big_fire_book_img  = basic_books.subsurface(( 0, onfr*1), (w, onfr))
-big_acid_book_img  = basic_books.subsurface(( 0, onfr*2), (w, onfr))
-big_light_book_img = basic_books.subsurface(( 0, onfr*3), (w, onfr))
-big_blank_book_img = basic_books.subsurface(( 0, onfr*3), (w, onfr))
+big_ice_book_img   = bigger_books.subsurface(( 0, onfr*0), (w, onfr))
+big_fire_book_img  = bigger_books.subsurface(( 0, onfr*1), (w, onfr))
+big_acid_book_img  = bigger_books.subsurface(( 0, onfr*2), (w, onfr))
+big_light_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
+big_blank_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
 
 # the arrangement of spells (or more generally, all attacks) goes like this: each player character gets a spell book,
 # and each spell book has a particular pre-defined list of spells attached to it (one spell for each category). To

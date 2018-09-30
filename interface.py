@@ -17,5 +17,9 @@ class handler():
             self.menu = None
         self.hud = None
 
+    def attach(self, **kwargs):
+        if 'book' in kwargs:
+            self.book = kwargs['book']
+
     def update(self, *args):
         pass

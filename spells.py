@@ -1,17 +1,29 @@
 import spriteling, pygame
 from config import fps as fps
 
-light_wave_img = pygame.image.load('projectiles\img_blast.png').convert_alpha()
-fire_ball_img = pygame.image.load('projectiles\img_fireball.png').convert_alpha()
-acid_ball_img = pygame.image.load('projectiles\img_poisonball.png').convert_alpha()
-icy_ball_img = pygame.image.load('projectiles\img_iceball.png').convert_alpha()
+light_wave_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
+fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
+acid_ball_img  = pygame.image.load( 'projectiles\img_poisonball.png').convert_alpha()
+icy_ball_img   = pygame.image.load(    'projectiles\img_iceball.png').convert_alpha()
 
-basic_books = pygame.image.load('projectiles\img_basic_books').convert_alpha()
-ice_book_img = basic_books.subsurface((0, 0), (18, 18))
-fire_book_img = basic_books.subsurface((36, 0), (18, 18))
-acid_book_img = basic_books.subsurface((54, 0), (18, 18))
-light_book_img = basic_books.subsurface((72, 0), (18, 18))
-blank_book_img = basic_books.subsurface((72, 0), (18, 18))
+basic_books    = pygame.image.load('projectiles\img_basic_books.png').convert_alpha()
+ice_book_img   = basic_books.subsurface(( 0,  0), (20, 20))
+fire_book_img  = basic_books.subsurface(( 0, 20), (20, 20))
+acid_book_img  = basic_books.subsurface(( 0, 40), (20, 20))
+light_book_img = basic_books.subsurface(( 0, 60), (20, 20))
+blank_book_img = basic_books.subsurface(( 0, 60), (20, 20))
+
+
+bigger_books = pygame.transform.scale2x(basic_books)
+bb_size = bigger_books.get_rect()
+h = bb_size.height
+onfr = h/4
+w = bb_size.width
+big_ice_book_img   = basic_books.subsurface(( 0, onfr*0), (w, onfr))
+big_fire_book_img  = basic_books.subsurface(( 0, onfr*1), (w, onfr))
+big_acid_book_img  = basic_books.subsurface(( 0, onfr*2), (w, onfr))
+big_light_book_img = basic_books.subsurface(( 0, onfr*3), (w, onfr))
+big_blank_book_img = basic_books.subsurface(( 0, onfr*3), (w, onfr))
 
 # the arrangement of spells (or more generally, all attacks) goes like this: each player character gets a spell book,
 # and each spell book has a particular pre-defined list of spells attached to it (one spell for each category). To
@@ -126,11 +138,16 @@ class DEBUG_book(spell_book):
 class charge_up(spell):
     pass
 
+
 class cool_down(spell):
     pass
 
 
 class beam(spell):
+    pass
+
+
+class targeted(spell):
     pass
 
 
@@ -147,7 +164,7 @@ class fireball_m(missile):
 
 class iceshard_s(spell):
     def __init__(self):
-        super().__init__(magic_m, ice_book_img)
+        super().__init__(iceshard_m, ice_book_img)
 
 class iceshard_m(missile):
     def __init__(self, dir, loc):
@@ -166,9 +183,10 @@ class acidic_orb_m(missile):
         missile.__init__(self, acid_ball_img, loc, (x_vel, y_vel))
         self.hitboxes.add(spriteling.hitbox(self))
 
+
 class light_wave_s(spell):
     def __init__(self):
-        super().__init__(light_wave_img, light_book_img)
+        super().__init__(light_wave_m, light_book_img)
 
 class light_wave_m(missile):
     def __init__(self, dir, loc):
@@ -176,26 +194,46 @@ class light_wave_m(missile):
         missile.__init__(self, light_wave_img, loc, (x_vel, y_vel))
         self.hitboxes.add(spriteling.hitbox(self))
 
+
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):
     def __init__(self):
         super().__init__()
         self.image = fire_book_img
+        self.goddess_lookup_key = 'crop_top'
+        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
         self.spell_key = {0: fireball_s}
         self.level_costs = {0: 1000, 1: 2000}
+
 
 # the book of ice contains ice spells.
 class book_of_ice(spell_book):
     def __init__(self):
         super().__init__()
         self.image = ice_book_img
+        self.goddess_lookup_key = 'body_suit'
+        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
         self.spell_key = {0: iceshard_s}
         self.level_costs = {0: 1000, 1: 2000}
+
 
 # the book of acid contains acid spells.
 class book_of_acid(spell_book):
     def __init__(self):
         super().__init__()
         self.image = acid_book_img
+        self.goddess_lookup_key = 'tattered'
+        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
         self.spell_key = {0: acidic_orb_s}
+        self.level_costs = {0: 1000, 1: 2000}
+
+
+class book_of_light(spell_book):
+    def __init__(self):
+        super().__init__()
+        self.image = light_book_img
+
+        self.goddess_lookup_key = 'robes'
+        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
+        self.spell_key = {0: light_wave_s}
         self.level_costs = {0: 1000, 1: 2000}

@@ -78,11 +78,13 @@ disp.fill((0, 0, 0))
 
 import spells
 
+unlocked_books = [spells.book_of_fire(), spells.book_of_acid(), spells.book_of_ice(), spells.book_of_light()]
+
 player_num = 1
-p1_char_select = menu.player_select_menu(1, [spells.book_of_fire, spells.DEBUG_book])
-p2_char_select = menu.player_select_menu(2, [spells.book_of_fire, spells.DEBUG_book])
-p3_char_select = menu.player_select_menu(3, [spells.book_of_fire, spells.DEBUG_book])
-p4_char_select = menu.player_select_menu(4, [spells.book_of_fire, spells.DEBUG_book])
+p1_char_select = menu.player_select_menu(1, unlocked_books)
+p2_char_select = menu.player_select_menu(2, unlocked_books)
+p3_char_select = menu.player_select_menu(3, unlocked_books)
+p4_char_select = menu.player_select_menu(4, unlocked_books)
 
 screen.add(p1_char_select)
 print(screen)

@@ -129,27 +129,33 @@ while(player_select_loop and running):
     for each in screen:
         pick = each.is_ready()
         if pick != -1 and pick not in banned_list:
-            ready_players += 1
             banned_list.append(pick)
-            #for each in screen:
-                #each.ban_book(pick)
+            ready_players += 1
+
     for each in all_players:
         each.update_menu()
 
     screen.draw(disp)
-
-
 
     clock.tick(config.fps)
     pygame.display.update()
     pygame.event.pump()
     pygame.time.wait(0)
 
+player_sprites = pygame.sprite.Group()
+
+disp.fill((0, 0, 0))
+import room, player
+
 while(game_loop and running):
     print("in game loop")
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+
+    hub = room.hub_room()
+    #hub.add_players()
+    hub.draw_contents(disp)
 
     clock.tick(config.fps)
     pygame.display.update()

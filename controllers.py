@@ -319,12 +319,12 @@ class keyboard():
                   }
 
     def pull_face(self, **kwargs):
-        ret = {'fire': (self.key[pygame.K_f], self.key[pygame.K_f]),
-               'interact': (self.key[pygame.K_e], self.key[pygame.K_e]),
-               'accept': (self.key[pygame.K_SPACE], self.key[pygame.K_SPACE]),
-               'back': (self.key[pygame.K_1], self.key[pygame.K_1]),
-               'start': (self.key[pygame.K_SPACE], self.key[pygame.K_SPACE]),
-               'select': (self.key[pygame.K_TAB], self.key[pygame.K_TAB])}
+        ret = {'fire': (self.key[pygame.K_f], self.new_key[pygame.K_f]),
+               'interact': (self.key[pygame.K_e], self.new_key[pygame.K_e]),
+               'accept': (self.key[pygame.K_SPACE], self.new_key[pygame.K_SPACE]),
+               'back': (self.key[pygame.K_1], self.new_key[pygame.K_1]),
+               'start': (self.key[pygame.K_SPACE], self.new_key[pygame.K_SPACE]),
+               'select': (self.key[pygame.K_TAB], self.new_key[pygame.K_TAB])}
         return ret
 
     def pull_selectors(self, **kwargs):

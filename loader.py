@@ -30,16 +30,11 @@ class player_img_loader():
                           'tattered': goddess_tattered,
                          }
 
-    def get_sheet(self, lookup, size_mult=0):
-        scale = size_mult
-        ret = self.img_lookup[lookup]
-        while scale > 0:
-            # ret = pygame.rect.Rect((0, 0), ())
-            pygame.transform.scale2x(self.img_lookup[lookup], ret)
-        return ret
+    def get_sheet(self, lookup):
+        return self.img_lookup[lookup]
 
     def __call__(self, lookup, index, size_mult=0):
-        ref = self.get_sheet(lookup, size_mult)
+        ref = self.get_sheet(lookup)
         size = ref.get_rect()
         h = size.height/3
         w = size.width/4

@@ -75,12 +75,17 @@ class player_select_menu(menu):
             self.ready = False
 
     def ban_book(self, index_no):
-        book = self.book_choice[index_no]
-        self.book_choice.remove(book)
+        new_list = []
+        for x in range(0, len(self.book_choice)):
+            if x != index_no:
+                new_list.append(self.book_choice[x])
+        self.book_choice = new_list
 
     def update(self, **kwargs):
         print("updating a menu ", self.id_no)
         print("choices: ", self.book_choice, 'index: ', self.index)
+        #self.curr_book_img = pygame.transform.scale2x(self.book_choice[self.index].image)
+        #self.player_img = pygame.transform.scale2x(ld_plyr(self.book_choice[self.index].goddess_lookup_key, (1, 1)))
         self.image.blit(self.curr_book_img, (((p_rect.width / 2) - self.curr_book_img.get_rect().width / 2),
                                                (p_rect.height) - self.curr_book_img.get_rect().height))
 

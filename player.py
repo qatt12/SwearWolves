@@ -1,18 +1,21 @@
 import pygame
 import spriteling
 
-goddess = pygame.image.load('Animation\goddess3.png').convert_alpha()
-neutral = goddess.subsurface((37, 85), (39, 84))
+goddess_robes     =  pygame.image.load('people\img_goddess1.png').convert_alpha()
+goddess_crop_top  =  pygame.image.load('people\img_goddess2.png').convert_alpha()
+goddess_body_suit =  pygame.image.load('people\img_goddess3.png').convert_alpha()
+goddess_tattered  =  pygame.image.load('people\img_goddess4.png').convert_alpha()
+img_lookup ={'robes': goddess_robes,
+             'crop_top': goddess_crop_top,
+             'body_suit': goddess_body_suit,
+             'tattered': goddess_tattered
+             }
 
-class menu_player_one(pygame.sprite.Sprite):
-    pass
-
-class menu_player():
-    pass
 
 class player(spriteling.spriteling):
     def __init__(self, book, loc):
-        super().__init__(image=neutral, loc=loc)
+
+        super().__init__(image=img_lookup[book.goddess_lookup_key], loc=loc)
 
         self.hitboxes.add(spriteling.hitbox(self,
                                             scale_x=-(self.rect.height*0.2), scale_y=-(self.rect.width*0.2)))

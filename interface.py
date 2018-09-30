@@ -1,5 +1,7 @@
 
 # all-purpose handler class that coordinates the player, controller, and whatever else needs coordinating
+# this is what allows a seamless transition between menu/game loops, keeps everything modular and independent, and
+# solves a ton of headache causing problems with scope resolution
 class handler():
     def __init__(self, controller, **kwargs):
         self.controller = controller
@@ -21,7 +23,7 @@ class handler():
         if 'player' in kwargs:
             self.player = kwargs['player']
         if 'book' in kwargs:
-            self.player = kwargs['book']
+            self.book = kwargs['book']
         if 'menu' in kwargs:
             self.menu = kwargs['menu']
 
@@ -42,4 +44,8 @@ class handler():
 
     def update(self, *args, **kwargs):
         self.controller.update()
+
+    def begin_game(self, p_constr, starting_point):
+        self.player = p_constr(self.book)
+        pass
 

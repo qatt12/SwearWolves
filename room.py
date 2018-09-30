@@ -52,7 +52,7 @@ class theme(object):
 # the core functions of the room are to hold everything that is going to appear on the screen, check for and report the
 # interactions between certain sprites, and to draw everything in the correct order
 class room():
-    def __init__(self, size, theme):
+    def __init__(self, size, theme, disp):
         # the constructor reqs a size tuple for height and width in tiles, a theme from which to draw tiles and enemies,
         # the current difficulty level, and the player's point of entry.
         self.theme = theme
@@ -75,6 +75,8 @@ class room():
         self.player_missiles = sGroup()
         self.player_spells = sGroup()
         self.all_sprites = sGroup()
+
+        #self.rect.center = disp.rect.center
 
     # core methods used to draw the contents of the room onto the main display window in the appropriate order
     # the default/expected order is: floors, outer walls, inner walls, enemies, players, enemy missiles, unaligned
@@ -111,3 +113,8 @@ class room():
     def scroll(self, x_scroll, y_scroll):
         for each in self.all_sprites:
             each.rect = each.rect.move(x_scroll, y_scroll)
+
+
+class hub_room(room):
+    def __init__(self):
+        super().__init__((10, 10), theme())

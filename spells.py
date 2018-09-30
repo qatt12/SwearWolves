@@ -39,6 +39,7 @@ big_blank_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
 class spell_book(spriteling.spriteling):
     def __init__(self):
         super().__init__(image=blank_book_img)
+        print("a new spell book has been made")
         # contains an instance of/ constructor for all unlocked spells
         self.spells = []
         self.spell_key = {0: spell}

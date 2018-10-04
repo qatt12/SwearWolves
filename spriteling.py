@@ -33,6 +33,9 @@ class spriteling(pygame.sprite.Sprite):
             self.loc = kwargs['loc']
             self.rect.center = self.loc
 
+        self.velocity = (0, 0)
+        self.move_mult = (1, 1)
+
         # not sure I we should make all/most spritelings have only one hitbox by default, and just create a subclass
         # with extra
         self.hitboxes = pygame.sprite.Group()
@@ -41,10 +44,25 @@ class spriteling(pygame.sprite.Sprite):
         # empty/default method to govern the behavior of this spriteling in reaction to other.
         pass
 
+    def update(self, *args):
+        self.rect.move_ip(self.velocity)
+
     def draw_boxes(self, disp):
         pygame.draw.rect(disp, config.green, self.rect, 4)
         for each in self.hitboxes:
             pygame.draw.rect(disp, config.red, each.rect, 4)
+
+    def move(self, **kwargs):
+        print("calling move from spriteling")
+        xvel, yvel = 0, 0
+        if 'vel' in kwargs:
+            xvel, yvel = kwargs['vel'][0], kwargs['vel'][0]
+        if 'move' in kwargs:
+            xvel = xvel + (self.move_mult[0] * kwargs['move'][0])
+            yvel = yvel + (self.move_mult[1] * kwargs['move'][1])
+        self.velocity = (xvel, yvel)
+        print(self.velocity)
+
 
 
 # basic hitbox class, designed to be contained in a group stored by a spriteling

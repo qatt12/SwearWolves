@@ -48,7 +48,6 @@ import menu
 
 cntrllr = c_list()
 
-
 start_menu = menu.menu(disp.get_rect())
 screen = pygame.sprite.Group(start_menu)
 player_one = None
@@ -147,9 +146,13 @@ player_sprites = pygame.sprite.Group()
 disp.fill((0, 0, 0))
 import room, player
 # scope tomfoolery
-plyr = player.player
+plyr = player.multiplayer
 for each in all_players:
     each.begin_game(plyr, (0, 0))
+
+#first_time_start = pygame.event.Event(FIRST_GAME, )
+hub = room.hub_room(disp)
+hub.add_players(all_players)
 
 while(game_loop and running):
     print("in game loop")
@@ -157,8 +160,11 @@ while(game_loop and running):
         if event.type == pygame.QUIT:
             running = False
 
-    hub = room.hub_room()
-    #hub.add_players()
+    for each in all_players:
+        each.update()
+
+
+    hub.update()
     hub.draw_contents(disp)
 
     clock.tick(config.fps)

@@ -52,7 +52,7 @@ class theme(object):
 # the core functions of the room are to hold everything that is going to appear on the screen, check for and report the
 # interactions between certain sprites, and to draw everything in the correct order
 class room():
-    def __init__(self, size, theme, disp):
+    def __init__(self, entry_point, size, theme, disp):
         # the constructor reqs a size tuple for height and width in tiles, a theme from which to draw tiles and enemies,
         # the current difficulty level, and the player's point of entry.
         self.theme = theme
@@ -61,11 +61,13 @@ class room():
         # each segment of floor is created separately, then linked together. upon first being initialized, a room has a
         # simple, rectangular floor enclosed in a bounding wall.
         self.floors = sGroup()
-        self.center = floor(size, theme)
-        self.floors.add(self.center)
+        self.ground = floor(size, theme)
+        self.floors.add(self.ground)
+
+        self.player_spawn = entry_point
 
         # the walls have to be spritelings in a group in order to properly register collision
-        self.outer_walls = theme.build_walls(self.center.image.get_rect())
+        self.outer_walls = theme.build_walls(self.ground.image.get_rect())
 
         # this group will contain all the active players in the room. It starts out empty, and must be filled in main
         self.players = sGroup()
@@ -92,13 +94,14 @@ class room():
 
     # super basic method atm, designed to be expanded as needed in later iterations
     def add_players(self, players):
-        self.players.add(players)
+        for each in players:
+            self.players.add(each.player)
+            each.player.rect.center = self.player_spawn
 
     def update(self):
         self.outer_walls.update()
+        #self.floors.scroll(1, 0)
         self.players.update()
-        for player in self.players:
-            self.player_missiles.add(player.get_live_missiles())
         self.player_missiles.update()
 
 
@@ -116,5 +119,7 @@ class room():
 
 
 class hub_room(room):
-    def __init__(self):
-        super().__init__((10, 10), theme())
+    def __init__(self, disp):
+        #self.rect = pygame.rect.Rect((0, 0), (10*config.tile_scalar, 10*100))
+        super().__init__((config.tile_scalar/2, config.tile_scalar/2), (10, 10), theme(), disp)
+

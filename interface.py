@@ -43,9 +43,14 @@ class handler():
             self.attach(book=self.menu.ready_up())
 
     def update(self, *args, **kwargs):
+        print("interface update: ", self)
         self.controller.update()
+        movement = self.controller.pull_movement()['move']
+        facing = self.controller.pull_movement()['look']
+        self.player.move(move=movement)
+        self.player.update(look=facing)
 
     def begin_game(self, p_constr, starting_point):
-        self.player = p_constr(self.book, starting_point)
-        pass
+        self.player = p_constr(self.book)
+
 

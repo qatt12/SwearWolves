@@ -272,13 +272,13 @@ class xb360_gamepad(object):
 
     def pull_movement(self):
         mov_x, mov_y, dir_x, dir_y = 0, 0, 0, 0
-        if abs(self.sticks['LX']) > 0.05:
+        if abs(self.sticks['LX']) > 0.1:
             mov_x = self.sticks['LX']
-        if abs(self.sticks['LY']) > 0.05:
+        if abs(self.sticks['LY']) > 0.1:
             mov_y = self.sticks['LY']
-        if abs(self.sticks['RX']) > 0.05:
+        if abs(self.sticks['RX']) > 0.1:
             dir_x = self.sticks['RX']/abs(self.sticks['RX'])
-        if abs(self.sticks['RY']) > 0.05:
+        if abs(self.sticks['RY']) > 0.1:
             dir_y = self.sticks['RY']/abs(self.sticks['RY'])
         ret = {'move': (mov_x, mov_y),
                'look': (dir_x, dir_y)}

@@ -48,7 +48,9 @@ class handler():
         movement = self.controller.pull_movement()['move']
         facing = self.controller.pull_movement()['look']
         self.player.move(move=movement)
-        self.player.update(look=facing)
+        self.player.update(look=facing, move=movement)
+
+
 
     def begin_game(self, p_constr, starting_point):
         self.player = p_constr(self.book)

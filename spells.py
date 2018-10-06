@@ -45,55 +45,19 @@ class spell_book(spriteling.spriteling):
         self.spell_key = {0: spell}
         self.level_costs = {0: 1000, 1: 2000}
         self.level = level
-        for x in range(0, level):
-            print("populating spells; x= ", x)
-            self.spells.append(self.spell_key[x]())
-
-        # selection stuff
         self.index = 0
         self.length = 1
 
         # this is maintained so that spells not currently selected can still be updated (mostly fo spells that need to
         # cool down; their cooldowns don't reset upon selecting a new spell
         self.other_spells = pygame.sprite.Group()
+        self.active_spell = pygame.sprite.GroupSingle()
 
-    def get_spell(self, interface):
-        if interface.next_spell():
-            if self.index < len(self.spells)-1:
-                self.index += 1
-            else:
-                self.index = 0
-        elif interface.prev_spell():
-            if self.index == 0:
-                self.index -= 1
-            else:
-                self.index = len(self.spells)
-        return self.spells[self.index]
-
-    def update(self, *args, **kwargs):
-        pass
 
 # each attack/spell has two components: the spell and the missile. the spell is basically just an image that follows the
 # player around, while the missile is created and propelled by the spell.
 # 'attack' and 'spell' are nearly interchangeable, but since 'spell' technically/internally refers to a specific object
 # w/i the game files, I will shy away from using it unless I'm talking about that particular object
-
-# spells themselves don't do much, except for creating and launching missiles
-# by default, spells are semi-automatic, meaning the fire key has to be released in between shots
-class spell(spriteling.spriteling):
-    def __init__(self, projectile, img):
-        super().__init__(image=img)
-        # this is to be initialized just before its time to fire
-        self.projectile = projectile
-
-    def update(self, loc, interface, missile_layer, *args, **kwargs):
-        self.rect.center = loc
-        prev, now = interface.check_fire()
-        if now and not prev:
-            missile_layer.add(self.fire(interface.direction))
-
-    def fire(self, direction):
-        return self.projectile(direction, self.rect.center)
 
 # ancestral class for missiles (things that fly out and hit other things)
 # missiles are fired (begin moving) immediately after begin created
@@ -107,58 +71,47 @@ class missile(spriteling.spriteling):
         for each in self.hitboxes:
             each.rect.center = self.rect.center
 
-#  ___       _____
-# |    \    |   __|
-# | |\  \   |  |__
-# | |/  /   |  |__
-# |____/    |_____|
+# spells themselves don't do much, except for creating and launching missiles
+# by default, spells are semi-automatic, meaning the fire key has to be released in between shots
+class spell(spriteling.spriteling):
+    def __init__(self, projectile, img):
+        super().__init__(image=img)
+        # this is to be initialized just before its time to fire
+        self.projectile = projectile
 
-class magic_s(spell):
-    def __init__(self):
-        super().__init__(magic_m, fire_ball_img)
+    def update(self, *args, **kwargs):
+        if 'loc' in kwargs:
+            self.rect.center = kwargs['loc']
 
+    def cast(self, prev, now, missile_layer, direction):
+        if now and not prev:
+            missile_layer.add(self.fire(direction))
 
-class magic_m(missile):
-    def __init__(self, dir, loc):
-        x_vel, y_vel = 4*dir[0], 4*dir[1]
-        missile.__init__(self, light_wave_img, loc, (x_vel, y_vel))
-        self.hitboxes.add(spriteling.hitbox(self))
-
-
-class DEBUG_book(spell_book):
-    def __init__(self):
-        super().__init__(1)
-        self.spell_key = {0: magic_s}
-        self.level_costs = {0: 1000, 1: 2000}
-        self.spells = [magic_s()]
-        self.index = 0
-
-
-#
-#
-#
-#
-#
+    def fire(self, direction):
+        return self.projectile(direction, self.rect.center)
 
 
 # charge_up spells need to be charged by holding the fire button until they are sufficiently charged
+# every frame in which the fire button is held (it determines if the button is held by checking the current and previous
+# frame's data) the spell gains 1 charge.
 class charge_up(spell):
     def __init__(self, threshold, *args):
         super().__init__(*args)
         self.charge = 0
         self.charge_time = threshold * sec
 
-    def update(self, loc, interface, missile_layer, *args, **kwargs):
-        self.rect.center = loc
-        prev, now = interface.check_fire()
+    def cast(self, prev, now, missile_layer, direction):
         if now and not prev:
             self.stage = 1
         elif now and prev:
             self.charge += 1
         elif not now and self.charge == self.charge_time:
-            missile_layer.add(self.fire(interface.direction))
+            missile_layer.add(self.fire(direction))
             self.charge = 0
+        elif prev and not now:
+            self.charge =0
 
+# multi
 class multicharge(charge_up):
     def __init__(self, thresholds, *args):
         self.charge_levels = thresholds
@@ -171,13 +124,11 @@ class cool_down(spell):
         self.heat = 0
         self.cooldown_time = timer * sec
 
-    def update(self, loc, interface, missile_layer, *args, **kwargs):
-        self.rect.center = loc
-        prev, now = interface.check_fire()
+    def cast(self, prev, now, missile_layer, direction):
         if self.heat > 0:
             self.heat -=1
         if now and self.heat == 0:
-            missile_layer.add(self.fire(interface.direction))
+            missile_layer.add(self.fire(direction))
 
 
 

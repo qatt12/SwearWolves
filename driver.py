@@ -155,7 +155,7 @@ hub = room.hub_room(disp)
 hub.add_players(all_players)
 
 while(game_loop and running):
-    print("in game loop")
+    #print("in game loop")
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False

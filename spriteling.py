@@ -40,6 +40,9 @@ class spriteling(pygame.sprite.Sprite):
         # with extra
         self.hitboxes = pygame.sprite.Group()
 
+    def __str__(self):
+        return type(self)
+
     def interact(self, other):
         # empty/default method to govern the behavior of this spriteling in reaction to other.
         pass
@@ -47,13 +50,16 @@ class spriteling(pygame.sprite.Sprite):
     def update(self, *args):
         self.rect.move_ip(self.velocity)
 
+    def draw(self, disp):
+        disp.blit(self.image, self.rect)
+
     def draw_boxes(self, disp):
         pygame.draw.rect(disp, config.green, self.rect, 4)
         for each in self.hitboxes:
             pygame.draw.rect(disp, config.red, each.rect, 4)
 
     def move(self, **kwargs):
-        print("calling move from spriteling")
+        #print("calling move from spriteling")
         xvel, yvel = 0, 0
         if 'vel' in kwargs:
             xvel, yvel = kwargs['vel'][0], kwargs['vel'][0]
@@ -61,7 +67,6 @@ class spriteling(pygame.sprite.Sprite):
             xvel = xvel + (self.move_mult[0] * kwargs['move'][0])
             yvel = yvel + (self.move_mult[1] * kwargs['move'][1])
         self.velocity = (xvel, yvel)
-        print(self.velocity)
 
 
 
@@ -80,7 +85,7 @@ class hitbox(pygame.sprite.Sprite):
         # the rect scales to the provided x and y proportions
         if 'scale_x' in kwargs:
             xscale = kwargs['scale_x']
-            print("found x_scale= ", xscale)
+            #print("found x_scale= ", xscale)
         else:
             xscale = 1
         if 'scale_y' in kwargs:
@@ -89,7 +94,7 @@ class hitbox(pygame.sprite.Sprite):
             yscale = 1
 
         self.rect.inflate_ip(xscale, yscale)
-        print("inflated a rect ", self.rect)
+        #print("inflated a rect ", self.rect)
 
         if 'center' in kwargs:
             self.rect.center = kwargs['center']

@@ -26,12 +26,15 @@ class menu(spriteling.spriteling):
         self.rect = rect
         self.image = menu_default
 
+    def draw(self, *args):
+        pass
+
 
 class player_select_menu(menu):
     def __init__(self, player_num, unlocked_books):
         super().__init__(p_lookup[player_num])
-        w , h = int(width/2), int(height/2)
-        print("in menu.py, half width, height is: ", w, ", ", h)
+        w, h = int(width/2), int(height/2)
+        #print("in menu.py, half width, height is: ", w, ", ", h)
         self.id_no = player_num
         self.image = pygame.Surface((w, h))
         self.color = c_lookup[player_num]
@@ -82,8 +85,8 @@ class player_select_menu(menu):
         self.book_choice = new_list
 
     def update(self, **kwargs):
-        print("updating a menu ", self.id_no)
-        print("choices: ", self.book_choice, 'index: ', self.index)
+        #print("updating a menu ", self.id_no)
+        #print("choices: ", self.book_choice, 'index: ', self.index)
         #self.curr_book_img = pygame.transform.scale2x(self.book_choice[self.index].image)
         #self.player_img = pygame.transform.scale2x(ld_plyr(self.book_choice[self.index].goddess_lookup_key, (1, 1)))
         self.image.blit(self.curr_book_img, (((p_rect.width / 2) - self.curr_book_img.get_rect().width / 2),
@@ -94,6 +97,7 @@ class player_select_menu(menu):
         pygame.draw.rect(self.image, self.color, p_rect, 4)
 
     def draw(self, disp):
+       # print("calling player select menu draw")
         disp.blit(self.image, self.rect)
 
 

@@ -25,11 +25,6 @@ class new_test():
             print('calling sub_test2', y)
 
 
-
-
-t2 = new_test(new_test.sub_test)
-t2.run_test()
-
 class new_test2(new_test):
     def __init__(self, x):
         super().__init__(x)
@@ -41,57 +36,39 @@ class new_test2(new_test):
     def add(self, new_entry):
         self.tList.append(new_entry)
 
-t3 = new_test2(5)
-print('before: ')
-t3.show()
-t3.add(t3.sub_test2)
-print('after: ')
-t3.show()
-
-
-
 def kwargs_test(x, **kwargs):
     print('start w/ x = ', x)
     if 'new' in kwargs:
         x = kwargs['new']
     print('end w/ x = ', x)
 
-var = 1
-
-kwargs_test(var, old=4)
-
-'''
 import pygame
-
 pygame.init()
 
-pygame.joystick.init()
-joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+class tsprite(pygame.sprite.Sprite):
+    def __init__(self, name):
+        super().__init__()
+        self.name = name
+    def __str__(self):
+        return self.name
 
-def assign_player_one(joysticks):
-    for each in joysticks:
-        if 'Xbox One' in each.get_name():
-            return each
-        elif 'Xbox 360' in each.get_name():
-            return each
+testsprite1 = tsprite('#1')
+testsprite2 = tsprite('#2')
+print("TestSprite1: ", testsprite1)
+print("testsprite2: ", testsprite2)
 
-test_p1 = assign_player_one(joysticks)
-print(test_p1.get_name())
+testgroupsingle = pygame.sprite.GroupSingle(testsprite1)
+print("t0: ", testgroupsingle)
+for each in testgroupsingle:
+    print("each at t0: ", each)
 
-test_p1.init()
+testgroupsingle.add(testsprite2)
+print("t1: ", testgroupsingle)
+for each in testgroupsingle:
+    print("each at t1:", each)
 
-running = True
-while (running):
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-        elif event.type == pygame.KEYDOWN:
-            pass
 
-        n = test_p1.get_numaxes()
-        print('n= ', n)
 
-        for x in range(0, n):
-            if test_p1.get_axis(x):
-                print("pressing axes number: ", x, test_p1.get_axis(x))
-    '''
+import events
+t0 = events.new_event(1, "test", True, console_msg="Test_Event")
+print(t0)

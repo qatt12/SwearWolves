@@ -131,6 +131,7 @@ class xbone_gamepad(object):
     def pull_selectors(self, **kwargs):
         ret = {'prev': self.pull_button('LB'),
                'next': self.pull_button('RB'),
+               'select': 9,
                'lock_aim': (self.pull_triggers()[0], self.pull_triggers()[2]),
                'lock_feet': (self.pull_triggers()[1], self.pull_triggers()[3])
                }
@@ -265,6 +266,7 @@ class xb360_gamepad(object):
     def pull_selectors(self, **kwargs):
         ret = {'prev': self.pull_button('LB'),
                'next': self.pull_button('RB'),
+               'select': 9,
                'lock_aim': (self.pull_triggers()[0], self.pull_triggers()[2]),
                'lock_feet': (self.pull_triggers()[1], self.pull_triggers()[3])
                }
@@ -302,8 +304,14 @@ class keyboard():
         self.shift_released = True
 
     def update(self):
-        self.key = self.new_key
+        print("keyboard update")
+        print("old key ", self.key)
+        tempkey = self.new_key
+        print("tempkey ", tempkey)
+
         self.new_key = pygame.key.get_pressed()
+        print("new key ", self.new_key)
+        self.key = tempkey
 
     def check_status(self):
         if self.key[pygame.K_SPACE] or self.new_key[pygame.K_SPACE]:
@@ -328,11 +336,32 @@ class keyboard():
         return ret
 
     def pull_selectors(self, **kwargs):
-        ret = {'next': (self.key[pygame.K_3], self.new_key[pygame.K_3]),
-               'prev': (self.key[pygame.K_2], self.new_key[pygame.K_2]),
+        index = 9
+        if self.key[pygame.K_1]:
+            index = 0
+        elif self.key[pygame.K_2]:
+            index = 1
+        elif self.key[pygame.K_3]:
+            index = 2
+        elif self.key[pygame.K_4]:
+            index = 3
+        elif self.key[pygame.K_5]:
+            index = 4
+        elif self.key[pygame.K_6]:
+            index = 5
+        elif self.key[pygame.K_7]:
+            index = 6
+        elif self.key[pygame.K_8]:
+            index = 7
+        elif self.key[pygame.K_9]:
+            index = 8
+        print("checking old e key", self.key[pygame.K_e])
+        print("checking new e key", self.new_key[pygame.K_e])
+        return {'next': (self.key[pygame.K_e], self.new_key[pygame.K_e]),
+               'prev': (self.key[pygame.K_q], self.new_key[pygame.K_q]),
+               'select': index,
                'lock_aim': (self.key[pygame.K_LSHIFT], self.key[pygame.K_LSHIFT]),
                'lock_feet': (self.key[pygame.K_LCTRL], self.key[pygame.K_LCTRL])}
-        return ret
 
     def pull_movement(self, **kwargs):
         mov_x, mov_y, dir_x, dir_y = 0, 0, 0, 0

@@ -1,5 +1,6 @@
 import pygame
 import spriteling
+import overlays
 from loader import player_img_loader
 
 player_img_size =(38, 83)
@@ -29,7 +30,7 @@ class player(spriteling.spriteling):
 
         self.spritesheet = img_lookup[book.goddess_lookup_key]
         self.string_lookup = {'topleft': calc_index(0, 0), 'neutral': calc_index(1, 1)}
-        self.tuple_lookup = {(-1, -1):calc_index(0, 0), (0, 1):calc_index(1, 0), (1, -1): calc_index(2, 2),
+        self.tuple_lookup = {(-1, -1):calc_index(0, 0), (0, 1): calc_index(1, 0), (1, -1): calc_index(2, 2),
                              (-1, 0): calc_index(0, 1), (0, 0): calc_index(1, 1), (1, 0): calc_index(2, 1),
                              (-1, 1): calc_index(0, 2), (0, -1): calc_index(1, 2), (1, 1): calc_index(2, 2)}
         self.image = self.spritesheet.subsurface(self.string_lookup['neutral'])
@@ -47,6 +48,9 @@ class player(spriteling.spriteling):
         self.prev_facing = (self.facing)
 
         self.missiles = pygame.sprite.Group()
+
+        # stats and inventory
+        self.hp = 1000
 
     def update(self, *args, **kwargs):
         super().update(*args)
@@ -79,4 +83,3 @@ class multiplayer(player):
     def __init__(self, book):
         player.__init__(self, book, (0, 0))
         print("book level is: ", book.level, "book spells are: ", book.spells)
-        #self.active_spell = book.spells[book.index]

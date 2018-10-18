@@ -53,6 +53,42 @@ class spell_book(spriteling.spriteling):
         self.other_spells = pygame.sprite.Group()
         self.active_spell = pygame.sprite.GroupSingle()
 
+    def update(self, loc, *args, **kwargs):
+        # the cycle and select spell are for controllers and keyboards, res. Keyboards can choose a spell based on the
+        # number keys, controllers can cycle between them
+        if 'cycle_spell' in kwargs:
+            if kwargs['cycle spell'] == 'next':
+                self.index += 1
+                if self.index > self.length:
+                    self.index = 0
+            elif kwargs['cycle spell'] == 'prev':
+                self.index -= 1
+                if self.index < 0:
+                    self.index = self.length - 1
+        if 'select_spell' in kwargs:
+            if kwargs['select spell'] < self.length:
+                self.index = kwargs['select spell']
+        self.other_spells.add(self.active_spell)
+        self.active_spell.add(self.spells[self.index])
+        self.other_spells.remove(self.active_spell)
+
+        if 'fire' in kwargs:
+            for lonely in self.active_spell:
+                lonely.update(kwargs['fire'][1], kwargs['fire'][0], kwargs['direction'],
+                              missile_layer=kwargs['missile_layer'], loc=loc)
+            self.other_spells.update(0, 0, (0, 0))
+
+    def level_up(self):
+        pass
+
+    def pop_spells(self):
+        self.length = self.level
+        for x in range(0, self.level+1):
+            self.spells.append(self.spell_key[x]())
+            self.other_spells.add(self.spells[x])
+        self.active_spell.add(self.spells[self.index])
+        self.other_spells.remove(self.active_spell)
+
 
 # each attack/spell has two components: the spell and the missile. the spell is basically just an image that follows the
 # player around, while the missile is created and propelled by the spell.
@@ -71,6 +107,7 @@ class missile(spriteling.spriteling):
         for each in self.hitboxes:
             each.rect.center = self.rect.center
 
+
 # spells themselves don't do much, except for creating and launching missiles
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
 class spell(spriteling.spriteling):
@@ -82,10 +119,17 @@ class spell(spriteling.spriteling):
     def update(self, *args, **kwargs):
         if 'loc' in kwargs:
             self.rect.center = kwargs['loc']
+        msl_chk = self.cast(*args)
+        if 'missile_layer' in kwargs and msl_chk is not None:
+            kwargs['missile_layer'].add(msl_chk)
+        else:
+            pass
 
-    def cast(self, prev, now, missile_layer, direction):
+    def cast(self, prev, now, direction):
         if now and not prev:
-            missile_layer.add(self.fire(direction))
+            return self.projectile(direction, self.rect.center)
+        else:
+            return None
 
     def fire(self, direction):
         return self.projectile(direction, self.rect.center)
@@ -100,16 +144,18 @@ class charge_up(spell):
         self.charge = 0
         self.charge_time = threshold * sec
 
-    def cast(self, prev, now, missile_layer, direction):
+    def cast(self, prev, now, direction):
+        ret = None
         if now and not prev:
-            self.stage = 1
+            self.charge = 1
         elif now and prev:
             self.charge += 1
         elif not now and self.charge == self.charge_time:
-            missile_layer.add(self.fire(direction))
             self.charge = 0
+            ret = self.projectile(direction, self.rect.center, self.charge/self.charge_time)
         elif prev and not now:
-            self.charge =0
+            self.charge = 0
+        return ret
 
 # multi
 class multicharge(charge_up):
@@ -136,10 +182,6 @@ class beam(spell):
     def __init__(self, *args):
         super().__init__(*args)
         self.own_missiles = pygame.sprite.Group()
-
-    def update(self, loc, interface, missile_layer, *args, **kwargs):
-        self.rect.center = loc
-        prev, now = interface.check_fire()
 
 
 class targeted(spell):

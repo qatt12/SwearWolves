@@ -1,3 +1,4 @@
+import pygame
 
 # all-purpose handler class that coordinates the player, controller, and whatever else needs coordinating
 # this is what allows a seamless transition between menu/game loops, keeps everything modular and independent, and
@@ -18,6 +19,7 @@ class handler():
         else:
             self.menu = None
         self.hud = None
+        self.missiles = pygame.sprite.Group()
 
     def attach(self, **kwargs):
         if 'player' in kwargs:
@@ -28,6 +30,8 @@ class handler():
             self.menu = kwargs['menu']
 
     def update_menu(self):
+        print("performing a menu update from player handler")
+        print("controller is type: ", type(self.controller))
         self.controller.update()
         face = self.controller.pull_face()
         A_accept = face['accept']
@@ -35,6 +39,7 @@ class handler():
         selection = self.controller.pull_selectors()
         next = selection['next']
         prev = selection['prev']
+        print("selection is: ", selection)
         if next[1] and not next[0]:
             self.menu.next_book()
         elif prev[1] and not prev[0]:
@@ -44,15 +49,37 @@ class handler():
 
     def update(self, *args, **kwargs):
         print("interface update: ", self)
+        # updates the controller
         self.controller.update()
+
+        #updates the player
         movement = self.controller.pull_movement()['move']
         facing = self.controller.pull_movement()['look']
         self.player.move(move=movement)
         self.player.update(look=facing, move=movement)
 
+        # updates the spellbook
+        now, prev = self.controller.pull_face()['fire']
+        print("now= ", now, "prev= ", prev)
+        sel_chk = self.controller.pull_selectors()['select']
+        nxt_chk = self.controller.pull_selectors()['next']
+        prv_chk = self.controller.pull_selectors()['prev']
+        if sel_chk != 9:
+            self.book.update(select_spell=sel_chk)
+        elif nxt_chk[0] and not nxt_chk[1]:
+            self.book.update(cycle_spell='next')
+        elif prv_chk[0] and not prv_chk[1]:
+            self.book.update(cycle_spell='prev')
 
+        self.book.update(self.player.rect.center, fire=(now, prev), direction=self.player.facing,
+                         missile_layer=self.missiles)
 
     def begin_game(self, p_constr, starting_point):
         self.player = p_constr(self.book)
+        self.book.pop_spells()
+        import overlays
+        self.hud = overlays.hud(self.player, self.book)
 
-
+    def draw(self, disp):
+        self.player.draw(disp)
+        self.missiles.draw(disp)

@@ -88,8 +88,8 @@ class room():
         self.floors.draw(disp)
         self.outer_walls.draw(disp)
 
-        self.players.draw(disp)
-        self.player_missiles.draw(disp)
+        #self.players.draw(disp)
+        #self.player_missiles.draw(disp)
 
 
     # super basic method atm, designed to be expanded as needed in later iterations

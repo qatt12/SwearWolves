@@ -26,7 +26,7 @@ class controller_list():
             if each.check_status() and each.jub.get_id() not in self.used_joysticks:
                 self.active_controllers.append(each)
                 self.used_joysticks.append(each.jub.get_id())
-
+        self.keyboard.update()
         if self.keyboard.check_status() and self.is_keyboard is False:
             self.is_keyboard = True
             self.active_controllers.append(self.keyboard)

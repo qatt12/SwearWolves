@@ -49,6 +49,7 @@ class spriteling(pygame.sprite.Sprite):
 
     def update(self, *args):
         self.rect.move_ip(self.velocity)
+        self.hitboxes.update()
 
     def draw(self, disp):
         disp.blit(self.image, self.rect)

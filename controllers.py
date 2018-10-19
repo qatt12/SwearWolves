@@ -305,13 +305,8 @@ class keyboard():
 
     def update(self):
         print("keyboard update")
-        print("old key ", self.key)
-        tempkey = self.new_key
-        print("tempkey ", tempkey)
-
+        self.key = self.new_key
         self.new_key = pygame.key.get_pressed()
-        print("new key ", self.new_key)
-        self.key = tempkey
 
     def check_status(self):
         if self.key[pygame.K_SPACE] or self.new_key[pygame.K_SPACE]:

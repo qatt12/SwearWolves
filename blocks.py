@@ -65,4 +65,29 @@ class floor(spriteling.block):
 
         print(self.rect)
 
+class door(spriteling.block):
+    def __init__(self, **kwargs):
+        super().__init__(pygame.image.load('baddies\loogloog.png').convert_alpha(), (0, 0))
+        if 'coords' in kwargs:
+            self.rect.center = kwargs['coords']
+        if 'root_wall' in kwargs:
+            self.rect.center = kwargs['root_wall'].rect.center
+        if 'side_x' in kwargs:
+            self.rect.centerx = kwargs['side_x']
+            self.rect.centery = (kwargs['pos']*config.tile_scalar) +50
+        if 'side_y' in kwargs:
+            self.rect.centery = kwargs['side_y']
+            self.rect.centerx = (kwargs['pos']*config.tile_scalar) +50
 
+    def enter(self, player):
+        player.rect.center = self.rect.center
+
+    def adjust(self, **kwargs):
+        if 'left' in kwargs:
+            self.rect.left = kwargs['left']
+        if 'right' in kwargs:
+            self.rect.right = kwargs['right']
+        if 'top' in kwargs:
+            self.rect.top = kwargs['top']
+        if 'bottom' in kwargs:
+            self.rect.bottom = kwargs['bottom']

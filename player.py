@@ -34,6 +34,7 @@ class player(spriteling.spriteling):
                              (-1, 0): calc_index(0, 1), (0, 0): calc_index(1, 1), (1, 0): calc_index(2, 1),
                              (-1, 1): calc_index(0, 2), (0, -1): calc_index(1, 2), (1, 1): calc_index(2, 2)}
         self.image = self.spritesheet.subsurface(self.string_lookup['neutral'])
+        self.rect = self.image.get_rect()
 
         self.hitboxes.add(spriteling.hitbox(self,
                                             scale_x=-(self.rect.height*0.2), scale_y=-(self.rect.width*0.2)))

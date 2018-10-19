@@ -74,12 +74,17 @@ class handler():
         self.book.update(self.player.rect.center, fire=(now, prev), direction=self.player.facing,
                          missile_layer=self.missiles)
 
-    def begin_game(self, p_constr, starting_point):
+    def begin_game(self, p_constr, starting_room):
         self.player = p_constr(self.book)
         self.book.pop_spells()
         import overlays
         self.hud = overlays.hud(self.player, self.book)
+        starting_room.add_players(self.player)
 
     def draw(self, disp):
         self.player.draw(disp)
+        self.player.draw_boxes(disp)
         self.missiles.draw(disp)
+        for each in self.missiles:
+            each.draw_boxes(disp)
+        self.book.active_spell.draw(disp)

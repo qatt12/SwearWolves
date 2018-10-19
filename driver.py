@@ -81,11 +81,10 @@ class screen_handler():
         if self.game_state == 'game_loop':
             if self.current_room is not None:
                 self.current_room.draw_contents(self.disp)
-                #self.current_room.draw_contents(display)
+                self.current_room.draw_boxes(self.disp)
 
             for each in self.ordered_list_of_player_HANDLERS:
                 each.draw(self.disp)
-                #each.draw(display)
 
         display.blit(self.disp, scroll)
         self.menus.draw(display)
@@ -202,12 +201,11 @@ game_window.fill((0, 0, 0))
 import room, player
 # scope tomfoolery
 plyr = player.multiplayer
-for each in screen.ordered_list_of_player_HANDLERS:
-    each.begin_game(plyr, (0, 0))
 
-#first_time_start = pygame.event.Event(FIRST_GAME, )
 hub = room.hub_room(game_window)
 screen.update(room=hub)
+for each in screen.ordered_list_of_player_HANDLERS:
+    each.begin_game(plyr, hub)
 scroll = (0, 0)
 
 while(game_loop and running):

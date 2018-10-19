@@ -7,6 +7,7 @@ sGroup = pygame.sprite.Group
 from blocks import wall as wall
 from blocks import corner as corner
 from blocks import floor as floor
+from blocks import door as door
 from config import tile_scalar
 
 # essentially an image lookup/helper tool for room. contains all the default tiles for the default room, but can be
@@ -52,7 +53,7 @@ class theme(object):
 # the core functions of the room are to hold everything that is going to appear on the screen, check for and report the
 # interactions between certain sprites, and to draw everything in the correct order
 class room():
-    def __init__(self, entry_point, size, theme, disp):
+    def __init__(self, enter_from, size, theme, disp):
         # the constructor reqs a size tuple for height and width in tiles, a theme from which to draw tiles and enemies,
         # the current difficulty level, and the player's point of entry.
         self.theme = theme
@@ -64,21 +65,38 @@ class room():
         self.ground = floor(size, theme)
         self.floors.add(self.ground)
 
-        self.player_spawn = entry_point
-
-        # the walls have to be spritelings in a group in order to properly register collision
-        self.outer_walls = theme.build_walls(self.ground.image.get_rect())
-
-        # this group will contain all the active players in the room. It starts out empty, and must be filled in main
-        self.players = sGroup()
-        self.overlays = sGroup()
-        self.enemy_missiles = sGroup()
-        self.enemy_spells = sGroup()
-        self.player_missiles = sGroup()
-        self.player_spells = sGroup()
         self.all_sprites = sGroup()
 
-        #self.rect.center = disp.rect.center
+        # this is supposed to help with screen scrolling for the room. The visible rect is what is currently on-screen,
+        # the full rect is for the entire room
+        self.visible_rect = disp.get_rect()
+        self.full_rect = self.ground.rect
+
+        if enter_from[0] == 'left':
+            self.full_rect.left = self.visible_rect.left
+            self.entry_door = door(side_x=self.full_rect.left, pos=enter_from[1])
+        elif enter_from[0] == 'center':
+            self.full_rect.center = self.visible_rect.center
+            self.entry_door = door(coords=self.full_rect.center)
+        elif enter_from[0] == 'right':
+            self.full_rect.right = self.visible_rect.right
+            self.entry_door = door(side_x=self.full_rect.right, pos=enter_from[1])
+
+        if self.full_rect.width < self.visible_rect.width:
+            self.full_rect.centerx = self.visible_rect.centerx
+            self.entry_door.adjust(bound_rect=self.full_rect)
+        if self.full_rect.height < self.visible_rect.height:
+            self.full_rect.centery = self.visible_rect.centery
+            self.entry_door.adjust(bound_rect=self.full_rect)
+
+
+        self.doors = sGroup(self.entry_door)
+
+        # the walls have to be spritelings in a group in order to properly register collision
+        self.outer_walls = theme.build_walls(self.full_rect)
+
+        self.all_sprites.add(self.outer_walls, self.floors)
+
 
     # core methods used to draw the contents of the room onto the main display window in the appropriate order
     # the default/expected order is: floors, outer walls, inner walls, enemies, players, enemy missiles, unaligned
@@ -87,39 +105,35 @@ class room():
 
         self.floors.draw(disp)
         self.outer_walls.draw(disp)
-
-        #self.players.draw(disp)
-        #self.player_missiles.draw(disp)
-
+        self.doors.draw(disp)
 
     # super basic method atm, designed to be expanded as needed in later iterations
-    def add_players(self, players):
-        for each in players:
-            self.players.add(each.player)
-            each.player.rect.center = self.player_spawn
+    def add_players(self, player):
+        self.entry_door.enter(player)
 
     def update(self):
         self.outer_walls.update()
-        #self.floors.scroll(1, 0)
-        self.players.update()
-        self.player_missiles.update()
 
 
     def draw_boxes(self, disp):
         for w in self.outer_walls:
             w.draw_boxes(disp)
 
-        for x in self.players:
-            x.draw_boxes(disp)
+        self.ground.draw_boxes(disp)
+        pygame.draw.rect(disp, config.green, self.full_rect, 4)
+        pygame.draw.rect(disp, config.blue, self.visible_rect, 4)
 
     # look into subclassing groups to make a more efficient version of this
     def scroll(self, x_scroll, y_scroll):
         for each in self.all_sprites:
             each.rect = each.rect.move(x_scroll, y_scroll)
 
+    def collide_walls(self, **kwargs):
+        if 'players' in kwargs:
+            pass
 
 class hub_room(room):
     def __init__(self, disp):
         #self.rect = pygame.rect.Rect((0, 0), (10*config.tile_scalar, 10*100))
-        super().__init__((config.tile_scalar/2, config.tile_scalar/2), (10, 10), theme(), disp)
+        super().__init__(('left', 3), (10, 6), theme(), disp)
 

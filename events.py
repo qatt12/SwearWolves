@@ -1,6 +1,7 @@
 import pygame
 
 x = 0
+next_stage = pygame.USEREVENT+1
 
 def new_event(num, name, print_self=False, **kwargs):
     ret = pygame.event.Event(pygame.USEREVENT+num, message="STUFF")

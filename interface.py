@@ -30,8 +30,8 @@ class handler():
             self.menu = kwargs['menu']
 
     def update_menu(self):
-        print("performing a menu update from player handler")
-        print("controller is type: ", type(self.controller))
+        #print("performing a menu update from player handler")
+        #print("controller is type: ", type(self.controller))
         self.controller.update()
         face = self.controller.pull_face()
         A_accept = face['accept']
@@ -39,7 +39,7 @@ class handler():
         selection = self.controller.pull_selectors()
         next = selection['next']
         prev = selection['prev']
-        print("selection is: ", selection)
+        #print("selection is: ", selection)
         if next[1] and not next[0]:
             self.menu.next_book()
         elif prev[1] and not prev[0]:
@@ -55,7 +55,7 @@ class handler():
         #updates the player
         movement = self.controller.pull_movement()['move']
         facing = self.controller.pull_movement()['look']
-        self.player.move(move=movement)
+        #self.player.move(move=movement)
         self.player.update(look=facing, move=movement)
 
         # updates the spellbook
@@ -64,15 +64,16 @@ class handler():
         sel_chk = self.controller.pull_selectors()['select']
         nxt_chk = self.controller.pull_selectors()['next']
         prv_chk = self.controller.pull_selectors()['prev']
+        # its safe to call update more than once per frame for the spell book
         if sel_chk != 9:
-            self.book.update(select_spell=sel_chk)
+            self.book.update(self.player.rect.center, select_spell=sel_chk)
         elif nxt_chk[0] and not nxt_chk[1]:
-            self.book.update(cycle_spell='next')
+            self.book.update(self.player.rect.center, cycle_spell='next')
         elif prv_chk[0] and not prv_chk[1]:
-            self.book.update(cycle_spell='prev')
-
-        self.book.update(self.player.rect.center, fire=(now, prev), direction=self.player.facing,
-                         missile_layer=self.missiles)
+            self.book.update(self.player.rect.center, cycle_spell='prev')
+        if now or prev:
+            self.book.update(self.player.rect.center, fire=(now, prev), direction=self.player.facing,
+                             missile_layer=self.missiles)
 
     def begin_game(self, p_constr, starting_room):
         self.player = p_constr(self.book)

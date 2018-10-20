@@ -57,11 +57,11 @@ class spell_book(spriteling.spriteling):
         # the cycle and select spell are for controllers and keyboards, res. Keyboards can choose a spell based on the
         # number keys, controllers can cycle between them
         if 'cycle_spell' in kwargs:
-            if kwargs['cycle spell'] == 'next':
+            if kwargs['cycle_spell'] == 'next':
                 self.index += 1
                 if self.index > self.length:
                     self.index = 0
-            elif kwargs['cycle spell'] == 'prev':
+            elif kwargs['cycle_spell'] == 'prev':
                 self.index -= 1
                 if self.index < 0:
                     self.index = self.length - 1
@@ -117,6 +117,7 @@ class spell(spriteling.spriteling):
         self.projectile = projectile
 
     def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
         if 'loc' in kwargs:
             self.rect.center = kwargs['loc']
         msl_chk = self.cast(*args)
@@ -170,19 +171,26 @@ class cool_down(spell):
         self.heat = 0
         self.cooldown_time = timer * sec
 
-    def cast(self, prev, now, missile_layer, direction):
+    def cast(self, prev, now, direction):
         if self.heat > 0:
             self.heat -=1
+            return None
         if now and self.heat == 0:
-            missile_layer.add(self.fire(direction))
+            return self.projectile(direction, self.rect.center)
 
 
-
-class beam(spell):
-    def __init__(self, *args):
+# this i gonna be weird. May want to just split it into two classes
+class beam(charge_up, cool_down):
+    def __init__(self, prep_method, *args):
         super().__init__(*args)
+        self.prep_method = prep_method
         self.own_missiles = pygame.sprite.Group()
 
+    def cast(self, prev, now, direction):
+        super(self.prep_method).cast(prev, now, direction)
+
+class stream(charge_up, cool_down):
+    pass
 
 class targeted(spell):
     pass
@@ -201,7 +209,7 @@ class fireball_m(missile):
 ####### DEBUG STUFF
 class charged_fireball_s(charge_up):
     def __init__(self):
-        super().__init__(1, fireball_m, fire_book_img)
+        super().__init__(2, fireball_m, fire_book_img)
 
 ####### END DEBUG STUFF
 
@@ -242,11 +250,11 @@ class light_wave_m(missile):
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):
     def __init__(self):
-        super().__init__(0)
+        super().__init__(1)
         self.image = fire_book_img
         self.goddess_lookup_key = 'crop_top'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
-        self.spell_key = {0: fireball_s}
+        self.spell_key = {0: fireball_s, 1: charged_fireball_s}
         self.level_costs = {0: 1000, 1: 2000}
 
 

@@ -55,14 +55,13 @@ class player_select_menu(menu):
     def prev_book(self):
         if not self.ready:
             self.index -= 1
-            if self.index <= 0:
+            if self.index < 0:
                 self.index = len(self.book_choice)-1
             self.curr_book_img = pygame.transform.scale2x(self.book_choice[self.index].image)
             self.player_img = pygame.transform.scale2x(ld_plyr(self.book_choice[self.index].goddess_lookup_key, (1, 1)))
 
     def ready_up(self):
         self.ready = True
-        pygame.draw.rect(self.image, self.color, p_rect, 40)
         return self.book_choice[self.index]
 
     def is_ready(self):
@@ -77,18 +76,26 @@ class player_select_menu(menu):
         else:
             self.ready = False
 
+    # ignore this for now; doesn't really work
     def ban_book(self, index_no):
         new_list = []
         for x in range(0, len(self.book_choice)):
             if x != index_no:
                 new_list.append(self.book_choice[x])
         self.book_choice = new_list
+        if self.index > len(self.book_choice):
+            self.index = len(self.book_choice)
 
     def update(self, **kwargs):
-        #print("updating a menu ", self.id_no)
-        #print("choices: ", self.book_choice, 'index: ', self.index)
-        #self.curr_book_img = pygame.transform.scale2x(self.book_choice[self.index].image)
-        #self.player_img = pygame.transform.scale2x(ld_plyr(self.book_choice[self.index].goddess_lookup_key, (1, 1)))
+        if not self.ready:
+            from config import black
+            self.image.fill(black)
+            self.curr_book_img = pygame.transform.scale2x(self.book_choice[self.index].image)
+            self.player_img = pygame.transform.scale2x(ld_plyr(self.book_choice[self.index].goddess_lookup_key, (1, 1)))
+
+        elif self.ready:
+            pygame.draw.rect(self.image, self.color, p_rect, 40)
+
         self.image.blit(self.curr_book_img, (((p_rect.width / 2) - self.curr_book_img.get_rect().width / 2),
                                                (p_rect.height) - self.curr_book_img.get_rect().height))
 

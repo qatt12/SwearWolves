@@ -52,9 +52,13 @@ class screen_handler():
         self.player_one = None
         self.player_index = 0
         self.ordered_list_of_player_HANDLERS = []
+        self.GROUP_of_player_SPRITES = pygame.sprite.Group()
         self.current_room = None
         self.game_state = "start_menu"
 
+    # currently, update does a lot of things. It is used to add many things to the screen, to keep everything elegant
+    # and avoid having to write many dif methods, but this may not be a great idea, as update is also used/assumed to
+    # indicate the passage of time
     def update(self, *args, **kwargs):
         if 'opened_menus' in kwargs:
             self.menus.add(kwargs['opened_menus'])
@@ -67,10 +71,14 @@ class screen_handler():
             self.player_index = 1
             self.ordered_list_of_player_HANDLERS = [self.player_one]
         if 'next_player' in kwargs:
+            #self.GROUP_of_player_SPRITES.add(self.player_one.player)
             self.ordered_list_of_player_HANDLERS.append(kwargs['next_player'])
+            #self.GROUP_of_player_SPRITES.add(kwargs['next_player'].player)
             self.player_index += 1
         if 'room' in kwargs:
             self.current_room = kwargs['room']
+            self.current_room.collide_walls(players=self.GROUP_of_player_SPRITES)
+
 
         self.menus.update()
         if self.current_room is not None:
@@ -90,13 +98,28 @@ class screen_handler():
         self.menus.draw(display)
         pygame.display.update()
 
+    def game_start(self, player_constr, starting_room):
+        from spriteling import spriteling
+        assert (len(self.ordered_list_of_player_HANDLERS)>=1), "nothing is in player handlers"
+        for each in self.ordered_list_of_player_HANDLERS:
+            each.begin_game(player_constr, starting_room)
+            self.GROUP_of_player_SPRITES.add(each.player)
+
+            assert (each.player is not None), "each.player DNEs"
+            assert (isinstance(each.player, spriteling)), "wrong type; not a sprite"
+            try:
+                self.GROUP_of_player_SPRITES.__contains__(each)
+            except:
+                print("failed to add sprites; you passed in ", type(each))
 
 running = True
 start_loop = True
 player_select_loop = True
 game_loop = True
+print("entering start loop")
 
 import menu
+import events
 
 cntrllr = c_list()
 
@@ -109,12 +132,14 @@ while(start_loop and running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == events.next_stage
 
     if cntrllr.is_p1_ready():
         player_one_HANDLER = cntrllr.get_p1()
         print("player one handler is of type: ", type(player_one_HANDLER))
         print("player one handler's controller is of type: ", type(player_one_HANDLER.controller))
         screen.update(player_one=player_one_HANDLER, closed_menus=start_menu)
+        assert (screen.player_one is not None), "failed to add player one"
         start_loop = False
         start_menu.kill()
 
@@ -146,6 +171,10 @@ ready_players = 0
 player_one_HANDLER.attach(menu=p1_char_select)
 banned_list = []
 
+
+
+print("entering playere select loop")
+
 while(player_select_loop and running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -158,22 +187,31 @@ while(player_select_loop and running):
 
     cntrllr.update()
     if cntrllr.is_next_ready():
-        print("found next player; player: ", player_num)
+        print("found next player; player: ", player_num +1)
         if player_num == 1:
             player_num = 2
             player_two_HANDLER = cntrllr.get_next_player()
             player_two_HANDLER.attach(menu=p2_char_select)
             screen.update(next_player=player_two_HANDLER, opened_menus=p2_char_select)
+            #assert (screen.player_index > player_num), "failed to add next player"
         elif player_num == 2:
             player_num = 3
             player_three_HANDLER = cntrllr.get_next_player()
             player_three_HANDLER.attach(menu=p3_char_select)
             screen.update(next_player=player_three_HANDLER, opened_menus=p3_char_select)
+            #assert (screen.player_index > player_num), "failed to add next player"
         elif player_num == 3:
             player_num = 4
             player_four_HANDLER = cntrllr.get_next_player()
             player_four_HANDLER.attach(menu=p4_char_select)
             screen.update(next_player=player_four_HANDLER, opened_menus=p4_char_select)
+        if player_num > 1:
+            try:
+                assert (screen.player_index > player_num), "failed to add next player"
+            except AssertionError as error:
+                print(error)
+                print("screen's player index= ", screen.player_index, "player num= ", player_num)
+                print(screen.ordered_list_of_player_HANDLERS)
 
     screen.update()
     screen.draw(game_window)
@@ -182,6 +220,10 @@ while(player_select_loop and running):
         if pick != -1 and pick not in banned_list:
             banned_list.append(pick)
             ready_players += 1
+            each.ban_book(pick)
+        elif pick != -1:
+            #each.back_out()
+            pass
 
     for each in screen.ordered_list_of_player_HANDLERS:
         each.update_menu()
@@ -204,8 +246,8 @@ plyr = player.multiplayer
 
 hub = room.hub_room(game_window)
 screen.update(room=hub)
-for each in screen.ordered_list_of_player_HANDLERS:
-    each.begin_game(plyr, hub)
+# may replace this with some event driven progging
+screen.game_start(plyr, hub)
 scroll = (0, 0)
 
 while(game_loop and running):

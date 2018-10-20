@@ -3,7 +3,7 @@
 #these act more as defaults, and can (likely will) be overwritten locally by main
 
 fps = 128
-screen_size = (1500, 800)
+screen_size = (1300, 700)
 
 tile_scalar = 100
 

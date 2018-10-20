@@ -54,11 +54,12 @@ class player(spriteling.spriteling):
         self.hp = 1000
 
     def update(self, *args, **kwargs):
-        super().update(*args)
+        super().update(*args, **kwargs)
         # all this stuff is supposed to handle moving the player, but it doesn't work right. It does handle facing, and
         # getting the right image, which is nice, but as of now all the movement is done by the move() method in
         # spriteling
         self.prev_facing = self.facing
+        # I suspect this part double-moves the player, but I don't think it has a huge effect
         if 'move' in kwargs:
             print('moving', kwargs['move'])
             self.rect.move_ip(kwargs['move'])

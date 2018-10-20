@@ -1,6 +1,6 @@
 import pygame
 
-deadzone = 0.3
+deadzone = 0.07
 pygame.joystick.init()
 
 # this method is supposed to be called early on in the main method. It will check all available joysticks, hopefully
@@ -139,14 +139,26 @@ class xbone_gamepad(object):
 
     def pull_movement(self):
         mov_x, mov_y, dir_x, dir_y = 0, 0, 0, 0
-        if abs(self.sticks['LX']) > 0.05:
+        if abs(self.sticks['LX']) > deadzone:
             mov_x = self.sticks['LX']
-        if abs(self.sticks['LY']) > 0.05:
+        if abs(self.sticks['LY']) > deadzone:
             mov_y = self.sticks['LY']
-        if abs(self.sticks['RX']) > 0.05:
+        if abs(self.sticks['RX']) > deadzone:
             dir_x = self.sticks['RX']
-        if abs(self.sticks['RY']) > 0.05:
+        if abs(self.sticks['RY']) > deadzone:
             dir_y = self.sticks['RY']
+        if self.new_sticks["LX"]:
+            print("newStciks: ", self.new_sticks["LX"])
+        # hopefully, this will eliminate controller flick
+        # commented out for now, as it broke the game. Live with controller flick
+        '''if self.new_sticks['LX'] !=0 and\
+                self.new_sticks['LX']/abs(self.new_sticks['LX']) != self.sticks['LX']/abs(self.sticks['LX']):
+            print("detected flick on LX")
+            mov_x = 0
+        if self.new_sticks['LY'] !=0 and\
+                self.new_sticks['LY'] / abs(self.new_sticks['LY']) != self.sticks['LY'] / abs(self.sticks['LY']):
+            print("detected flick on LY")
+            mov_y = 0'''
         ret = {'move': (mov_x, mov_y),
                'look': (dir_x, dir_y)}
         return ret
@@ -304,7 +316,7 @@ class keyboard():
         self.shift_released = True
 
     def update(self):
-        print("keyboard update")
+        # print("keyboard update")
         self.key = self.new_key
         self.new_key = pygame.key.get_pressed()
 
@@ -350,8 +362,8 @@ class keyboard():
             index = 7
         elif self.key[pygame.K_9]:
             index = 8
-        print("checking old e key", self.key[pygame.K_e])
-        print("checking new e key", self.new_key[pygame.K_e])
+        # print("checking old e key", self.key[pygame.K_e])
+        # print("checking new e key", self.new_key[pygame.K_e])
         return {'next': (self.key[pygame.K_e], self.new_key[pygame.K_e]),
                'prev': (self.key[pygame.K_q], self.new_key[pygame.K_q]),
                'select': index,

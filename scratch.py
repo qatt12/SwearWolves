@@ -72,3 +72,21 @@ for each in testgroupsingle:
 import events
 t0 = events.new_event(1, "test", True, console_msg="Test_Event")
 print(t0)
+
+td = {'brug': 56}
+
+def tprint(tdict, **kwargs):
+    for each in tdict:
+        print(each, tdict[each])
+    if 'brug' in kwargs:
+        print(kwargs['brugs'])
+
+tprint(td)
+
+def argstest(default=0, *args):
+    if default:
+        print(default)
+    for each in args:
+        print(each)
+
+argstest('th', 'afsadf')

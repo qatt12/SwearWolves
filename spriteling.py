@@ -33,6 +33,14 @@ class spriteling(pygame.sprite.Sprite):
             self.loc = kwargs['loc']
             self.rect.center = self.loc
 
+        if 'name' in kwargs:
+            self.name = kwargs['name']
+        else:
+            self.name = 'trashboat'
+
+        self.cond_queue = []
+        self.dmg_mult = {'dmg':1}
+        self.immune = []
         self.velocity = (0, 0)
         self.move_mult = (1, 1)
 
@@ -41,15 +49,22 @@ class spriteling(pygame.sprite.Sprite):
         self.hitboxes = pygame.sprite.Group()
 
     def __str__(self):
-        return type(self)
+        return str(type(self)) + self.name
 
-    def interact(self, other):
-        # empty/default method to govern the behavior of this spriteling in reaction to other.
-        pass
-
-    def update(self, *args):
-        self.rect.move_ip(self.velocity)
+    def update(self, *args, **kwargs):
+        #self.rect.move_ip(self.velocity)
+        # movement stuff. concerns movement from controller input, getting hit with shit, etc
+        if 'move' in kwargs:
+            print("old rect: ", self.rect)
+            self.rect.move_ip(self.move_mult[0] * kwargs['move'][0], self.move_mult[1] * kwargs['move'][1])
+            print("new rect: ", self.rect)
+        if 'knockback' in kwargs:
+            self.rect.move_ip(kwargs['knockback'][0], kwargs['knockback'][1])
         self.hitboxes.update()
+
+        if 'time' in kwargs:
+            # take extra time; maybe call update more than once?
+            pass
 
     def draw(self, disp):
         disp.blit(self.image, self.rect)
@@ -59,15 +74,19 @@ class spriteling(pygame.sprite.Sprite):
         for each in self.hitboxes:
             pygame.draw.rect(disp, config.red, each.rect, 4)
 
-    def move(self, **kwargs):
+    # minimize use of this; most of its functionality is being taken over by update
+    def move(self, vel, move, **kwargs):
         #print("calling move from spriteling")
         xvel, yvel = 0, 0
         if 'vel' in kwargs:
             xvel, yvel = kwargs['vel'][0], kwargs['vel'][0]
-        if 'move' in kwargs:
-            xvel = xvel + (self.move_mult[0] * kwargs['move'][0])
-            yvel = yvel + (self.move_mult[1] * kwargs['move'][1])
-        self.velocity = (xvel, yvel)
+        xvel = xvel + (self.move_mult[0] * move[0])
+        yvel = yvel + (self.move_mult[1] * move[1])
+        return (xvel, yvel)
+        # self.velocity = (xvel, yvel)
+
+    def highlight(self, duration, color, hi_light_img=None):
+        pass
 
 
 
@@ -82,11 +101,9 @@ class hitbox(pygame.sprite.Sprite):
         # if no rect is provided, it copies the rect of its host
         else:
             self.rect = pygame.Rect.copy(self.host.rect)
-
         # the rect scales to the provided x and y proportions
         if 'scale_x' in kwargs:
             xscale = kwargs['scale_x']
-            #print("found x_scale= ", xscale)
         else:
             xscale = 1
         if 'scale_y' in kwargs:
@@ -95,7 +112,6 @@ class hitbox(pygame.sprite.Sprite):
             yscale = 1
 
         self.rect.inflate_ip(xscale, yscale)
-        #print("inflated a rect ", self.rect)
 
         if 'center' in kwargs:
             self.rect.center = kwargs['center']
@@ -123,7 +139,6 @@ class hitbox(pygame.sprite.Sprite):
             self.rect.bottom = kwargs['bottom_side']
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
-
 
 
 # class for stationary objects that are placed and then never moved.

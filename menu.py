@@ -104,7 +104,7 @@ class player_select_menu(menu):
         pygame.draw.rect(self.image, self.color, p_rect, 4)
 
     def draw(self, disp):
-       # print("calling player select menu draw")
+        # print("calling player select menu draw")
         disp.blit(self.image, self.rect)
 
 

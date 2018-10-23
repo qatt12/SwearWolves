@@ -48,7 +48,7 @@ class handler():
             self.attach(book=self.menu.ready_up())
 
     def update(self, *args, **kwargs):
-        print("interface update: ", self)
+        # print("interface update: ", self)
         # updates the controller
         self.controller.update()
 
@@ -60,20 +60,24 @@ class handler():
 
         # updates the spellbook
         now, prev = self.controller.pull_face()['fire']
-        print("now= ", now, "prev= ", prev)
+        # print("now= ", now, "prev= ", prev)
         sel_chk = self.controller.pull_selectors()['select']
         nxt_chk = self.controller.pull_selectors()['next']
         prv_chk = self.controller.pull_selectors()['prev']
         # its safe to call update more than once per frame for the spell book
+        origin = self.player.rect.center
         if sel_chk != 9:
-            self.book.update(self.player.rect.center, select_spell=sel_chk)
+            self.book.update(origin, select_spell=sel_chk)
         elif nxt_chk[0] and not nxt_chk[1]:
-            self.book.update(self.player.rect.center, cycle_spell='next')
+            self.book.update(origin, cycle_spell='next')
         elif prv_chk[0] and not prv_chk[1]:
-            self.book.update(self.player.rect.center, cycle_spell='prev')
+            self.book.update(origin, cycle_spell='prev')
         if now or prev:
-            self.book.update(self.player.rect.center, fire=(now, prev), direction=self.player.facing,
+            self.book.update(origin, fire=(now, prev), direction=self.player.facing,
                              missile_layer=self.missiles)
+
+        # updates spells
+        self.missiles.update()
 
     def begin_game(self, p_constr, starting_room):
         self.player = p_constr(self.book)
@@ -89,3 +93,5 @@ class handler():
         for each in self.missiles:
             each.draw_boxes(disp)
         self.book.active_spell.draw(disp)
+        self.hud.draw(disp)
+        self.hud.draw_boxes(disp)

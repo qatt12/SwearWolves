@@ -4,6 +4,8 @@
 
 fps = 128
 screen_size = (1300, 700)
+screen_width = screen_size[0]
+screen_height = screen_size[1]
 
 tile_scalar = 100
 

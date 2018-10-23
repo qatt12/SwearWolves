@@ -147,8 +147,8 @@ class xbone_gamepad(object):
             dir_x = self.sticks['RX']
         if abs(self.sticks['RY']) > deadzone:
             dir_y = self.sticks['RY']
-        if self.new_sticks["LX"]:
-            print("newStciks: ", self.new_sticks["LX"])
+        #if self.new_sticks["LX"]:
+            #print("newStciks: ", self.new_sticks["LX"])
         # hopefully, this will eliminate controller flick
         # commented out for now, as it broke the game. Live with controller flick
         '''if self.new_sticks['LX'] !=0 and\

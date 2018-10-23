@@ -30,6 +30,10 @@
 #  ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢟⠋⡱⠁ ⡰⡟⠑⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 
 
+def lprint(*args):
+    print("from driver.py")
+    print(*args)
+
 import pygame, config
 from misc import controller_list as c_list
 from misc import player_list as p_list
@@ -132,7 +136,8 @@ while(start_loop and running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == events.next_stage
+        if event.type == events.next_stage:
+            start_loop = False
 
     if cntrllr.is_p1_ready():
         player_one_HANDLER = cntrllr.get_p1()
@@ -140,7 +145,7 @@ while(start_loop and running):
         print("player one handler's controller is of type: ", type(player_one_HANDLER.controller))
         screen.update(player_one=player_one_HANDLER, closed_menus=start_menu)
         assert (screen.player_one is not None), "failed to add player one"
-        start_loop = False
+        events.new_event(1, "end of start loop", console_msg="moving into char_select")
         start_menu.kill()
 
     cntrllr.update()
@@ -157,7 +162,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.book_of_fire(), spells.book_of_acid(), spells.book_of_ice(), spells.book_of_light()]
+unlocked_books = [spells.book_of_fire(3), spells.book_of_acid(), spells.book_of_ice(), spells.book_of_light()]
 
 player_num = 1
 p1_char_select = menu.player_select_menu(1, unlocked_books)

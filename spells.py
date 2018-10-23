@@ -1,6 +1,10 @@
 import spriteling, pygame
 from config import fps as sec
 
+def lprint(*args):
+    print("from spells.py")
+    print(*args)
+
 light_wave_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
 fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
 acid_ball_img  = pygame.image.load( 'projectiles\img_poisonball.png').convert_alpha()
@@ -25,6 +29,18 @@ big_acid_book_img  = bigger_books.subsurface(( 0, onfr*2), (w, onfr))
 big_light_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
 big_blank_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
 
+
+def dupe(base_surf, num=0, is_num=False, **kwargs):
+    if 'size' in kwargs:
+        ret = pygame.Surface(kwargs['size'])
+    else:
+        x, y = base_surf.get_width(), base_surf.get_height()
+        ret = pygame.Surface((20, 20))
+    if is_num:
+        pass
+    ret.blit(base_surf, (0, 0))
+    return ret
+
 # the arrangement of spells (or more generally, all attacks) goes like this: each player character gets a spell book,
 # and each spell book has a particular pre-defined list of spells attached to it (one spell for each category). To
 # unlock new spells, the 'add_spell' method is called from the spell book, and a string referencing the spell to be
@@ -37,7 +53,7 @@ big_blank_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
 
 # spell book is a handler/container class meant to hold a bunch of spells
 class spell_book(spriteling.spriteling):
-    def __init__(self, level):
+    def __init__(self, level=1):
         super().__init__(image=blank_book_img)
         print("a new spell book has been made")
         # contains an instance of/ constructor for all unlocked spells
@@ -52,6 +68,9 @@ class spell_book(spriteling.spriteling):
         # cool down; their cooldowns don't reset upon selecting a new spell
         self.other_spells = pygame.sprite.Group()
         self.active_spell = pygame.sprite.GroupSingle()
+
+    def get_active_spell(self):
+        return (self.index, self.spells[self.index])
 
     def update(self, loc, *args, **kwargs):
         # the cycle and select spell are for controllers and keyboards, res. Keyboards can choose a spell based on the
@@ -72,11 +91,16 @@ class spell_book(spriteling.spriteling):
         self.active_spell.add(self.spells[self.index])
         self.other_spells.remove(self.active_spell)
 
+        print("from spells.py: ")
+
         if 'fire' in kwargs:
             for lonely in self.active_spell:
-                lonely.update(kwargs['fire'][1], kwargs['fire'][0], kwargs['direction'],
+                print("active spell is: ", lonely)
+                lonely.update(True, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
                               missile_layer=kwargs['missile_layer'], loc=loc)
-            self.other_spells.update(0, 0, (0, 0))
+
+
+            self.other_spells.update(False, 0, 0, (0, 0))
 
     def level_up(self):
         pass
@@ -88,6 +112,9 @@ class spell_book(spriteling.spriteling):
             self.other_spells.add(self.spells[x])
         self.active_spell.add(self.spells[self.index])
         self.other_spells.remove(self.active_spell)
+
+    def pull_spells(self):
+        return {'active': self.active_spell, 'other': self.other_spells}
 
 
 # each attack/spell has two components: the spell and the missile. the spell is basically just an image that follows the
@@ -116,8 +143,10 @@ class spell(spriteling.spriteling):
         # this is to be initialized just before its time to fire
         self.projectile = projectile
 
-    def update(self, *args, **kwargs):
+    def update(self, active, *args, **kwargs):
         super().update(*args, **kwargs)
+        print("i am active (T/F): ", active)
+        #if active:
         if 'loc' in kwargs:
             self.rect.center = kwargs['loc']
         msl_chk = self.cast(*args)
@@ -125,6 +154,7 @@ class spell(spriteling.spriteling):
             kwargs['missile_layer'].add(msl_chk)
         else:
             pass
+
 
     def cast(self, prev, now, direction):
         if now and not prev:
@@ -145,18 +175,30 @@ class charge_up(spell):
         self.charge = 0
         self.charge_time = threshold * sec
 
+    def update(self, active, *args, **kwargs):
+        super().update(active, *args, **kwargs)
+        #print("charge is: ", self.charge, " / ", self.charge_time)
+        if self.charge < self.charge_time:
+            print("charge is < time")
+            pygame.draw.rect(self.image, (0, 200, 0), self.rect, self.charge+1)
+        elif self.charge >= self.charge_time:
+            print("charge is >= time")
+            pygame.draw.rect(self.image, (0, 200, 50), self.rect, 0)
+        else:
+            print('charge is somehow neither')
+
     def cast(self, prev, now, direction):
-        ret = None
+        print("received now= ", now, "prev= ", prev)
         if now and not prev:
             self.charge = 1
         elif now and prev:
             self.charge += 1
-        elif not now and self.charge == self.charge_time:
+        elif not now and self.charge >= self.charge_time:
             self.charge = 0
-            ret = self.projectile(direction, self.rect.center, self.charge/self.charge_time)
+            return self.projectile(direction, self.rect.center)
         elif prev and not now:
             self.charge = 0
-        return ret
+        return None
 
 # multi
 class multicharge(charge_up):
@@ -173,23 +215,24 @@ class cool_down(spell):
 
     def cast(self, prev, now, direction):
         if self.heat > 0:
-            self.heat -=1
+            self.heat -= 1
             return None
         if now and self.heat == 0:
+            self.heat = self.cooldown_time
             return self.projectile(direction, self.rect.center)
 
 
 # this i gonna be weird. May want to just split it into two classes
 class beam(charge_up, cool_down):
-    def __init__(self, prep_method, *args):
+    def __init__(self, *args):
         super().__init__(*args)
-        self.prep_method = prep_method
+        #self.prep_method = prep_method
         self.own_missiles = pygame.sprite.Group()
 
     def cast(self, prev, now, direction):
-        super(self.prep_method).cast(prev, now, direction)
+        super().cast(prev, now, direction)
 
-class stream(charge_up, cool_down):
+class stream(spell):
     pass
 
 class targeted(spell):
@@ -206,17 +249,28 @@ class fireball_m(missile):
         missile.__init__(self, fire_ball_img, loc, (x_vel, y_vel))
         self.hitboxes.add(spriteling.hitbox(self))
 
-####### DEBUG STUFF
+
 class charged_fireball_s(charge_up):
     def __init__(self):
-        super().__init__(2, fireball_m, fire_book_img)
+        super().__init__(2, fireball_m, dupe(fire_book_img))
+        print("charged fireball charge time in frames: ", self.charge_time)
 
-####### END DEBUG STUFF
+
+
+class flamethrower_s(stream):
+    def __init__(self):
+        super(flamethrower_s, self).__init__(fireball_m, dupe(fire_book_img))
+
+
+class heatwave_s(cool_down):
+    def __init__(self):
+        super().__init__(2, fireball_m, dupe(fire_book_img))
 
 
 class iceshard_s(spell):
     def __init__(self):
         super().__init__(iceshard_m, ice_book_img)
+
 
 class iceshard_m(missile):
     def __init__(self, dir, loc):
@@ -225,15 +279,40 @@ class iceshard_m(missile):
         self.hitboxes.add(spriteling.hitbox(self))
 
 
+class blizzard_s():
+    pass
+
+
+class ice_wall_s():
+    pass
+
+
+class icebeam_s():
+    pass
+
+
 class acidic_orb_s(spell):
     def __init__(self):
         super().__init__(acidic_orb_m, acid_book_img)
+
 
 class acidic_orb_m(missile):
     def __init__(self, dir, loc):
         x_vel, y_vel = 4*dir[0], 4*dir[1]
         missile.__init__(self, acid_ball_img, loc, (x_vel, y_vel))
         self.hitboxes.add(spriteling.hitbox(self))
+
+
+class poison_spore_s():
+    pass
+
+
+class acid_cloud_s():
+    pass
+
+
+class pestilence_s():
+    pass
 
 
 class light_wave_s(spell):
@@ -246,23 +325,31 @@ class light_wave_m(missile):
         missile.__init__(self, light_wave_img, loc, (x_vel, y_vel))
         self.hitboxes.add(spriteling.hitbox(self))
 
+class radiant_glow_s():
+    pass
+
+class heal_s():
+    pass
+
+class ray_of_light_s():
+    pass
 
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):
-    def __init__(self):
-        super().__init__(1)
-        self.image = fire_book_img
+    def __init__(self, level=0):
+        super().__init__(level)
+        self.image = big_fire_book_img
         self.goddess_lookup_key = 'crop_top'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
-        self.spell_key = {0: fireball_s, 1: charged_fireball_s}
-        self.level_costs = {0: 1000, 1: 2000}
+        self.spell_key = {0: fireball_s, 1: charged_fireball_s, 2: flamethrower_s, 3: heatwave_s}
+        self.level_costs = {0: 1000, 1: 2000, 2: 3000}
 
 
 # the book of ice contains ice spells.
 class book_of_ice(spell_book):
-    def __init__(self):
-        super().__init__(0)
-        self.image = ice_book_img
+    def __init__(self, level=0):
+        super().__init__(level)
+        self.image = big_ice_book_img
         self.goddess_lookup_key = 'body_suit'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
         self.spell_key = {0: iceshard_s}
@@ -271,9 +358,9 @@ class book_of_ice(spell_book):
 
 # the book of acid contains acid spells.
 class book_of_acid(spell_book):
-    def __init__(self):
-        super().__init__(0)
-        self.image = acid_book_img
+    def __init__(self, level=0):
+        super().__init__(level)
+        self.image = big_acid_book_img
         self.goddess_lookup_key = 'tattered'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
         self.spell_key = {0: acidic_orb_s}
@@ -281,9 +368,9 @@ class book_of_acid(spell_book):
 
 
 class book_of_light(spell_book):
-    def __init__(self):
-        super().__init__(0)
-        self.image = light_book_img
+    def __init__(self, level=0):
+        super().__init__(level)
+        self.image = big_light_book_img
 
         self.goddess_lookup_key = 'robes'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')

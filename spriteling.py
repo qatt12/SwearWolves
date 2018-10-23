@@ -55,9 +55,9 @@ class spriteling(pygame.sprite.Sprite):
         #self.rect.move_ip(self.velocity)
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
         if 'move' in kwargs:
-            print("old rect: ", self.rect)
+            #print("old rect: ", self.rect)
             self.rect.move_ip(self.move_mult[0] * kwargs['move'][0], self.move_mult[1] * kwargs['move'][1])
-            print("new rect: ", self.rect)
+            #print("new rect: ", self.rect)
         if 'knockback' in kwargs:
             self.rect.move_ip(kwargs['knockback'][0], kwargs['knockback'][1])
         self.hitboxes.update()

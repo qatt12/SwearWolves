@@ -90,6 +90,7 @@ class room():
             self.entry_door.adjust(bound_rect=self.full_rect)
 
 
+            self.exit_door = door()
 
         self.doors = sGroup(self.entry_door)
 
@@ -143,6 +144,9 @@ class room():
         if 'players' in kwargs:
             # only checks the collision of the outer rect, not the hitbox.
             bonks = pygame.sprite.groupcollide(self.outer_walls, kwargs['players'], False, False)
+
+    def collide_enemies(self, player):
+        pass
 
 
 

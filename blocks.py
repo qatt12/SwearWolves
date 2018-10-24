@@ -1,74 +1,74 @@
-#                                 `--://+osyyyyso//:.`
-#                               .:/oyyyysssssyyyhyyhsoo:
-#                             .:/oyyssoooossssooooydyhhss:
-#                            -::sysooooossooooooooy:ssyhys+
-#                           :--ssooooossoooooooooy+`-soyyhs+
-#                          ---ssooooooooooooooooy+-::/yosysy/
-#                          :--+oooooooyoooooooyo.``..`:ssoyso.
-#                          ..::ooooooyooooosyo-````````/hohoy-
-#                        :/:/+/soooohoooshy+-.``````````yshoo-`
-#                         +:s+y+syoyssssy::++/.``````-+/ydsoo`
-#                          /::///o+hsoosyddyoym.````ohydoh/o-
-#                          `./:/-.osoos/:sds.-+``.-/dssos/..
-#                          ` .oo+-soooy.---.`.``.::+/.+so.
-#                         `.+sohs+hooos````````./:::/./oo
-#                     `:+osoosyos+ssoso`````...`.:----++s`
-#                  `:+ossoooo/::/+ososy/:-`````````-:-`+o+
-#                `/oosssooooo+:`:+ysooho+//:-...-:/:.  `ss:
-#               :oooysooooss:++/:--+soy:+ooo-//+o/:///-.`oy/
-#              :oooysooosyssooysss/::oo/-:/oso+o+:::/o//` /y+`
-#             .+ooysoooysoys///+/+/+///o::::///:::+sys+-..`:s/-`
-#             -ooyyoosyssdyhhyyo++//://++//////////ssoy----`+.
-#             /oohooyyosmdmm/-----:+ooo/:/+/+////:--sss/o/-:-
-#             +oyyosyoomhyN+```````...:o/::::---:::--+soso++s
-#            `/ohosyoohdosm:.```````.`.-o:.-...---```..-/oyshy+-
-#            `/ohohoosmsohd--```````.:/-o++.````.-::-.````-o:ssys:
-#             :+hohoohdooyh:..````````:++/os+:-.``.-:::-```+y+sydds. `
-#             -:ysyoohhsoshy./.````````++/++oso++/-..-:::``/h++ohyoh-
-#              :/hyoohshooyd/o-.```````.o/////+++osso:-::/`oo+++od:+d`.`
-#              `/+ysohohsooh+yh-.`````-.-o+///+++++++oo+:+:s++++/d/-d:.`
-#               `:+ssdoshsossomy+:.```:-.:y+//++++++++++oys+++++oh++s`.
-#                 -+oyyoohyoo+y+yo/.``.:-.+y///++++++++oydsoshyhss+-/
-#                  `:ohysoyhsss//do/-```-:-ss+//++ooooossd+/syo/.   .
-#                     .ohy+oyhh:`:ho//.```.-ssso+sssssoo+m..oo`
-#                       `:+soym-  yso:/.````.+.so+o+++++sy..oo
-#                         `oysm/  o/yd/.`````.++s+++++++Ns-.os
-#                          .oyyh  sh+dmy:`````-+ss+++++sN+/-os
-#                         ` `+oy `m//oydms-````:/ys+++ohd+:/ss`
-#                        `` `h+/`yd.o/osoddo-``.:-ho+oysmy--s/:   `
-#                         ` os.:ym+o+//os:smh+.```:doh+yhh/.o:s```````````....:/++//:////::--..`
-#                       ```/o`:hNd/////+os:/hd/.```+yys+yyy.o-y:://////////++///++oosyso+////:--:.
-#                -       `.s`+hNNs/////++oy:-o.`````odo+ysh-/+y-::::::::::::+ooo+//////+ooo:-://--/`
-#                :       `s.-yddy+////////+ho:+...-.:mysyhy//ss++//o++/::::::://ossoo++sos+oy+..:o-+
-#                ``     `o.`yhyy+/////////+ohyyyooo+//:/::o..+````.`...-...--...``.-:++/:+ss+yh/..so`
-#                       o-`+syd+///+o++oooo+/ssss-`````...s``+````.```````````....````.:/.:y//yh+./h`
-#                      +: +.om+++ooos+/--.``:++/`````````.s``+.```.``````````````..`````./-/+--h++:m
-#                     +: /:-d//+o+:-:``````.o/o```````````-``-.```````````````````````````++/-`ssoo/
-#                    +- ./ ss`.:-.`````````/+/o.``````````````````````````.```````````````-h-:-hss+
-#                  `o/  o `m/-`````````````/o++//:-``````````````````..-:-.```..`````````-+s-/ydd+
-#                  o/: -/ -d.`.````````````.y+/++-```````````````-:::/+s+-..--..```````.+++o/hd+-
-#                 ./+  o` oo````````````````o++o/..``````````````--:sdo://+/--/..```..:so++-yy-
-#                   +  o  h/ ```````````````.y++/:--``````````````+hhs+/++/::+-..``/oho/o-/:y.
-#                  .:  o  y+ ````````````````:so+/+``````````../+hms+--/--/:-o/. `/os+sho/``:``
-#                  :-  o `oo```````````.``````-os+o/-....-/////:hs/-:/-:+--:/s..-+hs+yhs+`    ``..``
-#               ``.::``-/`o.s``````````````````.:osossoo//:.---sh-+--+::+/-:+::/yhoooo-:..--.``   `...
-#         ``--....``+--.o:+`-o:..``````````...:////s:---:////:ooy::+::+--+:--:oosooo-.       `.....`
-#    ``--...``---....`   +-   .:/o///////:::::-```.s+oo+/:-.``do:/-:+--/:-//+oos++: `````          ```
-# .--.. `.::-:...``   `   :/.`   `..---..-:----:so+s/...`    /ys-/:-:/:-:/+ssy++:   ````.-:--...```
-# `  `---.       `...---``  -:::.````````...--..``` +        hs/--/:--::/osy+oo---......` .``
-# `--.                  .-----``.-----......`     ``-/--.--.:d+-/--::-:syysoo.`          .  `  ``
-# ````                        .----.`       `.:://+//+o::-..+o::-:--:syyoso-  -          -  `  .     -
-#  ``..`                           `....-:/++//+o:::.``+:::/h:-::-:/ss+/o//  :`         -`  ` .`    `:
-#      `..--.            ```     `..:+oo+/+:--.`:```-:oy++s/h-:--/+oo:/y+`/  +          /   ` :     /
-#           `.----` ```..````````-+s+::---.    .- .yos//.:o/s--:+yo/++//o/. --          /   ``-    -.
-# ``              .--:-`      .//:`---`  -`    :. -s/.-:/:/y+::/ss--ss--y/  +          `:   `-     /
-# `..`                 .-.--+s/``--`     /     /  `s::--://s:/::-y-:+s-:y   +          -.   `:    `:
-#    `...`               -/s/..+.        +     /   .o//:--+///::-h-o:s-s:  `+          /    .-    :`
-#        `....         -/-+` ..:        `/     /    `+s:/o+:--:/oy-o+/.h/  -:          /    :`    :
-#   ```       ..-.   `/- +` .`.-        --     /     `y/:o--:+::yo+/s-s:+  :.          /   `:     -
-#      ````````  `..-+`  .``` /`        +`     /     -o/-o---+..d/o/so//.  /.          +   `-     .
-#              ````-+       ` +         o      /     .s--o---o-/yo/+o+s/   /.          /   ..     .
-#                  o          +         o      /     `o--o---o:/hossdmd    :.          /          `
+#                                  `.-::/+osyyyyso//:.`
+#                               .-/oyyyyyysssyyhhhyhsoo:
+#                             .:/oyyyssooossysooosymhddys:
+#                            -::sysooooossooooooooh:ysyhhy+
+#                           :--syooooossoooooooooy/ .soyyhs+
+#                          ---ssoooossooooooooooy/.-:/yoyhyy/
+#                          :--+oooooooysooooooyo.  `` -ssohso.
+#                          ..::oooooshsoooosy+.        :hohoy.
+#                        :/-/+/soooohoosshy+-`          yshoo-
+#                         +:s+s+yyohssyyy:://:`      -+/ydsoo`
+#                          /:://:o/dssosyddhoym`    ohydoh:o-
+#                          `./-:-.osoos/-sds..+  `-/dssoy/..
+#                            .so/-soooy`...```  `:-+:`+so.
+#                         `.oyods+hooos        `/::::`/oo
+#                     `:+ossssyos+ssoso     .```.:--..++y`
+#                  `:+ssssoos/:::/ososy/:-`  `   ` .:-`+o+
+#                `/oosysooooo+-`:+ysooho+//:-```.:/:.  `ss:
+#               -oooyyooooys-///-.-+s+y:+o+o.://o:-:::-.`oy/
+#              :oooysooosyssooyoso:--++:.-/+oo+++---:+:/` /y+`
+#             ./ooysoosyysys//:/:/://-/+-----:----/sys/.`.`:s/.`
+#             -ooyyooshssdyhhyy+//:--:://:::::::::/ssoy..`.`+.
+#             /oohooyyosmdNm:....--+ooo:-:///:://...sss/o/.--
+#             ooyyoyyoomhyN+       ```:o::---....---.+sooo/+s
+#            `/ohoshooddosm-`       ```-o-`...`.-.`  ``.:oyshy+-
+#            `:ohohoosmsohd..       `-/.o++`    `.--.`   `-o:ssys:
+#             :+hohoohdooyh:``       `:++/os+:-`  `.-::.   /y/oydds.
+#             -:yyyoodhsoshh`/``      `++://oso++:.``--::  :h++ohhod-
+#              :/hhoodshooyd/o-`       `+::::/+++oss+:.--: oo+++od:+d`.`
+#              `:+hsodohsooh+hh-`     .`.o//:/++++++ooo+:+:y++++:d/-d:.`
+#               `:+ssdosdsossomy+:`   :.`:y+:/++++++++++syso++++od++s .
+#                 -/oyyoshyoo+y+yo:`  `:-`/y/:/++++++++ohdsoshyhys+-/
+#                  `:shysoyhsss//do/-   .:-ss+:/+oooosossm+/sys/`   `
+#                     .ohy+shdd:`:ho::`   `.ssso+sssssooom``oo
+#                       `:/soyN-  ys+-:`    `+.o+oooo+++sy``oo
+#                         `oysm/  o/yd:`     `++s+++++++Ns``os
+#                          `oyyh  sh+dmy-     .+sy+++++yN+:`os
+#                         ` `+oy `m//+ydms.    -/ys+++ohm+-:oo`
+#                        `` `h+/`yd.o:+sohdo. ``:-ho+ohsmy`.s/:
+#                         ` os.:ym/o///+s-oNh/`   :dohoyhh:`o-s````````````...:/++//:////:::-..`
+#                        ``/o`:hNd:::://os-/hh/`   /yyy+yhy`+-y::://////::/+/////+++oys+////::--:.
+#                -        .s`+hNNs/////+/oy:-+`    `odo+ysh.//y-----:::-----/oo+//:://:/+++:--:/--/`
+#                :       `s..yddy/:::::///+ho:+``...:mhyyhy//ss////o///::---:::/+ssoo/+sos/+s+.`:+-+
+#                ``      o.`yhys//////////++dyyyoo++/::/-:o``+`   ````........``  `.-//::/so+yh/``so`
+#                       o- +syd+////o/+oo+o+/soss.     ```s  +    `           ````    `-:`-y:/yh+`/d`
+#                      +: +.om++/+++s+/-..  :///`        `o  /`   `              ``     `/.:+-.h+/:m
+#                     +: /--d/:+++:.-      `o:o           -  .`                          `+//- ssoo/
+#                    +- ./ ss`.-.`         :+/+`                         ``               .y.-.hss+
+#                  `o/  o `N/-`            :o+/:::.                  ``.-.`   ``         .+s-:hmm+
+#                  o/: -/ -d.```           .y+///.               -::::+s+.``..``       .+++o/hd+-
+#                 ./+  o  oo                oo+o:``             `..-sdo::/+/.-/.`   `.:so++-yy-
+#                   +  o  h/                `y++/--.             `/dhs+/+//::/-.. `/oho/o-::y.
+#                  .:  o  y+                 -so+/+         ``.:/hmo+--/--:--o/. `/oy/sho/` :`
+#                  --  o  oo`          `      .os/+/.```..://::-ho/--/--/--:/s..-/hs/yhs+`    ``..``
+#                `.::``-/ o.s`                 `-+sossoo/:.``..sh-+--/:-/:-:/--:yhoooo--..--.``   `...
+#         ``--....``+--.o:o`-o:``         ```.-////s-...-:://:ooy::+--/--+---:ooso+o-.       `.....`
+#    ``--...``---....`   +-   .:/+//::::::::::.```.s+oo+::-.``do:/-:/--/:-//+oos++: `````          ```
+# .--.. `.-:-:...`        :/.`   `..---..-:----:so+s/...`    /yo-::--/--:/+ssy+o:   ````.----...```
+# `  `---.       `...---``  -:::.````` ``...--..``` +        hs/--:---::/osy+oo-.-......` .``
+# `-..                  ..----``.-----.....``     ``-/-----.:d/-/---:-:syysoo.`          .  `  ``
+# ```                         .----.`       `.:://+//+o:--..+o---:---oyyooo-  -          -  `  .     -
+#  ``..`                            ....-:/++//+o:::.``+:::/h---:--/ss//o//  :`         -`  ` .`    `:
+#      `..--.            `       ``.-+ooo/+:--` :  `-:oy++s/h-:--:+oo-:y+`/  +          /   ` :     /
+#           `.----` ```..````````-+s+::---.    .- .yos//.:o:s--:+y+:++/:o/` --          /   ``-    -.
+# `               .--:-`      .//:`---   -`    :. -s/.-:/-/y+-:/ss--ss--h/  +          `:   `:     /
+# `..`                 .-.--+s/``--`     /     /  `s:----/:o:/::-y--+s-:y   +          -.   `:    `:
+#    `...`               -/s/..+.        /     /   .o/::--+//::--h-+:s.s:  `+          /    .-    :`
+#        `....         -/-+` ..:        `/     /    `/s-:o/:--::+y-o+/.h+  -:          /    :     :
+#             ..-.   `+- +` . .-        --     /     `y/-o--:+:-yo//s-o:+  :.          /    :     -
+#       ```````  `..-+   . `` /`        +      /     -o:-+---+..d:o:s+//.  /.          /   `-     .
+#              ````-+         +         o      /     .s-.o---o-/yo:+++s/   /.          /   ..     .
+#                  o          +         o      /     `o-.o---o-/hossdNd    :.          /          `
 
 # blocks are, as stated in the spriteling file, intended to be placed and then never moved. With the notable exception
 # of floors, blocks are also supposed to impede movement

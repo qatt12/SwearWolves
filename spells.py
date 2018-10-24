@@ -288,10 +288,9 @@ class cool_down(spell):
 
 
 # this i gonna be weird. May want to just split it into two classes
-class beam(charge_up, cool_down):
+class beam(spell):
     def __init__(self, *args):
         super().__init__(*args)
-        #self.prep_method = prep_method
         self.own_missiles = pygame.sprite.Group()
 
     def cast(self, prev, now, direction):

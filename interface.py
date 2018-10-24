@@ -106,7 +106,22 @@ import pygame
 # solves a ton of headache causing problems with scope resolution
 class handler():
     def __init__(self, controller, **kwargs):
+        # the bare minimum a handler needs is a controller (coincidently, this is the bare minimum case in which a
+        # handler is useful). It only takes a controller at first because the first handler is made right after the
+        # driver.py::start loop is set to end (when player one hits start). At that point, a controller is all thats
+        # available to be passed into class::handler
         self.controller = controller
+
+        # most of this kwargs stuff is nearly useless, artifacts of a different version or stuff I added in case I
+        # wanted to change it later, or I thought it would be easy to expand functionality in this direction
+        # for whatever values aren't specified in kwargs, the initial state(s) are set to None, because handler needs
+        # that field, but it can't be filled yet. They are added to handler via the attach method
+        if 'console_message' in kwargs:
+            print("from player_handler: ", kwargs['console_message'])
+        if 'name' in kwargs:
+            self.name = kwargs['name']
+        else:
+            self.name = 'generic'
         if 'player' in kwargs:
             self.player = kwargs['player']
         else:
@@ -122,6 +137,7 @@ class handler():
         self.hud = None
         self.missiles = pygame.sprite.Group()
 
+    #
     def attach(self, **kwargs):
         if 'player' in kwargs:
             self.player = kwargs['player']
@@ -129,6 +145,9 @@ class handler():
             self.book = kwargs['book']
         if 'menu' in kwargs:
             self.menu = kwargs['menu']
+            print("attached menu: ", self.menu)
+        if 'name' in kwargs:
+            self.name = kwargs['name']
 
     def update_menu(self):
         #print("performing a menu update from player handler")
@@ -180,13 +199,20 @@ class handler():
         # updates spells
         self.missiles.update()
 
-    def begin_game(self, p_constr, starting_room):
+    # finishes pre-game prep by populating all of the necessary internal vars with the applicable data/references.
+    # called by driver.py::class::screen. p_constr had to be passed in as a param to avoid importing stuff to
+    # interface.py (which totally makes sense for reasons that are great and super important)
+    def begin_game(self, p_constr, starting_room, player_num):
+        # deletes a reference to the char_select_menu, since it is no longer needed, and should be garbage collected
+        self.menu = None
         self.player = p_constr(self.book)
         self.book.pop_spells()
-        import overlays
-        self.hud = overlays.hud(self.player, self.book)
+        # okay so I couldn't get around importing this one thing.
+        from overlays import hud
+        self.hud = hud(self.player, self.book, player_num)
         starting_room.add_players(self.player)
 
+    # all of the draw_boxes method calls are for debugging and should be deleted prior to submission
     def draw(self, disp):
         self.player.draw(disp)
         self.player.draw_boxes(disp)

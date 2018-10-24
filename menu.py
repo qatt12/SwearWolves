@@ -41,6 +41,7 @@ class player_select_menu(menu):
         self.index = 0
         self.book_choice = unlocked_books
         self.ready = False
+        self.banned = []
         self.curr_book_img = pygame.transform.scale2x(unlocked_books[self.index].image)
         self.player_img = pygame.transform.scale2x(ld_plyr(unlocked_books[self.index].goddess_lookup_key, (1, 1)))
 
@@ -65,7 +66,7 @@ class player_select_menu(menu):
         return self.book_choice[self.index]
 
     def is_ready(self):
-        if self.ready:
+        if self.ready and self.index not in self.banned:
             return self.index
         else:
             return -1
@@ -78,13 +79,16 @@ class player_select_menu(menu):
 
     # ignore this for now; doesn't really work
     def ban_book(self, index_no):
-        new_list = []
-        for x in range(0, len(self.book_choice)):
-            if x != index_no:
-                new_list.append(self.book_choice[x])
-        self.book_choice = new_list
-        if self.index > len(self.book_choice):
-            self.index = len(self.book_choice)
+        print("calling ban_book on: ", index_no)
+        # new_list = []
+        # for x in range(0, len(self.book_choice)):
+        #     if x != index_no:
+        #         new_list.append(self.book_choice[x])
+        # self.book_choice = new_list
+        # if self.index > len(self.book_choice):
+        #     self.index = len(self.book_choice)
+        self.banned.append(index_no)
+        self.prev_book()
 
     def update(self, **kwargs):
         if not self.ready:
@@ -92,6 +96,9 @@ class player_select_menu(menu):
             self.image.fill(black)
             self.curr_book_img = pygame.transform.scale2x(self.book_choice[self.index].image)
             self.player_img = pygame.transform.scale2x(ld_plyr(self.book_choice[self.index].goddess_lookup_key, (1, 1)))
+
+            while(self.index in self.banned):
+                self.next_book()
 
         elif self.ready:
             pygame.draw.rect(self.image, self.color, p_rect, 40)

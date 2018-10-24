@@ -21,7 +21,7 @@ class controller_list():
         #print("standby: ", standby_controllers)
         #print("keyboard: ", self.is_keyboard)
         for each in standby_controllers:
-            #print("each: ", each)
+            # print("each standby controller: ", each)
             each.update()
             if each.check_status() and each.jub.get_id() not in self.used_joysticks:
                 self.active_controllers.append(each)
@@ -35,24 +35,26 @@ class controller_list():
         #print("is p1 ready")
         if len(self.active_controllers) > 0:
             self.player_num += 1
+            # print("ticking player num from p1")
             return True
         else:
             return False
 
     def get_p1(self):
-        #print("getting p1")
+        # print("getting p1")
         if self.active_controllers[0]:
-            return handler(self.active_controllers[0])
+            return handler(self.active_controllers[0], console_message="got player one")
 
     def get_next_player(self):
-        #print("getting next")
+        # print("getting next")
+        # print("ticking player num from next")
         self.player_num += 1
-        return handler(self.active_controllers[self.player_num-1])
+        return handler(self.active_controllers[self.player_num-1], console_message="got next player")
 
     def is_next_ready(self):
-        #print("is next ready")
-        #print("active controllers: ", self.active_controllers)
-        #print("active joysticks: ", self.used_joysticks)
+        # print("is next ready")
+        # print("active controllers: ", self.active_controllers)
+        # print("active joysticks: ", self.used_joysticks, "misc player num= ", self.player_num, "active controller num= ", len(self.active_controllers))
         if len(self.active_controllers) > self.player_num:
             return True
         return False

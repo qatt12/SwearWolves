@@ -1,20 +1,26 @@
 #configuration options
 #contains the important config/initialization params in a central location.
-#these act more as defaults, and can (likely will) be overwritten locally by main
 
 fps = 128
-screen_size = (1300, 700)
+screen_size = (1600, 900)
 screen_width = screen_size[0]
 screen_height = screen_size[1]
 
+# constants for the proportional size of the players' HUDs
+hud_width_proportion = 3
+hud_height_proportion = 5
+
+# size of the tiles used to draw florrs and such
 tile_scalar = 100
 
+# colors
 green  =    (  0, 255,   0)
 red    =    (255,   0,   0)
 blue   =    (  0,   0, 255)
 white  =    (255, 255, 255)
 black  =    (  0,   0,   0)
 
+# color, but in a dicrioanry
 color_lookup = {
     'green'  :    (  0, 255,   0),
     'red'    :    (255,   0,   0),

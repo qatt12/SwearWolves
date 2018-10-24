@@ -139,7 +139,7 @@ class floor(spriteling.block):
 
 class door(spriteling.block):
     def __init__(self, **kwargs):
-        super().__init__(pygame.image.load('baddies\loogloog.png').convert_alpha(), (0, 0))
+        super().__init__(pygame.image.load('misc\spirit.jpg').convert_alpha(), (0, 0))
         if 'coords' in kwargs:
             self.rect.center = kwargs['coords']
         if 'root_wall' in kwargs:

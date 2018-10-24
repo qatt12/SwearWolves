@@ -144,6 +144,10 @@ class room():
         if 'players' in kwargs:
             # only checks the collision of the outer rect, not the hitbox.
             bonks = pygame.sprite.groupcollide(self.outer_walls, kwargs['players'], False, False)
+            print(bonks)
+            for each in bonks:
+                for sub in bonks[each]:
+                    sub.rect.move_ip(0, -1)
 
     def collide_enemies(self, player):
         pass
@@ -153,5 +157,5 @@ class room():
 class hub_room(room):
     def __init__(self, disp):
         #self.rect = pygame.rect.Rect((0, 0), (10*config.tile_scalar, 10*100))
-        super().__init__(('left', 1), (14, 10), theme(), disp)
+        super().__init__(('center', 1), (9, 7), theme(), disp)
 

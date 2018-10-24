@@ -68,10 +68,10 @@ class xbone_gamepad(object):
                            'RX': self.jub.get_axis(4), 'RY': self.jub.get_axis(3)}
         self.new_triggers = jub.get_axis(2)
         self.new_buttons = {'A': jub.get_button(0), 'B': jub.get_button(1),
-                        'X': jub.get_button(2), 'Y': jub.get_button(3),
-                        'LB': jub.get_button(4), 'RB': jub.get_button(5),
-                        'Start': jub.get_button(7), 'Select': jub.get_button(6),
-                        'LStick': jub.get_button(8), 'RStick': jub.get_button(9)}
+                            'X': jub.get_button(2), 'Y': jub.get_button(3),
+                            'LB': jub.get_button(4), 'RB': jub.get_button(5),
+                            'Start': jub.get_button(7), 'Select': jub.get_button(6),
+                            'LStick': jub.get_button(8), 'RStick': jub.get_button(9)}
 
 
     # the way jub works is like this: he gathers all the controller input once per frame and saves it to himself (when

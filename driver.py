@@ -52,6 +52,7 @@ class screen_handler():
         print("display rect is : ", display.get_rect())
         self.disp = pygame.Surface(config.screen_size)
         self.size = config.screen_size
+        self.scroll_bounds = None
         self.menus = pygame.sprite.Group()
         self.player_one = None
         self.player_index = 0
@@ -75,9 +76,9 @@ class screen_handler():
             self.player_index = 1
             self.ordered_list_of_player_HANDLERS = [self.player_one]
         if 'next_player' in kwargs:
-            self.GROUP_of_player_SPRITES.add(self.player_one.player)
+            #self.GROUP_of_player_SPRITES.add(self.player_one.player)
             self.ordered_list_of_player_HANDLERS.append(kwargs['next_player'])
-            self.GROUP_of_player_SPRITES.add(kwargs['next_player'].player)
+            #self.GROUP_of_player_SPRITES.add(kwargs['next_player'].player)
             self.player_index += 1
         if 'room' in kwargs:
             self.current_room = kwargs['room']

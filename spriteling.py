@@ -218,6 +218,9 @@ import pygame, config
 
 placeholder = pygame.image.load('baddies\loogloog.png').convert_alpha ()
 
+def collide_hitbox(spritelingA, spritelingB):
+    pass
+
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
 class spriteling(pygame.sprite.Sprite):
@@ -273,12 +276,15 @@ class spriteling(pygame.sprite.Sprite):
         #print("calling move from spriteling")
         xvel, yvel = 0, 0
         if 'vel' in kwargs:
-            xvel, yvel = kwargs['vel'][0], kwargs['vel'][0]
+            xvel, yvel = kwargs['vel'][0], kwargs['vel'][1]
         if 'move' in kwargs:
             xvel = xvel + (self.move_mult[0] * kwargs['move'][0])
             yvel = yvel + (self.move_mult[1] * kwargs['move'][1])
         if 'knockback' in kwargs:
             self.rect.move_ip(kwargs['knockback'][0], kwargs['knockback'][1])
+        if 'walls' in kwargs:
+            # a bunch of rectangles that block the player
+            pass
         #return (xvel, yvel)
         self.velocity = (xvel, yvel)
 

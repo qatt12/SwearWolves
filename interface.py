@@ -195,6 +195,7 @@ class handler():
         if now or prev:
             self.book.update(origin, fire=(now, prev), direction=self.player.facing,
                              missile_layer=self.missiles)
+        self.book.update(origin)
 
         # updates spells
         self.missiles.update()

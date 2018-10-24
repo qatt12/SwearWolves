@@ -29,11 +29,6 @@
 #  ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡎⡳⠂ ⣠⡾⣫⣶⣿⣿⣷⣦⣄⣉⣀⣈⣁⣀⣠⣤⣾⣶⣦⣄⡀ 
 #  ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢟⠋⡱⠁ ⡰⡟⠑⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 
-
-def lprint(*args):
-    print("from driver.py")
-    print(*args)
-
 import pygame, config
 from misc import controller_list as controller_list
 pygame.init()

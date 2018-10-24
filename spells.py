@@ -61,10 +61,6 @@
 import spriteling, pygame
 from config import fps as sec
 
-def lprint(*args):
-    print("from spells.py")
-    print(*args)
-
 light_wave_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
 fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
 acid_ball_img  = pygame.image.load( 'projectiles\img_poisonball.png').convert_alpha()
@@ -150,9 +146,6 @@ class spell_book(spriteling.spriteling):
         self.other_spells.add(self.active_spell)
         self.active_spell.add(self.spells[self.index])
         self.other_spells.remove(self.active_spell)
-
-        print("from spells.py: ")
-
         if 'fire' in kwargs:
             for lonely in self.active_spell:
                 print("active spell is: ", lonely)
@@ -199,22 +192,32 @@ class missile(spriteling.spriteling):
 # spells themselves don't do much, except for creating and launching missiles
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
 class spell(spriteling.spriteling):
-    def __init__(self, projectile, img):
+    def __init__(self, projectile, img, **kwargs):
         super().__init__(image=img)
         # this is to be initialized just before its time to fire
         self.projectile = projectile
+        if 'type_name' in kwargs:
+            self.type_name = kwargs['type_name']
+        else:
+            self.type_name = 'basic spell'
+        if 'spell_name' in kwargs:
+            self.spell_name = kwargs['spell_name']
+        else:
+            self.spell_name = "I should have a name"
+
+        print(self)
 
     def update(self, active, *args, **kwargs):
         super().update(*args, **kwargs)
         #print("i am active (T/F): ", active)
-        #if active:
-        if 'loc' in kwargs:
-            self.rect.center = kwargs['loc']
-        msl_chk = self.cast(*args)
-        if 'missile_layer' in kwargs and msl_chk is not None:
-            kwargs['missile_layer'].add(msl_chk)
-        else:
-            pass
+        if active:
+            if 'loc' in kwargs:
+                self.rect.center = kwargs['loc']
+            msl_chk = self.cast(*args)
+            if 'missile_layer' in kwargs and msl_chk is not None:
+                kwargs['missile_layer'].add(msl_chk)
+            else:
+                pass
 
 
     def cast(self, prev, now, direction):
@@ -226,27 +229,30 @@ class spell(spriteling.spriteling):
     def fire(self, direction):
         return self.projectile(direction, self.rect.center)
 
+    def __str__(self):
+        return str(self.type_name +' '+ self.spell_name +' '+ self.name)
 
 # charge_up spells need to be charged by holding the fire button until they are sufficiently charged
 # every frame in which the fire button is held (it determines if the button is held by checking the current and previous
 # frame's data) the spell gains 1 charge.
 class charge_up(spell):
-    def __init__(self, threshold, *args):
-        super().__init__(*args)
+    def __init__(self, threshold, *args, **kwargs):
+        super().__init__(*args, type_name='charge_up', **kwargs)
         self.charge = 0
         self.charge_time = threshold * sec
 
     def update(self, active, *args, **kwargs):
         super().update(active, *args, **kwargs)
         #print("charge is: ", self.charge, " / ", self.charge_time)
-        if self.charge < self.charge_time:
-            print("charge is < time")
-            pygame.draw.rect(self.image, (0, 200, 0), self.rect, self.charge+1)
-        elif self.charge >= self.charge_time:
-            print("charge is >= time")
-            pygame.draw.rect(self.image, (0, 200, 50), self.rect, 0)
-        else:
-            print('charge is somehow neither')
+        if active:
+            if self.charge < self.charge_time:
+                print("charge is < time")
+                pygame.draw.rect(self.image, (0, 200, 0), self.rect, self.charge+1)
+            elif self.charge >= self.charge_time:
+                print("charge is >= time")
+                pygame.draw.rect(self.image, (0, 200, 50), self.rect, 0)
+            else:
+                print('charge is somehow neither')
 
     def cast(self, prev, now, direction):
         print("received now= ", now, "prev= ", prev)
@@ -269,18 +275,19 @@ class multicharge(charge_up):
 
 
 class cool_down(spell):
-    def __init__(self, timer, *args):
-        super().__init__(*args)
+    def __init__(self, timer, *args, **kwargs):
+        super().__init__(*args, type_name='cool_down', **kwargs)
         self.heat = 0
         self.cooldown_time = timer * sec
         
     def update(self, active, *args, **kwargs):
         super(cool_down, self).update(active, *args, **kwargs)
+        if self.heat > 0:
+            self.heat -= 1
 
     def cast(self, prev, now, direction):
         print("as of cast, heat= ", self.heat)
         if self.heat > 0:
-            self.heat -= 1
             return None
         if now and self.heat == 0:
             self.heat = self.cooldown_time
@@ -289,8 +296,8 @@ class cool_down(spell):
 
 # this i gonna be weird. May want to just split it into two classes
 class beam(spell):
-    def __init__(self, *args):
-        super().__init__(*args)
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, type_name='beam', **kwargs)
         self.own_missiles = pygame.sprite.Group()
 
     def cast(self, prev, now, direction):
@@ -305,7 +312,7 @@ class targeted(spell):
 
 class fireball_s(spell):
     def __init__(self):
-        super().__init__(fireball_m, fire_book_img)
+        super().__init__(fireball_m, fire_book_img, spell_name='fireball')
 
 class fireball_m(missile):
     def __init__(self, dir, loc):
@@ -316,19 +323,19 @@ class fireball_m(missile):
 
 class charged_fireball_s(charge_up):
     def __init__(self):
-        super().__init__(2, fireball_m, dupe(fire_book_img))
+        super().__init__(2, fireball_m, dupe(fire_book_img), spell_name="charged fireball")
         print("charged fireball charge time in frames: ", self.charge_time)
 
 
 
 class flamethrower_s(stream):
     def __init__(self):
-        super(flamethrower_s, self).__init__(fireball_m, dupe(fire_book_img))
+        super(flamethrower_s, self).__init__(fireball_m, dupe(fire_book_img), spell_name='flamethrower')
 
 
 class heatwave_s(cool_down):
     def __init__(self):
-        super().__init__(2, fireball_m, dupe(fire_book_img))
+        super().__init__(2, fireball_m, dupe(fire_book_img), spell_name='heatwave')
 
 
 class iceshard_s(spell):

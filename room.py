@@ -152,9 +152,9 @@ class room():
         self.outer_walls.update()
         self.doors.update()
 
-        print("door rect at update: ", self.entry_door.rect)
-        for each in self.outer_walls:
-            print("wall rect at update: ", each.rect)
+        #print("door rect at update: ", self.entry_door.rect)
+        #for each in self.outer_walls:
+            #print("wall rect at update: ", each.rect)
 
     def draw_boxes(self, disp):
         for w in self.outer_walls:

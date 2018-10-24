@@ -259,7 +259,7 @@ screen.apply(room=hub)
 screen.game_start(plyr, hub)
 scroll = (0, 0)
 
-hub.spawn_enemy(enemies.enemy())
+hub.spawn_enemy(enemies.enemy(loc=(600, 600)))
 
 while(game_loop and running):
     for event in pygame.event.get():

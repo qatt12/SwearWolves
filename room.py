@@ -109,6 +109,8 @@ class room():
         self.outer_walls.draw(disp)
         self.doors.draw(disp)
 
+        self.enemies.draw(disp)
+
     # super basic method atm, designed to be expanded as needed in later iterations
     def add_players(self, player):
         self.entry_door.enter(player)
@@ -124,6 +126,8 @@ class room():
     def draw_boxes(self, disp):
         for w in self.outer_walls:
             w.draw_boxes(disp)
+        for e in self.enemies:
+            e.draw_boxes(disp)
 
         self.ground.draw_boxes(disp)
         pygame.draw.rect(disp, config.green, self.full_rect, 4)

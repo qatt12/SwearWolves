@@ -208,7 +208,7 @@
 # (ex: give everything a move function even if its a stationary object. thus if main tries to make a floor tile move,
 # the game doesn't crash).
 # also of importance, this allows the calling of isinstance() to help figure out how something should react to hitbox
-# collision
+# collision.
 
 # note that this class hierarchy is tentative, and subject to potentially heavy overloading. It may not necessarily
 # make a ton of sense to have things laid out this way, but......

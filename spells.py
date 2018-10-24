@@ -145,7 +145,7 @@ class spell(spriteling.spriteling):
 
     def update(self, active, *args, **kwargs):
         super().update(*args, **kwargs)
-        print("i am active (T/F): ", active)
+        #print("i am active (T/F): ", active)
         #if active:
         if 'loc' in kwargs:
             self.rect.center = kwargs['loc']
@@ -214,6 +214,7 @@ class cool_down(spell):
         self.cooldown_time = timer * sec
 
     def cast(self, prev, now, direction):
+        print("as of cast, heat= ", self.heat)
         if self.heat > 0:
             self.heat -= 1
             return None

@@ -13,7 +13,7 @@
 
 import pygame, config
 
-placeholder = pygame.image.load('misc\img_default.png').convert_alpha ()
+placeholder = pygame.image.load('baddies\loogloog.png').convert_alpha ()
 
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
@@ -128,6 +128,22 @@ class hitbox(pygame.sprite.Sprite):
     def update(self, **kwargs):
         self.rect.center = self.host.rect.center
         # straight up copy-pasted from the init method, because why bother saving this to the hitbox when nearly
+        if 'rect' in kwargs:
+            self.rect = pygame.Rect.copy(kwargs['rect'])
+        # if no rect is provided, it copies the rect of its host
+        else:
+            self.rect = pygame.Rect.copy(self.host.rect)
+        # the rect scales to the provided x and y proportions
+        if 'scale_x' in kwargs:
+            xscale = kwargs['scale_x']
+        else:
+            xscale = 1
+        if 'scale_y' in kwargs:
+            yscale = kwargs['scale_y']
+        else:
+            yscale = 1
+        self.rect.inflate_ip(xscale, yscale)
+
         # everything has their hitbox centered by default?
         if 'center' in kwargs:
             self.rect.center = kwargs['center']

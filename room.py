@@ -95,6 +95,8 @@ class room():
         # the walls have to be spritelings in a group in order to properly register collision
         self.outer_walls = theme.build_walls(self.full_rect)
 
+        self.enemies = sGroup()
+
         self.all_sprites.add(self.outer_walls, self.floors)
 
 
@@ -111,7 +113,11 @@ class room():
     def add_players(self, player):
         self.entry_door.enter(player)
 
-    def update(self):
+    def spawn_enemy(self, *args, **kwargs):
+        for each in args:
+            self.enemies.add(each)
+
+    def update(self, *args, **kwargs):
         self.outer_walls.update()
 
 

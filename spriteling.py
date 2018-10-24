@@ -18,7 +18,7 @@ placeholder = pygame.image.load('baddies\loogloog.png').convert_alpha ()
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
 class spriteling(pygame.sprite.Sprite):
-    def __init__(self,*args, **kwargs):
+    def __init__(self, *args, **kwargs):
         super().__init__()
         #### new update: spriteling now takes kwargs, to make calling it less of a pain in the ass
         # this most basal constructor takes an image and a location, assigns the image to the sprite, builds a rectangle

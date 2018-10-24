@@ -90,6 +90,7 @@ class room():
             self.entry_door.adjust(bound_rect=self.full_rect)
 
 
+
         self.doors = sGroup(self.entry_door)
 
         # the walls have to be spritelings in a group in order to properly register collision
@@ -148,5 +149,5 @@ class room():
 class hub_room(room):
     def __init__(self, disp):
         #self.rect = pygame.rect.Rect((0, 0), (10*config.tile_scalar, 10*100))
-        super().__init__(('left', 3), (10, 6), theme(), disp)
+        super().__init__(('left', 1), (14, 10), theme(), disp)
 

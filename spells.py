@@ -1,3 +1,63 @@
+# dmmmmmmmmmmmmmmmmmdddmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmdddddmmmmmmmmmmmmmmmmmddmmmNN
+# dNNNmyyyyyyyyyyyyyyysysyysyssssyssssysysyysyysysyssysyssysysyysysyssysssoooooossssyyyyyyysssssshmmNN
+# dNNN//+////++++++++++++++++/+/++/+++++///+/+++++++/+///++++++++++++++++++++++///////++++////////hNNN
+# dNNm/++:yoo+/:++:s//o:///o+:y/+:s++//++/yo:s///:o+:yo-++o+/+o++++++++++++++++++++++/////++/+++++hNNN
+# hmmm/++:y++/s+oy:y/so/syso+/y+:oo+++s++/y+/so+oss+/s+++so/+so+++++++++++++++++++++++++//++++++++hNNN
+# hmmm/+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++hNNN
+# hmmm/-```````````````````.-----:://:....................................```````````````````````+hNNN
+# hmmm:`                  `----::://.......................................`                     /hNNN
+# hmmm:`                  ---:://+:```......................................`                    /hNNN
+# hmmm:`                 --:-////-.`.....`...........--..-....-...--........-.``                 /hNMN
+# hmmm:`                 :--:///:..-.-..`.............:-.--....-...-:..........-`                /hMMN
+# hmmm:`                `:.-://+..:---.........-......-+-.--....--..-/-...-...-:-`               /hMMN
+# hmmm:`                ..--:///::+//:-.-....-/--.-..-/+o:.:-....--..-/.`.--...:--               /hMMN
+# hmmm:`               `-..-:/+//++s/////::::/:-.-.-/++/-:/-::....-...:/.`./..:./-.              /hMMN
+# hmmm:`          .`   `-..-::o//++so//////+++//::/oo+:.``:/:/:--..-...//../..-:./-`             /hMMN
+# hmmm:`         .`    ....-::o//osos//////++//+os+/:::/+/..////-----..-+/.+-.-:.:--`    `       /hMMN
+# dmmm:`         ..   `/....:-+o/soos////++//+os/:..--```-.``-/++/::::::/s:o---/..`--`  ``.`     /hMMN
+# dmmm:`          -...-/-...--:s+o++o////syss+++ydmdhh/.```````-/+oso++//oss/::o:- `.-..`..`     /hMMN
+# dmmm:`           ```` -....:-os:.:////ohy+:ymNMMMoh-s.`````````-/o+++o+/ys///+:-    ````       /hMMN
+# dmmm:`                 -...--:s``+:+//+y+`.ymsNMNNh ```````````-:+yo++ooyoo::/-.               /hMMN
+# dmNm:`                 `-..---s``/:+//+o+```yyosyN: ``````````+mNdsh/::ss+/:./-`               /hMMN
+# dNNm:`                  -...-:+/-/////+//.`.-+oos/ ``````````/mMNy//y.+y+//`.:.                /hMMN
+# dNNm:`                  -...-+//o+:///++..```````````````````yoddh`ss:yo+:` --                 /hMMN
+# dNNm:`                  :..-+///++-:://o-````````````````````sso+`.-.oy+.  .-`                 /hMMN
+# mNNN:`                  :.::://++o-:-///+.```````````````-`````.-```//s/. `:`                  /hMMN
+# mNNN:`                `-::--///+oo::--////`````.+..````````````````-+/+o+--`                   /hMMN
+# mNNN:`            `..-.---:///++++o-:.-////`````+---....:-````````.o//:++/::--.`               /hMMN
+# mNNN:`          `....---:////+++/+o---.-////````:/::::::/````````:o/+::-//:::::--`             /hMMN
+# mNNN:`        `....-.-:///::++////+/.:..://o/.```.-.---```````-:+/+///:--////:--:-.            /hMMN
+# mMMN:`       `...--.://+::+/////////.:..-//o///-`````````.-//s/////++//:-.:+///--:-.           /hMMN
+# NMMN:`       ....:-://+-:+///////+//.-..-//+/::://:...:+///+/++//////o//--.-+///.:.-           /hMMN
+# NMMN:`       ...--:////.+////////+/-.:..-//+:--:::://:s/////o/++//////o//-..:+//-:.:           /hMMN
+# NMMM:`       ...-::////.////////++/.--..-//+-...------://////++++/////o/+:...///-:.-           /hMMN
+# NMMM:`       ...-/-://+-///////+o/.--...://+............-//::-:ssysoo+o+/:...///:.-`           /hMMN
+# NMMM:`       `...-:-:///-:+osydy-.--...-:/+.`````....````.:s-../mmmmddd//-...+/-.-`            /hMMN
+# NMMM:`         `..-:::+hddddmd/.--...--:/o-..``````````..``hy...hmmmmh+/-..-:/...              /hMMN
+# NMMM:`           `.-```./sdms-.--...--:/s-````.````````````dm:.-dmmho/:-.--. `.`               /hMMN
+# NMMM:`          ``        .+..-....--:+hmh:```````````````:mm:.smmy//----``    ``              /hMMN
+# NMMM:`        ``          ...-...--:+ydddmdy/`          .`sd+/yddm//::-```      `.             /hMMN
+# NMMM:`       ``           -.:..--:+hdyhhhhhhhs:`         /hyyyyhdds/+-.` .`      :`            /hMMN
+# NMMM:`      .`            ---.--:/shhhhhyyyyyyys/.      `yyyyyhhho-://:-.`       :-`           /hMMN
+# NMMM:`     .`             -----::: ./syhdhhyyyyyyyo/---:yhhhhhys:`  ``...```     :`-.          /hMMN
+# NMMM:`   `-.````          `----::/    .:ssyyhhhhyyhhddddmmdddddyo/-.`   `.----.` `  `.`        /hMMN
+# NMMM:`  `/--.`            `./--::/:`   -.`.-:+oydddmNNmmNNNNmmmdddddhs/  `-..`        .`       /hMMN
+# NMMM:```:-`           ```.....--:://:-```    .ohdmNNNNNNNNNmmNNmmdddmms   `-.`         `.`     /hMMN
+# NMMM:.``         ```.........   `````      `+hddmNmmNNNNNNmNmddddddmmm-    `-.``     `---:     /hMMN
+# NMMM/`      `````````........            `/hdddmNmdmNNNNNNmdmdddddmmm+      `:.``  `-.+//+`    /hMMN
+# NMMMy+::::::::::::::::///////::::::::::::oyyyyyhyyyyyyhhhhyyyyyyyyyhs::::::::+//:://:::o++:::::sNMMN
+# NMMMMNNNmmmNmmmNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNmmNNNNNNNNNNNmmmmNNNNNNNNNMMMMN
+# NMMMMMMdsoshsosyhmMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMmhosdNMMMMMMMMmyoodMMMMMMMMMMMMMN
+# NMMMMMy:` ``` ``./dmhdmNNdhddmNNmhhdmmNNmdmNmdmddmddddmmddmNMMmddmy/.``-/ymNNmdmy:` -oNdhdmNNMMMMMMN
+# NMMMMMy/-`  ..`  :/-`..-/..-`.-/:.`..-/:..:+:....:..-..-..-/so:.`..:-`   .:+/..-:-  -//.`..-/dMMMMMN
+# NMMMMMMN/.  ::`  :` ``  -   `  `.`  .:.    `.   `.   `  `  `:`  `  -.  -  `.    `-  --` ` `-/mMMMMMN
+# NMMMMMMN/.  ::`  :  ..  :  `:  .-`   -.  `.::  `::  `-  -` `:` `-  -.  :` `.   .:-  --     `/mMMMMMN
+# NMMMMMmo-`  ``  `:  ``  -  `:  `--.  -.  `..:   .-  `-  -`  -`  `  ..  `  `.  `...  .:. `  `/mMMMMMN
+# NMMMMMm+-`  .`.:+/-..-..:..-/-.--.`  --....:/-...:..-:..:-.-/-...-.::-...:+:-...-/-.--....-+hMMMMMMN
+# NMMMMMMN/.`-/yhmNmdhyhhyhhhhdd+:.``.:ohdhyydmdhyhdhhhhhhhdhhddhyhhyhmdhyhmmddhyyhmdhhddhhhdNNMMMMMMN
+# NMMMMMMMdsydNNNNNmmmmmmmmmmmmmdysssydmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNNNNNNNNNMMMMMN
+# NMMMMNNNNNNNNNNNmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNNNNNNNNNNNMMN
+
 import spriteling, pygame
 from config import fps as sec
 
@@ -98,9 +158,10 @@ class spell_book(spriteling.spriteling):
                 print("active spell is: ", lonely)
                 lonely.update(True, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
                               missile_layer=kwargs['missile_layer'], loc=loc)
+        else:
+            self.active_spell.update(False, 0, 0, (0, 0))
 
-
-            self.other_spells.update(False, 0, 0, (0, 0))
+        self.other_spells.update(False, 0, 0, (0, 0))
 
     def level_up(self):
         pass
@@ -212,6 +273,9 @@ class cool_down(spell):
         super().__init__(*args)
         self.heat = 0
         self.cooldown_time = timer * sec
+        
+    def update(self, active, *args, **kwargs):
+        super(cool_down, self).update(active, *args, **kwargs)
 
     def cast(self, prev, now, direction):
         print("as of cast, heat= ", self.heat)

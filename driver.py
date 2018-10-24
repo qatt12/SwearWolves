@@ -255,6 +255,8 @@ screen.update(room=hub)
 screen.game_start(plyr, hub)
 scroll = (0, 0)
 
+
+
 while(game_loop and running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:

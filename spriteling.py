@@ -18,7 +18,7 @@ placeholder = pygame.image.load('baddies\loogloog.png').convert_alpha ()
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
 class spriteling(pygame.sprite.Sprite):
-    def __init__(self, **kwargs):
+    def __init__(self,*args, **kwargs):
         super().__init__()
         #### new update: spriteling now takes kwargs, to make calling it less of a pain in the ass
         # this most basal constructor takes an image and a location, assigns the image to the sprite, builds a rectangle
@@ -52,19 +52,10 @@ class spriteling(pygame.sprite.Sprite):
         return str(type(self)) + self.name
 
     def update(self, *args, **kwargs):
-        #self.rect.move_ip(self.velocity)
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
-        if 'move' in kwargs:
-            #print("old rect: ", self.rect)
-            self.rect.move_ip(self.move_mult[0] * kwargs['move'][0], self.move_mult[1] * kwargs['move'][1])
-            #print("new rect: ", self.rect)
-        if 'knockback' in kwargs:
-            self.rect.move_ip(kwargs['knockback'][0], kwargs['knockback'][1])
+        self.move(**kwargs)
+        self.rect.move_ip(self.velocity)
         self.hitboxes.update()
-
-        if 'time' in kwargs:
-            # take extra time; maybe call update more than once?
-            pass
 
     def draw(self, disp):
         disp.blit(self.image, self.rect)
@@ -75,15 +66,18 @@ class spriteling(pygame.sprite.Sprite):
             pygame.draw.rect(disp, config.red, each.rect, 4)
 
     # minimize use of this; most of its functionality is being taken over by update
-    def move(self, vel, move, **kwargs):
+    def move(self, **kwargs):
         #print("calling move from spriteling")
         xvel, yvel = 0, 0
         if 'vel' in kwargs:
             xvel, yvel = kwargs['vel'][0], kwargs['vel'][0]
-        xvel = xvel + (self.move_mult[0] * move[0])
-        yvel = yvel + (self.move_mult[1] * move[1])
-        return (xvel, yvel)
-        # self.velocity = (xvel, yvel)
+        if 'move' in kwargs:
+            xvel = xvel + (self.move_mult[0] * kwargs['move'][0])
+            yvel = yvel + (self.move_mult[1] * kwargs['move'][1])
+        if 'knockback' in kwargs:
+            self.rect.move_ip(kwargs['knockback'][0], kwargs['knockback'][1])
+        #return (xvel, yvel)
+        self.velocity = (xvel, yvel)
 
     def highlight(self, duration, color, hi_light_img=None):
         pass

@@ -138,8 +138,6 @@ class room():
         if 'players' in kwargs:
             # only checks the collision of the outer rect, not the hitbox.
             bonks = pygame.sprite.groupcollide(self.outer_walls, kwargs['players'], False, False)
-            print(bonks)
-            # for each in bonks:
 
 
 

@@ -59,10 +59,6 @@ class player(spriteling.spriteling):
         # getting the right image, which is nice, but as of now all the movement is done by the move() method in
         # spriteling
         self.prev_facing = self.facing
-        # I suspect this part double-moves the player, but I don't think it has a huge effect
-        if 'move' in kwargs:
-            # print('moving', kwargs['move'])
-            self.rect.move_ip(kwargs['move'])
         if 'look' in kwargs and any in kwargs['look'] != 0:
             self.facing = kwargs['look']
         elif 'move' in kwargs:

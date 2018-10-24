@@ -75,15 +75,16 @@ class room():
 
         self.image = pygame.Surface(size)
 
+        self.all_sprites = sGroup()
+        self.exits = sGroup()
+        self.enemies = sGroup()
+        self.floors = sGroup()
+
         # the floor(s) are interesting. in order to allow the creation of irregularly shaped (non-rectangular) floors,
         # each segment of floor is created separately, then linked together. upon first being initialized, a room has a
         # simple, rectangular floor enclosed in a bounding wall.
-        self.floors = sGroup()
         self.ground = floor(size, theme)
         self.floors.add(self.ground)
-
-        self.all_sprites = sGroup()
-        self.exits = sGroup()
 
         # this is supposed to help with screen scrolling for the room. The visible rect is what is currently on-screen,
         # the full rect is for the entire room
@@ -125,8 +126,6 @@ class room():
         for each in self.outer_walls:
             print("wall rect at init: ", each.rect)
 
-        self.enemies = sGroup()
-
         self.all_sprites.add(self.outer_walls, self.floors)
 
 
@@ -134,10 +133,6 @@ class room():
     # the default/expected order is: floors, outer walls, inner walls, enemies, players, enemy missiles, unaligned
     # missiles, player missiles
     def draw_contents(self, disp, boxes=False):
-        #self.floors.draw(self.image)
-        #self.outer_walls.draw(self.image)
-        #self.doors.draw(self.image)
-        #self.enemies.draw(self.image)
         self.floors.draw(disp)
         self.outer_walls.draw(disp)
         self.doors.draw(disp)

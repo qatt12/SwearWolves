@@ -247,6 +247,9 @@ class spriteling(pygame.sprite.Sprite):
         self.cond_queue = []
         self.dmg_mult = {'dmg':1}
         self.immune = []
+
+        # determines how fast and in which direction the spriteling will move in the current frame. update() will
+        # perform the rect.move_ip using this
         self.velocity = (0, 0)
         self.move_mult = (1, 1)
 
@@ -358,62 +361,3 @@ class hitbox(pygame.sprite.Sprite):
             self.rect.bottom = kwargs['bottom_side']
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
-
-
-## class for stationary objects that are placed and then never moved.
-#class block(spriteling):
-#    def __init__(self, img, loc):
-#        super().__init__(image=img, loc=loc)
-#        # if the block is rooted, it is attached to a fixed location; an (x, y) tuple
-#        self.rooted = None
-#
-#        # if this block is linked, then it is attached to another spriteling, and thus positions its own rect relative
-#        # to where its link is
-#        self.link = None
-#        # the link direction. the first int is how far to the left (negative) or right (positive) of its
-#        # link this block is, and the second is how far above (negative) or below (positive)
-#        # (0,0) means that this block's center will always be matched to its link's center, and a +/-1 in either field
-#        # indicates that this block is attached to the inner side/edge of its link. +/-2 indicates an attachment
-#        # to the outer edge
-#        self.link_dir = (0, 0)
-#
-#    # roots the block in place
-#    def place(self, root_loc):
-#        self.rooted = root_loc
-#
-#    # attaches/links the block to another
-#    def attach(self, link, dir):
-#        self.link = link
-#        self.link_dir = dir
-#
-#    # for blocks the update method simply returns them to their designated positions
-#    def update(self, *args):
-#        if self.rooted:
-#            self.rect.center = self.rooted
-#        elif self.link:
-#            x, y = self.link_dir[0], self.link_dir[1]
-#            if x == 0 and y == 0:
-#                self.rect.center = self.link.rect.center
-#            else:
-#                if x == 2:
-#                    self.rect.right = self.link.rect.left
-#                elif x == 1:
-#                    self.rect.left = self.link.rect.left
-#                elif x == 0:
-#                    self.rect.centerx = self.link.rect.centerx
-#                elif x == -1:
-#                    self.rect.right = self.link.rect.right
-#                elif x == -2:
-#                    self.rect.left = self.link.rect.right
-#
-#                if y == 2:
-#                    self.rect.top = self.link.rect.bottom
-#                elif y == 1:
-#                    self.rect.bottom = self.link.rect.bottom
-#                elif y == 0:
-#                    self.rect.centery = self.link.rect.centery
-#                elif y == -1:
-#                    self.rect.top = self.link.rect.top
-#                elif y == -2:
-#                    self.rect.bottom = self.link.rect.top
-#

@@ -184,7 +184,15 @@ class room():
     def collide_enemies(self, player):
         pass
 
-
+    def pull_enemies(self, visible=False, **kwargs):
+        ret = sGroup()
+        if visible:
+            for each in self.enemies:
+                if self.visible_rect.contains(each.hitbox):
+                    ret.add(each)
+        else:
+            ret.add(self.enemies)
+        return ret
 
 class hub_room(room):
     def __init__(self, disp):

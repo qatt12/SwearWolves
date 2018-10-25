@@ -255,7 +255,11 @@ class spriteling(pygame.sprite.Sprite):
 
         # not sure I we should make all/most spritelings have only one hitbox by default, and just create a subclass
         # with extra
-        self.hitboxes = pygame.sprite.Group()
+        if 'hitbox' in kwargs:
+            self.hitbox = hitbox(kwargs['hitbox'])
+        else:
+            self.hitbox = hitbox(self, rect=self.rect)
+        self.hitboxes = pygame.sprite.Group(self.hitbox)
 
     def __str__(self):
         return str(type(self)) + self.name

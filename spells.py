@@ -150,7 +150,7 @@ class spell_book(spriteling.spriteling):
             for lonely in self.active_spell:
                 print("active spell is: ", lonely)
                 lonely.update(True, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
-                              missile_layer=kwargs['missile_layer'], loc=loc)
+                              missile_layer=kwargs['missile_layer'], loc=loc, **kwargs)
         else:
             self.active_spell.update(False, 0, 0, (0, 0))
 
@@ -207,6 +207,9 @@ class spell(spriteling.spriteling):
 
         print(self)
 
+    def target(self, *args, **kwargs):
+        pass
+
     def update(self, active, *args, **kwargs):
         super().update(*args, **kwargs)
         #print("i am active (T/F): ", active)
@@ -230,7 +233,7 @@ class spell(spriteling.spriteling):
         return self.projectile(direction, self.rect.center)
 
     def __str__(self):
-        return str(self.type_name +' '+ self.spell_name +' '+ self.name)
+        return str(self.type_name +' '+ self.spell_name)
 
 # charge_up spells need to be charged by holding the fire button until they are sufficiently charged
 # every frame in which the fire button is held (it determines if the button is held by checking the current and previous
@@ -307,8 +310,54 @@ class stream(spell):
     pass
 
 class targeted(spell):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, type_name='targeted', **kwargs)
+        self.primary_target = pygame.sprite.GroupSingle()
+        self.secondary_target = pygame.sprite.Group()
+        self.tertiary_target = pygame.sprite.Group()
+        if 'reticle_1' in kwargs:
+            self.reticle_1 = kwargs['reticle_1']
+
+class reticle(missile):
     pass
 
+class targeted_DEBUG(spell):
+    def __init__(self, primary_target_q, *args, **kwargs):
+        super().__init__(*args, type_name='targeted DEBUG', **kwargs)
+        self.primary_target = pygame.sprite.GroupSingle()
+        self.secondary_target = pygame.sprite.Group()
+        self.tertiary_target = pygame.sprite.Group()
+
+        self.targ_t1 = primary_target_q
+
+        self.heat = 0
+        if 'cooldown' in kwargs:
+            self.cooldown_time = kwargs['cooldown'] * sec
+        else:
+            self.cooldown_time = 1
+        if 'charge' in kwargs:
+            self.charge_time = kwargs['charge'] * sec
+        else:
+            self.charge_time = 1
+
+class heal_DEBUG(targeted_DEBUG):
+    def __init__(self):
+        super().__init__('all_players', heal_reticle_DEBUG, light_book_img, spell_name='heal DEBUG')
+
+
+    def update(self, active, *args, **kwargs):
+        if active:
+            print(self, "is active")
+
+    def target(self, p_target, *args, **kwargs):
+
+    def cast(self, prev, now, direction):
+        pass
+
+class heal_reticle_DEBUG(missile):
+    def __init__(self, target):
+        super(heal_reticle_DEBUG, self).__init__(pygame.image.load('projectiles\img_red_cross.png').convert_alpha(),
+                                                 target.rect.center, (0, 0))
 
 class fireball_s(spell):
     def __init__(self):
@@ -445,5 +494,5 @@ class book_of_light(spell_book):
 
         self.goddess_lookup_key = 'robes'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
-        self.spell_key = {0: light_wave_s}
+        self.spell_key = {0: light_wave_s, 1: heal_DEBUG}
         self.level_costs = {0: 1000, 1: 2000}

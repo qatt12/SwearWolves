@@ -80,8 +80,8 @@ corner_size = 50
 
 # class for stationary objects that are placed and then never moved.
 class block(spriteling.spriteling):
-    def __init__(self, img, loc):
-        super().__init__(image=img, loc=loc)
+    def __init__(self, img, loc, **kwargs):
+        super().__init__(image=img, loc=loc, **kwargs)
         # if the block is rooted, it is attached to a fixed location; an (x, y) tuple
         self.rooted = None
 
@@ -142,20 +142,21 @@ class wall(block):
     wall_size = 65
     def __init__(self, facing, *args):
         super(wall, self).__init__(*args)
+        self.hitboxes.empty()
         self.facing = facing
-        self.damage = 0
         if facing == 'down':
-            self.hitboxes.add(spriteling.hitbox(self,
-                                                scale_y=-wall_size, bottom_side=self.rect.bottom))
+            self.hitbox = spriteling.hitbox(self,
+                                            scale_y=-wall_size, bottom_side=self.rect.bottom)
         elif facing == 'top':
-            self.hitboxes.add(spriteling.hitbox(self,
-                                                scale_y=-wall_size, top_side=self.rect.top))
+            self.hitbox = spriteling.hitbox(self,
+                                            scale_y=-wall_size, top_side=self.rect.top)
         elif facing == 'left':
-            self.hitboxes.add(spriteling.hitbox(self,
-                                                scale_x=-wall_size, left_side=self.rect.left))
+            self.hitbox = spriteling.hitbox(self,
+                                            scale_x=-wall_size, left_side=self.rect.left)
         elif facing == 'right':
-            self.hitboxes.add(spriteling.hitbox(self,
-                                                scale_x=-wall_size, right_side=self.rect.right))
+            self.hitbox = spriteling.hitbox(self,
+                                            scale_x=-wall_size, right_side=self.rect.right)
+        self.hitboxes.add(self.hitbox)
 
 
 # this is for inward facing/concave corners. the orientation is specified manually by string. Not exactly elegant,
@@ -165,23 +166,24 @@ class corner(block):
     corner_size = 50
     def __init__(self, facing, *args):
         super().__init__(*args)
-
+        self.hitboxes.empty()
         if facing == 'top_left':
-            self.hitboxes.add(spriteling.hitbox(self,
-                                                scale_x=-corner_size, scale_y=-corner_size,
-                                                top_side=self.rect.top, left_side=self.rect.left))
+            self.hitbox = (spriteling.hitbox(self,
+                                             scale_x=-corner_size, scale_y=-corner_size,
+                                             top_side=self.rect.top, left_side=self.rect.left))
         elif facing == 'top_right':
-            self.hitboxes.add(spriteling.hitbox(self,
-                                                scale_x=-corner_size, scale_y=-corner_size,
-                                                top_side=self.rect.top, right_side=self.rect.right))
+            self.hitbox = (spriteling.hitbox(self,
+                                             scale_x=-corner_size, scale_y=-corner_size,
+                                             top_side=self.rect.top, right_side=self.rect.right))
         elif facing == 'bottom_right':
-            self.hitboxes.add(spriteling.hitbox(self,
-                                                scale_x=-corner_size, scale_y=-corner_size,
-                                                bottom_side=self.rect.bottom, right_side=self.rect.right))
+            self.hitbox = (spriteling.hitbox(self,
+                                             scale_x=-corner_size, scale_y=-corner_size,
+                                             bottom_side=self.rect.bottom, right_side=self.rect.right))
         elif facing == 'bottom_left':
-            self.hitboxes.add(spriteling.hitbox(self,
-                                                scale_x=-corner_size, scale_y=-corner_size,
-                                                bottom_side=self.rect.bottom, left_side=self.rect.left))
+            self.hitbox = (spriteling.hitbox(self,
+                                             scale_x=-corner_size, scale_y=-corner_size,
+                                             bottom_side=self.rect.bottom, left_side=self.rect.left))
+        self.hitboxes.add(self.hitbox)
 
 
 # the floor sprite is bit tricky, as it creates a rectangular floor of the size specified and sets it as its image

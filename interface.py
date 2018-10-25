@@ -136,6 +136,9 @@ class handler():
             self.menu = None
         self.hud = None
         self.missiles = pygame.sprite.Group()
+        self.my_player_single = pygame.sprite.GroupSingle()
+        self.other_players = pygame.sprite.Group()
+        self.enemies = pygame.sprite.Group()
 
     #
     def attach(self, **kwargs):
@@ -195,9 +198,10 @@ class handler():
         if now or prev:
             self.book.update(origin, fire=(now, prev), direction=self.player.facing,
                              missile_layer=self.missiles)
-        self.book.update(origin)
+        self.book.update(origin, own_self=self.player, **kwargs)
 
         # updates spells
+        # I just need to get the targeting data into the targeted spell
         self.missiles.update()
 
     # finishes pre-game prep by populating all of the necessary internal vars with the applicable data/references.
@@ -212,6 +216,7 @@ class handler():
         from overlays import hud
         self.hud = hud(self.player, self.book, player_num)
         starting_room.add_players(self.player)
+        self.my_player_single.add(self.player)
 
     # all of the draw_boxes method calls are for debugging and should be deleted prior to submission
     def draw(self, disp):

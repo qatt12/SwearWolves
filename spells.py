@@ -66,6 +66,8 @@ fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_al
 acid_ball_img  = pygame.image.load( 'projectiles\img_poisonball.png').convert_alpha()
 icy_ball_img   = pygame.image.load(    'projectiles\img_iceball.png').convert_alpha()
 
+default_reticle =pygame.image.load('projectiles\img_crosshair.png').convert_alpha()
+
 basic_books    = pygame.image.load('projectiles\img_basic_books.png').convert_alpha()
 ice_book_img   = basic_books.subsurface(( 0,  0), (20, 20))
 fire_book_img  = basic_books.subsurface(( 0, 20), (20, 20))
@@ -141,29 +143,35 @@ class spell_book(spriteling.spriteling):
                 if self.index < 0:
                     self.index = self.length - 1
         if 'select_spell' in kwargs:
-            if kwargs['select spell'] < self.length:
-                self.index = kwargs['select spell']
+            if kwargs['select spell'] < self.length and kwargs['select_spell'] > 0:
+                self.index = kwargs['select spell'] -1
         self.other_spells.add(self.active_spell)
         self.active_spell.add(self.spells[self.index])
         self.other_spells.remove(self.active_spell)
         if 'fire' in kwargs:
             for lonely in self.active_spell:
                 print("active spell is: ", lonely)
-                lonely.update(True, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
-                              missile_layer=kwargs['missile_layer'], loc=loc, **kwargs)
+                lonely.update(True, loc, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
+                              **kwargs)
         else:
-            self.active_spell.update(False, 0, 0, (0, 0))
+            # the 'active' param must be set to false here. To tell the spell not to expect input??
+            # I know that its essential to keep charged spells working
+            self.active_spell.update(True, loc, 0, 0, (0, 0))
 
-        self.other_spells.update(False, 0, 0, (0, 0))
+        self.other_spells.update(False, loc, 0, 0, (0, 0))
 
     def level_up(self):
         pass
 
     def pop_spells(self):
         self.length = self.level
-        for x in range(0, self.level+1):
-            self.spells.append(self.spell_key[x]())
-            self.other_spells.add(self.spells[x])
+        if self.length == 1:
+            self.spells.append(self.spell_key[0]())
+            self.other_spells.add(self.spells[0])
+        else:
+            for x in range(0, self.level):
+                self.spells.append(self.spell_key[x]())
+                self.other_spells.add(self.spells[x])
         self.active_spell.add(self.spells[self.index])
         self.other_spells.remove(self.active_spell)
 
@@ -210,12 +218,13 @@ class spell(spriteling.spriteling):
     def target(self, *args, **kwargs):
         pass
 
-    def update(self, active, *args, **kwargs):
+    def update(self, active, loc, *args, **kwargs):
         super().update(*args, **kwargs)
         #print("i am active (T/F): ", active)
         if active:
-            if 'loc' in kwargs:
-                self.rect.center = kwargs['loc']
+            #if 'loc' in kwargs:
+            #    self.rect.center = kwargs['loc']
+            self.rect.center = loc
             msl_chk = self.cast(*args)
             if 'missile_layer' in kwargs and msl_chk is not None:
                 kwargs['missile_layer'].add(msl_chk)
@@ -304,31 +313,19 @@ class beam(spell):
         self.own_missiles = pygame.sprite.Group()
 
     def cast(self, prev, now, direction):
-        super().cast(prev, now, direction)
+        self.own_missiles.add(super().cast(prev, now, direction))
 
 class stream(spell):
     pass
 
-class targeted(spell):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, type_name='targeted', **kwargs)
-        self.primary_target = pygame.sprite.GroupSingle()
-        self.secondary_target = pygame.sprite.Group()
-        self.tertiary_target = pygame.sprite.Group()
-        if 'reticle_1' in kwargs:
-            self.reticle_1 = kwargs['reticle_1']
-
-class reticle(missile):
-    pass
-
-class targeted_DEBUG(spell):
-    def __init__(self, primary_target_q, *args, **kwargs):
-        super().__init__(*args, type_name='targeted DEBUG', **kwargs)
+class targeted_s(spell):
+    def __init__(self, crosshair, *args, **kwargs):
+        super().__init__(*args, type_name='targeted ', **kwargs)
         self.primary_target = pygame.sprite.GroupSingle()
         self.secondary_target = pygame.sprite.Group()
         self.tertiary_target = pygame.sprite.Group()
 
-        self.targ_t1 = primary_target_q
+        self.reticle = crosshair
 
         self.heat = 0
         if 'cooldown' in kwargs:
@@ -340,24 +337,54 @@ class targeted_DEBUG(spell):
         else:
             self.charge_time = 1
 
-class heal_DEBUG(targeted_DEBUG):
-    def __init__(self):
-        super().__init__('all_players', heal_reticle_DEBUG, light_book_img, spell_name='heal DEBUG')
+        self.alive = False
 
 
     def update(self, active, *args, **kwargs):
         if active:
+            if not self.alive:
+                self.reticle = self.projectile()
             print(self, "is active")
+            if bool(self.primary_target):
+                self.alive = True
+                print(self, "I am alive; bool test; my target is: ", self.primary_target)
+                for lonely in self.primary_target:
+                    self.reticle.move(to=lonely.rect.center)
+            if 'missile_layer' in kwargs:
+                self.reticle.add(kwargs["missile_layer"])
+        else:
+            self.alive = False
+            self.reticle.kill()
 
-    def target(self, p_target, *args, **kwargs):
-
-    def cast(self, prev, now, direction):
+    # goes thru all viable targets and assigns first, second, and third targeting params
+    def target(self):
         pass
 
-class heal_reticle_DEBUG(missile):
-    def __init__(self, target):
-        super(heal_reticle_DEBUG, self).__init__(pygame.image.load('projectiles\img_red_cross.png').convert_alpha(),
-                                                 target.rect.center, (0, 0))
+class heal_s(targeted_s):
+    def __init__(self):
+        super().__init__(targ_heal_m(), targ_heal_m, light_book_img, spell_name=' heal')
+
+    def update(self, active, *args, **kwargs):
+        super().update(self, active, *args, **kwargs)
+        if 'all_players' in kwargs:
+            print("heal_s_DEBUG has received all players: ", kwargs['all_players'])
+            self.primary_target.add(kwargs['all_players'])
+
+class targ_heal_m(missile):
+    def __init__(self):
+        super(targ_heal_m, self).__init__(default_reticle, (0, 0), (0, 0))
+
+class curse_s(targeted_s):
+    def __init__(self):
+        super().__init__(targ_curse_m(), targ_curse_m, light_book_img, spell_name=' curse')
+
+    def update(self, active, *args, **kwargs):
+        if 'known_enemies' in kwargs:
+            self.primary_target.add(kwargs['known_enemies'])
+
+class targ_curse_m(missile):
+    def __init__(self):
+        super(targ_curse_m, self).__init__(default_reticle, (0, 0), (0, 0))
 
 class fireball_s(spell):
     def __init__(self):
@@ -448,10 +475,7 @@ class light_wave_m(missile):
 class radiant_glow_s():
     pass
 
-class heal_s():
-    pass
-
-class ray_of_light_s():
+class solar_beam_s(beam):
     pass
 
 # the book of fire contains fire spells.
@@ -472,7 +496,7 @@ class book_of_ice(spell_book):
         self.image = big_ice_book_img
         self.goddess_lookup_key = 'body_suit'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
-        self.spell_key = {0: iceshard_s}
+        self.spell_key = {0: iceshard_s, 1: blizzard_s, 2: ice_wall_s, 3: icebeam_s}
         self.level_costs = {0: 1000, 1: 2000}
 
 
@@ -483,7 +507,7 @@ class book_of_acid(spell_book):
         self.image = big_acid_book_img
         self.goddess_lookup_key = 'tattered'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
-        self.spell_key = {0: acidic_orb_s}
+        self.spell_key = {0: acidic_orb_s, 1: poison_spore_s, 2: acid_cloud_s, 3: pestilence_s}
         self.level_costs = {0: 1000, 1: 2000}
 
 
@@ -494,5 +518,22 @@ class book_of_light(spell_book):
 
         self.goddess_lookup_key = 'robes'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
-        self.spell_key = {0: light_wave_s, 1: heal_DEBUG}
+        self.spell_key = {0: light_wave_s, 1: heal_s, 2: curse_s, 3: solar_beam_s}
+        self.level_costs = {0: 1000, 1: 2000}
+
+
+class DEBUG_book(spell_book):
+    def __init__(self, *args):
+        super().__init__(len(args))
+        self.image = big_light_book_img
+        self.goddess_lookup_key = 'robes'
+        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
+        self.spell_key = {}
+        num = 0
+        for each in args:
+            print(num, each, " added")
+            self.spell_key[num] = each
+            num += 1
+
+        print(self, "spell key: ", self.spell_key)
         self.level_costs = {0: 1000, 1: 2000}

@@ -82,12 +82,12 @@ class screen_handler():
         self.menus.update()
         if self.current_room is not None:
             self.current_room.update()
-            for player in self.ordered_list_of_player_HANDLERS:
-                player.update(all_players=self.GROUP_of_player_SPRITES)
             #print("colliding walls")
             self.current_room.collide_walls(players=self.GROUP_of_player_SPRITES)
 
-            self.current_room.pull_enemies(True)
+            visible_enemies = self.current_room.pull_enemies(True)
+            for player in self.ordered_list_of_player_HANDLERS:
+                player.update(all_players=self.GROUP_of_player_SPRITES, known_enemies=visible_enemies)
 
     def draw(self, display, scroll=(0, 0)):
         pygame.draw.rect(self.disp, config.black, ((0, 0), config.screen_size))
@@ -167,7 +167,8 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.book_of_fire(3), spells.book_of_acid(), spells.book_of_ice(), spells.book_of_light(1)]
+unlocked_books = [spells.DEBUG_book(spells.curse_s, spells.heal_s),
+                  spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1
 p1_char_select = menu.player_select_menu(1, unlocked_books)

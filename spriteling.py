@@ -296,8 +296,14 @@ class spriteling(pygame.sprite.Sprite):
             pass
         if 'bound_rect' in kwargs:
             self.rect.clamp_ip(kwargs['bound_rect'])
+        if 'to' in kwargs:
+            self.rect.center = kwargs['to']
         #return (xvel, yvel)
         self.velocity = (xvel, yvel)
+
+    # a blank placeholder method for testing targeted spells; may soon become the primary way for sprites to interact
+    def affect(self):
+        pass
 
 
 # basic hitbox class, designed to be contained in a group stored by a spriteling

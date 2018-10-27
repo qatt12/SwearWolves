@@ -106,7 +106,7 @@ import pygame
 # solves a ton of headache causing problems with scope resolution
 class handler():
     def __init__(self, controller, **kwargs):
-        # the bare minimum a handler needs is a controller (coincidently, this is the bare minimum case in which a
+        # the bare minimum a handler needs is a controller (coincidentally, this is the bare minimum case in which a
         # handler is useful). It only takes a controller at first because the first handler is made right after the
         # driver.py::start loop is set to end (when player one hits start). At that point, a controller is all thats
         # available to be passed into class::handler
@@ -138,7 +138,7 @@ class handler():
         self.missiles = pygame.sprite.Group()
         self.my_player_single = pygame.sprite.GroupSingle()
         self.other_players = pygame.sprite.Group()
-        self.enemies = pygame.sprite.Group()
+        self.known_enemies = pygame.sprite.Group()
 
     #
     def attach(self, **kwargs):
@@ -170,15 +170,13 @@ class handler():
         if (A_accept[1] and not A_accept[0]) or (Start_accept[1] and not Start_accept[0]):
             self.attach(book=self.menu.ready_up())
 
-    def update(self, *args, **kwargs):
-        # print("interface update: ", self)
+    def update(self, **kwargs):
         # updates the controller
         self.controller.update()
 
         #updates the player
         movement = self.controller.pull_movement()['move']
         facing = self.controller.pull_movement()['look']
-        #self.player.move(move=movement)
         self.player.update(look=facing, move=movement)
 
         # updates the spellbook
@@ -195,14 +193,18 @@ class handler():
             self.book.update(origin, cycle_spell='next')
         elif prv_chk[0] and not prv_chk[1]:
             self.book.update(origin, cycle_spell='prev')
-        if now or prev:
-            self.book.update(origin, fire=(now, prev), direction=self.player.facing,
-                             missile_layer=self.missiles)
-        self.book.update(origin, own_self=self.player, **kwargs)
+        #if now or prev:
+        #    self.book.update(origin, fire=(now, prev), direction=self.player.facing,
+        #                     missile_layer=self.missiles, **kwargs)
+        self.book.update(origin, fire=(now, prev), direction=self.player.facing,
+                         missile_layer=self.missiles, **kwargs)
+        #self.book.update(origin, own_self=self.player, **kwargs)
 
         # updates spells
         # I just need to get the targeting data into the targeted spell
         self.missiles.update()
+
+
 
     # finishes pre-game prep by populating all of the necessary internal vars with the applicable data/references.
     # called by driver.py::class::screen. p_constr had to be passed in as a param to avoid importing stuff to

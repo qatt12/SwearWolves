@@ -44,7 +44,7 @@ class hud(spriteling.spriteling):
         self.active_spell_slot.bottom = self.portrait_slot.bottom
         print("active spell slot is: ", self.active_spell_slot)
 
-    def draw(self, disp):
+    def draw(self, disp, boxes=False):
         # self.image.blit(self.portrait, self.portrait_slot)
         # self.image.blit(self.book_image, self.book_slot)
         # for x in range(0, len(self.spell_list)):

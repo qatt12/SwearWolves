@@ -225,8 +225,8 @@ class handler():
         self.player.draw(disp)
         self.player.draw_boxes(disp)
         self.missiles.draw(disp)
-        for each in self.missiles:
-            each.draw_boxes(disp)
-        self.book.active_spell.draw(disp)
+        #for each in self.missiles:
+            #each.draw_boxes(disp)
+        self.book.draw(disp)
         self.hud.draw(disp)
-        self.hud.draw_boxes(disp)
+        #self.hud.draw_boxes(disp)

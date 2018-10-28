@@ -60,6 +60,7 @@
 
 import spriteling, pygame
 from config import fps as sec
+import config, random
 
 light_wave_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
 fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
@@ -136,21 +137,30 @@ class spell_book(spriteling.spriteling):
         if 'cycle_spell' in kwargs:
             if kwargs['cycle_spell'] == 'next':
                 self.index += 1
-                if self.index > self.length:
+                if self.index >= self.length:
                     self.index = 0
             elif kwargs['cycle_spell'] == 'prev':
                 self.index -= 1
                 if self.index < 0:
                     self.index = self.length - 1
+            self.other_spells.add(self.active_spell)
+            self.active_spell.add(self.spells[self.index])
+            self.other_spells.remove(self.active_spell)
         if 'select_spell' in kwargs:
             if kwargs['select spell'] < self.length and kwargs['select_spell'] > 0:
                 self.index = kwargs['select spell'] -1
-        self.other_spells.add(self.active_spell)
-        self.active_spell.add(self.spells[self.index])
-        self.other_spells.remove(self.active_spell)
+            self.other_spells.add(self.active_spell)
+            self.active_spell.add(self.spells[self.index])
+            self.other_spells.remove(self.active_spell)
+
+        for each in self.active_spell:
+            print("active spells: ", each)
+        for each in self.other_spells:
+            print("inactive spells: ", each)
+
         if 'fire' in kwargs:
             for lonely in self.active_spell:
-                print("active spell is: ", lonely)
+                #print("active spell is: ", lonely)
                 lonely.update(True, loc, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
                               **kwargs)
         else:
@@ -178,6 +188,12 @@ class spell_book(spriteling.spriteling):
     def pull_spells(self):
         return {'active': self.active_spell, 'other': self.other_spells}
 
+    def pull_missiles(self):
+        pass
+
+    def draw(self, disp, draw_boxes=False):
+        for each in self.active_spell:
+            each.draw(disp, draw_boxes)
 
 # each attack/spell has two components: the spell and the missile. the spell is basically just an image that follows the
 # player around, while the missile is created and propelled by the spell.
@@ -191,7 +207,7 @@ class missile(spriteling.spriteling):
         super().__init__(image=img, loc=loc)
         self.velocity = vel
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         self.rect.move_ip(self.velocity)
         for each in self.hitboxes:
             each.rect.center = self.rect.center
@@ -312,13 +328,17 @@ class beam(spell):
         super().__init__(*args, type_name='beam', **kwargs)
         self.own_missiles = pygame.sprite.Group()
 
+    def update(self, active, loc, *args, **kwargs):
+        shift_x, shift_y = self.rect.centerx - loc[0], self.rect.centery - loc[1]
+        self.own_missiles.update()
+
     def cast(self, prev, now, direction):
         self.own_missiles.add(super().cast(prev, now, direction))
 
 class stream(spell):
     pass
 
-class targeted_s(spell):
+class targeted(spell):
     def __init__(self, crosshair, *args, **kwargs):
         super().__init__(*args, type_name='targeted ', **kwargs)
         self.primary_target = pygame.sprite.GroupSingle()
@@ -328,6 +348,7 @@ class targeted_s(spell):
         self.reticle = crosshair
 
         self.heat = 0
+        self.charge = 0
         if 'cooldown' in kwargs:
             self.cooldown_time = kwargs['cooldown'] * sec
         else:
@@ -340,51 +361,114 @@ class targeted_s(spell):
         self.alive = False
 
 
-    def update(self, active, *args, **kwargs):
+    def update(self, active, loc, prev, now, *args, **kwargs):
+        self.rect.center = loc
         if active:
             if not self.alive:
                 self.reticle = self.projectile()
-            print(self, "is active")
-            if bool(self.primary_target):
+            #print(self, "is active")
+            if self.target(**kwargs):
                 self.alive = True
-                print(self, "I am alive; bool test; my target is: ", self.primary_target)
+                #print(self, "I am alive; bool test; my target is: ", self.primary_target)
                 for lonely in self.primary_target:
                     self.reticle.move(to=lonely.rect.center)
-            if 'missile_layer' in kwargs:
-                self.reticle.add(kwargs["missile_layer"])
+                if 'missile_layer' in kwargs:
+                    kwargs['missile_layer'].add(self.reticle)
         else:
+            #print("should be killing self.reticle")
             self.alive = False
             self.reticle.kill()
+            #print(self.reticle.alive())
 
     # goes thru all viable targets and assigns first, second, and third targeting params
-    def target(self):
+    def target(self, **kwargs):
         pass
 
-class heal_s(targeted_s):
-    def __init__(self):
-        super().__init__(targ_heal_m(), targ_heal_m, light_book_img, spell_name=' heal')
 
-    def update(self, active, *args, **kwargs):
-        super().update(self, active, *args, **kwargs)
+class heal_s(targeted):
+    def __init__(self):
+        super().__init__(targ_heal_m(), targ_heal_m, light_book_img, spell_name='heal')
+
+    #def update(self, active, *args, **kwargs):
+    #    super().update(active, *args, **kwargs)
+    #    if 'all_players' in kwargs:
+    #        print("heal_s_DEBUG has received all players: ", kwargs['all_players'])
+    #        self.primary_target.add(kwargs['all_players'])
+#
+    def target(self, **kwargs):
         if 'all_players' in kwargs:
-            print("heal_s_DEBUG has received all players: ", kwargs['all_players'])
+            #print("heal_s_DEBUG has received all players: ", kwargs['all_players'])
             self.primary_target.add(kwargs['all_players'])
+            self.secondary_target.add(kwargs['all_players'])
+        return bool(self.primary_target)
+
 
 class targ_heal_m(missile):
     def __init__(self):
         super(targ_heal_m, self).__init__(default_reticle, (0, 0), (0, 0))
 
-class curse_s(targeted_s):
+class curse_s(targeted):
     def __init__(self):
-        super().__init__(targ_curse_m(), targ_curse_m, light_book_img, spell_name=' curse')
+        super().__init__(targ_curse_m(), targ_curse_m, light_book_img, spell_name='curse')
 
-    def update(self, active, *args, **kwargs):
+    #def update(self, active, *args, **kwargs):
+    #    super().update(active, *args, **kwargs)
+    #    if 'known_enemies' in kwargs:
+    #        print("curse_s has received known enemies: ", kwargs['known_enemies'])
+    #        self.primary_target.add(kwargs['known_enemies'])
+
+    def target(self, **kwargs):
         if 'known_enemies' in kwargs:
+            #print("curse_s has received known enemies: ", kwargs['known_enemies'])
             self.primary_target.add(kwargs['known_enemies'])
+            self.secondary_target.add(kwargs['known_enemies'])
+        return bool(self.primary_target)
 
 class targ_curse_m(missile):
     def __init__(self):
         super(targ_curse_m, self).__init__(default_reticle, (0, 0), (0, 0))
+
+class arc(targeted):
+    def __init__(self, distance, duration, frequency, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.max_range = distance
+        self.draw_me = True
+        self.timer_tip = duration
+        self.timer = 0
+
+    def draw(self, disp, boxes=False):
+        print("Calling arc.draw")
+        #disp.blit(self.image, self.rect)
+        super().draw(disp, boxes)
+       # if self.draw_me:
+        print("should be drawing the line")
+        pygame.draw.line(disp, config.purple, self.rect.center, self.reticle.rect.center, 10)
+
+        x1 = random.randint(0, abs(self.rect.centerx-self.reticle.rect.centerx))
+        y1 = random.randint(0, abs(self.rect.centery-self.reticle.rect.centery))
+        if self.rect.centerx > self.reticle.rect.centerx:
+            x1 = self.rect.centerx - x1
+        else:
+            x1 = self.rect.centerx + x1
+        if self.rect.centery < self.reticle.rect.centery:
+            y1 = self.rect.centery - y1
+        else:
+            y1 = self.rect.centery + y1
+        pygame.draw.lines(disp, config.purple, False, (self.rect.center, (x1, y1), self.reticle.rect.center), 10)
+
+
+class arc_DEBUG_s(arc):
+    def __init__(self):
+        super(arc_DEBUG_s, self).__init__(400, 0.2, 5, targ_curse_m(), targ_curse_m, fire_book_img, spell_name='arc_DEBUG')
+
+    def target(self, **kwargs):
+        if 'known_enemies' in kwargs:
+            print("arc_DEBUG_s has received known enemies: ", kwargs['known_enemies'])
+            self.primary_target.add(kwargs['known_enemies'])
+            self.secondary_target.add(kwargs['known_enemies'])
+        print("arc_DEBUG_s.target() should return: ", bool(self.primary_target))
+        return bool(self.primary_target)
+
 
 class fireball_s(spell):
     def __init__(self):

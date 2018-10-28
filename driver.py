@@ -167,7 +167,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.curse_s, spells.heal_s),
+unlocked_books = [spells.DEBUG_book(spells.curse_s, spells.heal_s, spells.arc_DEBUG_s),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1

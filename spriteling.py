@@ -271,6 +271,7 @@ class spriteling(pygame.sprite.Sprite):
         self.hitboxes.update()
 
     def draw(self, disp, boxes=False):
+        print("calling spriteling.draw() on type:", type(self), "I am: ", self)
         disp.blit(self.image, self.rect)
         if boxes:
             self.draw_boxes(disp)
@@ -298,6 +299,8 @@ class spriteling(pygame.sprite.Sprite):
             self.rect.clamp_ip(kwargs['bound_rect'])
         if 'to' in kwargs:
             self.rect.center = kwargs['to']
+        if 'shift' in kwargs:
+            self.rect.move_ip(kwargs['shift'])
         #return (xvel, yvel)
         self.velocity = (xvel, yvel)
 

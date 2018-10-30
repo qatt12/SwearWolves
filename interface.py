@@ -225,7 +225,7 @@ class handler():
     def begin_game(self, p_constr, starting_room, player_num):
         # deletes a reference to the char_select_menu, since it is no longer needed, and should be garbage collected
         self.menu = None
-        self.player = p_constr(self.book)
+        self.player = p_constr(self.book, self.number)
         self.book.pop_spells()
         # okay so I couldn't get around importing this one thing.
         from overlays import hud

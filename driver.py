@@ -273,13 +273,14 @@ scroll = (0, 0)
 
 hub.spawn_enemy(enemies.enemy(loc=(600, 600)))
 
-test_eff = spriteling.effect(('test', 1), (1, 1))
-test_eff2 = spriteling.effect(('test', 1), (1, 2))
-print("num_effects= ", spriteling.effect.get_tracker())
-#screen.apply(opened_menus=menu.menu(
-#    pygame.rect.Rect((400, 400), (200, 200))
-#    ))
+def impact():
+    print('calling driver.impact')
 
+
+test_eff = spriteling.effect('fire', ('sec', 10), 100, .5)
+test_eff2 = spriteling.effect('test', ('frames', 200), knockback=(4, 5))
+print("num_effects= ", spriteling.effect.get_tracker())
+print("effects: \n", test_eff, test_eff2)
 
 while(game_loop and running):
     for event in pygame.event.get():

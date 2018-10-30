@@ -2,6 +2,8 @@ import pygame, spriteling, config
 from config import hud_width_proportion as width_scalar
 from config import hud_height_proportion as height_scalar
 
+hp_bar_width = 20
+
 class hud(spriteling.spriteling):
     def __init__(self, player, book, player_num, *args, **kwargs):
         hud_width = int(config.screen_size[0] / width_scalar)
@@ -45,10 +47,12 @@ class hud(spriteling.spriteling):
         print("active spell slot is: ", self.active_spell_slot)
 
     def draw(self, disp, boxes=False):
-        print("drawing a hud")
+        #print("drawing a hud")
         disp.blit(self.portrait, self.portrait_slot)
         disp.blit(self.book_image, self.book_slot)
         for x in range(0, len(self.spell_list)):
             disp.blit(self.spell_list[x].image, self.active_spell_slot.move(x * self.spell_list[x].rect.width,
                                                                             0))
                                                                             #self.spell_list[x].rect.height))
+        pygame.draw.line(disp, config.green, (self.portrait_slot.right, self.portrait_slot.centery),
+                         (self.portrait_slot.right+(self.hp/2), self.portrait_slot.centery), hp_bar_width)

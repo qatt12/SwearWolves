@@ -347,22 +347,33 @@ class targeted(spell):
 
         self.reticle = crosshair
 
+        # targeted spells can be limited by any combination of charge up, cooldown, or wind up, depending on what is
+        # passed in
         self.heat = 0
         self.charge = 0
+        self.spin = 0
         if 'cooldown' in kwargs:
             self.cooldown_time = kwargs['cooldown'] * sec
         else:
-            self.cooldown_time = 1
+            self.cooldown_time = 0
         if 'charge' in kwargs:
             self.charge_time = kwargs['charge'] * sec
         else:
-            self.charge_time = 1
+            self.charge_time = -1
+        if 'wind_up' in kwargs:
+            self.wind_up = kwargs['wind_up'] * sec
+        else:
+            self.wind_up = -1
+        # if none of the three fire limiters are passed in, the various limits are set to values that will always return
+        # true.
 
         self.alive = False
 
 
     def update(self, active, loc, prev, now, *args, **kwargs):
         self.rect.center = loc
+        if self.heat > 0:
+            self.heat -= 1
         if active:
             if not self.alive:
                 self.reticle = self.projectile()
@@ -375,10 +386,16 @@ class targeted(spell):
                 if 'missile_layer' in kwargs:
                     kwargs['missile_layer'].add(self.reticle)
         else:
-            print("should be killing self.reticle")
+            self.charge = 0
+            #print("should be killing self.reticle")
             self.alive = False
             self.reticle.kill()
             #print(self.reticle.alive())
+        if self.charge >= self.charge_time and self.heat == 0 and self.spin >= self.wind_up \
+                and 'missile_layer' in kwargs:
+            self.cast(prev, now, kwargs['missile_layer'])
+
+
 
     # goes thru all viable targets and assigns first, second, and third targeting params
     def target(self, **kwargs):
@@ -448,16 +465,16 @@ class arc(targeted):
         if y1_var % 2 ==0:
             pass
 
-        #x1 = random.randint(min(self.rect.centerx, self.reticle.rect.centerx), max(self.rect.centerx, self.reticle.rect.centerx))
-        #y1 = random.randint(min(self.rect.centery, self.reticle.rect.centery), max(self.rect.centery, self.reticle.rect.centery))
-        #if self.rect.centerx > self.reticle.rect.centerx:
-        #    x1 = self.rect.centerx - x1
-        #else:
-        #    x1 = self.rect.centerx + x1
-        #if self.rect.centery < self.reticle.rect.centery:
-        #    y1 = self.rect.centery - y1
-        #else:
-        #    y1 = self.rect.centery + y1
+        x1 = random.randint(min(self.rect.centerx, self.reticle.rect.centerx), max(self.rect.centerx, self.reticle.rect.centerx))
+        y1 = random.randint(min(self.rect.centery, self.reticle.rect.centery), max(self.rect.centery, self.reticle.rect.centery))
+        if self.rect.centerx > self.reticle.rect.centerx:
+            x1 = self.rect.centerx - x1
+        else:
+            x1 = self.rect.centerx + x1
+        if self.rect.centery < self.reticle.rect.centery:
+            y1 = self.rect.centery - y1
+        else:
+            y1 = self.rect.centery + y1
         pygame.draw.lines(disp, config.purple, False, (self.rect.center, (x1, y1), self.reticle.rect.center), 10)
 
 
@@ -467,16 +484,16 @@ class arc_DEBUG_s(arc):
 
     def target(self, **kwargs):
         if 'known_enemies' in kwargs:
-            print("arc_DEBUG_s has received known enemies: ", kwargs['known_enemies'])
+            #print("arc_DEBUG_s has received known enemies: ", kwargs['known_enemies'])
             self.secondary_target.add(kwargs['known_enemies'])
             for each in self.secondary_target:
-                print("enemy: ", each, "distance: ", math.hypot(each.rect.centerx-self.rect.centerx, each.rect.centery-self.rect.centery))
+                #print("enemy: ", each, "distance: ", math.hypot(each.rect.centerx-self.rect.centerx, each.rect.centery-self.rect.centery))
                 if math.hypot(each.rect.centerx-self.rect.centerx, each.rect.centery-self.rect.centery) <= self.max_range:
                     self.primary_target.add(each)
                 else:
                     self.primary_target.remove(each)
 
-        print("arc_DEBUG_s.target() should return: ", bool(self.primary_target))
+        #print("arc_DEBUG_s.target() should return: ", bool(self.primary_target))
         return bool(self.primary_target)
 
 

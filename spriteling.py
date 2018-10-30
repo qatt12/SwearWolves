@@ -246,6 +246,7 @@ class spriteling(pygame.sprite.Sprite):
         else:
             self.name = 'trashboat'
 
+        self.hp = 1000
         self.cond_queue = []
         self.dmg_mult = {'dmg':1}
         self.immune = []
@@ -309,6 +310,9 @@ class spriteling(pygame.sprite.Sprite):
     # a blank placeholder method for testing targeted spells; may soon become the primary way for sprites to interact
     def affect(self):
         pass
+
+    def impact(self):
+        print("calling spritelings.impact")
 
     @classmethod
     def track_next(cls, name):
@@ -381,12 +385,31 @@ class hitbox(pygame.sprite.Sprite):
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
 
+
+# this feels awkward, and I may not use this syntax to handle sprite interaction
 class effect():
     num_effect = 0
-    def __init__(self, type, duration):
+
+    def __init__(self, type_word, duration, intensity=1, proc_chance=1, *args, **kwargs):
         print("making a new effect")
-        self.type_string = type[0]
-        self.type_num = type[1]
+        self.type_string = type_word
+        self.special = []
+
+        try:
+            assert (isinstance(intensity, int)), "intensity should be an integer;"
+        except AssertionError:
+            print(str(intensity), "must be a *arg, assigning it as such")
+            self.special.append(intensity)
+            self.intensity = 0
+        else:
+            self.intensity = intensity
+
+        self.proc_chance = proc_chance
+        for each in args:
+            self.special.append(each)
+        self.key_effects = {}
+        for key in kwargs:
+            self.key_effects[key] = kwargs[key]
 
         if duration[0] == 'sec':
             self.duration = duration[1] * config.fps
@@ -395,12 +418,26 @@ class effect():
         try:
             assert (isinstance(duration[0], str)), 'improper duration syntax; need either frames or seconds'
         except AssertionError:
-            print(AssertionError, "assigning default duration of 1")
+            print(AssertionError, "assigning default duration of 1 (frame)")
             self.duration = 1
         effect.tick_tracker()
 
     def __call__(self, target, *args, **kwargs):
         pass
+
+    def __str__(self):
+        ret = str('Effect #' + str(effect.get_tracker()) + ':\n\t Type: ' + self.type_string + "; Intensity: " + str(self.intensity) + '; Dur: ' +
+                   str(self.duration) + "; Proc Chance: " + str(self.proc_chance) + "\n\tSpecial:")
+        for each in self.special:
+            try:
+                assert (isinstance(each, str)), "each is not a string"
+            except AssertionError:
+                print(AssertionError)
+                ret += str(each)
+            except:
+                ret = ret + each
+        ret += '\n'
+        return ret
 
     @classmethod
     def tick_tracker(cls):

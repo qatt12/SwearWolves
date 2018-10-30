@@ -16,6 +16,11 @@ goddess_crop_top  =  pygame.image.load('people\img_goddess2.png').convert()
 goddess_body_suit =  pygame.image.load('people\img_goddess3.png').convert()
 goddess_tattered  =  pygame.image.load('people\img_goddess4.png').convert()
 goddess_robes.set_colorkey((255, 255, 255))
+
+#DEBUG
+#goddess_robes.set_colorkey((223, 137, 60, 1))
+#goddess_robes.set_colorkey((0, 0, 0))
+
 goddess_crop_top.set_colorkey((255, 255, 255))
 goddess_body_suit.set_colorkey((255, 255, 255))
 goddess_tattered.set_colorkey((255, 255, 255))
@@ -84,6 +89,7 @@ class player(spriteling.spriteling):
 
 # a side/parallel class to player.
 class multiplayer(player):
-    def __init__(self, book):
-        player.__init__(self, book, (0, 0))
+    def __init__(self, book, number):
+        player.__init__(self, book,  (0, 0))
         print("book level is: ", book.level, "book spells are: ", book.spells)
+        self.number = number

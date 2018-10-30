@@ -5,6 +5,7 @@ fps = 128
 screen_size = (1600, 900)
 screen_width = screen_size[0]
 screen_height = screen_size[1]
+field_size = (1400, 700)
 
 # constants for the proportional size of the players' HUDs
 hud_width_proportion = 3

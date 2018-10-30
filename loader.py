@@ -20,10 +20,14 @@ bigger_books = pygame.transform.scale2x(basic_books)
 
 class player_img_loader():
     def __init__(self):
-        goddess_robes     =  pygame.image.load('people\img_goddess1.png').convert_alpha()
-        goddess_crop_top  =  pygame.image.load('people\img_goddess2.png').convert_alpha()
-        goddess_body_suit =  pygame.image.load('people\img_goddess3.png').convert_alpha()
-        goddess_tattered  =  pygame.image.load('people\img_goddess4.png').convert_alpha()
+        goddess_robes     =  pygame.image.load('people\img_goddess1.png').convert()
+        goddess_crop_top  =  pygame.image.load('people\img_goddess2.png').convert()
+        goddess_body_suit =  pygame.image.load('people\img_goddess3.png').convert()
+        goddess_tattered  =  pygame.image.load('people\img_goddess4.png').convert()
+        goddess_robes.set_colorkey((255, 255, 255))
+        goddess_crop_top.set_colorkey((255, 255, 255))
+        goddess_body_suit.set_colorkey((255, 255, 255))
+        goddess_tattered.set_colorkey((255, 255, 255))
         self.img_lookup ={'robes': goddess_robes,
                           'crop_top': goddess_crop_top,
                           'body_suit': goddess_body_suit,

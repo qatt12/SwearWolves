@@ -105,7 +105,20 @@ import pygame
 # this is what allows a seamless transition between menu/game loops, keeps everything modular and independent, and
 # solves a ton of headache causing problems with scope resolution
 class handler():
+    num_player_interfaces = 0
+    @classmethod
+    def add_player_interface(cls):
+        cls.num_player_interfaces +=1
+    @classmethod
+    def get_player_interface_num(cls):
+        return cls.num_player_interfaces
+    @classmethod
+    def next_player_interface(cls):
+        cls.add_player_interface()
+        return cls.get_player_interface_num()
+
     def __init__(self, controller, **kwargs):
+        self.number = handler.next_player_interface()
         # the bare minimum a handler needs is a controller (coincidentally, this is the bare minimum case in which a
         # handler is useful). It only takes a controller at first because the first handler is made right after the
         # driver.py::start loop is set to end (when player one hits start). At that point, a controller is all thats
@@ -224,9 +237,13 @@ class handler():
     def draw(self, disp):
         self.player.draw(disp)
         self.player.draw_boxes(disp)
-        self.missiles.draw(disp)
+
         #for each in self.missiles:
             #each.draw_boxes(disp)
         self.book.draw(disp)
-        self.hud.draw(disp)
+        #self.hud.draw(disp)
         #self.hud.draw_boxes(disp)
+        self.missiles.draw(disp)
+
+    def get_hud(self):
+        return self.hud

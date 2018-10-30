@@ -224,6 +224,8 @@ def collide_hitbox(spritelingA, spritelingB):
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
 class spriteling(pygame.sprite.Sprite):
+    tracking_num = 0
+
     def __init__(self, *args, **kwargs):
         super().__init__()
         #### new update: spriteling now takes kwargs, to make calling it less of a pain in the ass
@@ -271,7 +273,7 @@ class spriteling(pygame.sprite.Sprite):
         self.hitboxes.update()
 
     def draw(self, disp, boxes=False):
-        print("calling spriteling.draw() on type:", type(self), "I am: ", self)
+        #print("calling spriteling.draw() on type:", type(self), "I am: ", self)
         disp.blit(self.image, self.rect)
         if boxes:
             self.draw_boxes(disp)
@@ -307,6 +309,10 @@ class spriteling(pygame.sprite.Sprite):
     # a blank placeholder method for testing targeted spells; may soon become the primary way for sprites to interact
     def affect(self):
         pass
+
+    @classmethod
+    def track_next(cls, name):
+        cls.tracking_num +=1
 
 
 # basic hitbox class, designed to be contained in a group stored by a spriteling
@@ -374,3 +380,32 @@ class hitbox(pygame.sprite.Sprite):
             self.rect.bottom = kwargs['bottom_side']
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
+
+class effect():
+    num_effect = 0
+    def __init__(self, type, duration):
+        print("making a new effect")
+        self.type_string = type[0]
+        self.type_num = type[1]
+
+        if duration[0] == 'sec':
+            self.duration = duration[1] * config.fps
+        elif duration[0] == 'frames':
+            self.duration = duration[1]
+        try:
+            assert (isinstance(duration[0], str)), 'improper duration syntax; need either frames or seconds'
+        except AssertionError:
+            print(AssertionError, "assigning default duration of 1")
+            self.duration = 1
+        effect.tick_tracker()
+
+    def __call__(self, target, *args, **kwargs):
+        pass
+
+    @classmethod
+    def tick_tracker(cls):
+        cls.num_effect +=1
+
+    @classmethod
+    def get_tracker(cls):
+        return cls.num_effect

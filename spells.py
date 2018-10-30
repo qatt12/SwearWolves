@@ -58,7 +58,7 @@
 # NMMMMMMMdsydNNNNNmmmmmmmmmmmmmdysssydmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNNNNNNNNNMMMMMN
 # NMMMMNNNNNNNNNNNmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNNNNNNNNNNNMMN
 
-import spriteling, pygame
+import spriteling, pygame, math
 from config import fps as sec
 import config, random
 
@@ -153,10 +153,10 @@ class spell_book(spriteling.spriteling):
             self.active_spell.add(self.spells[self.index])
             self.other_spells.remove(self.active_spell)
 
-        for each in self.active_spell:
-            print("active spells: ", each)
-        for each in self.other_spells:
-            print("inactive spells: ", each)
+        #for each in self.active_spell:
+        #    print("active spells: ", each)
+        #for each in self.other_spells:
+        #    print("inactive spells: ", each)
 
         if 'fire' in kwargs:
             for lonely in self.active_spell:
@@ -314,7 +314,7 @@ class cool_down(spell):
             self.heat -= 1
 
     def cast(self, prev, now, direction):
-        print("as of cast, heat= ", self.heat)
+        #print("as of cast, heat= ", self.heat)
         if self.heat > 0:
             return None
         if now and self.heat == 0:
@@ -375,7 +375,7 @@ class targeted(spell):
                 if 'missile_layer' in kwargs:
                     kwargs['missile_layer'].add(self.reticle)
         else:
-            #print("should be killing self.reticle")
+            print("should be killing self.reticle")
             self.alive = False
             self.reticle.kill()
             #print(self.reticle.alive())
@@ -437,23 +437,27 @@ class arc(targeted):
         self.timer = 0
 
     def draw(self, disp, boxes=False):
-        print("Calling arc.draw")
+        #print("Calling arc.draw")
         #disp.blit(self.image, self.rect)
         super().draw(disp, boxes)
        # if self.draw_me:
-        print("should be drawing the line")
+        #print("should be drawing the line")
         pygame.draw.line(disp, config.purple, self.rect.center, self.reticle.rect.center, 10)
 
-        x1 = random.randint(0, abs(self.rect.centerx-self.reticle.rect.centerx))
-        y1 = random.randint(0, abs(self.rect.centery-self.reticle.rect.centery))
-        if self.rect.centerx > self.reticle.rect.centerx:
-            x1 = self.rect.centerx - x1
-        else:
-            x1 = self.rect.centerx + x1
-        if self.rect.centery < self.reticle.rect.centery:
-            y1 = self.rect.centery - y1
-        else:
-            y1 = self.rect.centery + y1
+        y1_var = random.randint(0, 70)
+        if y1_var % 2 ==0:
+            pass
+
+        #x1 = random.randint(min(self.rect.centerx, self.reticle.rect.centerx), max(self.rect.centerx, self.reticle.rect.centerx))
+        #y1 = random.randint(min(self.rect.centery, self.reticle.rect.centery), max(self.rect.centery, self.reticle.rect.centery))
+        #if self.rect.centerx > self.reticle.rect.centerx:
+        #    x1 = self.rect.centerx - x1
+        #else:
+        #    x1 = self.rect.centerx + x1
+        #if self.rect.centery < self.reticle.rect.centery:
+        #    y1 = self.rect.centery - y1
+        #else:
+        #    y1 = self.rect.centery + y1
         pygame.draw.lines(disp, config.purple, False, (self.rect.center, (x1, y1), self.reticle.rect.center), 10)
 
 
@@ -464,8 +468,14 @@ class arc_DEBUG_s(arc):
     def target(self, **kwargs):
         if 'known_enemies' in kwargs:
             print("arc_DEBUG_s has received known enemies: ", kwargs['known_enemies'])
-            self.primary_target.add(kwargs['known_enemies'])
             self.secondary_target.add(kwargs['known_enemies'])
+            for each in self.secondary_target:
+                print("enemy: ", each, "distance: ", math.hypot(each.rect.centerx-self.rect.centerx, each.rect.centery-self.rect.centery))
+                if math.hypot(each.rect.centerx-self.rect.centerx, each.rect.centery-self.rect.centery) <= self.max_range:
+                    self.primary_target.add(each)
+                else:
+                    self.primary_target.remove(each)
+
         print("arc_DEBUG_s.target() should return: ", bool(self.primary_target))
         return bool(self.primary_target)
 

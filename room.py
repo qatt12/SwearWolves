@@ -123,8 +123,8 @@ class room():
         self.outer_walls = theme.build_walls(self.full_rect, enter_from, self.entry_door)
 
         print("door rect at init: ", self.entry_door.rect)
-        for each in self.outer_walls:
-            print("wall rect at init: ", each.rect)
+        #for each in self.outer_walls:
+        #    print("wall rect at init: ", each.rect)
 
         self.all_sprites.add(self.outer_walls, self.floors)
 
@@ -197,5 +197,5 @@ class room():
 class hub_room(room):
     def __init__(self, disp):
         #self.rect = pygame.rect.Rect((0, 0), (10*config.tile_scalar, 10*100))
-        super().__init__(('top', 5), (9, 7), theme(), disp)
+        super().__init__(('center', 5), (20, 20), theme(), disp)
 

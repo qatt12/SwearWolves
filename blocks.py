@@ -199,7 +199,7 @@ class floor(block):
         for y in range(0, size_y+1):
             for x in range(0, size_x+1):
                 self.image.blit(theme.image_lookup['f'], (x * config.tile_scalar, y * config.tile_scalar))
-                print('blitting a floor', "x = ", x, "y = ", y)
+                #print('blitting a floor', "x = ", x, "y = ", y)
 
         self.rect = self.image.get_rect()
 
@@ -217,10 +217,10 @@ class door(block):
             self.rect.center = kwargs['root_wall'].rect.center
         if 'side_x' in kwargs:
             self.rect.centerx = kwargs['side_x']
-            self.rect.centery = (kwargs['pos']*config.tile_scalar) +50
+            self.rect.centery = (kwargs['pos']*config.tile_scalar) -50
         if 'side_y' in kwargs:
             self.rect.centery = kwargs['side_y']
-            self.rect.centerx = (kwargs['pos']*config.tile_scalar) +50
+            self.rect.centerx = (kwargs['pos']*config.tile_scalar) -50
 
     # simple, placeholder-y method that moves the player on top of the door. Will prbly be rewritten with more complex
     # behavior (that doesn't stack all the players on top of each other

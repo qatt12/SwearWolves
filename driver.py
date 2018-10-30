@@ -29,7 +29,7 @@
 #  ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡎⡳⠂ ⣠⡾⣫⣶⣿⣿⣷⣦⣄⣉⣀⣈⣁⣀⣠⣤⣾⣶⣦⣄⡀ 
 #  ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢟⠋⡱⠁ ⡰⡟⠑⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 
-import pygame, config
+import pygame, config, interface
 from misc import controller_list as controller_list
 pygame.init()
 
@@ -56,6 +56,7 @@ class screen_handler():
         self.GROUP_of_player_SPRITES = pygame.sprite.Group()
         self.current_room = None
         self.game_state = "start_menu"
+        self.overlays = []
 
     # currently, update does a lot of things. It is used to add many things to the screen, to keep everything elegant
     # and avoid having to write many dif methods, but this may not be a great idea, as update is also used/assumed to
@@ -64,7 +65,6 @@ class screen_handler():
         if 'opened_menus' in kwargs:
             self.menus.add(kwargs['opened_menus'])
             print("added new menu: ")
-            #self.disp.blit(kwargs['opened_menus'].image, (0, 0))
         if 'closed_menus' in kwargs:
             self.menus.remove(kwargs['closed_menus'])
         if 'player_one' in kwargs:
@@ -76,10 +76,16 @@ class screen_handler():
             self.player_index += 1
         if 'room' in kwargs:
             self.current_room = kwargs['room']
-
+        if 'overlay' in kwargs:
+            self.overlays.append(kwargs['overlay'])
 
     def update(self, *args, **kwargs):
         self.menus.update()
+        try:
+            assert (self.player_index == interface.handler.get_player_interface_num()), "this would create an error"
+        except AssertionError:
+            print(AssertionError, "index= ", self.player_index, "num_interfaces= ", interface.handler.get_player_interface_num())
+
         if self.current_room is not None:
             self.current_room.update()
             #print("colliding walls")
@@ -102,6 +108,8 @@ class screen_handler():
 
         display.blit(self.disp, scroll)
         self.menus.draw(display)
+        for each in self.overlays:
+            each.draw(display)
         # pygame.draw.rect(display, config.blue, self.scroll_bounds, 10)
         pygame.display.update()
 
@@ -119,6 +127,7 @@ class screen_handler():
                 self.GROUP_of_player_SPRITES.__contains__(each)
             except:
                 print("failed to add sprites; you passed in ", type(each))
+            self.apply(overlay=each.get_hud())
 
 running = True
 start_loop = True
@@ -252,7 +261,7 @@ player_sprites = pygame.sprite.Group()
 screen.apply(closed_menus=(p1_char_select, p2_char_select, p3_char_select, p4_char_select))
 
 game_window.fill((0, 0, 0))
-import room, player, enemies
+import room, player, enemies, spriteling
 # scope tomfoolery
 plyr = player.multiplayer
 
@@ -264,6 +273,14 @@ scroll = (0, 0)
 
 hub.spawn_enemy(enemies.enemy(loc=(600, 600)))
 
+test_eff = spriteling.effect(('test', 1), (1, 1))
+test_eff2 = spriteling.effect(('test', 1), (1, 2))
+print("num_effects= ", spriteling.effect.get_tracker())
+#screen.apply(opened_menus=menu.menu(
+#    pygame.rect.Rect((400, 400), (200, 200))
+#    ))
+
+
 while(game_loop and running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -272,6 +289,8 @@ while(game_loop and running):
     screen.game_state = "game_loop"
 
     screen.update()
+
+    #scroll = (scroll[0]+1, scroll[1])
 
     screen.draw(game_window, scroll)
 

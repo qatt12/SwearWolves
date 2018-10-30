@@ -11,15 +11,19 @@ def calc_index(x_coord, y_coord):
     return pygame.rect.Rect((start_x, start_y), player_img_size)
 
 
-goddess_robes     =  pygame.image.load('people\img_goddess1.png').convert_alpha()
-goddess_crop_top  =  pygame.image.load('people\img_goddess2.png').convert_alpha()
-goddess_body_suit =  pygame.image.load('people\img_goddess3.png').convert_alpha()
-goddess_tattered  =  pygame.image.load('people\img_goddess4.png').convert_alpha()
-img_lookup ={'robes': goddess_robes,
-             'crop_top': goddess_crop_top,
-             'body_suit': goddess_body_suit,
-             'tattered': goddess_tattered
-             }
+goddess_robes     =  pygame.image.load('people\img_goddess1.png').convert()
+goddess_crop_top  =  pygame.image.load('people\img_goddess2.png').convert()
+goddess_body_suit =  pygame.image.load('people\img_goddess3.png').convert()
+goddess_tattered  =  pygame.image.load('people\img_goddess4.png').convert()
+goddess_robes.set_colorkey((255, 255, 255))
+goddess_crop_top.set_colorkey((255, 255, 255))
+goddess_body_suit.set_colorkey((255, 255, 255))
+goddess_tattered.set_colorkey((255, 255, 255))
+img_lookup = {'robes': goddess_robes,
+              'crop_top': goddess_crop_top,
+              'body_suit': goddess_body_suit,
+              'tattered': goddess_tattered,
+              }
 
 #imgs = player_img_loader()
 
@@ -36,8 +40,10 @@ class player(spriteling.spriteling):
         self.image = self.spritesheet.subsurface(self.string_lookup['neutral'])
         self.rect = self.image.get_rect()
 
-        self.hitboxes.add(spriteling.hitbox(self,
-                                            scale_x=-(self.rect.height*0.2), scale_y=-(self.rect.width*0.2)))
+        self.hitboxes.empty()
+        self.hitbox = spriteling.hitbox(self,
+                                        scale_x=-(self.rect.height*0.2), scale_y=-(self.rect.width*0.2))
+        self.hitboxes.add(self.hitbox)
 
         self.spell_slot = self.rect.center
         self.book = book

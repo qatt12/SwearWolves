@@ -9,6 +9,8 @@ from blocks import corner as corner
 from blocks import floor as floor
 from blocks import door as door
 from config import tile_scalar
+from spriteling import hitbox
+from spriteling import collide_hitbox
 
 # essentially an image lookup/helper tool for room. contains all the default tiles for the default room, but can be
 # subclassed to create new themes
@@ -35,19 +37,21 @@ class theme(object):
         all_walls = sGroup()
         # spawns and positions the outer wall pieces. Note the i + 50 and j + 50: this cause the wall segments to
         # slightly overlap w/ the corner segments' rects, thus properly enclosing the room
-        for i in range(border.left, border.right, tile_scalar):
-           # top    = wall('up',   self.image_lookup['tw'], (i, border.top))
-           # bottom = wall('down', self.image_lookup['bw'], (i, border.bottom))
+        #for i in range(border.left, border.right, tile_scalar):
+        for i in range(border.left - int(tile_scalar/2), border.right + int(tile_scalar/2), tile_scalar):
             top = wall('up', self.image_lookup['tw'], (i + 50, border.top))
+            print("top wall: \n Rect: ",top.rect, "hitbox: ", top.hitbox.rect)
+
             bottom = wall('down', self.image_lookup['bw'], (i + 50, border.bottom))
+            print("bottom wall: \n Rect: ", bottom.rect, "hitbox: ", bottom.hitbox.rect)
+
             if enter_from[0] == 'top' and enter_from[1] == (i/tile_scalar):
                 entry_door.attach(top, (0, 0))
             elif enter_from[0] == 'top' and enter_from[1] == (i/tile_scalar):
                 entry_door.attach(bottom, (0, 0))
             all_walls.add(top, bottom)
-        for j in range(border.top, border.bottom, tile_scalar):
-            #left =  wall('left',  self.image_lookup['lw'], (border.left,  j))
-            #right = wall('right', self.image_lookup['rw'], (border.right, j))
+        #for j in range(border.top, border.bottom, tile_scalar):
+        for j in range(border.top - int(tile_scalar/2), border.bottom + int(tile_scalar/2), tile_scalar):
             left = wall('left', self.image_lookup['lw'], (border.left, j + 50))
             right = wall('right', self.image_lookup['rw'], (border.right, j + 50))
             if enter_from[0] == 'left' and enter_from[1] == (j / tile_scalar):
@@ -90,44 +94,46 @@ class room():
         # the full rect is for the entire room
         self.visible_rect = disp.get_rect()
         self.full_rect = self.ground.rect
+        self.scroll_rect = self.visible_rect.inflate(-150, -150)
+        self.scroll_rect.center = self.visible_rect.center
 
-        if enter_from[0] == 'left':
-            self.full_rect.left = self.visible_rect.left
-            self.entry_door = door(side_x=self.full_rect.left, pos=enter_from[1])
-        elif enter_from[0] == 'center':
-            self.full_rect.center = self.visible_rect.center
-            self.entry_door = door(coords=self.full_rect.center)
-        elif enter_from[0] == 'right':
-            self.full_rect.right = self.visible_rect.right
-            self.entry_door = door(side_x=self.full_rect.right, pos=enter_from[1])
-        elif enter_from[0] == 'bottom':
-            self.full_rect.bottom = self.visible_rect.bottom
-            self.entry_door = door(side_y=self.full_rect.bottom, pos=enter_from[1])
-        elif enter_from[0] == 'top':
-            self.full_rect.top = self.visible_rect.top
-            self.entry_door = door(side_y=self.full_rect.top, pos=enter_from[1])
+        # if enter_from[0] == 'left':
+        #     self.full_rect.left = self.visible_rect.left
+        #     self.entry_door = door(side_x=self.full_rect.left, pos=enter_from[1])
+        # elif enter_from[0] == 'center':
+        #     self.full_rect.center = self.visible_rect.center
+        #     self.entry_door = door(coords=self.full_rect.center)
+        # elif enter_from[0] == 'right':
+        #     self.full_rect.right = self.visible_rect.right
+        #     self.entry_door = door(side_x=self.full_rect.right, pos=enter_from[1])
+        # elif enter_from[0] == 'bottom':
+        #     self.full_rect.bottom = self.visible_rect.bottom
+        #     self.entry_door = door(side_y=self.full_rect.bottom, pos=enter_from[1])
+        # elif enter_from[0] == 'top':
+        #     self.full_rect.top = self.visible_rect.top
+        #     self.entry_door = door(side_y=self.full_rect.top, pos=enter_from[1])
+#
+        # if self.full_rect.width < self.visible_rect.width:
+        #     self.full_rect.centerx = self.visible_rect.centerx
+        #     self.entry_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
+        # if self.full_rect.height < self.visible_rect.height:
+        #     self.full_rect.centery = self.visible_rect.centery
+        #     self.entry_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
 
-        if self.full_rect.width < self.visible_rect.width:
-            self.full_rect.centerx = self.visible_rect.centerx
-            self.entry_door.adjust(bound_rect=self.full_rect)
-        if self.full_rect.height < self.visible_rect.height:
-            self.full_rect.centery = self.visible_rect.centery
-            self.entry_door.adjust(bound_rect=self.full_rect)
-
+        self.entry_door = self.add_door(enter_from[0], enter_from[1])
         if "exit_door" in kwargs:
-            self.exits.add(kwargs["exit_door"])
+            print("exit_door = ", kwargs['exit_door'])
+            for each in kwargs['exit_door']:
+                print("exit_door each= ", each)
+                self.exits.add(self.add_door(each[0], each[1]))
 
-        self.doors = sGroup(self.entry_door)
+        self.doors = sGroup(self.entry_door, self.exits)
 
         # the walls have to be spritelings in a group in order to properly register collision
         self.outer_walls = theme.build_walls(self.full_rect, enter_from, self.entry_door)
 
         print("door rect at init: ", self.entry_door.rect)
-        #for each in self.outer_walls:
-        #    print("wall rect at init: ", each.rect)
-
-        self.all_sprites.add(self.outer_walls, self.floors)
-
+        self.all_sprites.add(self.outer_walls, self.floors, self.doors, self.enemies)
 
     # core methods used to draw the contents of the room onto the main display window in the appropriate order
     # the default/expected order is: floors, outer walls, inner walls, enemies, players, enemy missiles, unaligned
@@ -148,19 +154,57 @@ class room():
         for each in args:
             self.enemies.add(each)
 
-    def update(self, *args, **kwargs):
+    def add_door(self, side, position, *args):
+        if side == 'left':
+            self.full_rect.left = self.visible_rect.left
+            new_door = door(side_x=self.full_rect.left, pos=position)
+        elif side == 'center':
+            self.full_rect.center = self.visible_rect.center
+            new_door = door(coords=self.full_rect.center)
+        elif side == 'right':
+            self.full_rect.right = self.visible_rect.right
+            new_door = door(side_x=self.full_rect.right, pos=position)
+        elif side == 'bottom':
+            self.full_rect.bottom = self.visible_rect.bottom
+            new_door = door(side_y=self.full_rect.bottom, pos=position)
+        elif side == 'top':
+            self.full_rect.top = self.visible_rect.top
+            new_door = door(side_y=self.full_rect.top, pos=position)
+        else:
+            return False
+
+        if self.full_rect.width < self.visible_rect.width:
+            self.full_rect.centerx = self.visible_rect.centerx
+            new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
+        if self.full_rect.height < self.visible_rect.height:
+            self.full_rect.centery = self.visible_rect.centery
+            new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
+        return new_door
+
+    def update(self, player_one_rect, *args, **kwargs):
         self.outer_walls.update()
         self.doors.update()
+        x, y = 0, 0
+        if player_one_rect.centerx > self.scroll_rect.right:
+            x = -1
+        elif player_one_rect.centerx < self.scroll_rect.left:
+            x = 1
+        if player_one_rect.centery > self.scroll_rect.bottom:
+            y = -1
+        elif player_one_rect.centery < self.scroll_rect.top:
+            y = 1
 
-        #print("door rect at update: ", self.entry_door.rect)
-        #for each in self.outer_walls:
-            #print("wall rect at update: ", each.rect)
+        self.scroll(x, y)
+
+        self.all_sprites.add(self.outer_walls, self.floors, self.doors, self.enemies)
 
     def draw_boxes(self, disp):
         for w in self.outer_walls:
             w.draw_boxes(disp)
         for e in self.enemies:
             e.draw_boxes(disp)
+        for f in self.doors:
+            f.draw_boxes(disp)
 
         self.ground.draw_boxes(disp)
         pygame.draw.rect(disp, config.green, self.full_rect, 4)
@@ -169,17 +213,24 @@ class room():
     # look into subclassing groups to make a more efficient version of this
     def scroll(self, x_scroll, y_scroll):
         for each in self.all_sprites:
-            each.rect = each.rect.move(x_scroll, y_scroll)
+            each.move(shift=(x_scroll, y_scroll))
 
     def collide_walls(self, **kwargs):
         if 'players' in kwargs:
             # only checks the collision of the outer rect, not the hitbox.
-            bonks = pygame.sprite.groupcollide(kwargs['players'], self.outer_walls, False, False)
-            if any in bonks:
-                print(bonks)
+            bonks = pygame.sprite.groupcollide(kwargs['players'], self.outer_walls, False, False, collide_hitbox)
             for each in bonks:
-                each.move(bound_rect=self.full_rect)
+                each.move(walls=bonks[each])
 
+    # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
+    # they're in contact with
+    def collide_doors(self, players):
+        dings = pygame.sprite.groupcollide(players, self.doors, False, False, collide_hitbox)
+        if any in dings:
+            print(dings)
+        for each in dings:
+            for every in dings[each]:
+                every(each)
 
     def collide_enemies(self, player):
         pass
@@ -197,5 +248,5 @@ class room():
 class hub_room(room):
     def __init__(self, disp):
         #self.rect = pygame.rect.Rect((0, 0), (10*config.tile_scalar, 10*100))
-        super().__init__(('center', 5), (20, 20), theme(), disp)
+        super().__init__(('left', 2), (9, 5), theme(), disp, exit_door=[('top', 3), ('bottom', 66), ('right', 0)])
 

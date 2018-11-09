@@ -33,6 +33,8 @@ import pygame, config, interface
 from misc import controller_list as controller_list
 pygame.init()
 
+error_log = open("log.txt", 'w')
+
 game_window = pygame.display.set_mode(config.screen_size)
 clock = pygame.time.Clock()
 
@@ -41,13 +43,36 @@ class game_state():
         self.state_number = 0
         self.state_name = "closed"
 
+class partial_render():
+    def __init__(self, frag):
+        self.segments = []
+        seg_size = int(config.screen_width/frag)
+        try:
+            assert (isinstance(seg_size, int)), "seg_size is not an int"
+        except AssertionError:
+            print(AssertionError, "seg_szie= ", seg_size)
+
+        for x in range(0, frag):
+            self.segments.append(pygame.rect.Rect((x*seg_size, 0), (seg_size, config.screen_height)))
+        self.index = 0
+
+    def __call__(self, *args, **kwargs):
+        ret = self.segments[self.index]
+        self.index += 1
+        if self.index >= len(self.segments):
+            self.index = 0
+        return ret
+
+
 class screen_handler():
     def __init__(self, display):
         print("display rect is : ", display.get_rect())
         self.disp = pygame.Surface(config.screen_size)
         self.size = config.screen_size
-        self.scroll_bounds = pygame.rect.Rect((0, 0), (config.screen_width*2/3, config.screen_height*2/3))
+        self.scroll_bounds = pygame.rect.Rect((0, 0), (config.screen_width-100, config.screen_height-100))
         self.scroll_bounds.center = display.get_rect().center
+
+        self.render_rect = partial_render(3)
 
         self.menus = pygame.sprite.Group()
         self.player_one = None
@@ -57,6 +82,8 @@ class screen_handler():
         self.current_room = None
         self.game_state = "start_menu"
         self.overlays = []
+
+
 
     # currently, update does a lot of things. It is used to add many things to the screen, to keep everything elegant
     # and avoid having to write many dif methods, but this may not be a great idea, as update is also used/assumed to
@@ -87,16 +114,16 @@ class screen_handler():
             print(AssertionError, "index= ", self.player_index, "num_interfaces= ", interface.handler.get_player_interface_num())
 
         if self.current_room is not None:
-            self.current_room.update()
-            #print("colliding walls")
+            self.current_room.update(self.player_one.player.rect)
             self.current_room.collide_walls(players=self.GROUP_of_player_SPRITES)
+            self.current_room.collide_doors(self.GROUP_of_player_SPRITES)
 
             visible_enemies = self.current_room.pull_enemies(True)
             for player in self.ordered_list_of_player_HANDLERS:
                 player.update(all_players=self.GROUP_of_player_SPRITES, known_enemies=visible_enemies)
 
     def draw(self, display, scroll=(0, 0)):
-        pygame.draw.rect(self.disp, config.black, ((0, 0), config.screen_size))
+        display.fill(config.black)
 
         if self.game_state == 'game_loop':
             if self.current_room is not None:
@@ -110,12 +137,15 @@ class screen_handler():
         self.menus.draw(display)
         for each in self.overlays:
             each.draw(display)
-        # pygame.draw.rect(display, config.blue, self.scroll_bounds, 10)
-        pygame.display.update()
+        pygame.draw.rect(display, config.black, self.scroll_bounds, 4)
+
+        #pygame.display.update(self.render_rect())
+        pygame.display.flip()
+        #pygame.display.update()
 
     def game_start(self, player_constr, starting_room):
         from spriteling import spriteling
-        assert (len(self.ordered_list_of_player_HANDLERS)>=1), "nothing is in player handlers"
+        assert (len(self.ordered_list_of_player_HANDLERS) >=1 ), "nothing is in player handlers"
         i = 1
         for each in self.ordered_list_of_player_HANDLERS:
             each.begin_game(player_constr, starting_room, i)
@@ -128,6 +158,7 @@ class screen_handler():
             except:
                 print("failed to add sprites; you passed in ", type(each))
             self.apply(overlay=each.get_hud())
+
 
 running = True
 start_loop = True
@@ -193,7 +224,9 @@ banned_list = []
 
 
 
-print("entering playere select loop")
+###print("entering playere select loop")
+# DEBUG: add an event here
+events.new_event(2, "game_state", True, error_log, log_entry="entering playere select loop", console_msg="entering playere select loop")
 
 while(player_select_loop and running):
     for event in pygame.event.get():
@@ -273,14 +306,10 @@ scroll = (0, 0)
 
 hub.spawn_enemy(enemies.enemy(loc=(600, 600)))
 
-def impact():
-    print('calling driver.impact')
-
-
 test_eff = spriteling.effect('fire', ('sec', 10), 100, .5)
 test_eff2 = spriteling.effect('test', ('frames', 200), knockback=(4, 5))
-print("num_effects= ", spriteling.effect.get_tracker())
-print("effects: \n", test_eff, test_eff2)
+#print("num_effects= ", spriteling.effect.get_tracker())
+#print("effects: \n", test_eff, test_eff2)
 
 while(game_loop and running):
     for event in pygame.event.get():
@@ -291,12 +320,11 @@ while(game_loop and running):
 
     screen.update()
 
-    #scroll = (scroll[0]+1, scroll[1])
+    screen.draw(game_window)
 
-    screen.draw(game_window, scroll)
-
+    #print("fps= ", clock.get_fps())
 
     clock.tick(config.fps)
-    pygame.display.update()
+    #pygame.display.update()
     pygame.event.pump()
     pygame.time.wait(0)

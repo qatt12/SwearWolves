@@ -218,8 +218,10 @@ import pygame, config
 
 placeholder = pygame.image.load('baddies\loogloog.png').convert_alpha ()
 
+# the use of multiple hitbox is currently deprecated, cause its expensive and complicated, and makes all my code look
+# like a twisted hell of for loops
 def collide_hitbox(spritelingA, spritelingB):
-    pass
+    return pygame.Rect.colliderect(spritelingA.hitbox.rect, spritelingB.hitbox.rect)
 
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
@@ -246,6 +248,15 @@ class spriteling(pygame.sprite.Sprite):
         else:
             self.name = 'trashboat'
 
+        # a traits keyword, for passing specific named traits to the spriteling. These can be looked up later via a
+        # look_for method
+        if 'traits' in kwargs:
+            self.traits = kwargs['traits']
+        else:
+            self.traits = ()
+
+        self.activity_state = {}
+
         self.hp = 1000
         self.cond_queue = []
         self.dmg_mult = {'dmg':1}
@@ -259,10 +270,10 @@ class spriteling(pygame.sprite.Sprite):
         # not sure I we should make all/most spritelings have only one hitbox by default, and just create a subclass
         # with extra
         if 'hitbox' in kwargs:
-            self.hitbox = hitbox(kwargs['hitbox'])
+            self.hitbox = hitbox(self, rect=kwargs['hitbox'])
         else:
             self.hitbox = hitbox(self, rect=self.rect)
-        self.hitboxes = pygame.sprite.Group(self.hitbox)
+        #self.hitboxes = pygame.sprite.Group(self.hitbox)
 
     def __str__(self):
         return str(type(self)) + self.name
@@ -271,18 +282,19 @@ class spriteling(pygame.sprite.Sprite):
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
         self.move(**kwargs)
         self.rect.move_ip(self.velocity)
-        self.hitboxes.update()
+        self.hitbox.update()
+        ###print(self.rect)
 
     def draw(self, disp, boxes=False):
-        #print("calling spriteling.draw() on type:", type(self), "I am: ", self)
         disp.blit(self.image, self.rect)
         if boxes:
             self.draw_boxes(disp)
 
     def draw_boxes(self, disp):
         pygame.draw.rect(disp, config.green, self.rect, 4)
-        for each in self.hitboxes:
-            pygame.draw.rect(disp, config.red, each.rect, 4)
+        #for each in self.hitboxes:
+        #    pygame.draw.rect(disp, config.red, each.rect, 4)
+        pygame.draw.rect(disp, config.red, self.hitbox.rect, 4)
 
     # minimize use of this; most of its functionality is being taken over by update
     def move(self, **kwargs):
@@ -296,14 +308,37 @@ class spriteling(pygame.sprite.Sprite):
         if 'knockback' in kwargs:
             self.rect.move_ip(kwargs['knockback'][0], kwargs['knockback'][1])
         if 'walls' in kwargs:
-            # a bunch of rectangles that block the player
-            pass
+            #print("found walls: ", kwargs['walls'])
+            for wall in kwargs['walls']:
+                # some creative tomfoolery with rectangles and clipping
+                # temp is the rectangle of overlap between the hitbox of the offending sprite and the hitbox of the wall
+                temp = self.hitbox.rect.clip(wall.hitbox.rect)
+                # before forcing a move either up or down, we need to see if our centerx is between the left and right
+                # bounds of the wall we've hit. if it is, then this is a top or bottom collision
+                if wall.hitbox.rect.left < self.rect.centerx < wall.hitbox.rect.right:
+                    # if temp's centery is above our won centery, then the wall we are touching is above us, and we will
+                    # need to move downwards (positive y) by an amount equal to the height of temp
+                    if temp.centery < self.hitbox.rect.centery:
+                        # move our own rect downwards
+                        self.rect.move_ip(0, temp.height)
+                    # basically the same as above, but now temp's height is negative, to reflect that we're moving
+                    # upwards
+                    elif temp.centery > self.hitbox.rect.centery:
+                        self.rect.move_ip(0, -temp.height)
+                if wall.hitbox.rect.bottom > self.rect.centery > wall.hitbox.rect.top:
+                    if temp.centerx > self.hitbox.rect.centerx:
+                        self.rect.move_ip(-temp.width, 0)
+                    elif temp.centerx < self.hitbox.rect.centerx:
+                        self.rect.move_ip(temp.width, 0)
+                self.hitbox.update()
+
         if 'bound_rect' in kwargs:
             self.rect.clamp_ip(kwargs['bound_rect'])
         if 'to' in kwargs:
             self.rect.center = kwargs['to']
         if 'shift' in kwargs:
             self.rect.move_ip(kwargs['shift'])
+            self.hitbox.rect.move_ip(kwargs['shift'])
         #return (xvel, yvel)
         self.velocity = (xvel, yvel)
 
@@ -313,6 +348,18 @@ class spriteling(pygame.sprite.Sprite):
 
     def impact(self):
         print("calling spritelings.impact")
+
+    # a basic function that is called by the associated handler to extract important data from the spriteling, as well
+    # as by anything that has to send data to the handler (this is achieved by having the sender call this method to
+    # place its data in the spriteling. then, when the handler for that spriteling calls this function, it will receive
+    # the sender's message/data)
+    def send_to_handler(self, *args):
+        for each in args:
+            self.cond_queue.append(each)
+        return self.cond_queue
+
+    def check_collide(self, target):
+        return pygame.Rect.colliderect(self.hitbox.rect, target.hitbox.rect)
 
     @classmethod
     def track_next(cls, name):
@@ -356,23 +403,6 @@ class hitbox(pygame.sprite.Sprite):
     # the ever crucial update method. By default, it just adjusts the hitbox to be centered on the host
     def update(self, **kwargs):
         self.rect.center = self.host.rect.center
-        # straight up copy-pasted from the init method, because why bother saving this to the hitbox when nearly
-        if 'rect' in kwargs:
-            self.rect = pygame.Rect.copy(kwargs['rect'])
-        # if no rect is provided, it copies the rect of its host
-        else:
-            self.rect = pygame.Rect.copy(self.host.rect)
-        # the rect scales to the provided x and y proportions
-        if 'scale_x' in kwargs:
-            xscale = kwargs['scale_x']
-        else:
-            xscale = 1
-        if 'scale_y' in kwargs:
-            yscale = kwargs['scale_y']
-        else:
-            yscale = 1
-        self.rect.inflate_ip(xscale, yscale)
-
         # everything has their hitbox centered by default?
         if 'center' in kwargs:
             self.rect.center = kwargs['center']
@@ -384,6 +414,10 @@ class hitbox(pygame.sprite.Sprite):
             self.rect.bottom = kwargs['bottom_side']
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
+
+    # hitbox level collision detection
+    def collide_hitbox(self, spritelingB):
+        return pygame.Rect.colliderect(self.rect, spritelingB.hitbox)
 
 
 # this feels awkward, and I may not use this syntax to handle sprite interaction

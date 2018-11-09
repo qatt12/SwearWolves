@@ -209,8 +209,7 @@ class missile(spriteling.spriteling):
 
     def update(self, *args, **kwargs):
         self.rect.move_ip(self.velocity)
-        for each in self.hitboxes:
-            each.rect.center = self.rect.center
+        self.hitbox.update()
 
 
 # spells themselves don't do much, except for creating and launching missiles
@@ -258,7 +257,7 @@ class spell(spriteling.spriteling):
         return self.projectile(direction, self.rect.center)
 
     def __str__(self):
-        return str(self.type_name +' '+ self.spell_name)
+        return str(self.type_name + ' ' + self.spell_name)
 
 # charge_up spells need to be charged by holding the fire button until they are sufficiently charged
 # every frame in which the fire button is held (it determines if the button is held by checking the current and previous
@@ -395,7 +394,8 @@ class targeted(spell):
                 and 'missile_layer' in kwargs:
             self.cast(prev, now, kwargs['missile_layer'])
 
-
+    def cast(self, prev, now, layer):
+        pass
 
     # goes thru all viable targets and assigns first, second, and third targeting params
     def target(self, **kwargs):

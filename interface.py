@@ -190,7 +190,8 @@ class handler():
         #updates the player
         movement = self.controller.pull_movement()['move']
         facing = self.controller.pull_movement()['look']
-        self.player.update(look=facing, move=movement)
+        interaction = self.controller.pull_face()['interact']
+        self.player.update(look=facing, move=movement, interact=interaction)
 
         # updates the spellbook
         now, prev = self.controller.pull_face()['fire']
@@ -211,11 +212,13 @@ class handler():
         #                     missile_layer=self.missiles, **kwargs)
         self.book.update(origin, fire=(now, prev), direction=self.player.facing,
                          missile_layer=self.missiles, **kwargs)
-        #self.book.update(origin, own_self=self.player, **kwargs)
 
         # updates spells
         # I just need to get the targeting data into the targeted spell
         self.missiles.update()
+
+        # kinda useless, may still be helpful for something
+        cond_queue = self.player.send_to_handler()
 
 
 
@@ -233,16 +236,11 @@ class handler():
         starting_room.add_players(self.player)
         self.my_player_single.add(self.player)
 
-    # all of the draw_boxes method calls are for debugging and should be deleted prior to submission
+    # all of the draw_boxes method calls are for debugging and uses should be deleted prior to submission
     def draw(self, disp):
         self.player.draw(disp)
         self.player.draw_boxes(disp)
-
-        #for each in self.missiles:
-            #each.draw_boxes(disp)
         self.book.draw(disp)
-        #self.hud.draw(disp)
-        #self.hud.draw_boxes(disp)
         self.missiles.draw(disp)
 
     def get_hud(self):

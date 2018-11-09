@@ -76,7 +76,7 @@
 import spriteling, pygame, config
 
 wall_size = 65
-corner_size = 50
+corner_size = 65
 
 # class for stationary objects that are placed and then never moved.
 class block(spriteling.spriteling):
@@ -107,9 +107,10 @@ class block(spriteling.spriteling):
     # the update method simply returns them to their designated positions
     # DEBUG: at least it should. currently it does fuck all. Not sure why
     def update(self, *args):
-        if self.rooted:
+        #print("block update")
+        if self.rooted is not None:
             self.rect.center = self.rooted
-        elif self.link:
+        elif self.link is not None:
             x, y = self.link_dir[0], self.link_dir[1]
             if x == 0 and y == 0:
                 self.rect.center = self.link.rect.center
@@ -136,54 +137,77 @@ class block(spriteling.spriteling):
                 elif y == -2:
                     self.rect.bottom = self.link.rect.top
 
+    # adjust allows you to dictate/move the side of door's rect to match a given line/value. Intended to be used within
+    # room to properly line the door up with the walls
+    def adjust(self, **kwargs):
+        if 'left' in kwargs:
+            self.rect.left = kwargs['left']
+        if 'right' in kwargs:
+            self.rect.right = kwargs['right']
+        if 'top' in kwargs:
+            self.rect.top = kwargs['top']
+        if 'bottom' in kwargs:
+            self.rect.bottom = kwargs['bottom']
+        if 'bound_rect' in kwargs:
+            #if self.rect.top < kwargs['bound_rect'].top:
+            #    self.rect.top = kwargs['bound_rect'].top
+            #elif self.rect.bottom > kwargs['bound_rect'].bottom:
+            #    self.rect.bottom = kwargs['bound_rect'].bottom
+            #if self.rect.right > kwargs['bound_rect'].right:
+            #    self.rect.right = kwargs['bound_rect'].right
+            #elif self.rect.left < kwargs['bound_rect'].left:
+            #    self.rect.left = kwargs['bound_rect'].left
+            self.rect.clamp_ip(kwargs['bound_rect'])
+        self.hitbox.rect.clamp_ip(self.rect)
+
 
 # Straight up copy-pasted this stuff from my earlier project. it should work in here with limited modifications
 class wall(block):
     wall_size = 65
     def __init__(self, facing, *args):
         super(wall, self).__init__(*args)
-        self.hitboxes.empty()
+        #self.hitboxes.empty()
         self.facing = facing
         if facing == 'down':
             self.hitbox = spriteling.hitbox(self,
-                                            scale_y=-wall_size, bottom_side=self.rect.bottom)
-        elif facing == 'top':
+                                            scale_y=-wall.wall_size, bottom_side=self.rect.bottom)
+        elif facing == 'up':
             self.hitbox = spriteling.hitbox(self,
-                                            scale_y=-wall_size, top_side=self.rect.top)
+                                            scale_y=-wall.wall_size, top_side=self.rect.top)
         elif facing == 'left':
             self.hitbox = spriteling.hitbox(self,
-                                            scale_x=-wall_size, left_side=self.rect.left)
+                                            scale_x=-wall.wall_size, left_side=self.rect.left)
         elif facing == 'right':
             self.hitbox = spriteling.hitbox(self,
-                                            scale_x=-wall_size, right_side=self.rect.right)
-        self.hitboxes.add(self.hitbox)
+                                            scale_x=-wall.wall_size, right_side=self.rect.right)
+        #self.hitboxes.add(self.hitbox)
 
 
 # this is for inward facing/concave corners. the orientation is specified manually by string. Not exactly elegant,
 # fancy, or portable, but since there are at most four cases (and this is only ever called in room.py::class::theme),
 # hardcoded constants will work
 class corner(block):
-    corner_size = 50
+    corner_size = 65
     def __init__(self, facing, *args):
         super().__init__(*args)
-        self.hitboxes.empty()
+        #self.hitboxes.empty()
         if facing == 'top_left':
             self.hitbox = (spriteling.hitbox(self,
-                                             scale_x=-corner_size, scale_y=-corner_size,
+                                             scale_x=-corner.corner_size, scale_y=-corner.corner_size,
                                              top_side=self.rect.top, left_side=self.rect.left))
         elif facing == 'top_right':
             self.hitbox = (spriteling.hitbox(self,
-                                             scale_x=-corner_size, scale_y=-corner_size,
+                                             scale_x=-corner.corner_size, scale_y=-corner.corner_size,
                                              top_side=self.rect.top, right_side=self.rect.right))
         elif facing == 'bottom_right':
             self.hitbox = (spriteling.hitbox(self,
-                                             scale_x=-corner_size, scale_y=-corner_size,
+                                             scale_x=-corner.corner_size, scale_y=-corner.corner_size,
                                              bottom_side=self.rect.bottom, right_side=self.rect.right))
         elif facing == 'bottom_left':
             self.hitbox = (spriteling.hitbox(self,
-                                             scale_x=-corner_size, scale_y=-corner_size,
+                                             scale_x=-corner.corner_size, scale_y=-corner.corner_size,
                                              bottom_side=self.rect.bottom, left_side=self.rect.left))
-        self.hitboxes.add(self.hitbox)
+        #self.hitboxes.add(self.hitbox)
 
 
 # the floor sprite is bit tricky, as it creates a rectangular floor of the size specified and sets it as its image
@@ -205,36 +229,103 @@ class floor(block):
 
         print(self.rect)
 
-class door(block):
+
+# DO NOT INCLUDE A KEYWORDED HITBOX IN THE INSTANTIATION OF A TRIGGER
+class trigger(block):
+    def __init__(self, img, loc, outer_box, **kwargs):
+        try:
+            assert ('hitbox' not in kwargs), 'DO NOT INCLUDE A KEYWORDED HITBOX IN THE INSTANTIATION OF A TRIGGER'
+        except AssertionError:
+            # include a new_event here
+            print(AssertionError)
+            #not sure how to avoid sending two hitbox kwargs up to spriteling
+        super().__init__(img, loc, hitbox=outer_box, **kwargs)
+
+class contact_trigger(trigger):
+    def __init__(self, img, loc, outer_box, **kwargs):
+        super().__init__(img, loc, outer_box, **kwargs)
+
+    def check_collide(self, target):
+        pass
+
+# interact triggers have a callback function that is passed into them at init. this function looks for one or more
+# traits/activities and if they should/shouldn't be happening, and returns True if everything matches up
+class interact_trigger(trigger):
+    def __init__(self, img, loc, outer_box, look_for, timer, **kwargs):
+        super().__init__(img, loc, outer_box, **kwargs)
+        self.look_for = look_for
+        self.timer = timer * config.fps
+        self.tick = 0
+
+    def __call__(self, *args, **kwargs):
+        self.tick += self.look_for(*args, **kwargs)
+        if self.tick >= self.timer:
+            print('interaction trigger has worked')
+
+
+def look_for_activity(*args, **kwargs):
+    try:
+        assert (isinstance(args[0], spriteling.spriteling)), "ERROR: the first arg should be a spriteling"
+        if len(args) > 1:
+            assert (isinstance(args[1], int)), "ERROR: need a trip value"
+    except AssertionError:
+        print(AssertionError, "perhaps you meant to call a different look_for?")
+        return False
+    if 'must_be' in kwargs:
+        for each in kwargs['must_be']:
+            if each in args[0].activity_state and args[0].activity_state[each]:
+                pass
+            else:
+                return False
+    else:
+        return False
+    if 'must_not_be' in kwargs:
+        try:
+            assert (not (any in kwargs['must_be'] in kwargs["must_not_be"])), "ERROR: mutually exclusive must (not) be"
+        except AssertionError:
+            print(AssertionError, "double-check your must/must_not_be")
+            return False
+        for each in kwargs['must_not_be']:
+            if each in args[0].activity_state and args[0].activity_state[each]:
+                return False
+    return True
+
+class door(interact_trigger):
     def __init__(self, **kwargs):
         # DEBUG STUFF at least the image is. UNTIL YOTOLL DRAWS A DOOR
-        super().__init__(pygame.transform.scale(pygame.image.load('misc\spirit.jpg').convert_alpha(),
-                                                (config.tile_scalar, config.tile_scalar)), (0, 0))
+        pass_img = pygame.transform.scale(pygame.image.load('misc\spirit.jpg').convert_alpha(), (config.tile_scalar, config.tile_scalar))
+        pass_loc = (0, 0)
+        pass_rect = pass_img.get_rect()
+        pass_trig = look_for_activity
+        pass_timer = 1
+        super().__init__(pass_img, pass_loc, pass_rect, pass_trig, pass_timer)
         # the kwargs are for positioning, as well as giving it a root at init (see class:blocks for what this means)
+        # DEBUG: I am unsure of why, but the positioning for doors is slightly off for doors located on the right or
+        # left walls: they are shifted off-centery by about 50 pixels. The practical impact of this is minimal
         if 'coords' in kwargs:
             self.rect.center = kwargs['coords']
         if 'root_wall' in kwargs:
             self.rect.center = kwargs['root_wall'].rect.center
         if 'side_x' in kwargs:
             self.rect.centerx = kwargs['side_x']
-            self.rect.centery = (kwargs['pos']*config.tile_scalar) -50
+            self.rect.centery = (config.tile_scalar + (kwargs['pos']*config.tile_scalar + 50))
         if 'side_y' in kwargs:
             self.rect.centery = kwargs['side_y']
-            self.rect.centerx = (kwargs['pos']*config.tile_scalar) -50
+            self.rect.centerx = (config.tile_scalar + (kwargs['pos']*config.tile_scalar + 50))
+
+        self.hitbox.update()
 
     # simple, placeholder-y method that moves the player on top of the door. Will prbly be rewritten with more complex
     # behavior (that doesn't stack all the players on top of each other
     def enter(self, player):
         player.rect.center = self.rect.center
 
-    # adjust allows you to dictate/move the side of door's rect to match a given line/value. Intended to be used within
-    # room to properly line the door up with the walls
-    def adjust(self, **kwargs):
-        if 'left' in kwargs:
-            self.rect.left = kwargs['left']
-        if 'right' in kwargs:
-            self.rect.right = kwargs['right']
-        if 'top' in kwargs:
-            self.rect.top = kwargs['top']
-        if 'bottom' in kwargs:
-            self.rect.bottom = kwargs['bottom']
+    def __call__(self, target):
+        if self.look_for(target, must_be=('interacting')):
+            self.tick += 1
+            print("adding to tick", self.tick)
+        else:
+            self.tick = 0
+            print("resetting tick")
+        if self.tick >= self.timer:
+            print('interaction trigger has worked')

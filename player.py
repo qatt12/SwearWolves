@@ -3,6 +3,8 @@ import spriteling
 import overlays
 from loader import player_img_loader
 
+print("player.py has been imported")
+
 player_img_size =(38, 83)
 img_boundary = (40, 85)
 def calc_index(x_coord, y_coord):
@@ -39,16 +41,21 @@ class player(spriteling.spriteling):
 
         self.spritesheet = img_lookup[book.goddess_lookup_key]
         self.string_lookup = {'topleft': calc_index(0, 0), 'neutral': calc_index(1, 1)}
-        self.tuple_lookup = {(-1, -1):calc_index(0, 0), (0, 1): calc_index(1, 0), (1, -1): calc_index(2, 2),
+        self.tuple_lookup = {(-1, -1): calc_index(0, 0), (0, 1): calc_index(1, 0), (1, -1): calc_index(2, 2),
                              (-1, 0): calc_index(0, 1), (0, 0): calc_index(1, 1), (1, 0): calc_index(2, 1),
                              (-1, 1): calc_index(0, 2), (0, -1): calc_index(1, 2), (1, 1): calc_index(2, 2)}
         self.image = self.spritesheet.subsurface(self.string_lookup['neutral'])
         self.rect = self.image.get_rect()
 
-        self.hitboxes.empty()
+        #self.hitboxes.empty()
         self.hitbox = spriteling.hitbox(self,
-                                        scale_x=-(self.rect.height*0.2), scale_y=-(self.rect.width*0.2))
-        self.hitboxes.add(self.hitbox)
+                                        scale_y=-(self.rect.height*0.3), scale_x=-(self.rect.width*0.2))
+
+        self.activity_state = {
+            'interacting': False,
+            'feet_locked': False,
+            'aim_locked': False,
+        }
 
         self.spell_slot = self.rect.center
         self.book = book
@@ -83,6 +90,13 @@ class player(spriteling.spriteling):
                 self.facing = (0, 1)
         else:
             self.facing = self.prev_facing
+
+        if 'interact' in kwargs:
+            if kwargs['interact'][0] >= kwargs['interact'][1] >= 1:
+                print("player sprite is interacting")
+                self.activity_state['interacting'] = True
+            else:
+                self.activity_state['interacting'] = False
 
         self.image = self.spritesheet.subsurface(self.tuple_lookup[self.facing])
 

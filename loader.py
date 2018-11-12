@@ -44,6 +44,4 @@ class player_img_loader():
         w = size.width/4
         return ref.subsurface((w*index[0],  h*index[1]), (w, h))
 
-class char_writer():
-    def __init__(self):
-        pass
+

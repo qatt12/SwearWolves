@@ -40,10 +40,10 @@ class theme(object):
         #for i in range(border.left, border.right, tile_scalar):
         for i in range(border.left - int(tile_scalar/2), border.right + int(tile_scalar/2), tile_scalar):
             top = wall('up', self.image_lookup['tw'], (i + 50, border.top))
-            print("top wall: \n Rect: ",top.rect, "hitbox: ", top.hitbox.rect)
+            # print("top wall: \n Rect: ",top.rect, "hitbox: ", top.hitbox.rect)
 
             bottom = wall('down', self.image_lookup['bw'], (i + 50, border.bottom))
-            print("bottom wall: \n Rect: ", bottom.rect, "hitbox: ", bottom.hitbox.rect)
+            # print("bottom wall: \n Rect: ", bottom.rect, "hitbox: ", bottom.hitbox.rect)
 
             if enter_from[0] == 'top' and enter_from[1] == (i/tile_scalar):
                 entry_door.attach(top, (0, 0))
@@ -75,8 +75,6 @@ class room():
     def __init__(self, enter_from, size, theme, disp, *args, **kwargs):
         # the constructor reqs a size tuple for height and width in tiles, a theme from which to draw tiles and enemies,
         # the current difficulty level, and the player's point of entry.
-        self.theme = theme
-
         self.image = pygame.Surface(size)
 
         self.all_sprites = sGroup()
@@ -97,28 +95,7 @@ class room():
         self.scroll_rect = self.visible_rect.inflate(-150, -150)
         self.scroll_rect.center = self.visible_rect.center
 
-        # if enter_from[0] == 'left':
-        #     self.full_rect.left = self.visible_rect.left
-        #     self.entry_door = door(side_x=self.full_rect.left, pos=enter_from[1])
-        # elif enter_from[0] == 'center':
-        #     self.full_rect.center = self.visible_rect.center
-        #     self.entry_door = door(coords=self.full_rect.center)
-        # elif enter_from[0] == 'right':
-        #     self.full_rect.right = self.visible_rect.right
-        #     self.entry_door = door(side_x=self.full_rect.right, pos=enter_from[1])
-        # elif enter_from[0] == 'bottom':
-        #     self.full_rect.bottom = self.visible_rect.bottom
-        #     self.entry_door = door(side_y=self.full_rect.bottom, pos=enter_from[1])
-        # elif enter_from[0] == 'top':
-        #     self.full_rect.top = self.visible_rect.top
-        #     self.entry_door = door(side_y=self.full_rect.top, pos=enter_from[1])
-#
-        # if self.full_rect.width < self.visible_rect.width:
-        #     self.full_rect.centerx = self.visible_rect.centerx
-        #     self.entry_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
-        # if self.full_rect.height < self.visible_rect.height:
-        #     self.full_rect.centery = self.visible_rect.centery
-        #     self.entry_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
+
 
         self.entry_door = self.add_door(enter_from[0], enter_from[1])
         if "exit_door" in kwargs:
@@ -173,20 +150,20 @@ class room():
         else:
             return False
 
-        if self.full_rect.width < self.visible_rect.width:
-            self.full_rect.centerx = self.visible_rect.centerx
-            new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
-        if self.full_rect.height < self.visible_rect.height:
-            self.full_rect.centery = self.visible_rect.centery
-            new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
+       # if self.full_rect.width < self.visible_rect.width:
+       #     self.full_rect.centerx = self.visible_rect.centerx
+       #     new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
+       # if self.full_rect.height < self.visible_rect.height:
+       #     self.full_rect.centery = self.visible_rect.centery
+       #     new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
         return new_door
 
-    def update(self, player_one_rect, *args, **kwargs):
+    def update(self, player_one_rect, all_players, *args, **kwargs):
         self.outer_walls.update()
         self.doors.update()
         x, y = 0, 0
         if player_one_rect.centerx > self.scroll_rect.right:
-            x = -1
+            x = -(player_one_rect.centerx - self.scroll_rect.right)
         elif player_one_rect.centerx < self.scroll_rect.left:
             x = 1
         if player_one_rect.centery > self.scroll_rect.bottom:
@@ -195,6 +172,7 @@ class room():
             y = 1
 
         self.scroll(x, y)
+        self.counter_scroll(x, y, all_players)
 
         self.all_sprites.add(self.outer_walls, self.floors, self.doors, self.enemies)
 
@@ -210,9 +188,13 @@ class room():
         pygame.draw.rect(disp, config.green, self.full_rect, 4)
         pygame.draw.rect(disp, config.blue, self.visible_rect, 4)
 
-    # look into subclassing groups to make a more efficient version of this
+    # a basic scroll everything to the [direction] method
     def scroll(self, x_scroll, y_scroll):
         for each in self.all_sprites:
+            each.move(shift=(x_scroll, y_scroll))
+
+    def counter_scroll(self, x_scroll, y_scroll, subjects):
+        for each in subjects:
             each.move(shift=(x_scroll, y_scroll))
 
     def collide_walls(self, **kwargs):
@@ -225,12 +207,10 @@ class room():
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
     def collide_doors(self, players):
-        dings = pygame.sprite.groupcollide(players, self.doors, False, False, collide_hitbox)
-        if any in dings:
-            print(dings)
+        dings = pygame.sprite.groupcollide(self.doors, players, False, False, collide_hitbox)
         for each in dings:
             for every in dings[each]:
-                every(each)
+                each(every)
 
     def collide_enemies(self, player):
         pass
@@ -245,8 +225,35 @@ class room():
             ret.add(self.enemies)
         return ret
 
-class hub_room(room):
-    def __init__(self, disp):
-        #self.rect = pygame.rect.Rect((0, 0), (10*config.tile_scalar, 10*100))
-        super().__init__(('left', 2), (9, 5), theme(), disp, exit_door=[('top', 3), ('bottom', 66), ('right', 0)])
 
+class hub_room(room):
+    def __init__(self, disp, theme):
+        super().__init__(('left', 2), (20, 20), theme(), disp, exit_door=[('top', 3), ('bottom', 66), ('right', 0)])
+
+
+class multiroom(room):
+    def __init__(self, enter_from, size, theme, disp, *args, **kwargs):
+        super().__init__(enter_from, size, theme, disp, *args, **kwargs)
+
+# the dungeon class is designed to be a holder for all the stuff that we need to randomly generate a room, as well as a
+# means by which we can generate new rooms
+class dungeon():
+    def __init__(self, difficulty, theme, num_players, disp, *args, **kwargs):
+        self.difficulty = difficulty
+        self.theme = theme
+        self.disp = disp
+        self.hub = hub_room(disp, theme)
+        self.current_room = self.hub
+
+    def next_room(self, players):
+        self.current_room = hub_room(self.disp, self.theme)
+
+    def __call__(self, *args, **kwargs):
+        return self.current_room
+
+    def get_hub(self):
+        return self.hub
+
+class basic_dungeon(dungeon):
+    def __init__(self, disp):
+        super(basic_dungeon, self).__init__(1, theme, 1, disp)

@@ -33,17 +33,14 @@ import pygame, config, interface
 from misc import controller_list as controller_list
 pygame.init()
 
-error_log = open("log.txt", 'w')
-
 game_window = pygame.display.set_mode(config.screen_size)
 clock = pygame.time.Clock()
 
-class game_state():
-    def __init__(self):
-        self.state_number = 0
-        self.state_name = "closed"
 
+# very basic rect calculating class designed to break the display window into several smaller rects so that the screen
+#  can be updated in blocks
 class partial_render():
+    # LOGAN: frag is the number of sub-rects that the display screen will be divided into
     def __init__(self, frag):
         self.segments = []
         seg_size = int(config.screen_width/frag)
@@ -56,6 +53,8 @@ class partial_render():
             self.segments.append(pygame.rect.Rect((x*seg_size, 0), (seg_size, config.screen_height)))
         self.index = 0
 
+    # LOGAN: once you've decided on how many sections of screen you want, simply calling the instance will return a rect
+    #  of the calculated size and position
     def __call__(self, *args, **kwargs):
         ret = self.segments[self.index]
         self.index += 1
@@ -64,30 +63,36 @@ class partial_render():
         return ret
 
 
+# important class that does its name: handles the screen
 class screen_handler():
     def __init__(self, display):
         print("display rect is : ", display.get_rect())
         self.disp = pygame.Surface(config.screen_size)
         self.size = config.screen_size
+
+        # LOGAN: scroll_bounds is a rect that is used to determine when the screen needs to be scrolled in a particular
+        # direction, and how fast it needs to scroll
         self.scroll_bounds = pygame.rect.Rect((0, 0), (config.screen_width-100, config.screen_height-100))
         self.scroll_bounds.center = display.get_rect().center
 
+        # the partial render rect
         self.render_rect = partial_render(3)
 
+        # LOGAN: setting up some important containers/labels.
         self.menus = pygame.sprite.Group()
         self.player_one = None
         self.player_index = 0
         self.ordered_list_of_player_HANDLERS = []
         self.GROUP_of_player_SPRITES = pygame.sprite.Group()
         self.current_room = None
-        self.game_state = "start_menu"
         self.overlays = []
 
+        self.game_state = 'start_loop'
 
 
     # currently, update does a lot of things. It is used to add many things to the screen, to keep everything elegant
     # and avoid having to write many dif methods, but this may not be a great idea, as update is also used/assumed to
-    # indicate the passage of time
+    # indicate the passage of time. this apply method is the new way to adjust what is in the screen handler.
     def apply(self, *args, **kwargs):
         if 'opened_menus' in kwargs:
             self.menus.add(kwargs['opened_menus'])
@@ -114,7 +119,7 @@ class screen_handler():
             print(AssertionError, "index= ", self.player_index, "num_interfaces= ", interface.handler.get_player_interface_num())
 
         if self.current_room is not None:
-            self.current_room.update(self.player_one.player.rect)
+            self.current_room.update(self.player_one.player.rect, self.GROUP_of_player_SPRITES)
             self.current_room.collide_walls(players=self.GROUP_of_player_SPRITES)
             self.current_room.collide_doors(self.GROUP_of_player_SPRITES)
 
@@ -125,10 +130,9 @@ class screen_handler():
     def draw(self, display, scroll=(0, 0)):
         display.fill(config.black)
 
-        if self.game_state == 'game_loop':
-            if self.current_room is not None:
-                self.current_room.draw_contents(self.disp)
-                self.current_room.draw_boxes(self.disp)
+        if self.current_room is not None:
+            self.current_room.draw_contents(self.disp)
+            self.current_room.draw_boxes(self.disp)
 
             for each in self.ordered_list_of_player_HANDLERS:
                 each.draw(self.disp)
@@ -143,14 +147,17 @@ class screen_handler():
         pygame.display.flip()
         #pygame.display.update()
 
+    # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
+    #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
+    # attaches their HUDS
     def game_start(self, player_constr, starting_room):
         from spriteling import spriteling
-        assert (len(self.ordered_list_of_player_HANDLERS) >=1 ), "nothing is in player handlers"
+        assert (len(self.ordered_list_of_player_HANDLERS) >=1), "nothing is in player handlers"
         i = 1
         for each in self.ordered_list_of_player_HANDLERS:
             each.begin_game(player_constr, starting_room, i)
             self.GROUP_of_player_SPRITES.add(each.player)
-            i +=1
+            i += 1
             assert (each.player is not None), "each.player DNEs"
             assert (isinstance(each.player, spriteling)), "wrong type; not a sprite"
             try:
@@ -160,6 +167,7 @@ class screen_handler():
             self.apply(overlay=each.get_hud())
 
 
+# these booleans are for the game loops, to keep everything running in the state loop in which it belongs
 running = True
 start_loop = True
 player_select_loop = True
@@ -169,6 +177,13 @@ print("entering start loop")
 import menu
 import events
 
+# LOGAN: the event_handler is a little anaemic right now, but for the life of me I can't figure out what/how much should
+#  go there
+event_maker = events.event_handler(1)
+
+# the start menu was... challenging to get working.
+# LOGAN: in order to get the window to continuously check for and accept controllers, I had to make a dedicated
+# controller list class.
 controller_handler = controller_list()
 
 start_menu = menu.menu(game_window.get_rect())
@@ -180,7 +195,7 @@ while(start_loop and running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == events.next_stage:
+        if event.type == events.exit_start:
             start_loop = False
 
     if controller_handler.is_p1_ready():
@@ -189,7 +204,7 @@ while(start_loop and running):
         print("player one handler's controller is of type: ", type(player_one_HANDLER.controller))
         screen.apply(player_one=player_one_HANDLER, closed_menus=start_menu)
         assert (screen.player_one is not None), "failed to add player one"
-        events.new_event(1, "end of start loop", console_msg="moving into char_select")
+        event_maker.game_state_event(events.exit_start)
         start_loop = False
         start_menu.kill()
 
@@ -221,12 +236,6 @@ print(screen)
 ready_players = 0
 player_one_HANDLER.attach(menu=p1_char_select, name="player one")
 banned_list = []
-
-
-
-###print("entering playere select loop")
-# DEBUG: add an event here
-events.new_event(2, "game_state", True, error_log, log_entry="entering playere select loop", console_msg="entering playere select loop")
 
 while(player_select_loop and running):
     for event in pygame.event.get():
@@ -298,18 +307,13 @@ import room, player, enemies, spriteling
 # scope tomfoolery
 plyr = player.multiplayer
 
-hub = room.hub_room(game_window)
-screen.apply(room=hub)
+
+DEBUG_dungeon = room.basic_dungeon(game_window)
+screen.apply(room=DEBUG_dungeon())
+
+
 # may replace this with some event driven progging
-screen.game_start(plyr, hub)
-scroll = (0, 0)
-
-hub.spawn_enemy(enemies.enemy(loc=(600, 600)))
-
-test_eff = spriteling.effect('fire', ('sec', 10), 100, .5)
-test_eff2 = spriteling.effect('test', ('frames', 200), knockback=(4, 5))
-#print("num_effects= ", spriteling.effect.get_tracker())
-#print("effects: \n", test_eff, test_eff2)
+screen.game_start(plyr, DEBUG_dungeon.get_hub())
 
 while(game_loop and running):
     for event in pygame.event.get():
@@ -322,9 +326,6 @@ while(game_loop and running):
 
     screen.draw(game_window)
 
-    #print("fps= ", clock.get_fps())
-
     clock.tick(config.fps)
-    #pygame.display.update()
     pygame.event.pump()
     pygame.time.wait(0)

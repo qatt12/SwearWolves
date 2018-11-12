@@ -11,7 +11,7 @@ field_size = (1400, 700)
 hud_width_proportion = 3
 hud_height_proportion = 5
 
-# size of the tiles used to draw florrs and such
+# size of the tiles used to draw floors and such
 tile_scalar = 100
 
 # colors

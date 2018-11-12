@@ -73,7 +73,8 @@
 # blocks are, as stated in spriteling.py, intended to be placed and then never moved. With the notable exception
 # of floors, blocks are also supposed to impede movement
 
-import spriteling, pygame, config
+import spriteling, pygame, config, events
+from events import new_event as new_event
 
 wall_size = 65
 corner_size = 65
@@ -264,6 +265,9 @@ class interact_trigger(trigger):
 
 
 def look_for_activity(*args, **kwargs):
+    #print("looking for an act")
+    #print("args is: ", args)
+    #print("kwargs is: ", kwargs)
     try:
         assert (isinstance(args[0], spriteling.spriteling)), "ERROR: the first arg should be a spriteling"
         if len(args) > 1:
@@ -272,7 +276,9 @@ def look_for_activity(*args, **kwargs):
         print(AssertionError, "perhaps you meant to call a different look_for?")
         return False
     if 'must_be' in kwargs:
+        #print("found must be: ", kwargs['must_be'])
         for each in kwargs['must_be']:
+            #print("each: ", each)
             if each in args[0].activity_state and args[0].activity_state[each]:
                 pass
             else:
@@ -288,7 +294,9 @@ def look_for_activity(*args, **kwargs):
         for each in kwargs['must_not_be']:
             if each in args[0].activity_state and args[0].activity_state[each]:
                 return False
+    #print("return True")
     return True
+
 
 class door(interact_trigger):
     def __init__(self, **kwargs):
@@ -321,11 +329,21 @@ class door(interact_trigger):
         player.rect.center = self.rect.center
 
     def __call__(self, target):
-        if self.look_for(target, must_be=('interacting')):
+        if self.look_for(target, must_be=['interacting']):
             self.tick += 1
-            print("adding to tick", self.tick)
+            #print("adding to tick", self.tick)
         else:
             self.tick = 0
-            print("resetting tick")
+            #print("resetting tick")
         if self.tick >= self.timer:
-            print('interaction trigger has worked')
+            #print('interaction trigger has worked')
+            new_event(events.activate_door_n, str(self))
+
+class ledge(block):
+    def __init__(self, loc, dir):
+        # DEBUUG: YOTOLL has some image integration to do
+        pass_img = pygame.transform.scale(pygame.image.load('misc\spirit.jpg').convert_alpha(), (config.tile_scalar, config.tile_scalar))
+        # expand this to permit all four directions a ledge can face
+        if dir == 'up':
+            pygame.transform.rotate(pass_img, 90)
+        super().__init__(pass_img, loc)

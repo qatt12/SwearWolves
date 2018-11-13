@@ -1,7 +1,7 @@
 # rooms are a sort of container class that hold and manage their contents.
 # as self-evident as the above sounds, it is an important note
 
-import pygame, blocks, config
+import pygame, blocks, config, random, events
 sGroup = pygame.sprite.Group
 
 from blocks import wall as wall
@@ -66,10 +66,14 @@ class theme(object):
         return all_walls
 
 
+default_theme = theme()
+
+events.event_maker.make_entry('log', 'default_theme', 'Testing default theme construction/initialization', 'room', True, False, 'theme', 'init', 'DEBUG', obj_src=default_theme, image_lookup=default_theme.image_lookup)
+
 # the core functions of the room are to hold everything that is going to appear on the screen, check for and report the
 # interactions between certain sprites, and to draw everything in the correct order
 class room():
-    def __init__(self, enter_from, size, theme, disp, *args, **kwargs):
+    def __init__(self, enter_from, size, disp, my_theme, *args, **kwargs):
         # the constructor reqs a size tuple for height and width in tiles, a theme from which to draw tiles and enemies,
         # the current difficulty level, and the player's point of entry.
         self.image = pygame.Surface(size)
@@ -82,7 +86,7 @@ class room():
         # the floor(s) are interesting. in order to allow the creation of irregularly shaped (non-rectangular) floors,
         # each segment of floor is created separately, then linked together. upon first being initialized, a room has a
         # simple, rectangular floor enclosed in a bounding wall.
-        self.ground = floor(size, theme)
+        self.ground = floor(size, my_theme)
         self.floors.add(self.ground)
 
         # this is supposed to help with screen scrolling for the room. The visible rect is what is currently on-screen,
@@ -102,7 +106,7 @@ class room():
         self.doors = sGroup(self.entry_door, self.exits)
 
         # the walls have to be spritelings in a group in order to properly register collision
-        self.outer_walls = theme.build_walls(self.full_rect, enter_from, self.entry_door)
+        self.outer_walls = my_theme.build_walls(self.full_rect, enter_from, self.entry_door)
 
         print("door rect at init: ", self.entry_door.rect)
         self.all_sprites.add(self.outer_walls, self.floors, self.doors, self.enemies)
@@ -119,8 +123,11 @@ class room():
             self.draw_boxes(disp)
 
     # super basic method atm, designed to be expanded as needed in later iterations
-    def add_players(self, player):
+    def add_player(self, player):
         self.entry_door.enter(player)
+    def add_players(self, players):
+        for each in players:
+            self.add_player(each)
 
     def spawn_enemy(self, *args, **kwargs):
         for each in args:
@@ -172,19 +179,22 @@ class room():
     def update(self, player_one_rect, all_players, *args, **kwargs):
         self.outer_walls.update()
         self.doors.update()
+
+        # calculates the scroll, and also sort of the counter_scroll based upon the player's position
         x, y = 0, 0
         if player_one_rect.centerx > self.scroll_rect.right:
             x = -(player_one_rect.centerx - self.scroll_rect.right)
         elif player_one_rect.centerx < self.scroll_rect.left:
-            x = 1
+            x = self.scroll_rect.left - player_one_rect.centerx
         if player_one_rect.centery > self.scroll_rect.bottom:
-            y = -1
+            y = -(player_one_rect.centery - self.scroll_rect.bottom)
         elif player_one_rect.centery < self.scroll_rect.top:
-            y = 1
+            y = self.scroll_rect.top - player_one_rect.centery
 
         self.scroll(x, y)
         self.counter_scroll(x, y, all_players)
 
+        # makes sure that all the sprites in the room are a part of all_sprites
         self.all_sprites.add(self.outer_walls, self.floors, self.doors, self.enemies)
 
     def draw_boxes(self, disp):
@@ -238,26 +248,36 @@ class room():
 
 
 class hub_room(room):
-    def __init__(self, disp, theme):
-        super().__init__(('left', 2), (20, 20), theme(), disp, exit_door=[('top', 3), ('bottom', 66), ('right', 0)])
+    def __init__(self, disp, my_theme=default_theme):
+        super().__init__(('left', 2), (20, 20), disp, my_theme, exit_door=[('top', 3), ('bottom', 66), ('right', 0)])
 
 
 class multiroom(room):
     def __init__(self, enter_from, size, theme, disp, *args, **kwargs):
         super().__init__(enter_from, size, theme, disp, *args, **kwargs)
 
+class DEBUG_room(room):
+    def __init__(self, disp, my_theme, *args, **kwargs):
+        s_x, s_y = random.randint(5, 30), random.randint(5, 30)
+        super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
+
 # the dungeon class is designed to be a holder for all the stuff that we need to randomly generate a room, as well as a
 # means by which we can generate new rooms
 class dungeon():
-    def __init__(self, difficulty, theme, num_players, disp, *args, **kwargs):
+    def __init__(self, difficulty, dungeon_theme, num_players, disp, *args, **kwargs):
         self.difficulty = difficulty
-        self.theme = theme
+        self.my_theme = dungeon_theme
+
+        events.event_maker.make_entry('trace', 'theme check', "assessing the contents of theme", 'room', False, False, 'theme', found_theme=self.my_theme)
+
         self.disp = disp
-        self.hub = hub_room(disp, theme)
+        self.hub = hub_room(disp, self.my_theme)
         self.current_room = self.hub
 
     def next_room(self, players):
-        self.current_room = hub_room(self.disp, self.theme)
+        self.current_room = DEBUG_room(self.disp, self.my_theme)
+        self.current_room.add_players(players)
+        return self.current_room
 
     def __call__(self, *args, **kwargs):
         return self.current_room
@@ -267,4 +287,4 @@ class dungeon():
 
 class basic_dungeon(dungeon):
     def __init__(self, disp):
-        super(basic_dungeon, self).__init__(1, theme, 1, disp)
+        super(basic_dungeon, self).__init__(1, default_theme, 1, disp)

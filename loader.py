@@ -45,3 +45,5 @@ class player_img_loader():
         return ref.subsurface((w*index[0],  h*index[1]), (w, h))
 
 
+class save_file():
+    pass

@@ -233,7 +233,7 @@ class handler():
         # okay so I couldn't get around importing this one thing.
         from overlays import hud
         self.hud = hud(self.player, self.book, player_num)
-        starting_room.add_players(self.player)
+        starting_room.add_player(self.player)
         self.my_player_single.add(self.player)
 
     # all of the draw_boxes method calls are for debugging and uses should be deleted prior to submission

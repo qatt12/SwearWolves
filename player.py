@@ -93,7 +93,7 @@ class player(spriteling.spriteling):
 
         if 'interact' in kwargs:
             if kwargs['interact'][0] >= kwargs['interact'][1] >= 1:
-                print("player sprite is interacting")
+
                 self.activity_state['interacting'] = True
             else:
                 self.activity_state['interacting'] = False

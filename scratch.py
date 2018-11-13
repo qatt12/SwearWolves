@@ -90,3 +90,16 @@ def argstest(default=0, *args):
         print(each)
 
 argstest('th', 'afsadf')
+
+class kwarg_test():
+    def __init__(self, **kwargs):
+        self.kwarg_dict = kwargs
+        self.key_val = {}
+        for key in kwargs:
+            self.key_val[key] = kwargs[key]
+    def show(self):
+        print('kwarg_dict= ', self.kwarg_dict)
+        print('key_val= ', self.key_val)
+
+kt = kwarg_test(f=1, w=4, kk='test')
+kt.show()

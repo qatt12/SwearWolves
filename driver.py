@@ -66,14 +66,9 @@ class partial_render():
 # important class that does its name: handles the screen
 class screen_handler():
     def __init__(self, display):
-        print("display rect is : ", display.get_rect())
+        event_maker.make_entry('log', 'game_window size', " ", 'driver', False, False, 'screen')
         self.disp = pygame.Surface(config.screen_size)
         self.size = config.screen_size
-
-        # LOGAN: scroll_bounds is a rect that is used to determine when the screen needs to be scrolled in a particular
-        # direction, and how fast it needs to scroll
-        self.scroll_bounds = pygame.rect.Rect((0, 0), (config.screen_width-100, config.screen_height-100))
-        self.scroll_bounds.center = display.get_rect().center
 
         # the partial render rect
         self.render_rect = partial_render(3)
@@ -86,9 +81,6 @@ class screen_handler():
         self.GROUP_of_player_SPRITES = pygame.sprite.Group()
         self.current_room = None
         self.overlays = []
-
-        self.game_state = 'start_loop'
-
 
     # currently, update does a lot of things. It is used to add many things to the screen, to keep everything elegant
     # and avoid having to write many dif methods, but this may not be a great idea, as update is also used/assumed to
@@ -131,8 +123,8 @@ class screen_handler():
         display.fill(config.black)
 
         if self.current_room is not None:
-            self.current_room.draw_contents(self.disp)
-            self.current_room.draw_boxes(self.disp)
+            self.current_room.draw_contents(self.disp, True)
+#            self.current_room.draw_boxes(self.disp)
 
             for each in self.ordered_list_of_player_HANDLERS:
                 each.draw(self.disp)
@@ -141,7 +133,6 @@ class screen_handler():
         self.menus.draw(display)
         for each in self.overlays:
             each.draw(display)
-        pygame.draw.rect(display, config.black, self.scroll_bounds, 4)
 
         #pygame.display.update(self.render_rect())
         pygame.display.flip()
@@ -176,10 +167,10 @@ print("entering start loop")
 
 import menu
 import events
+from events import event_maker
 
 # LOGAN: the event_handler is a little anaemic right now, but for the life of me I can't figure out what/how much should
 #  go there
-event_maker = events.event_handler(1)
 
 # the start menu was... challenging to get working.
 # LOGAN: in order to get the window to continuously check for and accept controllers, I had to make a dedicated
@@ -195,7 +186,7 @@ while(start_loop and running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-        if event.type == events.exit_start:
+        if event.type == events.game_state_event:
             start_loop = False
 
     if controller_handler.is_p1_ready():
@@ -204,7 +195,7 @@ while(start_loop and running):
         print("player one handler's controller is of type: ", type(player_one_HANDLER.controller))
         screen.apply(player_one=player_one_HANDLER, closed_menus=start_menu)
         assert (screen.player_one is not None), "failed to add player one"
-        event_maker.game_state_event(events.exit_start)
+        event_maker.new_event(events.game_state_event)
         start_loop = False
         start_menu.kill()
 
@@ -241,8 +232,6 @@ while(player_select_loop and running):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
-
-    screen.game_state = "char_select_loop"
 
     if ready_players >= player_num:
         player_select_loop = False
@@ -315,12 +304,19 @@ screen.apply(room=DEBUG_dungeon())
 # may replace this with some event driven progging
 screen.game_start(plyr, DEBUG_dungeon.get_hub())
 
+#event_maker.entry("exit door event #", 4, 'driver', num_txt=events.interact_exit_door)
+
 while(game_loop and running):
     for event in pygame.event.get():
+        event_maker.make_entry('event', 'events', "the received events", 'driver', False, True, 'events', 'DEBUG', "basic", log_entry=event)
         if event.type == pygame.QUIT:
             running = False
-
-    screen.game_state = "game_loop"
+        if event.type == events.room_event:
+            screen.apply(room=DEBUG_dungeon.next_room(screen.GROUP_of_player_SPRITES))
+            event_maker.make_entry('trace', "used exit door", "successful", 'driver', True, True)
+        if event.type >= pygame.USEREVENT:
+            event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
+                                   "basic", log_entry=event)
 
     screen.update()
 

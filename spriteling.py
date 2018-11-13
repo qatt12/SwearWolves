@@ -214,7 +214,8 @@
 # make a ton of sense to have things laid out this way, but......
 # almost everything here is subject to being renamed or altered in some way.
 
-import pygame, config
+import pygame, config, events
+from events import event_maker
 
 placeholder = pygame.image.load('baddies\loogloog.png').convert_alpha ()
 

@@ -74,7 +74,6 @@
 # of floors, blocks are also supposed to impede movement
 
 import spriteling, pygame, config, events
-from events import new_event as new_event
 
 wall_size = 65
 corner_size = 65
@@ -224,8 +223,6 @@ class floor(block):
         for y in range(0, size_y+1):
             for x in range(0, size_x+1):
                 self.image.blit(theme.image_lookup['f'], (x * config.tile_scalar, y * config.tile_scalar))
-                #print('blitting a floor', "x = ", x, "y = ", y)
-
         self.rect = self.image.get_rect()
 
         print(self.rect)
@@ -265,9 +262,6 @@ class interact_trigger(trigger):
 
 
 def look_for_activity(*args, **kwargs):
-    #print("looking for an act")
-    #print("args is: ", args)
-    #print("kwargs is: ", kwargs)
     try:
         assert (isinstance(args[0], spriteling.spriteling)), "ERROR: the first arg should be a spriteling"
         if len(args) > 1:
@@ -276,9 +270,7 @@ def look_for_activity(*args, **kwargs):
         print(AssertionError, "perhaps you meant to call a different look_for?")
         return False
     if 'must_be' in kwargs:
-        #print("found must be: ", kwargs['must_be'])
         for each in kwargs['must_be']:
-            #print("each: ", each)
             if each in args[0].activity_state and args[0].activity_state[each]:
                 pass
             else:
@@ -294,7 +286,6 @@ def look_for_activity(*args, **kwargs):
         for each in kwargs['must_not_be']:
             if each in args[0].activity_state and args[0].activity_state[each]:
                 return False
-    #print("return True")
     return True
 
 
@@ -324,20 +315,19 @@ class door(interact_trigger):
         self.hitbox.update()
 
     # simple, placeholder-y method that moves the player on top of the door. Will prbly be rewritten with more complex
-    # behavior (that doesn't stack all the players on top of each other
+    # behavior (that doesn't stack all the players on top of each other)
     def enter(self, player):
         player.rect.center = self.rect.center
 
     def __call__(self, target):
         if self.look_for(target, must_be=['interacting']):
             self.tick += 1
-            #print("adding to tick", self.tick)
         else:
             self.tick = 0
-            #print("resetting tick")
         if self.tick >= self.timer:
-            #print('interaction trigger has worked')
-            new_event(events.activate_door_n, str(self))
+            events.event_maker.make_entry('log', 'door interact', "door is receiving full player interaction", 'blocks', True, False, obj_src=self, loc_src='door')
+            events.event_maker.new_event(events.room_event)
+
 
 class ledge(block):
     def __init__(self, loc, dir):

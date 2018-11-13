@@ -5,6 +5,7 @@ game_state_event = base
 room_event = base +1
 
 
+# event_handler has two purposes: handling events (duh), and handling entries.
 class event_handler():
     def __init__(self, **kwargs):
         self.error_log = open("error.txt", 'w')
@@ -73,6 +74,10 @@ class event_handler():
             for each in kwargs['files']:
                 self.terms_to_console.append(each)
 
+# a data storage/organization class for recording and formatting whatever info you give it. designed to track the
+# sequential numbering of the entry, the file from which it was sent, the name of the entry, a short description of its
+# contents, and then a list of terms (that can be used to block or permit the entry from going to console or log), plus
+# a set of key-word args, some of which are defined and have a specific purpose, others are just printed
 class entry():
     num = 0
     def __init__(self, type, name, desc, fil_src, *args, **kwargs):

@@ -68,6 +68,16 @@ class event_handler():
     def minor_event(self, file_src, class_src, instance_src):
         pass
 
+    def build_log(self, file_id, name, **kwargs):
+        ret = ""
+        ret += file_id, "| ", name, "\n\t"
+        for key in kwargs:
+            ret += key, ": ", kwargs[key], "\n\t"
+        return ret
+
+    def to_console(self, *args, **kwargs):
+        print(self.build_log(*args, **kwargs))
+
 import pygame
 
 x = 0

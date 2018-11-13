@@ -37,7 +37,6 @@ class theme(object):
         all_walls = sGroup()
         # spawns and positions the outer wall pieces. Note the i + 50 and j + 50: this cause the wall segments to
         # slightly overlap w/ the corner segments' rects, thus properly enclosing the room
-        #for i in range(border.left, border.right, tile_scalar):
         for i in range(border.left - int(tile_scalar/2), border.right + int(tile_scalar/2), tile_scalar):
             top = wall('up', self.image_lookup['tw'], (i + 50, border.top))
             # print("top wall: \n Rect: ",top.rect, "hitbox: ", top.hitbox.rect)
@@ -50,7 +49,6 @@ class theme(object):
             elif enter_from[0] == 'top' and enter_from[1] == (i/tile_scalar):
                 entry_door.attach(bottom, (0, 0))
             all_walls.add(top, bottom)
-        #for j in range(border.top, border.bottom, tile_scalar):
         for j in range(border.top - int(tile_scalar/2), border.bottom + int(tile_scalar/2), tile_scalar):
             left = wall('left', self.image_lookup['lw'], (border.left, j + 50))
             right = wall('right', self.image_lookup['rw'], (border.right, j + 50))
@@ -59,7 +57,6 @@ class theme(object):
             elif enter_from[0] == 'right' and enter_from[1] == (j / tile_scalar):
                 entry_door.attach(right, (0, 0))
             all_walls.add(left, right)
-
 
         all_walls.add(corner('top_left', self.image_lookup['tlc'], border.topleft))
         all_walls.add(corner('bottom_left', self.image_lookup['blc'], border.bottomleft))
@@ -95,9 +92,7 @@ class room():
         self.scroll_rect = self.visible_rect.inflate(-150, -150)
         self.scroll_rect.center = self.visible_rect.center
 
-
-
-        self.entry_door = self.add_door(enter_from[0], enter_from[1])
+        self.entry_door = self.add_entrance(enter_from[0], enter_from[1])
         if "exit_door" in kwargs:
             print("exit_door = ", kwargs['exit_door'])
             for each in kwargs['exit_door']:
@@ -121,7 +116,7 @@ class room():
         self.doors.draw(disp)
         self.enemies.draw(disp)
         if boxes:
-            pygame.draw.rect(disp, config.blue, self.ground.rect, 7)
+            self.draw_boxes(disp)
 
     # super basic method atm, designed to be expanded as needed in later iterations
     def add_players(self, player):
@@ -132,6 +127,21 @@ class room():
             self.enemies.add(each)
 
     def add_door(self, side, position, *args):
+        if side == 'left':
+            new_door = door(side_x=self.full_rect.left, pos=position)
+        elif side == 'center':
+            new_door = door(coords=self.full_rect.center)
+        elif side == 'right':
+            new_door = door(side_x=self.full_rect.right, pos=position)
+        elif side == 'bottom':
+            new_door = door(side_y=self.full_rect.bottom, pos=position)
+        elif side == 'top':
+            new_door = door(side_y=self.full_rect.top, pos=position)
+        else:
+            return False
+        return new_door
+
+    def add_entrance(self, side, position, *args):
         if side == 'left':
             self.full_rect.left = self.visible_rect.left
             new_door = door(side_x=self.full_rect.left, pos=position)
@@ -150,12 +160,13 @@ class room():
         else:
             return False
 
-       # if self.full_rect.width < self.visible_rect.width:
-       #     self.full_rect.centerx = self.visible_rect.centerx
-       #     new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
-       # if self.full_rect.height < self.visible_rect.height:
-       #     self.full_rect.centery = self.visible_rect.centery
-       #     new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
+        if self.full_rect.width < self.visible_rect.width:
+            self.full_rect.centerx = self.visible_rect.centerx
+            new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
+        if self.full_rect.height < self.visible_rect.height:
+            self.full_rect.centery = self.visible_rect.centery
+            new_door.adjust(bound_rect=self.full_rect.inflate(100, 100))
+
         return new_door
 
     def update(self, player_one_rect, all_players, *args, **kwargs):

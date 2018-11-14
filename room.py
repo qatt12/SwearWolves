@@ -2,6 +2,7 @@
 # as self-evident as the above sounds, it is an important note
 
 import pygame, blocks, config, random, events
+from events import event_maker
 sGroup = pygame.sprite.Group
 
 from blocks import wall as wall
@@ -68,7 +69,7 @@ class theme(object):
 
 default_theme = theme()
 
-events.event_maker.make_entry('log', 'default_theme', 'Testing default theme construction/initialization', 'room', True, False, 'theme', 'init', 'DEBUG', obj_src=default_theme, image_lookup=default_theme.image_lookup)
+event_maker.make_entry('log', 'default_theme', 'Testing default theme construction/initialization', 'room', True, False, 'theme', 'init', 'DEBUG', obj_src=default_theme, image_lookup=default_theme.image_lookup)
 
 # the core functions of the room are to hold everything that is going to appear on the screen, check for and report the
 # interactions between certain sprites, and to draw everything in the correct order
@@ -268,7 +269,7 @@ class dungeon():
         self.difficulty = difficulty
         self.my_theme = dungeon_theme
 
-        events.event_maker.make_entry('trace', 'theme check', "assessing the contents of theme", 'room', False, False, 'theme', found_theme=self.my_theme)
+        event_maker.make_entry('trace', 'theme check', "assessing the contents of theme", 'room', False, False, 'theme', found_theme=self.my_theme)
 
         self.disp = disp
         self.hub = hub_room(disp, self.my_theme)

@@ -217,7 +217,10 @@
 import pygame, config, events
 from events import event_maker
 
-placeholder = pygame.image.load('baddies\loogloog.png').convert_alpha ()
+event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been loaded', 'spriteling')
+
+placeholder = pygame.image.load('baddies\loogloog.png').convert_alpha()
+event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been loaded', 'spriteling')
 
 # the use of multiple hitbox is currently deprecated, cause its expensive and complicated, and makes all my code look
 # like a twisted hell of for loops

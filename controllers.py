@@ -1,4 +1,5 @@
-import pygame
+import pygame, events
+from events import event_maker
 
 deadzone = 0.07
 pygame.joystick.init()

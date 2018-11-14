@@ -29,13 +29,15 @@
 #  ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡎⡳⠂ ⣠⡾⣫⣶⣿⣿⣷⣦⣄⣉⣀⣈⣁⣀⣠⣤⣾⣶⣦⣄⡀ 
 #  ⢸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢟⠋⡱⠁ ⡰⡟⠑⠿⠿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿
 
-import pygame, config, interface
+import pygame, config, interface, events
+from events import event_maker
 from misc import controller_list as controller_list
 pygame.init()
 
 game_window = pygame.display.set_mode(config.screen_size)
 clock = pygame.time.Clock()
 
+event_maker.make_entry('log', 'startup', 'startup has been successful', 'driver')
 
 # very basic rect calculating class designed to break the display window into several smaller rects so that the screen
 #  can be updated in blocks
@@ -163,11 +165,9 @@ running = True
 start_loop = True
 player_select_loop = True
 game_loop = True
-print("entering start loop")
+
 
 import menu
-import events
-from events import event_maker
 
 # LOGAN: the event_handler is a little anaemic right now, but for the life of me I can't figure out what/how much should
 #  go there

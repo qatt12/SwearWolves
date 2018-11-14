@@ -30,7 +30,8 @@
 # ....--  .-+hs-------------..........................................---------------..`   `..  `.....
 # ....--  .-+hs-------------........................................-----------------    `-.  .-......
 
-import pygame, spriteling
+import pygame, spriteling, events
+from events import event_maker
 
 class enemy(spriteling.spriteling):
     def __init__(self, *args, **kwargs):

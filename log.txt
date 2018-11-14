@@ -1,0 +1,5 @@
+***	entry #: 5 type: log
+file source: scratch
+test log: should be visible in log.txt
+
+

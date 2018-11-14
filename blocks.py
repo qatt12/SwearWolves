@@ -74,6 +74,7 @@
 # of floors, blocks are also supposed to impede movement
 
 import spriteling, pygame, config, events
+from events import event_maker
 
 wall_size = 65
 corner_size = 65
@@ -325,8 +326,8 @@ class door(interact_trigger):
         else:
             self.tick = 0
         if self.tick >= self.timer:
-            events.event_maker.make_entry('log', 'door interact', "door is receiving full player interaction", 'blocks', True, False, obj_src=self, loc_src='door')
-            events.event_maker.new_event(events.room_event)
+            event_maker.make_entry('log', 'door interact', "door is receiving full player interaction", 'blocks', True, False, obj_src=self, loc_src='door')
+            event_maker.new_event(events.room_event)
 
 
 class ledge(block):

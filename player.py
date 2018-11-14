@@ -19,9 +19,6 @@ goddess_body_suit =  pygame.image.load('people\img_goddess3.png').convert()
 goddess_tattered  =  pygame.image.load('people\img_goddess4.png').convert()
 goddess_robes.set_colorkey((255, 255, 255))
 
-#DEBUG
-#goddess_robes.set_colorkey((223, 137, 60, 1))
-#goddess_robes.set_colorkey((0, 0, 0))
 
 goddess_crop_top.set_colorkey((255, 255, 255))
 goddess_body_suit.set_colorkey((255, 255, 255))
@@ -31,8 +28,6 @@ img_lookup = {'robes': goddess_robes,
               'body_suit': goddess_body_suit,
               'tattered': goddess_tattered,
               }
-
-#imgs = player_img_loader()
 
 class player(spriteling.spriteling):
     def __init__(self, book, loc):

@@ -36,6 +36,9 @@ pygame.init()
 game_window = pygame.display.set_mode(config.screen_size)
 clock = pygame.time.Clock()
 
+#sounds and music checker
+#pygame.mixer.music.load('Music/LoLD.ogg')
+#pygame.mixer.music.play(-1)
 
 # very basic rect calculating class designed to break the display window into several smaller rects so that the screen
 #  can be updated in blocks

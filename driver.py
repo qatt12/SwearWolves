@@ -91,22 +91,30 @@ class screen_handler():
     # and avoid having to write many dif methods, but this may not be a great idea, as update is also used/assumed to
     # indicate the passage of time. this apply method is the new way to adjust what is in the screen handler.
     def apply(self, *args, **kwargs):
+        message = events.entry('log', 'new menu', 'added a new menu', 'driver',
+                               loc_src='screen.apply()')
         if 'opened_menus' in kwargs:
             self.menus.add(kwargs['opened_menus'])
-            print("added new menu: ")
+            message.modify(opened_menu=kwargs['opened_menus'])
         if 'closed_menus' in kwargs:
             self.menus.remove(kwargs['closed_menus'])
+            message.modify(closed_menu=kwargs['closed_menus'])
         if 'player_one' in kwargs:
             self.player_one = (kwargs['player_one'])
             self.player_index = 1
             self.ordered_list_of_player_HANDLERS = [self.player_one]
+            message.modify(set_player_one=kwargs['player_one'])
         if 'next_player' in kwargs:
             self.ordered_list_of_player_HANDLERS.append(kwargs['next_player'])
             self.player_index += 1
+            message.modify(next_player=kwargs['next_player'])
         if 'room' in kwargs:
             self.current_room = kwargs['room']
+            message.modify(room=kwargs['room'])
         if 'overlay' in kwargs:
             self.overlays.append(kwargs['overlay'])
+            message.modify(overlay=kwargs['overlay'])
+        event_maker.send_entry(message, False, False)
 
     def update(self, *args, **kwargs):
         self.menus.update()
@@ -129,7 +137,6 @@ class screen_handler():
 
         if self.current_room is not None:
             self.current_room.draw_contents(self.disp, True)
-#            self.current_room.draw_boxes(self.disp)
 
             for each in self.ordered_list_of_player_HANDLERS:
                 each.draw(self.disp)

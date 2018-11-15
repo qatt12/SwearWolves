@@ -1,0 +1,15 @@
+***	entry #: 190 type: error
+file source: blocks
+DEBUG: placeholder image
+***	entry #: 192 type: error
+file source: blocks
+DEBUG: placeholder image
+***	entry #: 193 type: error
+file source: blocks
+DEBUG: placeholder image
+***	entry #: 194 type: error
+file source: blocks
+DEBUG: placeholder image
+***	entry #: 303402 type: error
+file source: blocks
+DEBUG: placeholder image

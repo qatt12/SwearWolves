@@ -66,6 +66,10 @@ class theme(object):
 
         return all_walls
 
+    def build_inner_walls(self, ):
+        section = sGroup()
+
+
 
 default_theme = theme()
 
@@ -75,6 +79,9 @@ event_maker.make_entry('log', 'default_theme', 'Testing default theme constructi
 # interactions between certain sprites, and to draw everything in the correct order
 class room():
     def __init__(self, enter_from, size, disp, my_theme, *args, **kwargs):
+        event_maker.make_entry('trace', 'room init', 'Room constructor has been invoked', 'room', False, False,
+                               'room', 'init', 'waffles',
+                               found_kwargs=kwargs)
         # the constructor reqs a size tuple for height and width in tiles, a theme from which to draw tiles and enemies,
         # the current difficulty level, and the player's point of entry.
         self.image = pygame.Surface(size)
@@ -253,7 +260,7 @@ class room():
 
 class hub_room(room):
     def __init__(self, disp, my_theme=default_theme):
-        super().__init__(('left', 2), (20, 20), disp, my_theme, exit_door=[('top', 3), ('bottom', 66), ('right', 0)])
+        super().__init__(('center', 2), (20, 20), disp, my_theme, exit_door=[('top', 3), ('bottom', 66), ('right', 0)])
 
 
 class multiroom(room):
@@ -281,6 +288,9 @@ class dungeon():
     def next_room(self, players):
         self.current_room = DEBUG_room(self.disp, self.my_theme)
         self.current_room.add_players(players)
+        event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
+                               'room', 'dungeon', 'doors',
+                               obj_src=dungeon, inst_src=self, loc_src=dungeon.next_room)
         return self.current_room
 
     def __call__(self, *args, **kwargs):

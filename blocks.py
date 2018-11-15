@@ -184,6 +184,11 @@ class wall(block):
         #self.hitboxes.add(self.hitbox)
 
 
+class inner_wall(wall):
+    def __init__(self):
+        pass
+
+
 # this is for inward facing/concave corners. the orientation is specified manually by string. Not exactly elegant,
 # fancy, or portable, but since there are at most four cases (and this is only ever called in room.py::class::theme),
 # hardcoded constants will work

@@ -9,8 +9,36 @@ buffer_flush_event = base +4
 
 
 # event_handler has two purposes: handling events (duh), and handling entries.
-# four types of entry exist (erro, event, log, and trace), three are commonly used (error, log, trace), and two are good
-# things (trace, log)
+# four types of entry exist (error, event, log, and trace), three are commonly used (error, log, trace), and two are
+# (debatebly) good things (trace, log)
+# naming conventions: I've tried to be as consistent as possible with this; let me explain it all here:
+# 1) at the top of every file, right after the file waifu, events.py is imported. right after this, event_maker is
+# imported (i used "from events import event_maker" so that event_maker would appear exactly the same every time it was
+# invoked; you can directly call event_maker from any file)
+# 2) I included several dummy "if [BLANK] in kwargs:" statements as part of the various methods involving entries to
+# remind us what the special kwargs are
+# 3) you motherfuckers better not throw random print statements every to debug shit, MAKE OR SEND AN ENTRY
+# 4) I'm sorry, I didn't mean to get hostile, you're all great. As long as you use the entry system
+# 5) event_maker is the name of a (indeed the ONLY) specific instance of the event_handler class. It is imported to
+# every file, and across every file, it is the same instance
+# 6) to describe standard syntax conventions, I use ///[(FILE.)CONTENT(.BLAH)]/// broken down, this is:
+#       I use a leading three slashes and a trailing three slashes when I need to avoid using "quotes", this is because
+#       using "quotes" implies that you are supposed to send a string. this form: ///OBJECT///
+#
+#       I use all caps to denote that a (non-specific) file, class, or method name needs to be substituted into that
+#       location. This is different from a specific method or instance (not class). If I name a particular class, then
+#       it should be the class name of that class OR ONE OF ITS CHILDREN. Ex: CLASS can be any class of object
+#       (int, spriteling, etc) but NOT a particular instance of such objects. FILE can be any .py file. METHOD can be
+#       any method of the specified class (assuming its of the form: CLASS.METHOD ). If its in lowercase, I'm looking
+#       for an exact instance or the specific method enumerated
+#
+#       I use [brackets] to describe a single, contiguous, self-contained param/entry (entry here IS NOT referring to
+#       the entry class defined in this, or any other, file). this sets it apart from any other data of a different
+#       type/format that is to be entered alongside it
+#
+#       Finally, I use (parentheses) within [brackets] to denote an optional param/extension
+#
+#       Side Note: blah is my go-to for any generic/vague/non-specific substitution of data
 # technically, the difference between them is minimal, aside from the default settings. By default:
 #
 # event entries are only made alongside a user-defined event, either automatically or as provided. They are held in the
@@ -218,6 +246,19 @@ class entry():
         else:
             self.type = type
         # dummy var and dummy kwargs to get pycharm to offer to autocomplete stuff for me
+        # these do serve as an opportunity for me to explain the special kwargs; the entry constructor will take and
+        # save whatever kwargs you send it, so you can send it whatever (valid params) you want. BUUUUUUT....
+        # I have defined several special kwargs that appear in specific locations when the entry is turned into a string
+        # they are listed below
+        # obj_src : the class name from which the entry is sent. syntactically: ///FILE.CLASS///, where CLASS is the
+        # class name of the calling object. CLASS can also be substituted for a method (if the method is standalone
+        # within FILE) or appended onto the CLASS (but usually its preferable to informally describe the method of
+        # origin in the loc_src kwarg instead)
+        # loc_src : an informal "string" description of where the entry came from.
+        # inst_src : the particular instance (of an object/class) from which this entry originated. Always do this as
+        # ///inst_src=self///
+        # log_entry : special kwarg that pretty much just appears at the top of the entry when converted to string. Put
+        # whatever you want (to be at the top of the printed entry) into here.
         temp = None
         if 'obj_src' in kwargs:
             temp = kwargs['obj_src']

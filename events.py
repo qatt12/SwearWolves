@@ -153,7 +153,7 @@ class event_handler():
 # a set of key-word args, some of which are defined and have a specific purpose, others are just printed
 class entry():
     num = 0
-    def __init__(self, type, name, desc, fil_src, *args, **kwargs):
+    def __init__(self, type, name, desc, file_src, *args, **kwargs):
         entry.tick_tracker()
         self.entry_num = entry.get_tracker()
         try:
@@ -179,7 +179,7 @@ class entry():
             self.terms.append(each)
         self.name = name
         self.desc = desc
-        self.file_src = fil_src
+        self.file_src = file_src
         self.k_v = kwargs
 
     # converts the entry to a string in proper format, with the most relevant info at the top
@@ -259,13 +259,19 @@ class entry():
         if 'log_entry' in kwargs:
             temp = kwargs['log_entry']
         for key in kwargs:
-            if key != 'remove_key':
+            if key == 'remove_key':
                 self.k_v[key] = None
-            if key != 'remove_term':
+            elif key == 'remove_term':
                 self.terms = [t for t in self.terms if t not in kwargs['remove_term']]
-            if key != 'add_term':
+            elif key == 'add_term':
                 for each in kwargs['add_term']:
                     self.terms.append(each)
+            elif key == 'new_desc':
+                self.desc = kwargs['new_desc']
+            elif key == 'ext_desc':
+                self.desc += kwargs['ext_desc']
+            else:
+                self.k_v[key] = kwargs[key]
         # dummy return for getting pycharm to do a thing
         return temp
 

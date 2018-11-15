@@ -131,8 +131,9 @@ class handler():
         # for whatever values aren't specified in kwargs, the initial state(s) are set to None, because handler needs
         # that field, but it can't be filled yet. They are added to handler via the attach method
         message = events.entry('log', 'new player', 'a new player_handler has been initialized', 'interface', True, True,
-                            'player', 'once', 'player_handler', 'handler',
-                            inst_src=self, obj_src='interface.handler', name=self.name, controller=self.controller, found_input=kwargs)
+                               'player', 'once', 'player_handler', 'handler',
+                               inst_src=self, obj_src='interface.handler', controller=self.controller, found_kwargs=kwargs,
+                               num_of_player_handlers=handler.get_player_interface_num())
         if 'name' in kwargs:
             self.name = kwargs['name']
         else:
@@ -158,8 +159,6 @@ class handler():
         self.my_player_single = pygame.sprite.GroupSingle()
         self.other_players = pygame.sprite.Group()
         self.known_enemies = pygame.sprite.Group()
-
-
 
     # method used to attach various important member vars to a player object that already exists
     def attach(self, **kwargs):
@@ -191,7 +190,6 @@ class handler():
         selection = self.controller.pull_selectors()
         next = selection['next']
         prev = selection['prev']
-        #print("selection is: ", selection)
         if next[1] and not next[0]:
             self.menu.next_book()
         elif prev[1] and not prev[0]:
@@ -223,9 +221,6 @@ class handler():
             self.book.update(origin, cycle_spell='next')
         elif prv_chk[0] and not prv_chk[1]:
             self.book.update(origin, cycle_spell='prev')
-        #if now or prev:
-        #    self.book.update(origin, fire=(now, prev), direction=self.player.facing,
-        #                     missile_layer=self.missiles, **kwargs)
         self.book.update(origin, fire=(now, prev), direction=self.player.facing,
                          missile_layer=self.missiles, **kwargs)
 

@@ -191,11 +191,12 @@ while(start_loop and running):
 
     if controller_handler.is_p1_ready():
         player_one_HANDLER = controller_handler.get_p1()
-        print("player one handler is of type: ", type(player_one_HANDLER))
-        print("player one handler's controller is of type: ", type(player_one_HANDLER.controller))
+        event_maker.make_entry('log', 'FIRST PLAYER', 'player one has pressed start, we should be leaving start loop now', 'driver', True, False,
+                               'crucial', 'start_loop', 'ready_up', 'player_one',
+                               loc_src='start_loop', player_one_Handler=player_one_HANDLER, num_player_handlers=interface.handler.get_player_interface_num())
         screen.apply(player_one=player_one_HANDLER, closed_menus=start_menu)
         assert (screen.player_one is not None), "failed to add player one"
-        event_maker.new_event(events.game_state_event)
+        event_maker.new_event(events.game_state_event, exit='start_loop', player_one=player_one_HANDLER)
         start_loop = False
         start_menu.kill()
 
@@ -303,8 +304,6 @@ screen.apply(room=DEBUG_dungeon())
 
 # may replace this with some event driven progging
 screen.game_start(plyr, DEBUG_dungeon.get_hub())
-
-#event_maker.entry("exit door event #", 4, 'driver', num_txt=events.interact_exit_door)
 
 while(game_loop and running):
     for event in pygame.event.get():

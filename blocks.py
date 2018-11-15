@@ -282,7 +282,9 @@ def look_for_activity(*args, **kwargs):
         try:
             assert (not (any in kwargs['must_be'] in kwargs["must_not_be"])), "ERROR: mutually exclusive must (not) be"
         except AssertionError:
-            print(AssertionError, "double-check your must/must_not_be")
+            event_maker.make_entry('error', 'assertion', (str(AssertionError) + "double-check your must/must_not_be"), 'blocks', True, True,
+                                   'block', 'blocks', 'basic',
+                                   loc_src='blocks.look_for_activity', must_be=kwargs['must_be'], must_not_be=kwargs['must_not_be'])
             return False
         for each in kwargs['must_not_be']:
             if each in args[0].activity_state and args[0].activity_state[each]:
@@ -294,6 +296,7 @@ class door(interact_trigger):
     def __init__(self, **kwargs):
         # DEBUG STUFF at least the image is. UNTIL YOTOLL DRAWS A DOOR
         pass_img = pygame.transform.scale(pygame.image.load('misc\spirit.jpg').convert_alpha(), (config.tile_scalar, config.tile_scalar))
+        event_maker.make_entry('error', 'DEBUG', "placeholder image", 'blocks', True, True)
         pass_loc = (0, 0)
         pass_rect = pass_img.get_rect()
         pass_trig = look_for_activity

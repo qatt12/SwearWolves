@@ -214,7 +214,7 @@
 # make a ton of sense to have things laid out this way, but......
 # almost everything here is subject to being renamed or altered in some way.
 
-import pygame, config, events
+import pygame, config, events, collections
 from events import event_maker
 
 event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been loaded', 'spriteling')
@@ -234,6 +234,8 @@ class spriteling(pygame.sprite.Sprite):
 
     def __init__(self, *args, **kwargs):
         super().__init__()
+
+        self.t_num = spriteling.track_next()
         #### new update: spriteling now takes kwargs, to make calling it less of a pain in the ass
         # this most basal constructor takes an image and a location, assigns the image to the sprite, builds a rectangle
         # from the image, moves the rectangle to the location, then builds a hitbox the same size as the rect, and
@@ -280,14 +282,13 @@ class spriteling(pygame.sprite.Sprite):
         #self.hitboxes = pygame.sprite.Group(self.hitbox)
 
     def __str__(self):
-        return str(type(self)) + self.name
+        return str(self.t_num) + "s" + str(type(self)) + self.name
 
     def update(self, *args, **kwargs):
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
         self.move(**kwargs)
         self.rect.move_ip(self.velocity)
         self.hitbox.update()
-        ###print(self.rect)
 
     def draw(self, disp, boxes=False):
         disp.blit(self.image, self.rect)
@@ -302,17 +303,21 @@ class spriteling(pygame.sprite.Sprite):
 
     # minimize use of this; most of its functionality is being taken over by update
     def move(self, **kwargs):
-        #print("calling move from spriteling")
+        message = events.entry('trace', 'moving', 'calling move() from spriteling', 'spriteling',
+                               'move', 'movement', 'spriteling',
+                               inst_src=self, obj_src=spriteling, old_vel=self.velocity, old_rect=self.rect)
         xvel, yvel = 0, 0
         if 'vel' in kwargs:
             xvel, yvel = kwargs['vel'][0], kwargs['vel'][1]
+            message.modify(direct_vel=(xvel, yvel))
         if 'move' in kwargs:
             xvel = xvel + (self.move_mult[0] * kwargs['move'][0])
             yvel = yvel + (self.move_mult[1] * kwargs['move'][1])
+            message.modify(ext_desc='; voluntary movement', move_vel=(xvel, yvel))
         if 'knockback' in kwargs:
             self.rect.move_ip(kwargs['knockback'][0], kwargs['knockback'][1])
         if 'walls' in kwargs:
-            #print("found walls: ", kwargs['walls'])
+            message.modify(new_desc='collided w/ walls', walls=kwargs['walls'])
             for wall in kwargs['walls']:
                 # some creative tomfoolery with rectangles and clipping
                 # temp is the rectangle of overlap between the hitbox of the offending sprite and the hitbox of the wall
@@ -343,15 +348,12 @@ class spriteling(pygame.sprite.Sprite):
         if 'shift' in kwargs:
             self.rect.move_ip(kwargs['shift'])
             self.hitbox.rect.move_ip(kwargs['shift'])
-        #return (xvel, yvel)
+        event_maker.send_entry(message, False, False)
         self.velocity = (xvel, yvel)
 
     # a blank placeholder method for testing targeted spells; may soon become the primary way for sprites to interact
     def affect(self):
         pass
-
-    def impact(self):
-        print("calling spritelings.impact")
 
     # a basic function that is called by the associated handler to extract important data from the spriteling, as well
     # as by anything that has to send data to the handler (this is achieved by having the sender call this method to
@@ -366,8 +368,9 @@ class spriteling(pygame.sprite.Sprite):
         return pygame.Rect.colliderect(self.hitbox.rect, target.hitbox.rect)
 
     @classmethod
-    def track_next(cls, name):
+    def track_next(cls):
         cls.tracking_num +=1
+        return cls.tracking_num
 
 
 # basic hitbox class, designed to be contained in a group stored by a spriteling

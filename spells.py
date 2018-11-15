@@ -58,7 +58,8 @@
 # NMMMMMMMdsydNNNNNmmmmmmmmmmmmmdysssydmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNNNNNNNNNMMMMMN
 # NMMMMNNNNNNNNNNNmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNNNNNNNNNNNMMN
 
-import spriteling, pygame, math
+import spriteling, pygame, math, events
+from events import event_maker
 from config import fps as sec
 import config, random
 
@@ -114,7 +115,9 @@ def dupe(base_surf, num=0, is_num=False, **kwargs):
 class spell_book(spriteling.spriteling):
     def __init__(self, level=1):
         super().__init__(image=blank_book_img)
-        print("a new spell book has been made")
+        event_maker.make_entry('log', 'spellbook', 'A new spell book has been made; this is the base constructor', 'spells', True, True,
+                               'spellbook', 'spells', 'magic', 'base',
+                               obj_src=spell_book, loc_src='spellbook abstract base class', inst_src=self)
         # contains an instance of/ constructor for all unlocked spells
         self.spells = []
         self.spell_key = {0: spell}
@@ -152,12 +155,6 @@ class spell_book(spriteling.spriteling):
             self.other_spells.add(self.active_spell)
             self.active_spell.add(self.spells[self.index])
             self.other_spells.remove(self.active_spell)
-
-        #for each in self.active_spell:
-        #    print("active spells: ", each)
-        #for each in self.other_spells:
-        #    print("inactive spells: ", each)
-
         if 'fire' in kwargs:
             for lonely in self.active_spell:
                 #print("active spell is: ", lonely)
@@ -386,10 +383,8 @@ class targeted(spell):
                     kwargs['missile_layer'].add(self.reticle)
         else:
             self.charge = 0
-            #print("should be killing self.reticle")
             self.alive = False
             self.reticle.kill()
-            #print(self.reticle.alive())
         if self.charge >= self.charge_time and self.heat == 0 and self.spin >= self.wind_up \
                 and 'missile_layer' in kwargs:
             self.cast(prev, now, kwargs['missile_layer'])
@@ -486,14 +481,15 @@ class arc_DEBUG_s(arc):
         if 'known_enemies' in kwargs:
             #print("arc_DEBUG_s has received known enemies: ", kwargs['known_enemies'])
             self.secondary_target.add(kwargs['known_enemies'])
+            event_maker.make_entry('trace', 'targeting spell', 'assessing secondary targets', 'spells',
+                                   secondary_targets=self.secondary_target, known_enemies=kwargs['known_enemies'],
+                                   inst_src=self)
             for each in self.secondary_target:
-                #print("enemy: ", each, "distance: ", math.hypot(each.rect.centerx-self.rect.centerx, each.rect.centery-self.rect.centery))
                 if math.hypot(each.rect.centerx-self.rect.centerx, each.rect.centery-self.rect.centery) <= self.max_range:
                     self.primary_target.add(each)
                 else:
                     self.primary_target.remove(each)
 
-        #print("arc_DEBUG_s.target() should return: ", bool(self.primary_target))
         return bool(self.primary_target)
 
 
@@ -505,15 +501,12 @@ class fireball_m(missile):
     def __init__(self, dir, loc):
         x_vel, y_vel = 4*dir[0], 4*dir[1]
         missile.__init__(self, fire_ball_img, loc, (x_vel, y_vel))
-        self.hitboxes.add(spriteling.hitbox(self))
+        self.hitbox = spriteling.hitbox(self)
 
 
 class charged_fireball_s(charge_up):
     def __init__(self):
         super().__init__(2, fireball_m, dupe(fire_book_img), spell_name="charged fireball")
-        print("charged fireball charge time in frames: ", self.charge_time)
-
-
 
 class flamethrower_s(stream):
     def __init__(self):
@@ -534,7 +527,7 @@ class iceshard_m(missile):
     def __init__(self, dir, loc):
         x_vel, y_vel = 4 * dir[0], 4 * dir[1]
         missile.__init__(self, icy_ball_img, loc, (x_vel, y_vel))
-        self.hitboxes.add(spriteling.hitbox(self))
+        self.hitbox = spriteling.hitbox(self)
 
 
 class blizzard_s():
@@ -558,7 +551,7 @@ class acidic_orb_m(missile):
     def __init__(self, dir, loc):
         x_vel, y_vel = 4*dir[0], 4*dir[1]
         missile.__init__(self, acid_ball_img, loc, (x_vel, y_vel))
-        self.hitboxes.add(spriteling.hitbox(self))
+        self.hitbox = spriteling.hitbox(self)
 
 
 class poison_spore_s():
@@ -581,7 +574,7 @@ class light_wave_m(missile):
     def __init__(self, dir, loc):
         x_vel, y_vel = 4*dir[0], 4*dir[1]
         missile.__init__(self, light_wave_img, loc, (x_vel, y_vel))
-        self.hitboxes.add(spriteling.hitbox(self))
+        self.hitbox = spriteling.hitbox(self)
 
 class radiant_glow_s():
     pass

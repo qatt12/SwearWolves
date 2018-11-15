@@ -1,63 +1,50 @@
-***	entry #: 2 type: trace
-file source: scratch
-test1: DEBUG
-	terms: DEBUG; test1; 
-
-***	entry #: 3 type: trace
-file source: scratch
-test2: DEBUG
-	terms: DEBUG; test2; 
-
-***	entry #: 4 type: trace
-file source: scratch
-test2: DEBUG
-	terms: waffle; test2; 
-
-**********************************************************************************
-***	entry #: 1 type: trace
-file source: events
-first trace: the very first trace entry
+***	entry #: 42376 type: trace
+file source: driver
+used exit door: successful
 
 
-***	entry #: 2 type: trace
-file source: scratch
-test1: DEBUG
-	terms: DEBUG; test1; 
-
-***	entry #: 3 type: trace
-file source: scratch
-test2: DEBUG
-	terms: DEBUG; test2; 
-
-***	entry #: 4 type: trace
-file source: scratch
-test2: DEBUG
-	terms: waffle; test2; 
-
-**********************************************************************************
-***	entry #: 1 type: trace
-file source: events
-first trace: the very first trace entry
+***	entry #: 54750 type: trace
+file source: driver
+used exit door: successful
 
 
-***	entry #: 2 type: trace
-file source: scratch
-test1: DEBUG
-	terms: DEBUG; test1; 
+***	entry #: 78191 type: trace
+file source: driver
+used exit door: successful
 
-***	entry #: 3 type: trace
-file source: scratch
-test2: DEBUG
-	terms: DEBUG; test2; 
 
-**********************************************************************************
-***	entry #: 3 type: trace
-file source: scratch
-test2: DEBUG
-	terms: DEBUG; test2; 
+***	entry #: 92692 type: trace
+file source: driver
+used exit door: successful
 
-***	entry #: 4 type: trace
-file source: scratch
-test2: DEBUG
-	terms: waffle; test2; 
+
+***	entry #: 107687 type: trace
+file source: driver
+used exit door: successful
+
+
+***	entry #: 126781 type: trace
+file source: driver
+used exit door: successful
+
+
+***	entry #: 142782 type: trace
+file source: driver
+used exit door: successful
+
+
+***	entry #: 159433 type: trace
+file source: driver
+used exit door: successful
+
+
+***	entry #: 176660 type: trace
+file source: driver
+used exit door: successful
+
+
+***	entry #: 199415 type: trace
+file source: driver
+used exit door: successful
+
 

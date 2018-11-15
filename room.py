@@ -99,9 +99,10 @@ class room():
 
         self.entry_door = self.add_entrance(enter_from[0], enter_from[1])
         if "exit_door" in kwargs:
-            print("exit_door = ", kwargs['exit_door'])
+            event_maker.make_entry('trace', 'exit_door', 'found kwarg entry for exit door', 'room', True, False,
+                                   'door', 'exit', 'kwargs',
+                                   obj_src=room, inst_src=self, exit_doors=kwargs['exit_door'])
             for each in kwargs['exit_door']:
-                print("exit_door each= ", each)
                 self.exits.add(self.add_door(each[0], each[1]))
 
         self.doors = sGroup(self.entry_door, self.exits)

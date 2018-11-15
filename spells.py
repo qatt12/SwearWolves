@@ -499,6 +499,8 @@ class fireball_s(spell):
 
 class fireball_m(missile):
     def __init__(self, dir, loc):
+        fsx = pygame.mixer.Sound("Music.MM.ogg")
+        pygame.mixer.Sound.play(fsx)
         x_vel, y_vel = 4*dir[0], 4*dir[1]
         missile.__init__(self, fire_ball_img, loc, (x_vel, y_vel))
         self.hitbox = spriteling.hitbox(self)

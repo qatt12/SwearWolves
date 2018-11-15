@@ -246,6 +246,8 @@ class handler():
         self.hud = hud(self.player, self.book, player_num)
         starting_room.add_player(self.player)
         self.my_player_single.add(self.player)
+        pygame.mixer.music.load('Music/LoLD.ogg')
+        pygame.mixer.music.play(-1)
 
     # all of the draw_boxes method calls are for debugging and uses should be deleted prior to submission
     def draw(self, disp):

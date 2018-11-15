@@ -209,15 +209,17 @@ class event_handler():
         x = len(ret)
         if 'num_entries' in kwargs:
             x = min(kwargs['num_entries'], len(ret))
-        for each in ret:
-            if empty:
+
+        if empty:
+            while len(self.trace_buffer) > 0:
                 temp = ret.pop()
                 if to_console:
                     print(temp)
                 print(temp, file=self.trace_log)
                 if 'dest' in kwargs:
                     print(temp, file=self.entry_sort[kwargs['dest']])
-            else:
+        else:
+            for each in ret:
                 if to_console:
                     print(each)
                 print(each, file=self.trace_log)
@@ -257,8 +259,9 @@ class entry():
         # loc_src : an informal "string" description of where the entry came from.
         # inst_src : the particular instance (of an object/class) from which this entry originated. Always do this as
         # ///inst_src=self///
-        # log_entry : special kwarg that pretty much just appears at the top of the entry when converted to string. Put
-        # whatever you want (to be at the top of the printed entry) into here.
+        # log_entry : Supposed to keep a running log of the entry/subject that changes over time. Beyond that, its just
+        # a special kwarg that pretty much just appears at the top of the entry when converted to string. Put whatever
+        # you want (to be at the top of the printed entry) into here.
         temp = None
         if 'obj_src' in kwargs:
             temp = kwargs['obj_src']
@@ -365,6 +368,11 @@ class entry():
                 self.desc = kwargs['new_desc']
             elif key == 'ext_desc':
                 self.desc += kwargs['ext_desc']
+            elif key == 'log_entry':
+                if 'log_entry' in self.k_v:
+                    self.k_v['log_entry'] += kwargs['log_entry']
+                else:
+                    self.k_v['log_entry'] = kwargs['log_entry']
             else:
                 self.k_v[key] = kwargs[key]
         # dummy return for getting pycharm to do a thing
@@ -384,5 +392,5 @@ x = 0
 next_stage = 1
 
 event_maker = event_handler(50)
-#event_maker.add_console_permissions(terms=['theme', 'user'])
+event_maker.add_console_permissions(terms=['Logan'])
 event_maker.make_entry("trace", "first trace", 'the very first trace entry', 'events', False, False)

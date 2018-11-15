@@ -1,3 +1,0 @@
-***	entry #: 303405 type: trace
-file source: driver
-used exit door: successful

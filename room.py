@@ -66,8 +66,39 @@ class theme(object):
 
         return all_walls
 
-    def build_inner_walls(self, ):
-        section = sGroup()
+    def build_inner_walls(self, **kwargs):
+        upper_section = sGroup()
+        left_section = sGroup()
+        lower_section = sGroup()
+        right_section = sGroup()
+        if 'tuple' in kwargs or 'specific_tuple' in kwargs:
+            if 'specific_tuple' in kwargs:
+                x, y = kwargs['specific_tuple'][0] -(kwargs['specific_tuple'][0] %tile_scalar), \
+                       kwargs['specific_tuple'][1] -(kwargs['specific_tuple'][1] %tile_scalar)
+            elif 'tuple' in kwargs:
+                x, y = kwargs['tuple'][0] *tile_scalar, kwargs['tuple'][1] *tile_scalar
+            for i in range(0, x, tile_scalar):
+                top = wall('up', self.image_lookup['tw'], (i, 0))
+
+        if 'rect' in kwargs:
+            for i in range(kwargs['rect'].left, kwargs['rect'].right, tile_scalar):
+                for j in range(kwargs['rect'].top, kwargs['rect'].bottom, tile_scalar):
+                    top = wall('up', self.image_lookup['tw'], (i + (tile_scalar/2), kwargs['rect'].top))
+                    left = wall('left', self.image_lookup['lw'], (kwargs['rect'].left, j + (tile_scalar/2)))
+                    bottom = wall('down', self.image_lookup['bw'], ((kwargs['rect'].right - (i + (tile_scalar/2))), kwargs['rect'].bottom))
+                    right = wall('right', self.image_lookup['rw'], (kwargs['rect'].right, (kwargs['rect'].right - (i + (tile_scalar/2)))))
+                    event_maker.make_entry('trace', 'inner walls', "tracking the generation of inner walls", 'room', False, False,
+                                           'walls', 'wall', 'block', 'blocks', 'Logan',
+                                           top=top, left=left, right=right, bottom=bottom)
+
+                    upper_section.add(top)
+                    left_section.add(left)
+                    lower_section.add(bottom)
+                    right_section.add(right)
+
+        all_sections = sGroup(upper_section, lower_section, right_section, left_section)
+        return all_sections
+
 
 
 
@@ -117,10 +148,13 @@ class room():
         # the walls have to be spritelings in a group in order to properly register collision
         self.outer_walls = my_theme.build_walls(self.full_rect, enter_from, self.entry_door)
 
+        if 'inner_wall_rect' in kwargs:
+            self.inner_walls = my_theme.build_inner_walls(rect=kwargs['inner_wall_rect'])
+
         event_maker.make_entry('trace', 'door init', "", 'room', False, False,
                                'door', 'init',
                                door_rect_at_init=self.entry_door.rect)
-        self.all_sprites.add(self.outer_walls, self.floors, self.doors, self.enemies)
+        self.all_sprites.add(self.outer_walls, self.floors, self.inner_walls, self.doors, self.enemies)
 
     # core methods used to draw the contents of the room onto the main display window in the appropriate order
     # the default/expected order is: floors, outer walls, inner walls, enemies, players, enemy missiles, unaligned
@@ -128,6 +162,7 @@ class room():
     def draw_contents(self, disp, boxes=False):
         self.floors.draw(disp)
         self.outer_walls.draw(disp)
+        self.inner_walls.draw(disp)
         self.doors.draw(disp)
         self.enemies.draw(disp)
         if boxes:
@@ -260,7 +295,9 @@ class room():
 
 class hub_room(room):
     def __init__(self, disp, my_theme=default_theme):
-        super().__init__(('center', 2), (20, 20), disp, my_theme, exit_door=[('top', 3), ('bottom', 66), ('right', 0)])
+        super().__init__(('center', 2), (20, 20), disp, my_theme,
+                         exit_door=[('top', 3), ('bottom', 66), ('right', 0)],
+                         inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
 
 
 class multiroom(room):

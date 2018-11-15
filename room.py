@@ -110,7 +110,9 @@ class room():
         # the walls have to be spritelings in a group in order to properly register collision
         self.outer_walls = my_theme.build_walls(self.full_rect, enter_from, self.entry_door)
 
-        print("door rect at init: ", self.entry_door.rect)
+        event_maker.make_entry('trace', 'door init', "", 'room', False, False,
+                               'door', 'init',
+                               door_rect_at_init=self.entry_door.rect)
         self.all_sprites.add(self.outer_walls, self.floors, self.doors, self.enemies)
 
     # core methods used to draw the contents of the room onto the main display window in the appropriate order

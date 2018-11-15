@@ -373,7 +373,8 @@ class spriteling(pygame.sprite.Sprite):
         return cls.tracking_num
 
 
-# basic hitbox class, designed to be contained in a group stored by a spriteling
+# basic hitbox class. Essentially just a slightly fancier rect, that automagically maintains its position relative to
+# its host (assuming you update it as frequently as you update the host)
 class hitbox(pygame.sprite.Sprite):
     def __init__(self, subj, **kwargs):
         super().__init__()

@@ -259,16 +259,18 @@ class interact_trigger(trigger):
     def __call__(self, *args, **kwargs):
         self.tick += self.look_for(*args, **kwargs)
         if self.tick >= self.timer:
-            print('interaction trigger has worked')
+            event_maker.make_entry('trace', 'interaction trigger has worked', '', 'blocks')
 
-
+# a screen/filter function that assesses whether or not a spriteling is undertaking a particular activity.
+# this is intended to be a template form of the look_for method, which is going to be used as the trigger part of a
+# triggered spriteling
 def look_for_activity(*args, **kwargs):
     try:
         assert (isinstance(args[0], spriteling.spriteling)), "ERROR: the first arg should be a spriteling"
         if len(args) > 1:
             assert (isinstance(args[1], int)), "ERROR: need a trip value"
     except AssertionError:
-        print(AssertionError, "perhaps you meant to call a different look_for?")
+        event_maker.make_entry('error', str(AssertionError), "perhaps you meant to call a different look_for?", 'blocks')
         return False
     if 'must_be' in kwargs:
         for each in kwargs['must_be']:

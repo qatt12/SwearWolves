@@ -239,20 +239,26 @@ while(player_select_loop and running):
 
     controller_handler.update()
     if controller_handler.is_next_ready():
-        print("found next player; player: ", player_num +1)
+        event_maker.make_entry('log', 'next_player', "found next player", 'driver', False, False,
+                               'controller', 'player_initialization', 'player_tally',
+                               player=player_num)
         if player_num == 1:
-            print("player num is 1, now 2; found next player")
+            event_maker.make_entry('log', 'next_player', "player num is 1, now 2", 'driver', False, False,
+                                   'controller', 'player_initialization', 'player_tally')
             player_num = 2
             player_two_HANDLER = controller_handler.get_next_player()
             player_two_HANDLER.attach(menu=p2_char_select, name='player two')
             screen.apply(next_player=player_two_HANDLER, opened_menus=p2_char_select)
         elif player_num == 2:
-            print("player num is 2, now 3; found next player")
+            event_maker.make_entry('log', 'next_player', "player num is 2, now 3", 'driver', False, False,
+                                   'controller', 'player_initialization', 'player_tally')
             player_num = 3
             player_three_HANDLER = controller_handler.get_next_player()
             player_three_HANDLER.attach(menu=p3_char_select, name='player three')
             screen.apply(next_player=player_three_HANDLER, opened_menus=p3_char_select)
         elif player_num == 3:
+            event_maker.make_entry('log', 'next_player', "player num is 3, now 4", 'driver', False, False,
+                                   'controller', 'player_initialization', 'player_tally')
             player_num = 4
             player_four_HANDLER = controller_handler.get_next_player()
             player_four_HANDLER.attach(menu=p4_char_select, name="player four")
@@ -261,6 +267,7 @@ while(player_select_loop and running):
             try:
                 assert (screen.player_index >= player_num), "tried and failed to add next player"
             except AssertionError as error:
+                event_maker.make_entry('error', 'player index error', str(error), 'driver', True, True)
                 print(error)
                 print("screen's player index= ", screen.player_index, "player num= ", player_num)
                 print("player handlers in screen: ", screen.ordered_list_of_player_HANDLERS)

@@ -59,20 +59,29 @@ class event_handler():
         self.trace_buffer = collections.deque([], self.max_log_size)
         self.event_buffer = collections.deque([], self.max_log_size)
 
+        # log_permissions determines which types of entry will be printed to the log upon being sent. If it doesn't have
+        # permission here, then it will only end up on the buffer, which must be flushed to the log. Note that every
+        # type of entry is assumed to have buffer permission (thus, every successfully sent entry will be placed into
+        # the buffer, of those, some will print to the log, and not exclusive with this group, some will print to
+        # console. This is overridden by the force_to_log param in send/make entry
         self.log_permissions = {
             'trace': False,
             'log':   True,
-            'event': True,
+            'event': False,
             'error': True
         }
 
+        # this is where you can set the policy for what is automagically sent to the console. Useful if you're Debugging
+        # a particular file or set of features with the same terms, and you want to print them directly to console
+        # (without having to force them to console, which must be manually don/undone).
         self.terms_to_console = []
         self.files_to_console = []
 
+        # simple maps that (re)direct the incoming entries to the proper logs and/or buffers
         self.buffer_sort= {
             'trace': self.trace_buffer,
             'log':   self.log_buffer  ,
-            'event': self.event_buffer,
+            'event': self.event_buffer
         }
 
         self.entry_sort = {
@@ -82,6 +91,16 @@ class event_handler():
             'error': self.error_log
             }
 
+    # make_entry lets you create and send an entry with the same function. used in the majority of cases, as you will
+    # generally want to make and send an entry at the same time. you need to fill in all the same info as you would need
+    # to construct an entry, plus two extra fields: force_to_console and force_to_log. If either or both of these are
+    # true, it force-prints the entry to the console or log, res. Keep in mind that these DO NOT bypass the
+    # event_maker's policies for blocked files or terms: if an entry comes from a blocked file, or carries a blocked
+    # term, it will not make it to the buffer OR the log OR even to the console.
+    # make_entry is barely different from send_entry, in that it also constructs the entry for you, before calling
+    # send_entry
+    # note that both return a boolean value representing whether or not the entry you tried to send actually made it to
+    # the buffer or log
     def make_entry(self, type, name, desc, fil_src, force_to_console=True, force_to_log=False, *args, **kwargs):
         # dummy var and dummy kwargs to get pycharm to offer to autocomplete stuff for me
         temp = None
@@ -94,21 +113,27 @@ class event_handler():
         if 'log_entry' in kwargs:
             temp = kwargs['log_entry']
 
+        # Look at that, its screening out entries that come from blocked files
         if fil_src not in self.blocked_files:
             ret = entry(type, name, desc, fil_src, *args, **kwargs)
             return self.send_entry(ret, force_to_console, force_to_log)
 
+    # dispatches an entry into the event_handler, passing it thru a series of logic gates and directional maps to decide
+    # where it ultimately ends up
     def send_entry(self, message, force_to_console=True, force_to_log=False):
         if message.get_file_source() not in self.blocked_files:
             if message.screen_terms(self.blocked_terms):
-                if self.log_permissions[message.get_type()] or force_to_log:
+                if self.log_permissions[message.get_type()] or force_to_log or message.get_type() == 'error':
                     print(message, file=self.entry_sort[message.get_type()])
-                self.buffer_sort[message.get_type()].append(message)
+                else:
+                    self.buffer_sort[message.get_type()].append(message)
                 if force_to_console or message.match_terms(self.terms_to_console) or message.get_file_source() in self.files_to_console:
                     print(message)
                 return True
         return False
 
+    # posts an event. basically an expansion on the standard pygame event that automagically generates a valid entry to
+    # accompany the event (unless you provide one yourself, using the 'entry' kwarg)
     def new_event(self, event_num, file_src='events', *args, **kwargs):
         ret = pygame.event.Event(event_num, **kwargs)
         pygame.event.post(ret)
@@ -117,6 +142,7 @@ class event_handler():
         else:
             self.make_entry('event', str(event_num), str(ret), file_src, False, False, *args, **kwargs)
 
+    # adjusts which terms and files get sent to console
     def add_console_permissions(self, **kwargs):
         if "terms" in kwargs:
             for each in kwargs['terms']:
@@ -125,7 +151,22 @@ class event_handler():
             for each in kwargs['files']:
                 self.files_to_console.append(each)
 
-    def flush_trace_buffer(self, flush_message, to_console=False, **kwargs):
+    # flushes the trace buffer to the trace log, optionally also to console and optionally emptying out all its contents
+    # all of the params are optional, so you can just call this and tell it to dump the contents of the trace buffer
+    # both to console and to the trace log, emptying out the buffer as you go. BUUUUUUUUUT......
+    # you may instead provide a flush message, to be printed at the top of the log, just below the line of stars used
+    # to delineate this from other entries, you can then decide if you want to also print the contents of the buffer to
+    # the console by defining the value of the aptly named to_console, that in turn, finally allows you to decide if you
+    # also want to empty the buffer out as you go
+    # beyond those default params, you can use the kwargs['block_terms'] to block all entries with certain terms,
+    # kwargs['allow_terms'] to only allow entries that contain certain terms
+    # provide a custom screening method that returns true to let the entry pass, or false to stop it
+    # you may also want to specify the number of entries you want printed w/ kwargs['num_entries'], this currently does
+    # nothing, but good on you for knowing what you want and not being afraid to go for it
+    # finally, you can specify an additional destination log for the trace buffer, (this must be the string name of one
+    # of the other logs) to which the remaining entries (as determined by the provided filter(s)) will ALSO be printed
+    # IN ADDITION TO the trace log
+    def flush_trace_buffer(self, flush_message="FLUSH", to_console=True, empty=True, **kwargs):
         print("**********************************************************************************", file=self.trace_log)
         print(flush_message, file=self.trace_log)
         if to_console:
@@ -141,9 +182,20 @@ class event_handler():
         if 'num_entries' in kwargs:
             x = min(kwargs['num_entries'], len(ret))
         for each in ret:
-            if to_console:
-                print(each)
-            print(each, file=self.trace_log)
+            if empty:
+                temp = ret.pop()
+                if to_console:
+                    print(temp)
+                print(temp, file=self.trace_log)
+                if 'dest' in kwargs:
+                    print(temp, file=self.entry_sort[kwargs['dest']])
+            else:
+                if to_console:
+                    print(each)
+                print(each, file=self.trace_log)
+                if 'dest' in kwargs:
+                    print(each, file=self.entry_sort[kwargs['dest']])
+
         print("**********************************************************************************", file=self.trace_log)
 
 
@@ -151,6 +203,8 @@ class event_handler():
 # sequential numbering of the entry, the file from which it was sent, the name of the entry, a short description of its
 # contents, and then a list of terms (that can be used to block or permit the entry from going to console or log), plus
 # a set of key-word args, some of which are defined and have a specific purpose, others are just printed
+# the type must be either 'error', 'event', 'trace', or 'log', otherwise bad things happen.
+# for some entries, having both a name and a description is redundant; in those cases, leave desc blank "".
 class entry():
     num = 0
     def __init__(self, type, name, desc, file_src, *args, **kwargs):
@@ -197,14 +251,14 @@ class entry():
 
         terms = ""
         if len(self.terms) > 0:
-            terms += "\tterms: "
+            terms += "\n\tterms: "
             for each in self.terms:
                 terms += each
                 terms += "; "
 
         k_wargs = ""
         if len(self.k_v) > 0:
-            k_wargs += "\tkey words:\n\t"
+            k_wargs += "\n\tkey words:\n\t"
             for key in self.k_v:
                 k_wargs += str(key)
                 k_wargs += ": "
@@ -212,7 +266,7 @@ class entry():
                     k_wargs += str(self.k_v[key])
                 k_wargs += "\n\t"
 
-        return header + "\n" + content + '\n' + terms + '\n' + k_wargs
+        return header + "\n" + content +  terms + k_wargs
 
     def get_type(self):
         return self.type

@@ -130,22 +130,27 @@ class handler():
         # wanted to change it later, or I thought it would be easy to expand functionality in this direction
         # for whatever values aren't specified in kwargs, the initial state(s) are set to None, because handler needs
         # that field, but it can't be filled yet. They are added to handler via the attach method
-        if 'console_message' in kwargs:
-            print("from player_handler: ", kwargs['console_message'])
+        message = events.entry('log', 'new player', 'a new player_handler has been initialized', 'interface', True, True,
+                            'player', 'once', 'player_handler', 'handler',
+                            inst_src=self, obj_src='interface.handler', name=self.name, controller=self.controller, found_input=kwargs)
         if 'name' in kwargs:
             self.name = kwargs['name']
         else:
             self.name = 'generic'
+        message.modify(name=self.name)
         if 'player' in kwargs:
             self.player = kwargs['player']
+            message.modify(player=self.player)
         else:
             self.player = None
         if 'book' in kwargs:
             self.player = kwargs['book']
+            message.modify(book=self.book)
         else:
             self.book = None
         if 'menu' in kwargs:
             self.menu = kwargs['menu']
+            message.modify(menu=self.menu)
         else:
             self.menu = None
         self.hud = None
@@ -154,21 +159,31 @@ class handler():
         self.other_players = pygame.sprite.Group()
         self.known_enemies = pygame.sprite.Group()
 
-    #
+
+
+    # method used to attach various important member vars to a player object that already exists
     def attach(self, **kwargs):
+        message = events.entry('trace', 'player handler attachments', 'the things that have been successfully attached to this player handler', 'interface',
+                               'player', 'book', 'player_name',
+                               inst_src=self)
         if 'player' in kwargs:
             self.player = kwargs['player']
+            message.modify(player=self.player)
         if 'book' in kwargs:
             self.book = kwargs['book']
+            message.modify(book=self.book)
         if 'menu' in kwargs:
             self.menu = kwargs['menu']
-            print("attached menu: ", self.menu)
+            message.modify(menu=self.menu)
         if 'name' in kwargs:
             self.name = kwargs['name']
+            message.modify(my_name=self.name)
+        event_maker.send_entry(message)
 
     def update_menu(self):
-        #print("performing a menu update from player handler")
-        #print("controller is type: ", type(self.controller))
+        event_maker.make_entry('trace', 'menu_update', '', 'interface', False, False,
+                               'player', 'menu', 'update', 'quagmire',
+                               obj_src=handler, inst_src=self)
         self.controller.update()
         face = self.controller.pull_face()
         A_accept = face['accept']

@@ -83,6 +83,17 @@ class event_handler():
             }
 
     def make_entry(self, type, name, desc, fil_src, force_to_console=True, force_to_log=False, *args, **kwargs):
+        # dummy var and dummy kwargs to get pycharm to offer to autocomplete stuff for me
+        temp = None
+        if 'obj_src' in kwargs:
+            temp = kwargs['obj_src']
+        if 'loc_src' in kwargs:
+            temp = kwargs['loc_src']
+        if 'inst_src' in kwargs:
+            temp = kwargs['inst_src']
+        if 'log_entry' in kwargs:
+            temp = kwargs['log_entry']
+
         if fil_src not in self.blocked_files:
             ret = entry(type, name, desc, fil_src, *args, **kwargs)
             return self.send_entry(ret, force_to_console, force_to_log)
@@ -152,6 +163,16 @@ class entry():
             self.type = 'error'
         else:
             self.type = type
+        # dummy var and dummy kwargs to get pycharm to offer to autocomplete stuff for me
+        temp = None
+        if 'obj_src' in kwargs:
+            temp = kwargs['obj_src']
+        if 'loc_src' in kwargs:
+            temp = kwargs['loc_src']
+        if 'inst_src' in kwargs:
+            temp = kwargs['inst_src']
+        if 'log_entry' in kwargs:
+            temp = kwargs['log_entry']
 
         self.terms = []
         for each in args:
@@ -187,7 +208,8 @@ class entry():
             for key in self.k_v:
                 k_wargs += str(key)
                 k_wargs += ": "
-                k_wargs += str(self.k_v[key])
+                if self.k_v[key] is not None:
+                    k_wargs += str(self.k_v[key])
                 k_wargs += "\n\t"
 
         return header + "\n" + content + '\n' + terms + '\n' + k_wargs
@@ -224,6 +246,28 @@ class entry():
                 return True
         else:
             return False
+
+    def modify(self, *args, **kwargs):
+        # dummy var and dummy kwargs to get pycharm to offer to autocomplete stuff for me
+        temp = None
+        if 'obj_src' in kwargs:
+            temp = kwargs['obj_src']
+        if 'loc_src' in kwargs:
+            temp = kwargs['loc_src']
+        if 'inst_src' in kwargs:
+            temp = kwargs['inst_src']
+        if 'log_entry' in kwargs:
+            temp = kwargs['log_entry']
+        for key in kwargs:
+            if key != 'remove_key':
+                self.k_v[key] = None
+            if key != 'remove_term':
+                self.terms = [t for t in self.terms if t not in kwargs['remove_term']]
+            if key != 'add_term':
+                for each in kwargs['add_term']:
+                    self.terms.append(each)
+        # dummy return for getting pycharm to do a thing
+        return temp
 
     @classmethod
     def tick_tracker(cls):

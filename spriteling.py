@@ -282,7 +282,12 @@ class spriteling(pygame.sprite.Sprite):
         #self.hitboxes = pygame.sprite.Group(self.hitbox)
 
     def __str__(self):
-        return str(self.t_num) + "s" + str(type(self)) + self.name
+        message = events.entry('error', "spriteling's __str__",
+                               "assessing return type of spriteling's conversion to string", 'spriteling')
+        ret = str(self.t_num) + str(type(self)) + self.name + "rect/hitbox: " + str(self.rect) + '/' + str(self.hitbox)
+        event_maker.send_entry(message, True, True)
+        assert (isinstance(ret, str)), "you fucked up"
+        return ret
 
     def update(self, *args, **kwargs):
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
@@ -407,6 +412,10 @@ class hitbox(pygame.sprite.Sprite):
             self.rect.bottom = kwargs['bottom_side']
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
+
+    def __str__(self):
+        ret = "host: " + self.host.name + "| " + "Rect: " + str(self.rect)
+        return ret
 
     # the ever crucial update method. By default, it just adjusts the hitbox to be centered on the host
     def update(self, **kwargs):

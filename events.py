@@ -7,17 +7,13 @@ player_event = base +2
 file_event = base +3
 buffer_flush_event = base +4
 
-
-# event_handler has two purposes: handling events (duh), and handling entries.
-# four types of entry exist (error, event, log, and trace), three are commonly used (error, log, trace), and two are
-# (debatebly) good things (trace, log)
 # naming conventions: I've tried to be as consistent as possible with this; let me explain it all here:
 # 1) at the top of every file, right after the file waifu, events.py is imported. right after this, event_maker is
 # imported (i used "from events import event_maker" so that event_maker would appear exactly the same every time it was
 # invoked; you can directly call event_maker from any file)
 # 2) I included several dummy "if [BLANK] in kwargs:" statements as part of the various methods involving entries to
 # remind us what the special kwargs are
-# 3) you motherfuckers better not throw random print statements every to debug shit, MAKE OR SEND AN ENTRY
+# 3) you motherfuckers better not throw random print statements every time to debug shit, MAKE OR SEND AN ENTRY
 # 4) I'm sorry, I didn't mean to get hostile, you're all great. As long as you use the entry system
 # 5) event_maker is the name of a (indeed the ONLY) specific instance of the event_handler class. It is imported to
 # every file, and across every file, it is the same instance
@@ -39,6 +35,9 @@ buffer_flush_event = base +4
 #       Finally, I use (parentheses) within [brackets] to denote an optional param/extension
 #
 #       Side Note: blah is my go-to for any generic/vague/non-specific substitution of data
+# event_handler has two purposes: handling events (duh), and handling entries.
+# four types of entry exist (error, event, log, and trace), three are commonly used (error, log, trace), and two are
+# (debatebly) good things (trace, log)
 # technically, the difference between them is minimal, aside from the default settings. By default:
 #
 # event entries are only made alongside a user-defined event, either automatically or as provided. They are held in the
@@ -209,15 +208,17 @@ class event_handler():
         x = len(ret)
         if 'num_entries' in kwargs:
             x = min(kwargs['num_entries'], len(ret))
-        for each in ret:
-            if empty:
+
+        if empty:
+            while len(self.trace_buffer) > 0:
                 temp = ret.pop()
                 if to_console:
                     print(temp)
                 print(temp, file=self.trace_log)
                 if 'dest' in kwargs:
                     print(temp, file=self.entry_sort[kwargs['dest']])
-            else:
+        else:
+            for each in ret:
                 if to_console:
                     print(each)
                 print(each, file=self.trace_log)
@@ -235,6 +236,7 @@ class event_handler():
 # for some entries, having both a name and a description is redundant; in those cases, leave desc blank "".
 class entry():
     num = 0
+
     def __init__(self, type, name, desc, file_src, *args, **kwargs):
         entry.tick_tracker()
         self.entry_num = entry.get_tracker()
@@ -257,8 +259,9 @@ class entry():
         # loc_src : an informal "string" description of where the entry came from.
         # inst_src : the particular instance (of an object/class) from which this entry originated. Always do this as
         # ///inst_src=self///
-        # log_entry : special kwarg that pretty much just appears at the top of the entry when converted to string. Put
-        # whatever you want (to be at the top of the printed entry) into here.
+        # log_entry : Supposed to keep a running log of the entry/subject that changes over time. Beyond that, its just
+        # a special kwarg that pretty much just appears at the top of the entry when converted to string. Put whatever
+        # you want (to be at the top of the printed entry) into here.
         temp = None
         if 'obj_src' in kwargs:
             temp = kwargs['obj_src']
@@ -365,6 +368,11 @@ class entry():
                 self.desc = kwargs['new_desc']
             elif key == 'ext_desc':
                 self.desc += kwargs['ext_desc']
+            elif key == 'log_entry':
+                if 'log_entry' in self.k_v:
+                    self.k_v['log_entry'] += kwargs['log_entry']
+                else:
+                    self.k_v['log_entry'] = kwargs['log_entry']
             else:
                 self.k_v[key] = kwargs[key]
         # dummy return for getting pycharm to do a thing
@@ -384,5 +392,5 @@ x = 0
 next_stage = 1
 
 event_maker = event_handler(50)
-#event_maker.add_console_permissions(terms=['theme', 'user'])
+event_maker.add_console_permissions(terms=['Logan'])
 event_maker.make_entry("trace", "first trace", 'the very first trace entry', 'events', False, False)

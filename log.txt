@@ -18,24 +18,24 @@ new menu: added a new menu
 	loc_src: screen.apply()
 	opened_menu: 1s<class 'menu.menu'>trashboat
 	
-***	entry #: 91 type: log
+***	entry #: 55 type: log
 file source: driver| loc source: start_loop
 FIRST PLAYER: player one has pressed start, we should be leaving start loop now
 	terms: crucial; start_loop; ready_up; player_one; 
 	key words:
 	loc_src: start_loop
-	player_one_Handler: <interface.handler object at 0x06F864B0>
+	player_one_Handler: <interface.handler object at 0x06EDF290>
 	num_player_handlers: 1
 	
-***	entry #: 92 type: log
+***	entry #: 56 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: 1s<class 'menu.menu'>trashboat
-	set_player_one: <interface.handler object at 0x06F864B0>
+	set_player_one: <interface.handler object at 0x06EDF290>
 	
-***	entry #: 94 type: log
+***	entry #: 58 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 2s<class 'spells.DEBUG_book'>trashboat| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -44,7 +44,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 2s<class 'spells.DEBUG_book'>trashboat
 	
-***	entry #: 95 type: log
+***	entry #: 59 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 3s<class 'spells.book_of_fire'>trashboat| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -53,7 +53,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 3s<class 'spells.book_of_fire'>trashboat
 	
-***	entry #: 96 type: log
+***	entry #: 60 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 4s<class 'spells.book_of_acid'>trashboat| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -62,7 +62,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 4s<class 'spells.book_of_acid'>trashboat
 	
-***	entry #: 97 type: log
+***	entry #: 61 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 5s<class 'spells.book_of_ice'>trashboat| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -71,7 +71,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 5s<class 'spells.book_of_ice'>trashboat
 	
-***	entry #: 98 type: log
+***	entry #: 62 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 6s<class 'spells.book_of_light'>trashboat| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -80,53 +80,39 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 6s<class 'spells.book_of_light'>trashboat
 	
-***	entry #: 99 type: log
+***	entry #: 63 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	opened_menu: 7s<class 'menu.player_select_menu'>trashboat
 	
-***	entry #: 187 type: log
+***	entry #: 120 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: (<player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>)
 	
-***	entry #: 188 type: log
-file source: room| obj source: <room.theme object at 0x077D67B0>
+***	entry #: 121 type: log
+file source: room| obj source: <room.theme object at 0x06F7D1B0>
 default_theme: Testing default theme construction/initialization
 	terms: theme; init; DEBUG; 
 	key words:
-	obj_src: <room.theme object at 0x077D67B0>
+	obj_src: <room.theme object at 0x06F7D1B0>
 	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(107x104x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
 	
-***	entry #: 196 type: log
+***	entry #: 130 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.hub_room object at 0x06F86070>
+	room: <room.hub_room object at 0x06ED3CB0>
 	
-***	entry #: 197 type: log
+***	entry #: 131 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	overlay: 111s<class 'overlays.hud'>trashboat
-	
-***	entry #: 303398 type: log
-file source: blocks| obj source: 12s<class 'blocks.door'>trashboat| loc source: door
-door interact: door is receiving full player interaction
-	key words:
-	obj_src: 12s<class 'blocks.door'>trashboat
-	loc_src: door
-	
-***	entry #: 303404 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	room: <room.DEBUG_room object at 0x03A61AB0>
+	overlay: 108s<class 'overlays.hud'>trashboat
 	

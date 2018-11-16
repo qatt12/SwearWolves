@@ -1,0 +1,1491 @@
+***	entry #: 381 type: event
+file source: driver
+events: the received events; <Event(11-JoyButtonUp {'joy': 0, 'button': 0})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(11-JoyButtonUp {'joy': 0, 'button': 0})>
+	
+***	entry #: 32631 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (854, 269), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (854, 269), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 32870 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (851, 269), 'rel': (-3, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (851, 269), 'rel': (-3, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 32990 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (850, 269), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (850, 269), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 34181 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (853, 268), 'rel': (3, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (853, 268), 'rel': (3, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 34301 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (865, 263), 'rel': (12, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (865, 263), 'rel': (12, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 34421 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (877, 260), 'rel': (12, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (877, 260), 'rel': (12, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 34541 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (889, 257), 'rel': (12, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (889, 257), 'rel': (12, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 34661 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (903, 254), 'rel': (14, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (903, 254), 'rel': (14, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 34781 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (914, 253), 'rel': (11, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (914, 253), 'rel': (11, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 34901 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (922, 251), 'rel': (8, -2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (922, 251), 'rel': (8, -2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 35021 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (926, 250), 'rel': (4, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (926, 250), 'rel': (4, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 35974 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (925, 250), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (925, 250), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 36094 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (922, 250), 'rel': (-3, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (922, 250), 'rel': (-3, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 36214 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (917, 250), 'rel': (-5, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (917, 250), 'rel': (-5, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 36334 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (914, 251), 'rel': (-3, 1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (914, 251), 'rel': (-3, 1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 36454 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (911, 251), 'rel': (-3, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (911, 251), 'rel': (-3, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 36574 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (910, 251), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (910, 251), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 36694 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (909, 251), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (909, 251), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 38004 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (910, 251), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (910, 251), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 38124 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (911, 251), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (911, 251), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 38244 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (913, 251), 'rel': (2, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (913, 251), 'rel': (2, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 38364 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (915, 251), 'rel': (2, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (915, 251), 'rel': (2, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 38484 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (916, 251), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (916, 251), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 39318 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (917, 250), 'rel': (1, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (917, 250), 'rel': (1, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 39438 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (918, 250), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (918, 250), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 39558 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (919, 249), 'rel': (1, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (919, 249), 'rel': (1, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 39678 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (921, 248), 'rel': (2, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (921, 248), 'rel': (2, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 39798 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (922, 247), 'rel': (1, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (922, 247), 'rel': (1, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 39918 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (924, 246), 'rel': (2, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (924, 246), 'rel': (2, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 40038 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (925, 246), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (925, 246), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 40158 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (926, 244), 'rel': (1, -2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (926, 244), 'rel': (1, -2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 40278 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (930, 242), 'rel': (4, -2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (930, 242), 'rel': (4, -2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 40398 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (933, 239), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (933, 239), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 40518 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (940, 236), 'rel': (7, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (940, 236), 'rel': (7, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 40638 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (949, 232), 'rel': (9, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (949, 232), 'rel': (9, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 40758 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (961, 227), 'rel': (12, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (961, 227), 'rel': (12, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 40878 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (975, 223), 'rel': (14, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (975, 223), 'rel': (14, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 40998 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (988, 219), 'rel': (13, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (988, 219), 'rel': (13, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 41118 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1000, 216), 'rel': (12, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1000, 216), 'rel': (12, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 41238 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1012, 212), 'rel': (12, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1012, 212), 'rel': (12, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 41358 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1022, 209), 'rel': (10, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1022, 209), 'rel': (10, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 41478 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1028, 206), 'rel': (6, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1028, 206), 'rel': (6, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 41598 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1032, 205), 'rel': (4, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1032, 205), 'rel': (4, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 41718 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1035, 204), 'rel': (3, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1035, 204), 'rel': (3, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 41838 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1036, 203), 'rel': (1, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1036, 203), 'rel': (1, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 41958 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1037, 203), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1037, 203), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 42078 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1038, 203), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1038, 203), 'rel': (1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 42912 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1035, 206), 'rel': (-3, 3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1035, 206), 'rel': (-3, 3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 43032 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1030, 211), 'rel': (-5, 5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1030, 211), 'rel': (-5, 5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 43152 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1024, 219), 'rel': (-6, 8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1024, 219), 'rel': (-6, 8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 43272 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1016, 227), 'rel': (-8, 8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1016, 227), 'rel': (-8, 8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 43392 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1008, 237), 'rel': (-8, 10), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1008, 237), 'rel': (-8, 10), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 43512 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1000, 246), 'rel': (-8, 9), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1000, 246), 'rel': (-8, 9), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 43632 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (993, 255), 'rel': (-7, 9), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (993, 255), 'rel': (-7, 9), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 43752 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (986, 267), 'rel': (-7, 12), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (986, 267), 'rel': (-7, 12), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 43872 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (978, 281), 'rel': (-8, 14), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (978, 281), 'rel': (-8, 14), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 43992 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (971, 295), 'rel': (-7, 14), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (971, 295), 'rel': (-7, 14), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 44112 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (962, 313), 'rel': (-9, 18), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (962, 313), 'rel': (-9, 18), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 44232 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (953, 329), 'rel': (-9, 16), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (953, 329), 'rel': (-9, 16), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 44352 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (941, 346), 'rel': (-12, 17), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (941, 346), 'rel': (-12, 17), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 44472 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (929, 363), 'rel': (-12, 17), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (929, 363), 'rel': (-12, 17), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 44592 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (917, 376), 'rel': (-12, 13), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (917, 376), 'rel': (-12, 13), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 44712 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (905, 388), 'rel': (-12, 12), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (905, 388), 'rel': (-12, 12), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 44832 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (895, 394), 'rel': (-10, 6), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (895, 394), 'rel': (-10, 6), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 44952 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (887, 399), 'rel': (-8, 5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (887, 399), 'rel': (-8, 5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 45072 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (879, 401), 'rel': (-8, 2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (879, 401), 'rel': (-8, 2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 45192 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (872, 403), 'rel': (-7, 2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (872, 403), 'rel': (-7, 2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 45312 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (867, 405), 'rel': (-5, 2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (867, 405), 'rel': (-5, 2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 45432 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (860, 407), 'rel': (-7, 2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (860, 407), 'rel': (-7, 2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 45552 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (856, 409), 'rel': (-4, 2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (856, 409), 'rel': (-4, 2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 45672 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (852, 411), 'rel': (-4, 2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (852, 411), 'rel': (-4, 2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 45792 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (849, 414), 'rel': (-3, 3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (849, 414), 'rel': (-3, 3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 45912 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (846, 416), 'rel': (-3, 2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (846, 416), 'rel': (-3, 2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 46032 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (846, 417), 'rel': (0, 1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (846, 417), 'rel': (0, 1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 49722 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (847, 415), 'rel': (1, -2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (847, 415), 'rel': (1, -2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 49842 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (848, 411), 'rel': (1, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (848, 411), 'rel': (1, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 49962 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (850, 406), 'rel': (2, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (850, 406), 'rel': (2, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 50082 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (851, 401), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (851, 401), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 50202 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (852, 396), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (852, 396), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 50322 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (854, 390), 'rel': (2, -6), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (854, 390), 'rel': (2, -6), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 50442 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (856, 382), 'rel': (2, -8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (856, 382), 'rel': (2, -8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 50562 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (858, 374), 'rel': (2, -8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (858, 374), 'rel': (2, -8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 50682 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (861, 364), 'rel': (3, -10), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (861, 364), 'rel': (3, -10), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 50802 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (864, 353), 'rel': (3, -11), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (864, 353), 'rel': (3, -11), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 50922 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (867, 339), 'rel': (3, -14), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (867, 339), 'rel': (3, -14), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 51042 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (867, 325), 'rel': (0, -14), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (867, 325), 'rel': (0, -14), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 51162 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (866, 309), 'rel': (-1, -16), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (866, 309), 'rel': (-1, -16), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 51282 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (861, 287), 'rel': (-5, -22), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (861, 287), 'rel': (-5, -22), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 51402 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (856, 265), 'rel': (-5, -22), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (856, 265), 'rel': (-5, -22), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 51522 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (851, 244), 'rel': (-5, -21), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (851, 244), 'rel': (-5, -21), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 51642 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (846, 223), 'rel': (-5, -21), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (846, 223), 'rel': (-5, -21), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 51762 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (840, 200), 'rel': (-6, -23), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (840, 200), 'rel': (-6, -23), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 51882 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (835, 182), 'rel': (-5, -18), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (835, 182), 'rel': (-5, -18), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 52002 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (830, 164), 'rel': (-5, -18), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (830, 164), 'rel': (-5, -18), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 52122 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (826, 145), 'rel': (-4, -19), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (826, 145), 'rel': (-4, -19), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 52242 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (822, 130), 'rel': (-4, -15), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (822, 130), 'rel': (-4, -15), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 52362 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (819, 115), 'rel': (-3, -15), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (819, 115), 'rel': (-3, -15), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 52482 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (816, 99), 'rel': (-3, -16), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (816, 99), 'rel': (-3, -16), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 52602 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (813, 86), 'rel': (-3, -13), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (813, 86), 'rel': (-3, -13), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 52722 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (811, 77), 'rel': (-2, -9), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (811, 77), 'rel': (-2, -9), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 52842 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (810, 71), 'rel': (-1, -6), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (810, 71), 'rel': (-1, -6), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 52962 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (808, 66), 'rel': (-2, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (808, 66), 'rel': (-2, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 53082 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (807, 63), 'rel': (-1, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (807, 63), 'rel': (-1, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 53202 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (805, 61), 'rel': (-2, -2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (805, 61), 'rel': (-2, -2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 53322 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (804, 59), 'rel': (-1, -2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (804, 59), 'rel': (-1, -2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 53442 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (803, 59), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (803, 59), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 53562 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (803, 58), 'rel': (0, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (803, 58), 'rel': (0, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 55110 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (803, 57), 'rel': (0, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (803, 57), 'rel': (0, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 55230 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (803, 53), 'rel': (0, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (803, 53), 'rel': (0, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 55350 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (803, 48), 'rel': (0, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (803, 48), 'rel': (0, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 55470 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (803, 41), 'rel': (0, -7), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (803, 41), 'rel': (0, -7), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 55590 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (803, 34), 'rel': (0, -7), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (803, 34), 'rel': (0, -7), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 55710 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (804, 26), 'rel': (1, -8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (804, 26), 'rel': (1, -8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 55830 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (805, 19), 'rel': (1, -7), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (805, 19), 'rel': (1, -7), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 55950 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (806, 14), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (806, 14), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 56070 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (807, 9), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (807, 9), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 56190 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (808, 4), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (808, 4), 'rel': (1, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 56310 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (809, 0), 'rel': (1, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (809, 0), 'rel': (1, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 56430 type: event
+file source: driver
+events: the received events; <Event(1-ActiveEvent {'gain': 0, 'state': 1})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(1-ActiveEvent {'gain': 0, 'state': 1})>
+	
+***	entry #: 62262 type: event
+file source: driver
+events: the received events; <Event(17-VideoExpose {})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(17-VideoExpose {})>
+	
+***	entry #: 63096 type: event
+file source: driver
+events: the received events; <Event(1-ActiveEvent {'gain': 1, 'state': 1})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(1-ActiveEvent {'gain': 1, 'state': 1})>
+	
+***	entry #: 63097 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (814, 3), 'rel': (5, 3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (814, 3), 'rel': (5, 3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 63217 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (816, 12), 'rel': (2, 9), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (816, 12), 'rel': (2, 9), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 63337 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (819, 25), 'rel': (3, 13), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (819, 25), 'rel': (3, 13), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 63457 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (823, 41), 'rel': (4, 16), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (823, 41), 'rel': (4, 16), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 63577 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (827, 63), 'rel': (4, 22), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (827, 63), 'rel': (4, 22), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 63697 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (831, 87), 'rel': (4, 24), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (831, 87), 'rel': (4, 24), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 63817 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (838, 114), 'rel': (7, 27), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (838, 114), 'rel': (7, 27), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 63937 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (845, 149), 'rel': (7, 35), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (845, 149), 'rel': (7, 35), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 64057 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (852, 183), 'rel': (7, 34), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (852, 183), 'rel': (7, 34), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 64177 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (861, 222), 'rel': (9, 39), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (861, 222), 'rel': (9, 39), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 64297 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (872, 261), 'rel': (11, 39), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (872, 261), 'rel': (11, 39), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 64417 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (882, 296), 'rel': (10, 35), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (882, 296), 'rel': (10, 35), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 64537 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (893, 333), 'rel': (11, 37), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (893, 333), 'rel': (11, 37), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 64657 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (904, 363), 'rel': (11, 30), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (904, 363), 'rel': (11, 30), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 64777 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (913, 392), 'rel': (9, 29), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (913, 392), 'rel': (9, 29), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 64897 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (921, 414), 'rel': (8, 22), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (921, 414), 'rel': (8, 22), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 65017 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (928, 434), 'rel': (7, 20), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (928, 434), 'rel': (7, 20), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 65137 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (934, 449), 'rel': (6, 15), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (934, 449), 'rel': (6, 15), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 65257 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (939, 462), 'rel': (5, 13), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (939, 462), 'rel': (5, 13), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 65377 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (942, 470), 'rel': (3, 8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (942, 470), 'rel': (3, 8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 65497 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (945, 474), 'rel': (3, 4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (945, 474), 'rel': (3, 4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 65617 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (946, 477), 'rel': (1, 3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (946, 477), 'rel': (1, 3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 65737 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (946, 478), 'rel': (0, 1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (946, 478), 'rel': (0, 1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 71331 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (945, 478), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (945, 478), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 71927 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (944, 478), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (944, 478), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 79425 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (946, 477), 'rel': (2, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (946, 477), 'rel': (2, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 79545 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (948, 476), 'rel': (2, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (948, 476), 'rel': (2, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 79665 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (952, 475), 'rel': (4, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (952, 475), 'rel': (4, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 79785 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (957, 473), 'rel': (5, -2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (957, 473), 'rel': (5, -2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 79905 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (962, 472), 'rel': (5, -1), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (962, 472), 'rel': (5, -1), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 80025 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (969, 469), 'rel': (7, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (969, 469), 'rel': (7, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 80145 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (978, 466), 'rel': (9, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (978, 466), 'rel': (9, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 80265 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (991, 461), 'rel': (13, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (991, 461), 'rel': (13, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 80385 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1006, 453), 'rel': (15, -8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1006, 453), 'rel': (15, -8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 80505 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1027, 443), 'rel': (21, -10), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1027, 443), 'rel': (21, -10), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 80625 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1048, 431), 'rel': (21, -12), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1048, 431), 'rel': (21, -12), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 80745 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1075, 415), 'rel': (27, -16), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1075, 415), 'rel': (27, -16), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 80865 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1099, 400), 'rel': (24, -15), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1099, 400), 'rel': (24, -15), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 80985 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1123, 384), 'rel': (24, -16), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1123, 384), 'rel': (24, -16), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 81105 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1152, 366), 'rel': (29, -18), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1152, 366), 'rel': (29, -18), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 81225 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1181, 348), 'rel': (29, -18), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1181, 348), 'rel': (29, -18), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 81345 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1212, 329), 'rel': (31, -19), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1212, 329), 'rel': (31, -19), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 81465 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1240, 312), 'rel': (28, -17), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1240, 312), 'rel': (28, -17), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 81585 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1273, 294), 'rel': (33, -18), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1273, 294), 'rel': (33, -18), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 81705 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1301, 278), 'rel': (28, -16), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1301, 278), 'rel': (28, -16), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 81825 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1333, 261), 'rel': (32, -17), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1333, 261), 'rel': (32, -17), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 81945 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1359, 247), 'rel': (26, -14), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1359, 247), 'rel': (26, -14), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 82065 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1387, 232), 'rel': (28, -15), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1387, 232), 'rel': (28, -15), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 82185 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1408, 220), 'rel': (21, -12), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1408, 220), 'rel': (21, -12), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 82305 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1429, 208), 'rel': (21, -12), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1429, 208), 'rel': (21, -12), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 82425 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1446, 199), 'rel': (17, -9), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1446, 199), 'rel': (17, -9), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 82545 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1463, 189), 'rel': (17, -10), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1463, 189), 'rel': (17, -10), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 82665 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1476, 180), 'rel': (13, -9), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1476, 180), 'rel': (13, -9), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 82785 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1488, 172), 'rel': (12, -8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1488, 172), 'rel': (12, -8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 82905 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1499, 164), 'rel': (11, -8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1499, 164), 'rel': (11, -8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 83025 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1508, 157), 'rel': (9, -7), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1508, 157), 'rel': (9, -7), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 83145 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1516, 150), 'rel': (8, -7), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1516, 150), 'rel': (8, -7), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 83265 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1523, 145), 'rel': (7, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1523, 145), 'rel': (7, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 83385 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1529, 141), 'rel': (6, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1529, 141), 'rel': (6, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 83505 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1534, 136), 'rel': (5, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1534, 136), 'rel': (5, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 83625 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1538, 133), 'rel': (4, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1538, 133), 'rel': (4, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 83745 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1542, 129), 'rel': (4, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1542, 129), 'rel': (4, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 83865 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1545, 126), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1545, 126), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 83985 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1547, 123), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1547, 123), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 84105 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1549, 120), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1549, 120), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 84225 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1551, 118), 'rel': (2, -2), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1551, 118), 'rel': (2, -2), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 84345 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1553, 115), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1553, 115), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 84465 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1555, 112), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1555, 112), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 84585 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1558, 109), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1558, 109), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 84705 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1561, 106), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1561, 106), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 84825 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1564, 101), 'rel': (3, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1564, 101), 'rel': (3, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 84945 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1568, 97), 'rel': (4, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1568, 97), 'rel': (4, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 85065 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1572, 92), 'rel': (4, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1572, 92), 'rel': (4, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 85185 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1576, 87), 'rel': (4, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1576, 87), 'rel': (4, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 85305 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1583, 81), 'rel': (7, -6), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1583, 81), 'rel': (7, -6), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 85425 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1588, 76), 'rel': (5, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1588, 76), 'rel': (5, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 85545 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1594, 72), 'rel': (6, -4), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1594, 72), 'rel': (6, -4), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 85665 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1601, 66), 'rel': (7, -6), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1601, 66), 'rel': (7, -6), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 85785 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1610, 60), 'rel': (9, -6), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1610, 60), 'rel': (9, -6), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 85905 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1618, 53), 'rel': (8, -7), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1618, 53), 'rel': (8, -7), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 86025 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1628, 45), 'rel': (10, -8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1628, 45), 'rel': (10, -8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 86145 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1638, 37), 'rel': (10, -8), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1638, 37), 'rel': (10, -8), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 86265 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1646, 31), 'rel': (8, -6), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1646, 31), 'rel': (8, -6), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 86385 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1653, 24), 'rel': (7, -7), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1653, 24), 'rel': (7, -7), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 86505 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1659, 18), 'rel': (6, -6), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1659, 18), 'rel': (6, -6), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 86625 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1665, 12), 'rel': (6, -6), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1665, 12), 'rel': (6, -6), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 86745 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1669, 7), 'rel': (4, -5), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1669, 7), 'rel': (4, -5), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 86865 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1671, 4), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1671, 4), 'rel': (2, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 86985 type: event
+file source: driver
+events: the received events; <Event(4-MouseMotion {'pos': (1674, 1), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(4-MouseMotion {'pos': (1674, 1), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	
+***	entry #: 87105 type: event
+file source: driver
+events: the received events; <Event(1-ActiveEvent {'gain': 0, 'state': 1})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(1-ActiveEvent {'gain': 0, 'state': 1})>
+	
+***	entry #: 98530 type: event
+file source: driver
+events: the received events; <Event(12-Quit {})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(12-Quit {})>
+	

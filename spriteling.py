@@ -284,15 +284,10 @@ class spriteling(pygame.sprite.Sprite):
     def __str__(self):
         message = events.entry('error', "spriteling's __str__",
                                "assessing return type of spriteling's conversion to string", 'spriteling')
-        ret = str(self.t_num)
-        message.modify(log_entry="successfully appended the tracking number", ret=ret)
-        ret += str(type(self))\
-
-        ret += self.name \
-        ret += "rect/hitbox: " + str(self.rect) + '/' + str(self.hitbox)
+        ret = str(self.t_num) + str(type(self)) + self.name + "rect/hitbox: " + str(self.rect) + '/' + str(self.hitbox)
         event_maker.send_entry(message, True, True)
         assert (isinstance(ret, str)), "you fucked up"
-        return "NULLLLLLL"
+        return ret
 
     def update(self, *args, **kwargs):
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
@@ -420,6 +415,7 @@ class hitbox(pygame.sprite.Sprite):
 
     def __str__(self):
         ret = "host: " + self.host.name + "| " + "Rect: " + str(self.rect)
+        return ret
 
     # the ever crucial update method. By default, it just adjusts the hitbox to be centered on the host
     def update(self, **kwargs):

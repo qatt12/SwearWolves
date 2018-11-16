@@ -11,3 +11,108 @@ spriteling loaded: spritelings.py has been loaded
 file source: driver
 game_window size:  
 	terms: screen; 
+***	entry #: 6 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	opened_menu: NULLLLLLL
+	
+***	entry #: 210 type: log
+file source: driver| loc source: start_loop
+FIRST PLAYER: player one has pressed start, we should be leaving start loop now
+	terms: crucial; start_loop; ready_up; player_one; 
+	key words:
+	loc_src: start_loop
+	player_one_Handler: <interface.handler object at 0x064E5530>
+	num_player_handlers: 1
+	
+***	entry #: 211 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	closed_menu: NULLLLLLL
+	set_player_one: <interface.handler object at 0x064E5530>
+	
+***	entry #: 214 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
+spellbook: A new spell book has been made; this is the base constructor
+	terms: spellbook; spells; magic; base; 
+	key words:
+	obj_src: <class 'spells.spell_book'>
+	loc_src: spellbook abstract base class
+	inst_src: NULLLLLLL
+	
+***	entry #: 220 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
+spellbook: A new spell book has been made; this is the base constructor
+	terms: spellbook; spells; magic; base; 
+	key words:
+	obj_src: <class 'spells.spell_book'>
+	loc_src: spellbook abstract base class
+	inst_src: NULLLLLLL
+	
+***	entry #: 225 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
+spellbook: A new spell book has been made; this is the base constructor
+	terms: spellbook; spells; magic; base; 
+	key words:
+	obj_src: <class 'spells.spell_book'>
+	loc_src: spellbook abstract base class
+	inst_src: NULLLLLLL
+	
+***	entry #: 230 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
+spellbook: A new spell book has been made; this is the base constructor
+	terms: spellbook; spells; magic; base; 
+	key words:
+	obj_src: <class 'spells.spell_book'>
+	loc_src: spellbook abstract base class
+	inst_src: NULLLLLLL
+	
+***	entry #: 235 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
+spellbook: A new spell book has been made; this is the base constructor
+	terms: spellbook; spells; magic; base; 
+	key words:
+	obj_src: <class 'spells.spell_book'>
+	loc_src: spellbook abstract base class
+	inst_src: NULLLLLLL
+	
+***	entry #: 240 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	opened_menu: NULLLLLLL
+	
+***	entry #: 338 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	closed_menu: (<player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>)
+	
+***	entry #: 339 type: log
+file source: room| obj source: <room.theme object at 0x07078B70>
+default_theme: Testing default theme construction/initialization
+	terms: theme; init; DEBUG; 
+	key words:
+	obj_src: <room.theme object at 0x07078B70>
+	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(107x104x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
+	
+***	entry #: 378 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x064E5390>
+	
+***	entry #: 379 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	overlay: NULLLLLLL
+	

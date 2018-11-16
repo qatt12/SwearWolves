@@ -7,17 +7,13 @@ player_event = base +2
 file_event = base +3
 buffer_flush_event = base +4
 
-
-# event_handler has two purposes: handling events (duh), and handling entries.
-# four types of entry exist (error, event, log, and trace), three are commonly used (error, log, trace), and two are
-# (debatebly) good things (trace, log)
 # naming conventions: I've tried to be as consistent as possible with this; let me explain it all here:
 # 1) at the top of every file, right after the file waifu, events.py is imported. right after this, event_maker is
 # imported (i used "from events import event_maker" so that event_maker would appear exactly the same every time it was
 # invoked; you can directly call event_maker from any file)
 # 2) I included several dummy "if [BLANK] in kwargs:" statements as part of the various methods involving entries to
 # remind us what the special kwargs are
-# 3) you motherfuckers better not throw random print statements every to debug shit, MAKE OR SEND AN ENTRY
+# 3) you motherfuckers better not throw random print statements every time to debug shit, MAKE OR SEND AN ENTRY
 # 4) I'm sorry, I didn't mean to get hostile, you're all great. As long as you use the entry system
 # 5) event_maker is the name of a (indeed the ONLY) specific instance of the event_handler class. It is imported to
 # every file, and across every file, it is the same instance
@@ -39,6 +35,9 @@ buffer_flush_event = base +4
 #       Finally, I use (parentheses) within [brackets] to denote an optional param/extension
 #
 #       Side Note: blah is my go-to for any generic/vague/non-specific substitution of data
+# event_handler has two purposes: handling events (duh), and handling entries.
+# four types of entry exist (error, event, log, and trace), three are commonly used (error, log, trace), and two are
+# (debatebly) good things (trace, log)
 # technically, the difference between them is minimal, aside from the default settings. By default:
 #
 # event entries are only made alongside a user-defined event, either automatically or as provided. They are held in the
@@ -237,6 +236,7 @@ class event_handler():
 # for some entries, having both a name and a description is redundant; in those cases, leave desc blank "".
 class entry():
     num = 0
+
     def __init__(self, type, name, desc, file_src, *args, **kwargs):
         entry.tick_tracker()
         self.entry_num = entry.get_tracker()

@@ -1,6 +1,6 @@
 # SwearWolves
 Project for Software Engineering 
-Made by 
-Quinton
-Abagail
-Logan
+Made by Logan
+Also Abigail and Quinton
+
+

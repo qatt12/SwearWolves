@@ -102,17 +102,21 @@
 import pygame, events
 from events import event_maker
 
+
 # all-purpose handler class that coordinates the player, controller, and whatever else needs coordinating
 # this is what allows a seamless transition between menu/game loops, keeps everything modular and independent, and
 # solves a ton of headache causing problems with scope resolution
 class handler():
     num_player_interfaces = 0
+
     @classmethod
     def add_player_interface(cls):
         cls.num_player_interfaces +=1
+
     @classmethod
     def get_player_interface_num(cls):
         return cls.num_player_interfaces
+
     @classmethod
     def next_player_interface(cls):
         cls.add_player_interface()
@@ -201,10 +205,14 @@ class handler():
         # updates the controller
         self.controller.update()
 
-        #updates the player
+        # updates the player
         movement = self.controller.pull_movement()['move']
         facing = self.controller.pull_movement()['look']
         interaction = self.controller.pull_face()['interact']
+        lock_next = self.controller.pull_face()['lock_next']
+        lock_next = lock_next[0] and not lock_next[1]
+        lock_prev = self.controller.pull_face()['lock_prev']
+        lock_prev = lock_prev[0] and not lock_prev[1]
         self.player.update(look=facing, move=movement, interact=interaction)
 
         # updates the spellbook
@@ -222,7 +230,7 @@ class handler():
         elif prv_chk[0] and not prv_chk[1]:
             self.book.update(origin, cycle_spell='prev')
         self.book.update(origin, fire=(now, prev), direction=self.player.facing,
-                         missile_layer=self.missiles, **kwargs)
+                         missile_layer=self.missiles, targ_lock=(lock_next-lock_prev), **kwargs)
 
         # updates spells
         # I just need to get the targeting data into the targeted spell
@@ -232,11 +240,10 @@ class handler():
         cond_queue = self.player.send_to_handler()
 
 
-
     # finishes pre-game prep by populating all of the necessary internal vars with the applicable data/references.
     # called by driver.py::class::screen. p_constr had to be passed in as a param to avoid importing stuff to
     # interface.py (which totally makes sense for reasons that are great and super important)
-    def begin_game(self, p_constr, starting_room, player_num):
+    def begin_game(self, p_constr, starting_room, player_num, music=False):
         # deletes a reference to the char_select_menu, since it is no longer needed, and should be garbage collected
         self.menu = None
         self.player = p_constr(self.book, self.number)
@@ -246,8 +253,9 @@ class handler():
         self.hud = hud(self.player, self.book, player_num)
         starting_room.add_player(self.player)
         self.my_player_single.add(self.player)
-        pygame.mixer.music.load('Music/LoLD.ogg')
-        pygame.mixer.music.play(-1)
+        if music:
+            pygame.mixer.music.load('Music/LoLD.ogg')
+            pygame.mixer.music.play(-1)
 
     # all of the draw_boxes method calls are for debugging and uses should be deleted prior to submission
     def draw(self, disp):
@@ -258,3 +266,6 @@ class handler():
 
     def get_hud(self):
         return self.hud
+
+    def get_missiles(self):
+        return self.missiles

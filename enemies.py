@@ -30,13 +30,34 @@
 # ....--  .-+hs-------------..........................................---------------..`   `..  `.....
 # ....--  .-+hs-------------........................................-----------------    `-.  .-......
 
-import pygame, spriteling, events
+import pygame, spriteling, events, spells, config
 from events import event_maker
+
+class charged_attack(spriteling.spriteling):
+    def __init__(self, time):
+        super().__init__()
+        self.cooldown = time * config.fps
+        self.timer = 0
+
+    def update(self, fire, missile_layer, *args, **kwargs):
+        if self.timer > 0:
+            self.timer -= 1
+        if self.timer == 0 and fire:
+            pass
+
 
 class enemy(spriteling.spriteling):
     def __init__(self, *args, **kwargs):
         super(enemy, self).__init__(*args, **kwargs)
 
+    def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
+        #self.hp -=1
 
-def impact():
-    print('calling enemies.impact')
+class simple_enemy(enemy):
+    def __init__(self):
+        super().__init__()
+        self.attack = spells.charged_fireball_s()
+
+    def update(self, *args, **kwargs):
+        self.attack.update(True, self.rect.center, True, True, (1, 0))

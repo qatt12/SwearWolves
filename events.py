@@ -1,4 +1,4 @@
-import pygame, collections
+import pygame, collections, math
 
 base = pygame.USEREVENT
 game_state_event = base
@@ -6,6 +6,8 @@ room_event = base +1
 player_event = base +2
 file_event = base +3
 buffer_flush_event = base +4
+menu_event = base +5
+
 
 # naming conventions: I've tried to be as consistent as possible with this; let me explain it all here:
 # 1) at the top of every file, right after the file waifu, events.py is imported. right after this, event_maker is
@@ -71,14 +73,14 @@ class event_handler():
 
         # blocked_files/terms are lists of exclusions that forbid entries from the enumerated files/bearing the
         # enumerated terms from being recorded (if an entry is excluded here, it won't even make it to the buffer)
-        self.blocked_files = []
+        self.blocked_files = set()
         if 'blocked_files' in kwargs:
             for each in kwargs['blocked_files']:
-                self.blocked_files.append(each)
-        self.blocked_terms = []
+                self.blocked_files.add(each)
+        self.blocked_terms = set()
         if 'blocked_terms' in kwargs:
             for each in kwargs['blocked_terms']:
-                self.blocked_files.append(each)
+                self.blocked_terms.add(each)
 
         self.max_log_size = log_size
 
@@ -101,8 +103,8 @@ class event_handler():
         # this is where you can set the policy for what is automagically sent to the console. Useful if you're Debugging
         # a particular file or set of features with the same terms, and you want to print them directly to console
         # (without having to force them to console, which must be manually don/undone).
-        self.terms_to_console = []
-        self.files_to_console = []
+        self.terms_to_console = set()
+        self.files_to_console = set()
 
         # simple maps that (re)direct the incoming entries to the proper logs and/or buffers
         self.buffer_sort= {
@@ -173,10 +175,15 @@ class event_handler():
     def add_console_permissions(self, **kwargs):
         if "terms" in kwargs:
             for each in kwargs['terms']:
-                self.terms_to_console.append(each)
+                self.terms_to_console.add(each)
         if 'files' in kwargs:
             for each in kwargs['files']:
-                self.files_to_console.append(each)
+                self.files_to_console.add(each)
+
+    def block_terms(self, *args):
+        for each in args:
+            self.blocked_terms.add(each)
+
 
     # flushes the trace buffer to the trace log, optionally also to console and optionally emptying out all its contents
     # all of the params are optional, so you can just call this and tell it to dump the contents of the trace buffer
@@ -386,11 +393,19 @@ class entry():
     def get_tracker(cls):
         return cls.num
 
+
+def dist(spritelingA, spritelingB):
+    x_a, y_a = spritelingA.rect.centerx, spritelingA.rect.centery
+    x_b, y_b = spritelingB.rect.centerx, spritelingB.rect.centery
+    ret = math.sqrt((x_b - x_a) ** 2 + (y_b - y_a) ** 2)
+    return ret
+
 import pygame
 
 x = 0
 next_stage = 1
 
 event_maker = event_handler(50)
-event_maker.add_console_permissions(terms=['Logan'])
+event_maker.add_console_permissions(terms=['Logan', 'magic'])
+event_maker.block_terms('spellbook')
 event_maker.make_entry("trace", "first trace", 'the very first trace entry', 'events', False, False)

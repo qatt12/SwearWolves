@@ -59,24 +59,3 @@ class controller_list():
             return True
         return False
 
-
-class player_list():
-    def __init__(self, p1):
-        self.player_one = p1
-        self.player_two = None
-        self.player_three = None
-        self.player_four = None
-
-    def add_next_player(self, next_player):
-        if self.player_two is None:
-            self.player_two = next_player
-        elif self.player_three is None:
-            self.player_three = next_player
-        elif self.player_four is None:
-            self.player_four = next_player
-
-    def update(self, *args, **kwargs):
-        self.player_one.update(*args, **kwargs)
-        self.player_two.update(*args, **kwargs)
-        self.player_three.update(*args, **kwargs)
-        self.player_four.update(*args, **kwargs)

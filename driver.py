@@ -128,9 +128,16 @@ class screen_handler():
             self.current_room.collide_walls(players=self.GROUP_of_player_SPRITES)
             self.current_room.collide_doors(self.GROUP_of_player_SPRITES)
 
+            live_missiles = pygame.sprite.Group()
             visible_enemies = self.current_room.pull_enemies(True)
-            for player in self.ordered_list_of_player_HANDLERS:
-                player.update(all_players=self.GROUP_of_player_SPRITES, known_enemies=visible_enemies)
+            allied = pygame.sprite.Group()
+            for player_handler in self.ordered_list_of_player_HANDLERS:
+                other_players = pygame.sprite.Group.copy(self.GROUP_of_player_SPRITES)
+                other_players.remove(player_handler.player)
+                player_handler.update(players=other_players, enemies=visible_enemies, allies=allied, me=player_handler.player)
+                live_missiles.add(player_handler.get_missiles())
+
+            self.current_room.collide_missiles_into_enemies(live_missiles)
 
     def draw(self, display, scroll=(0, 0)):
         display.fill(config.black)
@@ -224,7 +231,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.curse_s, spells.heal_s, spells.arc_DEBUG_s),
+unlocked_books = [spells.DEBUG_book(spells.dumb_heal_s, spells.DEBUG_target_line, spells.fireball_s, spells.charged_fireball_s),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1

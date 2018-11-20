@@ -26,3 +26,10 @@ def t_method(**kwargs):
 t_method(name='attempt1')
 t_method(name='attempt2', temp1=3, temp2=4)
 t_method(name='attempt3', temp2=45)
+
+yyyy = False
+vvvv = True
+
+print(yyyy + vvvv)
+ffff = yyyy-vvvv
+print(ffff)

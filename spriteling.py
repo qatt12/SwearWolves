@@ -214,18 +214,20 @@
 # make a ton of sense to have things laid out this way, but......
 # almost everything here is subject to being renamed or altered in some way.
 
-import pygame, config, events, collections
+import pygame, config, events, collections, random
 from events import event_maker
 
 event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been loaded', 'spriteling')
 
-placeholder = pygame.image.load('baddies\loogloog.png').convert_alpha()
+placeholder = pygame.image.load("misc\Aiko's_Outfits.png").convert_alpha()
 event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been loaded', 'spriteling')
+
 
 # the use of multiple hitbox is currently deprecated, cause its expensive and complicated, and makes all my code look
 # like a twisted hell of for loops
 def collide_hitbox(spritelingA, spritelingB):
     return pygame.Rect.colliderect(spritelingA.hitbox.rect, spritelingB.hitbox.rect)
+
 
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
@@ -236,7 +238,7 @@ class spriteling(pygame.sprite.Sprite):
         super().__init__()
 
         self.t_num = spriteling.track_next()
-        #### new update: spriteling now takes kwargs, to make calling it less of a pain in the ass
+        # new update: spriteling now takes kwargs, to make calling it less of a pain in the ass
         # this most basal constructor takes an image and a location, assigns the image to the sprite, builds a rectangle
         # from the image, moves the rectangle to the location, then builds a hitbox the same size as the rect, and
         # places it directly on top of the rect
@@ -259,14 +261,14 @@ class spriteling(pygame.sprite.Sprite):
         if 'traits' in kwargs:
             self.traits = kwargs['traits']
         else:
-            self.traits = ()
+            self.traits = []
 
         self.activity_state = {}
 
         self.hp = 1000
-        self.cond_queue = []
-        self.dmg_mult = {'dmg':1}
-        self.immune = []
+        self.cond_queue = collections.deque([])
+        self.dmg_mult = {'dmg': 1, 'knockback': 1}
+        self.immune = set()
 
         # determines how fast and in which direction the spriteling will move in the current frame. update() will
         # perform the rect.move_ip using this
@@ -279,7 +281,6 @@ class spriteling(pygame.sprite.Sprite):
             self.hitbox = hitbox(self, rect=kwargs['hitbox'])
         else:
             self.hitbox = hitbox(self, rect=self.rect)
-        #self.hitboxes = pygame.sprite.Group(self.hitbox)
 
     def __str__(self):
         message = events.entry('error', "spriteling's __str__",
@@ -295,6 +296,14 @@ class spriteling(pygame.sprite.Sprite):
         self.rect.move_ip(self.velocity)
         self.hitbox.update()
 
+        for x in range(0, len(self.cond_queue)):
+            temp = self.cond_queue.popleft()
+            if temp(self):
+                self.cond_queue.append(temp)
+
+        if self.hp <= 0:
+            self.kill()
+
     def draw(self, disp, boxes=False):
         disp.blit(self.image, self.rect)
         if boxes:
@@ -302,8 +311,6 @@ class spriteling(pygame.sprite.Sprite):
 
     def draw_boxes(self, disp):
         pygame.draw.rect(disp, config.green, self.rect, 4)
-        #for each in self.hitboxes:
-        #    pygame.draw.rect(disp, config.red, each.rect, 4)
         pygame.draw.rect(disp, config.red, self.hitbox.rect, 4)
 
     # minimize use of this; most of its functionality is being taken over by update
@@ -320,7 +327,8 @@ class spriteling(pygame.sprite.Sprite):
             yvel = yvel + (self.move_mult[1] * kwargs['move'][1])
             message.modify(ext_desc='; voluntary movement', move_vel=(xvel, yvel))
         if 'knockback' in kwargs:
-            self.rect.move_ip(kwargs['knockback'][0], kwargs['knockback'][1])
+            xvel = xvel + kwargs['knockback'][0] * self.dmg_mult['knockback']
+            yvel = yvel + kwargs['knockback'][1] * self.dmg_mult['knockback']
         if 'walls' in kwargs:
             message.modify(new_desc='collided w/ walls', walls=kwargs['walls'])
             for wall in kwargs['walls']:
@@ -353,6 +361,27 @@ class spriteling(pygame.sprite.Sprite):
         if 'shift' in kwargs:
             self.rect.move_ip(kwargs['shift'])
             self.hitbox.rect.move_ip(kwargs['shift'])
+        # basically the same thing as in wall-based occlusion, except slower
+        if 'push' in kwargs:
+            for squish in kwargs['push']:
+                temp = self.hitbox.rect.clip(squish.hitbox.rect)
+                if temp.centerx > self.rect.centerx:
+                    self.rect.move_ip(-2, 0)
+                elif temp.centerx < self.rect.centerx:
+                    self.rect.move_ip(2, 0)
+                if temp.centery > self.rect.centery:
+                    self.rect.move_ip(0, -2)
+                elif temp.centery < self.rect.centery:
+                    self.rect.move_ip(0, 2)
+                if temp.center == self.rect.center:
+                    sign = random.randint(0, 1)
+                    dist_x, dist_y = random.randint(0, 3), random.randint(0, 3)
+                    if sign == 0:
+                        dist_x *= -1
+                        dist_y *= -1
+                    self.rect.move_ip(dist_x, dist_y)
+                self.hitbox.update()
+
         event_maker.send_entry(message, False, False)
         self.velocity = (xvel, yvel)
 
@@ -371,6 +400,15 @@ class spriteling(pygame.sprite.Sprite):
 
     def check_collide(self, target):
         return pygame.Rect.colliderect(self.hitbox.rect, target.hitbox.rect)
+
+    def damage(self, form, amount, duration=1):
+        if form not in self.immune:
+            self.cond_queue.append(damage(form, amount, duration))
+
+    def heal(self, amount, duration=1, upfront=0):
+        self.hp += upfront
+        if duration > 1:
+            self.cond_queue.append(heal(amount, duration))
 
     @classmethod
     def track_next(cls):
@@ -436,64 +474,45 @@ class hitbox(pygame.sprite.Sprite):
     def collide_hitbox(self, spritelingB):
         return pygame.Rect.colliderect(self.rect, spritelingB.hitbox)
 
+# a damaging effect
+class damage():
+    def __init__(self, type_word, amount, duration):
+        self.type_str = type_word
+        self.dmg_amount = amount
+        self.duration = duration
 
-# this feels awkward, and I may not use this syntax to handle sprite interaction
-class effect():
-    num_effect = 0
-
-    def __init__(self, type_word, duration, intensity=1, proc_chance=1, *args, **kwargs):
-        print("making a new effect")
-        self.type_string = type_word
-        self.special = []
-
-        try:
-            assert (isinstance(intensity, int)), "intensity should be an integer;"
-        except AssertionError:
-            print(str(intensity), "must be a *arg, assigning it as such")
-            self.special.append(intensity)
-            self.intensity = 0
+    def __call__(self, subj):
+        if self.type_str in subj.dmg_mult:
+            dmg = self.dmg_amount * subj.dmg_mult[self.type_str]
         else:
-            self.intensity = intensity
+            dmg = self.dmg_amount
+        subj.hp -= dmg
+        self.duration -= 1
+        return self.duration > 0
 
-        self.proc_chance = proc_chance
-        for each in args:
-            self.special.append(each)
-        self.key_effects = {}
-        for key in kwargs:
-            self.key_effects[key] = kwargs[key]
 
-        if duration[0] == 'sec':
-            self.duration = duration[1] * config.fps
-        elif duration[0] == 'frames':
-            self.duration = duration[1]
-        try:
-            assert (isinstance(duration[0], str)), 'improper duration syntax; need either frames or seconds'
-        except AssertionError:
-            print(AssertionError, "assigning default duration of 1 (frame)")
-            self.duration = 1
-        effect.tick_tracker()
+class heal():
+    def __init__(self, amount, duration):
+        self.amount = amount
+        self.duration = duration
 
-    def __call__(self, target, *args, **kwargs):
-        pass
+    def __call__(self, subj):
+        if self.duration > 0:
+            subj.hp += self.amount
+        self.duration -= 1
+        return self.duration >= 0
 
-    def __str__(self):
-        ret = str('Effect #' + str(effect.get_tracker()) + ':\n\t Type: ' + self.type_string + "; Intensity: " + str(self.intensity) + '; Dur: ' +
-                   str(self.duration) + "; Proc Chance: " + str(self.proc_chance) + "\n\tSpecial:")
-        for each in self.special:
-            try:
-                assert (isinstance(each, str)), "each is not a string"
-            except AssertionError:
-                print(AssertionError)
-                ret += str(each)
-            except:
-                ret = ret + each
-        ret += '\n'
-        return ret
+class slow():
+    def __init__(self, type_str, degree, duration):
+        self.type_str = type_str
+        self.degree = degree
+        self.duration = duration
 
-    @classmethod
-    def tick_tracker(cls):
-        cls.num_effect +=1
+    def __call__(self, subj):
+        if self.type_str in subj.dmg_mult:
+            slowed = abs(self.degree * (subj.dmg_mult[self.type_str]-1))
+        else:
+            slowed = self.degree
+        subj.velocity = (subj.velocity[0] * slowed, subj.velocity[1] * slowed)
 
-    @classmethod
-    def get_tracker(cls):
-        return cls.num_effect
+

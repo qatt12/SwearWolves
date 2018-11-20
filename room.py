@@ -150,6 +150,8 @@ class room():
 
         if 'inner_wall_rect' in kwargs:
             self.inner_walls = my_theme.build_inner_walls(rect=kwargs['inner_wall_rect'])
+        else:
+            self.inner_walls= sGroup()
 
         event_maker.make_entry('trace', 'door init', "", 'room', False, False,
                                'door', 'init',
@@ -226,6 +228,9 @@ class room():
         self.outer_walls.update()
         self.doors.update()
 
+        # DEBUG
+        self.all_sprites.update()
+
         # calculates the scroll, and also sort of the counter_scroll based upon the player's position
         x, y = 0, 0
         if player_one_rect.centerx > self.scroll_rect.right:
@@ -270,6 +275,12 @@ class room():
             bonks = pygame.sprite.groupcollide(kwargs['players'], self.outer_walls, False, False, collide_hitbox)
             for each in bonks:
                 each.move(walls=bonks[each])
+        bonks_a = pygame.sprite.groupcollide(self.enemies, self.outer_walls, False, False, collide_hitbox)
+        for each in bonks_a:
+            each.move(walls=bonks_a[each])
+        squishies = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
+        for each in squishies:
+            each.move(push=squishies[each])
 
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
@@ -281,6 +292,12 @@ class room():
 
     def collide_enemies(self, player):
         pass
+
+    def collide_missiles_into_enemies(self, incoming):
+        dings = pygame.sprite.groupcollide(incoming, self.enemies, False, False, collide_hitbox)
+        for each in dings:
+            for every in dings[each]:
+                each(every)
 
     def pull_enemies(self, visible=False, **kwargs):
         ret = sGroup()
@@ -295,7 +312,7 @@ class room():
 
 class hub_room(room):
     def __init__(self, disp, my_theme=default_theme):
-        super().__init__(('center', 2), (20, 20), disp, my_theme,
+        super().__init__(('center', 2), (1, 1), disp, my_theme,
                          exit_door=[('top', 3), ('bottom', 66), ('right', 0)],
                          inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
 
@@ -308,6 +325,10 @@ class DEBUG_room(room):
     def __init__(self, disp, my_theme, *args, **kwargs):
         s_x, s_y = random.randint(5, 30), random.randint(5, 30)
         super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
+
+
+import enemies
+
 
 # the dungeon class is designed to be a holder for all the stuff that we need to randomly generate a room, as well as a
 # means by which we can generate new rooms
@@ -328,6 +349,7 @@ class dungeon():
         event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
                                'room', 'dungeon', 'doors',
                                obj_src=dungeon, inst_src=self, loc_src=dungeon.next_room)
+        self.current_room.spawn_enemy(enemies.simple_enemy(), enemies.simple_enemy(), enemies.simple_enemy(), enemies.simple_enemy())
         return self.current_room
 
     def __call__(self, *args, **kwargs):
@@ -335,6 +357,7 @@ class dungeon():
 
     def get_hub(self):
         return self.hub
+
 
 class basic_dungeon(dungeon):
     def __init__(self, disp):

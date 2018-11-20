@@ -1,12 +1,120 @@
-***	entry #: 124 type: error
+***	entry #: 7 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 16 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 19 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 25 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 27 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 58 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 65 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 126 type: error
+***	entry #: 67 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 127 type: error
+***	entry #: 68 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 128 type: error
+***	entry #: 69 type: error
+file source: blocks
+DEBUG: placeholder image
+***	entry #: 71 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 72 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 73 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 74 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 76 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 77 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 78 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 79 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 81 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 82 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 83 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 84 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 86 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 87 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 88 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 89 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 91 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 92 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 93 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 94 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 96 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 97 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 98 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 99 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 103 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 10127 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 10128 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 10129 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 10130 type: error
+file source: spriteling
+spriteling's __str__: assessing return type of spriteling's conversion to string
+***	entry #: 10139 type: error
 file source: blocks
 DEBUG: placeholder image

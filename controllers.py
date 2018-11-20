@@ -4,11 +4,12 @@ from events import event_maker
 deadzone = 0.07
 pygame.joystick.init()
 
+
 # this method is supposed to be called early on in the main method. It will check all available joysticks, hopefully
 # initialize them, and return them to main.
 def prepare_joysticks():
-    #pygame.joystick.init()
     joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+    event_maker.make_entry("trace", 'joysticks', "preparing joysticks", 'controllers')
     print("joysticks: ", joysticks)
     return joysticks
 
@@ -126,7 +127,9 @@ class xbone_gamepad(object):
                'accept': self.pull_button('A'),
                'back': self.pull_button('B'),
                'start': self.pull_button('Start'),
-               'select': self.pull_button('Select')}
+               'select': self.pull_button('Select'),
+               'lock_next': self.pull_button('RStick'),
+               'lock_prev': self.pull_button('LStick')}
         return ret
 
     def pull_selectors(self, **kwargs):

@@ -62,6 +62,7 @@ import spriteling, pygame, math, events
 from events import event_maker
 from config import fps as sec
 import config, random
+from collections import deque
 
 light_wave_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
 fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
@@ -89,7 +90,7 @@ big_acid_book_img  = bigger_books.subsurface(( 0, onfr*2), (w, onfr))
 big_light_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
 big_blank_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
 
-
+# need to edit this, replace it with the proper, pygame form of Copy()?
 def dupe(base_surf, num=0, is_num=False, **kwargs):
     if 'size' in kwargs:
         ret = pygame.Surface(kwargs['size'])
@@ -157,7 +158,9 @@ class spell_book(spriteling.spriteling):
             self.other_spells.remove(self.active_spell)
         if 'fire' in kwargs:
             for lonely in self.active_spell:
-                #print("active spell is: ", lonely)
+                event_maker.make_entry('trace', 'active_spell', '', 'spells', False, False,
+                                       'misc', 'extra', 'magic', 'spellbook',
+                                       active_spell=lonely, fire=kwargs['fire'], direction=kwargs['direction'], obj_src='spellbook', inst_src=self)
                 lonely.update(True, loc, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
                               **kwargs)
         else:
@@ -225,33 +228,34 @@ class spell(spriteling.spriteling):
         else:
             self.spell_name = "I should have a name"
 
-        print(self)
-
     def target(self, *args, **kwargs):
         pass
 
-    def update(self, active, loc, *args, **kwargs):
+    # the update method controls most if not all of a spell's behavior, and is (I think) the only method of spell called
+    # from outside the class. the first param dictates if the spell is active (important for all spells to know if they
+    # should be trying to cast, but especially for cooldown, charged, and targeted spells. cooldoown and charged spells
+    # depend on internally tracked timers that are evaluated on update, so cooldown spells need to be able to cool, and
+    # charged spells need to know to reset their charge when inactive
+    def update(self, active, loc, prev, now, *args, **kwargs):
         super().update(*args, **kwargs)
-        #print("i am active (T/F): ", active)
         if active:
-            #if 'loc' in kwargs:
-            #    self.rect.center = kwargs['loc']
             self.rect.center = loc
-            msl_chk = self.cast(*args)
+            msl_chk = self.cast(prev, now, *args)
             if 'missile_layer' in kwargs and msl_chk is not None:
                 kwargs['missile_layer'].add(msl_chk)
             else:
                 pass
 
-
+    # on update, an active spell attempts to cast its projectile. for most spells, this involves tracking the state of
+    # the fire button and "AND"ing it to some other condition. for basic spells, this is the (negation of the) state of
+    # the fire button on the previous frame (the fire button must be released in between shots).
+    # the direction param is a tuple of the form (x, y) where x and y are -1, 0, or 1. these are multiplied by the
+    # respective velocity multipliers to determine in which direction the spell's projectile will travel
     def cast(self, prev, now, direction):
         if now and not prev:
             return self.projectile(direction, self.rect.center)
         else:
             return None
-
-    def fire(self, direction):
-        return self.projectile(direction, self.rect.center)
 
     def __str__(self):
         return str(self.type_name + ' ' + self.spell_name)
@@ -265,21 +269,17 @@ class charge_up(spell):
         self.charge = 0
         self.charge_time = threshold * sec
 
+    # same stuff with the update for spell base class, except now charged spells have to track if they're charging (the
+    # fire button is true/held for this fram AND the previous frame)
     def update(self, active, *args, **kwargs):
         super().update(active, *args, **kwargs)
-        #print("charge is: ", self.charge, " / ", self.charge_time)
         if active:
             if self.charge < self.charge_time:
-                print("charge is < time")
                 pygame.draw.rect(self.image, (0, 200, 0), self.rect, self.charge+1)
             elif self.charge >= self.charge_time:
-                print("charge is >= time")
                 pygame.draw.rect(self.image, (0, 200, 50), self.rect, 0)
-            else:
-                print('charge is somehow neither')
 
     def cast(self, prev, now, direction):
-        print("received now= ", now, "prev= ", prev)
         if now and not prev:
             self.charge = 1
         elif now and prev:
@@ -291,7 +291,7 @@ class charge_up(spell):
             self.charge = 0
         return None
 
-# multi
+# multi charge spells are like the basic charge_up, except they can be charged to higher levels
 class multicharge(charge_up):
     def __init__(self, thresholds, *args):
         self.charge_levels = thresholds
@@ -310,7 +310,6 @@ class cool_down(spell):
             self.heat -= 1
 
     def cast(self, prev, now, direction):
-        #print("as of cast, heat= ", self.heat)
         if self.heat > 0:
             return None
         if now and self.heat == 0:
@@ -331,166 +330,186 @@ class beam(spell):
     def cast(self, prev, now, direction):
         self.own_missiles.add(super().cast(prev, now, direction))
 
-class stream(spell):
-    pass
+# a fancy, number crunchy type of spell
+class automagic(spell):
+    def __init__(self, acc, spread, recoil, *args, **kwargs):
+        pass
 
-class targeted(spell):
-    def __init__(self, crosshair, *args, **kwargs):
-        super().__init__(*args, type_name='targeted ', **kwargs)
-        self.primary_target = pygame.sprite.GroupSingle()
-        self.secondary_target = pygame.sprite.Group()
-        self.tertiary_target = pygame.sprite.Group()
 
-        self.reticle = crosshair
 
-        # targeted spells can be limited by any combination of charge up, cooldown, or wind up, depending on what is
-        # passed in
-        self.heat = 0
+##########################
+# targeted spells are fukkin nuts. I'll come back to them
+
+# okay, so, targeted spells are made of two key components that behave very differently than normal spells. They have
+# the actual spell, which contains the stuff necessary to assess and acquire targets, and the reticles, which handle the
+# firing methods and applied effects.
+class reticle_m(missile):
+    def __init__(self):
+        super().__init__(default_reticle, (0, 0), (0, 0))
+        self.subject = None
+        self.can_cast = False
+        self.btns = (False, False)
+
+
+    def update(self, *args, **kwargs):
+        if self.subject is not None:
+            self.rect.center = self.subject.rect.center
+
+    def set_target(self, new_target, prev, now):
+        self.subject = new_target
+        self.btns = (prev, now)
+
+    def __call__(self, *args, **kwargs):
+        # this will be called from room.py, but that call (and the param it passes) only tells the reticle to check if
+        # it already meets the conditions for firing
+        if self.can_cast and self.subject is not None:
+            event_maker.make_entry('trace', 'target', "should have successfully cast a target spell", 'spells', True)
+            return True
+        else:
+            return False
+
+
+class charged_reticle_m(reticle_m):
+    def __init__(self, charge_time):
+        super().__init__()
+        self.charge_time = config.fps * charge_time
         self.charge = 0
-        self.spin = 0
-        if 'cooldown' in kwargs:
-            self.cooldown_time = kwargs['cooldown'] * sec
-        else:
-            self.cooldown_time = 0
-        if 'charge' in kwargs:
-            self.charge_time = kwargs['charge'] * sec
-        else:
-            self.charge_time = -1
-        if 'wind_up' in kwargs:
-            self.wind_up = kwargs['wind_up'] * sec
-        else:
-            self.wind_up = -1
-        # if none of the three fire limiters are passed in, the various limits are set to values that will always return
-        # true.
 
-        self.alive = False
+    def update(self, *args, **kwargs):
+        super(charged_reticle_m, self).update()
+        if self.btns[0] and self.btns[1]:
+            self.charge += 1
+        elif not self.btns[0] and not self.btns[1]:
+            self.charge = 0
+        if self.charge >= self.charge_time and self.btns[1]:
+            self.charge = 0
+            self.can_cast = True
+        else:
+            self.can_cast = False
 
+
+class cooled_reticle_m(reticle_m):
+    def __init__(self, cool_time):
+        super().__init__()
+        self.cool_time = cool_time * config.fps
+        self.cool = 0
+
+    def update(self, *args, **kwargs):
+        super().update()
+        if self.cool > 0:
+            self.cool -= 1
+        if self.cool <= 0 and self.btns[1]:
+            self.can_cast = True
+        else:
+            self.can_cast = False
+
+
+class target(spell):
+    def __init__(self, range, seeks, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.max_range = range
+        self.chosen_target = None
+        self.reticle = self.projectile()
+        self.seeking = seeks
 
     def update(self, active, loc, prev, now, *args, **kwargs):
-        self.rect.center = loc
-        if self.heat > 0:
-            self.heat -= 1
         if active:
-            if not self.alive:
-                self.reticle = self.projectile()
-            #print(self, "is active")
-            if self.target(**kwargs):
-                self.alive = True
-                #print(self, "I am alive; bool test; my target is: ", self.primary_target)
-                for lonely in self.primary_target:
-                    self.reticle.move(to=lonely.rect.center)
-                if 'missile_layer' in kwargs:
+            self.rect.center = loc
+            if self.seeking in kwargs and 'missile_layer' in kwargs:
+                # if assess_targets returns True, it means there are valid targets for this spell, and the reticle must
+                # be placed in the missile layer
+                if self.assess_targets(kwargs[self.seeking]):
+                    event_maker.make_entry('trace', 'target', 'is assess_targets returning true?', 'spells')
                     kwargs['missile_layer'].add(self.reticle)
+                # if there are no valid targets, the reticle must be removed from the missile layer
+                else:
+                    self.reticle.kill()
+            self.reticle.set_target(self.chosen_target, prev, now)
         else:
-            self.charge = 0
-            self.alive = False
             self.reticle.kill()
-        if self.charge >= self.charge_time and self.heat == 0 and self.spin >= self.wind_up \
-                and 'missile_layer' in kwargs:
-            self.cast(prev, now, kwargs['missile_layer'])
 
-    def cast(self, prev, now, layer):
+    def assess_targets(self, *args):
         pass
 
-    # goes thru all viable targets and assigns first, second, and third targeting params
-    def target(self, **kwargs):
-        pass
-
-
-class heal_s(targeted):
-    def __init__(self):
-        super().__init__(targ_heal_m(), targ_heal_m, light_book_img, spell_name='heal')
-
-    #def update(self, active, *args, **kwargs):
-    #    super().update(active, *args, **kwargs)
-    #    if 'all_players' in kwargs:
-    #        print("heal_s_DEBUG has received all players: ", kwargs['all_players'])
-    #        self.primary_target.add(kwargs['all_players'])
-#
-    def target(self, **kwargs):
-        if 'all_players' in kwargs:
-            #print("heal_s_DEBUG has received all players: ", kwargs['all_players'])
-            self.primary_target.add(kwargs['all_players'])
-            self.secondary_target.add(kwargs['all_players'])
-        return bool(self.primary_target)
-
-
-class targ_heal_m(missile):
-    def __init__(self):
-        super(targ_heal_m, self).__init__(default_reticle, (0, 0), (0, 0))
-
-class curse_s(targeted):
-    def __init__(self):
-        super().__init__(targ_curse_m(), targ_curse_m, light_book_img, spell_name='curse')
-
-    #def update(self, active, *args, **kwargs):
-    #    super().update(active, *args, **kwargs)
-    #    if 'known_enemies' in kwargs:
-    #        print("curse_s has received known enemies: ", kwargs['known_enemies'])
-    #        self.primary_target.add(kwargs['known_enemies'])
-
-    def target(self, **kwargs):
-        if 'known_enemies' in kwargs:
-            #print("curse_s has received known enemies: ", kwargs['known_enemies'])
-            self.primary_target.add(kwargs['known_enemies'])
-            self.secondary_target.add(kwargs['known_enemies'])
-        return bool(self.primary_target)
-
-class targ_curse_m(missile):
-    def __init__(self):
-        super(targ_curse_m, self).__init__(default_reticle, (0, 0), (0, 0))
-
-class arc(targeted):
-    def __init__(self, distance, duration, frequency, *args, **kwargs):
+class mass_target(target):
+    def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.max_range = distance
-        self.draw_me = True
-        self.timer_tip = duration
-        self.timer = 0
+        self.reticle = pygame.sprite.Group()
+
+    def assess_targets(self, *args):
+        pass
+
+# dumb target just targets the closest valid spriteling
+class dumb_target(target):
+    def assess_targets(self, targets):
+        closest = 1000000000
+        is_close = False
+        self.chosen_target = None
+        for each in targets:
+            if self.max_range >= events.dist(self, each) < closest:
+                self.chosen_target = each
+                is_close = True
+        return is_close
+
+# this one is tricky, because it has to keep the potential targets in an ORDERED group, which is not doable with the
+# basic group.
+# this current version is.... not exactly what I was going for at first, but it is serviceable.
+class ordered_target(target):
+    def __init__(self, *args, **kwargs):
+        super(ordered_target, self).__init__(*args, **kwargs)
+        self.possible_targets = pygame.sprite.LayeredUpdates()
+
+    def update(self, active, loc, prev, now, *args, **kwargs):
+        message = events.entry('trace', 'targets thru kwargs', '', 'spells'
+                                       'simple', 'DEBUG targeting')
+        if active:
+            message.modify(ext_desc='is active; ')
+            self.rect.center = loc
+            if self.seeking in kwargs:
+                message.modify(ext_desc='seeking is in kwargs; ', seeking_in_kwargs=kwargs[self.seeking])
+                if self.assess_targets(kwargs[self.seeking], kwargs['targ_lock']):
+                    kwargs['missile_layer'].add(self.reticle)
+                else:
+                    self.reticle.kill()
+            else:
+                self.reticle.kill()
+            self.reticle.set_target(self.chosen_target, prev, now)
+        event_maker.send_entry(message)
+
+    def assess_targets(self, targets, cycle):
+        if bool(targets):
+            event_maker.make_entry('trace', 'targets found', '', 'spells', True, False,
+                                   'targeting', 'extra', 'low', 'Logan',
+                                   targets_found=targets)
+            for each in targets:
+                self.possible_targets.add(each)
+                self.possible_targets.move_to_back(each)
+            if self.chosen_target is None:
+                self.chosen_target = self.possible_targets.get_top_sprite()
+            if cycle != 0:
+                self.possible_targets.move_to_back(self.chosen_target)
+                self.chosen_target = self.possible_targets.get_top_sprite()
+        else:
+            self.chosen_target = None
+        return bool(self.chosen_target)
+
+
+class DEBUG_target_line(ordered_target):
+    def __init__(self):
+        super().__init__(1000, 'enemies', dumb_heal_m, big_ice_book_img, spell_name='Debug_target_line')
 
     def draw(self, disp, boxes=False):
-        #print("Calling arc.draw")
-        #disp.blit(self.image, self.rect)
         super().draw(disp, boxes)
-       # if self.draw_me:
-        #print("should be drawing the line")
-        pygame.draw.line(disp, config.purple, self.rect.center, self.reticle.rect.center, 10)
+        if self.chosen_target is not None:
+            pygame.draw.line(disp, config.green, self.rect.center, self.reticle.rect.center, 3)
 
-        y1_var = random.randint(0, 70)
-        if y1_var % 2 ==0:
-            pass
-
-        x1 = random.randint(min(self.rect.centerx, self.reticle.rect.centerx), max(self.rect.centerx, self.reticle.rect.centerx))
-        y1 = random.randint(min(self.rect.centery, self.reticle.rect.centery), max(self.rect.centery, self.reticle.rect.centery))
-        if self.rect.centerx > self.reticle.rect.centerx:
-            x1 = self.rect.centerx - x1
-        else:
-            x1 = self.rect.centerx + x1
-        if self.rect.centery < self.reticle.rect.centery:
-            y1 = self.rect.centery - y1
-        else:
-            y1 = self.rect.centery + y1
-        pygame.draw.lines(disp, config.purple, False, (self.rect.center, (x1, y1), self.reticle.rect.center), 10)
-
-
-class arc_DEBUG_s(arc):
+class dumb_heal_s(dumb_target):
     def __init__(self):
-        super(arc_DEBUG_s, self).__init__(400, 0.2, 5, targ_curse_m(), targ_curse_m, fire_book_img, spell_name='arc_DEBUG')
+        super().__init__(200, 'players', dumb_heal_m, light_book_img, spell_name='Dumb healing')
 
-    def target(self, **kwargs):
-        if 'known_enemies' in kwargs:
-            #print("arc_DEBUG_s has received known enemies: ", kwargs['known_enemies'])
-            self.secondary_target.add(kwargs['known_enemies'])
-            event_maker.make_entry('trace', 'targeting spell', 'assessing secondary targets', 'spells',
-                                   secondary_targets=self.secondary_target, known_enemies=kwargs['known_enemies'],
-                                   inst_src=self)
-            for each in self.secondary_target:
-                if math.hypot(each.rect.centerx-self.rect.centerx, each.rect.centery-self.rect.centery) <= self.max_range:
-                    self.primary_target.add(each)
-                else:
-                    self.primary_target.remove(each)
-
-        return bool(self.primary_target)
+class dumb_heal_m(cooled_reticle_m):
+    def __init__(self):
+        super().__init__(1)
 
 
 class fireball_s(spell):
@@ -499,18 +518,21 @@ class fireball_s(spell):
 
 class fireball_m(missile):
     def __init__(self, dir, loc):
-        fsx = pygame.mixer.Sound("Music/MM.ogg")
-        pygame.mixer.Sound.play(fsx)
+        # fsx = pygame.mixer.Sound("Music/MM.ogg")
+        # pygame.mixer.Sound.play(fsx)
         x_vel, y_vel = 4*dir[0], 4*dir[1]
         missile.__init__(self, fire_ball_img, loc, (x_vel, y_vel))
         self.hitbox = spriteling.hitbox(self)
+
+    def __call__(self, target):
+        target.damage('fire', 100)
 
 
 class charged_fireball_s(charge_up):
     def __init__(self):
         super().__init__(2, fireball_m, dupe(fire_book_img), spell_name="charged fireball")
 
-class flamethrower_s(stream):
+class flamethrower_s(automagic):
     def __init__(self):
         super(flamethrower_s, self).__init__(fireball_m, dupe(fire_book_img), spell_name='flamethrower')
 
@@ -624,7 +646,7 @@ class book_of_light(spell_book):
 
         self.goddess_lookup_key = 'robes'
         self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
-        self.spell_key = {0: light_wave_s, 1: heal_s, 2: curse_s, 3: solar_beam_s}
+        self.spell_key = {0: light_wave_s,  3: solar_beam_s}
         self.level_costs = {0: 1000, 1: 2000}
 
 

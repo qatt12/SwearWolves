@@ -1,5 +1,5 @@
-#configuration options
-#contains the important config/initialization params in a central location.
+# configuration options
+# contains the important config/initialization params in a central location.
 
 fps = 128
 screen_size = (1700, 1000)
@@ -22,7 +22,7 @@ white  =    (255, 255, 255)
 black  =    (  0,   0,   0)
 purple =    (200,   0, 200)
 
-# color, but in a dicrioanry
+# color, but in a dictionary
 color_lookup = {
     'green'  :    (  0, 255,   0),
     'red'    :    (255,   0,   0),

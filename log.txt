@@ -16,172 +16,72 @@ file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	opened_menu: NULLLLLLL
+	opened_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(0, 0, 1254, 501)>
 	
-<<<<<<< HEAD
-***	entry #: 210 type: log
-=======
-***	entry #: 55 type: log
->>>>>>> origin/master
+***	entry #: 14 type: log
 file source: driver| loc source: start_loop
 FIRST PLAYER: player one has pressed start, we should be leaving start loop now
 	terms: crucial; start_loop; ready_up; player_one; 
 	key words:
 	loc_src: start_loop
-<<<<<<< HEAD
-	player_one_Handler: <interface.handler object at 0x064E5530>
+	player_one_Handler: <interface.handler object at 0x070371B0>
 	num_player_handlers: 1
 	
-***	entry #: 211 type: log
-=======
-	player_one_Handler: <interface.handler object at 0x06EDF290>
-	num_player_handlers: 1
-	
-***	entry #: 56 type: log
->>>>>>> origin/master
+***	entry #: 15 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-<<<<<<< HEAD
-	closed_menu: NULLLLLLL
-	set_player_one: <interface.handler object at 0x064E5530>
+	closed_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(223, 250, 1254, 501)>
+	set_player_one: <interface.handler object at 0x070371B0>
 	
-***	entry #: 214 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
-=======
-	closed_menu: 1s<class 'menu.menu'>trashboat
-	set_player_one: <interface.handler object at 0x06EDF290>
-	
-***	entry #: 58 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: 2s<class 'spells.DEBUG_book'>trashboat| loc source: spellbook abstract base class
->>>>>>> origin/master
-spellbook: A new spell book has been made; this is the base constructor
-	terms: spellbook; spells; magic; base; 
+***	entry #: 24 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
 	key words:
-	obj_src: <class 'spells.spell_book'>
-	loc_src: spellbook abstract base class
-	inst_src: NULLLLLLL
+	loc_src: screen.apply()
+	opened_menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 850, 500)>/host: trashboat| Rect: <rect(0, 0, 1254, 501)>
 	
-<<<<<<< HEAD
-***	entry #: 220 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
-=======
-***	entry #: 59 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: 3s<class 'spells.book_of_fire'>trashboat| loc source: spellbook abstract base class
->>>>>>> origin/master
-spellbook: A new spell book has been made; this is the base constructor
-	terms: spellbook; spells; magic; base; 
-	key words:
-	obj_src: <class 'spells.spell_book'>
-	loc_src: spellbook abstract base class
-	inst_src: NULLLLLLL
-	
-<<<<<<< HEAD
-***	entry #: 225 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
-=======
-***	entry #: 60 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: 4s<class 'spells.book_of_acid'>trashboat| loc source: spellbook abstract base class
->>>>>>> origin/master
-spellbook: A new spell book has been made; this is the base constructor
-	terms: spellbook; spells; magic; base; 
-	key words:
-	obj_src: <class 'spells.spell_book'>
-	loc_src: spellbook abstract base class
-	inst_src: NULLLLLLL
-	
-<<<<<<< HEAD
-***	entry #: 230 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
-=======
 ***	entry #: 61 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: 5s<class 'spells.book_of_ice'>trashboat| loc source: spellbook abstract base class
->>>>>>> origin/master
-spellbook: A new spell book has been made; this is the base constructor
-	terms: spellbook; spells; magic; base; 
-	key words:
-	obj_src: <class 'spells.spell_book'>
-	loc_src: spellbook abstract base class
-	inst_src: NULLLLLLL
-	
-<<<<<<< HEAD
-***	entry #: 235 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: NULLLLLLL| loc source: spellbook abstract base class
-=======
-***	entry #: 62 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: 6s<class 'spells.book_of_light'>trashboat| loc source: spellbook abstract base class
->>>>>>> origin/master
-spellbook: A new spell book has been made; this is the base constructor
-	terms: spellbook; spells; magic; base; 
-	key words:
-	obj_src: <class 'spells.spell_book'>
-	loc_src: spellbook abstract base class
-	inst_src: NULLLLLLL
-	
-<<<<<<< HEAD
-***	entry #: 240 type: log
-=======
-***	entry #: 63 type: log
->>>>>>> origin/master
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	opened_menu: NULLLLLLL
-	
-<<<<<<< HEAD
-***	entry #: 338 type: log
-=======
-***	entry #: 120 type: log
->>>>>>> origin/master
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: (<player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>)
 	
-<<<<<<< HEAD
-***	entry #: 339 type: log
-file source: room| obj source: <room.theme object at 0x07078B70>
+***	entry #: 62 type: log
+file source: room| obj source: <room.theme object at 0x06457F50>
 default_theme: Testing default theme construction/initialization
 	terms: theme; init; DEBUG; 
 	key words:
-	obj_src: <room.theme object at 0x07078B70>
+	obj_src: <room.theme object at 0x06457F50>
 	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(107x104x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
 	
-***	entry #: 378 type: log
-=======
-***	entry #: 121 type: log
-file source: room| obj source: <room.theme object at 0x06F7D1B0>
-default_theme: Testing default theme construction/initialization
-	terms: theme; init; DEBUG; 
-	key words:
-	obj_src: <room.theme object at 0x06F7D1B0>
-	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(107x104x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
-	
-***	entry #: 130 type: log
->>>>>>> origin/master
+***	entry #: 101 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-<<<<<<< HEAD
-	room: <room.hub_room object at 0x064E5390>
+	room: <room.hub_room object at 0x06457F30>
 	
-***	entry #: 379 type: log
-=======
-	room: <room.hub_room object at 0x06ED3CB0>
-	
-***	entry #: 131 type: log
->>>>>>> origin/master
+***	entry #: 102 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-<<<<<<< HEAD
-	overlay: NULLLLLLL
-=======
-	overlay: 108s<class 'overlays.hud'>trashboat
->>>>>>> origin/master
+	overlay: 59<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 566, 200)>/host: trashboat| Rect: <rect(0, 0, 1254, 501)>
+	
+***	entry #: 10126 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 10142 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x06460950>
 	

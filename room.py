@@ -1,7 +1,7 @@
 # rooms are a sort of container class that hold and manage their contents.
 # as self-evident as the above sounds, it is an important note
 
-import pygame, blocks, config, random, events
+import pygame, blocks, config, random, events, collections
 from events import event_maker
 sGroup = pygame.sprite.Group
 
@@ -117,10 +117,14 @@ class room():
         # the current difficulty level, and the player's point of entry.
         self.image = pygame.Surface(size)
 
+
+        # this might be replaced by a RenderedUpdates
         self.all_sprites = sGroup()
         self.exits = sGroup()
         self.enemies = sGroup()
         self.floors = sGroup()
+
+        self.ordered_enemies = collections.deque([])
 
         # the floor(s) are interesting. in order to allow the creation of irregularly shaped (non-rectangular) floors,
         # each segment of floor is created separately, then linked together. upon first being initialized, a room has a
@@ -173,6 +177,7 @@ class room():
     # super basic method atm, designed to be expanded as needed in later iterations
     def add_player(self, player):
         self.entry_door.enter(player)
+
     def add_players(self, players):
         for each in players:
             self.add_player(each)
@@ -180,6 +185,7 @@ class room():
     def spawn_enemy(self, *args, **kwargs):
         for each in args:
             self.enemies.add(each)
+            self.ordered_enemies.append(each)
 
     def add_door(self, side, position, *args):
         if side == 'left':
@@ -245,6 +251,10 @@ class room():
         self.scroll(x, y)
         self.counter_scroll(x, y, all_players)
 
+        if 'dead_enemies' in kwargs:
+            for corpse in kwargs['dead_enemies']:
+                self.ordered_enemies.remove(corpse)
+
         # makes sure that all the sprites in the room are a part of all_sprites
         self.all_sprites.add(self.outer_walls, self.floors, self.doors, self.enemies)
 
@@ -300,14 +310,7 @@ class room():
                 each(every)
 
     def pull_enemies(self, visible=False, **kwargs):
-        ret = sGroup()
-        if visible:
-            for each in self.enemies:
-                if self.visible_rect.contains(each.hitbox):
-                    ret.add(each)
-        else:
-            ret.add(self.enemies)
-        return ret
+        return self.ordered_enemies
 
 
 class hub_room(room):

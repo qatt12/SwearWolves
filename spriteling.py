@@ -219,7 +219,7 @@ from events import event_maker
 
 event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been loaded', 'spriteling')
 
-placeholder = pygame.image.load("misc\Aiko's_Outfits.png").convert_alpha()
+placeholder = pygame.image.load("misc\imagesred.jpg").convert_alpha()
 event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been loaded', 'spriteling')
 
 
@@ -386,8 +386,9 @@ class spriteling(pygame.sprite.Sprite):
         self.velocity = (xvel, yvel)
 
     # a blank placeholder method for testing targeted spells; may soon become the primary way for sprites to interact
-    def affect(self):
-        pass
+    def apply(self, *args, **kwargs):
+        for each in args:
+            self.cond_queue.append(each)
 
     # a basic function that is called by the associated handler to extract important data from the spriteling, as well
     # as by anything that has to send data to the handler (this is achieved by having the sender call this method to
@@ -492,7 +493,7 @@ class damage():
 
 
 class heal():
-    def __init__(self, amount, duration):
+    def __init__(self, amount, duration=1):
         self.amount = amount
         self.duration = duration
 

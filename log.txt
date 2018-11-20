@@ -16,72 +16,72 @@ file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	opened_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(0, 0, 1254, 501)>
+	opened_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 14 type: log
+***	entry #: 50 type: log
 file source: driver| loc source: start_loop
 FIRST PLAYER: player one has pressed start, we should be leaving start loop now
 	terms: crucial; start_loop; ready_up; player_one; 
 	key words:
 	loc_src: start_loop
-	player_one_Handler: <interface.handler object at 0x070371B0>
+	player_one_Handler: <interface.handler object at 0x06CB3570>
 	num_player_handlers: 1
 	
-***	entry #: 15 type: log
+***	entry #: 51 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	closed_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(223, 250, 1254, 501)>
-	set_player_one: <interface.handler object at 0x070371B0>
+	closed_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(764, 354, 173, 293)>
+	set_player_one: <interface.handler object at 0x06CB3570>
 	
-***	entry #: 24 type: log
+***	entry #: 60 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	opened_menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 850, 500)>/host: trashboat| Rect: <rect(0, 0, 1254, 501)>
+	opened_menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 850, 500)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 61 type: log
+***	entry #: 98 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: (<player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>)
 	
-***	entry #: 62 type: log
-file source: room| obj source: <room.theme object at 0x06457F50>
+***	entry #: 99 type: log
+file source: room| obj source: <room.theme object at 0x06E0CE50>
 default_theme: Testing default theme construction/initialization
 	terms: theme; init; DEBUG; 
 	key words:
-	obj_src: <room.theme object at 0x06457F50>
+	obj_src: <room.theme object at 0x06E0CE50>
 	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(107x104x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
 	
-***	entry #: 101 type: log
+***	entry #: 138 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.hub_room object at 0x06457F30>
+	room: <room.hub_room object at 0x06CB3390>
 	
-***	entry #: 102 type: log
+***	entry #: 139 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	overlay: 59<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 566, 200)>/host: trashboat| Rect: <rect(0, 0, 1254, 501)>
+	overlay: 59<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 566, 200)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 10126 type: log
+***	entry #: 10860 type: log
 file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
 door interact: door is receiving full player interaction
 	key words:
 	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
 	loc_src: door
 	
-***	entry #: 10142 type: log
+***	entry #: 10876 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.DEBUG_room object at 0x06460950>
+	room: <room.DEBUG_room object at 0x06E18890>
 	

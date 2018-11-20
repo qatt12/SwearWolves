@@ -337,6 +337,9 @@ while(game_loop and running):
         if event.type == events.room_event:
             screen.apply(room=DEBUG_dungeon.next_room(screen.GROUP_of_player_SPRITES))
             event_maker.make_entry('trace', "used exit door", "successful", 'driver', True, True)
+        if event.type == events.game_state_event:
+            if event.subtype == 'end_game':
+                running = False
         if event.type >= pygame.USEREVENT:
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)

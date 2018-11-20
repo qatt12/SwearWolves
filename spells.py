@@ -203,14 +203,22 @@ class spell_book(spriteling.spriteling):
 # ancestral class for missiles (things that fly out and hit other things)
 # missiles are fired (begin moving) immediately after begin created
 class missile(spriteling.spriteling):
-    def __init__(self, img, loc, vel):
+    def __init__(self, img, loc, vel, *args):
         super().__init__(image=img, loc=loc)
         self.velocity = vel
+        self.effects = []
+        for each in args:
+            self.effects.append(each)
 
     def update(self, *args, **kwargs):
         self.rect.move_ip(self.velocity)
         self.hitbox.update()
 
+    def power_up(self, *args, **kwargs):
+        pass
+
+    def __call__(self, target, *args, **kwargs):
+        target.apply(*self.effects)
 
 # spells themselves don't do much, except for creating and launching missiles
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
@@ -293,9 +301,74 @@ class charge_up(spell):
 
 # multi charge spells are like the basic charge_up, except they can be charged to higher levels
 class multicharge(charge_up):
-    def __init__(self, thresholds, *args):
+    def __init__(self, thresholds, *args, **kwargs):
         self.charge_levels = thresholds
         super().__init__(thresholds[0], *args)
+        self.charges = 0
+        self.firing = False
+        if 'intercool' in kwargs:
+            self.intercool = kwargs['intercool']
+        else:
+            self.intercool = 10
+        self.timer = 0
+
+    def cast(self, prev, now, direction):
+        self.charge_time = self.charge_levels[self.charges]
+        if self.timer > 0:
+            self.timer -= 1
+        if self.firing and self.charges > 0 and self.timer <= 0:
+            self.timer = self.intercool
+            self.charges -= 1
+            return self.projectile(direction, self.rect.center)
+        elif self.firing and self.charges <= 0:
+            self.firing = False
+        if now and not prev:
+            self.charge = 1
+        elif now and prev:
+            self.charge += 1
+        if self.charge >= self.charge_time:
+            self.charges = min(self.charges+1, len(self.charge_levels)-1)
+            self.charge_time = self.charge_levels[self.charges]
+            self.charge = 0
+        if not now:
+            self.charge = 0
+            if self.charges == 0:
+                return None
+            elif self.charges >= 1:
+                self.firing = True
+
+
+# intended to be a basic damage/power scaling function. Merely scales as a matter of percentage, where having higher
+# than the minimum translates to a direct power increase of up to double, if charge achieved == top
+def basic_percentage(lvl, btm, top):
+    temp = lvl-btm
+    return (temp/top)+1
+
+# has maximum and minimum charge levels;
+# allows for variable levels of charge when firing/casting.
+class variable_charge(charge_up):
+    def __init__(self, min_charge, max_charge, *args, **kwargs):
+        super().__init__(min_charge, *args, **kwargs)
+        self.max_charge = max_charge
+        if 'pwr_scalar' in kwargs:
+            self.pwr_scalar = kwargs['pwr_scalar']
+        else:
+            self.pwr_scalar = basic_percentage
+
+    def cast(self, prev, now, direction):
+        if now and not prev:
+            self.charge = 1
+        elif now and prev:
+            self.charge += 1
+        elif not now and self.charge >= self.charge_time:
+            pwr_mod = self.pwr_scalar(self.charge, self.charge_time, self.max_charge)
+            self.charge = 0
+            ret = self.projectile(direction, self.rect.center)
+            ret.power_up(pwr_mod)
+            return ret
+        elif prev and not now:
+            self.charge = 0
+        return None
 
 
 class cool_down(spell):
@@ -350,7 +423,6 @@ class reticle_m(missile):
         self.can_cast = False
         self.btns = (False, False)
 
-
     def update(self, *args, **kwargs):
         if self.subject is not None:
             self.rect.center = self.subject.rect.center
@@ -363,7 +435,7 @@ class reticle_m(missile):
         # this will be called from room.py, but that call (and the param it passes) only tells the reticle to check if
         # it already meets the conditions for firing
         if self.can_cast and self.subject is not None:
-            event_maker.make_entry('trace', 'target', "should have successfully cast a target spell", 'spells', True)
+            event_maker.make_entry('trace', 'target', "should have successfully cast a target spell", 'spells', True, True)
             return True
         else:
             return False
@@ -398,7 +470,7 @@ class cooled_reticle_m(reticle_m):
         super().update()
         if self.cool > 0:
             self.cool -= 1
-        if self.cool <= 0 and self.btns[1]:
+        if self.cool == 0 and self.btns[1]:
             self.can_cast = True
         else:
             self.can_cast = False
@@ -425,6 +497,7 @@ class target(spell):
                 else:
                     self.reticle.kill()
             self.reticle.set_target(self.chosen_target, prev, now)
+            self.reticle()
         else:
             self.reticle.kill()
 
@@ -457,11 +530,11 @@ class dumb_target(target):
 class ordered_target(target):
     def __init__(self, *args, **kwargs):
         super(ordered_target, self).__init__(*args, **kwargs)
-        self.possible_targets = pygame.sprite.LayeredUpdates()
+        self.possible_targets = deque([])
 
     def update(self, active, loc, prev, now, *args, **kwargs):
-        message = events.entry('trace', 'targets thru kwargs', '', 'spells'
-                                       'simple', 'DEBUG targeting')
+        message = events.entry('trace', 'targets thru kwargs', '', 'spells',
+                                       'simple', 'DEBUG targeting', 'ordered target')
         if active:
             message.modify(ext_desc='is active; ')
             self.rect.center = loc
@@ -474,6 +547,7 @@ class ordered_target(target):
             else:
                 self.reticle.kill()
             self.reticle.set_target(self.chosen_target, prev, now)
+            self.reticle()
         event_maker.send_entry(message)
 
     def assess_targets(self, targets, cycle):
@@ -481,15 +555,18 @@ class ordered_target(target):
             event_maker.make_entry('trace', 'targets found', '', 'spells', True, False,
                                    'targeting', 'extra', 'low', 'Logan',
                                    targets_found=targets)
-            for each in targets:
-                self.possible_targets.add(each)
-                self.possible_targets.move_to_back(each)
-            if self.chosen_target is None:
-                self.chosen_target = self.possible_targets.get_top_sprite()
-            if cycle != 0:
-                self.possible_targets.move_to_back(self.chosen_target)
-                self.chosen_target = self.possible_targets.get_top_sprite()
+            if len(self.possible_targets) == 0:
+                for each in targets:
+                    self.possible_targets.append(each)
+            if self.chosen_target is None or cycle == 1:
+                self.chosen_target = self.possible_targets.pop()
+                self.possible_targets.appendleft(self.chosen_target)
+            elif cycle == -1:
+                self.chosen_target = self.possible_targets.popleft()
+                self.possible_targets.append(self.chosen_target)
+
         else:
+            self.possible_targets.clear()
             self.chosen_target = None
         return bool(self.chosen_target)
 
@@ -524,13 +601,14 @@ class fireball_m(missile):
         missile.__init__(self, fire_ball_img, loc, (x_vel, y_vel))
         self.hitbox = spriteling.hitbox(self)
 
-    def __call__(self, target):
-        target.damage('fire', 100)
-
 
 class charged_fireball_s(charge_up):
     def __init__(self):
-        super().__init__(2, fireball_m, dupe(fire_book_img), spell_name="charged fireball")
+        super().__init__(2, charged_fireball_m, dupe(fire_book_img), spell_name="charged fireball")
+
+class charged_fireball_m(fireball_m):
+    def power_up(self, multiplier):
+
 
 class flamethrower_s(automagic):
     def __init__(self):

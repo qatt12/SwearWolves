@@ -236,9 +236,10 @@ class handler():
         # I just need to get the targeting data into the targeted spell
         self.missiles.update()
 
-        # kinda useless, may still be helpful for something
-        cond_queue = self.player.send_to_handler()
-
+        dump_trigger = self.controller.pull_face()['select']
+        if dump_trigger[0] != dump_trigger[1]:
+            event_maker.flush_trace_buffer()
+            event_maker.new_event(events.game_state_event, 'interface', subtype='end_game')
 
     # finishes pre-game prep by populating all of the necessary internal vars with the applicable data/references.
     # called by driver.py::class::screen. p_constr had to be passed in as a param to avoid importing stuff to

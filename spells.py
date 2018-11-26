@@ -150,17 +150,22 @@ class spell_book(spriteling.spriteling):
             self.other_spells.add(self.active_spell)
             self.active_spell.add(self.spells[self.index])
             self.other_spells.remove(self.active_spell)
+            event_maker.make_entry('trace', 'changing spells', '', 'spells', False, False,
+                                   'misc', 'extra', 'magic', 'spellbook',
+                                   active_spell=self.spells[self.index],
+                                   obj_src='spellbook', inst_src=self)
         if 'select_spell' in kwargs:
             if kwargs['select spell'] < self.length and kwargs['select_spell'] > 0:
                 self.index = kwargs['select spell'] -1
             self.other_spells.add(self.active_spell)
             self.active_spell.add(self.spells[self.index])
             self.other_spells.remove(self.active_spell)
+            event_maker.make_entry('trace', 'changing spells', '', 'spells', False, False,
+                                   'misc', 'extra', 'magic', 'spellbook',
+                                   active_spell=self.spells[self.index],
+                                   obj_src='spellbook', inst_src=self)
         if 'fire' in kwargs:
             for lonely in self.active_spell:
-                event_maker.make_entry('trace', 'active_spell', '', 'spells', False, False,
-                                       'misc', 'extra', 'magic', 'spellbook',
-                                       active_spell=lonely, fire=kwargs['fire'], direction=kwargs['direction'], obj_src='spellbook', inst_src=self)
                 lonely.update(True, loc, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
                               **kwargs)
         else:
@@ -203,22 +208,42 @@ class spell_book(spriteling.spriteling):
 # ancestral class for missiles (things that fly out and hit other things)
 # missiles are fired (begin moving) immediately after begin created
 class missile(spriteling.spriteling):
-    def __init__(self, img, loc, vel, *args):
+    def __init__(self, img, loc, vel, *args, **kwargs):
         super().__init__(image=img, loc=loc)
         self.velocity = vel
         self.effects = []
         for each in args:
             self.effects.append(each)
+        self.dmg = 1
+        self.elem_type = 'magic'
 
     def update(self, *args, **kwargs):
-        self.rect.move_ip(self.velocity)
+        self.rect.move_ip(self.move())
         self.hitbox.update()
 
-    def power_up(self, *args, **kwargs):
-        pass
+    def move(self):
+        return self.velocity
 
-    def __call__(self, target, *args, **kwargs):
-        target.apply(*self.effects)
+    def power_up(self, multiplier, *args, **kwargs):
+        self.dmg *= multiplier
+
+    def __call__(self, victim, *args, **kwargs):
+        victim.damage(self.elem_type, self.dmg)
+        victim.apply(*self.effects)
+
+class complex_missiles(missile):
+    def __init__(self, *args, **kwargs):
+        super(complex_missiles, self).__init__(*args, **kwargs)
+        if 'direction' in kwargs:
+            if 'vel_mult' in kwargs:
+                self.velocity = (kwargs['direction'][0]*kwargs["vel_mult"], kwargs['direction'][1]*kwargs["vel_mult"])
+
+class accel_missile(missile):
+    def __init__(self, accel, max_vel, img, loc, vel, *args, **kwargs):
+        super(accel_missile, self).__init__(img, loc, vel, *args, **kwargs)
+        self.acceleration = accel
+        self.max_velocity = max_vel
+
 
 # spells themselves don't do much, except for creating and launching missiles
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
@@ -304,6 +329,9 @@ class multicharge(charge_up):
     def __init__(self, thresholds, *args, **kwargs):
         self.charge_levels = thresholds
         super().__init__(thresholds[0], *args)
+        event_maker.make_entry('trace', 'multicharge report', ' ', 'spells', True, True,
+                               'logan', 'multicharge',
+                               got_thresholds=thresholds)
         self.charges = 0
         self.firing = False
         if 'intercool' in kwargs:
@@ -313,30 +341,60 @@ class multicharge(charge_up):
         self.timer = 0
 
     def cast(self, prev, now, direction):
+        message = events.entry('trace', 'charge tracking for simple multicharge', ' ', 'spells',
+                     'extra', "logan", 'low', 'multicharge',
+                               charge=self.charge, charge_time=self.charge_time, max_charges=len(self.charge_levels))
         self.charge_time = self.charge_levels[self.charges]
         if self.timer > 0:
             self.timer -= 1
         if self.firing and self.charges > 0 and self.timer <= 0:
             self.timer = self.intercool
             self.charges -= 1
+            message.modify(ext_desc='returning a projectile', charges=self.charges)
+            event_maker.send_entry(message, True, True)
             return self.projectile(direction, self.rect.center)
         elif self.firing and self.charges <= 0:
             self.firing = False
-        if now and not prev:
-            self.charge = 1
-        elif now and prev:
-            self.charge += 1
-        if self.charge >= self.charge_time:
-            self.charges = min(self.charges+1, len(self.charge_levels)-1)
-            self.charge_time = self.charge_levels[self.charges]
-            self.charge = 0
-        if not now:
-            self.charge = 0
-            if self.charges == 0:
-                return None
-            elif self.charges >= 1:
-                self.firing = True
+            message.modify(ext_desc='ran out of charges')
+            event_maker.send_entry(message, True, True)
+            return None
+        else:
+            if self.charge >= self.charge_time:
+                # limits the number of charges
+                self.charges += 1
+                event_maker.make_entry('trace', '+1 charges', "", 'spells', True, True,
+                                       'multicharge',
+                                       charges=self.charges)
+                self.charges = min(self.charges, len(self.charge_levels)-1)
+                self.charge_time = self.charge_levels[self.charges]
+            if now and not prev:
+                self.charge = 1
+            elif now and prev:
+                self.charge += 1
+            elif not now and prev:
+                message.modify(charge=self.charge)
+                self.charge = 0
+                if self.charges == 0:
+                    message.modify(ext_desc="nothing has been fired; now was released when charges == 0", charges=self.charges)
+                    event_maker.send_entry(message, True, True)
+                    return None
+                elif self.charges >= 1:
+                    self.firing = True
+                    message.modify(ext_desc="first projectile has been fired; now was released when charges >= 1", charges=self.charges)
+                    event_maker.send_entry(message, True, True)
+                    return self.projectile(direction, self.rect.center)
 
+
+class simple_multicharge(multicharge):
+    # size is how many charges can be held,
+    # step is how long between acquiring each charge
+    def __init__(self, step, size, in_sec, *args, **kwargs):
+        if in_sec:
+            t1 = step*config.fps
+        else:
+            t1 = step
+        charges = [x for x in range(t1, size*t1, t1)]
+        super(simple_multicharge, self).__init__(charges, *args, **kwargs)
 
 # intended to be a basic damage/power scaling function. Merely scales as a matter of percentage, where having higher
 # than the minimum translates to a direct power increase of up to double, if charge achieved == top
@@ -349,7 +407,7 @@ def basic_percentage(lvl, btm, top):
 class variable_charge(charge_up):
     def __init__(self, min_charge, max_charge, *args, **kwargs):
         super().__init__(min_charge, *args, **kwargs)
-        self.max_charge = max_charge
+        self.max_charge = max_charge *config.fps
         if 'pwr_scalar' in kwargs:
             self.pwr_scalar = kwargs['pwr_scalar']
         else:
@@ -417,11 +475,13 @@ class automagic(spell):
 # the actual spell, which contains the stuff necessary to assess and acquire targets, and the reticles, which handle the
 # firing methods and applied effects.
 class reticle_m(missile):
-    def __init__(self):
+    def __init__(self, **kwargs):
         super().__init__(default_reticle, (0, 0), (0, 0))
         self.subject = None
         self.can_cast = False
         self.btns = (False, False)
+        if 'subject' in kwargs:
+            self.subject = kwargs['subject']
 
     def update(self, *args, **kwargs):
         if self.subject is not None:
@@ -442,8 +502,8 @@ class reticle_m(missile):
 
 
 class charged_reticle_m(reticle_m):
-    def __init__(self, charge_time):
-        super().__init__()
+    def __init__(self, charge_time, **kwargs):
+        super().__init__(**kwargs)
         self.charge_time = config.fps * charge_time
         self.charge = 0
 
@@ -461,8 +521,8 @@ class charged_reticle_m(reticle_m):
 
 
 class cooled_reticle_m(reticle_m):
-    def __init__(self, cool_time):
-        super().__init__()
+    def __init__(self, cool_time, **kwargs):
+        super().__init__(**kwargs)
         self.cool_time = cool_time * config.fps
         self.cool = 0
 
@@ -497,20 +557,29 @@ class target(spell):
                 else:
                     self.reticle.kill()
             self.reticle.set_target(self.chosen_target, prev, now)
-            self.reticle()
+            self.cast(prev, now, *args)
         else:
             self.reticle.kill()
 
     def assess_targets(self, *args):
         pass
 
+    def cast(self, *args):
+        self.reticle()
+
+
 class mass_target(target):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.reticle = pygame.sprite.Group()
+        self.all_targets = set()
 
     def assess_targets(self, *args):
-        pass
+        self.reticle.empty()
+        for each in args:
+            if self.max_range >= events.dist(self, each):
+                self.reticle.add(self.projectile(subject=each))
+
 
 # dumb target just targets the closest valid spriteling
 class dumb_target(target):
@@ -547,7 +616,7 @@ class ordered_target(target):
             else:
                 self.reticle.kill()
             self.reticle.set_target(self.chosen_target, prev, now)
-            self.reticle()
+            self.cast(prev, now, *args)
         event_maker.send_entry(message)
 
     def assess_targets(self, targets, cycle):
@@ -589,6 +658,22 @@ class dumb_heal_m(cooled_reticle_m):
         super().__init__(1)
 
 
+###############################################
+class unguided_seeker(dumb_target):
+    def __init__(self, secondary_proj, dist, seeks, *args, **kwargs):
+        super(unguided_seeker, self).__init__(dist, seeks, *args, **kwargs)
+
+class guided_seeker(ordered_target):
+    def __init__(self, secondary_proj, dist, seeks, *args, **kwargs):
+        super(guided_seeker, self).__init__(dist, seeks, *args, **kwargs)
+
+class orbital(missile):
+    def __init__(self, subj, img, loc, dir, vel, *args, **kwargs):
+        super().__init__(img, loc, vel)
+        self.subject = subj
+##############################################
+
+
 class fireball_s(spell):
     def __init__(self):
         super().__init__(fireball_m, fire_book_img, spell_name='fireball')
@@ -598,8 +683,10 @@ class fireball_m(missile):
         # fsx = pygame.mixer.Sound("Music/MM.ogg")
         # pygame.mixer.Sound.play(fsx)
         x_vel, y_vel = 4*dir[0], 4*dir[1]
-        missile.__init__(self, fire_ball_img, loc, (x_vel, y_vel))
+        super().__init__(fire_ball_img, loc, (x_vel, y_vel))
         self.hitbox = spriteling.hitbox(self)
+        self.dmg = 80
+        self.elem_type = 'fire'
 
 
 class charged_fireball_s(charge_up):
@@ -607,12 +694,14 @@ class charged_fireball_s(charge_up):
         super().__init__(2, charged_fireball_m, dupe(fire_book_img), spell_name="charged fireball")
 
 class charged_fireball_m(fireball_m):
-    def power_up(self, multiplier):
+    def __init__(self, *args, **kwargs):
+        super(charged_fireball_m, self).__init__(*args, **kwargs)
+        self.dmg = 100
 
-
-class flamethrower_s(automagic):
+class flamethrower_s(simple_multicharge):
     def __init__(self):
-        super(flamethrower_s, self).__init__(fireball_m, dupe(fire_book_img), spell_name='flamethrower')
+        super(flamethrower_s, self).__init__(int(config.fps/8), 40, False, fireball_m, dupe(fire_book_img),
+                                             spell_name='flamethrower', intercool=4)
 
 
 class heatwave_s(cool_down):

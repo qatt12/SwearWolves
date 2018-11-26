@@ -2,34 +2,75 @@
 import events
 from events import event_maker
 
-event_maker.make_entry('trace', 'test1', 'DEBUG', 'scratch', False, True, 'DEBUG', "test1")
-event_maker.make_entry('trace', 'test2', 'DEBUG', 'scratch', False, True, 'DEBUG', "test2")
-event_maker.make_entry('trace', 'test2', 'DEBUG', 'scratch', False, True, 'waffle', "test2")
-print("first flush")
-event_maker.flush_trace_buffer(True)
-print("second flush, should block waffle")
-event_maker.flush_trace_buffer(True, block_terms=['waffle'])
-print("third flush, should only allow test2")
-event_maker.flush_trace_buffer(True, allow_terms=['test2'])
+class nested_functor_test():
+    def __init__(self):
+        self.hp = 100
+#        self.damage = self.damage(self)
+        self.stack = []
 
-event_maker.make_entry('log', 'test log', 'should be visible in log.txt', 'scratch')
+    class damage():
+        def __init__(self, amt):
+            self.amount = amt
 
-def t_method(**kwargs):
-    print(kwargs['name'])
-    if 'temp1' or 'temp2' in kwargs:
-        print('case 1')
-    if 'temp1' in kwargs or 'temp2' in kwargs:
-        print('case 2')
-    else:
-        print('case3')
+        def __call__(self, subj):
+            subj.hp -= self.amount
 
-t_method(name='attempt1')
-t_method(name='attempt2', temp1=3, temp2=4)
-t_method(name='attempt3', temp2=45)
+    def apply(self, effect):
+        self.stack.append(effect)
 
-yyyy = False
-vvvv = True
+    def update(self):
+        for each in self.stack:
+            each(self)
 
-print(yyyy + vvvv)
-ffff = yyyy-vvvv
-print(ffff)
+    def __str__(self):
+        return str(self.hp)
+
+class damage():
+    def __init__(self, amt):
+        self.amount = amt/2
+    def __call__(self, subj):
+        subj.hp -= self.amount
+
+class outside():
+    def __init__(self):
+        self.dmg = 10
+    def __call__(self, subj):
+        subj.apply(subj.damage(self.dmg))
+
+jeff = nested_functor_test()
+print(jeff)
+ext = outside()
+ext(jeff)
+jeff.update()
+print(jeff)
+ext(jeff)
+jeff.update()
+print(jeff)
+
+
+def do_twice(func):
+    def wrapper_do_twice():
+        func()
+        func()
+    return wrapper_do_twice
+
+@do_twice
+def say_whee():
+    print("Whee!")
+
+print(type(say_whee()))
+
+
+import pygame
+t1 = pygame.rect.Rect((0, 0), (10, 10))
+print("center= ", t1.center)
+t1.move_ip(0.1, 0)
+print("new center= ", t1.center)
+t1.move_ip(0.9, 0)
+print("new new center= ", t1.center)
+
+
+x = 0.9
+print(int(x+0.5))
+y = 0.3
+print(int(y+.5))

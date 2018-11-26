@@ -265,15 +265,25 @@ class spriteling(pygame.sprite.Sprite):
 
         self.activity_state = {}
 
-        self.hp = 1000
+        self.base_hp = 1000
+        self.curr_hp = 1000
+
+        self.base_modifiers = {'dmg': 1, 'knockback': 1}
+        self.applied_modifiers = dict()
+        self.curr_modifiers = dict(self.base_modifiers)
+
+        self.base_immune = set()
+        self.curr_immune = set()
+
+        self.base_move = 1
+        self.move_mult = 1
+        self.curr_move = 1
+
         self.cond_queue = collections.deque([])
-        self.dmg_mult = {'dmg': 1, 'knockback': 1}
-        self.immune = set()
 
         # determines how fast and in which direction the spriteling will move in the current frame. update() will
         # perform the rect.move_ip using this
         self.velocity = (0, 0)
-        self.move_mult = (1, 1)
 
         # not sure I we should make all/most spritelings have only one hitbox by default, and just create a subclass
         # with extra
@@ -283,11 +293,13 @@ class spriteling(pygame.sprite.Sprite):
             self.hitbox = hitbox(self, rect=self.rect)
 
     def __str__(self):
-        message = events.entry('error', "spriteling's __str__",
-                               "assessing return type of spriteling's conversion to string", 'spriteling')
         ret = str(self.t_num) + str(type(self)) + self.name + "rect/hitbox: " + str(self.rect) + '/' + str(self.hitbox)
-        event_maker.send_entry(message, True, True)
-        assert (isinstance(ret, str)), "you fucked up"
+        try:
+            assert (isinstance(ret, str)), "you fucked up"
+        except AssertionError:
+            message = events.entry('error', "spriteling's __str__",
+                                   "assessing return type of spriteling's conversion to string", 'spriteling')
+            event_maker.send_entry(message, True, True)
         return ret
 
     def update(self, *args, **kwargs):
@@ -298,10 +310,27 @@ class spriteling(pygame.sprite.Sprite):
 
         for x in range(0, len(self.cond_queue)):
             temp = self.cond_queue.popleft()
-            if temp(self):
+            event_maker.make_entry("trace", 'resolving cond_queue', "", "spriteling", True, True)
+            if bool(temp(self)):
                 self.cond_queue.append(temp)
 
-        if self.hp <= 0:
+        self.curr_move = self.base_move * self.move_mult
+        # check base and current stats, restoring as needed
+        for key in self.base_modifiers:
+            if key not in self.applied_modifiers:
+                self.curr_modifiers[key] = self.base_modifiers[key]
+            elif key in self.applied_modifiers:
+                self.curr_modifiers[key] = self.base_modifiers[key] - self.applied_modifiers[key]
+        for key in self.applied_modifiers:
+            if key not in self.base_modifiers:
+                self.curr_modifiers[key] = 1 - self.applied_modifiers[key]
+
+        for item in self.base_immune:
+            if item not in self.curr_immune:
+                self.curr_immune.add(item)
+        self.curr_hp = min(self.curr_hp, self.base_hp)
+        if self.curr_hp <= 0:
+            event_maker.new_event(events.spriteling_event, 'spriteling', subtype='death', message="a spriteling has died")
             self.kill()
 
     def draw(self, disp, boxes=False):
@@ -323,12 +352,12 @@ class spriteling(pygame.sprite.Sprite):
             xvel, yvel = kwargs['vel'][0], kwargs['vel'][1]
             message.modify(direct_vel=(xvel, yvel))
         if 'move' in kwargs:
-            xvel = xvel + (self.move_mult[0] * kwargs['move'][0])
-            yvel = yvel + (self.move_mult[1] * kwargs['move'][1])
+            xvel = xvel + self.curr_move * kwargs['move'][0]
+            yvel = yvel + self.curr_move * kwargs['move'][1]
             message.modify(ext_desc='; voluntary movement', move_vel=(xvel, yvel))
         if 'knockback' in kwargs:
-            xvel = xvel + kwargs['knockback'][0] * self.dmg_mult['knockback']
-            yvel = yvel + kwargs['knockback'][1] * self.dmg_mult['knockback']
+            xvel = xvel + kwargs['knockback'][0] * self.curr_modifiers['knockback']
+            yvel = yvel + kwargs['knockback'][1] * self.curr_modifiers['knockback']
         if 'walls' in kwargs:
             message.modify(new_desc='collided w/ walls', walls=kwargs['walls'])
             for wall in kwargs['walls']:
@@ -382,32 +411,30 @@ class spriteling(pygame.sprite.Sprite):
                     self.rect.move_ip(dist_x, dist_y)
                 self.hitbox.update()
 
+        if 'bounce' in kwargs:
+            temp = self.hitbox.rect.clip(kwargs['bounce'])
+            # ************************ pick up here
+
         event_maker.send_entry(message, False, False)
         self.velocity = (xvel, yvel)
-
-    # a blank placeholder method for testing targeted spells; may soon become the primary way for sprites to interact
-    def apply(self, *args, **kwargs):
-        for each in args:
-            self.cond_queue.append(each)
-
-    # a basic function that is called by the associated handler to extract important data from the spriteling, as well
-    # as by anything that has to send data to the handler (this is achieved by having the sender call this method to
-    # place its data in the spriteling. then, when the handler for that spriteling calls this function, it will receive
-    # the sender's message/data)
-    def send_to_handler(self, *args):
-        for each in args:
-            self.cond_queue.append(each)
-        return self.cond_queue
 
     def check_collide(self, target):
         return pygame.Rect.colliderect(self.hitbox.rect, target.hitbox.rect)
 
+    def apply(self, *args):
+        for each in args:
+            self.cond_queue.append(each)
+
+    # the damage and heal functions are important. As I have discovered, its kind of a bitch to try and apply damage
+    # (esp damage over time) cleanly without splitting it into a method that creates a class that is appended to a deque
     def damage(self, form, amount, duration=1):
-        if form not in self.immune:
+        if form not in self.curr_immune:
+            event_maker.make_entry('trace', 'damage', 'applying damage from spriteling', 'spriteling', False, False,
+                                   'extra', 'damage', 'health')
             self.cond_queue.append(damage(form, amount, duration))
 
     def heal(self, amount, duration=1, upfront=0):
-        self.hp += upfront
+        self.curr_hp += upfront
         if duration > 1:
             self.cond_queue.append(heal(amount, duration))
 
@@ -475,19 +502,24 @@ class hitbox(pygame.sprite.Sprite):
     def collide_hitbox(self, spritelingB):
         return pygame.Rect.colliderect(self.rect, spritelingB.hitbox)
 
+
 # a damaging effect
 class damage():
     def __init__(self, type_word, amount, duration):
+        event_maker.make_entry('trace', 'damage', 'creating a new inst of the damage class', 'spriteling', False, False,
+                               'extra', 'damage', 'health')
         self.type_str = type_word
         self.dmg_amount = amount
         self.duration = duration
 
     def __call__(self, subj):
-        if self.type_str in subj.dmg_mult:
-            dmg = self.dmg_amount * subj.dmg_mult[self.type_str]
-        else:
-            dmg = self.dmg_amount
-        subj.hp -= dmg
+        dmg = subj.curr_modifiers['dmg'] * self.dmg_amount
+        if self.type_str in subj.curr_modifiers:
+            dmg *= subj.curr_modifiers[self.type_str]
+        subj.curr_hp -= dmg
+        event_maker.make_entry('trace', 'damage', 'calling damage class', 'spriteling', False, False,
+                               'extra', 'damage', 'health',
+                               remaining_hp=subj.curr_hp)
         self.duration -= 1
         return self.duration > 0
 
@@ -499,10 +531,12 @@ class heal():
 
     def __call__(self, subj):
         if self.duration > 0:
-            subj.hp += self.amount
+            subj.curr_hp += self.amount
         self.duration -= 1
         return self.duration >= 0
 
+
+# slows a spriteling down by adjusting its move multiplier
 class slow():
     def __init__(self, type_str, degree, duration):
         self.type_str = type_str
@@ -510,10 +544,100 @@ class slow():
         self.duration = duration
 
     def __call__(self, subj):
-        if self.type_str in subj.dmg_mult:
-            slowed = abs(self.degree * (subj.dmg_mult[self.type_str]-1))
+        if self.type_str in subj.curr_modifiers:
+            slowed = self.degree * subj.curr_modifiers[self.type_str]
         else:
             slowed = self.degree
-        subj.velocity = (subj.velocity[0] * slowed, subj.velocity[1] * slowed)
+        subj.move_mult = max(0, subj.move_mult-slowed)
 
 
+class weaken():
+    pass
+
+
+class resist():
+    pass
+
+
+class facing_angle():
+    def __init__(self, x_dir, y_dir, default=(1, 0)):
+        y_pos_set = {'up', 'top', '+1', '1', 1}
+        y_neg_set = {'down', 'bottom', 'btm', '-1', -1}
+
+        if y_dir in y_pos_set:
+            self.y_dir = 1
+        elif y_dir in y_neg_set:
+            self.y_dir = -1
+        else:
+            self.y_dir = 0
+
+        x_pos_set = {'right', 'rht', '1', '+1', 1}
+        x_neg_set = {'left', 'lft', '-1', -1}
+
+        if x_dir in x_pos_set:
+            self.x_dir = 1
+        elif x_dir in x_neg_set:
+            self.x_dir = -1
+        else:
+            self.x_dir = 0
+
+        self.default = default
+
+    def __str__(self):
+        if self.x_dir == 0:
+            x_ret = ""
+        elif self.x_dir > 0:
+            x_ret = "right"
+        elif self.x_dir < 0:
+            x_ret = "left"
+        if self.y_dir == 0:
+            y_ret = ""
+        elif self.y_dir > 0:
+            y_ret = "up"
+        elif self.y_dir < 0:
+            y_ret = "down"
+        return x_ret + y_ret
+
+    def __call__(self, new_dir_x, new_dir_y, mod=False, locked=False):
+        if locked:
+            return (self.x_dir, self.y_dir)
+        elif mod:
+            if self.x_dir == 0 and self.y_dir != 0:
+                if new_dir_x > 0:
+                    self.x_dir = 1
+                elif new_dir_x < 0 or self.x_dir == -1:
+                    self.x_dir = -1
+                else:
+                    self.x_dir = 1
+            elif self.y_dir == 0 and self.x_dir != 0:
+                if new_dir_y < 0:
+                    self.y_dir = -1
+                elif new_dir_y > 0 or self.y_dir == 1:
+                    self.y_dir = 1
+                else:
+                    self.y_dir = -1
+            elif self.x_dir == 0 and self.x_dir == 0:
+                self.x_dir, self.y_dir = self.default[0], self.default[1]
+            else:
+                if self.x_dir < 0 < new_dir_x or self.x_dir > 0 > new_dir_x:
+                        self.x_dir = 0
+                if self.y_dir < 0 < new_dir_y or self.y_dir > 0 > new_dir_y:
+                    self.y_dir = 0
+        else:
+            if new_dir_x == 0 == new_dir_y:
+                return self.x_dir, self.y_dir
+            if new_dir_x > 0:
+                self.x_dir = 1
+            elif new_dir_x < 0:
+                self.x_dir = -1
+            else:
+                self.x_dir = 0
+            if new_dir_y > 0:
+                self.y_dir = 1
+            elif new_dir_y < 0:
+                self.y_dir = -1
+            else:
+                self.y_dir = 0
+            if self.y_dir == 0 and self.x_dir == 0:
+                self.x_dir, self.y_dir = self.default[0], self.default[1]
+        return self.x_dir, self.y_dir

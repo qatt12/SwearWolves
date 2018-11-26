@@ -52,7 +52,6 @@ class enemy(spriteling.spriteling):
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
-        #self.hp -=1
 
 class simple_enemy(enemy):
     def __init__(self):
@@ -60,4 +59,5 @@ class simple_enemy(enemy):
         self.attack = spells.charged_fireball_s()
 
     def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
         self.attack.update(True, self.rect.center, True, True, (1, 0))

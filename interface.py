@@ -103,6 +103,105 @@ import pygame, events
 from events import event_maker
 
 
+class box():
+    def __init__(self, *args, **kwargs):
+        self.values = [each for each in args]
+        for each in kwargs:
+            pass
+
+class facing_angle():
+    def __init__(self, x_dir, y_dir):
+        y_pos_set = {'up', 'top', '+1', '1', 1}
+        y_neg_set = {'down', 'bottom', 'btm', '-1', -1}
+
+        if y_dir in y_pos_set:
+            self.y_dir = 1
+        elif y_dir in y_neg_set:
+            self.y_dir = -1
+        else:
+            self.y_dir = 0
+
+        x_pos_set = {'right', 'rht', '1', '+1', 1}
+        x_neg_set = {'left', 'lft', '-1', -1}
+
+        if x_dir in x_pos_set:
+            self.x_dir = 1
+        elif x_dir in x_neg_set:
+            self.x_dir = -1
+        else:
+            self.x_dir = 0
+
+    def __str__(self):
+        if self.x_dir == 0:
+            x_ret = ""
+        elif self.x_dir > 0:
+            x_ret = "right"
+        elif self.x_dir < 0:
+            x_ret = "left"
+        if self.y_dir == 0:
+            y_ret = ""
+        elif self.y_dir > 0:
+            y_ret = "up"
+        elif self.y_dir < 0:
+            y_ret = "down"
+        return x_ret + y_ret
+
+    def __call__(self, new_dir_x, new_dir_y, locked=False):
+        lock_y, lock_x = False, False
+        if locked:
+            base = (self.x_dir, self.y_dir)
+            if self.x_dir == 0 and self.y_dir != 0:
+                if new_dir_x > 0:
+                    self.x_dir = 1
+                elif new_dir_x < 0:
+                    self.x_dir = -1
+            elif self.y_dir == 0 and self.x_dir != 0:
+                if new_dir_y > 0:
+                    self.y_dir = 1
+                elif new_dir_y < 0:
+                    self.y_dir = -1
+                else:
+                    self.y_dir = 0
+            elif self.x_dir == 0 and self.x_dir == 0:
+                return (0, 0)
+            else:
+                if self.x_dir < 0 < new_dir_x or self.x_dir > 0 > new_dir_x:
+                        self.x_dir = 0
+                if self.y_dir < 0 < new_dir_y or self.y_dir > 0 > new_dir_y:
+                    self.y_dir = 0
+        else:
+            if new_dir_x > 0:
+                self.x_dir = 1
+            elif new_dir_x < 0:
+                self.x_dir = -1
+            else:
+                self.x_dir = 0
+            if new_dir_y > 0:
+                self.y_dir = 1
+            elif new_dir_y < 0:
+                self.y_dir = -1
+            else:
+                self.y_dir = 0
+        return (self.x_dir, self.y_dir)
+
+
+
+    @classmethod
+    def from_bool(cls, by_bool_a, by_bool_b):
+        pass
+
+    @classmethod
+    def from_int(cls, int_a, int_b):
+        pass
+
+    @classmethod
+    def from_string(cls, descr):
+        y_pos_set = {'up', 'top'}
+        y_neg_set = {'down', 'bottom'}
+
+
+
+
 # all-purpose handler class that coordinates the player, controller, and whatever else needs coordinating
 # this is what allows a seamless transition between menu/game loops, keeps everything modular and independent, and
 # solves a ton of headache causing problems with scope resolution
@@ -204,16 +303,16 @@ class handler():
     def update(self, **kwargs):
         # updates the controller
         self.controller.update()
-
         # updates the player
-        movement = self.controller.pull_movement()['move']
         facing = self.controller.pull_movement()['look']
+        movement = self.controller.pull_movement()['move']
+        stick_data = self.controller.pull_movement()
         interaction = self.controller.pull_face()['interact']
         lock_next = self.controller.pull_face()['lock_next']
         lock_next = lock_next[0] and not lock_next[1]
         lock_prev = self.controller.pull_face()['lock_prev']
         lock_prev = lock_prev[0] and not lock_prev[1]
-        self.player.update(look=facing, move=movement, interact=interaction)
+        self.player.update(look=facing, move=movement, interact=interaction, stick_data=stick_data)
 
         # updates the spellbook
         now, prev = self.controller.pull_face()['fire']

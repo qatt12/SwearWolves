@@ -36,13 +36,12 @@ class player(spriteling.spriteling):
 
         self.spritesheet = img_lookup[book.goddess_lookup_key]
         self.string_lookup = {'topleft': calc_index(0, 0), 'neutral': calc_index(1, 1)}
-        self.tuple_lookup = {(-1, -1): calc_index(0, 0), (0, 1): calc_index(1, 0), (1, -1): calc_index(2, 2),
+        self.tuple_lookup = {(-1, -1): calc_index(0, 0), (0, -1): calc_index(1, 0), (1, -1): calc_index(2, 0),
                              (-1, 0): calc_index(0, 1), (0, 0): calc_index(1, 1), (1, 0): calc_index(2, 1),
-                             (-1, 1): calc_index(0, 2), (0, -1): calc_index(1, 2), (1, 1): calc_index(2, 2)}
+                             (-1, 1): calc_index(0, 2), (0, 1): calc_index(1, 2), (1, 1): calc_index(2, 2)}
         self.image = self.spritesheet.subsurface(self.string_lookup['neutral'])
         self.rect = self.image.get_rect()
 
-        #self.hitboxes.empty()
         self.hitbox = spriteling.hitbox(self,
                                         scale_y=-(self.rect.height*0.3), scale_x=-(self.rect.width*0.2))
 
@@ -57,9 +56,12 @@ class player(spriteling.spriteling):
 
         self.active_spell = pygame.sprite.GroupSingle()
 
-        self.move_mult = (4, 4)
+        self.base_move = 6
+
         self.facing = (1, 0)
-        self.prev_facing = (self.facing)
+        self.facing_angle = spriteling.facing_angle(*self.facing)
+
+        self.prev_facing = self.facing
 
         self.missiles = pygame.sprite.Group()
 
@@ -71,8 +73,8 @@ class player(spriteling.spriteling):
         # all this stuff is supposed to handle moving the player, but it doesn't work right. It does handle facing, and
         # getting the right image, which is nice, but as of now all the movement is done by the move() method in
         # spriteling
-        self.prev_facing = self.facing
-        if 'look' in kwargs and any in kwargs['look'] != 0:
+        #self.prev_facing = self.facing
+        '''if 'look' in kwargs and any in kwargs['look'] != 0:
             self.facing = kwargs['look']
         elif 'move' in kwargs:
             if kwargs['move'][0] > 0.2:
@@ -84,7 +86,14 @@ class player(spriteling.spriteling):
             elif kwargs['move'][1] < -0.2 and abs(kwargs['move'][1]) > abs(kwargs['move'][0]):
                 self.facing = (0, 1)
         else:
-            self.facing = self.prev_facing
+            self.facing = self.prev_facing'''
+
+        # ********** DEBUG STUFF
+        if 'stick_data' in kwargs:
+            x_move_input, y_move_input = kwargs['stick_data']['move'][0], kwargs['stick_data']['move'][1]
+            mod_facing, lock_facing = kwargs['stick_data']['mod_look'], kwargs['stick_data']['lock_look']
+            x_look_input, y_look_input = kwargs['stick_data']['look'][0], kwargs['stick_data']['look'][1]
+            self.facing = self.facing_angle(x_move_input, y_move_input, mod_facing, lock_facing)
 
         if 'interact' in kwargs:
             if kwargs['interact'][0] >= kwargs['interact'][1] >= 1:
@@ -95,6 +104,8 @@ class player(spriteling.spriteling):
 
         self.image = self.spritesheet.subsurface(self.tuple_lookup[self.facing])
 
+    def pull_status(self):
+        return self.status_mods
 
 # a side/parallel class to player.
 class multiplayer(player):

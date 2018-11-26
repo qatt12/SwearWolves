@@ -288,9 +288,9 @@ class room():
         bonks_a = pygame.sprite.groupcollide(self.enemies, self.outer_walls, False, False, collide_hitbox)
         for each in bonks_a:
             each.move(walls=bonks_a[each])
-        squishies = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
-        for each in squishies:
-            each.move(push=squishies[each])
+        #squishies = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
+        #for each in squishies:
+        #    each.move(push=squishies[each])
 
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
@@ -304,7 +304,7 @@ class room():
         pass
 
     def collide_missiles_into_enemies(self, incoming):
-        dings = pygame.sprite.groupcollide(incoming, self.enemies, False, False, collide_hitbox)
+        dings = pygame.sprite.groupcollide(incoming, self.enemies, True, False, collide_hitbox)
         for each in dings:
             for every in dings[each]:
                 each(every)
@@ -351,7 +351,7 @@ class dungeon():
         self.current_room.add_players(players)
         event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
                                'room', 'dungeon', 'doors',
-                               obj_src=dungeon, inst_src=self, loc_src=dungeon.next_room)
+                               obj_src=dungeon, inst_src=self, loc_src='dungeon.next_room')
         self.current_room.spawn_enemy(enemies.simple_enemy(), enemies.simple_enemy(), enemies.simple_enemy(), enemies.simple_enemy())
         return self.current_room
 

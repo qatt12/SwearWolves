@@ -1,7 +1,7 @@
 import pygame, events
 from events import event_maker
 
-deadzone = 0.07
+deadzone = 0.15
 pygame.joystick.init()
 
 
@@ -136,8 +136,8 @@ class xbone_gamepad(object):
         ret = {'prev': self.pull_button('LB'),
                'next': self.pull_button('RB'),
                'select': 9,
-               'lock_aim': (self.pull_triggers()[0], self.pull_triggers()[2]),
-               'lock_feet': (self.pull_triggers()[1], self.pull_triggers()[3])
+               'lock_feet': (self.pull_triggers()[0], self.pull_triggers()[2]),
+               'lock_aim': (self.pull_triggers()[1], self.pull_triggers()[3])
                }
         return ret
 
@@ -164,7 +164,9 @@ class xbone_gamepad(object):
             print("detected flick on LY")
             mov_y = 0'''
         ret = {'move': (mov_x, mov_y),
-               'look': (dir_x, dir_y)}
+               'look': (dir_x, dir_y),
+               'lock_look': self.pull_triggers()[0],
+               'mod_look': self.pull_triggers()[1]}
         return ret
 
     def check_status(self):

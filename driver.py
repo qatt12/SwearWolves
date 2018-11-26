@@ -231,7 +231,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.dumb_heal_s, spells.DEBUG_target_line, spells.fireball_s, spells.charged_fireball_s),
+unlocked_books = [spells.DEBUG_book(spells.dumb_heal_s, spells.DEBUG_target_line, spells.fireball_s, spells.charged_fireball_s, spells.flamethrower_s),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1
@@ -340,6 +340,9 @@ while(game_loop and running):
         if event.type == events.game_state_event:
             if event.subtype == 'end_game':
                 running = False
+        if event.type == events.spriteling_event:
+            if event.subtype == 'death':
+                event_maker.make_entry("log", 'detected dead spriteling at event level', "", "driver")
         if event.type >= pygame.USEREVENT:
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)
@@ -351,3 +354,5 @@ while(game_loop and running):
     clock.tick(config.fps)
     pygame.event.pump()
     pygame.time.wait(0)
+
+event_maker.flush_trace_buffer("Flushing on close")

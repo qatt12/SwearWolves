@@ -1,849 +1,6 @@
-***	entry #: 10877 type: trace
-file source: driver
-used exit door: successful
-***	entry #: 22244 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22298 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22301 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22355 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22358 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22412 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22415 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22469 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22472 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22526 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22529 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22583 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22586 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22640 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22643 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22697 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22700 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22754 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22757 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22811 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22814 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22868 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22871 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22925 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22928 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22982 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 22985 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23040 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23043 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23098 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23101 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23155 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23158 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23212 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23215 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23269 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23272 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23326 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23329 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 23384 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 25924 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 25978 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 25981 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26035 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26038 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26092 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26095 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26149 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26152 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26206 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26209 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26263 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26266 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26320 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26323 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26377 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26380 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26434 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26437 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26491 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26494 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26548 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26551 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26605 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26608 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26662 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26665 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26719 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26722 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26776 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26779 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26834 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26837 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26891 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26894 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26948 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 26951 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 27005 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 27008 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 27063 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 28899 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 28953 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 28956 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29010 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29013 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29067 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29070 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29124 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29127 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29181 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29184 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29238 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29241 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29295 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29298 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29352 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29355 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29409 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29412 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29466 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29469 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29523 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29526 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29580 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29583 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29637 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29640 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29694 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29697 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29751 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29754 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29808 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29811 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29865 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29868 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 29923 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31027 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31081 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31084 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31138 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31141 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31195 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31198 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31252 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31255 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31309 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31312 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31366 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31369 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31423 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31426 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 31481 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33520 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33574 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33577 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33631 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33634 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33688 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33691 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33745 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33748 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33802 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33805 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33859 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33862 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33916 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33919 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33973 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 33976 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34030 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34033 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34087 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34090 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34144 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34147 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34201 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34204 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34258 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34261 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34315 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34318 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34372 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34375 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 34430 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36360 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36414 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36417 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36471 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36474 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36528 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36531 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36585 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36588 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36642 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36645 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36699 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36702 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36756 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36759 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36813 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36816 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36870 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36873 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36927 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36930 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36984 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 36987 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37041 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37044 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37098 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37101 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37155 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37158 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37212 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37215 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37269 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37272 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37326 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37329 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 37384 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39313 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39367 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39370 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39424 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39427 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39481 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39484 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39540 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39543 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39598 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39601 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39656 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39659 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39714 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39717 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39772 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39775 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39830 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39833 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39888 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39891 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39945 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 39948 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40003 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40006 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40061 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40064 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40118 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40121 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40175 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40178 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40232 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40235 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40289 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40292 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40346 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40349 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40403 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40406 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40460 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40463 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 40518 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44331 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44385 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44388 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44442 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44445 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44499 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44502 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44556 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44559 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44613 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44616 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44670 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44673 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44727 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44730 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44784 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44787 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44841 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44844 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44898 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44901 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44955 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 44958 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45012 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45015 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45069 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45072 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45126 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45129 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45183 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45186 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45240 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45243 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45297 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45300 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45354 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45357 type: trace
-file source: spells
-target: should have successfully cast a target spell
-***	entry #: 45412 type: trace
-file source: spells
-target: should have successfully cast a target spell
 **********************************************************************************
-FLUSH
-***	entry #: 48495 type: trace
+Flushing on close
+***	entry #: 49188 type: trace
 file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: charge_up charged fireball
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
@@ -853,7 +10,7 @@ moving: calling move() from spriteling
 	old_vel: (0, 0)
 	old_rect: <rect(0, 0, 20, 20)>
 	
-***	entry #: 48494 type: trace
+***	entry #: 49187 type: trace
 file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: basic spell fireball
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
@@ -863,479 +20,486 @@ moving: calling move() from spriteling
 	old_vel: (0, 0)
 	old_rect: <rect(0, 0, 20, 20)>
 	
-***	entry #: 48492 type: trace
-file source: spells
-targets thru kwargs: is active; seeking is in kwargs; 
-	terms: simple; DEBUG targeting; ordered target; 
+***	entry #: 49184 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: charge_up I should have a name
+moving: calling move() from spriteling
+	terms: move; movement; spriteling; 
 	key words:
-	seeking_in_kwargs: deque([<simple_enemy sprite(in 2 groups)>, <simple_enemy sprite(in 2 groups)>, <simple_enemy sprite(in 2 groups)>, <simple_enemy sprite(in 2 groups)>])
+	inst_src: charge_up I should have a name
+	obj_src: <class 'spriteling.spriteling'>
+	old_vel: (0, 0)
+	old_rect: <rect(840, 490, 20, 20)>
 	
-***	entry #: 48493 type: trace
-file source: spells
-targets found: 
-	terms: targeting; extra; low; Logan; 
-	key words:
-	targets_found: deque([<simple_enemy sprite(in 2 groups)>, <simple_enemy sprite(in 2 groups)>, <simple_enemy sprite(in 2 groups)>, <simple_enemy sprite(in 2 groups)>])
-	
-***	entry #: 48490 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(659, 568, 38, 83)>/host: trashboat| Rect: <rect(663, 580, 31, 59)>
+***	entry #: 49182 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(831, 459, 38, 83)>/host: trashboat| Rect: <rect(835, 471, 31, 59)>
 moving: calling move() from spriteling; voluntary movement
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(659, 568, 38, 83)>/host: trashboat| Rect: <rect(663, 580, 31, 59)>
+	inst_src: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(831, 459, 38, 83)>/host: trashboat| Rect: <rect(835, 471, 31, 59)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(659, 568, 38, 83)>
+	old_rect: <rect(831, 459, 38, 83)>
 	move_vel: (0, 0)
 	
-***	entry #: 48489 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 102<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(84, 111, 172, 292)>/host: trashboat| Rect: <rect(84, 111, 173, 293)>
+***	entry #: 49181 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(831, 459, 38, 83)>/host: trashboat| Rect: <rect(835, 471, 31, 59)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 102<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(84, 111, 172, 292)>/host: trashboat| Rect: <rect(84, 111, 173, 293)>
+	inst_src: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(831, 459, 38, 83)>/host: trashboat| Rect: <rect(835, 471, 31, 59)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(84, 111, 172, 292)>
+	old_rect: <rect(831, 459, 38, 83)>
 	
-***	entry #: 48488 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 100<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(-133, -122, 172, 292)>/host: trashboat| Rect: <rect(-133, -122, 173, 293)>
+***	entry #: 49180 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 15<class 'blocks.door'>trashboatrect/hitbox: <rect(850, 100, 100, 100)>/host: trashboat| Rect: <rect(850, 100, 101, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 100<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(-133, -122, 172, 292)>/host: trashboat| Rect: <rect(-133, -122, 173, 293)>
+	inst_src: 15<class 'blocks.door'>trashboatrect/hitbox: <rect(850, 100, 100, 100)>/host: trashboat| Rect: <rect(850, 100, 101, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(-133, -122, 172, 292)>
+	old_rect: <rect(850, 100, 100, 100)>
 	
-***	entry #: 48487 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 98<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(262, 427, 172, 292)>/host: trashboat| Rect: <rect(262, 427, 173, 293)>
+***	entry #: 49179 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 14<class 'blocks.door'>trashboatrect/hitbox: <rect(6700, 500, 100, 100)>/host: trashboat| Rect: <rect(6700, 500, 101, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 98<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(262, 427, 172, 292)>/host: trashboat| Rect: <rect(262, 427, 173, 293)>
+	inst_src: 14<class 'blocks.door'>trashboatrect/hitbox: <rect(6700, 500, 100, 100)>/host: trashboat| Rect: <rect(6700, 500, 101, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(262, 427, 172, 292)>
+	old_rect: <rect(6700, 500, 100, 100)>
 	
-***	entry #: 48486 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 96<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(-305, -330, 172, 292)>/host: trashboat| Rect: <rect(-305, -330, 173, 293)>
+***	entry #: 49178 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 13<class 'blocks.door'>trashboatrect/hitbox: <rect(400, 400, 100, 100)>/host: trashboat| Rect: <rect(400, 400, 101, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 96<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(-305, -330, 172, 292)>/host: trashboat| Rect: <rect(-305, -330, 173, 293)>
+	inst_src: 13<class 'blocks.door'>trashboatrect/hitbox: <rect(400, 400, 100, 100)>/host: trashboat| Rect: <rect(400, 400, 101, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(-305, -330, 172, 292)>
+	old_rect: <rect(400, 400, 100, 100)>
 	
-***	entry #: 48485 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(659, 568, 38, 83)>/host: trashboat| Rect: <rect(663, 580, 31, 59)>
+***	entry #: 49177 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(659, 568, 38, 83)>/host: trashboat| Rect: <rect(663, 580, 31, 59)>
+	inst_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(659, 568, 38, 83)>
+	old_rect: <rect(800, 450, 100, 100)>
 	
-***	entry #: 48484 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 102<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(84, 111, 172, 292)>/host: trashboat| Rect: <rect(84, 111, 173, 293)>
+***	entry #: 49176 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 49<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1100, 100, 100)>/host: trashboat| Rect: <rect(950, 1100, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 102<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(84, 111, 172, 292)>/host: trashboat| Rect: <rect(84, 111, 173, 293)>
+	inst_src: 49<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1100, 100, 100)>/host: trashboat| Rect: <rect(950, 1100, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(84, 111, 172, 292)>
+	old_rect: <rect(950, 1100, 100, 100)>
 	
-***	entry #: 48483 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 100<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(-133, -122, 172, 292)>/host: trashboat| Rect: <rect(-133, -122, 173, 293)>
+***	entry #: 49175 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 45<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1000, 100, 100)>/host: trashboat| Rect: <rect(950, 1000, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 100<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(-133, -122, 172, 292)>/host: trashboat| Rect: <rect(-133, -122, 173, 293)>
+	inst_src: 45<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1000, 100, 100)>/host: trashboat| Rect: <rect(950, 1000, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(-133, -122, 172, 292)>
+	old_rect: <rect(950, 1000, 100, 100)>
 	
-***	entry #: 48482 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 98<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(262, 427, 172, 292)>/host: trashboat| Rect: <rect(262, 427, 173, 293)>
+***	entry #: 49174 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 41<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1100, 100, 100)>/host: trashboat| Rect: <rect(950, 1100, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 98<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(262, 427, 172, 292)>/host: trashboat| Rect: <rect(262, 427, 173, 293)>
+	inst_src: 41<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1100, 100, 100)>/host: trashboat| Rect: <rect(950, 1100, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(262, 427, 172, 292)>
+	old_rect: <rect(950, 1100, 100, 100)>
 	
-***	entry #: 48481 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 96<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(-305, -330, 172, 292)>/host: trashboat| Rect: <rect(-305, -330, 173, 293)>
+***	entry #: 49173 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 37<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1000, 100, 100)>/host: trashboat| Rect: <rect(950, 1000, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 96<class 'enemies.simple_enemy'>trashboatrect/hitbox: <rect(-305, -330, 172, 292)>/host: trashboat| Rect: <rect(-305, -330, 173, 293)>
+	inst_src: 37<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1000, 100, 100)>/host: trashboat| Rect: <rect(950, 1000, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(-305, -330, 172, 292)>
+	old_rect: <rect(950, 1000, 100, 100)>
 	
-***	entry #: 48480 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 61<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 550, 100, 100)>/host: trashboat| Rect: <rect(450, 550, 101, 101)>
+***	entry #: 49172 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 33<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1100, 100, 100)>/host: trashboat| Rect: <rect(950, 1100, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 61<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 550, 100, 100)>/host: trashboat| Rect: <rect(450, 550, 101, 101)>
+	inst_src: 33<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1100, 100, 100)>/host: trashboat| Rect: <rect(950, 1100, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 550, 100, 100)>
+	old_rect: <rect(950, 1100, 100, 100)>
 	
-***	entry #: 48479 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 60<class 'blocks.floor'>trashboatrect/hitbox: <rect(500, 200, 700, 600)>/host: trashboat| Rect: <rect(-50, -50, 101, 101)>
+***	entry #: 49171 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 29<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1000, 100, 100)>/host: trashboat| Rect: <rect(950, 1000, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 60<class 'blocks.floor'>trashboatrect/hitbox: <rect(500, 200, 700, 600)>/host: trashboat| Rect: <rect(-50, -50, 101, 101)>
+	inst_src: 29<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 1000, 100, 100)>/host: trashboat| Rect: <rect(950, 1000, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(500, 200, 700, 600)>
+	old_rect: <rect(950, 1000, 100, 100)>
 	
-***	entry #: 48478 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 95<class 'blocks.corner'>trashboatrect/hitbox: <rect(1147, 748, 107, 104)>/host: trashboat| Rect: <rect(1212, 813, 42, 39)>
+***	entry #: 49170 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 51<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 0, 100, 100)>/host: trashboat| Rect: <rect(1315, 0, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 95<class 'blocks.corner'>trashboatrect/hitbox: <rect(1147, 748, 107, 104)>/host: trashboat| Rect: <rect(1212, 813, 42, 39)>
+	inst_src: 51<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 0, 100, 100)>/host: trashboat| Rect: <rect(1315, 0, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1147, 748, 107, 104)>
+	old_rect: <rect(1250, 0, 100, 100)>
 	
-***	entry #: 48477 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 94<class 'blocks.corner'>trashboatrect/hitbox: <rect(1150, 150, 100, 100)>/host: trashboat| Rect: <rect(1215, 150, 35, 35)>
+***	entry #: 49169 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 47<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 0, 100, 100)>/host: trashboat| Rect: <rect(1315, 0, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 94<class 'blocks.corner'>trashboatrect/hitbox: <rect(1150, 150, 100, 100)>/host: trashboat| Rect: <rect(1215, 150, 35, 35)>
+	inst_src: 47<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 0, 100, 100)>/host: trashboat| Rect: <rect(1315, 0, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 150, 100, 100)>
+	old_rect: <rect(1250, 0, 100, 100)>
 	
-***	entry #: 48476 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 93<class 'blocks.corner'>trashboatrect/hitbox: <rect(450, 750, 100, 100)>/host: trashboat| Rect: <rect(450, 815, 35, 35)>
+***	entry #: 49168 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 43<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 100, 100, 100)>/host: trashboat| Rect: <rect(1315, 100, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 93<class 'blocks.corner'>trashboatrect/hitbox: <rect(450, 750, 100, 100)>/host: trashboat| Rect: <rect(450, 815, 35, 35)>
+	inst_src: 43<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 100, 100, 100)>/host: trashboat| Rect: <rect(1315, 100, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 750, 100, 100)>
+	old_rect: <rect(1250, 100, 100, 100)>
 	
-***	entry #: 48475 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 92<class 'blocks.corner'>trashboatrect/hitbox: <rect(450, 150, 100, 100)>/host: trashboat| Rect: <rect(450, 150, 35, 35)>
+***	entry #: 49167 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 39<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 100, 100, 100)>/host: trashboat| Rect: <rect(1315, 100, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 92<class 'blocks.corner'>trashboatrect/hitbox: <rect(450, 150, 100, 100)>/host: trashboat| Rect: <rect(450, 150, 35, 35)>
+	inst_src: 39<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 100, 100, 100)>/host: trashboat| Rect: <rect(1315, 100, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 150, 100, 100)>
+	old_rect: <rect(1250, 100, 100, 100)>
 	
-***	entry #: 48474 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 91<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 750, 100, 100)>/host: trashboat| Rect: <rect(1215, 750, 35, 101)>
+***	entry #: 49166 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 35<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 200, 100, 100)>/host: trashboat| Rect: <rect(1315, 200, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 91<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 750, 100, 100)>/host: trashboat| Rect: <rect(1215, 750, 35, 101)>
+	inst_src: 35<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 200, 100, 100)>/host: trashboat| Rect: <rect(1315, 200, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 750, 100, 100)>
+	old_rect: <rect(1250, 200, 100, 100)>
 	
-***	entry #: 48473 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 90<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 750, 100, 100)>/host: trashboat| Rect: <rect(450, 750, 35, 101)>
+***	entry #: 49165 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 31<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 200, 100, 100)>/host: trashboat| Rect: <rect(1315, 200, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 90<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 750, 100, 100)>/host: trashboat| Rect: <rect(450, 750, 35, 101)>
+	inst_src: 31<class 'blocks.wall'>trashboatrect/hitbox: <rect(1250, 200, 100, 100)>/host: trashboat| Rect: <rect(1315, 200, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 750, 100, 100)>
+	old_rect: <rect(1250, 200, 100, 100)>
 	
-***	entry #: 48472 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 89<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 650, 100, 100)>/host: trashboat| Rect: <rect(1215, 650, 35, 101)>
+***	entry #: 49164 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 50<class 'blocks.wall'>trashboatrect/hitbox: <rect(0, 1150, 100, 100)>/host: trashboat| Rect: <rect(0, 1215, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 89<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 650, 100, 100)>/host: trashboat| Rect: <rect(1215, 650, 35, 101)>
+	inst_src: 50<class 'blocks.wall'>trashboatrect/hitbox: <rect(0, 1150, 100, 100)>/host: trashboat| Rect: <rect(0, 1215, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 650, 100, 100)>
+	old_rect: <rect(0, 1150, 100, 100)>
 	
-***	entry #: 48471 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 88<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 650, 100, 100)>/host: trashboat| Rect: <rect(450, 650, 35, 101)>
+***	entry #: 49163 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 46<class 'blocks.wall'>trashboatrect/hitbox: <rect(0, 1150, 100, 100)>/host: trashboat| Rect: <rect(0, 1215, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 88<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 650, 100, 100)>/host: trashboat| Rect: <rect(450, 650, 35, 101)>
+	inst_src: 46<class 'blocks.wall'>trashboatrect/hitbox: <rect(0, 1150, 100, 100)>/host: trashboat| Rect: <rect(0, 1215, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 650, 100, 100)>
+	old_rect: <rect(0, 1150, 100, 100)>
 	
-***	entry #: 48470 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 87<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 550, 100, 100)>/host: trashboat| Rect: <rect(1215, 550, 35, 101)>
+***	entry #: 49162 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 42<class 'blocks.wall'>trashboatrect/hitbox: <rect(100, 1150, 100, 100)>/host: trashboat| Rect: <rect(100, 1215, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 87<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 550, 100, 100)>/host: trashboat| Rect: <rect(1215, 550, 35, 101)>
+	inst_src: 42<class 'blocks.wall'>trashboatrect/hitbox: <rect(100, 1150, 100, 100)>/host: trashboat| Rect: <rect(100, 1215, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 550, 100, 100)>
+	old_rect: <rect(100, 1150, 100, 100)>
 	
-***	entry #: 48469 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 86<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 550, 100, 100)>/host: trashboat| Rect: <rect(450, 550, 35, 101)>
+***	entry #: 49161 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 38<class 'blocks.wall'>trashboatrect/hitbox: <rect(100, 1150, 100, 100)>/host: trashboat| Rect: <rect(100, 1215, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 86<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 550, 100, 100)>/host: trashboat| Rect: <rect(450, 550, 35, 101)>
+	inst_src: 38<class 'blocks.wall'>trashboatrect/hitbox: <rect(100, 1150, 100, 100)>/host: trashboat| Rect: <rect(100, 1215, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 550, 100, 100)>
+	old_rect: <rect(100, 1150, 100, 100)>
 	
-***	entry #: 48468 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 85<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 450, 100, 100)>/host: trashboat| Rect: <rect(1215, 450, 35, 101)>
+***	entry #: 49160 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 34<class 'blocks.wall'>trashboatrect/hitbox: <rect(200, 1150, 100, 100)>/host: trashboat| Rect: <rect(200, 1215, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 85<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 450, 100, 100)>/host: trashboat| Rect: <rect(1215, 450, 35, 101)>
+	inst_src: 34<class 'blocks.wall'>trashboatrect/hitbox: <rect(200, 1150, 100, 100)>/host: trashboat| Rect: <rect(200, 1215, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 450, 100, 100)>
+	old_rect: <rect(200, 1150, 100, 100)>
 	
-***	entry #: 48467 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 84<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 450, 100, 100)>/host: trashboat| Rect: <rect(450, 450, 35, 101)>
+***	entry #: 49159 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 30<class 'blocks.wall'>trashboatrect/hitbox: <rect(200, 1150, 100, 100)>/host: trashboat| Rect: <rect(200, 1215, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 84<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 450, 100, 100)>/host: trashboat| Rect: <rect(450, 450, 35, 101)>
+	inst_src: 30<class 'blocks.wall'>trashboatrect/hitbox: <rect(200, 1150, 100, 100)>/host: trashboat| Rect: <rect(200, 1215, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 450, 100, 100)>
+	old_rect: <rect(200, 1150, 100, 100)>
 	
-***	entry #: 48466 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 83<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 350, 100, 100)>/host: trashboat| Rect: <rect(1215, 350, 35, 101)>
+***	entry #: 49158 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 48<class 'blocks.wall'>trashboatrect/hitbox: <rect(1200, 950, 100, 100)>/host: trashboat| Rect: <rect(1200, 950, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 83<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 350, 100, 100)>/host: trashboat| Rect: <rect(1215, 350, 35, 101)>
+	inst_src: 48<class 'blocks.wall'>trashboatrect/hitbox: <rect(1200, 950, 100, 100)>/host: trashboat| Rect: <rect(1200, 950, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 350, 100, 100)>
+	old_rect: <rect(1200, 950, 100, 100)>
 	
-***	entry #: 48465 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 82<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 350, 100, 100)>/host: trashboat| Rect: <rect(450, 350, 35, 101)>
+***	entry #: 49157 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 44<class 'blocks.wall'>trashboatrect/hitbox: <rect(1200, 950, 100, 100)>/host: trashboat| Rect: <rect(1200, 950, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 82<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 350, 100, 100)>/host: trashboat| Rect: <rect(450, 350, 35, 101)>
+	inst_src: 44<class 'blocks.wall'>trashboatrect/hitbox: <rect(1200, 950, 100, 100)>/host: trashboat| Rect: <rect(1200, 950, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 350, 100, 100)>
+	old_rect: <rect(1200, 950, 100, 100)>
 	
-***	entry #: 48464 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 81<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 250, 100, 100)>/host: trashboat| Rect: <rect(1215, 250, 35, 101)>
+***	entry #: 49156 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 40<class 'blocks.wall'>trashboatrect/hitbox: <rect(1100, 950, 100, 100)>/host: trashboat| Rect: <rect(1100, 950, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 81<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 250, 100, 100)>/host: trashboat| Rect: <rect(1215, 250, 35, 101)>
+	inst_src: 40<class 'blocks.wall'>trashboatrect/hitbox: <rect(1100, 950, 100, 100)>/host: trashboat| Rect: <rect(1100, 950, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 250, 100, 100)>
+	old_rect: <rect(1100, 950, 100, 100)>
 	
-***	entry #: 48463 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 80<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 250, 100, 100)>/host: trashboat| Rect: <rect(450, 250, 35, 101)>
+***	entry #: 49155 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 36<class 'blocks.wall'>trashboatrect/hitbox: <rect(1100, 950, 100, 100)>/host: trashboat| Rect: <rect(1100, 950, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 80<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 250, 100, 100)>/host: trashboat| Rect: <rect(450, 250, 35, 101)>
+	inst_src: 36<class 'blocks.wall'>trashboatrect/hitbox: <rect(1100, 950, 100, 100)>/host: trashboat| Rect: <rect(1100, 950, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 250, 100, 100)>
+	old_rect: <rect(1100, 950, 100, 100)>
 	
-***	entry #: 48462 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 79<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 150, 100, 100)>/host: trashboat| Rect: <rect(1215, 150, 35, 101)>
+***	entry #: 49154 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 32<class 'blocks.wall'>trashboatrect/hitbox: <rect(1000, 950, 100, 100)>/host: trashboat| Rect: <rect(1000, 950, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 79<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 150, 100, 100)>/host: trashboat| Rect: <rect(1215, 150, 35, 101)>
+	inst_src: 32<class 'blocks.wall'>trashboatrect/hitbox: <rect(1000, 950, 100, 100)>/host: trashboat| Rect: <rect(1000, 950, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 150, 100, 100)>
+	old_rect: <rect(1000, 950, 100, 100)>
 	
-***	entry #: 48461 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 78<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 150, 100, 100)>/host: trashboat| Rect: <rect(450, 150, 35, 101)>
+***	entry #: 49153 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 28<class 'blocks.wall'>trashboatrect/hitbox: <rect(1000, 950, 100, 100)>/host: trashboat| Rect: <rect(1000, 950, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 78<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 150, 100, 100)>/host: trashboat| Rect: <rect(450, 150, 35, 101)>
+	inst_src: 28<class 'blocks.wall'>trashboatrect/hitbox: <rect(1000, 950, 100, 100)>/host: trashboat| Rect: <rect(1000, 950, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 150, 100, 100)>
+	old_rect: <rect(1000, 950, 100, 100)>
 	
-***	entry #: 48460 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 77<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 750, 100, 100)>/host: trashboat| Rect: <rect(1150, 815, 101, 35)>
+***	entry #: 49152 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 11<class 'blocks.floor'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(-50, -50, 101, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 77<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 750, 100, 100)>/host: trashboat| Rect: <rect(1150, 815, 101, 35)>
+	inst_src: 11<class 'blocks.floor'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(-50, -50, 101, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 750, 100, 100)>
+	old_rect: <rect(800, 450, 100, 100)>
 	
-***	entry #: 48459 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 76<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 150, 100, 100)>/host: trashboat| Rect: <rect(1150, 150, 101, 35)>
+***	entry #: 49151 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 27<class 'blocks.corner'>trashboatrect/hitbox: <rect(847, 498, 107, 104)>/host: trashboat| Rect: <rect(912, 563, 42, 39)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 76<class 'blocks.wall'>trashboatrect/hitbox: <rect(1150, 150, 100, 100)>/host: trashboat| Rect: <rect(1150, 150, 101, 35)>
+	inst_src: 27<class 'blocks.corner'>trashboatrect/hitbox: <rect(847, 498, 107, 104)>/host: trashboat| Rect: <rect(912, 563, 42, 39)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1150, 150, 100, 100)>
+	old_rect: <rect(847, 498, 107, 104)>
 	
-***	entry #: 48458 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 75<class 'blocks.wall'>trashboatrect/hitbox: <rect(1050, 750, 100, 100)>/host: trashboat| Rect: <rect(1050, 815, 101, 35)>
+***	entry #: 49150 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 26<class 'blocks.corner'>trashboatrect/hitbox: <rect(850, 400, 100, 100)>/host: trashboat| Rect: <rect(915, 400, 35, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 75<class 'blocks.wall'>trashboatrect/hitbox: <rect(1050, 750, 100, 100)>/host: trashboat| Rect: <rect(1050, 815, 101, 35)>
+	inst_src: 26<class 'blocks.corner'>trashboatrect/hitbox: <rect(850, 400, 100, 100)>/host: trashboat| Rect: <rect(915, 400, 35, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1050, 750, 100, 100)>
+	old_rect: <rect(850, 400, 100, 100)>
 	
-***	entry #: 48457 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 74<class 'blocks.wall'>trashboatrect/hitbox: <rect(1050, 150, 100, 100)>/host: trashboat| Rect: <rect(1050, 150, 101, 35)>
+***	entry #: 49149 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 25<class 'blocks.corner'>trashboatrect/hitbox: <rect(750, 500, 100, 100)>/host: trashboat| Rect: <rect(750, 565, 35, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 74<class 'blocks.wall'>trashboatrect/hitbox: <rect(1050, 150, 100, 100)>/host: trashboat| Rect: <rect(1050, 150, 101, 35)>
+	inst_src: 25<class 'blocks.corner'>trashboatrect/hitbox: <rect(750, 500, 100, 100)>/host: trashboat| Rect: <rect(750, 565, 35, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(1050, 150, 100, 100)>
+	old_rect: <rect(750, 500, 100, 100)>
 	
-***	entry #: 48456 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 73<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 750, 100, 100)>/host: trashboat| Rect: <rect(950, 815, 101, 35)>
+***	entry #: 49148 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 24<class 'blocks.corner'>trashboatrect/hitbox: <rect(750, 400, 100, 100)>/host: trashboat| Rect: <rect(750, 400, 35, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 73<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 750, 100, 100)>/host: trashboat| Rect: <rect(950, 815, 101, 35)>
+	inst_src: 24<class 'blocks.corner'>trashboatrect/hitbox: <rect(750, 400, 100, 100)>/host: trashboat| Rect: <rect(750, 400, 35, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(950, 750, 100, 100)>
+	old_rect: <rect(750, 400, 100, 100)>
 	
-***	entry #: 48455 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 72<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 150, 100, 100)>/host: trashboat| Rect: <rect(950, 150, 101, 35)>
+***	entry #: 49147 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 23<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 500, 100, 100)>/host: trashboat| Rect: <rect(915, 500, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 72<class 'blocks.wall'>trashboatrect/hitbox: <rect(950, 150, 100, 100)>/host: trashboat| Rect: <rect(950, 150, 101, 35)>
+	inst_src: 23<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 500, 100, 100)>/host: trashboat| Rect: <rect(915, 500, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(950, 150, 100, 100)>
+	old_rect: <rect(850, 500, 100, 100)>
 	
-***	entry #: 48454 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 71<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 750, 100, 100)>/host: trashboat| Rect: <rect(850, 815, 101, 35)>
+***	entry #: 49146 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 22<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 500, 100, 100)>/host: trashboat| Rect: <rect(750, 500, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 71<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 750, 100, 100)>/host: trashboat| Rect: <rect(850, 815, 101, 35)>
+	inst_src: 22<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 500, 100, 100)>/host: trashboat| Rect: <rect(750, 500, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(850, 750, 100, 100)>
+	old_rect: <rect(750, 500, 100, 100)>
 	
-***	entry #: 48453 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 70<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 150, 100, 100)>/host: trashboat| Rect: <rect(850, 150, 101, 35)>
+***	entry #: 49145 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 21<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 400, 100, 100)>/host: trashboat| Rect: <rect(915, 400, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 70<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 150, 100, 100)>/host: trashboat| Rect: <rect(850, 150, 101, 35)>
+	inst_src: 21<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 400, 100, 100)>/host: trashboat| Rect: <rect(915, 400, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(850, 150, 100, 100)>
+	old_rect: <rect(850, 400, 100, 100)>
 	
-***	entry #: 48452 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 69<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 750, 100, 100)>/host: trashboat| Rect: <rect(750, 815, 101, 35)>
+***	entry #: 49144 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 20<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 400, 100, 100)>/host: trashboat| Rect: <rect(750, 400, 35, 101)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 69<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 750, 100, 100)>/host: trashboat| Rect: <rect(750, 815, 101, 35)>
+	inst_src: 20<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 400, 100, 100)>/host: trashboat| Rect: <rect(750, 400, 35, 101)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(750, 750, 100, 100)>
+	old_rect: <rect(750, 400, 100, 100)>
 	
-***	entry #: 48451 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 68<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 150, 100, 100)>/host: trashboat| Rect: <rect(750, 150, 101, 35)>
+***	entry #: 49143 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 19<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 500, 100, 100)>/host: trashboat| Rect: <rect(850, 565, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 68<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 150, 100, 100)>/host: trashboat| Rect: <rect(750, 150, 101, 35)>
+	inst_src: 19<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 500, 100, 100)>/host: trashboat| Rect: <rect(850, 565, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(750, 150, 100, 100)>
+	old_rect: <rect(850, 500, 100, 100)>
 	
-***	entry #: 48450 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 67<class 'blocks.wall'>trashboatrect/hitbox: <rect(650, 750, 100, 100)>/host: trashboat| Rect: <rect(650, 815, 101, 35)>
+***	entry #: 49142 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 18<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 400, 100, 100)>/host: trashboat| Rect: <rect(850, 400, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 67<class 'blocks.wall'>trashboatrect/hitbox: <rect(650, 750, 100, 100)>/host: trashboat| Rect: <rect(650, 815, 101, 35)>
+	inst_src: 18<class 'blocks.wall'>trashboatrect/hitbox: <rect(850, 400, 100, 100)>/host: trashboat| Rect: <rect(850, 400, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(650, 750, 100, 100)>
+	old_rect: <rect(850, 400, 100, 100)>
 	
-***	entry #: 48449 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 66<class 'blocks.wall'>trashboatrect/hitbox: <rect(650, 150, 100, 100)>/host: trashboat| Rect: <rect(650, 150, 101, 35)>
+***	entry #: 49141 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 17<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 500, 100, 100)>/host: trashboat| Rect: <rect(750, 565, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 66<class 'blocks.wall'>trashboatrect/hitbox: <rect(650, 150, 100, 100)>/host: trashboat| Rect: <rect(650, 150, 101, 35)>
+	inst_src: 17<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 500, 100, 100)>/host: trashboat| Rect: <rect(750, 565, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(650, 150, 100, 100)>
+	old_rect: <rect(750, 500, 100, 100)>
 	
-***	entry #: 48448 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 65<class 'blocks.wall'>trashboatrect/hitbox: <rect(550, 750, 100, 100)>/host: trashboat| Rect: <rect(550, 815, 101, 35)>
+***	entry #: 49140 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 16<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 400, 100, 100)>/host: trashboat| Rect: <rect(750, 400, 101, 35)>
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 65<class 'blocks.wall'>trashboatrect/hitbox: <rect(550, 750, 100, 100)>/host: trashboat| Rect: <rect(550, 815, 101, 35)>
+	inst_src: 16<class 'blocks.wall'>trashboatrect/hitbox: <rect(750, 400, 100, 100)>/host: trashboat| Rect: <rect(750, 400, 101, 35)>
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(550, 750, 100, 100)>
+	old_rect: <rect(750, 400, 100, 100)>
 	
-***	entry #: 48447 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 64<class 'blocks.wall'>trashboatrect/hitbox: <rect(550, 150, 100, 100)>/host: trashboat| Rect: <rect(550, 150, 101, 35)>
+***	entry #: 49138 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: charge_up charged fireball
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 64<class 'blocks.wall'>trashboatrect/hitbox: <rect(550, 150, 100, 100)>/host: trashboat| Rect: <rect(550, 150, 101, 35)>
+	inst_src: charge_up charged fireball
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(550, 150, 100, 100)>
+	old_rect: <rect(0, 0, 20, 20)>
 	
-***	entry #: 48446 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 63<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 750, 100, 100)>/host: trashboat| Rect: <rect(450, 815, 101, 35)>
+***	entry #: 49137 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: basic spell fireball
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 63<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 750, 100, 100)>/host: trashboat| Rect: <rect(450, 815, 101, 35)>
+	inst_src: basic spell fireball
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 750, 100, 100)>
+	old_rect: <rect(0, 0, 20, 20)>
 	
-***	entry #: 48445 type: trace
-file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 62<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 150, 100, 100)>/host: trashboat| Rect: <rect(450, 150, 101, 35)>
+***	entry #: 49134 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: charge_up I should have a name
 moving: calling move() from spriteling
 	terms: move; movement; spriteling; 
 	key words:
-	inst_src: 62<class 'blocks.wall'>trashboatrect/hitbox: <rect(450, 150, 100, 100)>/host: trashboat| Rect: <rect(450, 150, 101, 35)>
+	inst_src: charge_up I should have a name
 	obj_src: <class 'spriteling.spriteling'>
 	old_vel: (0, 0)
-	old_rect: <rect(450, 150, 100, 100)>
+	old_rect: <rect(840, 490, 20, 20)>
+	
+***	entry #: 49132 type: trace
+file source: spriteling| obj source: <class 'spriteling.spriteling'>| instance source: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(831, 459, 38, 83)>/host: trashboat| Rect: <rect(835, 471, 31, 59)>
+moving: calling move() from spriteling; voluntary movement
+	terms: move; movement; spriteling; 
+	key words:
+	inst_src: 52<class 'player.multiplayer'>trashboatrect/hitbox: <rect(831, 459, 38, 83)>/host: trashboat| Rect: <rect(835, 471, 31, 59)>
+	obj_src: <class 'spriteling.spriteling'>
+	old_vel: (0, 0)
+	old_rect: <rect(831, 459, 38, 83)>
+	move_vel: (0, 0)
 	
 **********************************************************************************

@@ -7,6 +7,7 @@ player_event = base +2
 file_event = base +3
 buffer_flush_event = base +4
 menu_event = base +5
+spriteling_event = base +6
 
 
 # naming conventions: I've tried to be as consistent as possible with this; let me explain it all here:
@@ -68,7 +69,7 @@ class event_handler():
         # named after the entry type that will be sent to it.
         self.error_log = open("error.txt", 'w')
         self.log = open("log.txt", 'w')
-        self.trace_log = open('trace.txt', 'w')
+        self.trace_log = open('trace_log.txt', 'w')
         self.event_log = open("event_log.txt", 'w')
 
         # blocked_files/terms are lists of exclusions that forbid entries from the enumerated files/bearing the
@@ -87,6 +88,7 @@ class event_handler():
         self.log_buffer = collections.deque([], self.max_log_size)
         self.trace_buffer = collections.deque([], self.max_log_size)
         self.event_buffer = collections.deque([], self.max_log_size)
+        self.error_buffer = collections.deque([], self.max_log_size)
 
         # log_permissions determines which types of entry will be printed to the log upon being sent. If it doesn't have
         # permission here, then it will only end up on the buffer, which must be flushed to the log. Note that every
@@ -110,7 +112,8 @@ class event_handler():
         self.buffer_sort= {
             'trace': self.trace_buffer,
             'log':   self.log_buffer  ,
-            'event': self.event_buffer
+            'event': self.event_buffer,
+            'error': self.error_buffer
         }
 
         self.entry_sort = {
@@ -118,7 +121,7 @@ class event_handler():
             'log':   self.log      ,
             'event': self.event_log,
             'error': self.error_log
-            }
+        }
 
     # make_entry lets you create and send an entry with the same function. used in the majority of cases, as you will
     # generally want to make and send an entry at the same time. you need to fill in all the same info as you would need
@@ -148,17 +151,17 @@ class event_handler():
             return self.send_entry(ret, force_to_console, force_to_log)
 
     # dispatches an entry into the event_handler, passing it thru a series of logic gates and directional maps to decide
-    # where it ultimately ends up
+    # where it ultimately ends up. Note that this returns True or False depending on whether or not the entry made it
+    # into the buffer
     def send_entry(self, message, force_to_console=True, force_to_log=False):
         if message.get_file_source() not in self.blocked_files:
             if message.screen_terms(self.blocked_terms):
+                self.buffer_sort[message.get_type()].append(message)
                 if self.log_permissions[message.get_type()] or force_to_log or message.get_type() == 'error':
                     print(message, file=self.entry_sort[message.get_type()])
-                else:
-                    self.buffer_sort[message.get_type()].append(message)
                 if force_to_console or message.match_terms(self.terms_to_console) or message.get_file_source() in self.files_to_console:
                     print(message)
-                return True
+                return self.buffer_sort[message.get_type()][-1] == message
         return False
 
     # posts an event. basically an expansion on the standard pygame event that automagically generates a valid entry to
@@ -348,9 +351,12 @@ class entry():
     def match_terms(self, allowed):
         for each in self.terms:
             if each in allowed:
+                print("accepting ", self.entry_num)
                 return True
-        else:
-            return False
+            else:
+                # LOGAN:: MIGHT NEED TO CHANGE THIS LATER
+                #print('discarding ', self, "based on: ", each)
+                return False
 
     def modify(self, *args, **kwargs):
         # dummy var and dummy kwargs to get pycharm to offer to autocomplete stuff for me
@@ -405,7 +411,6 @@ import pygame
 x = 0
 next_stage = 1
 
-event_maker = event_handler(50)
-event_maker.add_console_permissions(terms=['Logan', 'magic'])
-event_maker.block_terms('spellbook')
+event_maker = event_handler(500)
 event_maker.make_entry("trace", "first trace", 'the very first trace entry', 'events', False, False)
+event_maker.block_terms("target", 'targeted', 'DEBUG targeting', 'move')

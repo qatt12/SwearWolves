@@ -106,6 +106,13 @@ default_theme = theme()
 
 event_maker.make_entry('log', 'default_theme', 'Testing default theme construction/initialization', 'room', True, False, 'theme', 'init', 'DEBUG', obj_src=default_theme, image_lookup=default_theme.image_lookup)
 
+enemies_layer = 0
+wall_cos = 1
+doors_layer = 2
+inner_walls_layer = 3
+outer_walls_layer = 4
+floor_cos = 5
+floor_layer = 6
 # the core functions of the room are to hold everything that is going to appear on the screen, check for and report the
 # interactions between certain sprites, and to draw everything in the correct order
 class room():
@@ -118,11 +125,7 @@ class room():
         self.image = pygame.Surface(size)
 
 
-        # this might be replaced by a RenderedUpdates
-        self.all_sprites = sGroup()
-        self.exits = sGroup()
-        self.enemies = sGroup()
-        self.floors = sGroup()
+        self.contents = pygame.sprite.LayeredUpdates()
 
         self.ordered_enemies = collections.deque([])
 
@@ -130,7 +133,7 @@ class room():
         # each segment of floor is created separately, then linked together. upon first being initialized, a room has a
         # simple, rectangular floor enclosed in a bounding wall.
         self.ground = floor(size, my_theme)
-        self.floors.add(self.ground)
+        self.contents.add(self.ground, layer=floor_layer)
 
         # this is supposed to help with screen scrolling for the room. The visible rect is what is currently on-screen,
         # the full rect is for the entire room
@@ -140,39 +143,23 @@ class room():
         self.scroll_rect.center = self.visible_rect.center
 
         self.entry_door = self.add_entrance(enter_from[0], enter_from[1])
+        self.contents.add(self.entry_door, layer=doors_layer)
         if "exit_door" in kwargs:
             event_maker.make_entry('trace', 'exit_door', 'found kwarg entry for exit door', 'room', True, False,
                                    'door', 'exit', 'kwargs',
                                    obj_src=room, inst_src=self, exit_doors=kwargs['exit_door'])
             for each in kwargs['exit_door']:
-                self.exits.add(self.add_door(each[0], each[1]))
+                self.contents.add(self.add_door(each[0], each[1]), layer=doors_layer)
 
-        self.doors = sGroup(self.entry_door, self.exits)
 
         # the walls have to be spritelings in a group in order to properly register collision
-        self.outer_walls = my_theme.build_walls(self.full_rect, enter_from, self.entry_door)
+        self.contents.add(my_theme.build_walls(self.full_rect, enter_from, self.entry_door), layer=outer_walls_layer)
 
         if 'inner_wall_rect' in kwargs:
-            self.inner_walls = my_theme.build_inner_walls(rect=kwargs['inner_wall_rect'])
-        else:
-            self.inner_walls= sGroup()
-
+            self.contents.add(my_theme.build_inner_walls(rect=kwargs['inner_wall_rect']), layer=inner_walls_layer)
         event_maker.make_entry('trace', 'door init', "", 'room', False, False,
                                'door', 'init',
                                door_rect_at_init=self.entry_door.rect)
-        self.all_sprites.add(self.outer_walls, self.floors, self.inner_walls, self.doors, self.enemies)
-
-    # core methods used to draw the contents of the room onto the main display window in the appropriate order
-    # the default/expected order is: floors, outer walls, inner walls, enemies, players, enemy missiles, unaligned
-    # missiles, player missiles
-    def draw_contents(self, disp, boxes=False):
-        self.floors.draw(disp)
-        self.outer_walls.draw(disp)
-        self.inner_walls.draw(disp)
-        self.doors.draw(disp)
-        self.enemies.draw(disp)
-        if boxes:
-            self.draw_boxes(disp)
 
     # super basic method atm, designed to be expanded as needed in later iterations
     def add_player(self, player):
@@ -184,20 +171,20 @@ class room():
 
     def spawn_enemy(self, *args, **kwargs):
         for each in args:
-            self.enemies.add(each)
+            self.contents.add(each, layer=)
             self.ordered_enemies.append(each)
 
     def add_door(self, side, position, *args):
         if side == 'left':
-            new_door = door(side_x=self.full_rect.left, pos=position)
+            new_door = door(side_x=self.full_rect.left, pos=position, bound_y=self.full_rect.top)
         elif side == 'center':
             new_door = door(coords=self.full_rect.center)
         elif side == 'right':
-            new_door = door(side_x=self.full_rect.right, pos=position)
+            new_door = door(side_x=self.full_rect.right, pos=position, bound_y=self.full_rect.top)
         elif side == 'bottom':
-            new_door = door(side_y=self.full_rect.bottom, pos=position)
+            new_door = door(side_y=self.full_rect.bottom, pos=position, bound_x=self.full_rect.top)
         elif side == 'top':
-            new_door = door(side_y=self.full_rect.top, pos=position)
+            new_door = door(side_y=self.full_rect.top, pos=position, bound_x=self.full_rect.top)
         else:
             return False
         return new_door
@@ -205,19 +192,19 @@ class room():
     def add_entrance(self, side, position, *args):
         if side == 'left':
             self.full_rect.left = self.visible_rect.left
-            new_door = door(side_x=self.full_rect.left, pos=position)
+            new_door = door(events.to_hub, side_x=self.full_rect.left, pos=position, bound_y=self.full_rect.top)
         elif side == 'center':
             self.full_rect.center = self.visible_rect.center
-            new_door = door(coords=self.full_rect.center)
+            new_door = door(events.to_hub, coords=self.full_rect.center)
         elif side == 'right':
             self.full_rect.right = self.visible_rect.right
-            new_door = door(side_x=self.full_rect.right, pos=position)
+            new_door = door(events.to_hub, side_x=self.full_rect.right, pos=position, bound_y=self.full_rect.top)
         elif side == 'bottom':
             self.full_rect.bottom = self.visible_rect.bottom
-            new_door = door(side_y=self.full_rect.bottom, pos=position)
+            new_door = door(events.to_hub, side_y=self.full_rect.bottom, pos=position, bound_x=self.full_rect.left)
         elif side == 'top':
             self.full_rect.top = self.visible_rect.top
-            new_door = door(side_y=self.full_rect.top, pos=position)
+            new_door = door(events.to_hub, side_y=self.full_rect.top, pos=position, bound_x=self.full_rect.left)
         else:
             return False
 
@@ -231,11 +218,7 @@ class room():
         return new_door
 
     def update(self, player_one_rect, all_players, *args, **kwargs):
-        self.outer_walls.update()
-        self.doors.update()
-
-        # DEBUG
-        self.all_sprites.update()
+        self.contents.update()
 
         # calculates the scroll, and also sort of the counter_scroll based upon the player's position
         x, y = 0, 0
@@ -255,15 +238,12 @@ class room():
             for corpse in kwargs['dead_enemies']:
                 self.ordered_enemies.remove(corpse)
 
-        # makes sure that all the sprites in the room are a part of all_sprites
-        self.all_sprites.add(self.outer_walls, self.floors, self.doors, self.enemies)
-
     def draw_boxes(self, disp):
-        for w in self.outer_walls:
+        for w in self.contents.get_sprites_at(outer_walls_layer):
             w.draw_boxes(disp)
         for e in self.enemies:
             e.draw_boxes(disp)
-        for f in self.doors:
+        for f in self.contents.get_sprites_at(doors_layer):
             f.draw_boxes(disp)
 
         self.ground.draw_boxes(disp)
@@ -272,7 +252,7 @@ class room():
 
     # a basic scroll everything to the [direction] method
     def scroll(self, x_scroll, y_scroll):
-        for each in self.all_sprites:
+        for each in self.contents:
             each.move(shift=(x_scroll, y_scroll))
 
     def counter_scroll(self, x_scroll, y_scroll, subjects):
@@ -282,15 +262,15 @@ class room():
     def collide_walls(self, **kwargs):
         if 'players' in kwargs:
             # only checks the collision of the outer rect, not the hitbox.
-            bonks = pygame.sprite.groupcollide(kwargs['players'], self.outer_walls, False, False, collide_hitbox)
+            bonks = pygame.sprite.groupcollide(kwargs['players'], pygame.sprite.Group(self.contents.get_sprites_at()), False, False, collide_hitbox)
             for each in bonks:
                 each.move(walls=bonks[each])
         bonks_a = pygame.sprite.groupcollide(self.enemies, self.outer_walls, False, False, collide_hitbox)
         for each in bonks_a:
             each.move(walls=bonks_a[each])
-        #squishies = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
-        #for each in squishies:
-        #    each.move(push=squishies[each])
+        squishies = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
+        for each in squishies:
+            each.move(push=squishies[each])
 
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
@@ -304,19 +284,25 @@ class room():
         pass
 
     def collide_missiles_into_enemies(self, incoming):
-        dings = pygame.sprite.groupcollide(incoming, self.enemies, True, False, collide_hitbox)
+        dings = pygame.sprite.groupcollide(incoming, self.enemies, False, False, collide_hitbox)
         for each in dings:
             for every in dings[each]:
                 each(every)
 
-    def pull_enemies(self, visible=False, **kwargs):
+    def pull_enemies(self, **kwargs):
+        if 'dead_enemies' in kwargs:
+            for corpse in kwargs['dead_enemies']:
+                self.ordered_enemies.remove(corpse)
         return self.ordered_enemies
 
 
 class hub_room(room):
     def __init__(self, disp, my_theme=default_theme):
-        super().__init__(('center', 2), (1, 1), disp, my_theme,
-                         exit_door=[('top', 3), ('bottom', 66), ('right', 0)],
+        super().__init__(('center', 2), (7, 5), disp, my_theme,
+                         exit_door=[('top', 3),
+                                    #('bottom', 6),
+                                    #('right', 1)
+                                    ],
                          inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
 
 
@@ -332,11 +318,10 @@ class DEBUG_room(room):
 
 import enemies
 
-
 # the dungeon class is designed to be a holder for all the stuff that we need to randomly generate a room, as well as a
 # means by which we can generate new rooms
 class dungeon():
-    def __init__(self, difficulty, dungeon_theme, num_players, disp, *args, **kwargs):
+    def __init__(self, difficulty, dungeon_theme, disp, *args, **kwargs):
         self.difficulty = difficulty
         self.my_theme = dungeon_theme
 
@@ -361,7 +346,12 @@ class dungeon():
     def get_hub(self):
         return self.hub
 
+    def go_to_hub(self, players):
+        self.current_room = self.hub
+        self.current_room.add_players(players)
+        return self.current_room
+
 
 class basic_dungeon(dungeon):
     def __init__(self, disp):
-        super(basic_dungeon, self).__init__(1, default_theme, 1, disp)
+        super(basic_dungeon, self).__init__(1, default_theme, disp)

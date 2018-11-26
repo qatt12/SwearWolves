@@ -56,3 +56,49 @@ class hud(spriteling.spriteling):
                                                                             #self.spell_list[x].rect.height))
         pygame.draw.line(disp, config.green, (self.portrait_slot.right, self.portrait_slot.centery),
                          (self.portrait_slot.right+(self.hp/2), self.portrait_slot.centery), hp_bar_width)
+
+
+all_reticles = pygame.image.load('Animation\img_crosshair.png').convert_alpha()
+green_reticle = pygame.transform.scale2x(all_reticles.subsurface((0, 0), (54, 54)))
+red_reticle = pygame.transform.scale2x(all_reticles.subsurface((54, 0), (54, 54)))
+blue_reticle = pygame.transform.scale2x(all_reticles.subsurface((54 * 2, 0), (54, 54)))
+reticle_lookup = {
+    0: green_reticle,
+    1: red_reticle,
+    2: blue_reticle,
+    3: green_reticle
+}
+
+
+class reticle(spriteling.spriteling):
+    def __init__(self, designation):
+        super().__init__(image=reticle_lookup[designation])
+
+    def update(self, *args, **kwargs):
+        if 'new_target' in kwargs:
+            self.rect.center = kwargs['new_target'].rect.center
+        if 'position' in kwargs:
+            self.rect.center = kwargs["position"]
+
+    def __call__(self, *args, **kwargs):
+        pass
+
+class p1_reticle(reticle):
+    def __init__(self):
+        super().__init__(0)
+
+class p2_reticle(reticle):
+    def __init__(self):
+        super().__init__(1)
+
+class p3_reticle(reticle):
+    def __init__(self):
+        super().__init__(2)
+
+def select_reticle(num):
+    lookup = {
+        0: p1_reticle,
+        1: p2_reticle,
+        2: p3_reticle
+    }
+    return lookup[num]

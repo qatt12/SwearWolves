@@ -9,6 +9,35 @@ buffer_flush_event = base +4
 menu_event = base +5
 spriteling_event = base +6
 
+### SUBTYPES ###
+next_room        = 1
+to_hub           = 2
+next_floor       = 3
+prev_floor       = 4
+
+player_died      = 5
+player_raised    = 6
+player_got_loot  = 7
+player_xp        = 8
+player_spent_xp  = 9
+
+begin_start_loop = 10
+end_start_loop   = 11
+begin_char_loop  = 12
+end_char_loop    = 13
+begin_main_game  = 14
+game_over        = 15
+win_game         = 16
+
+saved_game       = 17
+loaded_game      = 18
+made_new_save    = 19
+deleted_save     = 20
+
+enemy_died       = 21
+
+
+
 
 # naming conventions: I've tried to be as consistent as possible with this; let me explain it all here:
 # 1) at the top of every file, right after the file waifu, events.py is imported. right after this, event_maker is
@@ -102,6 +131,9 @@ class event_handler():
             'error': True
         }
 
+        # akin to globals, tracked values are available basically everywhere, since they are held in the event_maker.
+        self.tracked = {}
+
         # this is where you can set the policy for what is automagically sent to the console. Useful if you're Debugging
         # a particular file or set of features with the same terms, and you want to print them directly to console
         # (without having to force them to console, which must be manually don/undone).
@@ -166,7 +198,7 @@ class event_handler():
 
     # posts an event. basically an expansion on the standard pygame event that automagically generates a valid entry to
     # accompany the event (unless you provide one yourself, using the 'entry' kwarg)
-    def new_event(self, event_num, file_src='events', *args, **kwargs):
+    def new_event(self, event_num, file_src, *args, **kwargs):
         ret = pygame.event.Event(event_num, **kwargs)
         pygame.event.post(ret)
         if 'entry' in kwargs:

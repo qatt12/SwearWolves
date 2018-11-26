@@ -18,24 +18,24 @@ new menu: added a new menu
 	loc_src: screen.apply()
 	opened_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 34 type: log
+***	entry #: 155 type: log
 file source: driver| loc source: start_loop
 FIRST PLAYER: player one has pressed start, we should be leaving start loop now
 	terms: crucial; start_loop; ready_up; player_one; 
 	key words:
 	loc_src: start_loop
-	player_one_Handler: <interface.handler object at 0x070B3530>
+	player_one_Handler: <interface.handler object at 0x066017D0>
 	num_player_handlers: 1
 	
-***	entry #: 35 type: log
+***	entry #: 156 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(764, 354, 173, 293)>
-	set_player_one: <interface.handler object at 0x070B3530>
+	set_player_one: <interface.handler object at 0x066017D0>
 	
-***	entry #: 37 type: log
+***	entry #: 158 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -44,7 +44,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 38 type: log
+***	entry #: 159 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 3<class 'spells.book_of_fire'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -53,7 +53,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 3<class 'spells.book_of_fire'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 39 type: log
+***	entry #: 160 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 4<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -62,7 +62,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 4<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 40 type: log
+***	entry #: 161 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 5<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -71,7 +71,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 5<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 41 type: log
+***	entry #: 162 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 6<class 'spells.book_of_light'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -80,67 +80,1213 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 6<class 'spells.book_of_light'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 42 type: log
+***	entry #: 163 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	opened_menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 850, 500)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 74 type: log
+***	entry #: 206 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: (<player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>)
 	
-***	entry #: 75 type: log
-file source: room| obj source: <room.theme object at 0x073967B0>
+***	entry #: 207 type: log
+file source: room| obj source: <room.theme object at 0x067555D0>
 default_theme: Testing default theme construction/initialization
 	terms: theme; init; DEBUG; 
 	key words:
-	obj_src: <room.theme object at 0x073967B0>
+	obj_src: <room.theme object at 0x067555D0>
 	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(107x104x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
 	
-***	entry #: 90 type: log
+***	entry #: 220 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.hub_room object at 0x07396750>
+	room: <room.hub_room object at 0x06755AD0>
 	
-***	entry #: 91 type: log
+***	entry #: 221 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	overlay: 61<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 566, 200)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
+	overlay: 76<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 566, 200)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 294187 type: log
+***	entry #: 65161 type: log
 file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
 door interact: door is receiving full player interaction
 	key words:
 	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
 	loc_src: door
 	
-***	entry #: 294199 type: log
+***	entry #: 65166 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.DEBUG_room object at 0x07337E10>
+	room: <room.hub_room object at 0x06755AD0>
 	
-***	entry #: 1008500 type: log
-file source: blocks| obj source: 528<class 'blocks.door'>trashboatrect/hitbox: <rect(400, 600, 100, 100)>/host: trashboat| Rect: <rect(400, 600, 101, 101)>| loc source: door
+***	entry #: 65229 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
 door interact: door is receiving full player interaction
 	key words:
-	obj_src: 528<class 'blocks.door'>trashboatrect/hitbox: <rect(400, 600, 100, 100)>/host: trashboat| Rect: <rect(400, 600, 101, 101)>
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
 	loc_src: door
 	
-***	entry #: 1008513 type: log
+***	entry #: 65234 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.DEBUG_room object at 0x014ED370>
+	room: <room.hub_room object at 0x06755AD0>
 	
+***	entry #: 65297 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65302 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65365 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65370 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65433 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65438 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65501 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65506 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65569 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65574 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65637 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65642 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65705 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65710 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65773 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65778 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65841 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65846 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65909 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65914 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 65977 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 65982 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66045 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66050 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66113 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66118 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66181 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66186 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66249 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66254 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66317 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66322 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66385 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66390 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66453 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66458 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66521 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66526 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66589 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66594 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66657 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66662 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66725 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66730 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66793 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66798 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66861 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66866 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66929 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 66934 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 66997 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67002 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67065 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67070 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67133 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67138 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67201 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67206 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67269 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67274 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67337 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67342 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67405 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67410 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67473 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67478 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67541 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67546 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67609 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67614 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67677 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67682 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67745 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67750 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67813 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67818 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67881 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67886 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 67949 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 67954 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68017 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68022 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68085 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68090 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68153 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68158 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68221 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68226 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68289 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68294 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68357 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68362 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68425 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68430 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68493 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68498 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68561 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68566 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68629 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68634 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68697 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68702 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68765 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68770 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68833 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68838 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68901 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68906 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 68969 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 68974 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69037 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69042 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69105 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69110 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69173 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69178 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69241 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69246 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69309 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69314 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69377 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69382 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69445 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69450 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69513 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69518 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69581 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69586 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69649 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69654 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69717 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69722 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69785 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69790 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69853 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69858 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69921 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69926 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 69989 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 69994 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70057 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70062 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70125 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70130 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70193 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70198 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70261 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70266 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70329 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70334 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70397 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70402 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70465 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70470 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70533 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70538 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70601 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70606 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 70670 type: log
+file source: blocks| obj source: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 12<class 'blocks.door'>trashboatrect/hitbox: <rect(800, 450, 100, 100)>/host: trashboat| Rect: <rect(800, 450, 101, 101)>
+	loc_src: door
+	
+***	entry #: 70675 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x06755AD0>
+	
+***	entry #: 94345 type: log
+file source: blocks| obj source: 13<class 'blocks.door'>trashboatrect/hitbox: <rect(600, 200, 100, 100)>/host: trashboat| Rect: <rect(600, 200, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 13<class 'blocks.door'>trashboatrect/hitbox: <rect(600, 200, 100, 100)>/host: trashboat| Rect: <rect(600, 200, 101, 101)>
+	loc_src: door
+	
+***	entry #: 94354 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x067C2F30>
+	
+***	entry #: 167608 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 181213 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 216549 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 243694 type: log
+file source: driver
+detected dead spriteling at event level: 

@@ -42,6 +42,34 @@ event_maker.make_entry('log', 'startup', 'startup has been successful', 'driver'
 #pygame.mixer.music.load('Music/LoLD.ogg')
 #pygame.mixer.music.play(-1)
 
+class tower():
+    def __init__(self):
+        self.pillar = pygame.sprite.LayeredUpdates()
+
+    def mod_menu(self):
+        pass
+
+    def mod_overlays(self):
+        pass
+
+    def add_spell(self):
+        pass
+
+
+menu_layer = 0
+overlayer = 1
+impacts = 2
+player_missiles = 3
+trails = 4
+
+nme_impacts = 5
+nme_missiles = 6
+nme_trails = 7
+enemies = 8
+players = 9
+
+
+
 # very basic rect calculating class designed to break the display window into several smaller rects so that the screen
 #  can be updated in blocks
 class partial_render():
@@ -129,7 +157,7 @@ class screen_handler():
             self.current_room.collide_doors(self.GROUP_of_player_SPRITES)
 
             live_missiles = pygame.sprite.Group()
-            visible_enemies = self.current_room.pull_enemies(True)
+            visible_enemies = self.current_room.pull_enemies()
             allied = pygame.sprite.Group()
             for player_handler in self.ordered_list_of_player_HANDLERS:
                 other_players = pygame.sprite.Group.copy(self.GROUP_of_player_SPRITES)
@@ -213,7 +241,7 @@ while(start_loop and running):
                                loc_src='start_loop', player_one_Handler=player_one_HANDLER, num_player_handlers=interface.handler.get_player_interface_num())
         screen.apply(player_one=player_one_HANDLER, closed_menus=start_menu)
         assert (screen.player_one is not None), "failed to add player one"
-        event_maker.new_event(events.game_state_event, exit='start_loop', player_one=player_one_HANDLER)
+        event_maker.new_event(events.game_state_event, file_src='driver', exit='start_loop', player_one=player_one_HANDLER)
         start_loop = False
         start_menu.kill()
 
@@ -231,7 +259,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 # spells.dumb_heal_s, spells.DEBUG_target_line
-unlocked_books = [spells.DEBUG_book(spells.charged_fireball_s, spells.fireball_s, spells.flamethrower_s, spells.DEBUG_helix, spells.DEBUG_unguided_swarm, spells.DEBUG_circle_me),
+unlocked_books = [spells.DEBUG_book(spells.DEBUG_helix, spells.DEBUG_unguided_swarm, spells.DEBUG_circle_me),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1
@@ -335,8 +363,18 @@ while(game_loop and running):
         if event.type == pygame.QUIT:
             running = False
         if event.type == events.room_event:
-            screen.apply(room=DEBUG_dungeon.next_room(screen.GROUP_of_player_SPRITES))
-            event_maker.make_entry('trace', "used exit door", "successful", 'driver', True, True)
+            if event.subtype == events.next_room:
+                screen.apply(room=DEBUG_dungeon.next_room(screen.GROUP_of_player_SPRITES))
+                event_maker.make_entry('trace', "used exit door", "successful", 'driver', True, True)
+            elif event.subtype == events.to_hub:
+                screen.apply(room=DEBUG_dungeon.go_to_hub(screen.GROUP_of_player_SPRITES))
+                event_maker.make_entry('trace', "back to the hub", "successful", 'driver', True, True)
+            elif event.subtype == events.next_floor:
+                screen.apply(room=DEBUG_dungeon.next_room(screen.GROUP_of_player_SPRITES))
+                event_maker.make_entry('trace', "used exit door", "successful", 'driver', True, True)
+            elif event.subtype == events.prev_floor:
+                screen.apply(room=DEBUG_dungeon.next_room(screen.GROUP_of_player_SPRITES))
+                event_maker.make_entry('trace', "used exit door", "successful", 'driver', True, True)
         if event.type == events.game_state_event:
             if event.subtype == 'end_game':
                 running = False

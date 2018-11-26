@@ -29,9 +29,11 @@ img_lookup = {'robes': goddess_robes,
               'tattered': goddess_tattered,
               }
 
-class player(spriteling.spriteling):
-    def __init__(self, book, loc):
 
+
+
+class player(spriteling.spriteling):
+    def __init__(self, book, loc, **kwargs):
         super().__init__(image=img_lookup[book.goddess_lookup_key], loc=loc)
 
         self.spritesheet = img_lookup[book.goddess_lookup_key]
@@ -104,8 +106,8 @@ class player(spriteling.spriteling):
 
         self.image = self.spritesheet.subsurface(self.tuple_lookup[self.facing])
 
-    def pull_status(self):
-        return self.status_mods
+    def pull_stuff(self):
+        return self.my_reticle
 
 # a side/parallel class to player.
 class multiplayer(player):
@@ -113,3 +115,4 @@ class multiplayer(player):
         player.__init__(self, book,  (0, 0))
         print("book level is: ", book.level, "book spells are: ", book.spells)
         self.number = number
+

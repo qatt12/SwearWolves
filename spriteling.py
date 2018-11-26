@@ -233,7 +233,6 @@ def collide_hitbox(spritelingA, spritelingB):
 # can use. also, by deriving everything from this, I don't have to type out pygame.sprite.Sprite as many times
 class spriteling(pygame.sprite.Sprite):
     tracking_num = 0
-
     def __init__(self, *args, **kwargs):
         super().__init__()
 

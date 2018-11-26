@@ -300,7 +300,7 @@ def look_for_activity(*args, **kwargs):
 
 
 class door(interact_trigger):
-    def __init__(self, **kwargs):
+    def __init__(self, door_type=events.next_room, **kwargs):
         # DEBUG STUFF at least the image is. UNTIL YOTOLL DRAWS A DOOR
         pass_img = pygame.transform.scale(pygame.image.load('misc\spirit.jpg').convert_alpha(), (config.tile_scalar, config.tile_scalar))
         event_maker.make_entry('error', 'DEBUG', "placeholder image", 'blocks', True, True)
@@ -318,11 +318,11 @@ class door(interact_trigger):
             self.rect.center = kwargs['root_wall'].rect.center
         if 'side_x' in kwargs:
             self.rect.centerx = kwargs['side_x']
-            self.rect.centery = (config.tile_scalar + (kwargs['pos']*config.tile_scalar + 50))
+            self.rect.centery = (config.tile_scalar + (kwargs['pos']*config.tile_scalar)) + kwargs['bound_y']
         if 'side_y' in kwargs:
             self.rect.centery = kwargs['side_y']
-            self.rect.centerx = (config.tile_scalar + (kwargs['pos']*config.tile_scalar + 50))
-
+            self.rect.centerx = (config.tile_scalar + (kwargs['pos']*config.tile_scalar)) + kwargs['bound_x']
+        self.door_type = door_type
         self.hitbox.update()
 
     # simple, placeholder-y method that moves the player on top of the door. Will prbly be rewritten with more complex
@@ -337,7 +337,7 @@ class door(interact_trigger):
             self.tick = 0
         if self.tick >= self.timer:
             event_maker.make_entry('log', 'door interact', "door is receiving full player interaction", 'blocks', True, False, obj_src=self, loc_src='door')
-            event_maker.new_event(events.room_event)
+            event_maker.new_event(events.room_event, file_src='blocks', subtype=self.door_type)
 
 
 class ledge(block):

@@ -258,6 +258,7 @@ class handler():
         else:
             self.menu = None
         self.hud = None
+        self.my_reticle = None
         self.missiles = pygame.sprite.Group()
         self.my_player_single = pygame.sprite.GroupSingle()
         self.other_players = pygame.sprite.Group()
@@ -323,13 +324,14 @@ class handler():
         # its safe to call update more than once per frame for the spell book
         origin = self.player.rect.center
         if sel_chk != 9:
-            self.book.update(origin, select_spell=sel_chk)
+            self.book.select_spell(select_spell=sel_chk)
         elif nxt_chk[0] and not nxt_chk[1]:
-            self.book.update(origin, cycle_spell='next')
+            self.book.select_spell(cycle_spell='next')
         elif prv_chk[0] and not prv_chk[1]:
-            self.book.update(origin, cycle_spell='prev')
+            self.book.select_spell(cycle_spell='prev')
         self.book.update(origin, fire=(now, prev), direction=self.player.facing,
-                         missile_layer=self.missiles, targ_lock=(lock_next-lock_prev), **kwargs)
+                         missile_layer=self.missiles, targ_lock=(lock_next-lock_prev), reticle=self.my_reticle,
+                         **kwargs)
 
         # updates spells
         # I just need to get the targeting data into the targeted spell
@@ -347,7 +349,8 @@ class handler():
         # deletes a reference to the char_select_menu, since it is no longer needed, and should be garbage collected
         self.menu = None
         self.player = p_constr(self.book, self.number)
-        self.book.pop_spells()
+        from overlays import select_reticle
+        self.book.pop_spells(select_reticle(self.number))
         # okay so I couldn't get around importing this one thing.
         from overlays import hud
         self.hud = hud(self.player, self.book, player_num)

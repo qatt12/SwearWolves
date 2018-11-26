@@ -231,18 +231,47 @@ class missile(spriteling.spriteling):
         victim.damage(self.elem_type, self.dmg)
         victim.apply(*self.effects)
 
-class complex_missiles(missile):
-    def __init__(self, *args, **kwargs):
-        super(complex_missiles, self).__init__(*args, **kwargs)
-        if 'direction' in kwargs:
-            if 'vel_mult' in kwargs:
-                self.velocity = (kwargs['direction'][0]*kwargs["vel_mult"], kwargs['direction'][1]*kwargs["vel_mult"])
 
-class accel_missile(missile):
-    def __init__(self, accel, max_vel, img, loc, vel, *args, **kwargs):
-        super(accel_missile, self).__init__(img, loc, vel, *args, **kwargs)
-        self.acceleration = accel
-        self.max_velocity = max_vel
+class seeker(missile):
+    def __init__(self, partner, accel, offset, orbital_rank, img, loc, vel, *args, **kwargs):
+        super().__init__(img, loc, vel, *args, **kwargs)
+        self.pair = partner
+        self.accel = accel
+        if orbital_rank != 0:
+            sign = (orbital_rank % 2)*-1
+            if self.velocity[1] != 0:
+                self.velocity[0] = sign*offset*self.accel
+            if self.velocity[0] != 0:
+                self.velocity[1] = sign*offset*self.accel
+
+    def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
+        if self.rect.centerx > self.pair.rect.centerx:
+            self.velocity[0] = self.velocity[0] - self.accel
+        elif self.rect.centerx < self.pair.rect.centerx:
+            self.velocity[0] = self.velocity[0] + self.accel
+        if self.rect.centery > self.pair.rect.centery:
+            self.velocity[1] = self.velocity[1] - self.accel
+        elif self.rect.centery < self.pair.rect.centery:
+            self.velocity[1] = self.velocity[1] + self.accel
+
+
+# partner class intended to be used with the helix missile. This provides it a moving point around which to focus itself
+class epicenter():
+    def __init__(self, *args):
+        self.rect = pygame.rect.Rect((0, 0), (11, 11))
+        self.subjects = []
+        for each in args:
+            self.subjects.append(each)
+
+    def update(self):
+        tick = 0
+        total_x, total_y = 0, 0
+        for each in self.subjects:
+            tick += 1
+            total_x += each.rect.centerx
+            total_y += each.rect.centery
+        self.rect.center = (total_x/tick, total_y/tick)
 
 
 # spells themselves don't do much, except for creating and launching missiles
@@ -260,6 +289,8 @@ class spell(spriteling.spriteling):
             self.spell_name = kwargs['spell_name']
         else:
             self.spell_name = "I should have a name"
+
+
 
     def target(self, *args, **kwargs):
         pass
@@ -466,7 +497,8 @@ class automagic(spell):
     def __init__(self, acc, spread, recoil, *args, **kwargs):
         pass
 
-
+class helix():
+    pass
 
 ##########################
 # targeted spells are fukkin nuts. I'll come back to them
@@ -667,10 +699,7 @@ class guided_seeker(ordered_target):
     def __init__(self, secondary_proj, dist, seeks, *args, **kwargs):
         super(guided_seeker, self).__init__(dist, seeks, *args, **kwargs)
 
-class orbital(missile):
-    def __init__(self, subj, img, loc, dir, vel, *args, **kwargs):
-        super().__init__(img, loc, vel)
-        self.subject = subj
+
 ##############################################
 
 
@@ -693,10 +722,12 @@ class charged_fireball_s(charge_up):
     def __init__(self):
         super().__init__(2, charged_fireball_m, dupe(fire_book_img), spell_name="charged fireball")
 
+
 class charged_fireball_m(fireball_m):
     def __init__(self, *args, **kwargs):
         super(charged_fireball_m, self).__init__(*args, **kwargs)
         self.dmg = 100
+
 
 class flamethrower_s(simple_multicharge):
     def __init__(self):
@@ -729,9 +760,13 @@ class ice_wall_s():
     pass
 
 
-class icebeam_s():
-    pass
+class icebeam_s(spell):
+    def __init__(self):
+        super(icebeam_s, self).__init__(icebeam_m, ice_book_img)
 
+class icebeam_m(seeker):
+    def __init__(self, target, orbital_rank, direction, loc):
+        super().__init__(target, 5, 10, orbital_rank, icy_ball_img, loc, (4 * direction[0], 4 * direction[1]))
 
 class acidic_orb_s(spell):
     def __init__(self):

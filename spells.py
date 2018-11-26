@@ -237,22 +237,38 @@ class seeker(missile):
         self.pair = partner
         self.accel = accel
         if orbital_rank != 0:
+            self.normal = False
             sign = (orbital_rank % 2)*-1
             if self.velocity[1] != 0:
                 self.velocity = (sign*offset*self.accel, self.velocity[1])
             if self.velocity[0] != 0:
                 self.velocity = (self.velocity[0], sign*offset*self.accel)
+        else:
+            self.normal = True
+        if 'max_vel' in kwargs:
+            self.top_speed = kwargs['max_vel']
+        else:
+            self.top_speed = 1000000000
+        if 'min_distance' in kwargs:
+            self.min_distance = kwargs['min_distance']
+        else:
+            self.min_distance = 0
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
-        if self.rect.centerx > self.pair.rect.centerx:
-            self.velocity = (self.velocity[0] - self.accel, self.velocity[1])
-        elif self.rect.centerx < self.pair.rect.centerx:
-            self.velocity = (self.velocity[0] + self.accel, self.velocity[1])
-        if self.rect.centery > self.pair.rect.centery:
-            self.velocity = (self.velocity[0], self.velocity[1] - self.accel)
-        elif self.rect.centery < self.pair.rect.centery:
-            self.velocity = (self.velocity[0], self.velocity[1] + self.accel)
+        if not self.normal:
+            x_vel, y_vel = self.velocity[0]+self.pair.velocity[0], self.velocity[1]+self.pair.velocity[1]
+            if abs(self.rect.centerx - self.pair.rect.centerx) > self.min_distance:
+                if self.rect.centerx > self.pair.rect.centerx:
+                    x_vel = max(self.velocity[0] - self.accel, -self.top_speed)
+                elif self.rect.centerx < self.pair.rect.centerx:
+                    x_vel = min(self.velocity[0] + self.accel, self.top_speed)
+            if abs(self.rect.centery - self.pair.rect.centery) > self.min_distance:
+                if self.rect.centery > self.pair.rect.centery:
+                    y_vel = max(self.velocity[1] - self.accel, -self.top_speed)
+                elif self.rect.centery < self.pair.rect.centery:
+                    y_vel = min(self.velocity[1] + self.accel, self.top_speed)
+            self.velocity = (x_vel, y_vel)
 
     def set_partner(self, new_partner):
         self.pair = new_partner
@@ -454,150 +470,6 @@ class charge_up(spell):
             self.charge = 0
         return None
 
-# multi charge spells are like the basic charge_up, except they can be charged to higher levels
-class multicharge(charge_up):
-    def __init__(self, thresholds, *args, **kwargs):
-        self.charge_levels = thresholds
-        super().__init__(thresholds[0], *args)
-        event_maker.make_entry('trace', 'multicharge report', ' ', 'spells', True, True,
-                               'logan', 'multicharge',
-                               got_thresholds=thresholds)
-        self.charges = 0
-        self.firing = False
-        if 'intercool' in kwargs:
-            self.intercool = kwargs['intercool']
-        else:
-            self.intercool = 10
-        self.timer = 0
-
-    def cast(self, prev, now, direction):
-        message = events.entry('trace', 'charge tracking for simple multicharge', ' ', 'spells',
-                     'extra', "logan", 'low', 'multicharge',
-                               charge=self.charge, charge_time=self.charge_time, max_charges=len(self.charge_levels))
-        self.charge_time = self.charge_levels[self.charges]
-        if self.timer > 0:
-            self.timer -= 1
-        if self.firing and self.charges > 0 and self.timer <= 0:
-            self.timer = self.intercool
-            self.charges -= 1
-            message.modify(ext_desc='returning a projectile', charges=self.charges)
-            event_maker.send_entry(message, True, True)
-            return self.projectile(direction, self.rect.center)
-        elif self.firing and self.charges <= 0:
-            self.firing = False
-            message.modify(ext_desc='ran out of charges')
-            event_maker.send_entry(message, True, True)
-            return None
-        else:
-            if self.charge >= self.charge_time:
-                # limits the number of charges
-                self.charges += 1
-                event_maker.make_entry('trace', '+1 charges', "", 'spells', True, True,
-                                       'multicharge',
-                                       charges=self.charges)
-                self.charges = min(self.charges, len(self.charge_levels)-1)
-                self.charge_time = self.charge_levels[self.charges]
-            if now and not prev:
-                self.charge = 1
-            elif now and prev:
-                self.charge += 1
-            elif not now and prev:
-                message.modify(charge=self.charge)
-                self.charge = 0
-                if self.charges == 0:
-                    message.modify(ext_desc="nothing has been fired; now was released when charges == 0", charges=self.charges)
-                    event_maker.send_entry(message, True, True)
-                    return None
-                elif self.charges >= 1:
-                    self.firing = True
-                    message.modify(ext_desc="first projectile has been fired; now was released when charges >= 1", charges=self.charges)
-                    event_maker.send_entry(message, True, True)
-                    return self.projectile(direction, self.rect.center)
-
-
-class simple_multicharge(multicharge):
-    # size is how many charges can be held,
-    # step is how long between acquiring each charge
-    def __init__(self, step, size, in_sec, *args, **kwargs):
-        if in_sec:
-            t1 = step*config.fps
-        else:
-            t1 = step
-        charges = [x for x in range(t1, size*t1, t1)]
-        super(simple_multicharge, self).__init__(charges, *args, **kwargs)
-
-# intended to be a basic damage/power scaling function. Merely scales as a matter of percentage, where having higher
-# than the minimum translates to a direct power increase of up to double, if charge achieved == top
-def basic_percentage(lvl, btm, top):
-    temp = lvl-btm
-    return (temp/top)+1
-
-# has maximum and minimum charge levels;
-# allows for variable levels of charge when firing/casting.
-class variable_charge(charge_up):
-    def __init__(self, min_charge, max_charge, *args, **kwargs):
-        super().__init__(min_charge, *args, **kwargs)
-        self.max_charge = max_charge *config.fps
-        if 'pwr_scalar' in kwargs:
-            self.pwr_scalar = kwargs['pwr_scalar']
-        else:
-            self.pwr_scalar = basic_percentage
-
-    def cast(self, prev, now, direction):
-        if now and not prev:
-            self.charge = 1
-        elif now and prev:
-            self.charge += 1
-        elif not now and self.charge >= self.charge_time:
-            pwr_mod = self.pwr_scalar(self.charge, self.charge_time, self.max_charge)
-            self.charge = 0
-            ret = self.projectile(direction, self.rect.center)
-            ret.power_up(pwr_mod)
-            return ret
-        elif prev and not now:
-            self.charge = 0
-        return None
-
-
-class cool_down(spell):
-    def __init__(self, timer, *args, **kwargs):
-        super().__init__(*args, type_name='cool_down', **kwargs)
-        self.heat = 0
-        self.cooldown_time = timer * sec
-        
-    def update(self, active, *args, **kwargs):
-        super(cool_down, self).update(active, *args, **kwargs)
-        if self.heat > 0:
-            self.heat -= 1
-
-    def cast(self, prev, now, direction):
-        if self.heat > 0:
-            return None
-        if now and self.heat == 0:
-            self.heat = self.cooldown_time
-            return self.projectile(direction, self.rect.center)
-
-
-# this i gonna be weird. May want to just split it into two classes
-class beam(spell):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, type_name='beam', **kwargs)
-        self.own_missiles = pygame.sprite.Group()
-
-    def update(self, active, loc, *args, **kwargs):
-        shift_x, shift_y = self.rect.centerx - loc[0], self.rect.centery - loc[1]
-        self.own_missiles.update()
-
-    def cast(self, prev, now, direction):
-        self.own_missiles.add(super().cast(prev, now, direction))
-
-# a fancy, number crunchy type of spell
-class automagic(spell):
-    def __init__(self, acc, spread, recoil, *args, **kwargs):
-        pass
-
-class helix():
-    pass
 
 ##########################
 # targeted spells are fukkin nuts. I'll come back to them
@@ -714,15 +586,16 @@ class mass_target(target):
 
 # dumb target just targets the closest valid spriteling
 class dumb_target(target):
-    def assess_targets(self, targets):
+    def assess_targets(self, args):
         closest = 1000000000
         is_close = False
         self.chosen_target = None
-        for each in targets:
+        for each in args:
             if self.max_range >= events.dist(self, each) < closest:
                 self.chosen_target = each
                 is_close = True
         return is_close
+
 
 # this one is tricky, because it has to keep the potential targets in an ORDERED group, which is not doable with the
 # basic group.
@@ -794,13 +667,20 @@ class unguided_swarm(dumb_target):
     def __init__(self, secondary_proj, dist, seeks, *args, **kwargs):
         super().__init__(dist, seeks, *args, **kwargs)
         self.swarm = secondary_proj
-        self.numnum = 0
 
     def update(self, active, loc, prev, now, *args, **kwargs):
         super().update(active, loc, prev, now, *args, **kwargs)
         if self.chosen_target is not None and self.my_trigger(prev, now):
-            self.numnum +=1
-            kwargs['missile_layer'].add(self.swarm(self.reticle, self.numnum, kwargs['direction']))
+            kwargs['missile_layer'].add(self.swarm(self.reticle, 1, self.rect.center, (0, 5)))
+
+
+class self_target(unguided_swarm):
+    def __init__(self, secondary_proj, *args, **kwargs):
+        super().__init__(secondary_proj, 1, 'me', *args, **kwargs)
+
+    def assess_targets(self, *args):
+        self.chosen_target = args[0]
+        return True
 
 class guided_swarm(ordered_target):
     def __init__(self, secondary_proj, dist, seeks, *args, **kwargs):
@@ -811,19 +691,39 @@ class guided_swarm(ordered_target):
 
 class DEBUG_helix(spell):
     def __init__(self):
-        super().__init__(DEBUG_seeker, acid_book_img, trigger_method=simple_multicharge_gate(7, int(sec/10), 2))
-        self.most_recently_fired = epicenter()
+        super().__init__(DEBUG_seeker_for_helix, acid_book_img, trigger_method=semi())
+        self.most_recently_fired = None
+        self.num = 0
 
     def cast(self, direction):
-        first = self.projectile(None, 1, self.rect.center, direction)
-        second = self.projectile(first, 2, self.rect.center, direction)
-        first.set_partner(second)
-        return first, second
+        first = self.projectile(self.most_recently_fired, self.num, self.rect.center, direction)
+        second = self.projectile(first, 1, self.rect.center, direction)
+        third = self.projectile(first, 2, self.rect.center, direction)
+        return first, second, third
 
-class DEBUG_seeker(seeker):
+class DEBUG_seeker_for_helix(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
-        xvel, yvel = direction[0]*3, direction[1]*3
+        xvel, yvel = direction[0]*4, direction[1]*4
         super().__init__(partner, 2, 3, orbital_rank, fire_book_img, loc, (xvel, yvel), *args, **kwargs)
+
+class DEBUG_unguided_swarm(unguided_swarm):
+    def __init__(self):
+        super().__init__(DEBUG_seeker_for_unguided_swarm, 4000, 'enemies', dumb_heal_m, ice_book_img)
+
+class DEBUG_seeker_for_unguided_swarm(seeker):
+    def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
+        xvel, yvel = direction[0]*5, direction[1]*5
+        super().__init__(partner, 7, 4, orbital_rank, fire_book_img, loc, (xvel, yvel), *args, **kwargs)
+
+
+class DEBUG_circle_me(self_target):
+    def __init__(self):
+        super().__init__(DEBUG_seeker_for_circle_me, dumb_heal_m, ice_book_img)
+
+class DEBUG_seeker_for_circle_me(seeker):
+    def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
+        xvel, yvel = direction[0], direction[1]*20
+        super().__init__(partner, 7, 1, orbital_rank, fire_book_img, (loc[0]+100, loc[1]), (xvel, yvel), *args, **kwargs, min_distance=100)
 
 
 class fireball_s(spell):
@@ -861,9 +761,9 @@ class flamethrower_s(spell):
                                              trigger_method=simple_multicharge_gate(40, int(sec/8), 4))
 
 
-class heatwave_s(cool_down):
+class heatwave_s(spell):
     def __init__(self):
-        super().__init__(2, fireball_m, dupe(fire_book_img), spell_name='heatwave')
+        super().__init__(fireball_m, dupe(fire_book_img), spell_name='heatwave', trigger_method=over_heated(1280, 128))
 
 
 class iceshard_s(spell):
@@ -931,6 +831,9 @@ class light_wave_m(missile):
 class radiant_glow_s():
     pass
 
+class beam(spell):
+    pass
+
 class solar_beam_s(beam):
     pass
 
@@ -993,3 +896,5 @@ class DEBUG_book(spell_book):
 
         print(self, "spell key: ", self.spell_key)
         self.level_costs = {0: 1000, 1: 2000}
+
+

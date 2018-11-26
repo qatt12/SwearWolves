@@ -1,15 +1,18 @@
-***	entry #: 109 type: error
+***	entry #: 78 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 111 type: error
+***	entry #: 80 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 112 type: error
+***	entry #: 81 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 113 type: error
+***	entry #: 82 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 61065 type: error
+***	entry #: 294196 type: error
+file source: blocks
+DEBUG: placeholder image
+***	entry #: 1008510 type: error
 file source: blocks
 DEBUG: placeholder image

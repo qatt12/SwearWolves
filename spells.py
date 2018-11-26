@@ -166,8 +166,7 @@ class spell_book(spriteling.spriteling):
                                    obj_src='spellbook', inst_src=self)
         if 'fire' in kwargs:
             for lonely in self.active_spell:
-                lonely.update(True, loc, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
-                              **kwargs)
+                lonely.update(True, loc, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'], **kwargs)
         else:
             # the 'active' param must be set to false here. To tell the spell not to expect input??
             # I know that its essential to keep charged spells working
@@ -240,20 +239,23 @@ class seeker(missile):
         if orbital_rank != 0:
             sign = (orbital_rank % 2)*-1
             if self.velocity[1] != 0:
-                self.velocity[0] = sign*offset*self.accel
+                self.velocity = (sign*offset*self.accel, self.velocity[1])
             if self.velocity[0] != 0:
-                self.velocity[1] = sign*offset*self.accel
+                self.velocity = (self.velocity[0], sign*offset*self.accel)
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
         if self.rect.centerx > self.pair.rect.centerx:
-            self.velocity[0] = self.velocity[0] - self.accel
+            self.velocity = (self.velocity[0] - self.accel, self.velocity[1])
         elif self.rect.centerx < self.pair.rect.centerx:
-            self.velocity[0] = self.velocity[0] + self.accel
+            self.velocity = (self.velocity[0] + self.accel, self.velocity[1])
         if self.rect.centery > self.pair.rect.centery:
-            self.velocity[1] = self.velocity[1] - self.accel
+            self.velocity = (self.velocity[0], self.velocity[1] - self.accel)
         elif self.rect.centery < self.pair.rect.centery:
-            self.velocity[1] = self.velocity[1] + self.accel
+            self.velocity = (self.velocity[0], self.velocity[1] + self.accel)
+
+    def set_partner(self, new_partner):
+        self.pair = new_partner
 
 
 # partner class intended to be used with the helix missile. This provides it a moving point around which to focus itself
@@ -264,7 +266,9 @@ class epicenter():
         for each in args:
             self.subjects.append(each)
 
-    def update(self):
+    def update(self, *args):
+        for each in args:
+            self.subjects.append(each)
         tick = 0
         total_x, total_y = 0, 0
         for each in self.subjects:
@@ -273,6 +277,102 @@ class epicenter():
             total_y += each.rect.centery
         self.rect.center = (total_x/tick, total_y/tick)
 
+class trigger():
+    def __call__(self, prev, now):
+        return False
+
+
+class semi(trigger):
+    def __call__(self, prev, now):
+        return now and not prev
+
+class charged_gate(trigger):
+    def __init__(self, max):
+        self.charge_time = max * sec
+        self.charge = 0
+
+    def __call__(self, prev, now):
+        if now and prev:
+            self.charge += 1
+            return False
+        elif now and not prev:
+            self.charge = 1
+        elif prev and not now:
+            return self.charge >= self.charge_time
+        else:
+            self.charge = 0
+        return self.charge >= self.charge_time
+
+class simple_multicharge_gate(trigger):
+    def __init__(self, size, step, delay=10):
+        self.thresholds = [x for x in range(step, step*size, step)]
+        self.drop_rate = step
+        self.charge = 0
+        self.stages = 0
+        self.delay = delay
+        self.timer = 0
+
+    def __call__(self, prev, now):
+        if now and prev:
+            self.charge += 1
+            if self.charge >= self.thresholds[self.stages]:
+                self.stages = min(len(self.thresholds)-1, self.stages+1)
+        elif self.timer > 0:
+            self.timer -=1
+            return False
+        elif self.stages > 0:
+            self.charge = 0
+            self.stages -= 1
+            self.timer = self.delay
+            return True
+        return False
+
+class over_heated(trigger):
+    def __init__(self, max_heat, heat_per_missile):
+        self.over_heated = False
+        self.max_temp = max_heat
+        self.buildup = heat_per_missile
+        self.temp = 0
+
+    def __call__(self, prev, now):
+        if not self.over_heated and now and not prev:
+            self.temp += self.buildup
+            self.over_heated = self.temp > self.max_temp
+            return True
+        elif self.temp > 0:
+            self.temp -= 1
+            return False
+        else:
+            self.over_heated = False
+        return False
+
+class cooled(trigger):
+    def __init__(self, cooldown_time):
+        self.cooldown_time = cooldown_time * sec
+        self.heat = 0
+
+    def __call__(self, prev, now):
+        if self.heat > 0:
+            self.heat -= 1
+            return False
+        elif now:
+            return True
+        return False
+
+class chained_trigger(trigger):
+    def __init__(self, *args):
+        self.gates = []
+        for each in args:
+            self.gates.append(each)
+
+    def __call__(self, prev, now):
+        ret = True
+        for each in self.gates:
+            ret = ret and each(prev, now)
+        return ret
+
+class scored_trigger(trigger):
+    pass
 
 # spells themselves don't do much, except for creating and launching missiles
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
@@ -290,7 +390,10 @@ class spell(spriteling.spriteling):
         else:
             self.spell_name = "I should have a name"
 
-
+        if "trigger_method" in kwargs:
+            self.my_trigger = kwargs["trigger_method"]
+        else:
+            self.my_trigger = semi()
 
     def target(self, *args, **kwargs):
         pass
@@ -304,9 +407,8 @@ class spell(spriteling.spriteling):
         super().update(*args, **kwargs)
         if active:
             self.rect.center = loc
-            msl_chk = self.cast(prev, now, *args)
-            if 'missile_layer' in kwargs and msl_chk is not None:
-                kwargs['missile_layer'].add(msl_chk)
+            if 'missile_layer' in kwargs and self.my_trigger(prev, now):
+                kwargs['missile_layer'].add(self.cast(kwargs['direction']))
             else:
                 pass
 
@@ -315,11 +417,8 @@ class spell(spriteling.spriteling):
     # the fire button on the previous frame (the fire button must be released in between shots).
     # the direction param is a tuple of the form (x, y) where x and y are -1, 0, or 1. these are multiplied by the
     # respective velocity multipliers to determine in which direction the spell's projectile will travel
-    def cast(self, prev, now, direction):
-        if now and not prev:
-            return self.projectile(direction, self.rect.center)
-        else:
-            return None
+    def cast(self, direction):
+        return self.projectile(direction, self.rect.center)
 
     def __str__(self):
         return str(self.type_name + ' ' + self.spell_name)
@@ -691,16 +790,40 @@ class dumb_heal_m(cooled_reticle_m):
 
 
 ###############################################
-class unguided_seeker(dumb_target):
+class unguided_swarm(dumb_target):
     def __init__(self, secondary_proj, dist, seeks, *args, **kwargs):
-        super(unguided_seeker, self).__init__(dist, seeks, *args, **kwargs)
+        super().__init__(dist, seeks, *args, **kwargs)
+        self.swarm = secondary_proj
+        self.numnum = 0
 
-class guided_seeker(ordered_target):
+    def update(self, active, loc, prev, now, *args, **kwargs):
+        super().update(active, loc, prev, now, *args, **kwargs)
+        if self.chosen_target is not None and self.my_trigger(prev, now):
+            self.numnum +=1
+            kwargs['missile_layer'].add(self.swarm(self.reticle, self.numnum, kwargs['direction']))
+
+class guided_swarm(ordered_target):
     def __init__(self, secondary_proj, dist, seeks, *args, **kwargs):
-        super(guided_seeker, self).__init__(dist, seeks, *args, **kwargs)
+        super().__init__(dist, seeks, *args, **kwargs)
 
 
 ##############################################
+
+class DEBUG_helix(spell):
+    def __init__(self):
+        super().__init__(DEBUG_seeker, acid_book_img, trigger_method=simple_multicharge_gate(7, int(sec/10), 2))
+        self.most_recently_fired = epicenter()
+
+    def cast(self, direction):
+        first = self.projectile(None, 1, self.rect.center, direction)
+        second = self.projectile(first, 2, self.rect.center, direction)
+        first.set_partner(second)
+        return first, second
+
+class DEBUG_seeker(seeker):
+    def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
+        xvel, yvel = direction[0]*3, direction[1]*3
+        super().__init__(partner, 2, 3, orbital_rank, fire_book_img, loc, (xvel, yvel), *args, **kwargs)
 
 
 class fireball_s(spell):
@@ -718,9 +841,11 @@ class fireball_m(missile):
         self.elem_type = 'fire'
 
 
-class charged_fireball_s(charge_up):
+class charged_fireball_s(spell):
     def __init__(self):
-        super().__init__(2, charged_fireball_m, dupe(fire_book_img), spell_name="charged fireball")
+        super().__init__(charged_fireball_m, dupe(fire_book_img),
+                         spell_name="charged fireball",
+                         trigger_method=charged_gate(2))
 
 
 class charged_fireball_m(fireball_m):
@@ -729,10 +854,11 @@ class charged_fireball_m(fireball_m):
         self.dmg = 100
 
 
-class flamethrower_s(simple_multicharge):
+class flamethrower_s(spell):
     def __init__(self):
-        super(flamethrower_s, self).__init__(int(config.fps/8), 40, False, fireball_m, dupe(fire_book_img),
-                                             spell_name='flamethrower', intercool=4)
+        super(flamethrower_s, self).__init__(fireball_m, dupe(fire_book_img),
+                                             spell_name='flamethrower',
+                                             trigger_method=simple_multicharge_gate(40, int(sec/8), 4))
 
 
 class heatwave_s(cool_down):

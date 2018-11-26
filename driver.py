@@ -230,8 +230,8 @@ while(start_loop and running):
 game_window.fill((0, 0, 0))
 
 import spells
-
-unlocked_books = [spells.DEBUG_book(spells.dumb_heal_s, spells.DEBUG_target_line, spells.fireball_s, spells.charged_fireball_s, spells.flamethrower_s),
+# spells.dumb_heal_s, spells.DEBUG_target_line
+unlocked_books = [spells.DEBUG_book(spells.charged_fireball_s, spells.fireball_s, spells.flamethrower_s, spells.DEBUG_helix),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1

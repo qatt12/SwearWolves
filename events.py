@@ -396,11 +396,11 @@ class entry():
     def match_terms(self, allowed):
         for each in self.terms:
             if each in allowed:
-                print("accepting ", self.entry_num)
+                #print("accepting ", self.entry_num)
                 return True
             else:
                 # LOGAN:: MIGHT NEED TO CHANGE THIS LATER
-                print('discarding ', self, "based on: ", each)
+                #print('discarding ', self.entry_num, "based on: ", each)
                 return False
 
     def modify(self, *args, **kwargs):
@@ -458,4 +458,4 @@ next_stage = 1
 
 event_maker = event_handler(500)
 event_maker.make_entry("trace", "first trace", 'the very first trace entry', 'events', False, False)
-event_maker.block_terms("target", 'targeted', 'DEBUG targeting', 'move')
+event_maker.block_terms("target", 'targeted', 'DEBUG targeting', 'move', 'old')

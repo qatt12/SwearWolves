@@ -21,6 +21,7 @@ blue   =    (  0,   0, 255)
 white  =    (255, 255, 255)
 black  =    (  0,   0,   0)
 purple =    (200,   0, 200)
+yellow =    (200, 200,   0)
 
 # color, but in a dictionary
 color_lookup = {

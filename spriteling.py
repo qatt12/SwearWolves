@@ -437,11 +437,17 @@ class spriteling(pygame.sprite.Sprite):
 
     # the damage and heal functions are important. As I have discovered, its kind of a bitch to try and apply damage
     # (esp damage over time) cleanly without splitting it into a method that creates a class that is appended to a deque
-    def damage(self, form, amount, duration=1):
+    def damage(self, form, amount, duration=0):
         if form not in self.curr_immune:
             event_maker.make_entry('trace', 'damage', 'applying damage from spriteling', 'spriteling', False, False,
                                    'extra', 'damage', 'health')
-            self.cond_queue.append(damage(form, amount, duration))
+            if bool(duration):
+                self.cond_queue.append(damage(form, amount, duration))
+            else:
+                dmg = self.curr_modifiers['dmg'] * self.dmg_amount
+                if form in self.curr_modifiers:
+                    dmg *= self.curr_modifiers[form]
+                self.curr_hp -= dmg
 
     def heal(self, amount, duration=1, upfront=0):
         self.curr_hp += upfront

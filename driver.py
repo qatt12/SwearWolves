@@ -240,7 +240,7 @@ game_window.fill((0, 0, 0))
 import spells
 
 # spells.dumb_heal_s, spells.DEBUG_target_line
-unlocked_books = [spells.DEBUG_book(spells.icebeam_s, spells.DEBUG_unguided_swarm, spells.DEBUG_circle_me, spells.solar_beam_s),
+unlocked_books = [spells.DEBUG_book(spells.fireball_s, spells.flame_wheel_s, spells.solar_beam_s, spells.beacon_of_hope),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1

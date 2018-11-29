@@ -266,6 +266,7 @@ class spriteling(pygame.sprite.Sprite):
 
         self.base_hp = 1000
         self.curr_hp = 1000
+        self.healing = 0
 
         self.base_modifiers = {'dmg': 1, 'knockback': 1}
         self.applied_modifiers = dict()
@@ -301,10 +302,13 @@ class spriteling(pygame.sprite.Sprite):
             event_maker.send_entry(message, True, True)
         return ret
 
+    def react(self, *args, **kwargs):
+        pass
+
     def update(self, *args, **kwargs):
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
-        self.move(**kwargs)
-        self.rect.move_ip(self.velocity)
+
+        self.rect.move_ip(self.move(**kwargs))
         self.hitbox.update()
 
         for x in range(0, len(self.cond_queue)):
@@ -327,6 +331,9 @@ class spriteling(pygame.sprite.Sprite):
         for item in self.base_immune:
             if item not in self.curr_immune:
                 self.curr_immune.add(item)
+
+        self.curr_hp += self.healing
+        self.healing = 0
         self.curr_hp = min(self.curr_hp, self.base_hp)
         if self.curr_hp <= 0:
             event_maker.new_event(events.spriteling_event, 'spriteling', subtype='death', message="a spriteling has died")
@@ -342,7 +349,7 @@ class spriteling(pygame.sprite.Sprite):
         pygame.draw.rect(disp, config.red, self.hitbox.rect, 4)
 
     # minimize use of this; most of its functionality is being taken over by update
-    def move(self, **kwargs):
+    def move(self, force_apply = False, **kwargs):
         message = events.entry('trace', 'moving', 'calling move() from spriteling', 'spriteling',
                                'move', 'movement', 'spriteling',
                                inst_src=self, obj_src=spriteling, old_vel=self.velocity, old_rect=self.rect)
@@ -416,6 +423,10 @@ class spriteling(pygame.sprite.Sprite):
 
         event_maker.send_entry(message, False, False)
         self.velocity = (xvel, yvel)
+        if force_apply:
+            self.rect.move_ip(self.velocity)
+            self.hitbox.update()
+        return (xvel, yvel)
 
     def check_collide(self, target):
         return pygame.Rect.colliderect(self.hitbox.rect, target.hitbox.rect)
@@ -530,7 +541,7 @@ class heal():
 
     def __call__(self, subj):
         if self.duration > 0:
-            subj.curr_hp += self.amount
+            subj.healing = max(self.amount, subj.healing)
         self.duration -= 1
         return self.duration >= 0
 

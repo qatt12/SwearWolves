@@ -225,6 +225,8 @@ class floor(block):
         size_x, size_y = size[0], size[1]
         self.image = pygame.Surface((size_x * config.tile_scalar, size_y * config.tile_scalar))
 
+        self.layer = config.floor_layer
+
         # basic loop to blit all the floor tiles into one surface
         for y in range(0, size_y+1):
             for x in range(0, size_x+1):
@@ -244,6 +246,8 @@ class trigger(block):
             print(AssertionError)
             #not sure how to avoid sending two hitbox kwargs up to spriteling
         super().__init__(img, loc, hitbox=outer_box, **kwargs)
+
+        self.layer = config.door_layer   # by default, triggers are in the floor cosmetics layer
 
 class contact_trigger(trigger):
     def __init__(self, img, loc, outer_box, **kwargs):
@@ -324,6 +328,7 @@ class door(interact_trigger):
             self.rect.centerx = (config.tile_scalar + (kwargs['pos']*config.tile_scalar)) + kwargs['bound_x']
         self.door_type = door_type
         self.hitbox.update()
+        self.layer = config.door_layer
 
     # simple, placeholder-y method that moves the player on top of the door. Will prbly be rewritten with more complex
     # behavior (that doesn't stack all the players on top of each other)
@@ -348,3 +353,5 @@ class ledge(block):
         if dir == 'up':
             pygame.transform.rotate(pass_img, 90)
         super().__init__(pass_img, loc)
+
+        self.layer = config.floor_cos

@@ -61,13 +61,21 @@
 import spriteling, pygame, math, events
 from events import event_maker
 from config import fps as sec
+#from driver import kwargs['missile_layer']
 import config, random
 from collections import deque
+import math
 
-light_wave_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
+pillar_of_hate = pygame.sprite.LayeredUpdates()
+
+light_pulse_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
 fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
 acid_ball_img  = pygame.image.load( 'projectiles\img_poisonball.png').convert_alpha()
 icy_ball_img   = pygame.image.load(    'projectiles\img_iceball.png').convert_alpha()
+
+ice_beam_img   = pygame.image.load(    'projectiles\img_iceball.png').convert_alpha()
+
+
 
 default_reticle =pygame.image.load('projectiles\img_crosshair.png').convert_alpha()
 
@@ -90,6 +98,9 @@ big_acid_book_img  = bigger_books.subsurface(( 0, onfr*2), (w, onfr))
 big_light_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
 big_blank_book_img = bigger_books.subsurface(( 0, onfr*3), (w, onfr))
 
+sun_particle_img = light_book_img
+toxic_spore_img = acid_book_img
+
 
 # need to edit this, replace it with the proper, pygame form of Copy()?
 def dupe(base_surf, num=0, is_num=False, **kwargs):
@@ -102,6 +113,72 @@ def dupe(base_surf, num=0, is_num=False, **kwargs):
         pass
     ret.blit(base_surf, (0, 0))
     return ret
+
+
+class velocity():
+    def __init__(self, x=0, y=0, **kwargs):
+        self.x = x
+        self.y = y
+        mag = 1
+        if 'mag' in kwargs:
+            mag = kwargs['mag']
+        elif "var_mag" in kwargs:
+            mag = (kwargs['var_mag'][0] - kwargs['var_mag'][1]) + random.randint(0, int(2*kwargs['var_mag'][1]))
+        if 'dir' in kwargs:
+            self.x = mag * kwargs['dir'][0]
+            self.y = mag * kwargs['dir'][1]
+        if "angle" in kwargs:
+            pass
+
+        self.p_x = x % 1
+        self.t_x = 0.0
+        self.p_y = y % 1
+        self.t_y = 0.0
+
+    def __call__(self, x=False, y=False, *args, **kwargs):
+        if x:
+            self.x = x
+            self.p_x = x % 1
+        if y:
+            self.y = y
+            self.p_y = y % 1
+
+        if 'add_x' in kwargs:
+            self.x += kwargs['add_x']
+        if 'add_y' in kwargs:
+            self.y += kwargs['add_y']
+
+        if 'recalc_x' in kwargs:
+            self.x += kwargs['recalc_x']
+            self.p_x = self.x%1
+        if 'recalc_y' in kwargs:
+            self.y += kwargs['recalc_y']
+            self.p_y = self.y%1
+
+        r_x = self.x
+        r_y = self.y
+        self.t_x += self.p_x
+        self.t_y += self.p_y
+        if self.t_x > 1:
+            self.t_x -= 1
+            r_x += 1
+        elif self.t_x < -1:
+            self.t_x += 1
+            r_x -= 1
+        if self.t_y > 1:
+            self.t_y -= 1
+            r_y += 1
+        elif self.t_y < -1:
+            self.t_y += 1
+            r_y += 1
+        return r_x, r_y
+
+    def __getitem__(self, item):
+        if item == '0' or item == 0 or item == 'x':
+            return self.x
+        elif item == '1' or item == 1 or item == 'y':
+            return self.y
+
 
 # the arrangement of spells (or more generally, all attacks) goes like this: each player character gets a spell book,
 # and each spell book has a particular pre-defined list of spells attached to it (one spell for each category). To
@@ -129,14 +206,22 @@ class spell_book(spriteling.spriteling):
         self.length = 1
 
         self.reticle_constr = None
+        self.my_player_HANDLER = None
+        self.special_effects = []
+        self.special = None
 
         # this is maintained so that spells not currently selected can still be updated (mostly fo spells that need to
         # cool down; their cooldowns don't reset upon selecting a new spell
         self.other_spells = pygame.sprite.Group()
         self.active_spell = pygame.sprite.GroupSingle()
+        self.layer = config.overlayer
 
     def get_active_spell(self):
         return (self.index, self.spells[self.index])
+
+    def set_my_player_HANDLER(self, handler):
+        self.my_player_HANDLER = handler
+        self.my_player_HANDLER.apply_to_player(self.special_effects)
 
     def update(self, loc, *args, **kwargs):
         # the cycle and select spell are for controllers and keyboards, res. Keyboards can choose a spell based on the
@@ -187,7 +272,7 @@ class spell_book(spriteling.spriteling):
         self.reticle_constr = reticle_constr
         self.length = self.level
         if self.length == 1:
-            self.spells.append(self.spell_key[0]())
+            self.spells.append(self.spell_key[0](reticle_constr=reticle_constr))
             self.other_spells.add(self.spells[0])
         else:
             for x in range(0, self.level):
@@ -210,22 +295,48 @@ class spell_book(spriteling.spriteling):
 class missile(spriteling.spriteling):
     def __init__(self, img, loc, vel, *args, **kwargs):
         super().__init__(image=img, loc=loc)
-        self.velocity = vel
+
+        if isinstance(vel, tuple):
+            self.velocity = velocity(*vel)
+        elif isinstance(vel, velocity):
+            self.velocity = vel
+        else:
+            self.velocity = velocity()
         self.effects = []
         for each in args:
             self.effects.append(each)
         self.dmg = 1
         self.elem_type = 'magic'
+        self.layer = config.missile_layer
+        if 'trigger_data' in kwargs:
+            pass
+        if 'dispersion' in kwargs:
+            if self.velocity[0] != 0:
+                sign = random.randint(0, 1)%1*-1
+                self.rect.move_ip(sign*random.randint(0, kwargs['dispersion']), 0)
+            if self.velocity[1] != 0:
+                sign = random.randint(0, 1) % 1 * -1
+                self.rect.move_ip(0, sign * random.randint(0, kwargs['dispersion']))
+        if 'spread' in kwargs:
+            sign = random.randint(0, 1)
+            devtn = random.random() * kwargs['spread']
+            if bool(sign):
+                devtn *= -1
+            if self.velocity[0] != 0:
+                self.velocity(recalc_y=devtn)
+            if self.velocity[1] != 0:
+                self.velocity(recalc_x=devtn)
+
 
     def update(self, *args, **kwargs):
-        self.rect.move_ip(self.move())
+        self.curr_hp -= 1
+        if self.curr_hp <= 0:
+            self.kill()
+        self.move()
         self.hitbox.update()
 
-    def move(self):
-        return self.velocity
-
-    def power_up(self, multiplier, *args, **kwargs):
-        self.dmg *= multiplier
+    def move(self, force_apply=False, **kwargs):
+        self.rect.move_ip(self.velocity())
 
     def __call__(self, victim, *args, **kwargs):
         victim.damage(self.elem_type, self.dmg)
@@ -235,15 +346,21 @@ class missile(spriteling.spriteling):
 class seeker(missile):
     def __init__(self, partner, accel, offset, orbital_rank, img, loc, vel, *args, **kwargs):
         super().__init__(img, loc, vel, *args, **kwargs)
+        self.velocity(*vel)
         self.pair = partner
         self.accel = accel
         if orbital_rank != 0:
             self.normal = False
-            sign = (orbital_rank % 2)*-1
+            if orbital_rank % 2 == 0:
+                sign = -1
+            else:
+                sign = 1
+            # pickup debugging Helix here
+            event_maker.make_entry("trace", "helix checking", "", "spells", False, False)
             if self.velocity[1] != 0:
-                self.velocity = (sign*offset*self.accel, self.velocity[1])
+                self.rect.centerx = (self.pair.rect.centerx + sign*offset*self.accel)
             if self.velocity[0] != 0:
-                self.velocity = (self.velocity[0], sign*offset*self.accel)
+                self.rect.centery = (self.pair.rect.centery + sign*offset*self.accel)
         else:
             self.normal = True
         if 'max_vel' in kwargs:
@@ -256,53 +373,117 @@ class seeker(missile):
             self.min_distance = 0
 
     def update(self, *args, **kwargs):
-        super().update(*args, **kwargs)
         if not self.normal:
-            x_vel, y_vel = self.velocity[0]+self.pair.velocity[0], self.velocity[1]+self.pair.velocity[1]
             if abs(self.rect.centerx - self.pair.rect.centerx) > self.min_distance:
                 if self.rect.centerx > self.pair.rect.centerx:
-                    x_vel = max(self.velocity[0] - self.accel, -self.top_speed)
+                    self.velocity(add_x=-self.accel)
                 elif self.rect.centerx < self.pair.rect.centerx:
-                    x_vel = min(self.velocity[0] + self.accel, self.top_speed)
+                    self.velocity(add_x=self.accel)
             if abs(self.rect.centery - self.pair.rect.centery) > self.min_distance:
                 if self.rect.centery > self.pair.rect.centery:
-                    y_vel = max(self.velocity[1] - self.accel, -self.top_speed)
+                    self.velocity(add_y=-self.accel)
                 elif self.rect.centery < self.pair.rect.centery:
-                    y_vel = min(self.velocity[1] + self.accel, self.top_speed)
-            self.velocity = (x_vel, y_vel)
+                    self.velocity(add_y=self.accel)
+        self.rect.move_ip(self.velocity())
+        self.hitbox.update()
 
     def set_partner(self, new_partner):
         self.pair = new_partner
 
+class strict_orbit(missile):
+    def __init__(self, subject, radius, img, loc, vel, *args, **kwargs):
+        super().__init__(img, loc, vel, *args, **kwargs)
+        self.radius = radius
+        self.rect.center = subject.rect.center
+        self.rect.centerx = subject.rect.centerx + radius
+        self.subject = subject
+        self.velocity = velocity(0, 50)
+        self.quadrant = 1
+        self.angle = 0
 
-# partner class intended to be used with the helix missile. This provides it a moving point around which to focus itself
-class epicenter():
-    def __init__(self, *args):
-        self.rect = pygame.rect.Rect((0, 0), (11, 11))
-        self.subjects = []
-        for each in args:
-            self.subjects.append(each)
+    def update(self, *args, **kwargs):
+        self.angle += 3
+        if self.angle > 360:
+            self.angle = 0
+        locus = self.subject.rect.center
+        x_pos = locus[0] + math.cos(math.radians(self.angle)) * self.radius
+        y_pos = locus[1] + math.sin(math.radians(self.angle)) * self.radius
+        self.rect.center = x_pos, y_pos
 
-    def update(self, *args):
-        for each in args:
-            self.subjects.append(each)
-        tick = 0
-        total_x, total_y = 0, 0
-        for each in self.subjects:
-            tick += 1
-            total_x += each.rect.centerx
-            total_y += each.rect.centery
-        self.rect.center = (total_x/tick, total_y/tick)
+class basic_descending():
+    def __init__(self, x0, y0, x_decay, y_decay, frame_delay=1):
+        self.s_x = x0
+        self.s_y = y0
+        self.decay_x = x_decay * x0
+        self.decay_y = y_decay * y0
+        self.frame_delay = frame_delay
+        self.timer = 0
+
+    def __call__(self, *args, **kwargs):
+        self.timer += 1
+        if self.timer % self.frame_delay == 0:
+            self.timer = 0
+            self.s_x -= self.decay_x
+            self.s_y -= self.decay_y
+        ret_x = min(self.s_x, 0)
+        ret_y = min(self.s_y, 0)
+        return ret_x, ret_y
+
+
+class wave(missile):
+    def __init__(self, size_funct, img, loc, vel, *args, **kwargs):
+        super().__init__(img, loc, vel, *args, **kwargs)
+        self.base_img = img.copy()
+        self.image = self.base_img.subsurface(size_funct())
+        self.size_funct = size_funct
+
+
+class trail(spriteling.spriteling):
+    pass
+
+class opaque_trail(trail):
+    pass
+
 
 class trigger():
     def __call__(self, prev, now):
         return False
+
+    def get_data(self):
+        return {'power': 1}
 
 
 class semi(trigger):
     def __call__(self, prev, now):
         return now and not prev
 
+
+class cast_per_room(trigger):
+    def __init__(self, num_casts):
+        self.max_casts = num_casts
+        self.casts = num_casts
+        event_maker.set_tracker(str(events.room_event)+str(events.next_room), self.restore_uses)
+
+    def restore_uses(self):
+        self.casts = self.max_casts
+
+    def __call__(self, prev, now):
+        self.casts -= 1
+        return bool(self.casts)
+
+
+class cast_per_run(trigger):
+    def __init__(self, num_casts):
+        self.max_casts = num_casts
+        self.casts = num_casts
+        event_maker.set_tracker(str(events.room_event)+str(events.to_hub), self.restore_uses)
+
+    def restore_uses(self):
+        self.casts = self.max_casts
+
+    def __call__(self, prev, now):
+        self.casts -= 1
+        return bool(self.casts)
 
 # charge_up spells need to be charged by holding the fire button until they are sufficiently charged
 # every frame in which the fire button is held (it determines if the button is held by checking the current and previous
@@ -323,6 +504,7 @@ class charged_gate(trigger):
         else:
             self.charge = 0
         return self.charge >= self.charge_time
+
 
 class simple_multicharge_gate(trigger):
     def __init__(self, size, step, delay=10):
@@ -348,6 +530,7 @@ class simple_multicharge_gate(trigger):
             return True
         return False
 
+
 class over_heated(trigger):
     def __init__(self, max_heat, heat_per_missile):
         self.over_heated = False
@@ -367,6 +550,7 @@ class over_heated(trigger):
             self.over_heated = False
         return False
 
+
 class cooled(trigger):
     def __init__(self, cooldown_time):
         self.cooldown_time = cooldown_time * sec
@@ -380,6 +564,7 @@ class cooled(trigger):
             return True
         return False
 
+
 class chained_trigger(trigger):
     def __init__(self, *args):
         self.gates = []
@@ -392,8 +577,43 @@ class chained_trigger(trigger):
             ret = ret and each(prev, now)
         return ret
 
-class has_target():
-    pass
+# can handle triggers that only depend on internal state, and triggers that depend on external input
+class complex_trigger(trigger):
+    def __init__(self, check_first, check_last):
+        self.first = check_first
+        self.last = check_last
+
+    def __call__(self, prev, now):
+        ret = True
+        for each in self.first:
+            ret = ret and each(prev, now)
+        for every in self.last:
+            ret = ret and every()
+        return ret
+
+class half_double_charge(trigger):
+    def __init__(self, start_gate, max_gate, charge_rate=1):
+        self.min_thresh = start_gate
+        self.max_thresh = max_gate
+        self.charge_rate = charge_rate
+        self.charge = 0
+
+    def __call__(self, prev, now):
+        if now and prev:
+            self.charge += 1
+            return False
+        elif now and not prev:
+            self.charge = 1
+        elif prev and not now:
+            return self.charge >= self.min_thresh
+        else:
+            self.charge = 0
+        return self.charge >= self.min_thresh
+
+    def get_data(self):
+        midpt = (self.min_thresh + self.max_thresh)/2
+        return self.charge/midpt
+
 
 # spells themselves don't do much, except for creating and launching missiles
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
@@ -416,6 +636,13 @@ class spell(spriteling.spriteling):
         else:
             self.my_trigger = semi()
 
+        self.layer = config.spell_layer
+        if 'recoil' in kwargs:
+            self.recoil_growth = kwargs['recoil']
+        else:
+            self.recoil_growth = 5
+        self.recoil = 0
+
     # the update method controls most if not all of a spell's behavior, and is (I think) the only method of spell called
     # from outside the class. the first param dictates if the spell is active (important for all spells to know if they
     # should be trying to cast, but especially for cooldown, charged, and targeted spells. cooldoown and charged spells
@@ -423,6 +650,8 @@ class spell(spriteling.spriteling):
     # charged spells need to know to reset their charge when inactive
     def update(self, active, loc, prev, now, *args, **kwargs):
         super().update(*args, **kwargs)
+        if self.recoil > 0:
+            self.recoil -= 1
         if active:
             self.rect.center = loc
             if 'missile_layer' in kwargs and self.my_trigger(prev, now):
@@ -436,11 +665,43 @@ class spell(spriteling.spriteling):
     # the direction param is a tuple of the form (x, y) where x and y are -1, 0, or 1. these are multiplied by the
     # respective velocity multipliers to determine in which direction the spell's projectile will travel
     def cast(self, direction):
-        return self.projectile(direction, self.rect.center)
+        self.recoil += self.recoil_growth
+        return self.projectile(direction, self.rect.center, spread=self.recoil)
 
     def __str__(self):
         return str(self.type_name + ' ' + self.spell_name)
 
+
+class beam(spell):
+    def cast(self, direction):
+        first = self.projectile(self.rect.center)
+        ret = pygame.sprite.OrderedUpdates(first)
+        # tricky math time
+        dist_per_seg_x = first.rect.width / 2
+        dist_per_seg_y = first.rect.height / 2
+        if direction[1] == 0:  # if there is no y velocity to worry about, we can just forget it and work with x
+            num_segments_to_cross_screen = int(config.screen_width / first.rect.width * 2 ) # the *2 is to account for half
+            # overlap
+
+        else:           # the screen is always shorter than it is tall, so if theres any y velocity, we can go with that
+            num_segments_to_cross_screen = int(config.screen_height / first.rect.height)
+
+        for x in range(0, num_segments_to_cross_screen):
+            first = self.projectile((first.rect.centerx+(dist_per_seg_x*direction[0]),
+                                                first.rect.centery+(dist_per_seg_y*direction[1])))
+            ret.add(first)
+        return ret
+
+class beam_particle(missile):
+    def __init__(self, timer, img, loc, **kwargs):
+        super().__init__(img, loc, velocity(), **kwargs)
+        self.curr_hp = timer
+
+    def update(self, *args, **kwargs):
+        self.curr_hp -= 1
+        if self.curr_hp <= 0:
+            self.kill()
+        self.image.set_alpha(self.curr_hp)
 
 ##########################
 # targeted spells are fukkin nuts. I'll come back to them
@@ -571,22 +832,17 @@ class guided_swarm(ordered_target):
 
 ##############################################
 
-class DEBUG_helix(spell):
-    def __init__(self, **kwargs):
-        super().__init__(DEBUG_seeker_for_helix, acid_book_img, trigger_method=semi(), spell_name="DEBUG_helix", **kwargs)
-        self.most_recently_fired = None
-        self.num = 0
-
+class helix(spell):
     def cast(self, direction):
-        first = self.projectile(self.most_recently_fired, self.num, self.rect.center, direction)
+        first = self.projectile(None, 0, self.rect.center, direction)
         second = self.projectile(first, 1, self.rect.center, direction)
         third = self.projectile(first, 2, self.rect.center, direction)
         return second, first, third
 
 class DEBUG_seeker_for_helix(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
-        xvel, yvel = direction[0]*4, direction[1]*4
-        super().__init__(partner, 2, 3, orbital_rank, fire_book_img, loc, (xvel, yvel), *args, **kwargs)
+        xvel, yvel = direction[0]*7, direction[1]*7
+        super().__init__(partner, 7, 20, orbital_rank, fire_book_img, loc, (xvel, yvel), *args, **kwargs)
 
 class DEBUG_unguided_swarm(swarm, dumb_target):
     def __init__(self, **kwargs):
@@ -600,13 +856,16 @@ class DEBUG_seeker_for_unguided_swarm(seeker):
 
 class DEBUG_circle_me(swarm, self_target):
     def __init__(self, **kwargs):
-        super().__init__(10, 'me', DEBUG_seeker_for_circle_me, light_book_img, **kwargs, spell_name="DEBUG_circle_me")
+        super().__init__(10, 'me', DEBUG_strict_orbiter_for_circle_me, light_book_img, **kwargs, spell_name="DEBUG_circle_me")
 
 class DEBUG_seeker_for_circle_me(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
         xvel, yvel = direction[0], direction[1]*20
         super().__init__(partner, 7, 1, orbital_rank, fire_book_img, (loc[0]+100, loc[1]), (xvel, yvel), *args, **kwargs, min_distance=100)
 
+class DEBUG_strict_orbiter_for_circle_me(strict_orbit):
+    def __init__(self, partner, radius, loc, direction, *args, **kwargs):
+        super().__init__(partner, radius*100, fire_book_img, loc, velocity())
 #########################################################################################
 
 
@@ -668,13 +927,14 @@ class ice_wall_s():
     pass
 
 
-class icebeam_s(spell):
+class icebeam_s(helix):
     def __init__(self, **kwargs):
-        super(icebeam_s, self).__init__(icebeam_m, ice_book_img)
+        super(icebeam_s, self).__init__(icebeam_m, ice_book_img, spell_name='ice_beam')
 
 class icebeam_m(seeker):
-    def __init__(self, target, orbital_rank, direction, loc):
-        super().__init__(target, 5, 10, orbital_rank, icy_ball_img, loc, (4 * direction[0], 4 * direction[1]))
+    def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
+        xvel, yvel = direction[0]*5.7, direction[1]*5.7
+        super().__init__(partner, 5, 20, orbital_rank, ice_beam_img, loc, (xvel, yvel), *args, **kwargs)
 
 class acidic_orb_s(spell):
     def __init__(self, **kwargs):
@@ -688,9 +948,17 @@ class acidic_orb_m(missile):
         self.hitbox = spriteling.hitbox(self)
 
 
-class poison_spore_s():
-    pass
+class poison_spore_s(spell):
+    def __init__(self, **kwargs):
+        super().__init__(poison_spore_m, acid_book_img, trigger_method=over_heated(config.fps*3, config.fps*3/7))
 
+    def cast(self, direction):
+        return self.projectile(direction, self.rect.center, dispersion=20)
+
+class poison_spore_m(missile):
+    def __init__(self, dir, loc, **kwargs):
+        v_mod = random.randint(0, 5) + 1
+        super().__init__(toxic_spore_img, dir, loc, velocity(mag=v_mod, dir=dir))
 
 class acid_cloud_s():
     pass
@@ -700,24 +968,37 @@ class pestilence_s():
     pass
 
 
-class light_wave_s(spell):
+class light_pulse_s(spell):
     def __init__(self, **kwargs):
-        super().__init__(light_wave_m, light_book_img)
+        super().__init__(light_pulse_m, light_book_img)
 
-class light_wave_m(missile):
+class light_pulse_m(missile):
     def __init__(self, dir, loc):
-        x_vel, y_vel = 4*dir[0], 4*dir[1]
-        missile.__init__(self, light_wave_img, loc, (x_vel, y_vel))
+        pass_vel = velocity(mag=4, dir=dir)
+        missile.__init__(self, light_pulse_img, loc, pass_vel)
         self.hitbox = spriteling.hitbox(self)
 
 class radiant_glow_s():
     pass
 
-class beam(spell):
-    pass
-
 class solar_beam_s(beam):
-    pass
+    def __init__(self, **kwargs):
+        super().__init__(sun_particle_m, acid_book_img)
+
+class sun_particle_m(beam_particle):
+    def __init__(self, loc):
+        super().__init__(config.fps/2, acid_book_img, loc)
+
+class healing_aura(spell):
+    def __init__(self, host):
+        self.host = host
+        self.image = pygame.Surface((300, 300))
+        self.image.set_colorkey(config.black)
+        self.rect = self.image.get_rect()
+        pygame.draw.circle(self.image, config.yellow, self.rect.center, self.rect.width/2)
+        self.mask = pygame.mask.from_surface(self.image)
+        self.duration = config.fps * 20
+        self.my_trigger = complex_trigger([cooled(config.fps*45)], [cast_per_room(3)])
 
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):
@@ -725,7 +1006,6 @@ class book_of_fire(spell_book):
         super().__init__(level)
         self.image = big_fire_book_img
         self.goddess_lookup_key = 'crop_top'
-        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
         self.spell_key = {0: fireball_s, 1: charged_fireball_s, 2: flamethrower_s, 3: heatwave_s}
         self.level_costs = {0: 1000, 1: 2000, 2: 3000}
 
@@ -736,7 +1016,6 @@ class book_of_ice(spell_book):
         super().__init__(level)
         self.image = big_ice_book_img
         self.goddess_lookup_key = 'body_suit'
-        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
         self.spell_key = {0: iceshard_s, 1: blizzard_s, 2: ice_wall_s, 3: icebeam_s}
         self.level_costs = {0: 1000, 1: 2000}
 
@@ -747,7 +1026,6 @@ class book_of_acid(spell_book):
         super().__init__(level)
         self.image = big_acid_book_img
         self.goddess_lookup_key = 'tattered'
-        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
         self.spell_key = {0: acidic_orb_s, 1: poison_spore_s, 2: acid_cloud_s, 3: pestilence_s}
         self.level_costs = {0: 1000, 1: 2000}
 
@@ -756,10 +1034,10 @@ class book_of_light(spell_book):
     def __init__(self, level=0):
         super().__init__(level)
         self.image = big_light_book_img
+        self.special = healing_aura
 
         self.goddess_lookup_key = 'robes'
-        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
-        self.spell_key = {0: light_wave_s,  3: solar_beam_s}
+        self.spell_key = {0: light_pulse_s,  3: solar_beam_s}
         self.level_costs = {0: 1000, 1: 2000}
 
 
@@ -768,7 +1046,6 @@ class DEBUG_book(spell_book):
         super().__init__(len(args))
         self.image = big_light_book_img
         self.goddess_lookup_key = 'robes'
-        self.palette_lookup_key = ('blue', 'light blue', 'sapphire')
         self.spell_key = {}
         num = 0
         for each in args:

@@ -73,6 +73,7 @@ reticle_lookup = {
 class reticle(spriteling.spriteling):
     def __init__(self, designation):
         super().__init__(image=reticle_lookup[designation])
+        self.layer = config.spark_layer
 
     def update(self, *args, **kwargs):
         if 'new_target' in kwargs:

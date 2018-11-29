@@ -314,6 +314,7 @@ class handler():
         lock_prev = self.controller.pull_face()['lock_prev']
         lock_prev = lock_prev[0] and not lock_prev[1]
         self.player.update(look=facing, move=movement, interact=interaction, stick_data=stick_data)
+        special = self.controller.pull_face()['back']
 
         # updates the spellbook
         now, prev = self.controller.pull_face()['fire']
@@ -331,7 +332,7 @@ class handler():
             self.book.select_spell(cycle_spell='prev')
         self.book.update(origin, fire=(now, prev), direction=self.player.facing,
                          missile_layer=self.missiles, targ_lock=(lock_next-lock_prev), reticle=self.my_reticle,
-                         **kwargs)
+                         special=special, **kwargs)
 
         # updates spells
         # I just need to get the targeting data into the targeted spell
@@ -351,6 +352,7 @@ class handler():
         self.player = p_constr(self.book, self.number)
         from overlays import select_reticle
         self.book.pop_spells(select_reticle(self.number))
+        self.book.set_my_player_HANDLER(self)
         # okay so I couldn't get around importing this one thing.
         from overlays import hud
         self.hud = hud(self.player, self.book, player_num)
@@ -372,3 +374,6 @@ class handler():
 
     def get_missiles(self):
         return self.missiles
+
+    def apply_to_player(self, effects):
+        pass

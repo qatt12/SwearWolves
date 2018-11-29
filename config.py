@@ -38,3 +38,49 @@ color_lookup = {
     3        :    ( 30,  60, 255),
     4        :    (255, 255,   0)
 }
+
+###
+# part of my attempts to convert this whole thing to a layeredUpdates instead of fifty sprite groups. Doesn't make sense
+# to try and do that while so much is still unfinished tho
+# think of these as layer constants, used to organize everything into the proper hierarchy of draw order
+# note that there are several blank layers in between the major divisions/categories. This is to give us some wiggle
+# room for stuff that has to be drawn in a particular way
+bottom_layer = 0                      # this layer is basically unseen, usable as a background
+##########################################
+#### Total Space = 8
+floor_layer = 1                       # 1
+floor_cos = floor_layer + 1           # 2
+                                      # 3
+outer_wall_layer = floor_cos + 2      # 4
+inner_wall_layer = outer_wall_layer+1 # 5
+door_layer = inner_wall_layer+1       # 6
+wall_cos = door_layer+1               # 7
+                                      # 8
+##########################################
+#### Total Space = 3
+player_layer = floor_cos+7            # 9
+                                      # 10
+                                      # 11
+##########################################
+#### Total Space = 4
+enemy_layer = player_layer+3          # 12
+                                      # 13
+                                      # 14
+                                      # 15
+##########################################
+#### Total Space = 4
+spell_layer = enemy_layer+4           # 16
+spark_layer = spell_layer +1          # 17
+missile_layer = spark_layer+1         # 18
+impact_layer = missile_layer+1        # 19
+##########################################
+#### Total Space = 4
+air_layer = missile_layer + 4         # 20
+                                      # 21
+                                      # 22
+                                      # 23
+##########################################
+#### Total Space = 3
+overlayer = air_layer + 4             # 24
+menu_layer = overlayer+1              # 25
+button_layer = menu_layer+1           # 26

@@ -42,32 +42,8 @@ event_maker.make_entry('log', 'startup', 'startup has been successful', 'driver'
 #pygame.mixer.music.load('Music/LoLD.ogg')
 #pygame.mixer.music.play(-1)
 
-class tower():
-    def __init__(self):
-        self.pillar = pygame.sprite.LayeredUpdates()
 
-    def mod_menu(self):
-        pass
-
-    def mod_overlays(self):
-        pass
-
-    def add_spell(self):
-        pass
-
-
-menu_layer = 0
-overlayer = 1
-impacts = 2
-player_missiles = 3
-trails = 4
-
-nme_impacts = 5
-nme_missiles = 6
-nme_trails = 7
-enemies = 8
-players = 9
-
+pillar_of_hate = pygame.sprite.LayeredUpdates()
 
 
 # very basic rect calculating class designed to break the display window into several smaller rects so that the screen
@@ -98,10 +74,11 @@ class partial_render():
 
 # important class that does its name: handles the screen
 class screen_handler():
-    def __init__(self, display):
+    def __init__(self, display, pillar):
         event_maker.make_entry('log', 'game_window size', " ", 'driver', False, False, 'screen')
         self.disp = pygame.Surface(config.screen_size)
         self.size = config.screen_size
+        #self.pillar_of_hate = pillar
 
         # the partial render rect
         self.render_rect = partial_render(3)
@@ -122,9 +99,11 @@ class screen_handler():
         message = events.entry('log', 'new menu', 'added a new menu', 'driver',
                                loc_src='screen.apply()')
         if 'opened_menus' in kwargs:
+            pillar_of_hate.add(kwargs['opened_menus'], layer=config.menu_layer)
             self.menus.add(kwargs['opened_menus'])
             message.modify(opened_menu=kwargs['opened_menus'])
         if 'closed_menus' in kwargs:
+            pillar_of_hate.remove(kwargs['closed_menus'])
             self.menus.remove(kwargs['closed_menus'])
             message.modify(closed_menu=kwargs['closed_menus'])
         if 'player_one' in kwargs:
@@ -152,7 +131,7 @@ class screen_handler():
             print(AssertionError, "index= ", self.player_index, "num_interfaces= ", interface.handler.get_player_interface_num())
 
         if self.current_room is not None:
-            self.current_room.update(self.player_one.player.rect, self.GROUP_of_player_SPRITES)
+            self.current_room.update(self.player_one.player, self.GROUP_of_player_SPRITES)
             self.current_room.collide_walls(players=self.GROUP_of_player_SPRITES)
             self.current_room.collide_doors(self.GROUP_of_player_SPRITES)
 
@@ -162,7 +141,8 @@ class screen_handler():
             for player_handler in self.ordered_list_of_player_HANDLERS:
                 other_players = pygame.sprite.Group.copy(self.GROUP_of_player_SPRITES)
                 other_players.remove(player_handler.player)
-                player_handler.update(players=other_players, enemies=visible_enemies, allies=allied, me=player_handler.player)
+                player_handler.update(players=other_players, enemies=visible_enemies, allies=allied,
+                                      me=player_handler.player, all_players=self.GROUP_of_player_SPRITES)
                 live_missiles.add(player_handler.get_missiles())
 
             self.current_room.collide_missiles_into_enemies(live_missiles)
@@ -182,8 +162,8 @@ class screen_handler():
             each.draw(display)
 
         #pygame.display.update(self.render_rect())
-        pygame.display.flip()
-        #pygame.display.update()
+        #pygame.display.flip()
+        pygame.display.update()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -223,7 +203,7 @@ import menu
 controller_handler = controller_list()
 
 start_menu = menu.menu(game_window.get_rect())
-screen = screen_handler(game_window)
+screen = screen_handler(game_window, pillar_of_hate)
 screen.apply(opened_menus=start_menu)
 player_one_HANDLER = None
 
@@ -241,7 +221,7 @@ while(start_loop and running):
                                loc_src='start_loop', player_one_Handler=player_one_HANDLER, num_player_handlers=interface.handler.get_player_interface_num())
         screen.apply(player_one=player_one_HANDLER, closed_menus=start_menu)
         assert (screen.player_one is not None), "failed to add player one"
-        event_maker.new_event(events.game_state_event, file_src='driver', exit='start_loop', player_one=player_one_HANDLER)
+        event_maker.new_event(events.game_state_event, subtype=events.game_state_event, file_src='driver', exit='start_loop', player_one=player_one_HANDLER)
         start_loop = False
         start_menu.kill()
 
@@ -258,8 +238,9 @@ while(start_loop and running):
 game_window.fill((0, 0, 0))
 
 import spells
+
 # spells.dumb_heal_s, spells.DEBUG_target_line
-unlocked_books = [spells.DEBUG_book(spells.DEBUG_helix, spells.DEBUG_unguided_swarm, spells.DEBUG_circle_me),
+unlocked_books = [spells.DEBUG_book(spells.icebeam_s, spells.DEBUG_unguided_swarm, spells.DEBUG_circle_me, spells.solar_beam_s),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1

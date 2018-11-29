@@ -1,5 +1,6 @@
 import pygame
 import spriteling
+import config
 import overlays
 from loader import player_img_loader
 
@@ -46,6 +47,7 @@ class player(spriteling.spriteling):
 
         self.hitbox = spriteling.hitbox(self,
                                         scale_y=-(self.rect.height*0.3), scale_x=-(self.rect.width*0.2))
+        self.layer = config.player_layer
 
         self.activity_state = {
             'interacting': False,

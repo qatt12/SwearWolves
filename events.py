@@ -101,6 +101,8 @@ class event_handler():
         self.trace_log = open('trace_log.txt', 'w')
         self.event_log = open("event_log.txt", 'w')
 
+        self.tracked = {}
+
         # blocked_files/terms are lists of exclusions that forbid entries from the enumerated files/bearing the
         # enumerated terms from being recorded (if an entry is excluded here, it won't even make it to the buffer)
         self.blocked_files = set()
@@ -201,10 +203,21 @@ class event_handler():
     def new_event(self, event_num, file_src, *args, **kwargs):
         ret = pygame.event.Event(event_num, **kwargs)
         pygame.event.post(ret)
+        if event_num >= base:
+            if str(event_num) + str(kwargs['subtype']) in self.tracked:
+                for each in self.tracked[str(event_num) + str(kwargs['subtype'])]:
+                    each()
+
         if 'entry' in kwargs:
             self.send_entry(kwargs['entry'])
         else:
             self.make_entry('event', str(event_num), str(ret), file_src, False, False, *args, **kwargs)
+
+    def set_tracker(self, on, perform):
+        if on in self.tracked:
+            self.tracked[on].append(perform)
+        else:
+            self.tracked[on] = [perform]
 
     # adjusts which terms and files get sent to console
     def add_console_permissions(self, **kwargs):
@@ -387,7 +400,7 @@ class entry():
                 return True
             else:
                 # LOGAN:: MIGHT NEED TO CHANGE THIS LATER
-                #print('discarding ', self, "based on: ", each)
+                print('discarding ', self, "based on: ", each)
                 return False
 
     def modify(self, *args, **kwargs):

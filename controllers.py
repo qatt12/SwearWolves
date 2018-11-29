@@ -405,3 +405,15 @@ class dummy():
         self.id = 9808797
     def get_id(self):
         return self.id
+
+
+def controller_tester():
+    pygame.init()
+    pygame.joystick.init()
+    joysticks = [pygame.joystick.Joystick(x) for x in range(pygame.joystick.get_count())]
+    for each in joysticks:
+        each.init()
+        print("buttons: ", each.get_numbuttons())
+        print("hats: ", each.get_numhats())
+        print("axes: ", each.get_numaxes())
+    return joysticks[0]

@@ -47,8 +47,6 @@ color_lookup = {
 # note that there are several blank layers in between the major divisions/categories. This is to give us some wiggle
 # room for stuff that has to be drawn in a particular way
 bottom_layer = 0                      # this layer is basically unseen, usable as a background
-##########################################
-#### Total Space = 8
 floor_layer = 1                       # 1
 floor_cos = floor_layer + 1           # 2
                                       # 3
@@ -57,31 +55,22 @@ inner_wall_layer = outer_wall_layer+1 # 5
 door_layer = inner_wall_layer+1       # 6
 wall_cos = door_layer+1               # 7
                                       # 8
-##########################################
-#### Total Space = 3
 player_layer = floor_cos+7            # 9
                                       # 10
                                       # 11
-##########################################
-#### Total Space = 4
-enemy_layer = player_layer+3          # 12
-                                      # 13
+                                      # 12
+enemy_layer = player_layer+4          # 13
                                       # 14
                                       # 15
-##########################################
-#### Total Space = 4
-spell_layer = enemy_layer+4           # 16
-spark_layer = spell_layer +1          # 17
-missile_layer = spark_layer+1         # 18
-impact_layer = missile_layer+1        # 19
-##########################################
-#### Total Space = 4
-air_layer = missile_layer + 4         # 20
-                                      # 21
+                                      # 16
+spell_layer = enemy_layer+4           # 17
+spark_layer = spell_layer +1          # 18
+missile_layer = spark_layer+1         # 19
+impact_layer = missile_layer+1        # 20
+air_layer = missile_layer + 4         # 21
                                       # 22
                                       # 23
-##########################################
-#### Total Space = 3
-overlayer = air_layer + 4             # 24
-menu_layer = overlayer+1              # 25
-button_layer = menu_layer+1           # 26
+                                      # 24
+overlayer = air_layer + 4             # 25
+menu_layer = overlayer+1              # 26
+button_layer = menu_layer+1           # 27

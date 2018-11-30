@@ -58,15 +58,16 @@
 # NMMMMMMMdsydNNNNNmmmmmmmmmmmmmdysssydmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNNNNNNNNNMMMMMN
 # NMMMMNNNNNNNNNNNmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmNNNNNNNNNNNMMN
 
-import spriteling, pygame, math, events
+import spriteling, pygame, events
 from events import event_maker
 from config import fps as sec
-#from driver import kwargs['missile_layer']
 import config, random
 from collections import deque
 import math
 
-pillar_of_hate = pygame.sprite.LayeredUpdates()
+hostile_to_players = pygame.sprite.Group()
+hostile_to_enemies = pygame.sprite.Group()
+
 
 light_pulse_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
 fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
@@ -143,10 +144,10 @@ class velocity():
     def __call__(self, x=False, y=False, *args, **kwargs):
         if x:
             self.x = x
-            self.p_x = x % 1
+            self.p_x = x % math.copysign(1, x)
         if y:
             self.y = y
-            self.p_y = y % 1
+            self.p_y = y % math.copysign(1, y)
 
         if 'add_x' in kwargs:
             self.x += kwargs['add_x']
@@ -154,11 +155,13 @@ class velocity():
             self.y += kwargs['add_y']
 
         if 'recalc_x' in kwargs:
+            math.copysign(self.x, kwargs['recalc_x'])
             self.x += kwargs['recalc_x']
-            self.p_x = self.x%1
+            self.p_x = self.x % math.copysign(1, kwargs["recalc_x"])
         if 'recalc_y' in kwargs:
+            math.copysign(self.y, kwargs['recalc_y'])
             self.y += kwargs['recalc_y']
-            self.p_y = self.y%1
+            self.p_y = self.y % math.copysign(1, kwargs["recalc_y"])
 
         r_x = self.x
         r_y = self.y
@@ -175,7 +178,7 @@ class velocity():
             r_y += 1
         elif self.t_y < -1:
             self.t_y += 1
-            r_y += 1
+            r_y -= 1
         return r_x, r_y
 
     def __getitem__(self, item):
@@ -317,20 +320,22 @@ class missile(spriteling.spriteling):
             pass
         if 'dispersion' in kwargs:
             if self.velocity[0] != 0:
-                sign = random.randint(0, 1)%1*-1
+                sign = random.randint(0, 2) % 2 * -1
                 self.rect.move_ip(sign*random.randint(0, kwargs['dispersion']), 0)
             if self.velocity[1] != 0:
                 sign = random.randint(0, 1) % 1 * -1
                 self.rect.move_ip(0, sign * random.randint(0, kwargs['dispersion']))
         if 'spread' in kwargs:
-            sign = random.randint(0, 1)
-            devtn = random.random() * kwargs['spread']
-            if bool(sign):
+            # PICK UP HERE
+            sign = random.randint(0, 4)
+            devtn = random.random()
+            if sign % 2 == 0:
                 devtn *= -1
+            devtn *= kwargs['spread']
             if self.velocity[0] != 0:
-                self.velocity(recalc_y=devtn)
+                self.velocity(recalc_y=devtn/6)
             if self.velocity[1] != 0:
-                self.velocity(recalc_x=devtn)
+                self.velocity(recalc_x=devtn/6)
 
 
     def update(self, *args, **kwargs):
@@ -362,7 +367,6 @@ class seeker(missile):
                 sign = -1
             else:
                 sign = 1
-            # pickup debugging Helix here
             event_maker.make_entry("trace", "helix checking", "", "spells", False, False)
             if self.velocity[1] != 0:
                 self.rect.centerx = (self.pair.rect.centerx + sign*offset*self.accel)
@@ -418,18 +422,20 @@ class strict_orbit(missile):
         self.rect.center = x_pos, y_pos
 
 
-# pick up here
 class aura(missile):
-    def __init__(self, subject, follow, duration, radius, loc, vel, *args, **kwargs):
+    def __init__(self, subject, follow, duration, radius, loc, vel=(0, 0), *args, **kwargs):
         img = pygame.Surface((2*radius, 2*radius))
         img.set_colorkey(config.black)
         pygame.draw.circle(img, config.yellow, img.get_rect().center, radius)
         self.mask = pygame.mask.from_surface(img)
+        assert (type(loc) == tuple), "loc is not a tuple"+str(type(loc))
+
         super().__init__(img, loc, (0, 0), *args, **kwargs)
         self.follow = follow
         self.subject = subject
         self.radius = radius
         self.duration = duration
+        self.layer = config.floor_cos
 
     def update(self, *args, **kwargs):
         self.duration -= 1
@@ -789,7 +795,9 @@ class spell(spriteling.spriteling):
         if active:
             self.rect.center = loc
             if 'missile_layer' in kwargs and self.my_trigger(prev, now):
-                kwargs['missile_layer'].add(self.cast(kwargs['direction']))
+                ret = self.cast(kwargs['direction'])
+                kwargs['missile_layer'].add(ret)
+                #pillar_of_hate.add(ret)
             else:
                 pass
 
@@ -876,7 +884,10 @@ class target(spell):
                         kwargs['missile_layer'].add(self.reticle)
                         self.reticle.update(position=self.chosen_target.rect.center)
                         if self.my_trigger(prev, now) and has_layer:
-                            kwargs['missile_layer'].add(self.cast(kwargs['direction']))
+                            ret = self.cast(kwargs['direction'])
+                            kwargs['missile_layer'].add(ret)
+                            #pillar_of_hate.add(ret)
+                            hostile_to_enemies.add(self.cast(kwargs['direction']))
                     else:
                         self.reticle.kill()
                 # if there are no valid targets, the reticle must be removed from the missile layer
@@ -1014,8 +1025,7 @@ class DEBUG_strict_orbiter_for_circle_me(strict_orbit):
 class fireball_s(spell):
     def __init__(self, **kwargs):
         super().__init__(fireball_m, dupe(fire_book_img),
-                         spell_name="charged fireball",
-                         trigger_method=charged_gate(2))
+                         spell_name="fireball",)
 
 class fireball_m(missile):
     def __init__(self, dir, loc, **kwargs):
@@ -1057,9 +1067,9 @@ class iceshard_s(spell):
 
 
 class iceshard_m(missile):
-    def __init__(self, dir, loc):
+    def __init__(self, dir, loc, **kwargs):
         x_vel, y_vel = 4 * dir[0], 4 * dir[1]
-        missile.__init__(self, icy_ball_img, loc, (x_vel, y_vel))
+        missile.__init__(self, icy_ball_img, loc, (x_vel, y_vel), **kwargs)
         self.hitbox = spriteling.hitbox(self)
 
 
@@ -1086,6 +1096,18 @@ class icebeam_m(seeker):
         xvel, yvel = direction[0]*5.7, direction[1]*5.7
         super().__init__(partner, 5, 20, orbital_rank, ice_beam_img, loc, (xvel, yvel), *args, **kwargs)
 
+
+# might want to tweak this
+class hydro_pump_s(helix):
+    def __init__(self, **kwargs):
+        super().__init__(hydro_pump_m, ice_book_img, spell_name='hydro_pump',
+                         trigger_method=simple_multicharge_gate(45, int(sec/10), 2))
+
+class hydro_pump_m(seeker):
+    def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
+        xvel, yvel = direction[0]*4.2, direction[1]*4.2
+        super().__init__(partner, 3, 28, orbital_rank, water_splash_img, loc, (xvel, yvel), *args, **kwargs)
+
 class acidic_orb_s(spell):
     def __init__(self, **kwargs):
         super().__init__(acidic_orb_m, acid_book_img)
@@ -1106,7 +1128,7 @@ class poison_spore_s(spell):
             self.num_leaves = kwargs["num_leaves"]
 
     def update(self, active, loc, prev, now, *args, **kwargs):
-        super().update(self, active, loc, prev, now, *args, **kwargs)
+        super().update(active, loc, prev, now, *args, **kwargs)
         if 'num_leaves' in kwargs:
             self.num_leaves = kwargs["num_leaves"]
 
@@ -1122,7 +1144,7 @@ class poison_spore_s(spell):
 class poison_spore_m(missile):
     def __init__(self, dir, loc, **kwargs):
         v_mod = random.randint(0, 5) + 1
-        super().__init__(toxic_spore_img, dir, loc, velocity(mag=v_mod, dir=dir))
+        super().__init__(toxic_spore_img, loc, velocity(mag=v_mod, dir=dir))
 
 
 class acid_cloud_s():
@@ -1165,7 +1187,7 @@ class beacon_of_hope(spell):
 
 class healing_aura_m(aura):
     def __init__(self, host, dir, loc, **kwargs):
-        super().__init__(host, False, config.fps*20, 150, icy_ball_img, loc, (0, 0))
+        super().__init__(host, False, config.fps*2, 150, loc, icy_ball_img, **kwargs)
 
 
 

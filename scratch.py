@@ -1,18 +1,25 @@
+def tester_f_1(input):
+    print(input)
 
-import timeit
+def tester_f_2(input):
+    pass
 
-print(
-    timeit.timeit('r0 = r0.move(52, 88)',
-'''import pygame
-pygame.init() 
-r0 = pygame.rect.Rect((0, 0), (10, 10))'''
-              )
-)
+tester_f_1(input=5)
 
-print(
-    timeit.timeit('r1.move_ip(52, 88)',
-'''import pygame
-pygame.init()
-r1 = pygame.rect.Rect((0, 0), (10, 10))'''
-              )
-)
+import pygame
+
+t_group1 = pygame.sprite.Group()
+
+def extra_t():
+    pass
+
+
+num = -3.3
+
+print("leftover: ", num % 1)
+
+import math, random
+
+for x in range(0, 50):
+    sign = random.randint(0, 2) % 2 * -1
+    print(sign)

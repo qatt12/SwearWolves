@@ -78,17 +78,16 @@ class screen_handler():
         event_maker.make_entry('log', 'game_window size', " ", 'driver', False, False, 'screen')
         self.disp = pygame.Surface(config.screen_size)
         self.size = config.screen_size
-        #self.pillar_of_hate = pillar
 
         # the partial render rect
         self.render_rect = partial_render(3)
 
         # LOGAN: setting up some important containers/labels.
-        self.menus = pygame.sprite.Group()
+        self.menus = pygame.sprite.LayeredUpdates()
         self.player_one = None
         self.player_index = 0
         self.ordered_list_of_player_HANDLERS = []
-        self.GROUP_of_player_SPRITES = pygame.sprite.Group()
+        self.GROUP_of_player_SPRITES = pygame.sprite.OrderedUpdates()
         self.current_room = None
         self.overlays = []
 
@@ -135,35 +134,41 @@ class screen_handler():
             self.current_room.collide_walls(players=self.GROUP_of_player_SPRITES)
             self.current_room.collide_doors(self.GROUP_of_player_SPRITES)
 
-            live_missiles = pygame.sprite.Group()
             visible_enemies = self.current_room.pull_enemies()
             allied = pygame.sprite.Group()
             for player_handler in self.ordered_list_of_player_HANDLERS:
-                other_players = pygame.sprite.Group.copy(self.GROUP_of_player_SPRITES)
+                other_players = pygame.sprite.OrderedUpdates.copy(self.GROUP_of_player_SPRITES)
                 other_players.remove(player_handler.player)
                 player_handler.update(players=other_players, enemies=visible_enemies, allies=allied,
                                       me=player_handler.player, all_players=self.GROUP_of_player_SPRITES)
-                live_missiles.add(player_handler.get_missiles())
+                #live_missiles.add(player_handler.get_missiles())
+                for each in player_handler.get_missiles():
+                    pillar_of_hate.add(each)
 
-            self.current_room.collide_missiles_into_enemies(live_missiles)
+                #print("live_missiles: ", live_missiles.sprites())
+                #print("pillar: ", pillar_of_hate.sprites())
+
+            #self.current_room.collide_missiles_into_enemies(live_missiles)
 
     def draw(self, display, scroll=(0, 0)):
         display.fill(config.black)
-
+        ret = []
         if self.current_room is not None:
-            self.current_room.draw_contents(self.disp, True)
+            ret = self.current_room.draw_contents(self.disp, True)
 
             for each in self.ordered_list_of_player_HANDLERS:
                 each.draw(self.disp)
 
-        display.blit(self.disp, scroll)
+        ret.append(display.blit(self.disp, scroll))
+
         self.menus.draw(display)
+
         for each in self.overlays:
             each.draw(display)
 
         #pygame.display.update(self.render_rect())
-        #pygame.display.flip()
-        pygame.display.update()
+        pygame.display.flip()
+        #pygame.display.update(pillar_of_hate.draw(display)+ret+self.menus.draw(display))
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -175,6 +180,7 @@ class screen_handler():
         for each in self.ordered_list_of_player_HANDLERS:
             each.begin_game(player_constr, starting_room, i)
             self.GROUP_of_player_SPRITES.add(each.player)
+            pillar_of_hate.add(each.player)
             i += 1
             assert (each.player is not None), "each.player DNEs"
             assert (isinstance(each.player, spriteling)), "wrong type; not a sprite"
@@ -240,7 +246,9 @@ game_window.fill((0, 0, 0))
 import spells
 
 # spells.dumb_heal_s, spells.DEBUG_target_line
-unlocked_books = [spells.DEBUG_book(spells.fireball_s, spells.flame_wheel_s, spells.solar_beam_s, spells.beacon_of_hope),
+unlocked_books = [spells.DEBUG_book(spells.fireball_s, spells.flame_wheel_s, spells.flamethrower_s,
+                                    spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
+                                    spells.hydro_pump_s, spells.poison_spore_s),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1

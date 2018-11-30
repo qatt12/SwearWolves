@@ -18,24 +18,24 @@ new menu: added a new menu
 	loc_src: screen.apply()
 	opened_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 23 type: log
+***	entry #: 57 type: log
 file source: driver| loc source: start_loop
 FIRST PLAYER: player one has pressed start, we should be leaving start loop now
 	terms: crucial; start_loop; ready_up; player_one; 
 	key words:
 	loc_src: start_loop
-	player_one_Handler: <interface.handler object at 0x06B71090>
+	player_one_Handler: <interface.handler object at 0x06443810>
 	num_player_handlers: 1
 	
-***	entry #: 24 type: log
+***	entry #: 58 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1700, 1000)>/host: trashboat| Rect: <rect(764, 354, 173, 293)>
-	set_player_one: <interface.handler object at 0x06B71090>
+	set_player_one: <interface.handler object at 0x06443810>
 	
-***	entry #: 26 type: log
+***	entry #: 60 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -44,7 +44,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 27 type: log
+***	entry #: 61 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 3<class 'spells.book_of_fire'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -53,7 +53,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 3<class 'spells.book_of_fire'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 28 type: log
+***	entry #: 62 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 4<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -62,7 +62,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 4<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 29 type: log
+***	entry #: 63 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 5<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -71,7 +71,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 5<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 30 type: log
+***	entry #: 64 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 6<class 'spells.book_of_light'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -80,45 +80,45 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 6<class 'spells.book_of_light'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
 	
-***	entry #: 31 type: log
+***	entry #: 65 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	opened_menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 850, 500)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 39 type: log
+***	entry #: 95 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: (<player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>)
 	
-***	entry #: 40 type: log
-file source: room| obj source: <room.theme object at 0x06E9E2F0>
+***	entry #: 96 type: log
+file source: room| obj source: <room.theme object at 0x06473770>
 default_theme: Testing default theme construction/initialization
 	terms: theme; init; DEBUG; 
 	key words:
-	obj_src: <room.theme object at 0x06E9E2F0>
+	obj_src: <room.theme object at 0x06473770>
 	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(107x104x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
 	
-***	entry #: 53 type: log
+***	entry #: 109 type: log
 file source: room
 figuring out wtf is up with layeredupdates: 
 	key words:
 	entry_door_layer: 4
 	
-***	entry #: 54 type: log
+***	entry #: 110 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.hub_room object at 0x06E84D30>
+	room: <room.hub_room object at 0x06473750>
 	
-***	entry #: 55 type: log
+***	entry #: 111 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	overlay: 76<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 566, 200)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
+	overlay: 81<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 566, 200)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	

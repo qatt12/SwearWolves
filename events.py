@@ -425,6 +425,7 @@ class entry():
             elif key == 'new_desc':
                 self.desc = kwargs['new_desc']
             elif key == 'ext_desc':
+                self.desc += "; "
                 self.desc += kwargs['ext_desc']
             elif key == 'log_entry':
                 if 'log_entry' in self.k_v:

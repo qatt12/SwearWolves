@@ -23,6 +23,8 @@ black  =    (  0,   0,   0)
 purple =    (200,   0, 200)
 yellow =    (200, 200,   0)
 
+default_transparency = (255, 174, 201)
+
 # color, but in a dictionary
 color_lookup = {
     'green'  :    (  0, 255,   0),

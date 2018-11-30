@@ -226,7 +226,7 @@ event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been load
 # the use of multiple hitbox is currently deprecated, cause its expensive and complicated, and makes all my code look
 # like a twisted hell of for loops
 def collide_hitbox(spritelingA, spritelingB):
-    return pygame.Rect.colliderect(spritelingA.hitbox.rect, spritelingB.hitbox.rect)
+    return spritelingA.check_collide(spritelingB)
 
 
 # the common ancestor of all sprite-type classes. Provides universal methods and a core constructor that derived classes
@@ -444,7 +444,7 @@ class spriteling(pygame.sprite.Sprite):
             if bool(duration):
                 self.cond_queue.append(damage(form, amount, duration))
             else:
-                dmg = self.curr_modifiers['dmg'] * self.dmg_amount
+                dmg = self.curr_modifiers['dmg'] * self.amount
                 if form in self.curr_modifiers:
                     dmg *= self.curr_modifiers[form]
                 self.curr_hp -= dmg

@@ -63,10 +63,10 @@ green_reticle = pygame.transform.scale2x(all_reticles.subsurface((0, 0), (54, 54
 red_reticle = pygame.transform.scale2x(all_reticles.subsurface((54, 0), (54, 54)))
 blue_reticle = pygame.transform.scale2x(all_reticles.subsurface((54 * 2, 0), (54, 54)))
 reticle_lookup = {
-    0: green_reticle,
-    1: red_reticle,
-    2: blue_reticle,
-    3: green_reticle
+    1: green_reticle,
+    2: red_reticle,
+    3: blue_reticle,
+    4: green_reticle
 }
 
 

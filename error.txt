@@ -1,6 +1,6 @@
-***	entry #: 99 type: error
+***	entry #: 130 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 101 type: error
+***	entry #: 132 type: error
 file source: blocks
 DEBUG: placeholder image

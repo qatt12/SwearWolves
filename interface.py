@@ -99,7 +99,7 @@
 # ....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
 # ....................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................
 
-import pygame, events
+import pygame, events, config
 from events import event_maker
 
 
@@ -263,6 +263,11 @@ class handler():
         self.my_player_single = pygame.sprite.GroupSingle()
         self.other_players = pygame.sprite.Group()
         self.known_enemies = pygame.sprite.Group()
+        self.my_marker = None
+
+        self.layer = config.player_layer
+        self.new_spell = True
+        self.spell_layer = config.player_layer + self.number
 
     # method used to attach various important member vars to a player object that already exists
     def attach(self, **kwargs):
@@ -281,6 +286,13 @@ class handler():
         if 'name' in kwargs:
             self.name = kwargs['name']
             message.modify(my_name=self.name)
+        if 'impact' in kwargs:
+            self.missiles.add(kwargs['impact'])
+            #if self.my_marker == None:
+            #    self.my_marker =
+            #elif self.my_marker.rect.center != kwargs['impact']:
+            #    self.missiles.add()
+            message.modify(new_impact=kwargs['impact'])
         event_maker.send_entry(message)
 
     def update_menu(self):
@@ -325,11 +337,13 @@ class handler():
         # its safe to call update more than once per frame for the spell book
         origin = self.player.rect.center
         if sel_chk != 9:
-            self.book.select_spell(select_spell=sel_chk)
+            self.new_spell = self.book.select_spell(select_spell=sel_chk)
         elif nxt_chk[0] and not nxt_chk[1]:
-            self.book.select_spell(cycle_spell='next')
+            self.new_spell = self.book.select_spell(cycle_spell='next')
         elif prv_chk[0] and not prv_chk[1]:
-            self.book.select_spell(cycle_spell='prev')
+            self.new_spell = self.book.select_spell(cycle_spell='prev')
+        else:
+            self.new_spell = False
         self.book.update(origin, fire=(now, prev), direction=self.player.facing,
                          missile_layer=self.missiles, targ_lock=(lock_next-lock_prev), reticle=self.my_reticle,
                          special=special, **kwargs)
@@ -351,8 +365,8 @@ class handler():
         self.menu = None
         self.player = p_constr(self.book, self.number)
         from overlays import select_reticle
-        self.book.pop_spells(select_reticle(self.number))
         self.book.set_my_player_HANDLER(self)
+        self.book.pop_spells(select_reticle(self.number))
         # okay so I couldn't get around importing this one thing.
         from overlays import hud
         self.hud = hud(self.player, self.book, player_num)
@@ -363,19 +377,28 @@ class handler():
             pygame.mixer.music.play(-1)
 
     # all of the draw_boxes method calls are for debugging and uses should be deleted prior to submission
-    def draw(self, disp):
+    def draw(self, disp, boxes=False):
         self.player.draw(disp)
-        self.player.draw_boxes(disp)
         self.book.draw(disp)
         self.missiles.draw(disp)
+        if boxes:
+            self.player.draw_boxes(disp)
+
+################## how to properly get spells into driver
 
     def get_hud(self):
         return self.hud
 
+    def get_spells(self):
+        return {'refresh': self.new_spell,
+            'active': self.book.get_active_spell()[1],
+        "inactive": self.book.other_spells}
+
     def get_missiles(self):
         return self.missiles
 
-
+    def add(self, *args, **kwargs):
+        self.attach(**kwargs)
 
     def apply_to_player(self, effects):
         pass

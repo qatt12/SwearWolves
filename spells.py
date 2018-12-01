@@ -63,42 +63,11 @@ from events import event_maker
 from config import fps as sec
 import config, random
 from collections import deque
+from blocks import block
 import math
-
-hostile_to_players = pygame.sprite.Group()
-hostile_to_enemies = pygame.sprite.Group()
-spell_impact_layer = pygame.sprite.Group()
-trails = pygame.sprite.Group()
-
-
-
-hit_marker_img = pygame.image.load(      'Animation\img_hit_marker.png').convert()
-hit_marker_img.set_colorkey(config.black)
-
-light_pulse_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
-fire_ball_img   = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
-acid_ball_img   = pygame.image.load( 'projectiles\img_poisonball.png').convert_alpha()
-icy_ball_img    = pygame.image.load(    'projectiles\img_iceball.png').convert_alpha()
-
-ice_beam_img   = pygame.image.load(    'projectiles\img_iceball.png').convert()
-ice_beam_img.set_colorkey(config.default_transparency)
-
-rock_shard_img = pygame.image.load(    'Animation\img_rock.png').convert()
-rock_shard_img.set_colorkey(config.default_transparency)
-
-bee_img = pygame.image.load(    'Animation\img_bee.png').convert_alpha()
-hive_img = pygame.image.load(    'Animation\img_hive.png').convert_alpha()
-
-leaf_img = pygame.image.load(    'Animation\img_leaf.png').convert()
-leaf_img.set_colorkey(config.default_transparency)
-
-default_reticle =pygame.image.load('projectiles\img_crosshair.png').convert_alpha()
-
-basic_books    = pygame.image.load('projectiles\img_basic_books.png').convert_alpha()
 
 all_books = pygame.image.load(    'Animation\img_t_books.png').convert()
 all_books.set_colorkey(config.default_transparency)
-
 
 ice_book_img   = all_books.subsurface(( 0,  0), (20, 20))
 fire_book_img  = all_books.subsurface(( 0, 20), (20, 20))
@@ -146,10 +115,50 @@ big_magnet_book_img= bigger_books.subsurface((onfr*3, onfr*1), (onfr, onfr))
 big_DEBUG_book_img = bigger_books.subsurface((onfr*3, onfr*2), (onfr, onfr))
 big_bug_book_img   = bigger_books.subsurface((onfr*3, onfr*3), (onfr, onfr))
 
+# scale this down
+hit_marker_img = pygame.image.load(      'Animation\img_hit_marker.png').convert()
+hit_marker_img.set_colorkey(config.black)
+
+fire_bolt_img   = pygame.image.load(    'Animation\img_fireshot.png').convert()
+fire_ball_img   = pygame.image.load(    'Animation\img_fireball.png').convert()
+fire_bolt_img.set_colorkey(config.default_transparency)
+fire_ball_img.set_colorkey(config.default_transparency)
+
+green_bubbles_img   = pygame.image.load( 'Animation\img_poisonball.png').convert()
+green_bubbles_img.set_colorkey(config.default_transparency)
+poison_drop_img = pygame.image.load( 'Animation\img_poisoned.png').convert()
+green_bubbles_img.set_colorkey(config.default_transparency)
+
+ice_shard_img   = pygame.image.load(    'Animation\img_iceball.png').convert()
+ice_shard_img.set_colorkey(config.default_transparency)
+ice_beam_img   = pygame.image.load(    'Animation\img_icebeam.png').convert()
+ice_beam_img.set_colorkey(config.default_transparency)
+# not done
+ice_spikes_img = pygame.image.load(    'Animation\img_icebeam.png').convert()
+ice_spikes_img.set_colorkey(config.default_transparency)
+glacier_img = pygame.image.load(    'Animation\img_icebeam.png').convert()
+glacier_img.set_colorkey(config.default_transparency)
+
+rock_shard_img = pygame.image.load(    'Animation\img_rock.png').convert()
+rock_shard_img.set_colorkey(config.default_transparency)
+
+bee_img   = pygame.image.load(    'Animation\img_bee.png').convert()
+hive_img = pygame.image.load(    'Animation\img_hive.png').convert()
+bee_img.set_colorkey(config.default_transparency)
+hive_img.set_colorkey(config.default_transparency)
+
+leaf_img = pygame.image.load(    'Animation\img_leaf.png').convert()
+leaf_img.set_colorkey(config.default_transparency)
+
+seed_img = pygame.image.load(    'Animation\img_leaf.png').convert()
+seed_img.set_colorkey(config.default_transparency)
+
 sun_particle_img = light_book_img
 toxic_spore_img = acid_book_img
 small_fire_img = fire_book_img
 water_splash_img = ice_book_img
+
+default_reticle =pygame.image.load('projectiles\img_crosshair.png').convert_alpha()
 
 the_mighty_apis_img = pygame.image.load(    'Animation\img_apis.png').convert().set_colorkey(config.default_transparency)
 
@@ -238,7 +247,21 @@ class velocity():
 
 class hit_marker(spriteling.spriteling):
     def __init__(self, location):
-        super().__init__()
+        super().__init__(image=hit_marker_img, loc=location)
+        self.layer = config.impact_layer
+        self.timer = sec/4
+
+    def update(self, *args, **kwargs):
+        self.timer -= 1
+        if self.timer <= 0:
+            self.kill()
+
+    def __call__(self, new_loc, *args, **kwargs):
+        pass
+        # self.rect.center = new_loc
+
+        # self.timer = sec/2
+
 
 # the arrangement of spells (or more generally, all attacks) goes like this: each player character gets a spell book,
 # and each spell book has a particular pre-defined list of spells attached to it (one spell for each category). To
@@ -327,6 +350,7 @@ class spell_book(spriteling.spriteling):
                                    'misc', 'extra', 'magic', 'spellbook',
                                    active_spell=self.spells[self.index],
                                    obj_src='spellbook', inst_src=self)
+        return self.spells[self.index]
 
     def pop_spells(self, reticle_constr):
         self.reticle_constr = reticle_constr
@@ -401,15 +425,19 @@ class missile(spriteling.spriteling):
         self.effects = []
         for each in args:
             self.effects.append(each)
+        self.curr_hp = 1
         self.dmg = 1
         self.elem_type = 'magic'
         self.layer = config.missile_layer
-        if 'trigger_data' in kwargs:
-            pass
+
+        if 'damage' in kwargs:
+            self.dmg = kwargs['damage']
+        if "elem" in kwargs:
+            self.elem_type = kwargs['elem']
+        if 'hp' in kwargs:
+            self.curr_hp = kwargs['hp']
+
         if 'dispersion' in kwargs:
-
-            print("found dispersion")
-
             temp = pygame.rect.Rect((0, 0), (kwargs['dispersion'], kwargs['dispersion']))
             temp.clamp_ip(self.rect)
             self.rect.centerx = temp.left
@@ -432,51 +460,56 @@ class missile(spriteling.spriteling):
         else:
             self.impact = hit_marker
 
-
+    def react(self, to):
+        self.time_limit = 20
 
     def update(self, *args, **kwargs):
-        self.curr_hp -= 1
+        self.time_limit -= 1
         if self.curr_hp <= 0:
             self.kill()
-        if 'launch' in kwargs:
-            self.velocity(*kwargs['launch'])
+        if self.time_limit <= 0:
+            self.kill()
         self.move()
         self.hitbox.update()
 
-    def react(self, to, *args, **kwargs):
-        if isinstance(to, spriteling.spriteling):
-            spell_impact_layer.add(self.impact(self.rect.center))
+    def check_collide(self, target):
+        if isinstance(target, block):
+            return target.hitbox.rect.collidepoint(self.rect.center)
+        else:
+            return super().check_collide(target)
 
     def move(self, force_apply=False, **kwargs):
         self.rect.move_ip(self.velocity())
 
     def __call__(self, victim, *args, **kwargs):
-        victim.damage(self.elem_type, self.dmg)
-        victim.apply(*self.effects)
-
+        if victim.damage(self.elem_type, self.dmg*self.curr_hp):
+            victim.apply(*self.effects)
+            self.curr_hp -= 1
+            self.my_caster.add(impact=self.impact(self.rect.center))
+            return True
+        return False
 
 class seeker(missile):
     def __init__(self, partner, accel, offset, orbital_rank, img, loc, vel, *args, **kwargs):
-        error_msg = events.entry('error', "type error", "the types of the input params sent up to missile.__init__() "
-                                                        "don't match", 'spells', obj_src='missile', got_kwargs=kwargs, )
-        try:
-            assert (isinstance(img, pygame.Surface)), "img is not a surface"
-        except AssertionError as more_desc:
-            error_msg.modify(ext_desc=str(more_desc), img_type=str(type(img)))
-            event_maker.send_entry(error_msg)
-        try:
-            assert (isinstance(loc, tuple)), "loc is not a tuple"
-        except AssertionError as more_desc:
-            error_msg.modify(ext_desc=str(more_desc), loc_type=str(type(loc)))
-            event_maker.send_entry(error_msg)
-        try:
-            assert (len(loc) == 2), "loc is of improper length"
-        except AssertionError as more_desc:
-            error_msg.modify(ext_desc=str(more_desc), loc_contents=loc)
-            event_maker.send_entry(error_msg)
+        #error_msg = events.entry('error', "type error", "the types of the input params sent up to missile.__init__() "
+        #                                                "don't match", 'spells', obj_src='missile', got_kwargs=kwargs, )
+        #try:
+        #    assert (isinstance(img, pygame.Surface)), "img is not a surface"
+        #except AssertionError as more_desc:
+        #    error_msg.modify(ext_desc=str(more_desc), img_type=str(type(img)))
+        #    event_maker.send_entry(error_msg)
+        #try:
+        #    assert (isinstance(loc, tuple)), "loc is not a tuple"
+        #except AssertionError as more_desc:
+        #    error_msg.modify(ext_desc=str(more_desc), loc_type=str(type(loc)))
+        #    event_maker.send_entry(error_msg)
+        #try:
+        #    assert (len(loc) == 2), "loc is of improper length"
+        #except AssertionError as more_desc:
+        #    error_msg.modify(ext_desc=str(more_desc), loc_contents=loc)
+        #    event_maker.send_entry(error_msg)
 
         super().__init__(img, loc, vel, *args, **kwargs)
-        self.velocity(*vel)
         self.pair = partner
         self.accel = accel
         if orbital_rank != 0:
@@ -513,19 +546,31 @@ class seeker(missile):
                     self.velocity(add_y=-self.accel)
                 elif self.rect.centery < self.pair.rect.centery:
                     self.velocity(add_y=self.accel)
-        self.rect.move_ip(self.velocity())
-        self.hitbox.update()
+        super().update(*args, **kwargs)
 
     def set_partner(self, new_partner):
         self.pair = new_partner
 
 class boomerang(seeker):
-    def __init__(self, return_to, *args, **kwargs):
-        super().__init__(*args, **kwargs)
-        self.return_to = return_to
-        self.struck_target = 1
-        if 'strike_times' in kwargs:
-            self.struck_target = kwargs["strike_times"]
+    def __init__(self, num_strikes, partner, accel, offset, orbital_rank, img, loc, vel, *args, **kwargs):
+        super().__init__(partner, accel, offset, orbital_rank, img, loc, vel, *args, **kwargs)
+        self.made_it_back = False
+        self.struck_target = num_strikes
+
+    def react(self, to):
+        if self.struck_target > 0:
+            self.struck_target -= 1
+        else:
+            self.set_partner(self.my_caster.player)
+        super().react(to)
+
+    def __call__(self, victim, *args, **kwargs):
+        super().__call__(victim)
+        if self.struck_target > 0:
+            self.struck_target -= 1
+        else:
+            self.set_partner(self.my_caster.player)
+
 
 class strict_orbit(missile):
     def __init__(self, subject, radius, img, loc, vel, *args, **kwargs):
@@ -534,11 +579,12 @@ class strict_orbit(missile):
         self.rect.center = subject.rect.center
         self.rect.centerx = subject.rect.centerx + radius
         self.subject = subject
-        self.velocity = velocity(0, 50)
+        self.velocity = velocity(0, 0)
         self.quadrant = 1
         self.angle = 0
 
     def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
         self.angle += 3
         if self.angle > 360:
             self.angle = 0
@@ -549,24 +595,19 @@ class strict_orbit(missile):
 
 
 class aura(missile):
-    def __init__(self, subject, follow, duration, radius, loc, vel=(0, 0), *args, **kwargs):
+    def __init__(self, follow, duration, radius, loc, vel=(0, 0), *args, **kwargs):
         img = pygame.Surface((2*radius, 2*radius))
         img.set_colorkey(config.black)
-        pygame.draw.circle(img, config.yellow, img.get_rect().center, radius, 1)
-        #self.mask = pygame.mask.from_surface(img)
-        assert (type(loc) == tuple), "loc is not a tuple"+str(type(loc))
+        pygame.draw.circle(img, config.yellow, img.get_rect().center, radius)
 
-        super().__init__(img, loc, (0, 0), *args, **kwargs)
+        super().__init__(img, loc, (0, 0), *args, **kwargs, time_limit=duration)
         self.follow = follow
-        self.subject = subject
+        self.subject = self.my_caster
         self.radius = radius
-        self.duration = duration
         self.layer = config.floor_cos
 
     def update(self, *args, **kwargs):
-        self.duration -= 1
-        if not bool(self.duration):
-            self.kill()
+        super().update(*args, **kwargs)
         if self.follow:
             self.rect.center = self.subject.rect.center
             self.hitbox.update()
@@ -576,27 +617,10 @@ class aura(missile):
             super().__call__(target, *args, **kwargs)
 
     def check_collide(self, target):
+        if isinstance(target, block):
+            return False
         return events.dist(self, target) <= self.radius
 
-
-class basic_descending():
-    def __init__(self, x0, y0, x_decay, y_decay, frame_delay=1):
-        self.s_x = x0
-        self.s_y = y0
-        self.decay_x = x_decay * x0
-        self.decay_y = y_decay * y0
-        self.frame_delay = frame_delay
-        self.timer = 0
-
-    def __call__(self, *args, **kwargs):
-        self.timer += 1
-        if self.timer % self.frame_delay == 0:
-            self.timer = 0
-            self.s_x -= self.decay_x
-            self.s_y -= self.decay_y
-        ret_x = min(self.s_x, 0)
-        ret_y = min(self.s_y, 0)
-        return ret_x, ret_y
 
 class size_function():
     def __init__(self, start, asc, peak, desc,):
@@ -628,22 +652,6 @@ class wave(missile):
 
         super().update(*args, **kwargs)
 
-class simple_flat_grow():
-    def __init__(self, starting_rect, delta_size=1):
-        self.rect = starting_rect
-        self.grow_by = delta_size
-
-    def __call__(self, stage):
-        return self.rect.inflate(0, self.grow_by*stage)
-
-class simple_flat_shrink():
-    def __init__(self, starting_rect, delta_size=1):
-        self.rect = starting_rect
-        self.grow_by = delta_size
-
-    def __call__(self, stage):
-        return self.rect.inflate(0, -self.grow_by * stage)
-
 class trail(spriteling.spriteling):
     pass
 
@@ -670,6 +678,10 @@ class semi_release(trigger):
     def __call__(self, prev, now):
         return prev and not now
 
+class release(trigger):
+    def __call__(self, prev, now):
+        return not now
+
 class cast_per_room(trigger):
     def __init__(self, num_casts):
         self.max_casts = num_casts
@@ -680,9 +692,10 @@ class cast_per_room(trigger):
         self.casts = self.max_casts
 
     def __call__(self, key, dummy=False):
-        if key:
+        if key and self.casts>=0:
+            print("casts left: ", self.casts)
             self.casts -= 1
-        return bool(self.casts) and key
+        return self.casts>=0 and key
 
 
 class cast_per_run(trigger):
@@ -694,9 +707,10 @@ class cast_per_run(trigger):
     def restore(self):
         self.casts = self.max_casts
 
-    def __call__(self, prev, now):
-        self.casts -= 1
-        return bool(self.casts)
+    def __call__(self, key, dummy=False):
+        if key and self.casts >= 0:
+            self.casts -= 1
+        return self.casts>=0 and key
 
 
 class cap(trigger):
@@ -709,11 +723,6 @@ class cap(trigger):
 
     def __call__(self, key, reset=False):
         if reset:
-
-
-            print('reseting')
-
-
             self.uses = 0
             return False
         elif key and self.uses <= self.max_uses:
@@ -788,7 +797,7 @@ class over_heated(trigger):
 
 class cooled(trigger):
     def __init__(self, cooldown_time):
-        self.cooldown_time = cooldown_time * sec
+        self.cooldown_time = cooldown_time
         self.heat = 0
 
     def __call__(self, prev, now):
@@ -796,6 +805,7 @@ class cooled(trigger):
             self.heat -= 1
             return False
         elif now:
+            self.heat = self.cooldown_time
             return True
         return False
 
@@ -815,6 +825,26 @@ class reset_gate(trigger):
             self.charge = 0
             return False
 
+
+class wind_up(trigger):
+    def __init__(self, time_drop, delay_at_start, delay_at_full):
+        self.drop = time_drop
+        self.min_delay = delay_at_full
+        self.max_delay = delay_at_start
+        self.charge = 0
+        self.curr_delay = delay_at_start
+
+    def __call__(self, prev, now):
+        if prev and now:
+            if self.charge >= self.curr_delay:
+                self.charge = 0
+                self.curr_delay = max(self.min_delay, self.curr_delay - self.drop)
+                return True
+            self.charge += 1
+        else:
+            self.charge = 0
+            self.curr_delay = self.max_delay
+        return False
 
 class chained_trigger(trigger):
     def __init__(self, *args):
@@ -909,11 +939,11 @@ class spell(spriteling.spriteling):
         else:
             self.my_trigger = semi()
 
-        self.layer = config.spell_layer
+        self.layer = self.my_caster.spell_layer
         if 'recoil' in kwargs:
             self.recoil_growth = kwargs['recoil']
         else:
-            self.recoil_growth = 5
+            self.recoil_growth = 2
         self.recoil = 0
 
     # the update method controls most if not all of a spell's behavior, and is (I think) the only method of spell called
@@ -927,12 +957,8 @@ class spell(spriteling.spriteling):
             self.recoil -= 1
         if active:
             self.rect.center = loc
-            if 'missile_layer' in kwargs and self.my_trigger(prev, now):
-                ret = self.cast(kwargs['direction'])
-                kwargs['missile_layer'].add(ret)
-                #pillar_of_hate.add(ret)
-            else:
-                pass
+            if self.my_trigger(prev, now) and 'missile_layer' in kwargs:
+                kwargs['missile_layer'].add(self.cast(kwargs['direction']))
 
     # on update, an active spell attempts to cast its projectile. for most spells, this involves tracking the state of
     # the fire button and "AND"ing it to some other condition. for basic spells, this is the (negation of the) state of
@@ -947,13 +973,28 @@ class spell(spriteling.spriteling):
         return str(self.type_name + ' ' + self.spell_name)
 
 
-class monitored_spell(spell):
-    def __init__(self,  projectile, img, **kwargs):
+class remote_spell(spell):
+    def __init__(self, projectile, img, **kwargs):
         super().__init__(projectile, img, **kwargs)
+        self.secondary_trigger = None#### pick up here
+
+class alt_fire(spell):
+    def __init__(self, alt_projectile, alt_trigger, projectile, img, **kwargs):
+        super().__init__(projectile, img, **kwargs)
+        self.secondary_fire = alt_projectile
+        self.secondary_trigger = alt_trigger
+
+    def update(self, active, loc, prev, now, *args, **kwargs):
+        super().update(active, loc, prev, now, *args, **kwargs)
+        if active:
+            if 'missile_layer' in kwargs and self.secondary_trigger(prev, now):
+                kwargs['missile_layer'].add(self.secondary_fire(kwargs['direction'], self.rect.center,
+                                                                spread=self.recoil, caster=self.my_caster))
+
 
 class beam(spell):
     def cast(self, direction):
-        first = self.projectile(self.rect.center, caster=self.my_caster)
+        first = self.projectile(1, None, self.rect.center, caster=self.my_caster)
         ret = pygame.sprite.OrderedUpdates(first)
         # tricky math time
         dist_per_seg_x = first.rect.width / 2
@@ -966,21 +1007,31 @@ class beam(spell):
             num_segments_to_cross_screen = int(config.screen_height / first.rect.height)
 
         for x in range(0, num_segments_to_cross_screen):
-            first = self.projectile((first.rect.centerx+(dist_per_seg_x*direction[0]),
+            first = self.projectile(x+sec/2, first, (first.rect.centerx+(dist_per_seg_x*direction[0]),
                                                 first.rect.centery+(dist_per_seg_y*direction[1])), caster=self.my_caster)
             ret.add(first)
         return ret
 
 class beam_particle(missile):
-    def __init__(self, timer, img, loc, **kwargs):
+    def __init__(self, timer, prev, img, loc, **kwargs):
         super().__init__(img, loc, velocity(), **kwargs)
-        self.curr_hp = timer
+        self.next = None
+        self.time_limit = timer
+        if prev is not None:
+            prev.set_next(self)
 
-    def update(self, *args, **kwargs):
-        self.curr_hp -= 1
-        if self.curr_hp <= 0:
+    def react(self, to):
+        if self.next is None:
             self.kill()
-        self.image.set_alpha(self.curr_hp)
+        elif isinstance(to, block):
+            self.next.react(to)
+            self.next.kill()
+        else:
+            super().react(to)
+
+    def set_next(self, newb):
+        self.next = newb
+
 
 class obstacle(spell):
     pass
@@ -1017,10 +1068,7 @@ class target(spell):
                         kwargs['missile_layer'].add(self.reticle)
                         self.reticle.update(position=self.chosen_target.rect.center)
                         if self.my_trigger(prev, now) and has_layer:
-                            ret = self.cast(kwargs['direction'])
-                            kwargs['missile_layer'].add(ret)
-                            #pillar_of_hate.add(ret)
-                            hostile_to_enemies.add(self.cast(kwargs['direction']))
+                            kwargs['missile_layer'].add(self.cast(kwargs['direction']))
                     else:
                         self.reticle.kill()
                 # if there are no valid targets, the reticle must be removed from the missile layer
@@ -1035,6 +1083,9 @@ class target(spell):
         pass
 
     def cast(self, direction):
+
+        print("casting from target; passing: ", self.chosen_target, direction, self.rect.center, self.my_caster)
+
         return self.projectile(self.chosen_target, direction, self.rect.center, caster=self.my_caster)
 
 
@@ -1058,7 +1109,7 @@ class dumb_target(target):
 # this current version is.... not exactly what I was going for at first, but it is serviceable.
 class ordered_target(target):
     def __init__(self, *args, **kwargs):
-        super(ordered_target, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.possible_targets = deque([])
 
     def assess_targets(self, targets, **kwargs):
@@ -1145,8 +1196,8 @@ class DEBUG_strict_orbiter_for_circle_me(strict_orbit):
 
 class fireball_s(spell):
     def __init__(self, **kwargs):
-        super().__init__(fireball_m, dupe(fire_book_img),
-                         spell_name="fireball", **kwargs)
+        super().__init__(fireball_m, fire_book_img,
+                         spell_name="fireball", trigger_method=wind_up(4, sec, 3), **kwargs)
 
 class fireball_m(missile):
     def __init__(self, dir, loc, **kwargs):
@@ -1192,7 +1243,7 @@ class iceshard_s(spell):
 class iceshard_m(missile):
     def __init__(self, dir, loc, **kwargs):
         x_vel, y_vel = 4 * dir[0], 4 * dir[1]
-        missile.__init__(self, icy_ball_img, loc, (x_vel, y_vel), **kwargs, missile_name='iceshard')
+        missile.__init__(self, ice_shard_img, loc, (x_vel, y_vel), **kwargs, missile_name='iceshard')
         self.hitbox = spriteling.hitbox(self)
 
 
@@ -1217,8 +1268,8 @@ class icebeam_s(helix):
 class icebeam_m(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
         xvel, yvel = direction[0]*5.7, direction[1]*5.7
-        assert (isinstance(ice_beam_img, pygame.Surface)), "ice_beam_img has a problem"
-        super().__init__(partner, 5, 20, orbital_rank, ice_beam_img, loc, (xvel, yvel), *args, **kwargs, missile_name='ice_helix')
+        super().__init__(partner, 5, 20, orbital_rank, ice_beam_img, loc, (xvel, yvel), *args, **kwargs,
+                         missile_name='ice_helix')
 
 
 # might want to tweak this
@@ -1230,7 +1281,27 @@ class hydro_pump_s(helix):
 class hydro_pump_m(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
         xvel, yvel = direction[0]*4.2, direction[1]*4.2
-        super().__init__(partner, 1, 28, orbital_rank, water_splash_img, loc, (xvel, yvel), *args, **kwargs, missile_name="hydro_splash")
+        super().__init__(partner, 1, 28, orbital_rank, water_splash_img, loc, (xvel, yvel), *args, **kwargs,
+                         missile_name="hydro_splash")
+
+
+class razor_leaf_s(alt_fire):
+    def __init__(self, **kwargs):
+        super().__init__(sharp_leaf_m, semi_release(), sharp_leaf_m, leaf_book_img, spell_name='razor_leaf', **kwargs)
+
+
+## may want to expand what razor_leaf can do
+class sharp_leaf_m(missile):
+    def __init__(self, dir, loc, **kwargs):
+        super().__init__(leaf_img, loc,  velocity(var_mag=(7, 3), dir=dir),
+                         missile_name='sharp_leaf', **kwargs)
+        self.curr_hp += 2
+
+
+class splash_s(spell):
+    def __init__(self, **kwargs):
+        super().__init__(splash_m, water_book_img, **kwargs, )
+
 
 
 class acidic_orb_s(spell):
@@ -1258,19 +1329,32 @@ class poison_spore_s(spell):
             self.num_leaves = kwargs["num_leaves"]
 
     def cast(self, direction):
-        ret = pygame.sprite.Group()
-        num_spores = 3
-        if self.num_leaves > 0:
-            num_spores = self.num_leaves+1
-        for x in range(0, num_spores):
-            ret.add(self.projectile(direction, self.rect.center, dispersion=120, num_leaves=self.num_leaves,
-                                    caster=self.my_caster))
-        return ret
+        one = self.projectile(direction, self.rect.center, dispersion=120, caster=self.my_caster)
+        two = self.projectile(direction, self.rect.center, dispersion=120, caster=self.my_caster)
+        earl = self.projectile(direction, self.rect.center, dispersion=120, caster=self.my_caster)
+        return one, two, earl
+        #ret = pygame.sprite.Group()
+        #num_spores = 3
+        #if self.num_leaves > 0:
+        #    num_spores = self.num_leaves+1
+        #for x in range(0, num_spores):
+        #    ret.add(self.projectile(direction, self.rect.center, dispersion=120, num_leaves=self.num_leaves,
+        #                            caster=self.my_caster))
+        #return ret
+
 
 class poison_spore_m(missile):
     def __init__(self, dir, loc, **kwargs):
         v_mod = random.randint(0, 4) + 1
         super().__init__(toxic_spore_img, loc, velocity(mag=v_mod, dir=dir), **kwargs, missile_name='spore')
+
+class chain_gun_s(spell):
+    def __init__(self, **kwargs):
+        super().__init__(bullet_m, metal_book_img, **kwargs, spell_name='chain_gun' ,trigger_method=wind_up(3, sec/3, 3))
+
+class bullet_m(missile):
+    def __init__(self, dir, loc, **kwargs):
+        super().__init__(poison_drop_img, loc, velocity(mag=5, dir=dir), **kwargs, missile_name='bullet')
 
 
 class acid_cloud_s():
@@ -1296,24 +1380,21 @@ class radiant_glow_s():
 
 class solar_beam_s(beam):
     def __init__(self, **kwargs):
-        super().__init__(sun_particle_m, acid_book_img, **kwargs)
+        super().__init__(sun_particle_m, leaf_book_img, **kwargs,
+                         trigger_method=cooled(sec/2))
 
 class sun_particle_m(beam_particle):
-    def __init__(self, loc, **kwargs):
-        super().__init__(config.fps/2, leaf_book_img, loc, missile_name="sun_particle", **kwargs)
+    def __init__(self, num, prev, loc, **kwargs):
+        super().__init__(num, prev, leaf_book_img, loc, missile_name="sun_particle", **kwargs)
 
 class beacon_of_hope(spell):
     def __init__(self, **kwargs):
         super().__init__(healing_aura_m, light_book_img,
-                         my_trigger=complex_trigger([cooled(config.fps*45)], [cast_per_room(3)]), **kwargs)
-
-    def cast(self, direction):
-        return self.projectile(self, (0, 0), self.rect.center, caster=self.my_caster)
-
+                         trigger_method=gated_trigger(cooled(config.fps*15), cast_per_run(3)), **kwargs, spell_name='beacon_of_hope')
 
 class healing_aura_m(aura):
-    def __init__(self, host, dir, loc, **kwargs):
-        super().__init__(host, False, config.fps*2, 150, loc, icy_ball_img, **kwargs, missile_name='healing_aura')
+    def __init__(self, dir, loc, **kwargs):
+        super().__init__(False, config.fps*2, 150, loc, light_book_img, **kwargs, missile_name='healing_aura')
 
 
 
@@ -1387,7 +1468,7 @@ class book_of_wind(spell_book):
 class DEBUG_book(spell_book):
     def __init__(self, *args):
         super().__init__(len(args))
-        self.image = big_light_book_img
+        self.image = big_DEBUG_book_img
         self.goddess_lookup_key = 'robes'
         self.spell_key = {}
         num = 0

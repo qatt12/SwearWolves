@@ -139,6 +139,7 @@ class room():
         # the full rect is for the entire room
         self.visible_rect = disp.get_rect()
         self.full_rect = self.ground.rect
+        #self.full_rect.inflate_ip(100, 100)
         self.scroll_rect = self.visible_rect.inflate(-150, -150)
         self.scroll_rect.center = self.visible_rect.center
 
@@ -179,6 +180,7 @@ class room():
         for each in args:
             self.contents.add(each, layer=enemies_layer)
             self.enemies.add(self.contents.get_sprites_from_layer(enemies_layer))
+            each.move(bound_rect=self.full_rect)
 
     def add_door(self, side, position, *args):
         if side == 'left':
@@ -240,6 +242,7 @@ class room():
         self.scroll(x, y)
         self.counter_scroll(x, y, player_one)
 
+
     def draw_contents(self, disp, boxes=False):
         if not boxes:
             return self.contents.draw(disp)
@@ -247,6 +250,9 @@ class room():
             ret = self.contents.draw(disp)
             self.draw_boxes(disp)
             return ret
+
+    def get_contents(self):
+        return self.contents
 
     def draw_boxes(self, disp):
         for w in self.all_walls:
@@ -275,12 +281,17 @@ class room():
             bonks = pygame.sprite.groupcollide(kwargs['players'], self.all_walls, False, False, collide_hitbox)
             for each in bonks:
                 each.move(walls=bonks[each])
+        if 'missiles' in kwargs:
+            # for each in kwargs['missiles']:
+            #     if not self.full_rect.contains(each):
+            #         each.rect.clamp_ip(self.full_rect)
+            dead = pygame.sprite.groupcollide(kwargs['missiles'], self.all_walls, True, False, collide_hitbox)
+            for each in dead:
+                for every in dead[each]:
+                    each.react(every)
         bonks_a = pygame.sprite.groupcollide(self.enemies, self.all_walls, False, False, collide_hitbox)
         for each in bonks_a:
             each.move(walls=bonks_a[each])
-        squishies = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
-        for each in squishies:
-            each.move(push=squishies[each])
 
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with

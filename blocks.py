@@ -167,7 +167,7 @@ class wall(block):
     wall_size = 65
     def __init__(self, facing, *args):
         super(wall, self).__init__(*args)
-        #self.hitboxes.empty()
+        self.layer = config.outer_wall_layer
         self.facing = facing
         if facing == 'down':
             self.hitbox = spriteling.hitbox(self,
@@ -196,7 +196,7 @@ class corner(block):
     corner_size = 65
     def __init__(self, facing, *args):
         super().__init__(*args)
-        #self.hitboxes.empty()
+        self.layer = config.outer_wall_layer
         if facing == 'top_left':
             self.hitbox = (spriteling.hitbox(self,
                                              scale_x=-corner.corner_size, scale_y=-corner.corner_size,
@@ -213,7 +213,6 @@ class corner(block):
             self.hitbox = (spriteling.hitbox(self,
                                              scale_x=-corner.corner_size, scale_y=-corner.corner_size,
                                              bottom_side=self.rect.bottom, left_side=self.rect.left))
-        #self.hitboxes.add(self.hitbox)
 
 
 # the floor sprite is bit tricky, as it creates a rectangular floor of the size specified and sets it as its image

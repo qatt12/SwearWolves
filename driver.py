@@ -117,9 +117,15 @@ class screen_handler():
         if 'room' in kwargs:
             self.current_room = kwargs['room']
             message.modify(room=kwargs['room'])
+            for x in range(0, config.player_layer):
+                pillar_of_hate.remove_sprites_of_layer(x)
+            for each in kwargs['room'].get_contents():
+                pillar_of_hate.add(each, layer=each.layer)
         if 'overlay' in kwargs:
             self.overlays.append(kwargs['overlay'])
             message.modify(overlay=kwargs['overlay'])
+            pillar_of_hate.add(kwargs['overlay'], layer=kwargs['overlay'].layer)
+
         event_maker.send_entry(message, False, False)
 
     def update(self, *args, **kwargs):
@@ -135,40 +141,43 @@ class screen_handler():
             self.current_room.collide_doors(self.GROUP_of_player_SPRITES)
 
             visible_enemies = self.current_room.pull_enemies()
+            for each in visible_enemies:
+                pillar_of_hate.add(each, layer=each.layer)
+
             allied = pygame.sprite.Group()
             for player_handler in self.ordered_list_of_player_HANDLERS:
                 other_players = pygame.sprite.OrderedUpdates.copy(self.GROUP_of_player_SPRITES)
                 other_players.remove(player_handler.player)
                 player_handler.update(players=other_players, enemies=visible_enemies, allies=allied,
                                       me=player_handler.player, all_players=self.GROUP_of_player_SPRITES)
-                #live_missiles.add(player_handler.get_missiles())
                 for each in player_handler.get_missiles():
-                    pillar_of_hate.add(each)
+                    pillar_of_hate.add(each, layer=each.layer)
 
-                #print("live_missiles: ", live_missiles.sprites())
-                #print("pillar: ", pillar_of_hate.sprites())
+                if player_handler.get_spells()['refresh']:
+                    pillar_of_hate.remove_sprites_of_layer(player_handler.spell_layer)
+                    pillar_of_hate.add(player_handler.get_spells()['active'],
+                                       layer=player_handler.spell_layer)
 
-            #self.current_room.collide_missiles_into_enemies(live_missiles)
+                self.current_room.collide_missiles_into_enemies(player_handler.get_missiles())
+                self.current_room.collide_walls(missiles=player_handler.get_missiles())
 
-    def draw(self, display, scroll=(0, 0)):
-        display.fill(config.black)
-        ret = []
+    def draw(self, display):
+
+        # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
+        # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
+        #display.fill(config.black)
+        #pygame.display.update(pillar_of_hate.draw(display))
+
         if self.current_room is not None:
-            ret = self.current_room.draw_contents(self.disp, True)
-
+            self.current_room.draw_contents(self.disp, True)
             for each in self.ordered_list_of_player_HANDLERS:
-                each.draw(self.disp)
-
-        ret.append(display.blit(self.disp, scroll))
-
+                each.draw(self.disp, True)
+        display.blit(self.disp, (0, 0))
         self.menus.draw(display)
-
         for each in self.overlays:
             each.draw(display)
 
-        #pygame.display.update(self.render_rect())
         pygame.display.flip()
-        #pygame.display.update(pillar_of_hate.draw(display)+ret+self.menus.draw(display))
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -180,14 +189,10 @@ class screen_handler():
         for each in self.ordered_list_of_player_HANDLERS:
             each.begin_game(player_constr, starting_room, i)
             self.GROUP_of_player_SPRITES.add(each.player)
-            pillar_of_hate.add(each.player)
+            pillar_of_hate.add(each.player, layer=each.layer)
             i += 1
             assert (each.player is not None), "each.player DNEs"
             assert (isinstance(each.player, spriteling)), "wrong type; not a sprite"
-            try:
-                self.GROUP_of_player_SPRITES.__contains__(each)
-            except:
-                print("failed to add sprites; you passed in ", type(each))
             self.apply(overlay=each.get_hud())
 
 
@@ -246,9 +251,9 @@ game_window.fill((0, 0, 0))
 import spells
 
 # spells.dumb_heal_s, spells.DEBUG_target_line
-unlocked_books = [spells.DEBUG_book(spells.fireball_s, spells.flame_wheel_s, spells.flamethrower_s,
+unlocked_books = [spells.DEBUG_book(spells.razor_leaf_s, spells.flame_wheel_s, spells.beacon_of_hope,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
-                                    spells.hydro_pump_s, spells.poison_spore_s),
+                                    spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
 
 player_num = 1
@@ -374,9 +379,10 @@ while(game_loop and running):
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)
 
-    screen.update()
+
 
     screen.draw(game_window)
+    screen.update()
 
     clock.tick(config.fps)
     pygame.event.pump()

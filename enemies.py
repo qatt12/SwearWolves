@@ -49,6 +49,7 @@ class charged_attack(spriteling.spriteling):
 class enemy(spriteling.spriteling):
     def __init__(self, *args, **kwargs):
         super(enemy, self).__init__(*args, **kwargs)
+        self.layer = config.enemy_layer
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
@@ -56,8 +57,8 @@ class enemy(spriteling.spriteling):
 class simple_enemy(enemy):
     def __init__(self):
         super().__init__()
-        self.attack = spells.charged_fireball_s()
+        #self.attack = spells.fireball_s()
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
-        self.attack.update(True, self.rect.center, True, True, (1, 0))
+        #self.attack.update(True, self.rect.center, True, True, (1, 0))

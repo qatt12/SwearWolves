@@ -459,4 +459,4 @@ next_stage = 1
 
 event_maker = event_handler(500)
 event_maker.make_entry("trace", "first trace", 'the very first trace entry', 'events', False, False)
-event_maker.block_terms("target", 'targeted', 'DEBUG targeting', 'move', 'old')
+event_maker.block_terms("target", 'targeted', 'DEBUG targeting', 'move', 'old', '26')

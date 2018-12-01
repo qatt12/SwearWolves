@@ -65,8 +65,9 @@ enemy_layer = player_layer+4          # 13
                                       # 14
                                       # 15
                                       # 16
-spell_layer = enemy_layer+4           # 17
-spark_layer = spell_layer +1          # 18
+spell_layer = enemy_layer+1           # 17
+
+spark_layer = spell_layer +4          # 18
 missile_layer = spark_layer+1         # 19
 impact_layer = missile_layer+1        # 20
 air_layer = missile_layer + 4         # 21

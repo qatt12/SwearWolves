@@ -8,10 +8,12 @@ class hud(spriteling.spriteling):
     def __init__(self, player, book, player_num, *args, **kwargs):
         hud_width = int(config.screen_size[0] / width_scalar)
         hud_height = int(config.screen_size[1] / height_scalar)
-        print("hud width= ", hud_width, "hud height= ", hud_height)
         # super().__init__(image=pygame.Surface((hud_width, hud_height)))
         super().__init__()
         self.rect = pygame.rect.Rect((0, 0), (hud_width, hud_height))
+        self.image = pygame.Surface((int(hud_width), int(hud_height)))
+        self.image.set_colorkey(config.black)
+
         if player_num == 2:
             self.rect.move_ip((width_scalar-1)*hud_width, 0)
         elif player_num == 3:
@@ -25,6 +27,8 @@ class hud(spriteling.spriteling):
         self.book_image = book.image
         self.book_slot = book.rect.clamp(self.rect)
         self.book_slot.left = self.portrait_slot.right
+
+        self.layer = config.overlayer
 
         if 'starting_xp' in kwargs:
             self.xp = kwargs['starting_xp']
@@ -45,6 +49,11 @@ class hud(spriteling.spriteling):
         self.active_spell_slot.left = self.portrait_slot.right
         self.active_spell_slot.bottom = self.portrait_slot.bottom
         print("active spell slot is: ", self.active_spell_slot)
+
+        self.draw(self.image)
+
+    def update(self, *args, **kwargs):
+        pass
 
     def draw(self, disp, boxes=False):
         #print("drawing a hud")

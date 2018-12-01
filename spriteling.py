@@ -264,6 +264,8 @@ class spriteling(pygame.sprite.Sprite):
 
         self.activity_state = {}
 
+        self.layer = 0
+
         self.base_hp = 1000
         self.curr_hp = 1000
         self.healing = 0
@@ -272,6 +274,7 @@ class spriteling(pygame.sprite.Sprite):
         self.applied_modifiers = dict()
         self.curr_modifiers = dict(self.base_modifiers)
 
+        self.is_immune = 0
         self.base_immune = set()
         self.curr_immune = set()
 
@@ -307,7 +310,8 @@ class spriteling(pygame.sprite.Sprite):
 
     def update(self, *args, **kwargs):
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
-
+        if self.is_immune > 0:
+            self.is_immune -=1
         self.rect.move_ip(self.move(**kwargs))
         self.hitbox.update()
 
@@ -367,27 +371,28 @@ class spriteling(pygame.sprite.Sprite):
         if 'walls' in kwargs:
             message.modify(new_desc='collided w/ walls', walls=kwargs['walls'])
             for wall in kwargs['walls']:
-                # some creative tomfoolery with rectangles and clipping
-                # temp is the rectangle of overlap between the hitbox of the offending sprite and the hitbox of the wall
-                temp = self.hitbox.rect.clip(wall.hitbox.rect)
-                # before forcing a move either up or down, we need to see if our centerx is between the left and right
-                # bounds of the wall we've hit. if it is, then this is a top or bottom collision
-                if wall.hitbox.rect.left < self.rect.centerx < wall.hitbox.rect.right:
-                    # if temp's centery is above our won centery, then the wall we are touching is above us, and we will
-                    # need to move downwards (positive y) by an amount equal to the height of temp
-                    if temp.centery < self.hitbox.rect.centery:
-                        # move our own rect downwards
-                        self.rect.move_ip(0, temp.height)
-                    # basically the same as above, but now temp's height is negative, to reflect that we're moving
-                    # upwards
-                    elif temp.centery > self.hitbox.rect.centery:
-                        self.rect.move_ip(0, -temp.height)
-                if wall.hitbox.rect.bottom > self.rect.centery > wall.hitbox.rect.top:
-                    if temp.centerx > self.hitbox.rect.centerx:
-                        self.rect.move_ip(-temp.width, 0)
-                    elif temp.centerx < self.hitbox.rect.centerx:
-                        self.rect.move_ip(temp.width, 0)
-                self.hitbox.update()
+                if self.check_collide(wall):
+                    # some creative tomfoolery with rectangles and clipping
+                    # temp is the rectangle of overlap between the hitbox of the offending sprite and the hitbox of the wall
+                    temp = self.hitbox.rect.clip(wall.hitbox.rect)
+                    # before forcing a move either up or down, we need to see if our centerx is between the left and right
+                    # bounds of the wall we've hit. if it is, then this is a top or bottom collision
+                    if wall.hitbox.rect.left < self.rect.centerx < wall.hitbox.rect.right:
+                        # if temp's centery is above our won centery, then the wall we are touching is above us, and we will
+                        # need to move downwards (positive y) by an amount equal to the height of temp
+                        if temp.centery < self.hitbox.rect.centery:
+                            # move our own rect downwards
+                            self.rect.move_ip(0, temp.height)
+                        # basically the same as above, but now temp's height is negative, to reflect that we're moving
+                        # upwards
+                        elif temp.centery > self.hitbox.rect.centery:
+                            self.rect.move_ip(0, -temp.height)
+                    if wall.hitbox.rect.bottom > self.rect.centery > wall.hitbox.rect.top:
+                        if temp.centerx > self.hitbox.rect.centerx:
+                            self.rect.move_ip(-temp.width, 0)
+                        elif temp.centerx < self.hitbox.rect.centerx:
+                            self.rect.move_ip(temp.width, 0)
+                    self.hitbox.update()
 
         if 'bound_rect' in kwargs:
             self.rect.clamp_ip(kwargs['bound_rect'])
@@ -399,23 +404,24 @@ class spriteling(pygame.sprite.Sprite):
         # basically the same thing as in wall-based occlusion, except slower
         if 'push' in kwargs:
             for squish in kwargs['push']:
-                temp = self.hitbox.rect.clip(squish.hitbox.rect)
-                if temp.centerx > self.rect.centerx:
-                    self.rect.move_ip(-2, 0)
-                elif temp.centerx < self.rect.centerx:
-                    self.rect.move_ip(2, 0)
-                if temp.centery > self.rect.centery:
-                    self.rect.move_ip(0, -2)
-                elif temp.centery < self.rect.centery:
-                    self.rect.move_ip(0, 2)
-                if temp.center == self.rect.center:
-                    sign = random.randint(0, 1)
-                    dist_x, dist_y = random.randint(0, 3), random.randint(0, 3)
-                    if sign == 0:
-                        dist_x *= -1
-                        dist_y *= -1
-                    self.rect.move_ip(dist_x, dist_y)
-                self.hitbox.update()
+                if self.check_collide(squish):
+                    temp = self.hitbox.rect.clip(squish.hitbox.rect)
+                    if temp.centerx > self.rect.centerx:
+                        self.rect.move_ip(-2, 0)
+                    elif temp.centerx < self.rect.centerx:
+                        self.rect.move_ip(2, 0)
+                    if temp.centery > self.rect.centery:
+                        self.rect.move_ip(0, -2)
+                    elif temp.centery < self.rect.centery:
+                        self.rect.move_ip(0, 2)
+                    if temp.center == self.rect.center:
+                        sign = random.randint(0, 1)
+                        dist_x, dist_y = random.randint(0, 3), random.randint(0, 3)
+                        if sign == 0:
+                            dist_x *= -1
+                            dist_y *= -1
+                        self.rect.move_ip(dist_x, dist_y)
+            self.hitbox.update()
 
         if 'bounce' in kwargs:
             temp = self.hitbox.rect.clip(kwargs['bounce'])
@@ -437,17 +443,16 @@ class spriteling(pygame.sprite.Sprite):
 
     # the damage and heal functions are important. As I have discovered, its kind of a bitch to try and apply damage
     # (esp damage over time) cleanly without splitting it into a method that creates a class that is appended to a deque
-    def damage(self, form, amount, duration=0):
+    def damage(self, form, amount):
         if form not in self.curr_immune:
             event_maker.make_entry('trace', 'damage', 'applying damage from spriteling', 'spriteling', False, False,
                                    'extra', 'damage', 'health')
-            if bool(duration):
-                self.cond_queue.append(damage(form, amount, duration))
-            else:
-                dmg = self.curr_modifiers['dmg'] * self.amount
-                if form in self.curr_modifiers:
-                    dmg *= self.curr_modifiers[form]
-                self.curr_hp -= dmg
+            dmg = self.curr_modifiers['dmg'] * amount
+            if form in self.curr_modifiers:
+                dmg *= self.curr_modifiers[form]
+            self.curr_hp -= dmg
+            return True
+        return False
 
     def heal(self, amount, duration=1, upfront=0):
         self.curr_hp += upfront
@@ -463,7 +468,7 @@ class spriteling(pygame.sprite.Sprite):
 # basic hitbox class. Essentially just a slightly fancier rect, that automagically maintains its position relative to
 # its host (assuming you update it as frequently as you update the host)
 class hitbox(pygame.sprite.Sprite):
-    def __init__(self, subj, **kwargs):
+    def __init__(self, subj, x=False, y=False, **kwargs):
         super().__init__()
         self.host = subj
         # if a rect is already specified in the constructor, it copies and uses that one
@@ -494,6 +499,11 @@ class hitbox(pygame.sprite.Sprite):
             self.rect.bottom = kwargs['bottom_side']
         if 'top_side' in kwargs:
             self.rect.top = kwargs['top_side']
+
+        if x:
+            self.rect.inflate_ip(self.rect.width*x-self.rect.width, 0)
+        if y:
+            self.rect.inflate_ip(0, self.rect.height*y-self.rect.height)
 
     def __str__(self):
         ret = "host: " + self.host.name + "| " + "Rect: " + str(self.rect)

@@ -30,20 +30,8 @@
 # ....--  .-+hs-------------..........................................---------------..`   `..  `.....
 # ....--  .-+hs-------------........................................-----------------    `-.  .-......
 
-import pygame, spriteling, events, spells, config
+import pygame, spriteling, events, spells, config, blocks
 from events import event_maker
-
-class charged_attack(spriteling.spriteling):
-    def __init__(self, time):
-        super().__init__()
-        self.cooldown = time * config.fps
-        self.timer = 0
-
-    def update(self, fire, missile_layer, *args, **kwargs):
-        if self.timer > 0:
-            self.timer -= 1
-        if self.timer == 0 and fire:
-            pass
 
 
 class enemy(spriteling.spriteling):
@@ -51,14 +39,19 @@ class enemy(spriteling.spriteling):
         super(enemy, self).__init__(*args, **kwargs)
         self.layer = config.enemy_layer
 
-    def update(self, *args, **kwargs):
-        super().update(*args, **kwargs)
+    def attack(self):
+        pass
 
 class simple_enemy(enemy):
     def __init__(self):
         super().__init__()
-        #self.attack = spells.fireball_s()
+        self.velocity = (10, 0)
 
     def update(self, *args, **kwargs):
+        self.rect.move_ip(self.velocity)
         super().update(*args, **kwargs)
-        #self.attack.update(True, self.rect.center, True, True, (1, 0))
+
+class not_as_simple_enemies(enemy):
+    def react(self, to, *args, **kwargs):
+        if isinstance(to, blocks.block):
+            self.velocity = (-self.velocity[0], -self.velocity[1])

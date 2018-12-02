@@ -74,7 +74,7 @@ fire_book_img  = all_books.subsurface(( 0, 20), (20, 20))
 acid_book_img  = all_books.subsurface(( 0, 40), (20, 20))
 light_book_img = all_books.subsurface(( 0, 60), (20, 20))
 
-leaf_book_img = all_books.subsurface((20,  0), (20, 20))
+leaf_book_img  = all_books.subsurface((20,  0), (20, 20))
 elec_book_img  = all_books.subsurface((20, 20), (20, 20))
 water_book_img = all_books.subsurface((20, 40), (20, 20))
 moon_book_img  = all_books.subsurface((20, 60), (20, 20))
@@ -115,7 +115,7 @@ big_magnet_book_img= bigger_books.subsurface((onfr*3, onfr*1), (onfr, onfr))
 big_DEBUG_book_img = bigger_books.subsurface((onfr*3, onfr*2), (onfr, onfr))
 big_bug_book_img   = bigger_books.subsurface((onfr*3, onfr*3), (onfr, onfr))
 
-# scale this down
+
 hit_marker_img = pygame.image.load(      'Animation\img_hit_marker.png').convert()
 hit_marker_img.set_colorkey(config.black)
 
@@ -133,6 +133,7 @@ ice_shard_img   = pygame.image.load(    'Animation\img_iceball.png').convert()
 ice_shard_img.set_colorkey(config.default_transparency)
 ice_beam_img   = pygame.image.load(    'Animation\img_icebeam.png').convert()
 ice_beam_img.set_colorkey(config.default_transparency)
+
 # not done
 ice_spikes_img = pygame.image.load(    'Animation\img_icebeam.png').convert()
 ice_spikes_img.set_colorkey(config.default_transparency)
@@ -152,6 +153,9 @@ leaf_img.set_colorkey(config.default_transparency)
 
 seed_img = pygame.image.load(    'Animation\img_leaf.png').convert()
 seed_img.set_colorkey(config.default_transparency)
+
+bullet_img = pygame.image.load(    'Animation\img_bullet.png').convert()
+bullet_img.set_colorkey(config.default_transparency)
 
 sun_particle_img = light_book_img
 toxic_spore_img = acid_book_img
@@ -191,9 +195,6 @@ class velocity():
         if 'dir' in kwargs:
             self.x = mag * kwargs['dir'][0]
             self.y = mag * kwargs['dir'][1]
-        if "angle" in kwargs:
-            pass
-
         self.p_x = x % 1
         self.t_x = 0.0
         self.p_y = y % 1
@@ -426,7 +427,7 @@ class missile(spriteling.spriteling):
         for each in args:
             self.effects.append(each)
         self.curr_hp = 1
-        self.dmg = 1
+        self.dmg = 100
         self.elem_type = 'magic'
         self.layer = config.missile_layer
 
@@ -444,7 +445,6 @@ class missile(spriteling.spriteling):
             self.rect.centery = temp.top
             self.rect.move_ip(random.randint(0, kwargs['dispersion']), random.randint(0, kwargs['dispersion']))
         if 'spread' in kwargs:
-            # PICK UP HERE
             sign = random.randint(0, 4)
             devtn = random.random()
             if sign % 2 == 0:
@@ -582,16 +582,33 @@ class strict_orbit(missile):
         self.velocity = velocity(0, 0)
         self.quadrant = 1
         self.angle = 0
+        if "angular_speed" in kwargs:
+            self.angular_speed = kwargs["angular_speed"]
+        else:
+            self.angular_speed = 3
+
+        # needs more testing
+        if "at_angles" in kwargs:
+            self.angle_triggers = kwargs['at_angles']
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
-        self.angle += 3
+        self.angle += self.angular_speed
         if self.angle > 360:
             self.angle = 0
         locus = self.subject.rect.center
         x_pos = locus[0] + math.cos(math.radians(self.angle)) * self.radius
         y_pos = locus[1] + math.sin(math.radians(self.angle)) * self.radius
         self.rect.center = x_pos, y_pos
+
+class swirl(strict_orbit):
+    def __init__(self, radius_growth, subject, radius, img, loc, vel, *args, **kwargs):
+        super().__init__(subject, radius, img, loc, vel, *args, **kwargs)
+        self.radius_growth = radius_growth
+
+    def update(self, *args, **kwargs):
+        self.radius += self.radius_growth
+        super().update(*args, **kwargs)
 
 
 class aura(missile):
@@ -1213,13 +1230,19 @@ class fireball_m(missile):
 # additional spells up to cap, rinse and repeat
 class flame_wheel_s(swarm, self_target):
     def __init__(self, **kwargs):
-        super().__init__(10, 'me', flame_wheel_m, fire_book_img, spell_name='flamewheel',
+        super().__init__(10, 'me', flame_swirl_m, fire_book_img, spell_name='flamewheel',
                          trigger_method=gated_trigger(reset_gate(sec/2), cap(10), semi_release()),
                          **kwargs)
 
 class flame_wheel_m(strict_orbit):
     def __init__(self, partner, radius, loc, direction, *args, **kwargs):
-        super().__init__(partner, radius*100, small_fire_img, loc, velocity(), **kwargs, missile_name='fire_wheel')
+        super().__init__(partner, radius, small_fire_img, loc, velocity(), **kwargs, missile_name='fire_wheel',
+                         max_anlge=360, radius_growth=3)
+
+class flame_swirl_m(swirl):
+    def __init__(self, partner, radius, loc, direction, *args, **kwargs):
+        super().__init__(.2, partner, radius, small_fire_img, loc, velocity(), **kwargs, missile_name='fire_wheel',
+                         angular_speed=3)
 
 class flamethrower_s(spell):
     def __init__(self, **kwargs):
@@ -1348,13 +1371,18 @@ class poison_spore_m(missile):
         v_mod = random.randint(0, 4) + 1
         super().__init__(toxic_spore_img, loc, velocity(mag=v_mod, dir=dir), **kwargs, missile_name='spore')
 
+class busrt_shard_s(spell):
+    def __init__(self, **kwargs):
+        super().__init__(bullet_m, metal_book_img, **kwargs, spell_name='burst_shard',
+                         trigger_method=gated_trigger(reset_gate(sec/8), cap(7), semi_release()))
+
 class chain_gun_s(spell):
     def __init__(self, **kwargs):
-        super().__init__(bullet_m, metal_book_img, **kwargs, spell_name='chain_gun' ,trigger_method=wind_up(3, sec/3, 3))
+        super().__init__(bullet_m, metal_book_img, **kwargs, spell_name='chain_gun', trigger_method=wind_up(3, sec/3, 3))
 
 class bullet_m(missile):
     def __init__(self, dir, loc, **kwargs):
-        super().__init__(poison_drop_img, loc, velocity(mag=5, dir=dir), **kwargs, missile_name='bullet')
+        super().__init__(bullet_img, loc, velocity(mag=5, dir=dir), **kwargs, missile_name='bullet')
 
 
 class acid_cloud_s():
@@ -1381,7 +1409,7 @@ class radiant_glow_s():
 class solar_beam_s(beam):
     def __init__(self, **kwargs):
         super().__init__(sun_particle_m, leaf_book_img, **kwargs,
-                         trigger_method=cooled(sec/2))
+                         trigger_method=cooled(sec*3/4))
 
 class sun_particle_m(beam_particle):
     def __init__(self, num, prev, loc, **kwargs):

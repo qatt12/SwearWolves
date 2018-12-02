@@ -219,7 +219,7 @@ from events import event_maker
 
 event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been loaded', 'spriteling')
 
-placeholder = pygame.image.load("misc\imagesred.jpg").convert_alpha()
+placeholder = pygame.image.load("misc\imagesred.jpg").convert()
 event_maker.make_entry('log', 'spriteling loaded', 'spritelings.py has been loaded', 'spriteling')
 
 
@@ -310,16 +310,14 @@ class spriteling(pygame.sprite.Sprite):
 
     def update(self, *args, **kwargs):
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
-        if self.is_immune > 0:
-            self.is_immune -=1
         self.rect.move_ip(self.move(**kwargs))
         self.hitbox.update()
 
-        for x in range(0, len(self.cond_queue)):
-            temp = self.cond_queue.popleft()
-            event_maker.make_entry("trace", 'resolving cond_queue', "", "spriteling", True, True)
-            if bool(temp(self)):
-                self.cond_queue.append(temp)
+        #for x in range(0, len(self.cond_queue)):
+        #    temp = self.cond_queue.popleft()
+        #    event_maker.make_entry("trace", 'resolving cond_queue', "", "spriteling", True, True)
+        #    if bool(temp(self)):
+        #        self.cond_queue.append(temp)
 
         self.curr_move = self.base_move * self.move_mult
         # check base and current stats, restoring as needed

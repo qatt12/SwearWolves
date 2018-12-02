@@ -95,20 +95,25 @@ class reticle(spriteling.spriteling):
 
 class p1_reticle(reticle):
     def __init__(self):
-        super().__init__(0)
+        super().__init__(1)
 
 class p2_reticle(reticle):
     def __init__(self):
-        super().__init__(1)
+        super().__init__(2)
 
 class p3_reticle(reticle):
     def __init__(self):
-        super().__init__(2)
+        super().__init__(3)
+
+class p4_reticle(reticle):
+    def __init__(self):
+        super().__init__(4)
 
 def select_reticle(num):
     lookup = {
         0: p1_reticle,
         1: p2_reticle,
-        2: p3_reticle
+        2: p3_reticle,
+        3: p4_reticle
     }
     return lookup[num]

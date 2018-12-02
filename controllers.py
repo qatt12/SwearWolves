@@ -110,15 +110,15 @@ class xbone_gamepad(object):
 
     def pull_triggers(self):
         rt, lt, nrt, nlt = False, False, False, False
-        if self.triggers>0.8:
+        if self.triggers > 0.5:
             lt = True
-        elif self.triggers<-0.8:
+        elif self.triggers < -0.5:
             rt = True
-        if self.new_triggers>0.8:
+        if self.new_triggers > 0.5:
             nlt = True
-        elif self.new_triggers<-0.8:
+        elif self.new_triggers < -0.5:
             nrt = True
-        return rt, lt, nrt, nlt
+        return rt or nrt, lt or nlt
 
 
     def pull_face(self, **kwargs):
@@ -136,8 +136,6 @@ class xbone_gamepad(object):
         ret = {'prev': self.pull_button('LB'),
                'next': self.pull_button('RB'),
                'select': 9,
-               'lock_feet': (self.pull_triggers()[0], self.pull_triggers()[2]),
-               'lock_aim': (self.pull_triggers()[1], self.pull_triggers()[3])
                }
         return ret
 
@@ -261,15 +259,15 @@ class xb360_gamepad(object):
 
     def pull_triggers(self):
         rt, lt, nrt, nlt = False, False, False, False
-        if self.triggers>0.8:
+        if self.triggers > 0.5:
             lt = True
-        elif self.triggers<-0.8:
+        elif self.triggers < -0.5:
             rt = True
-        if self.new_triggers>0.8:
+        if self.new_triggers > 0.5:
             nlt = True
-        elif self.new_triggers<-0.8:
+        elif self.new_triggers < -0.5:
             nrt = True
-        return rt, lt, nrt, nlt
+        return rt or nrt, lt or nlt
 
 
     def pull_face(self, **kwargs):
@@ -285,8 +283,8 @@ class xb360_gamepad(object):
         ret = {'prev': self.pull_button('LB'),
                'next': self.pull_button('RB'),
                'select': 9,
-               'lock_aim': (self.pull_triggers()[0], self.pull_triggers()[2]),
-               'lock_feet': (self.pull_triggers()[1], self.pull_triggers()[3])
+               'adj_aim': self.pull_triggers()[1],
+               'lock_aim': self.pull_triggers()[0]
                }
         return ret
 

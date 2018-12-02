@@ -227,6 +227,7 @@ class room():
 
     def update(self, player_one, all_players, *args, **kwargs):
         self.contents.update()
+        self.enemies.update()
         player_one_rect = player_one.rect
         # calculates the scroll, and also sort of the counter_scroll based upon the player's position
         x, y = 0, 0
@@ -282,9 +283,9 @@ class room():
             for each in bonks:
                 each.move(walls=bonks[each])
         if 'missiles' in kwargs:
-            # for each in kwargs['missiles']:
-            #     if not self.full_rect.contains(each):
-            #         each.rect.clamp_ip(self.full_rect)
+            for each in kwargs['missiles']:
+                if not self.visible_rect.colliderect(each.hitbox.rect):
+                    each.kill()
             dead = pygame.sprite.groupcollide(kwargs['missiles'], self.all_walls, True, False, collide_hitbox)
             for each in dead:
                 for every in dead[each]:
@@ -292,6 +293,10 @@ class room():
         bonks_a = pygame.sprite.groupcollide(self.enemies, self.all_walls, False, False, collide_hitbox)
         for each in bonks_a:
             each.move(walls=bonks_a[each])
+            each.react(bonks_a[each])
+        #bonks_b = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
+        #for each in bonks_b:
+        #    each.move(push=bonks_b[each])
 
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
@@ -343,7 +348,8 @@ class dungeon():
         self.difficulty = difficulty
         self.my_theme = dungeon_theme
 
-        event_maker.make_entry('trace', 'theme check', "assessing the contents of theme", 'room', False, False, 'theme', found_theme=self.my_theme)
+        event_maker.make_entry('trace', 'theme check', "assessing the contents of theme", 'room', False, False, 'theme',
+                               found_theme=self.my_theme)
 
         self.disp = disp
         self.hub = hub_room(disp, self.my_theme)
@@ -355,7 +361,8 @@ class dungeon():
         event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
                                'room', 'dungeon', 'doors',
                                obj_src=dungeon, inst_src=self, loc_src='dungeon.next_room')
-        self.current_room.spawn_enemy(enemies.simple_enemy(), enemies.simple_enemy(), enemies.simple_enemy(), enemies.simple_enemy())
+        self.current_room.spawn_enemy(enemies.simple_enemy(), enemies.simple_enemy(), enemies.simple_enemy(),
+                                      enemies.simple_enemy())
         return self.current_room
 
     def __call__(self, *args, **kwargs):

@@ -87,9 +87,12 @@ class screen_handler():
         self.player_one = None
         self.player_index = 0
         self.ordered_list_of_player_HANDLERS = []
-        self.GROUP_of_player_SPRITES = pygame.sprite.OrderedUpdates()
+        self.GROUP_of_player_SPRITES = pygame.sprite.Group()
         self.current_room = None
         self.overlays = []
+        self.live_missiles = pygame.sprite.Group()
+        self.active_enemies = pygame.sprite.Group()
+        self.inactive_enemies = pygame.sprite.Group()
 
     # currently, update does a lot of things. It is used to add many things to the screen, to keep everything elegant
     # and avoid having to write many dif methods, but this may not be a great idea, as update is also used/assumed to
@@ -130,6 +133,7 @@ class screen_handler():
 
     def update(self, *args, **kwargs):
         self.menus.update()
+        self.live_missiles.update()
         try:
             assert (self.player_index == interface.handler.get_player_interface_num()), "this would create an error"
         except AssertionError:
@@ -146,12 +150,16 @@ class screen_handler():
 
             allied = pygame.sprite.Group()
             for player_handler in self.ordered_list_of_player_HANDLERS:
-                other_players = pygame.sprite.OrderedUpdates.copy(self.GROUP_of_player_SPRITES)
+                other_players = pygame.sprite.Group.copy(self.GROUP_of_player_SPRITES)
                 other_players.remove(player_handler.player)
                 player_handler.update(players=other_players, enemies=visible_enemies, allies=allied,
                                       me=player_handler.player, all_players=self.GROUP_of_player_SPRITES)
+
                 for each in player_handler.get_missiles():
                     pillar_of_hate.add(each, layer=each.layer)
+
+                #self.live_missiles.add(player_handler.get_missiles())
+                #player_handler.missiles.empty()
 
                 if player_handler.get_spells()['refresh']:
                     pillar_of_hate.remove_sprites_of_layer(player_handler.spell_layer)
@@ -165,19 +173,19 @@ class screen_handler():
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        #display.fill(config.black)
-        #pygame.display.update(pillar_of_hate.draw(display))
+        display.fill(config.black)
+        pygame.display.update(pillar_of_hate.draw(display))
 
-        if self.current_room is not None:
-            self.current_room.draw_contents(self.disp, True)
-            for each in self.ordered_list_of_player_HANDLERS:
-                each.draw(self.disp, True)
-        display.blit(self.disp, (0, 0))
-        self.menus.draw(display)
-        for each in self.overlays:
-            each.draw(display)
-
-        pygame.display.flip()
+        #if self.current_room is not None:
+        #    self.current_room.draw_contents(self.disp, True)
+        #    for each in self.ordered_list_of_player_HANDLERS:
+        #        each.draw(self.disp, True)
+        #display.blit(self.disp, (0, 0))
+        #self.menus.draw(display)
+        #for each in self.overlays:
+        #    each.draw(display)
+#
+        #pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -250,8 +258,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-# spells.dumb_heal_s, spells.DEBUG_target_line
-unlocked_books = [spells.DEBUG_book(spells.razor_leaf_s, spells.flame_wheel_s, spells.beacon_of_hope,
+unlocked_books = [spells.DEBUG_book(spells.busrt_shard_s, spells.flame_wheel_s, spells.beacon_of_hope,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
                                     spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
@@ -385,7 +392,8 @@ while(game_loop and running):
     screen.update()
 
     clock.tick(config.fps)
+    #print(clock.get_fps())
     pygame.event.pump()
-    pygame.time.wait(0)
+    #pygame.time.wait(0)
 
 event_maker.flush_trace_buffer("Flushing on close")

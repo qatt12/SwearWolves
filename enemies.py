@@ -53,6 +53,7 @@ class simple_enemy(enemy):
         super().update(*args, **kwargs)
 
 
+
 class patrol(simple_enemy):
     pass
 

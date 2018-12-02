@@ -124,6 +124,11 @@ fire_ball_img   = pygame.image.load(    'Animation\img_fireball.png').convert()
 fire_bolt_img.set_colorkey(config.default_transparency)
 fire_ball_img.set_colorkey(config.default_transparency)
 
+
+fire_wave_base_img = pygame.image.load(    'Animation\img_fireball.png').convert()
+fire_wave_base_img.set_colorkey(config.default_transparency)
+fire_wave_img_set = [pygame.transform.scale(fire_wave_base_img, (x, x)) for x in range(0, 78, 26)]
+
 green_bubbles_img   = pygame.image.load( 'Animation\img_poisonball.png').convert()
 green_bubbles_img.set_colorkey(config.default_transparency)
 poison_drop_img = pygame.image.load( 'Animation\img_poisoned.png').convert()

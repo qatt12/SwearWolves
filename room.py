@@ -384,7 +384,7 @@ class dungeon():
         #event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
         #                       'room', 'dungeon', 'doors',
         #                       obj_src=dungeon, inst_src=self, loc_src='dungeon.next_room')
-        self.current_room.spawn_enemy(enemies.quintemy((700, 800), [(700, 800), (2700, 300)]) )
+        self.current_room.spawn_enemy(enemies.quintenemy((700, 800), [(700, 800), (2700, 300)]) )
         return self.current_room
 
     def __call__(self, *args, **kwargs):

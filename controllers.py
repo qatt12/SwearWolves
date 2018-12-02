@@ -136,6 +136,8 @@ class xbone_gamepad(object):
         ret = {'prev': self.pull_button('LB'),
                'next': self.pull_button('RB'),
                'select': 9,
+               'lock_aim': self.pull_triggers()[0],
+               'adj_aim': self.pull_triggers()[1]
                }
         return ret
 
@@ -276,7 +278,9 @@ class xb360_gamepad(object):
                'accept': self.pull_button('A'),
                'back': self.pull_button('B'),
                'start': self.pull_button('Start'),
-               'select': self.pull_button('Select')}
+               'select': self.pull_button('Select'),
+               'lock_next': self.pull_button('RStick'),
+               'lock_prev': self.pull_button('LStick')}
         return ret
 
     def pull_selectors(self, **kwargs):
@@ -299,7 +303,9 @@ class xb360_gamepad(object):
         if abs(self.sticks['RY']) > 0.1:
             dir_y = self.sticks['RY']/abs(self.sticks['RY'])
         ret = {'move': (mov_x, mov_y),
-               'look': (dir_x, dir_y)}
+               'look': (dir_x, dir_y),
+               'lock_look': self.pull_triggers()[0],
+               'mod_look': self.pull_triggers()[1]}
         return ret
 
     def check_status(self):

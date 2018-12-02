@@ -174,19 +174,19 @@ class screen_handler():
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        #display.fill(config.black)
-        #pygame.display.update(pillar_of_hate.draw(display))
+        display.fill(config.black)
+        pygame.display.update(pillar_of_hate.draw(display))
 
-        if self.current_room is not None:
-            self.current_room.draw_contents(self.disp, True)
-            for each in self.ordered_list_of_player_HANDLERS:
-                each.draw(self.disp, True)
-        display.blit(self.disp, (0, 0))
-        self.menus.draw(display)
-        for each in self.overlays:
-            each.draw(display)
-#
-        pygame.display.flip()
+        #if self.current_room is not None:
+        #    self.current_room.draw_contents(self.disp, True)
+        #    for each in self.ordered_list_of_player_HANDLERS:
+        #        each.draw(self.disp, True)
+        #display.blit(self.disp, (0, 0))
+        #self.menus.draw(display)
+        #for each in self.overlays:
+        #    each.draw(display)
+##
+        #pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -393,7 +393,7 @@ while(game_loop and running):
     screen.update()
 
     clock.tick(config.fps)
-    #print(clock.get_fps())
+    print(clock.get_fps())
     pygame.event.pump()
     #pygame.time.wait(0)
 

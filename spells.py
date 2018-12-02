@@ -154,10 +154,11 @@ leaf_img.set_colorkey(config.default_transparency)
 seed_img = pygame.image.load(    'Animation\img_leaf.png').convert()
 seed_img.set_colorkey(config.default_transparency)
 
-bullet_img = pygame.image.load(    'Animation\img_bullet.png').convert()
+bullet_img = pygame.image.load(    'Animation\img_neon_bullet.png').convert()
 bullet_img.set_colorkey(config.default_transparency)
 
-sun_particle_img = light_book_img
+sun_particle_img = pygame.image.load(    'Animation\img_sun_particle.png').convert()
+sun_particle_img.set_colorkey(config.default_transparency)
 toxic_spore_img = acid_book_img
 small_fire_img = fire_book_img
 water_splash_img = ice_book_img
@@ -187,14 +188,15 @@ class velocity():
     def __init__(self, x=0, y=0, **kwargs):
         self.x = x
         self.y = y
-        mag = 1
+        mag_x, mag_y = 1, 1
         if 'mag' in kwargs:
-            mag = kwargs['mag']
+            mag_x, mag_y = kwargs['mag'], kwargs['mag']
         elif "var_mag" in kwargs:
-            mag = (kwargs['var_mag'][0] - kwargs['var_mag'][1]) + random.randint(0, int(2*kwargs['var_mag'][1]))
+            mag_x = (kwargs['var_mag'][0] - kwargs['var_mag'][1]) + random.randint(0, int(2*kwargs['var_mag'][1]))
+            mag_y = (kwargs['var_mag'][0] - kwargs['var_mag'][1]) + random.randint(0, int(2 * kwargs['var_mag'][1]))
         if 'dir' in kwargs:
-            self.x = mag * kwargs['dir'][0]
-            self.y = mag * kwargs['dir'][1]
+            self.x = mag_x * kwargs['dir'][0]
+            self.y = mag_y * kwargs['dir'][1]
         self.p_x = x % 1
         self.t_x = 0.0
         self.p_y = y % 1
@@ -379,6 +381,7 @@ class spell_book(spriteling.spriteling):
 # missiles are fired (begin moving) immediately after begin created
 class missile(spriteling.spriteling):
     def __init__(self, img, loc, vel, *args, **kwargs):
+
         error_msg = events.entry('error', "type error", "the types of the input params sent up to missile.__init__() "
                                                         "don't match", 'spells', obj_src='missile', got_kwargs=kwargs,)
         try:
@@ -709,10 +712,10 @@ class cast_per_room(trigger):
         self.casts = self.max_casts
 
     def __call__(self, key, dummy=False):
-        if key and self.casts>=0:
+        if key and self.casts >= 0:
             print("casts left: ", self.casts)
             self.casts -= 1
-        return self.casts>=0 and key
+        return self.casts >= 0 and key
 
 
 class cast_per_run(trigger):
@@ -1100,9 +1103,6 @@ class target(spell):
         pass
 
     def cast(self, direction):
-
-        print("casting from target; passing: ", self.chosen_target, direction, self.rect.center, self.my_caster)
-
         return self.projectile(self.chosen_target, direction, self.rect.center, caster=self.my_caster)
 
 
@@ -1286,12 +1286,13 @@ class freeze_ray_s(spell):
 
 class icebeam_s(helix):
     def __init__(self, **kwargs):
-        super(icebeam_s, self).__init__(icebeam_m, ice_book_img, spell_name='ice_beam', **kwargs)
+        super(icebeam_s, self).__init__(icebeam_m, ice_book_img, spell_name='ice_beam', **kwargs,
+                                        trigger_method=gated_trigger(semi(), cooled(14), semi_release()))
 
 class icebeam_m(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
-        xvel, yvel = direction[0]*5.7, direction[1]*5.7
-        super().__init__(partner, 5, 20, orbital_rank, ice_beam_img, loc, (xvel, yvel), *args, **kwargs,
+        xvel, yvel = direction[0]*7, direction[1]*7
+        super().__init__(partner, 2, 10, orbital_rank, ice_beam_img, loc, (xvel, yvel), *args, **kwargs,
                          missile_name='ice_helix')
 
 
@@ -1304,7 +1305,7 @@ class hydro_pump_s(helix):
 class hydro_pump_m(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
         xvel, yvel = direction[0]*4.2, direction[1]*4.2
-        super().__init__(partner, 1, 28, orbital_rank, water_splash_img, loc, (xvel, yvel), *args, **kwargs,
+        super().__init__(partner, 2, 28, orbital_rank, water_splash_img, loc, (xvel, yvel), *args, **kwargs,
                          missile_name="hydro_splash")
 
 
@@ -1382,7 +1383,7 @@ class chain_gun_s(spell):
 
 class bullet_m(missile):
     def __init__(self, dir, loc, **kwargs):
-        super().__init__(bullet_img, loc, velocity(mag=5, dir=dir), **kwargs, missile_name='bullet')
+        super().__init__(bullet_img, loc, velocity(mag=6, dir=dir), **kwargs, missile_name='bullet')
 
 
 class acid_cloud_s():
@@ -1413,12 +1414,13 @@ class solar_beam_s(beam):
 
 class sun_particle_m(beam_particle):
     def __init__(self, num, prev, loc, **kwargs):
-        super().__init__(num, prev, leaf_book_img, loc, missile_name="sun_particle", **kwargs)
+        super().__init__(num, prev, sun_particle_img, loc, missile_name="sun_particle", **kwargs)
 
 class beacon_of_hope(spell):
     def __init__(self, **kwargs):
         super().__init__(healing_aura_m, light_book_img,
-                         trigger_method=gated_trigger(cooled(config.fps*15), cast_per_run(3)), **kwargs, spell_name='beacon_of_hope')
+                         trigger_method=gated_trigger(cooled(config.fps*15), cast_per_run(3)), **kwargs,
+                         spell_name='beacon_of_hope')
 
 class healing_aura_m(aura):
     def __init__(self, dir, loc, **kwargs):

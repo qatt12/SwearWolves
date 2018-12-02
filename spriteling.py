@@ -310,8 +310,11 @@ class spriteling(pygame.sprite.Sprite):
 
     def update(self, *args, **kwargs):
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
+        # changed b/c this was the exception, not the norm
         self.rect.move_ip(self.move(**kwargs))
         self.hitbox.update()
+
+
 
         #for x in range(0, len(self.cond_queue)):
         #    temp = self.cond_queue.popleft()
@@ -426,6 +429,7 @@ class spriteling(pygame.sprite.Sprite):
             # ************************ pick up here
 
         event_maker.send_entry(message, False, False)
+
         self.velocity = (xvel, yvel)
         if force_apply:
             self.rect.move_ip(self.velocity)

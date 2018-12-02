@@ -354,7 +354,7 @@ class multiroom(room):
 
 class DEBUG_room(room):
     def __init__(self, disp, my_theme, *args, **kwargs):
-        s_x, s_y = random.randint(5, 30), random.randint(5, 30)
+        s_x, s_y = random.randint(27, 30), random.randint(27, 30)
         super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
 
 
@@ -379,12 +379,12 @@ class dungeon():
                                     #('bottom', 6),
                                     #('right', 1)
                                     ],
-                         inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
+                                    inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
         self.current_room.add_players(players)
         #event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
         #                       'room', 'dungeon', 'doors',
         #                       obj_src=dungeon, inst_src=self, loc_src='dungeon.next_room')
-        self.current_room.spawn_enemy(enemies.simple_enemy(), )
+        self.current_room.spawn_enemy(enemies.quintemy((700, 800), [(700, 800), (2700, 300)]) )
         return self.current_room
 
     def __call__(self, *args, **kwargs):

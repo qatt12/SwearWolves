@@ -67,15 +67,17 @@ class hud(spriteling.spriteling):
                          (self.portrait_slot.right+(self.hp/2), self.portrait_slot.centery), hp_bar_width)
 
 
-all_reticles = pygame.image.load('Animation\img_crosshair.png').convert_alpha()
+all_reticles = pygame.image.load('Animation\img_crosshair.png').convert()
+all_reticles.set_colorkey(config.black)
 green_reticle = pygame.transform.scale2x(all_reticles.subsurface((0, 0), (54, 54)))
 red_reticle = pygame.transform.scale2x(all_reticles.subsurface((54, 0), (54, 54)))
 blue_reticle = pygame.transform.scale2x(all_reticles.subsurface((54 * 2, 0), (54, 54)))
+yellow_reticle = pygame.transform.scale2x(all_reticles.subsurface((54 * 3, 0), (54, 54)))
 reticle_lookup = {
     1: green_reticle,
     2: red_reticle,
     3: blue_reticle,
-    4: green_reticle
+    4: yellow_reticle
 }
 
 
@@ -111,9 +113,9 @@ class p4_reticle(reticle):
 
 def select_reticle(num):
     lookup = {
-        0: p1_reticle,
-        1: p2_reticle,
-        2: p3_reticle,
-        3: p4_reticle
+        1: p1_reticle,
+        2: p2_reticle,
+        3: p3_reticle,
+        4: p4_reticle
     }
     return lookup[num]

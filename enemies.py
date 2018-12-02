@@ -33,6 +33,10 @@
 import pygame, spriteling, events, spells, config, blocks
 from events import event_maker
 
+skull_img = pygame.image.load(    'Animation\img_sun_particle.png').convert()
+skull_img.set_colorkey(config.default_transparency)
+
+
 class enemy(spriteling.spriteling):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -60,7 +64,14 @@ class patrol(simple_enemy):
 class bouncy(simple_enemy):
     pass
 
-class quintemy(enemy):
+
+class abenenoemy(enemy):
+    def __init__(self, location):
+        super().__init__(img=skull_img, loc=location)
+
+
+
+class quintenemy(enemy):
     def __init__(self, location, patrol_route):
         super().__init__(loc=location)
 

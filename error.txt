@@ -1,9 +1,9 @@
-***	entry #: 70 type: error
+***	entry #: 517 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 72 type: error
+***	entry #: 519 type: error
 file source: blocks
 DEBUG: placeholder image
-***	entry #: 17196 type: error
+***	entry #: 23046 type: error
 file source: blocks
 DEBUG: placeholder image

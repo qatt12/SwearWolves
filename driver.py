@@ -137,7 +137,8 @@ class screen_handler():
         try:
             assert (self.player_index == interface.handler.get_player_interface_num()), "this would create an error"
         except AssertionError:
-            print(AssertionError, "index= ", self.player_index, "num_interfaces= ", interface.handler.get_player_interface_num())
+            print(AssertionError, "index= ", self.player_index, "num_interfaces= ",
+                  interface.handler.get_player_interface_num())
 
         if self.current_room is not None:
             self.current_room.update(self.player_one.player, self.GROUP_of_player_SPRITES)
@@ -173,19 +174,19 @@ class screen_handler():
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        display.fill(config.black)
-        pygame.display.update(pillar_of_hate.draw(display))
+        #display.fill(config.black)
+        #pygame.display.update(pillar_of_hate.draw(display))
 
-        #if self.current_room is not None:
-        #    self.current_room.draw_contents(self.disp, True)
-        #    for each in self.ordered_list_of_player_HANDLERS:
-        #        each.draw(self.disp, True)
-        #display.blit(self.disp, (0, 0))
-        #self.menus.draw(display)
-        #for each in self.overlays:
-        #    each.draw(display)
+        if self.current_room is not None:
+            self.current_room.draw_contents(self.disp, True)
+            for each in self.ordered_list_of_player_HANDLERS:
+                each.draw(self.disp, True)
+        display.blit(self.disp, (0, 0))
+        self.menus.draw(display)
+        for each in self.overlays:
+            each.draw(display)
 #
-        #pygame.display.flip()
+        pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and

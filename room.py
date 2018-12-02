@@ -67,37 +67,55 @@ class theme(object):
         return all_walls
 
     def build_inner_walls(self, **kwargs):
-        upper_section = sGroup()
-        left_section = sGroup()
-        lower_section = sGroup()
-        right_section = sGroup()
-        if 'tuple' in kwargs or 'specific_tuple' in kwargs:
-            if 'specific_tuple' in kwargs:
-                x, y = kwargs['specific_tuple'][0] -(kwargs['specific_tuple'][0] %tile_scalar), \
-                       kwargs['specific_tuple'][1] -(kwargs['specific_tuple'][1] %tile_scalar)
-            elif 'tuple' in kwargs:
-                x, y = kwargs['tuple'][0] *tile_scalar, kwargs['tuple'][1] *tile_scalar
-            for i in range(0, x, tile_scalar):
-                top = wall('up', self.image_lookup['tw'], (i, 0))
-
+        all_walls  = pygame.sprite.Group()
         if 'rect' in kwargs:
-            for i in range(kwargs['rect'].left, kwargs['rect'].right, tile_scalar):
-                for j in range(kwargs['rect'].top, kwargs['rect'].bottom, tile_scalar):
-                    top = wall('up', self.image_lookup['tw'], (i + (tile_scalar/2), kwargs['rect'].top))
-                    left = wall('left', self.image_lookup['lw'], (kwargs['rect'].left, j + (tile_scalar/2)))
-                    bottom = wall('down', self.image_lookup['bw'], ((kwargs['rect'].right - (i + (tile_scalar/2))), kwargs['rect'].bottom))
-                    right = wall('right', self.image_lookup['rw'], (kwargs['rect'].right, (kwargs['rect'].right - (i + (tile_scalar/2)))))
-                    event_maker.make_entry('trace', 'inner walls', "tracking the generation of inner walls", 'room', False, False,
-                                           'walls', 'wall', 'block', 'blocks', 'Logan',
-                                           top=top, left=left, right=right, bottom=bottom)
+            border = kwargs['rect']
+            for i in range(border.left - int(tile_scalar/2), border.right + int(tile_scalar/2), tile_scalar):
+                top = wall('up', self.image_lookup['tw'], (i + 50, border.top))
+                bottom = wall('down', self.image_lookup['bw'], (i + 50, border.bottom))
+                all_walls.add(top, bottom)
+            for j in range(border.top - int(tile_scalar/2), border.bottom + int(tile_scalar/2), tile_scalar):
+                left = wall('left', self.image_lookup['lw'], (border.left, j + 50))
+                right = wall('right', self.image_lookup['rw'], (border.right, j + 50))
+                all_walls.add(left, right)
 
-                    upper_section.add(top)
-                    left_section.add(left)
-                    lower_section.add(bottom)
-                    right_section.add(right)
+            all_walls.add(corner('top_left', self.image_lookup['tlc'], border.topleft))
+            all_walls.add(corner('bottom_left', self.image_lookup['blc'], border.bottomleft))
+            all_walls.add(corner('top_right', self.image_lookup['trc'], border.topright))
+            all_walls.add(corner('bottom_right', self.image_lookup['brc'], border.bottomright))
 
-        all_sections = sGroup(upper_section, lower_section, right_section, left_section)
-        return all_sections
+            return all_walls
+        #upper_section = sGroup()
+        #left_section = sGroup()
+        #lower_section = sGroup()
+        #right_section = sGroup()
+        #if 'tuple' in kwargs or 'specific_tuple' in kwargs:
+        #    if 'specific_tuple' in kwargs:
+        #        x, y = kwargs['specific_tuple'][0] -(kwargs['specific_tuple'][0] %tile_scalar), \
+        #               kwargs['specific_tuple'][1] -(kwargs['specific_tuple'][1] %tile_scalar)
+        #    elif 'tuple' in kwargs:
+        #        x, y = kwargs['tuple'][0] *tile_scalar, kwargs['tuple'][1] *tile_scalar
+        #    for i in range(0, x, tile_scalar):
+        #        top = wall('up', self.image_lookup['tw'], (i, 0))
+#
+        #if 'rect' in kwargs:
+        #    for i in range(kwargs['rect'].left, kwargs['rect'].right, tile_scalar):
+        #        for j in range(kwargs['rect'].top, kwargs['rect'].bottom, tile_scalar):
+        #            top = wall('up', self.image_lookup['tw'], (i + (tile_scalar/2), kwargs['rect'].top))
+        #            left = wall('left', self.image_lookup['lw'], (kwargs['rect'].left, j + (tile_scalar/2)))
+        #            bottom = wall('down', self.image_lookup['bw'], ((kwargs['rect'].right - (i + (tile_scalar/2))), kwargs['rect'].bottom))
+        #            right = wall('right', self.image_lookup['rw'], (kwargs['rect'].right, (kwargs['rect'].right - (i + (tile_scalar/2)))))
+        #            event_maker.make_entry('trace', 'inner walls', "tracking the generation of inner walls", 'room', False, False,
+        #                                   'walls', 'wall', 'block', 'blocks', 'Logan',
+        #                                   top=top, left=left, right=right, bottom=bottom)
+#
+        #            upper_section.add(top)
+        #            left_section.add(left)
+        #            lower_section.add(bottom)
+        #            right_section.add(right)
+#
+        #all_sections = sGroup(upper_section, lower_section, right_section, left_section)
+        #return all_sections
 
 
 
@@ -227,6 +245,7 @@ class room():
 
     def update(self, player_one, all_players, *args, **kwargs):
         self.contents.update()
+
         self.enemies.update()
         player_one_rect = player_one.rect
         # calculates the scroll, and also sort of the counter_scroll based upon the player's position
@@ -356,13 +375,16 @@ class dungeon():
         self.current_room = self.hub
 
     def next_room(self, players):
-        self.current_room = DEBUG_room(self.disp, self.my_theme)
+        self.current_room = DEBUG_room(self.disp, self.my_theme, exit_door=[('top', 3),
+                                    #('bottom', 6),
+                                    #('right', 1)
+                                    ],
+                         inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
         self.current_room.add_players(players)
-        event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
-                               'room', 'dungeon', 'doors',
-                               obj_src=dungeon, inst_src=self, loc_src='dungeon.next_room')
-        self.current_room.spawn_enemy(enemies.simple_enemy(), enemies.simple_enemy(), enemies.simple_enemy(),
-                                      enemies.simple_enemy())
+        #event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
+        #                       'room', 'dungeon', 'doors',
+        #                       obj_src=dungeon, inst_src=self, loc_src='dungeon.next_room')
+        self.current_room.spawn_enemy(enemies.simple_enemy(), )
         return self.current_room
 
     def __call__(self, *args, **kwargs):

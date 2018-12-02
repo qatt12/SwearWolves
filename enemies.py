@@ -42,14 +42,26 @@ class enemy(spriteling.spriteling):
     def attack(self):
         pass
 
+
 class simple_enemy(enemy):
     def __init__(self):
         super().__init__()
-        self.velocity = (10, 0)
+
 
     def update(self, *args, **kwargs):
-        self.rect.move_ip(self.velocity)
+        self.rect.move_ip(self.move(vel=(10, 0)))
         super().update(*args, **kwargs)
+
+
+class patrol(simple_enemy):
+    pass
+
+class bouncy(simple_enemy):
+    pass
+
+class brain_storm():
+    pass
+
 
 class not_as_simple_enemies(enemy):
     def react(self, to, *args, **kwargs):

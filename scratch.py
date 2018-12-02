@@ -78,4 +78,44 @@ print("test 1= ", dupe_group_1)
 print("test 2= ", dupe_group_2)
 
 
+import timeit
+print(timeit.timeit(
+    '''
+for x in range(0, 1000000):
+    if x%17==0:
+        y+=1
+    ''',
+    '''
+y=0
+    ''',
+    number=100
+              ))
 
+#####BETTER
+print(timeit.timeit(
+    '''
+for x in range(0, 1000000):
+    y+=1
+    if y>=17:
+        y=0
+        z+=1
+    ''',
+    '''
+y, z=0, 0
+    ''',
+    number=100
+             ))
+
+print(timeit.timeit(
+    '''
+for x in range(0, 1000000):
+    y+=1
+    if y==17:
+        y=0
+        z+=1
+    ''',
+    '''
+y, z=0, 0
+    ''',
+    number=100
+             ))

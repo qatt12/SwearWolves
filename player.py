@@ -61,6 +61,7 @@ class player(spriteling.spriteling):
         self.active_spell = pygame.sprite.GroupSingle()
 
         self.base_move = 6
+        self.curr_move = 6
 
         self.facing = (1, 0)
         self.facing_angle = spriteling.facing_angle(*self.facing)

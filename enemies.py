@@ -32,8 +32,9 @@
 
 import pygame, spriteling, events, spells, config, blocks
 from events import event_maker
+from spells import velocity
 
-skull_img = pygame.image.load(    'Animation\img_sun_particle.png').convert()
+skull_img = pygame.image.load(    'Animation\img_apis.png').convert()
 skull_img.set_colorkey(config.default_transparency)
 
 
@@ -68,7 +69,28 @@ class bouncy(simple_enemy):
 class abenenoemy(enemy):
     def __init__(self, location):
         super().__init__(img=skull_img, loc=location)
+        self.my_vel = velocity(10, 5.6785433451)
 
+    def update(self, *args, **kwargs):
+        super().update()
+        self.rect.move_ip(self.my_vel())
+
+    def react(self, to, *args, **kwargs):
+        if self.hitbox.rect.centerx > to.hitbox.rect.centerx:
+            self.my_vel(False, -self.my_vel[1])
+
+        elif self.hitbox.rect.centerx < to.hitbox.rect.centerx:
+            self.my_vel(False, self.my_vel[1])
+        if self.hitbox.rect.centery > to.hitbox.rect.centery:
+            self.my_vel(-self.my_vel[0])
+
+        elif self.hitbox.rect.centery < to.hitbox.rect.centery:
+            self.my_vel(self.my_vel[0])
+
+        #if to.hitbox.rect.top < self.hitbox.rect.centery < to.hitbox.rect.top:
+        #    self.my_vel(flip=(True, False))
+        #if to.hitbox.rect.left < self.hitbox.rect.centerx < to.hitbox.rect.right:
+        #    self.my_vel(flip=(False, True))
 
 
 class quintenemy(enemy):

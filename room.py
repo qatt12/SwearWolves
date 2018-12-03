@@ -312,7 +312,8 @@ class room():
         bonks_a = pygame.sprite.groupcollide(self.enemies, self.all_walls, False, False, collide_hitbox)
         for each in bonks_a:
             each.move(walls=bonks_a[each])
-            each.react(bonks_a[each])
+            for every in bonks_a[each]:
+                each.react(every)
         #bonks_b = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
         #for each in bonks_b:
         #    each.move(push=bonks_b[each])
@@ -354,7 +355,7 @@ class multiroom(room):
 
 class DEBUG_room(room):
     def __init__(self, disp, my_theme, *args, **kwargs):
-        s_x, s_y = random.randint(27, 30), random.randint(27, 30)
+        s_x, s_y = random.randint(5, 14), random.randint(5, 14)
         super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
 
 
@@ -384,7 +385,12 @@ class dungeon():
         #event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
         #                       'room', 'dungeon', 'doors',
         #                       obj_src=dungeon, inst_src=self, loc_src='dungeon.next_room')
-        self.current_room.spawn_enemy(enemies.quintenemy((700, 800), [(700, 800), (2700, 300)]) )
+        ret = enemies.abenenoemy((700, 800))
+        self.current_room.spawn_enemy(#enemies.quintenemy((700, 800), [(700, 800), (2700, 300)]),
+                                      ret,
+                                     )
+        event_maker.make_entry("log", "does abenenoemy exist?", "", "room", True,
+                               room_nmes=self.current_room.enemies, ret=ret)
         return self.current_room
 
     def __call__(self, *args, **kwargs):

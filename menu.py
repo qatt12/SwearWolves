@@ -1,6 +1,7 @@
 import pygame, spriteling, config
 
-menu_default = pygame.image.load('overlays\img_menu_default.png').convert()
+menu_default = pygame.image.load('Animation\img_start_screen.png').convert()
+
 
 width = config.screen_size[0]
 height = config.screen_size[1]

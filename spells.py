@@ -188,6 +188,7 @@ def dupe(base_surf, num=0, is_num=False, **kwargs):
     ret.blit(base_surf, (0, 0))
     return ret
 
+#sin_offsets = [math.sin(math.radians(x)) for x in range(0, 360)]
 
 class velocity():
     def __init__(self, x=0, y=0, **kwargs):
@@ -214,6 +215,12 @@ class velocity():
         if y:
             self.y = y
             self.p_y = y % math.copysign(1, y)
+
+        if 'flip' in kwargs:
+            if kwargs['flip'][0]:
+                self.x = -self.x
+            if kwargs['flip'][1]:
+                self.y = -self.y
 
         if 'add_x' in kwargs:
             self.x += kwargs['add_x']
@@ -609,6 +616,9 @@ class strict_orbit(missile):
         y_pos = locus[1] + math.sin(math.radians(self.angle)) * self.radius
         self.rect.center = x_pos, y_pos
 
+
+
+
 class swirl(strict_orbit):
     def __init__(self, radius_growth, subject, radius, img, loc, vel, *args, **kwargs):
         super().__init__(subject, radius, img, loc, vel, *args, **kwargs)
@@ -664,7 +674,7 @@ class size_function():
 
 
 # default wave travels along the ground
-class wave(missile):
+class sin_wave(missile):
     def __init__(self, amplitude, frequency, orientation, img, loc, vel, *args, **kwargs):
         super().__init__(img, loc, vel, *args, **kwargs)
         self.base_img = img.copy()
@@ -939,6 +949,9 @@ class half_double_charge(trigger):
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
 class spell(spriteling.spriteling):
     def __init__(self, projectile, img, **kwargs):
+
+        print("in spell constr")
+
         super().__init__(image=img)
 
         try:
@@ -1002,6 +1015,77 @@ class remote_spell(spell):
     def __init__(self, projectile, img, **kwargs):
         super().__init__(projectile, img, **kwargs)
         self.secondary_trigger = None#### pick up here
+
+
+class wave_caster(spell):
+    def __init__(self, base_img, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if "scaled" in kwargs:
+            times = kwargs['scaled'][0]
+            by = kwargs['scaled'][1]
+            self.img_set = [pygame.transform.scale(base_img, (x, x)) for x in
+                            range(by, times*by, by)]
+            for each in reversed(self.img_set):
+                self.img_set.append(each)
+        elif 'sliced' in kwargs:
+            amt = kwargs['sliced']
+            self.img_set = [base_img.subsurface((0, 0), (base_img.get_rect().width, x)) for x in
+                            range(amt, base_img.get_rect().height, amt)]
+            for each in reversed(self.img_set):
+                self.img_set.append(each)
+
+
+    def cast(self, direction):
+        return self.projectile(self.img_set, direction, self.rect.center, caster=self.my_caster)
+
+class ground_wave_caster(spell):
+    def __init__(self, base_img, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        if "scaled" in kwargs:
+            times = kwargs['scaled'][0]
+            by = kwargs['scaled'][1]
+
+            for each in reversed(self.img_set):
+                self.img_set.append(each)
+            #self.img_set = []
+            #for x in range(by, times * by, by):
+            #    self.img_set.append(pygame.transform.scale(base_img, (x, x)))
+
+
+class wave(missile):
+    def __init__(self, img_set, stage, loc, vel, *args, **kwargs):
+        super().__init__(img_set[0], loc, vel, *args, **kwargs)
+        self.img_set = img_set
+        self.rects = [r.get_rect() for r in self.img_set]
+        #self.stage = max(stage, len(img_set)-1)
+        self.stage = stage
+        if "stage_delay" in kwargs:
+            self.stage_delay = kwargs['stage_delay']
+        else:
+            self.stage_delay = 10
+        self.timer = 0
+
+    def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
+        self.timer += 1
+        if self.timer >= self.stage_delay:
+            self.timer = 0
+            self.stage += 1
+            if self.stage >= len(self.img_set):
+                self.stage = 0
+            self.image = self.img_set[self.stage]
+            center = self.rect.center
+            self.rect = self.rects[self.stage]
+            self.rect.center = center
+
+class hot_wave_s(wave_caster):
+    def __init__(self, **kwargs):
+        super().__init__(fire_ball_img, hot_wave_m, fire_book_img, **kwargs, scaled=(10, 11), spell_name='hot_wave')
+
+class hot_wave_m(wave):
+    def __init__(self, img_set, direction, loc, *args, **kwargs):
+        super().__init__(img_set, 0, loc, (direction[0]*3, direction[1]*3), *args, **kwargs, missile_name='hot_wave',
+                         stage_delay=2)
 
 class alt_fire(spell):
     def __init__(self, alt_projectile, alt_trigger, projectile, img, **kwargs):
@@ -1183,8 +1267,95 @@ class helix(spell):
     def cast(self, direction):
         first = self.projectile(None, 0, self.rect.center, direction, caster=self.my_caster)
         second = self.projectile(first, 1, self.rect.center, direction, caster=self.my_caster)
-        third = self.projectile(first, 2, self.rect.center, direction, caster=self.my_caster)
+        third = self.projectile(first, -1, self.rect.center, direction, caster=self.my_caster)
         return second, first, third
+
+
+sin_offsets = [math.sin(math.radians(x)) for x in range(0, config.screen_width)]
+cos_offsets = [math.cos(math.radians(x)) for x in range(0, config.screen_width)]
+
+#     def __init__(self, partner, accel, offset, orbital_rank, img, loc, vel, *args, **kwargs):
+
+class DEBUG_triple(missile):
+    def __init__(self, partner, amp, orbital_rank, img, loc, vel, *args, **kwargs):
+        super().__init__(img, loc, vel, *args, **kwargs)
+        self.timer = 0
+        self.partner = partner
+        self.amp = amp
+        self.x_off = sin_offsets.copy()
+        self.y_off = cos_offsets.copy()
+        self.normal = orbital_rank
+
+    def update(self, *args, **kwargs):
+        if not self.normal == 0:
+            self.timer += 10
+            if self.timer >= config.screen_width:
+                self.timer = 0
+            # omiting next line does cool shit
+            self.rect.move_ip(self.velocity())
+            x_flip, y_flip = 0, 0
+            if self.velocity[0] >= 0:
+                x_flip = 1
+            elif self.velocity[0] < 0:
+                x_flip = -1
+            if self.velocity[1] >= 0:
+                y_flip = 1
+            elif self.velocity[1] < 0:
+                y_flip = -1
+
+            self.rect.move_ip(self.normal*y_flip*self.amp*cos_offsets[self.timer],
+                              self.normal*x_flip*self.amp*sin_offsets[self.timer])
+        else:
+            super().update(*args, **kwargs)
+
+
+class DEBUG_spinwheel(missile):
+    def __init__(self, partner, amp, orbital_rank, img, loc, vel, *args, **kwargs):
+        super().__init__(img, loc, vel, *args, **kwargs)
+        self.timer = 0
+        self.partner = partner
+        self.amp = amp
+        self.x_off = cos_offsets.copy()
+        self.y_off = sin_offsets.copy()
+        self.normal = orbital_rank
+        self.core = loc
+
+    def update(self, *args, **kwargs):
+        if not self.normal == 0:
+            self.timer += 1
+            if self.timer >= config.screen_width:
+                self.timer = 0
+            x_flip, y_flip = 0, 0
+            if self.velocity[0] >= 0:
+                x_flip = 1
+            elif self.velocity[0] < 0:
+                x_flip = -1
+            if self.velocity[1] >= 0:
+                y_flip = 1
+            elif self.velocity[1] < 0:
+                y_flip = -1
+
+            y_vel = y_flip * (sin_offsets[self.timer] * self.timer + self.timer) * .5
+            x_vel = x_flip * (cos_offsets[self.timer] * self.timer + self.timer) * .5
+
+            self.rect.center = (x_vel+self.core[0], y_vel+self.core[1])
+
+        else:
+            super().update(*args, **kwargs)
+
+
+class DEBUBBLES_s(helix):
+    def __init__(self, **kwargs):
+        super().__init__(DEBUBBLES_m, acid_book_img, spell_name='DEBUBBLES', **kwargs,
+                            trigger_method=wind_up(3, 3*sec/4, 4)
+                         )
+
+class DEBUBBLES_m(DEBUG_triple):
+    def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
+        xvel, yvel = direction[0]*7, direction[1]*7
+        super().__init__(partner, 3, orbital_rank, poison_drop_img, loc, (xvel, yvel), *args, **kwargs,
+                         missile_name='DEBUBBLESDEBUBBLES')
+
 
 class DEBUG_seeker_for_helix(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):

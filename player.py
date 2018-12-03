@@ -14,16 +14,15 @@ def calc_index(x_coord, y_coord):
     return pygame.rect.Rect((start_x, start_y), player_img_size)
 
 
-goddess_robes     =  pygame.image.load('people\img_goddess1.png').convert()
-goddess_crop_top  =  pygame.image.load('people\img_goddess2.png').convert()
-goddess_body_suit =  pygame.image.load('people\img_goddess3.png').convert()
-goddess_tattered  =  pygame.image.load('people\img_goddess4.png').convert()
-goddess_robes.set_colorkey((255, 255, 255))
+goddess_robes     =  pygame.image.load('Animation\img_goddess1.png').convert()
+goddess_crop_top  =  pygame.image.load('Animation\img_goddess2.png').convert()
+goddess_body_suit =  pygame.image.load('Animation\img_goddess3.png').convert()
+goddess_tattered  =  pygame.image.load('Animation\img_goddess4.png').convert()
+goddess_robes.set_colorkey(    config.default_transparency)
+goddess_crop_top.set_colorkey( config.default_transparency)
+goddess_body_suit.set_colorkey(config.default_transparency)
+goddess_tattered.set_colorkey( config.default_transparency)
 
-
-goddess_crop_top.set_colorkey((255, 255, 255))
-goddess_body_suit.set_colorkey((255, 255, 255))
-goddess_tattered.set_colorkey((255, 255, 255))
 img_lookup = {'robes': goddess_robes,
               'crop_top': goddess_crop_top,
               'body_suit': goddess_body_suit,
@@ -61,6 +60,7 @@ class player(spriteling.spriteling):
         self.active_spell = pygame.sprite.GroupSingle()
 
         self.base_move = 6
+        self.curr_move = 6
 
         self.facing = (1, 0)
         self.facing_angle = spriteling.facing_angle(*self.facing)

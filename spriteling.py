@@ -243,6 +243,8 @@ class spriteling(pygame.sprite.Sprite):
         # places it directly on top of the rect
         if 'image' in kwargs:
             self.image = kwargs['image']
+        elif 'img' in kwargs:
+            self.image = kwargs['img']
         else:
             self.image = placeholder
         self.rect = self.image.get_rect()
@@ -311,10 +313,9 @@ class spriteling(pygame.sprite.Sprite):
     def update(self, *args, **kwargs):
         # movement stuff. concerns movement from controller input, getting hit with shit, etc
         # changed b/c this was the exception, not the norm
+
         self.rect.move_ip(self.move(**kwargs))
         self.hitbox.update()
-
-
 
         #for x in range(0, len(self.cond_queue)):
         #    temp = self.cond_queue.popleft()
@@ -322,6 +323,14 @@ class spriteling(pygame.sprite.Sprite):
         #    if bool(temp(self)):
         #        self.cond_queue.append(temp)
 
+        self.curr_hp += self.healing
+        self.healing = 0
+        self.curr_hp = min(self.curr_hp, self.base_hp)
+        if self.curr_hp <= 0:
+            event_maker.new_event(events.spriteling_event, 'spriteling', subtype='death', message="a spriteling has died")
+            self.kill()
+
+    def affect(self):
         self.curr_move = self.base_move * self.move_mult
         # check base and current stats, restoring as needed
         for key in self.base_modifiers:
@@ -332,17 +341,10 @@ class spriteling(pygame.sprite.Sprite):
         for key in self.applied_modifiers:
             if key not in self.base_modifiers:
                 self.curr_modifiers[key] = 1 - self.applied_modifiers[key]
-
         for item in self.base_immune:
             if item not in self.curr_immune:
                 self.curr_immune.add(item)
 
-        self.curr_hp += self.healing
-        self.healing = 0
-        self.curr_hp = min(self.curr_hp, self.base_hp)
-        if self.curr_hp <= 0:
-            event_maker.new_event(events.spriteling_event, 'spriteling', subtype='death', message="a spriteling has died")
-            self.kill()
 
     def draw(self, disp, boxes=False):
         disp.blit(self.image, self.rect)

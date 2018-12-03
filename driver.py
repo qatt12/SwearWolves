@@ -259,7 +259,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.busrt_shard_s, spells.flame_wheel_s, spells.hot_wave_s,
+unlocked_books = [spells.DEBUG_book(spells.busrt_shard_s, spells.flame_wheel_s, spells.hot_wave_s, spells.DEBUBBLES_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
                                     spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s),
                   spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]

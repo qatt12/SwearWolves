@@ -1,6 +1,0 @@
-***	entry #: 71 type: error
-file source: blocks
-DEBUG: placeholder image
-***	entry #: 73 type: error
-file source: blocks
-DEBUG: placeholder image

@@ -32,6 +32,7 @@
 import pygame, config, interface, events
 from events import event_maker
 from misc import controller_list as controller_list
+from collections import deque
 pygame.init()
 
 game_window = pygame.display.set_mode(config.screen_size)
@@ -93,6 +94,12 @@ class screen_handler():
         self.live_missiles = pygame.sprite.Group()
         self.active_enemies = pygame.sprite.Group()
         self.inactive_enemies = pygame.sprite.Group()
+        self.allies = pygame.sprite.Group()
+        self.list_allies = []
+        self.list_players = []
+        self.deque_enemies = deque([])
+        self.obstacles = pygame.sprite.Group()
+        self.apply_to_players = pygame.sprite.Group()
 
     # currently, update does a lot of things. It is used to add many things to the screen, to keep everything elegant
     # and avoid having to write many dif methods, but this may not be a great idea, as update is also used/assumed to
@@ -130,6 +137,12 @@ class screen_handler():
             self.overlays.append(kwargs['overlay'])
             message.modify(overlay=kwargs['overlay'])
             pillar_of_hate.add(kwargs['overlay'], layer=kwargs['overlay'].layer)
+        if 'spawn_aura' in kwargs:
+            pillar_of_hate.add(kwargs['spawn_aura'], layer=kwargs['spawn_aura'].layer)
+            self.apply_to_players.add(kwargs['spawn_aura'])
+        if 'spawn_obstacle' in kwargs:
+            pillar_of_hate.add(kwargs['spawn_obstacle'], layer=kwargs['spawn_obstacle'].layer)
+            self.apply_to_players.add(kwargs['spawn_obstacle'])
 
         event_maker.send_entry(message, False, False)
 
@@ -151,11 +164,10 @@ class screen_handler():
             for each in visible_enemies:
                 pillar_of_hate.add(each, layer=each.layer)
 
-            allied = pygame.sprite.Group()
             for player_handler in self.ordered_list_of_player_HANDLERS:
-                other_players = pygame.sprite.Group.copy(self.GROUP_of_player_SPRITES)
+                other_players = list(self.GROUP_of_player_SPRITES)
                 other_players.remove(player_handler.player)
-                player_handler.update(players=other_players, enemies=visible_enemies, allies=allied,
+                player_handler.update(players=other_players, enemies=self.deque_enemies, allies=self.list_allies,
                                       me=player_handler.player, all_players=self.GROUP_of_player_SPRITES)
 
                 for each in player_handler.get_missiles():
@@ -172,24 +184,25 @@ class screen_handler():
                 self.current_room.collide_missiles_into_enemies(self.live_missiles)
                 self.current_room.collide_walls(missiles=self.live_missiles)
 
+                #print(pillar_of_hate.get_sprites_from_layer(config.enemy_layer))
+
     def draw(self, display):
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        display.fill(config.black)
-        pygame.display.update(pillar_of_hate.draw(display))
+        #display.fill(config.black)
+        #pygame.display.update(pillar_of_hate.draw(display))
 
-        #if self.current_room is not None:
-        #    self.current_room.draw_contents(self.disp, True)
-        #    for each in self.ordered_list_of_player_HANDLERS:
-        #        each.draw(self.disp, True)
-        #self.live_missiles.draw(self.disp)
-        #display.blit(self.disp, (0, 0))
-        #self.menus.draw(display)
-        #for each in self.overlays:
-        #    each.draw(display)
-###
-        #pygame.display.flip()
+        if self.current_room is not None:
+            self.current_room.draw_contents(self.disp, True)
+            for each in self.ordered_list_of_player_HANDLERS:
+                each.draw(self.disp, True)
+        self.live_missiles.draw(self.disp)
+        display.blit(self.disp, (0, 0))
+        self.menus.draw(display)
+        for each in self.overlays:
+            each.draw(display)
+        pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -198,6 +211,7 @@ class screen_handler():
         from spriteling import spriteling
         assert (len(self.ordered_list_of_player_HANDLERS) >=1), "nothing is in player handlers"
         i = 1
+        self.list_players = [each.player for each in self.ordered_list_of_player_HANDLERS]
         for each in self.ordered_list_of_player_HANDLERS:
             each.begin_game(player_constr, starting_room, i)
             self.GROUP_of_player_SPRITES.add(each.player)
@@ -391,6 +405,10 @@ while(game_loop and running):
         if event.type == events.spriteling_event:
             if event.subtype == 'death':
                 event_maker.make_entry("log", 'detected dead spriteling at event level', "", "driver")
+            elif event.subtype == events.spawn_aura:
+                screen.apply(spawn_aura=event.spawn_aura)
+            elif event.subtype == events.spawn_obstacle:
+                screen.apply(spawn_obstacle=event.spawn_obstacle)
         if event.type >= pygame.USEREVENT:
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)

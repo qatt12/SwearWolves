@@ -36,10 +36,11 @@ deleted_save     = 20
 
 enemy_died       = 21
 
-summon_ally      = 22
-summon_obstacle  = 23
+spawn_ally      = 22
+spawn_obstacle  = 23
 spawn_enemy      = 24
 spawn_enemy_type = 25
+spawn_aura       = 26
 
 
 

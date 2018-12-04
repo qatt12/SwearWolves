@@ -350,6 +350,9 @@ class spell_book(spriteling.spriteling):
     def get_active_spell(self):
         return (self.index, self.spells[self.index])
 
+    def get_sorted_missiles(self):
+        return self.apply_to_players, self.obstacles
+
 
     def set_my_player_HANDLER(self, handler):
         self.my_player_HANDLER = handler
@@ -362,6 +365,8 @@ class spell_book(spriteling.spriteling):
         if 'fire' in kwargs:
             for lonely in self.active_spell:
                 lonely.update(True, loc, kwargs['fire'][0], kwargs['fire'][1], kwargs['direction'],
+                              to_players=self.apply_to_players,
+                              obstacles=self.obstacles,
                               **kwargs)
         else:
             # the 'active' param must be set to false here. To tell the spell not to expect input??
@@ -683,6 +688,8 @@ class aura(missile):
         self.subject = self.my_caster
         self.radius = radius
         self.layer = config.floor_cos
+        event_maker.new_event(events.spriteling_event, "spells", subtype=events.spawn_aura, spawn_aura=self)
+
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
@@ -698,7 +705,6 @@ class aura(missile):
         if isinstance(target, block):
             return False
         return events.dist(self, target) <= self.radius
-
 
 class size_function():
     def __init__(self, start, asc, peak, desc,):
@@ -1478,8 +1484,6 @@ class DEBUG_spinwheel(missile):
             super().update(*args, **kwargs)
 
 
-
-
 class DEBUG_seeker_for_helix(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
         xvel, yvel = direction[0]*7, direction[1]*7
@@ -1562,6 +1566,7 @@ class fissure_slab_m(ground_wave):
     def __init__(self, img_set, direction, loc, *args, **kwargs):
         super().__init__(img_set, 0, loc, (direction[0]*1.7, direction[1]*1.7), *args, **kwargs, missile_name='slab',
                          stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30)
+        event_maker.new_event(events.spriteling_event, 'spells', subtype=events.spawn_obstacle, spawn_obstacle=self)
 
 class heatwave_s(wave_caster):
     def __init__(self, **kwargs):

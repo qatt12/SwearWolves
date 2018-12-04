@@ -21,7 +21,7 @@ def prepare_joysticks():
 def auto_assign(x):
     if 'Xbox One' in x.get_name():
         return xbone_gamepad(x)
-    elif 'Xbox 360' in x.get_name():
+    elif 'Xbox 360' or '360' in x.get_name():
         return xb360_gamepad(x)
     elif pygame.key.get_pressed()[pygame.K_SPACE]:
         return keyboard()

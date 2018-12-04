@@ -1,75 +1,3 @@
-#                                  `.-::/+osyyyyso//:.`
-#                               .-/oyyyyyysssyyhhhyhsoo:
-#                             .:/oyyyssooossysooosymhddys:
-#                            -::sysooooossooooooooh:ysyhhy+
-#                           :--syooooossoooooooooy/ .soyyhs+
-#                          ---ssoooossooooooooooy/.-:/yoyhyy/
-#                          :--+oooooooysooooooyo.  `` -ssohso.
-#                          ..::oooooshsoooosy+.        :hohoy.
-#                        :/-/+/soooohoosshy+-`          yshoo-
-#                         +:s+s+yyohssyyy:://:`      -+/ydsoo`
-#                          /:://:o/dssosyddhoym`    ohydoh:o-
-#                          `./-:-.osoos/-sds..+  `-/dssoy/..
-#                            .so/-soooy`...```  `:-+:`+so.
-#                         `.oyods+hooos        `/::::`/oo
-#                     `:+ossssyos+ssoso     .```.:--..++y`
-#                  `:+ssssoos/:::/ososy/:-`  `   ` .:-`+o+
-#                `/oosysooooo+-`:+ysooho+//:-```.:/:.  `ss:
-#               -oooyyooooys-///-.-+s+y:+o+o.://o:-:::-.`oy/
-#              :oooysooosyssooyoso:--++:.-/+oo+++---:+:/` /y+`
-#             ./ooysoosyysys//:/:/://-/+-----:----/sys/.`.`:s/.`
-#             -ooyyooshssdyhhyy+//:--:://:::::::::/ssoy..`.`+.
-#             /oohooyyosmdNm:....--+ooo:-:///:://...sss/o/.--
-#             ooyyoyyoomhyN+       ```:o::---....---.+sooo/+s
-#            `/ohoshooddosm-`       ```-o-`...`.-.`  ``.:oyshy+-
-#            `:ohohoosmsohd..       `-/.o++`    `.--.`   `-o:ssys:
-#             :+hohoohdooyh:``       `:++/os+:-`  `.-::.   /y/oydds.
-#             -:yyyoodhsoshh`/``      `++://oso++:.``--::  :h++ohhod-
-#              :/hhoodshooyd/o-`       `+::::/+++oss+:.--: oo+++od:+d`.`
-#              `:+hsodohsooh+hh-`     .`.o//:/++++++ooo+:+:y++++:d/-d:.`
-#               `:+ssdosdsossomy+:`   :.`:y+:/++++++++++syso++++od++s .
-#                 -/oyyoshyoo+y+yo:`  `:-`/y/:/++++++++ohdsoshyhys+-/
-#                  `:shysoyhsss//do/-   .:-ss+:/+oooosossm+/sys/`   `
-#                     .ohy+shdd:`:ho::`   `.ssso+sssssooom``oo
-#                       `:/soyN-  ys+-:`    `+.o+oooo+++sy``oo
-#                         `oysm/  o/yd:`     `++s+++++++Ns``os
-#                          `oyyh  sh+dmy-     .+sy+++++yN+:`os
-#                         ` `+oy `m//+ydms.    -/ys+++ohm+-:oo`
-#                        `` `h+/`yd.o:+sohdo. ``:-ho+ohsmy`.s/:
-#                         ` os.:ym/o///+s-oNh/`   :dohoyhh:`o-s````````````...:/++//:////:::-..`
-#                        ``/o`:hNd:::://os-/hh/`   /yyy+yhy`+-y::://////::/+/////+++oys+////::--:.
-#                -        .s`+hNNs/////+/oy:-+`    `odo+ysh.//y-----:::-----/oo+//:://:/+++:--:/--/`
-#                :       `s..yddy/:::::///+ho:+``...:mhyyhy//ss////o///::---:::/+ssoo/+sos/+s+.`:+-+
-#                ``      o.`yhys//////////++dyyyoo++/::/-:o``+`   ````........``  `.-//::/so+yh/``so`
-#                       o- +syd+////o/+oo+o+/soss.     ```s  +    `           ````    `-:`-y:/yh+`/d`
-#                      +: +.om++/+++s+/-..  :///`        `o  /`   `              ``     `/.:+-.h+/:m
-#                     +: /--d/:+++:.-      `o:o           -  .`                          `+//- ssoo/
-#                    +- ./ ss`.-.`         :+/+`                         ``               .y.-.hss+
-#                  `o/  o `N/-`            :o+/:::.                  ``.-.`   ``         .+s-:hmm+
-#                  o/: -/ -d.```           .y+///.               -::::+s+.``..``       .+++o/hd+-
-#                 ./+  o  oo                oo+o:``             `..-sdo::/+/.-/.`   `.:so++-yy-
-#                   +  o  h/                `y++/--.             `/dhs+/+//::/-.. `/oho/o-::y.
-#                  .:  o  y+                 -so+/+         ``.:/hmo+--/--:--o/. `/oy/sho/` :`
-#                  --  o  oo`          `      .os/+/.```..://::-ho/--/--/--:/s..-/hs/yhs+`    ``..``
-#                `.::``-/ o.s`                 `-+sossoo/:.``..sh-+--/:-/:-:/--:yhoooo--..--.``   `...
-#         ``--....``+--.o:o`-o:``         ```.-////s-...-:://:ooy::+--/--+---:ooso+o-.       `.....`
-#    ``--...``---....`   +-   .:/+//::::::::::.```.s+oo+::-.``do:/-:/--/:-//+oos++: `````          ```
-# .--.. `.-:-:...`        :/.`   `..---..-:----:so+s/...`    /yo-::--/--:/+ssy+o:   ````.----...```
-# `  `---.       `...---``  -:::.````` ``...--..``` +        hs/--:---::/osy+oo-.-......` .``
-# `-..                  ..----``.-----.....``     ``-/-----.:d/-/---:-:syysoo.`          .  `  ``
-# ```                         .----.`       `.:://+//+o:--..+o---:---oyyooo-  -          -  `  .     -
-#  ``..`                            ....-:/++//+o:::.``+:::/h---:--/ss//o//  :`         -`  ` .`    `:
-#      `..--.            `       ``.-+ooo/+:--` :  `-:oy++s/h-:--:+oo-:y+`/  +          /   ` :     /
-#           `.----` ```..````````-+s+::---.    .- .yos//.:o:s--:+y+:++/:o/` --          /   ``-    -.
-# `               .--:-`      .//:`---   -`    :. -s/.-:/-/y+-:/ss--ss--h/  +          `:   `:     /
-# `..`                 .-.--+s/``--`     /     /  `s:----/:o:/::-y--+s-:y   +          -.   `:    `:
-#    `...`               -/s/..+.        /     /   .o/::--+//::--h-+:s.s:  `+          /    .-    :`
-#        `....         -/-+` ..:        `/     /    `/s-:o/:--::+y-o+/.h+  -:          /    :     :
-#             ..-.   `+- +` . .-        --     /     `y/-o--:+:-yo//s-o:+  :.          /    :     -
-#       ```````  `..-+   . `` /`        +      /     -o:-+---+..d:o:s+//.  /.          /   `-     .
-#              ````-+         +         o      /     .s-.o---o-/yo:+++s/   /.          /   ..     .
-#                  o          +         o      /     `o-.o---o-/hossdNd    :.          /          `
-
 # blocks are, as stated in spriteling.py, intended to be placed and then never moved. With the notable exception
 # of floors, blocks are also supposed to impede movement
 
@@ -305,7 +233,7 @@ def look_for_activity(*args, **kwargs):
 class door(interact_trigger):
     def __init__(self, door_type=events.next_room, **kwargs):
         # DEBUG STUFF at least the image is. UNTIL YOTOLL DRAWS A DOOR
-        pass_img = pygame.transform.scale(pygame.image.load('misc\spirit.jpg').convert_alpha(), (config.tile_scalar, config.tile_scalar))
+        pass_img = pygame.transform.scale(pygame.image.load('Animation\img_door.png').convert_alpha(), (config.tile_scalar, config.tile_scalar))
         event_maker.make_entry('error', 'DEBUG', "placeholder image", 'blocks', True, True)
         pass_loc = (0, 0)
         pass_rect = pass_img.get_rect()

@@ -14,10 +14,6 @@ class enemy(spriteling.spriteling):
     def attack(self):
         pass
 
-
-
-
-
 class simple_enemy(enemy):
     def __init__(self):
         super().__init__()
@@ -94,6 +90,15 @@ class quintenemy(enemy):
             # LOGAN:::DEBUG inefficient, will likely change
             self.move(True, move=(x_v, y_v))
 
+
+#class skeleton
+#follows player; randomly chooses between multiple(?)
+
+#class boss
+#avoids player, spawn beetles(?)
+
+#class beetles
+#surround boss, shoot at player
 
 
 class brain_storm():

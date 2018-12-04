@@ -260,7 +260,8 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.petal_storm_s, spells.pestilence_s, spells.freeze_ray_s, spells.flak_cannon_s,
+unlocked_books = [spells.DEBUG_book(spells.DEBUG_unguided_swarm,
+    spells.petal_storm_s, spells.pestilence_s, spells.freeze_ray_s, spells.flak_cannon_s,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
                                     spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s,

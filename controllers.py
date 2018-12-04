@@ -26,7 +26,7 @@ def auto_assign(x):
     elif pygame.key.get_pressed()[pygame.K_SPACE]:
         return keyboard()
     else:
-        return xb360_gamepad(x)
+        return other_gamepad(x)
 
 
 '''
@@ -200,7 +200,6 @@ Start = 7
 left stick = 8
 right stick = 9
 '''
-
 class xb360_gamepad(object):
     def __init__(self, jub):
         # I am unsure why, but I seemed to have named this controller jub
@@ -245,8 +244,10 @@ class xb360_gamepad(object):
                                'Start': self.jub.get_button(7), 'Select': self.jub.get_button(6),
                                'LStick': self.jub.get_button(8), 'RStick': self.jub.get_button(9)
                             }
-        self.new_sticks = {'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
-                           'RX': self.jub.get_axis(4), 'RY': self.jub.get_axis(3)}
+        self.new_sticks = {
+                               'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+                               'RX': self.jub.get_axis(4), 'RY': self.jub.get_axis(3)
+        }
 
         # the triggers are special, in that they are not 2 separate axes, but instead the signed difference between
         #  both triggers as a single axis. If RT is pressed, axis 2 is
@@ -314,6 +315,66 @@ class xb360_gamepad(object):
         else:
             return False
 
+
+class other_gamepad(xb360_gamepad):
+    def __init__(self, jub):
+        # I am unsure why, but I seemed to have named this controller jub
+        self.jub = jub
+        self.jub.init()
+        #print(jub.get_name())
+
+        self.sticks = {
+            'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+            'RX': self.jub.get_axis(2), 'RY': self.jub.get_axis(3)
+        }
+        self.triggers = \
+            jub.get_axis(5), jub.get_axis(4)
+        self.trigger_btns = \
+            jub.get_button(6), jub.get_button(7)
+        self.buttons = {
+             'A': jub.get_button(1), 'B': jub.get_button(2),
+             'X': jub.get_button(0), 'Y': jub.get_button(3),
+             'LB': jub.get_button(4), 'RB': jub.get_button(5),
+             'Start': jub.get_button(9), 'Select': jub.get_button(8),
+             'LStick': jub.get_button(10), 'RStick': jub.get_button(11)
+        }
+
+        self.new_sticks = {
+            'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+            'RX': self.jub.get_axis(2), 'RY': self.jub.get_axis(3)
+        }
+        self.new_triggers = \
+            jub.get_axis(5), jub.get_axis(4)
+        self.new_trigger_btns = \
+            jub.get_button(6), jub.get_button(7)
+        self.new_buttons = {
+            'A': jub.get_button(1), 'B': jub.get_button(2),
+             'X': jub.get_button(0), 'Y': jub.get_button(3),
+             'LB': jub.get_button(4), 'RB': jub.get_button(5),
+             'Start': jub.get_button(9), 'Select': jub.get_button(8),
+             'LStick': jub.get_button(10), 'RStick': jub.get_button(11)
+        }
+
+    def update(self):
+        self.buttons = self.new_buttons
+        self.sticks = self.new_sticks
+        self.triggers = self.new_triggers
+
+        self.new_buttons = {
+                               'A': self.jub.get_button(1), 'B': self.jub.get_button(2),
+                               'X': self.jub.get_button(0), 'Y': self.jub.get_button(3),
+                               'LB': self.jub.get_button(4), 'RB': self.jub.get_button(5),
+                               'Start': self.jub.get_button(9), 'Select': self.jub.get_button(8),
+                               'LStick': self.jub.get_button(10), 'RStick': self.jub.get_button(11)
+                            }
+        self.new_sticks = {
+                               'LX': self.jub.get_axis(0), 'LY': self.jub.get_axis(1),
+                               'RX': self.jub.get_axis(2), 'RY': self.jub.get_axis(3)
+        }
+
+        # the triggers are special, in that they are not 2 separate axes, but instead the signed difference between
+        #  both triggers as a single axis. If RT is pressed, axis 2 is
+        self.new_triggers = self.jub.get_axis(6), self.jub.get_axis(7)
 
 
 # super basice keyboard class for keyboard input. like the controllers, it stores two frames of input

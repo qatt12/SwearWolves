@@ -1,0 +1,201 @@
+**********************************************************************************
+Flushing on close
+***	entry #: 25935 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell hydro_pump
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+	
+***	entry #: 22689 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell poison_spore
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+	
+***	entry #: 20409 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell chain_gun
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+	
+***	entry #: 17991 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell razor_leaf
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+	
+***	entry #: 82 type: trace
+file source: room
+door init: 
+	terms: door; init; 
+	key words:
+	door_rect_at_init: <rect(800, 375, 100, 100)>
+	
+***	entry #: 80 type: trace
+file source: room| obj source: <class 'room.room'>| instance source: <room.hub_room object at 0x062A58B0>
+exit_door: found kwarg entry for exit door
+	terms: door; exit; kwargs; 
+	key words:
+	obj_src: <class 'room.room'>
+	inst_src: <room.hub_room object at 0x062A58B0>
+	exit_doors: [('top', 3)]
+	
+***	entry #: 78 type: trace
+file source: room
+room init: Room constructor has been invoked
+	terms: room; init; waffles; 
+	key words:
+	found_kwargs: {'exit_door': [('top', 3)], 'inner_wall_rect': <rect(1000, 1000, 300, 200)>}
+	
+***	entry #: 77 type: trace
+file source: room
+theme check: assessing the contents of theme
+	terms: theme; 
+	key words:
+	found_theme: <room.theme object at 0x062A58D0>
+	
+***	entry #: 74 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 73 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 72 type: trace
+file source: interface| instance source: <interface.handler object at 0x06310B10>
+player handler attachments: the things that have been successfully attached to this player handler
+	terms: player; book; player_name; 
+	key words:
+	inst_src: <interface.handler object at 0x06310B10>
+	book: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+	
+***	entry #: 71 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 70 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 69 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 68 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 67 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 66 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 65 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 64 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 63 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 62 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 61 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 60 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x06310B10>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x06310B10>
+	
+***	entry #: 59 type: trace
+file source: interface| instance source: <interface.handler object at 0x06310B10>
+player handler attachments: the things that have been successfully attached to this player handler
+	terms: player; book; player_name; 
+	key words:
+	inst_src: <interface.handler object at 0x06310B10>
+	menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 850, 425)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
+	my_name: player one
+	
+***	entry #: 1 type: trace
+file source: events
+first trace: the very first trace entry
+**********************************************************************************

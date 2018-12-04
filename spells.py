@@ -156,7 +156,7 @@ ice_beam_img   = pygame.image.load(    'Animation\img_icebeam.png').convert()
 ice_beam_img.set_colorkey(config.default_transparency)
 
 # not done
-icicle_img = pygame.image.load(    'Animation\img_icespike.png').convert()
+icicle_img = pygame.image.load(    'Animation\img_iceup.png').convert()
 icicle_img .set_colorkey(config.default_transparency)
 BIG_icicle_img = pygame.transform.scale2x(icicle_img )
 glacier_img = pygame.image.load(    'Animation\img_icebeam.png').convert()
@@ -165,7 +165,7 @@ glacier_img.set_colorkey(config.default_transparency)
 rock_shard_img = pygame.image.load(    'Animation\img_rock.png').convert()
 rock_shard_img.set_colorkey(config.default_transparency)
 
-big_ol_rock_img = pygame.image.load(    'Animation\img_b_rock.png').convert()
+big_ol_rock_img = pygame.image.load(    'Animation\img_rockup.png').convert()
 BIG_big_ol_rock_img = pygame.transform.scale2x(big_ol_rock_img)
 BIG_big_ol_rock_img.set_colorkey(config.default_transparency)
 
@@ -187,7 +187,8 @@ sun_particle_img = pygame.image.load(    'Animation\img_sunbeam.png').convert()
 sun_particle_img.set_colorkey(config.default_transparency)
 toxic_spore_img = acid_book_img
 small_fire_img = fire_book_img
-water_splash_img = ice_book_img
+water_splash_img =  pygame.image.load(    'Animation\img_watersplash.png').convert()
+water_splash_img.set_colorkey(config.default_transparency)
 
 default_reticle =pygame.image.load('projectiles\img_crosshair.png').convert_alpha()
 
@@ -865,12 +866,8 @@ class cooled(trigger):
     def __call__(self, prev, now):
         if self.heat > 0:
             self.heat -= 1
-
-            print(self.heat)
-
             return False
         elif now:
-            print("cooled is firing")
             self.heat = self.cooldown_time
             return True
         return False
@@ -1740,12 +1737,12 @@ class crazy_petals_m(DEBUG_spinwheel):
 # swarm of bugs
 class pestilence_s(swarm, self_target):
     def __init__(self, **kwargs):
-        super().__init__(10, 'me', locust_m, light_book_img, **kwargs, spell_name="pestilence_s",
-                         trigger_method=gated_trigger(reset_gate(sec/2), cap(20), semi_release()))
+        super().__init__(10, 'me', locust_m, bug_book_img, **kwargs, spell_name="pestilence_s",
+                         trigger_method=gated_trigger(cooled(sec/5), cap(20), semi_release()))
 class locust_m(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
-        xvel, yvel = direction[0], direction[1]*20
-        super().__init__(partner, 1, 1, orbital_rank, bug_book_img, loc, (xvel, yvel), *args, **kwargs,
+        xvel, yvel = direction[0], direction[1]
+        super().__init__(partner, 1, 8, orbital_rank, bug_book_img, loc, (xvel, yvel), *args, **kwargs,
                          min_distance=30, missile_name='locust_m', max_vel=3)
 
 # not done

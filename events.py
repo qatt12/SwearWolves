@@ -41,6 +41,7 @@ spawn_obstacle  = 23
 spawn_enemy      = 24
 spawn_enemy_type = 25
 spawn_aura       = 26
+spawn_trap       = 27
 
 
 

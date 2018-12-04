@@ -1,4 +1,4 @@
-import pygame, spriteling, events, spells, config, blocks
+import pygame, spriteling, events, spells, config, blocks, random
 from events import event_maker
 from spells import velocity
 
@@ -53,6 +53,10 @@ class patrol(simple_enemy):
 class bouncy(simple_enemy):
     pass
 
+
+class dumb_turret(simple_enemy):
+    def __init__(self, start_node):
+        super().__init__()
 
 class abenenoemy(enemy):
     def __init__(self, start_node, **kwargs):
@@ -147,10 +151,14 @@ class quintenemy(enemy):
             # LOGAN:::DEBUG inefficient, will likely change
             self.move(True, move=(x_v, y_v))
 
+default_trap_img = pygame.image.load( 'Animation\img_trap.jpg')
+pygame.transform.scale(default_trap_img, (config.tile_scalar, config.tile_scalar))
 
-class entry_trap(enemy):
-    def __init__(self, img, spring, start_node, trigger_nodes, *args, **kwargs):
-        pass
+class basic_circle_shot_s():
+    pass
+
+
+
 
 
 class skeleton(enemy):

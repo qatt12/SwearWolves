@@ -290,7 +290,7 @@ class handler():
             self.name = kwargs['name']
             message.modify(my_name=self.name)
         if 'impact' in kwargs:
-            self.impacts.add(kwargs['impact'])
+            self.missiles.add(kwargs['impact'])
             #if self.my_marker == None:
             #    self.my_marker =
             #elif self.my_marker.rect.center != kwargs['impact']:

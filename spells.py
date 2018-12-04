@@ -162,8 +162,13 @@ BIG_icicle_img = pygame.transform.scale2x(icicle_img )
 glacier_img = pygame.image.load(    'Animation\img_icebeam.png').convert()
 glacier_img.set_colorkey(config.default_transparency)
 
-little_rock_img = pygame.image.load(    'Animation\img_rock.png').convert()
+little_rock_img = pygame.image.load(    'Animation\img_s_rock.png').convert()
 little_rock_img.set_colorkey(config.default_transparency)
+
+big_rock_img = pygame.image.load(    'Animation\img_b_rock.png').convert()
+big_rock_img.set_colorkey(config.default_transparency)
+med_rock_img = pygame.image.load(    'Animation\img_m_rock.png').convert()
+med_rock_img.set_colorkey(config.default_transparency)
 
 big_ol_rock_img = pygame.image.load(    'Animation\img_rockup.png').convert()
 BIG_big_ol_rock_img = pygame.transform.scale2x(big_ol_rock_img)
@@ -184,6 +189,7 @@ bullet_img = pygame.image.load(    'Animation\img_neon_bullet.png').convert()
 bullet_img.set_colorkey(config.default_transparency)
 
 sun_particle_img = pygame.image.load(    'Animation\img_sunbeam.png').convert()
+sun_particle_img = pygame.transform.scale(sun_particle_img, (40, 40))
 sun_particle_img.set_colorkey(config.default_transparency)
 toxic_spore_img = acid_book_img
 small_fire_img = fire_book_img
@@ -994,9 +1000,6 @@ class half_double_charge(trigger):
 # by default, spells are semi-automatic, meaning the fire key has to be released in between shots
 class spell(spriteling.spriteling):
     def __init__(self, projectile, img, **kwargs):
-
-        print("in spell constr")
-
         super().__init__(image=img)
 
         try:
@@ -1054,6 +1057,7 @@ class spell(spriteling.spriteling):
 
     def __str__(self):
         return str(self.type_name + ' ' + self.spell_name)
+
 
 
 
@@ -1258,6 +1262,17 @@ class beam_particle(missile):
     def set_next(self, newb):
         self.next = newb
 
+
+class lobbed(missile):
+    def __init__(self, drop_rate, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.drop_rate = drop_rate
+        self.velocity(False, add_y=-drop_rate*6)
+
+    def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
+        self.velocity(add_y=self.drop_rate)
+
 class storm(spell):
     pass
 
@@ -1424,6 +1439,7 @@ class threelix(missile):
 
             self.rect.move_ip(self.normal*y_flip*self.amp*cos_offsets[self.timer],
                               self.normal*x_flip*self.amp*sin_offsets[self.timer])
+            self.hitbox.update()
         else:
             super().update(*args, **kwargs)
 
@@ -1553,6 +1569,30 @@ class fissure_slab_m(ground_wave):
                          stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30, hp=9, damage=45, elem='rock',
                          knockback=(direction, 2.5))
         event_maker.new_event(events.spriteling_event, 'spells', subtype=events.spawn_obstacle, spawn_obstacle=self)
+
+class lobbed_boulder_s(spell):
+    def __init__(self, **kwargs):
+        super().__init__(flop_rock_m, rock_book_img, **kwargs, spell_name='lobbed_rock')
+class flop_rock_m(lobbed):
+    def __init__(self, dir, loc, **kwargs):
+        super().__init__(.3, big_rock_img, loc, velocity(mag=3, dir=dir), **kwargs, missile_name='YEET',
+                         elem='rock', damage=58, knockback=(dir, 3))
+
+class rock_slide_s(alt_fire):
+    def __init__(self, **kwargs):
+        super().__init__(sm_slide_rock_m, gated_trigger(cooled(sec/7), cap(8), semi_release()), med_slide_rock_m,
+                         rock_book_img, **kwargs, spell_name='rock_slide', recoil=9,
+                         trigger_method=gated_trigger(cooled(sec/5), cap(5), semi_release()))
+
+
+class med_slide_rock_m(lobbed):
+    def __init__(self, dir, loc, **kwargs):
+        super().__init__(.04, med_rock_img, loc, velocity(mag=4.5, dir=dir), **kwargs, missile_name='medium_YEET',
+                         elem='rock', damage=68, knockback=(dir, 3))
+class sm_slide_rock_m(lobbed):
+    def __init__(self, dir, loc, **kwargs):
+        super().__init__(.03, little_rock_img, loc, velocity(mag=6, dir=dir), **kwargs, missile_name='little_YEET',
+                         elem='rock', damage=68, knockback=(dir, 3))
 
 class heatwave_s(wave_caster):
     def __init__(self, **kwargs):
@@ -1923,14 +1963,14 @@ class book_of_rock(spell_book):
         super().__init__(level)
         self.img = big_rock_book_img
         self.goddess_lookup_key = 'tattered'
-        self.spell_key = {0: burst_shard_s, 1: synthesis_s, 2: poison_spore_s, 3: solar_beam_s}
+        self.spell_key = {0: rock_burst_s, 1: rock_slide_s, 2: fissure_s, 3: lobbed_boulder_s}
 
 class book_of_bugs(spell_book):
     def __init__(self, level=0):
         super().__init__(level)
         self.img = big_bug_book_img
         self.goddess_lookup_key = 'tattered'
-        self.spell_key = {0: razor_leaf_s, 1: synthesis_s, 2: poison_spore_s, 3: solar_beam_s}
+        self.spell_key = {0: pestilence_s, 1: synthesis_s, 2: poison_spore_s, 3: solar_beam_s}
 
 class book_of_holy(spell_book):
     def __init__(self, level=0):
@@ -1938,6 +1978,8 @@ class book_of_holy(spell_book):
         self.img = big_holy_book_img
         self.goddess_lookup_key = 'tattered'
         self.spell_key = {0: razor_leaf_s, 1: synthesis_s, 2: poison_spore_s, 3: solar_beam_s}
+
+
 
 import enemies
 
@@ -1954,13 +1996,33 @@ class spawn_enemy_m(pygame.sprite.Sprite):
     def update(self, *args):
         self.kill()
 
+class spawn_trap_m(pygame.sprite.Sprite):
+    def __init__(self, trap_class, *args, **kwargs):
+        super().__init__()
+        if 'num' in kwargs:
+            spawn = kwargs['num']
+        else:
+            spawn = 1
+        event_maker.new_event(events.spriteling_event, "spells", subtype=events.spawn_trap,
+                              spawn_trap=(trap_class))
+    def update(self, *args):
+        self.kill()
+
 class spawn_abenenoemy(spell):
     def __init__(self, **kwargs):
         super().__init__(abenenoemy_spawn_m, DEBUG_book_img, **kwargs)
-
 class abenenoemy_spawn_m(spawn_enemy_m):
     def __init__(self, *args, **kwargs):
         super().__init__(enemies.abenenoemy)
+
+class spawn_node_sniper(spell):
+    def __init__(self, **kwargs):
+        super().__init__(node_sniper_spawn_m, DEBUG_book_img, **kwargs)
+class node_sniper_spawn_m(spawn_trap_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(enemies.straight_line_sniper_trap)
+
+
 
 
 

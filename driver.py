@@ -143,7 +143,6 @@ class screen_handler():
             for each in kwargs['room'].pull_enemies():
                 pillar_of_hate.add(each, layer=each.layer)
                 self.active_enemies.add(each)
-                self.deque_enemies.append(each)
         if 'overlay' in kwargs:
             self.overlays.append(kwargs['overlay'])
             message.modify(overlay=kwargs['overlay'])
@@ -159,6 +158,11 @@ class screen_handler():
             self.allies.add(kwargs['spawn_ally'])
         if 'spawn_enemy' in kwargs:
             enemy_list = self.current_room.spawn_enemy(kwargs['spawn_enemy'][0], kwargs['spawn_enemy'][1])
+            for nme in enemy_list:
+                pillar_of_hate.add(nme, layer=nme.layer)
+                self.active_enemies.add(nme)
+        if 'spawn_trap' in kwargs:
+            enemy_list = self.current_room.spawn_trap(kwargs['spawn_trap'])
             for nme in enemy_list:
                 pillar_of_hate.add(nme, layer=nme.layer)
                 self.active_enemies.add(nme)
@@ -252,6 +256,8 @@ class screen_handler():
             each.draw(self.disp, True)
         for each in self.active_enemies:
             each.draw(self.disp, True)
+        #for each in self.obstacles:
+        #    each.draw_boxes(self.disp)
 
         display.blit(self.disp, (0, 0))
         self.menus.draw(display)
@@ -331,14 +337,19 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.freeze_ray_s,  spells.spawn_abenenoemy,
+unlocked_books = [spells.DEBUG_book(spells.rock_slide_s, spells.spawn_node_sniper,  spells.spawn_abenenoemy,
     spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.DEBUG_unguided_swarm,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
                                     spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s,
                                     spells.razor_leaf_s),
-                  spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3),
-                  #spells.book_of_leaves(3), spells.book_of_waves(3),
+                  spells.book_of_fire(3),
+                  spells.book_of_rock(3),
+                  spells.book_of_acid(3),
+                  spells.book_of_ice(3),
+                  #spells.book_of_light(3),
+                  spells.book_of_leaves(3),
+                  #spells.book_of_waves(3),
                   ]
 
 player_num = 1
@@ -469,11 +480,10 @@ while(game_loop and running):
 
             elif event.subtype == events.spawn_enemy:
                 screen.apply(spawn_enemy=event.spawn_enemy)
-
-            elif event.subtype == events.spawn_specific_enemy:
-                screen.apply(spawn_specific_enemy=event.spawn_specific_enemy)
             elif event.subtype == events.spawn_obstacle:
                 screen.apply(spawn_obstacle=event.spawn_obstacle)
+            elif event.subtype == events.spawn_trap:
+                screen.apply(spawn_trap=event.spawn_trap)
         if event.type >= pygame.USEREVENT:
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)

@@ -152,7 +152,7 @@ class quintenemy(enemy):
         self.base_move = 4
         self.stop = 0
         self.dest = self.patrol_route[self.stop].rect.center
-
+        self.groupOfnodes.add(self.patrol_route)
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
         self.dest = self.patrol_route[self.stop].rect.center

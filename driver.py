@@ -92,17 +92,22 @@ class screen_handler():
         self.GROUP_of_player_SPRITES = pygame.sprite.Group()
         self.current_room = None
         self.overlays = []
-        self.live_missiles = pygame.sprite.Group()
-        self.active_enemies = pygame.sprite.Group()
+
+        self.all_missiles     = pygame.sprite.Group()
+        self.player_missiles  = pygame.sprite.Group()
+        self.enemy_missiles   = pygame.sprite.Group()
+
+        self.active_enemies   = pygame.sprite.Group()
         self.inactive_enemies = pygame.sprite.Group()
-        self.allies = pygame.sprite.Group()
+        self.allies           = pygame.sprite.Group()
 
         self.list_allies = []
         self.list_players = []
         self.deque_enemies = deque([])
 
-        self.obstacles = pygame.sprite.Group()
+        self.obstacles        = pygame.sprite.Group()
         self.apply_to_players = pygame.sprite.Group()
+        self.apply_to_enemies = pygame.sprite.Group()
 
     # currently, update does a lot of things. It is used to add many things to the screen, to keep everything elegant
     # and avoid having to write many dif methods, but this may not be a great idea, as update is also used/assumed to
@@ -145,15 +150,16 @@ class screen_handler():
             self.apply_to_players.add(kwargs['spawn_aura'])
         if 'spawn_obstacle' in kwargs:
             pillar_of_hate.add(kwargs['spawn_obstacle'], layer=kwargs['spawn_obstacle'].layer)
-            self.apply_to_players.add(kwargs['spawn_obstacle'])
+            self.obstacles.add(kwargs['spawn_obstacle'])
         if 'spawn_ally' in kwargs:
             pillar_of_hate.add(kwargs['spawn_ally'], layer=kwargs['spawn_ally'].layer)
+            self.allies.add(kwargs['spawn_ally'])
 
         event_maker.send_entry(message, False, False)
 
     def update(self, *args, **kwargs):
         self.menus.update()
-        self.live_missiles.update()
+        self.all_missiles.update()
         try:
             assert (self.player_index == interface.handler.get_player_interface_num()), "this would create an error"
         except AssertionError:

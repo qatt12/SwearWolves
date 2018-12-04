@@ -394,10 +394,11 @@ class dungeon():
 
     def next_room(self, players):
         self.current_room = DEBUG_room(self.disp, self.my_theme, exit_door=[('top', 3),
-                                    #('bottom', 6),
-                                    #('right', 1)
-                                    ],
-                                    inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
+                                       #('bottom', 6),
+                                       #('right', 1)
+                                       ],
+                                       inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200))
+                                       )
         self.current_room.add_players(players)
         self.current_room.spawn_enemy(
                                     #enemies.quintenemy((700, 800), [(700, 800), (2700, 300)]),

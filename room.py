@@ -141,10 +141,7 @@ class room():
         # the constructor reqs a size tuple for height and width in tiles, a theme from which to draw tiles and enemies,
         # the current difficulty level, and the player's point of entry.
         self.image = pygame.Surface(size)
-
-
         self.contents = pygame.sprite.LayeredUpdates()
-
         self.ordered_enemies = collections.deque([])
 
         # the floor(s) are interesting. in order to allow the creation of irregularly shaped (non-rectangular) floors,
@@ -174,17 +171,24 @@ class room():
         self.contents.add(my_theme.build_walls(self.full_rect, enter_from, self.entry_door), layer=outer_walls_layer)
 
         if 'inner_wall_rect' in kwargs:
-            self.contents.add(my_theme.build_inner_walls(rect=kwargs['inner_wall_rect']), layer=inner_walls_layer)
+            inner_wall_temp = kwargs['inner_wall_rect'].clamp(self.full_rect)
+            self.contents.add(my_theme.build_inner_walls(rect=inner_wall_temp), layer=inner_walls_layer)
         event_maker.make_entry('trace', 'door init', "", 'room', False, False,
                                'door', 'init',
                                door_rect_at_init=self.entry_door.rect)
 
         self.all_walls = pygame.sprite.Group(self.contents.get_sprites_from_layer(outer_walls_layer),
                                              self.contents.get_sprites_from_layer(inner_walls_layer))
-        self.contents.move_to_front(self.entry_door)
+        #self.contents.move_to_front(self.entry_door)
         event_maker.make_entry('log', "figuring out wtf is up with layeredupdates", "", "room", True, True,
                                entry_door_layer=self.contents.get_layer_of_sprite(self.entry_door))
         self.enemies = pygame.sprite.Group()
+
+        self.nodes = [pygame.rect.Rect((x, y), (config.tile_scalar, config.tile_scalar))
+        for x in range(self.full_rect.left, self.full_rect.right, config.tile_scalar)
+            for y in range(self.full_rect.top, self.full_rect.bottom, config.tile_scalar)]
+
+
 
     # super basic method atm, designed to be expanded as needed in later iterations
     def add_player(self, player):
@@ -281,6 +285,8 @@ class room():
             e.draw_boxes(disp)
         for f in self.contents.get_sprites_from_layer(doors_layer):
             f.draw_boxes(disp)
+        for r in self.nodes:
+            pygame.draw.rect(disp, config.default_transparency, r, 4)
 
         self.ground.draw_boxes(disp)
         pygame.draw.rect(disp, config.green, self.full_rect, 4)
@@ -290,6 +296,8 @@ class room():
     def scroll(self, x_scroll, y_scroll):
         for each in self.contents:
             each.move(shift=(x_scroll, y_scroll))
+        for node in self.nodes:
+            node.move_ip(x_scroll, y_scroll)
 
     def counter_scroll(self, x_scroll, y_scroll, *args):
         for each in args:
@@ -317,11 +325,6 @@ class room():
         #bonks_b = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
         #for each in bonks_b:
         #    each.move(push=bonks_b[each])
-
-
-
-
-
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
     def collide_doors(self, players):

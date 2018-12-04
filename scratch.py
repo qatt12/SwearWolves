@@ -149,3 +149,19 @@ import random
 
 for x in range(0, 8):
     print(random.randint(0, 4))
+
+print(
+timeit.timeit(
+    '''
+nodes = [pygame.rect.Rect((x, y), (100, 100))
+        for x in range(0, 10000, 100)
+            for y in range(0, 10000, 100)]
+for each in nodes:
+    each.move_ip(100, 400)
+    ''',
+    '''
+import pygame
+     
+    ''',
+number=100
+))

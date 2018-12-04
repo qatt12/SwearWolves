@@ -22,6 +22,12 @@ class enemy(spriteling.spriteling):
         super().__init__(*args, **kwargs)
         self.layer = config.enemy_layer
         self.missiles = pygame.sprite.Group()
+        if 'resists' in kwargs:
+            for resistance in kwargs['resists']:
+                self.base_modifiers[resistance[0]] = resistance[1]
+        if 'immune_to' in kwargs:
+            for immunity in kwargs['immune_to']:
+                self.base_immune.add(immunity)
 
     def attack(self):
         pass
@@ -48,16 +54,18 @@ class bouncy(simple_enemy):
     pass
 
 
-class abenenoemy(enemy):
+class tiny_skull(enemy):
     def __init__(self, start_node, **kwargs):
         super().__init__(img=skull_img, loc=start_node.center)
         self.my_vel = velocity(5, 5)
+        #self.am_stuck = 0
 
     def update(self, *args, **kwargs):
         super().update()
         self.rect.move_ip(self.my_vel())
 
     def react(self, to, *args, **kwargs):
+        self.move(True, walls=[to])
         #if wall to left
         if self.hitbox.rect.centerx > to.hitbox.rect.centerx:
             self.my_vel(False, -self.my_vel[1]) #go right
@@ -112,6 +120,11 @@ class quintenemy(enemy):
                 y_v -= 1
             # LOGAN:::DEBUG inefficient, will likely change
             self.move(True, move=(x_v, y_v))
+
+
+class entry_trap(enemy):
+    def __init__(self, img, spring, start_node, trigger_nodes, *args, **kwargs):
+        pass
 
 
 class skeleton(enemy):

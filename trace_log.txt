@@ -1,592 +1,729 @@
 **********************************************************************************
 Flushing on close
-***	entry #: 72490 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 436<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(977, 63, 20, 20)>/host: trashboat| Rect: <rect(977, 63, 21, 21)>
-	
-***	entry #: 72489 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 72488 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 435<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(976, 70, 20, 20)>/host: trashboat| Rect: <rect(976, 70, 21, 21)>
-	
-***	entry #: 72487 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 72486 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 434<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(975, 77, 20, 20)>/host: trashboat| Rect: <rect(975, 77, 21, 21)>
-	
-***	entry #: 72485 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 72484 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 433<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(974, 84, 20, 20)>/host: trashboat| Rect: <rect(974, 84, 21, 21)>
-	
-***	entry #: 72483 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 72482 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 432<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(973, 91, 20, 20)>/host: trashboat| Rect: <rect(973, 91, 21, 21)>
-	
-***	entry #: 72481 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 72480 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 431<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(972, 98, 20, 20)>/host: trashboat| Rect: <rect(972, 98, 21, 21)>
-	
-***	entry #: 72479 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 72478 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 430<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(971, 105, 20, 20)>/host: trashboat| Rect: <rect(971, 105, 21, 21)>
-	
-***	entry #: 72477 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 72476 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 429<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(970, 112, 20, 20)>/host: trashboat| Rect: <rect(970, 112, 21, 21)>
-	
-***	entry #: 72475 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 65598 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 381<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(968, 126, 20, 20)>/host: trashboat| Rect: <rect(968, 126, 21, 21)>
-	
-***	entry #: 65597 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 65434 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 380<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(969, 119, 20, 20)>/host: trashboat| Rect: <rect(969, 119, 21, 21)>
-	
-***	entry #: 65433 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 65216 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 379<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(976, 70, 20, 20)>/host: trashboat| Rect: <rect(976, 70, 21, 21)>
-	
-***	entry #: 65215 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 65214 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 378<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(975, 77, 20, 20)>/host: trashboat| Rect: <rect(975, 77, 21, 21)>
-	
-***	entry #: 65213 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 65212 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 377<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(974, 84, 20, 20)>/host: trashboat| Rect: <rect(974, 84, 21, 21)>
-	
-***	entry #: 65211 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 65210 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 376<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(973, 91, 20, 20)>/host: trashboat| Rect: <rect(973, 91, 21, 21)>
-	
-***	entry #: 65209 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 65208 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 375<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(972, 98, 20, 20)>/host: trashboat| Rect: <rect(972, 98, 21, 21)>
-	
-***	entry #: 65207 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 65206 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 374<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(971, 105, 20, 20)>/host: trashboat| Rect: <rect(971, 105, 21, 21)>
-	
-***	entry #: 65205 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 65204 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 373<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(970, 112, 20, 20)>/host: trashboat| Rect: <rect(970, 112, 21, 21)>
-	
-***	entry #: 65203 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47383 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 278<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(918, 286, 20, 20)>/host: trashboat| Rect: <rect(918, 286, 21, 21)>
-	
-***	entry #: 47382 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47325 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 277<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(919, 279, 20, 20)>/host: trashboat| Rect: <rect(919, 279, 21, 21)>
-	
-***	entry #: 47324 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47267 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 276<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(920, 272, 20, 20)>/host: trashboat| Rect: <rect(920, 272, 21, 21)>
-	
-***	entry #: 47266 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47209 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 275<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(927, 223, 20, 20)>/host: trashboat| Rect: <rect(927, 223, 21, 21)>
-	
-***	entry #: 47208 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47207 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 274<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(926, 230, 20, 20)>/host: trashboat| Rect: <rect(926, 230, 21, 21)>
-	
-***	entry #: 47206 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47205 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 273<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(925, 237, 20, 20)>/host: trashboat| Rect: <rect(925, 237, 21, 21)>
-	
-***	entry #: 47204 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47203 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 272<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(924, 244, 20, 20)>/host: trashboat| Rect: <rect(924, 244, 21, 21)>
-	
-***	entry #: 47202 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47201 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 271<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(923, 251, 20, 20)>/host: trashboat| Rect: <rect(923, 251, 21, 21)>
-	
-***	entry #: 47200 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47143 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 270<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(922, 258, 20, 20)>/host: trashboat| Rect: <rect(922, 258, 21, 21)>
-	
-***	entry #: 47142 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 47141 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	new_impact: 269<class 'spells.hit_marker'>trashboatrect/hitbox: <rect(921, 265, 20, 20)>/host: trashboat| Rect: <rect(921, 265, 21, 21)>
-	
-***	entry #: 47140 type: trace
-file source: spriteling
-damage: applying damage from spriteling
-	terms: extra; damage; health; 
-***	entry #: 17139 type: trace
-file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+***	entry #: 282654 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 changing spells: 
 	terms: misc; extra; magic; spellbook; 
 	key words:
 	active_spell: basic spell I should have a name
 	obj_src: spellbook
-	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 11389 type: trace
-file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+***	entry #: 277248 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: target petal_storm
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 272163 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: target pestilence_s
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 269086 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell flakker
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 266218 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: target DEBUG_unguided_swarm
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 263247 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell fissure
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 259740 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell heat_wave
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 256395 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell cold_snap
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 253954 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell iceshard
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 251720 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell ice_beam
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 249276 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell solar_beam
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 247683 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell beacon_of_hope
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 245980 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell hydro_pump
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 244493 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell poison_spore
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 240827 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell chain_gun
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 236690 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell poison_spore
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 95247 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell hydro_pump
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 92687 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell poison_spore
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 89968 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell hydro_pump
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 87728 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell beacon_of_hope
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 85648 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell solar_beam
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 83195 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell ice_beam
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 81173 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell iceshard
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 79308 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell cold_snap
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 76049 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell heat_wave
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 73277 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell fissure
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 70734 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: target DEBUG_unguided_swarm
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 45175 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: basic spell flakker
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 39873 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: target pestilence_s
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 36613 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+changing spells: 
+	terms: misc; extra; magic; spellbook; 
+	key words:
+	active_spell: target petal_storm
+	obj_src: spellbook
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 22800 type: trace
+file source: spells| obj source: spellbook| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 changing spells: 
 	terms: misc; extra; magic; spellbook; 
 	key words:
 	active_spell: basic spell I should have a name
 	obj_src: spellbook
-	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 91 type: trace
+***	entry #: 152 type: trace
 file source: room
 door init: 
 	terms: door; init; 
 	key words:
 	door_rect_at_init: <rect(600, 300, 100, 100)>
 	
-***	entry #: 89 type: trace
-file source: room| obj source: <class 'room.room'>| instance source: <room.hub_room object at 0x061F8DD0>
+***	entry #: 150 type: trace
+file source: room| obj source: <class 'room.room'>| instance source: <room.hub_room object at 0x061D55D0>
 exit_door: found kwarg entry for exit door
 	terms: door; exit; kwargs; 
 	key words:
 	obj_src: <class 'room.room'>
-	inst_src: <room.hub_room object at 0x061F8DD0>
+	inst_src: <room.hub_room object at 0x061D55D0>
 	exit_doors: [('top', 3)]
 	
-***	entry #: 87 type: trace
+***	entry #: 148 type: trace
 file source: room
 room init: Room constructor has been invoked
 	terms: room; init; waffles; 
 	key words:
 	found_kwargs: {'exit_door': [('top', 3)]}
 	
-***	entry #: 86 type: trace
+***	entry #: 147 type: trace
 file source: room
 theme check: assessing the contents of theme
 	terms: theme; 
 	key words:
-	found_theme: <room.theme object at 0x061F8DF0>
+	found_theme: <room.theme object at 0x061D55F0>
 	
-***	entry #: 83 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 144 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 82 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 143 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 81 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 142 type: trace
+file source: interface| instance source: <interface.handler object at 0x060DCFB0>
 player handler attachments: the things that have been successfully attached to this player handler
 	terms: player; book; player_name; 
 	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	book: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	book: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 80 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 141 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 79 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 140 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 78 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 139 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 77 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 138 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 76 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 137 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 75 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 136 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 74 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 135 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 73 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 134 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 72 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 133 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 71 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 132 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 70 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 131 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 69 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 130 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 68 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 129 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 67 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 128 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 66 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 127 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 65 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 126 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 64 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 125 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 63 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 124 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 62 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 123 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 61 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 122 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 60 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 121 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 59 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 120 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 58 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 119 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x059C7050>
+	inst_src: <interface.handler object at 0x060DCFB0>
 	
-***	entry #: 57 type: trace
-file source: interface| instance source: <interface.handler object at 0x059C7050>
+***	entry #: 118 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 117 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 116 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 115 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 114 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 113 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 112 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 111 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 110 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 109 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 108 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 107 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 106 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 105 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 104 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 103 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 102 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 101 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 100 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 99 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 98 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 97 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 96 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 95 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 94 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x060DCFB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	
+***	entry #: 93 type: trace
+file source: interface| instance source: <interface.handler object at 0x060DCFB0>
 player handler attachments: the things that have been successfully attached to this player handler
 	terms: player; book; player_name; 
 	key words:
-	inst_src: <interface.handler object at 0x059C7050>
-	menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 650, 350)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
+	inst_src: <interface.handler object at 0x060DCFB0>
+	menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 650, 350)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
 	my_name: player one
 	
 ***	entry #: 1 type: trace

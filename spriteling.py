@@ -94,7 +94,7 @@ class spriteling(pygame.sprite.Sprite):
         if 'hitbox' in kwargs:
             self.hitbox = hitbox(self, rect=kwargs['hitbox'])
         else:
-            self.hitbox = hitbox(self, rect=self.rect)
+            self.hitbox = hitbox(self, img_rect=self.rect)
 
     def __str__(self):
         ret = str(self.t_num) + str(type(self)) + self.name + "rect/hitbox: " + str(self.rect) + '/' + str(self.hitbox)
@@ -277,6 +277,10 @@ class hitbox(pygame.sprite.Sprite):
         # if a rect is already specified in the constructor, it copies and uses that one
         if 'rect' in kwargs:
             self.rect = pygame.Rect.copy(kwargs['rect'])
+            #self.rect.inflate_ip(-self.rect.width*0.8, -self.rect.height*0.7)
+        if 'img_rect' in kwargs:
+            self.rect = pygame.Rect.copy(kwargs['img_rect'])
+            self.rect.inflate_ip(-self.rect.width*0.2, -self.rect.height*0.3)
         # if no rect is provided, it copies the rect of its host
         else:
             self.rect = pygame.Rect.copy(self.host.rect)
@@ -379,6 +383,14 @@ class slow():
             slowed = self.degree
         subj.move_mult = max(0, subj.move_mult-slowed)
 
+
+class knockback():
+    def __init__(self, direction, magnitude):
+        self.x_disp = direction[0] * magnitude
+        self.y_disp = direction[1] * magnitude
+
+    def __call__(self, subj):
+        subj.move(knockback=(self.x_disp, self.y_disp))
 
 class weaken():
     pass

@@ -216,7 +216,7 @@ class room():
         for x in range(0, number):
             s_node = self.nodes[random.randint(0, len(self.nodes)-1)]
             ret.append(variety(start_node=s_node, nodes=self.nodes))
-        self.enemies.add(ret)
+        #self.enemies.add(ret)
         return ret
 
 
@@ -340,6 +340,8 @@ class room():
                 each.move(walls=bonks_a[each])
                 for every in bonks_a[each]:
                     each.react(every)
+        if 'obstacles' in kwargs:
+            bonkstacles = pygame.sprite.groupcollide(kwargs['enemies'], self.all_walls, False, False, collide_hitbox)
 
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
@@ -357,8 +359,10 @@ class room():
                 each(every)
 
     def collide_missiles_into_enemies(self, incoming):
-        print("incoming: ", incoming)
-        print("enemies: ", self.enemies)
+
+        #print("incoming: ", incoming)
+        #print("enemies: ", self.enemies)
+
         dings = pygame.sprite.groupcollide(incoming, self.enemies, False, False, collide_hitbox)
         for each in dings:
             for every in dings[each]:

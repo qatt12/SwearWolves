@@ -98,12 +98,10 @@ class screen_handler():
         self.enemy_missiles   = pygame.sprite.Group()
 
         self.active_enemies   = pygame.sprite.Group()
-        #self.inactive_enemies = pygame.sprite.Group()
         self.allies           = pygame.sprite.Group()
 
         self.list_allies = []
         self.list_players = []
-        self.deque_enemies = deque([])
 
         self.obstacles        = pygame.sprite.Group()
         self.apply_to_players = pygame.sprite.Group()
@@ -133,6 +131,7 @@ class screen_handler():
             self.player_index += 1
             message.modify(next_player=kwargs['next_player'])
         if 'room' in kwargs:
+            self.kill_it_all()
             self.current_room = kwargs['room']
             message.modify(room=kwargs['room'])
             for x in range(0, config.player_layer):
@@ -166,9 +165,24 @@ class screen_handler():
 
         event_maker.send_entry(message, False, False)
 
+    def kill_it_all(self):
+        for each in self.all_missiles:
+            each.kill()
+        for each in self.active_enemies:
+            each.kill()
+        for each in self.allies:
+            each.kill()
+        self.list_allies   = []
+        self.list_players  = []
+
+        self.obstacles.empty()
+        self.apply_to_players.empty()
+        self.apply_to_enemies.empty()
+
     def update(self, *args, **kwargs):
         self.menus.update()
         self.all_missiles.update()
+        self.active_enemies.update()
         try:
             assert (self.player_index == interface.handler.get_player_interface_num()), "this would create an error"
         except AssertionError:
@@ -208,17 +222,20 @@ class screen_handler():
                 self.enemy_missiles.add(each.get_missiles())
                 each.missiles.empty()
 
-            print("player misiles: ", self.player_missiles)
-            dings = pygame.sprite.groupcollide(self.player_missiles, self.active_enemies, False, False,
-                                               spriteling.collide_hitbox)
-            print("dings: ", dings)
-            for each in dings:
-                for every in dings[each]:
-                    each(every)
+            self.collide_missiles_into(self.player_missiles, self.active_enemies)
 
             #self.current_room.collide_missiles_into_enemies(self.player_missiles)
-            print("all missiles: ", self.all_missiles)
-            self.current_room.collide_walls(missiles=self.all_missiles, enemies=self.active_enemies)
+            #print("all missiles: ", self.all_missiles)
+
+            self.current_room.collide_walls(missiles=self.all_missiles, enemies=self.active_enemies,
+                                            obstacles=self.obstacles)
+
+    def collide_missiles_into(self, incoming, receiving):
+        dings = pygame.sprite.groupcollide(incoming, receiving, False, False,
+                                           spriteling.collide_hitbox)
+        for each in dings:
+            for every in dings[each]:
+                each(every)
 
     def draw(self, display):
 

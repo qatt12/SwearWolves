@@ -162,8 +162,8 @@ BIG_icicle_img = pygame.transform.scale2x(icicle_img )
 glacier_img = pygame.image.load(    'Animation\img_icebeam.png').convert()
 glacier_img.set_colorkey(config.default_transparency)
 
-rock_shard_img = pygame.image.load(    'Animation\img_rock.png').convert()
-rock_shard_img.set_colorkey(config.default_transparency)
+little_rock_img = pygame.image.load(    'Animation\img_rock.png').convert()
+little_rock_img.set_colorkey(config.default_transparency)
 
 big_ol_rock_img = pygame.image.load(    'Animation\img_rockup.png').convert()
 BIG_big_ol_rock_img = pygame.transform.scale2x(big_ol_rock_img)
@@ -433,39 +433,7 @@ class spell_book(spriteling.spriteling):
 class missile(spriteling.spriteling):
     def __init__(self, img, loc, vel, *args, **kwargs):
 
-        error_msg = events.entry('error', "type error", "the types of the input params sent up to missile.__init__() "
-                                                        "don't match", 'spells', obj_src='missile', got_kwargs=kwargs,)
-        #try:
-        #    assert (isinstance(img, pygame.Surface)), "img is not a surface"
-        #except AssertionError as more_desc:
-        #    error_msg.modify(ext_desc=str(more_desc), img_type=str(type(img)))
-        #    event_maker.send_entry(error_msg)
-        #try:
-        #    assert (isinstance(loc, tuple)), "loc is not a tuple"
-        #except AssertionError as more_desc:
-        #    error_msg.modify(ext_desc=str(more_desc), loc_type=str(type(loc)))
-        #    event_maker.send_entry(error_msg)
-        #try:
-        #    assert (len(loc) == 2), "loc is of improper length"
-        #except AssertionError as more_desc:
-        #    error_msg.modify(ext_desc=str(more_desc), loc_contents=loc)
-        #    event_maker.send_entry(error_msg)
-        #if isinstance(loc, tuple):
-        #    super().__init__(image=img, loc=loc)
-
         super().__init__(image=img, loc=loc.center)
-
-        #try:
-        #    assert ('caster' in kwargs), "cannot find caster kwarg"
-        #except AssertionError as more_desc:
-        #    error_msg.modify(new_desc=str(more_desc), got_kwargs=kwargs)
-        #    event_maker.send_entry(error_msg)
-#
-        #try:
-        #    assert ('missile_name' in kwargs), "cannot find a missile name"
-        #except AssertionError as more_desc:
-        #    error_msg.modify(new_desc=str(more_desc), got_kwargs=kwargs)
-        #    event_maker.send_entry(error_msg)
 
         self.missile_name = kwargs['missile_name']
         self.my_caster = kwargs['caster']
@@ -493,6 +461,12 @@ class missile(spriteling.spriteling):
             self.elem_type = kwargs['elem']
         if 'hp' in kwargs:
             self.curr_hp = kwargs['hp']
+
+        if 'effects' in kwargs:
+            for each in kwargs['effects']:
+                self.effects.append(each)
+        if 'knockback' in kwargs:
+            self.effects.append(spriteling.knockback(kwargs['knockback'][0], kwargs['knockback'][1]))
 
         if 'dispersion' in kwargs:
             temp = pygame.rect.Rect((0, 0), (kwargs['dispersion'], kwargs['dispersion']))
@@ -1196,6 +1170,10 @@ class ground_wave(missile):
         self.img_set = img_set
         self.max_index = len(self.img_set)/2
         self.rects = [r.get_rect() for r in self.img_set]
+        if 'hitbox_scale' in kwargs:
+            self.hitboxes = [h.inflate(-h.width*kwargs['hitbox_scale'][0], -h.height*kwargs['hitbox_scale'][1]) for h in self.rects]
+        else:
+            self.hitboxes = [h.inflate(-h.width*0.4, -h.height*.15) for h in self.rects]
         self.stage = stage
         self.active = False
         if 'start_delay' in kwargs:
@@ -1231,6 +1209,7 @@ class ground_wave(missile):
                     self.image = self.img_set[self.stage]
                     old_rect = self.rect
                     self.rect = self.rects[self.stage]
+                    self.hitbox.rect = self.hitboxes[self.stage]
                     self.rect.center = old_rect.center
                     self.rect.bottom = old_rect.bottom
         elif self.timer >= self.start_delay:
@@ -1479,6 +1458,7 @@ class DEBUG_spinwheel(missile):
             x_vel = x_flip * (cos_offsets[self.timer] * self.timer + self.timer) * .5
 
             self.rect.center = (x_vel+self.core[0], y_vel+self.core[1])
+            self.hitbox.update()
 
         else:
             super().update(*args, **kwargs)
@@ -1525,11 +1505,8 @@ class fireball_m(missile):
     def __init__(self, dir, loc, **kwargs):
         # fsx = pygame.mixer.Sound("Music/MM.ogg")
         # pygame.mixer.Sound.play(fsx)
-        x_vel, y_vel = 4*dir[0], 4*dir[1]
-        super().__init__(fire_ball_img, loc, (x_vel, y_vel), **kwargs, missile_name='fireball')
-        self.hitbox = spriteling.hitbox(self)
-        self.dmg = 80
-        self.elem_type = 'fire'
+        super().__init__(fire_ball_img, loc, velocity(mag=4, dir=dir), **kwargs, missile_name='fireball',
+                         elem='fire', damage=68)
 
 # still needs work, as the reset doesn't quite behave. you can cast up to the cap, release the trigger, and then cast
 # additional spells up to cap, rinse and repeat
@@ -1547,14 +1524,22 @@ class flame_wheel_m(strict_orbit):
 class flame_swirl_m(swirl):
     def __init__(self, partner, radius, loc, direction, *args, **kwargs):
         super().__init__(.2, partner, radius, small_fire_img, loc, velocity(), **kwargs, missile_name='fire_wheel',
-                         angular_speed=3)
+                         angular_speed=3,
+                         elem='fire', damage=55, hp=4)
 
 class flamethrower_s(spell):
     def __init__(self, **kwargs):
-        super(flamethrower_s, self).__init__(fireball_m, dupe(fire_book_img),
+        super().__init__(fire_cloud_m, dupe(fire_book_img),
                                              spell_name='flamethrower',
                                              trigger_method=simple_multicharge_gate(40, int(sec/8), 4),
-                                             **kwargs)
+                                             **kwargs,
+                                             )
+class fire_cloud_m(missile):
+    def __init__(self, dir, loc, **kwargs):
+        # fsx = pygame.mixer.Sound("Music/MM.ogg")
+        # pygame.mixer.Sound.play(fsx)
+        super().__init__(fire_ball_img, loc, velocity(mag=4, dir=dir), **kwargs, missile_name='fireball',
+                         elem='fire', damage=37, hp=7)
 
 class fissure_s(wave_caster):
     def __init__(self, **kwargs):
@@ -1565,7 +1550,8 @@ class fissure_s(wave_caster):
 class fissure_slab_m(ground_wave):
     def __init__(self, img_set, direction, loc, *args, **kwargs):
         super().__init__(img_set, 0, loc, (direction[0]*2.7, direction[1]*2.7), *args, **kwargs, missile_name='slab',
-                         stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30)
+                         stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30, hp=9, damage=45, elem='rock',
+                         knockback=(direction, 2.5))
         event_maker.new_event(events.spriteling_event, 'spells', subtype=events.spawn_obstacle, spawn_obstacle=self)
 
 class heatwave_s(wave_caster):
@@ -1588,7 +1574,7 @@ class cold_snap_s(wave_caster):
 class cold_snap_m(ground_wave):
     def __init__(self, img_set, direction, loc, *args, **kwargs):
         super().__init__(img_set, 0, loc, (direction[0]*1.7, direction[1]*1.7), *args, **kwargs, missile_name='slab',
-                         stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30)
+                         stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30, hp=2, elem='ice', damage=70)
 
 class iceshard_s(spell):
     def __init__(self, **kwargs):
@@ -1598,11 +1584,10 @@ class iceshard_s(spell):
 class iceshard_m(missile):
     def __init__(self, dir, loc, **kwargs):
         x_vel, y_vel = 4 * dir[0], 4 * dir[1]
-        missile.__init__(self, ice_shard_img, loc, (x_vel, y_vel), **kwargs, missile_name='iceshard')
-        self.hitbox = spriteling.hitbox(self)
-
-
-
+        missile.__init__(self, ice_shard_img, loc, (x_vel, y_vel), **kwargs, missile_name='iceshard',
+                         elem='ice', damage=40,
+                         effects=[spriteling.slow('ice', .15, 10)]
+                         )
 
 class glacier_s(obstacle):
     pass
@@ -1616,8 +1601,12 @@ class icebeam_s(helix):
 class icebeam_m(threelix):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
         xvel, yvel = direction[0]*5, direction[1]*5
-        super().__init__(partner, 4, orbital_rank, ice_beam_img, loc, (xvel, yvel), *args, **kwargs,
-                         missile_name='ice_helix')
+        super().__init__(partner, 4, orbital_rank, ice_beam_img, loc, (xvel, yvel),
+
+                         *args, **kwargs,
+                         missile_name='ice_helix', hp=5, elem='ice', damage=40,
+                         effects=[spriteling.slow('ice', .15, 14)]
+                         )
 
 # might want to tweak this
 class hydro_pump_s(helix):
@@ -1628,8 +1617,9 @@ class hydro_pump_s(helix):
 class hydro_pump_m(threelix):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
         xvel, yvel = direction[0]*4.2, direction[1]*4.2
-        super().__init__(partner, 5, orbital_rank, water_splash_img, loc, (xvel, yvel), *args, **kwargs,
-                         missile_name="hydro_splash")
+        super().__init__(partner, 5, orbital_rank, water_splash_img, loc, (xvel, yvel),
+                         *args, **kwargs,
+                         missile_name="hydro_splash", elem='water', damage=13, knockback=(direction, 1))
 
 
 class razor_leaf_s(alt_fire):
@@ -1641,7 +1631,7 @@ class razor_leaf_s(alt_fire):
 class sharp_leaf_m(missile):
     def __init__(self, dir, loc, **kwargs):
         super().__init__(leaf_img, loc,  velocity(var_mag=(7, 3), dir=dir),
-                         missile_name='sharp_leaf', **kwargs)
+                         missile_name='sharp_leaf', **kwargs, elem='grass', hp=3, damage=44)
         self.curr_hp += 2
 
 
@@ -1684,7 +1674,8 @@ class poison_spore_s(spell):
 class poison_spore_m(missile):
     def __init__(self, dir, loc, **kwargs):
         v_mod = random.randint(0, 4) + 1
-        super().__init__(toxic_spore_img, loc, velocity(mag=v_mod, dir=dir), **kwargs, missile_name='spore')
+        super().__init__(toxic_spore_img, loc, velocity(mag=v_mod, dir=dir), **kwargs, missile_name='spore',
+                         elem='poison', damage=28, )
 
 class burst_shard_s(spell):
     def __init__(self, **kwargs):
@@ -1692,13 +1683,22 @@ class burst_shard_s(spell):
                          trigger_method=gated_trigger(reset_gate(sec/8), cap(7), semi_release()),
                          )
 
+class rock_burst_s(spell):
+    def __init__(self, **kwargs):
+        super().__init__(rock_shard_m, rock_book_img, **kwargs, spell_name='rock_burst_shard',
+                         trigger_method=gated_trigger(reset_gate(sec/8), cap(7), semi_release()),
+                         )
+class rock_shard_m(missile):
+    def __init__(self, dir, loc, **kwargs):
+        super().__init__(little_rock_img, loc, velocity(var_mag=(5, 3), dir=dir), **kwargs, missile_name='bullet', damage=50, elem='rock')
+
 class chain_gun_s(spell):
     def __init__(self, **kwargs):
         super().__init__(bullet_m, metal_book_img, **kwargs, spell_name='chain_gun', trigger_method=wind_up(3, sec/3, 3))
 
 class bullet_m(missile):
     def __init__(self, dir, loc, **kwargs):
-        super().__init__(bullet_img, loc, velocity(mag=7, dir=dir), **kwargs, missile_name='bullet')
+        super().__init__(bullet_img, loc, velocity(mag=7, dir=dir), **kwargs, missile_name='bullet', damage=35, elem='metal')
 
 
 class bubble_beam_of_doom_s(helix):
@@ -1734,7 +1734,7 @@ class petal_storm_s(swarm, self_target, alt_fire):
 class swirly_petals_m(swirl):
     def __init__(self, partner, radius, loc, direction, *args, **kwargs):
         super().__init__(.2, partner, radius, leaf_img, loc, velocity(), **kwargs, missile_name='swirly_petal',
-                         angular_speed=3)
+                         angular_speed=3, elem='grass', damage=67)
 class crazy_petals_m(DEBUG_spinwheel):
     def __init__(self, direction, loc, *args, **kwargs):
         x_c = random.randint(1, 3)
@@ -1743,13 +1743,13 @@ class crazy_petals_m(DEBUG_spinwheel):
         y_c = random.randint(1, 3)
         if y_c == 2:
             y_c = -1
-        super().__init__(leaf_img, loc, velocity(x_c, y_c), **kwargs, missile_name='crazy_petals',)
+        super().__init__(leaf_img, loc, velocity(x_c, y_c), **kwargs, missile_name='crazy_petals', elem='grass', damage=45)
 
 # swarm of bugs
 class pestilence_s(swarm, self_target):
     def __init__(self, **kwargs):
         super().__init__(10, 'me', locust_m, bug_book_img, **kwargs, spell_name="pestilence_s",
-                         trigger_method=gated_trigger(cooled(sec/5), cap(20), semi_release()))
+                         trigger_method=gated_trigger(cooled(sec/8), cap(20), semi_release()))
 class locust_m(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
         xvel, yvel = direction[0], direction[1]
@@ -1771,10 +1771,10 @@ class light_pulse_m(missile):
 class solar_beam_s(beam):
     def __init__(self, **kwargs):
         super().__init__(sun_particle_m, leaf_book_img, **kwargs,
-                         trigger_method=cooled(sec*3/4), spell_name="solar_beam")
+                         trigger_method=cooled(sec*3/5), spell_name="solar_beam")
 class sun_particle_m(beam_particle):
     def __init__(self, num, prev, loc, **kwargs):
-        super().__init__(num, prev, sun_particle_img, loc, missile_name="sun_particle", **kwargs)
+        super().__init__(num, prev, sun_particle_img, loc, missile_name="sun_particle", **kwargs, damage=45)
 
 
 # ice lazer
@@ -1784,7 +1784,7 @@ class freeze_ray_s(beam):
                          trigger_method=cooled(sec*3/4))
 class ice_particle_m(beam_particle):
     def __init__(self, num, prev, loc, **kwargs):
-        super().__init__(num, prev, ice_shard_img, loc, missile_name="ice_ray", **kwargs)
+        super().__init__(num, prev, ice_shard_img, loc, missile_name="ice_ray", **kwargs, elem='ice', damage=30)
 
 # healing circle
 class beacon_of_hope(spell):
@@ -1794,19 +1794,22 @@ class beacon_of_hope(spell):
                          spell_name='beacon_of_hope')
 class healing_aura_m(aura):
     def __init__(self, dir, loc, **kwargs):
-        super().__init__(False, config.fps*2, 150, loc, light_book_img, **kwargs, missile_name='healing_aura')
+        super().__init__(False, config.fps*2, 150, loc, light_book_img, **kwargs, missile_name='healing_aura', damage=0,
+                         elem='holy', )
 
 
 # flak cannon
 class flak_cannon_s(remote_spell):
     def __init__(self, **kwargs):
-        super().__init__(flak_burst, semi_release(), cannon_ball_m, metal_book_img, **kwargs, spell_name='flakker',
+        super().__init__(flak_burst, semi_release(), flak_shell_m, metal_book_img, **kwargs, spell_name='flakker',
                          trigger_method=gated_trigger(reset_gate(sec / 10), cap(3), semi_release()),
                          )
 cannon_ball_img = bullet_img
-class cannon_ball_m(missile):
+class flak_shell_m(missile):
     def __init__(self, direction, loc, **kwargs):
-        super().__init__(cannon_ball_img, loc, velocity(var_mag=(4.2, 1), dir=direction), **kwargs, missile_name="cannon_ball")
+        super().__init__(cannon_ball_img, loc, velocity(var_mag=(4.2, 1), dir=direction), **kwargs,
+                         missile_name="cannon_ball", damage=40, elem='metal')
+
 def flak_burst(direction, host, **kwargs):
     if direction[0] and not direction[1]:
         first_d = (direction[0], 0)
@@ -1823,9 +1826,16 @@ def flak_burst(direction, host, **kwargs):
     first  = bullet_m(first_d,  host.rect, **kwargs, spread=8)
     second = bullet_m(sec_d,    host.rect, **kwargs, spread=8)
     third  = bullet_m(thir_dir, host.rect, **kwargs, spread=8)
+    fourth = shrapnel_m(first_d,  host.rect, **kwargs, spread=20)
+    fifth  = shrapnel_m(sec_d,    host.rect, **kwargs, spread=20)
+    sixth  = shrapnel_m(thir_dir, host.rect, **kwargs, spread=20)
     host.kill()
-    return first, second, third
+    return first, second, third, fourth, fifth, sixth
 
+class shrapnel_m(missile):
+    def __init__(self, dir, loc, **kwargs):
+        super().__init__(bullet_img, loc, velocity(mag=10, dir=dir), **kwargs, missile_name='frag', time_limit=20,
+                         damage=67, elem='explosive')
 
 # the book of fire contains fire spells.
 class book_of_fire(spell_book):

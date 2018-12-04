@@ -355,6 +355,18 @@ class other_gamepad(xb360_gamepad):
              'LStick': jub.get_button(10), 'RStick': jub.get_button(11)
         }
 
+    def pull_triggers(self):
+        rt, lt, nrt, nlt = False, False, False, False
+        '''if self.trigger_btns > 0.5:
+            lt = True
+        elif self.trigger_btns < -0.5:
+           rt = True
+        if self.new_triggers > 0.5:
+            nlt = True
+        elif self.new_triggers < -0.5:
+            nrt = True'''
+        return self.new_trigger_btns
+
     def update(self):
         self.buttons = self.new_buttons
         self.sticks = self.new_sticks

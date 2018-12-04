@@ -159,8 +159,8 @@ class screen_handler():
                 for each in player_handler.get_missiles():
                     pillar_of_hate.add(each, layer=each.layer)
 
-                #self.live_missiles.add(player_handler.get_missiles())
-                #player_handler.missiles.empty()
+                self.live_missiles.add(player_handler.get_missiles())
+                player_handler.missiles.empty()
 
                 if player_handler.get_spells()['refresh']:
                     pillar_of_hate.remove_sprites_of_layer(player_handler.spell_layer)
@@ -168,7 +168,7 @@ class screen_handler():
                                        layer=player_handler.spell_layer)
 
                 self.current_room.collide_missiles_into_enemies(player_handler.get_missiles())
-                self.current_room.collide_walls(missiles=player_handler.get_missiles())
+                self.current_room.collide_walls(missiles=self.live_missiles)
 
     def draw(self, display):
 
@@ -181,6 +181,7 @@ class screen_handler():
             self.current_room.draw_contents(self.disp, True)
             for each in self.ordered_list_of_player_HANDLERS:
                 each.draw(self.disp, True)
+        self.live_missiles.draw(self.disp)
         display.blit(self.disp, (0, 0))
         self.menus.draw(display)
         for each in self.overlays:
@@ -259,10 +260,14 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.busrt_shard_s, spells.flame_wheel_s, spells.hot_wave_s, spells.DEBUBBLES_s,
+unlocked_books = [spells.DEBUG_book(spells.petal_storm_s, spells.pestilence_s, spells.freeze_ray_s, spells.flak_cannon_s,
+                                    spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
-                                    spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s),
-                  spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3)]
+                                    spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s,
+                                    spells.razor_leaf_s),
+                  spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3),
+                  #spells.book_of_leaves(3), spells.book_of_waves(3),
+                  ]
 
 player_num = 1
 p1_char_select = menu.player_select_menu(1, unlocked_books)

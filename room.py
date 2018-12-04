@@ -317,52 +317,6 @@ class room():
         #bonks_b = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
         #for each in bonks_b:
         #    each.move(push=bonks_b[each])
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
     def collide_doors(self, players):
@@ -379,6 +333,9 @@ class room():
         for each in dings:
             for every in dings[each]:
                 each(every)
+
+    def collide_missiles_into_players(self, incoming, players):
+        pass
 
     def pull_enemies(self, **kwargs):
         return collections.deque(self.contents.get_sprites_from_layer(enemies_layer))

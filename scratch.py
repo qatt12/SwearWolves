@@ -145,3 +145,7 @@ import random
     ''',
     number=100000
              ))
+
+
+for x in range(0, 8):
+    print(random.randint(0, 4))

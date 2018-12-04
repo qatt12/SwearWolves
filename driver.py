@@ -159,7 +159,7 @@ class screen_handler():
     def update(self, *args, **kwargs):
         self.menus.update()
         self.all_missiles.update()
-        #self.active_enemies.update()
+        self.active_enemies.update()
         try:
             assert (self.player_index == interface.handler.get_player_interface_num()), "this would create an error"
         except AssertionError:

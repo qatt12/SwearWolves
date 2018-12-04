@@ -14,10 +14,6 @@ class enemy(spriteling.spriteling):
     def attack(self):
         pass
 
-
-
-
-
 class simple_enemy(enemy):
     def __init__(self):
         super().__init__()

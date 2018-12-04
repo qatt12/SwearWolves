@@ -29,6 +29,7 @@ class enemy(spriteling.spriteling):
         if 'immune_to' in kwargs:
             for immunity in kwargs['immune_to']:
                 self.base_immune.add(immunity)
+        self.groupOfnodes = pygame.sprite.Group()
 
     def attack(self):
         pass
@@ -146,9 +147,10 @@ class quintenemy(enemy):
         self.base_move = 4
         self.stop = 0
         self.dest = self.patrol_route[self.stop].rect.center
-
+        self.groupOfnodes.add(self.patrol_route)
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
+        self.dest = self.patrol_route[self.stop].rect.center
         if self.rect.collidepoint(self.dest):
             self.stop += 1
             if self.stop >= len(self.patrol_route):
@@ -164,7 +166,6 @@ class quintenemy(enemy):
                 y_v += 1
             elif self.rect.centery > self.dest[1]:
                 y_v -= 1
-            # LOGAN:::DEBUG inefficient, will likely change
             self.move(True, move=(x_v, y_v))
 
     def draw_boxes(self, disp):

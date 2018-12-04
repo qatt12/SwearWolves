@@ -318,8 +318,8 @@ class room():
         for node in self.nodes:
             node.rect.move_ip(x_scroll, y_scroll)
         #print("rooms enemies: ", self.enemies)
-        #for each in self.enemies:
-        #    each.move(shift=(x_scroll, y_scroll))
+        for each in self.enemies:
+            each.move(shift=(x_scroll, y_scroll))
 
     def counter_scroll(self, x_scroll, y_scroll, *args):
         for each in args:
@@ -403,10 +403,10 @@ class DEBUG_room(room):
         super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
 
 
-class donut_room(room):
-    def __init__(self, disp, my_theme, *args, **kwargs):
-        s_x, s_y = random.randint(5, 14), random.randint(5, 14)
-        super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
+#class donut_room(room):
+ #   def __init__(self, disp, my_theme, *args, **kwargs):
+  #      s_x, s_y = random.randint(5, 14), random.randint(5, 14)
+   #     super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
 
 
 import enemies

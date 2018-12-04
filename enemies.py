@@ -107,14 +107,6 @@ class abenenoemy(enemy):
             self.x_change = True
 
         self.stuck+=2
-        #if to.hitbox.rect.centery ==0:
-         #   self.my_vel(flip=(False,True))
-
-
-        #if to.hitbox.rect.top < self.hitbox.rect.centery < to.hitbox.rect.top:
-        #    self.my_vel(flip=(True, False))
-        #if to.hitbox.rect.left < self.hitbox.rect.centerx < to.hitbox.rect.right:
-        #    self.my_vel(flip=(False, True))
 
 
 class quintenemy(enemy):
@@ -170,10 +162,11 @@ class boss(enemy):
 #shoot swarms
     def __init__(self):
         super().__init__(img=boss_img)
+        self.my_vel = velocity(7, 5.489874531)
 
     def update(self,*args,**kwargs):
         super().update(*args,**kwargs)
-
+        self.move_ip()
         #move away from player
         #if player to the left and no wall to right
             # move right

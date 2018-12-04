@@ -322,47 +322,6 @@ class room():
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
     def collide_doors(self, players):

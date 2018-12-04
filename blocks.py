@@ -305,7 +305,7 @@ def look_for_activity(*args, **kwargs):
 class door(interact_trigger):
     def __init__(self, door_type=events.next_room, **kwargs):
         # DEBUG STUFF at least the image is. UNTIL YOTOLL DRAWS A DOOR
-        pass_img = pygame.transform.scale(pygame.image.load('misc\spirit.jpg').convert_alpha(), (config.tile_scalar, config.tile_scalar))
+        pass_img = pygame.transform.scale(pygame.image.load('Animation\img_door.png').convert_alpha(), (config.tile_scalar, config.tile_scalar))
         event_maker.make_entry('error', 'DEBUG', "placeholder image", 'blocks', True, True)
         pass_loc = (0, 0)
         pass_rect = pass_img.get_rect()

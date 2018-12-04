@@ -187,8 +187,12 @@ class room():
 
         self.all_walls = pygame.sprite.Group(self.contents.get_sprites_from_layer(outer_walls_layer),
                                              self.contents.get_sprites_from_layer(inner_walls_layer))
-        event_maker.make_entry('log', "figuring out wtf is up with layeredupdates", "", "room", True, True,
-                               entry_door_layer=self.contents.get_layer_of_sprite(self.entry_door))
+        if "pit_rect" in kwargs:
+            pit_rect_temp = kwargs['pit_rect'].clamp(self.full_rect)
+            self.nodes = [each for each in self.nodes
+                          if not each.colliderect(pit_rect_temp)]
+            pygame.draw(self.ground, pit_rect_temp, config.black, 0)
+
         self.enemies = pygame.sprite.Group()
 
 
@@ -200,10 +204,21 @@ class room():
         for each in players:
             self.add_player(each)
 
-    def spawn_enemy(self, *args, **kwargs):
-        for each in args:
-            #self.enemies.add(self.contents.get_sprites_from_layer(enemies_layer))
-            each.move(bound_rect=self.full_rect)
+    def add_enemy(self, nme):
+        nme.move(bound_rect=self.full_rect)
+        self.enemies.add(nme)
+
+    def spawn_trap(self, trigger, trap):
+        pass
+
+    def spawn_enemy(self, variety, number, **kwargs):
+        ret = []
+        for x in range(0, number):
+            s_node = self.nodes[random.randint(0, len(self.nodes)-1)]
+            ret.append(variety(start_node=s_node, nodes=self.nodes))
+        self.enemies.add(ret)
+        return ret
+
 
     def add_door(self, side, position, *args):
         if side == 'left':
@@ -333,8 +348,12 @@ class room():
             for every in dings[each]:
                 each(every)
 
-    def collide_enemies(self, player):
-        pass
+    def collide_traps(self, players):
+        dings = pygame.sprite.groupcollide(self.contents.get_sprites_from_layer(doors_layer), players, False, False,
+                                           collide_hitbox)
+        for each in dings:
+            for every in dings[each]:
+                each(every)
 
     def collide_missiles_into_enemies(self, incoming):
         dings = pygame.sprite.groupcollide(incoming, self.enemies, False, False, collide_hitbox)
@@ -346,7 +365,7 @@ class room():
         pass
 
     def pull_enemies(self, **kwargs):
-        return collections.deque(self.contents.get_sprites_from_layer(enemies_layer))
+        return collections.deque(self.enemies)
 
 
 class hub_room(room):
@@ -401,8 +420,7 @@ class dungeon():
                                        )
         self.current_room.add_players(players)
         self.current_room.spawn_enemy(
-                                    #enemies.quintenemy((700, 800), [(700, 800), (2700, 300)]),
-                                    enemies.abenenoemy((700, 800)),
+                                    enemies.abenenoemy, 1,
                                      )
         return self.current_room
 

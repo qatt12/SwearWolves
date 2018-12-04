@@ -45,8 +45,8 @@ class bouncy(simple_enemy):
 
 
 class abenenoemy(enemy):
-    def __init__(self, location):
-        super().__init__(img=skull_img, loc=location)
+    def __init__(self, start_node, **kwargs):
+        super().__init__(img=skull_img, loc=start_node.center)
         self.my_vel = velocity(5, 5)
 
     def update(self, *args, **kwargs):
@@ -81,7 +81,7 @@ class abenenoemy(enemy):
 
 class quintenemy(enemy):
     def __init__(self, location, patrol_route):
-        super().__init__(img=quintenemy_img,loc=location)
+        super().__init__(img=quintenemy_img, loc=location)
 
         self.base_move = 4
 

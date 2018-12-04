@@ -135,12 +135,17 @@ class screen_handler():
         if 'room' in kwargs:
             self.current_room = kwargs['room']
             message.modify(room=kwargs['room'])
+            self.deque_enemies.clear()
             for x in range(0, config.player_layer):
                 pillar_of_hate.remove_sprites_of_layer(x)
             for x in range(config.enemy_layer, config.air_layer):
                 pillar_of_hate.remove_sprites_of_layer(x)
             for each in kwargs['room'].get_contents():
                 pillar_of_hate.add(each, layer=each.layer)
+            for each in kwargs['room'].pull_enemies():
+                pillar_of_hate.add(each, layer=each.layer)
+                self.active_enemies.add(each)
+                self.deque_enemies.append(each)
         if 'overlay' in kwargs:
             self.overlays.append(kwargs['overlay'])
             message.modify(overlay=kwargs['overlay'])
@@ -154,6 +159,11 @@ class screen_handler():
         if 'spawn_ally' in kwargs:
             pillar_of_hate.add(kwargs['spawn_ally'], layer=kwargs['spawn_ally'].layer)
             self.allies.add(kwargs['spawn_ally'])
+        if 'spawn_enemy' in kwargs:
+            enemy_list = self.current_room.spawn_enemy(kwargs['spawn_enemy'][0], kwargs['spawn_enemy'][1])
+            for nme in enemy_list:
+                pillar_of_hate.add(nme, layer=nme.layer)
+                self.active_enemies.add(nme)
 
         event_maker.send_entry(message, False, False)
 
@@ -171,9 +181,6 @@ class screen_handler():
             self.current_room.collide_walls(players=self.GROUP_of_player_SPRITES)
             self.current_room.collide_doors(self.GROUP_of_player_SPRITES)
 
-            visible_enemies = self.current_room.pull_enemies()
-            for each in visible_enemies:
-                pillar_of_hate.add(each, layer=each.layer)
 
             for player_handler in self.ordered_list_of_player_HANDLERS:
                 other_players = list(self.GROUP_of_player_SPRITES)
@@ -184,7 +191,7 @@ class screen_handler():
                 for each in player_handler.get_missiles():
                     pillar_of_hate.add(each, layer=each.layer)
 
-                self.live_missiles.add(player_handler.get_missiles())
+                self.all_missiles.add(player_handler.get_missiles())
                 player_handler.missiles.empty()
 
                 if player_handler.get_spells()['refresh']:
@@ -192,14 +199,14 @@ class screen_handler():
                     pillar_of_hate.add(player_handler.get_spells()['active'],
                                        layer=player_handler.spell_layer)
 
-                dings = pygame.sprite.groupcollide(self.live_missiles, self.active_enemies, False, False,
+                dings = pygame.sprite.groupcollide(self.player_missiles, self.active_enemies, False, False,
                                                    spriteling.collide_hitbox)
                 for each in dings:
                     for every in dings[each]:
                         each(every)
 
-                self.current_room.collide_missiles_into_enemies(self.live_missiles)
-                self.current_room.collide_walls(missiles=self.live_missiles, enemies=self.active_enemies)
+                #self.current_room.collide_missiles_into_enemies(self.live_missiles)
+                self.current_room.collide_walls(missiles=self.all_missiles, enemies=self.active_enemies)
 
                 #print(pillar_of_hate.get_sprites_from_layer(config.enemy_layer))
 
@@ -214,7 +221,7 @@ class screen_handler():
             self.current_room.draw_contents(self.disp, True)
             for each in self.ordered_list_of_player_HANDLERS:
                 each.draw(self.disp, True)
-        self.live_missiles.draw(self.disp)
+        self.all_missiles.draw(self.disp)
         display.blit(self.disp, (0, 0))
         self.menus.draw(display)
         for each in self.overlays:
@@ -293,7 +300,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.DEBUG_unguided_swarm,
+unlocked_books = [spells.DEBUG_book(spells.DEBUG_unguided_swarm, spells.spawn_abenenoemy,
     spells.petal_storm_s, spells.pestilence_s, spells.freeze_ray_s, spells.flak_cannon_s,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
@@ -428,6 +435,7 @@ while(game_loop and running):
                 screen.apply(spawn_obstacle=event.spawn_obstacle)
             elif event.subtype == events.spawn_ally:
                 screen.apply(spawn_ally=event.spawn_ally)
+
             elif event.subtype == events.spawn_enemy:
                 screen.apply(spawn_enemy=event.spawn_enemy)
 

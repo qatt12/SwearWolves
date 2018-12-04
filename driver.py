@@ -122,6 +122,8 @@ class screen_handler():
             message.modify(room=kwargs['room'])
             for x in range(0, config.player_layer):
                 pillar_of_hate.remove_sprites_of_layer(x)
+            for x in range(config.enemy_layer, config.air_layer):
+                pillar_of_hate.remove_sprites_of_layer(x)
             for each in kwargs['room'].get_contents():
                 pillar_of_hate.add(each, layer=each.layer)
         if 'overlay' in kwargs:

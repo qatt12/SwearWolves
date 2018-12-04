@@ -387,7 +387,7 @@ class other_gamepad(xb360_gamepad):
 
         # the triggers are special, in that they are not 2 separate axes, but instead the signed difference between
         #  both triggers as a single axis. If RT is pressed, axis 2 is
-        self.new_triggers = self.jub.get_axis(6), self.jub.get_axis(7)
+        self.new_triggers = self.jub.get_axis(5), self.jub.get_axis(4)
         self.new_trigger_btns = \
             self.jub.get_button(6), self.jub.get_button(7)
 

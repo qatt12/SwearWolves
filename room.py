@@ -393,8 +393,8 @@ class dungeon():
                                     inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
         self.current_room.add_players(players)
         self.current_room.spawn_enemy(
-                                    enemies.quintenemy((700, 800), [(700, 800), (2700, 300)]),
-                                    #enemies.abenenoemy((700, 800)),
+                                    #enemies.quintenemy((700, 800), [(700, 800), (2700, 300)]),
+                                    enemies.abenenoemy((700, 800)),
                                      )
         return self.current_room
 

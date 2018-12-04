@@ -8,6 +8,7 @@ skull_img.set_colorkey(config.default_transparency)
 boss_img = pygame.image.load('Animation\img_scarab_boss.png').convert()
 boss_img.set_colorkey(config.default_transparency)
 
+
 quintenemy_img = pygame.image.load('Animation\img_spikey.png').convert()
 quintenemy_img.set_colorkey(config.default_transparency)
 

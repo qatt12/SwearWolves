@@ -91,6 +91,15 @@ class quintenemy(enemy):
             self.move(True, move=(x_v, y_v))
 
 
+#class skeleton
+#follows player; randomly chooses between multiple(?)
+
+#class boss
+#avoids player, spawn beetles(?)
+
+#class beetles
+#surround boss, shoot at player
+
 
 class brain_storm():
     pass

@@ -18,15 +18,15 @@ from spriteling import collide_hitbox
 class theme(object):
     def __init__(self):
         # the default is just a placeholder, and references assets from the proto game
-        floor = pygame.image.load('walls\cobble.png').convert_alpha()
-        tlcrnr = pygame.image.load("walls\cnr_stn_tl.png").convert_alpha()
-        trcrnr = pygame.image.load("walls\cnr_stn_tr.png").convert_alpha()
-        blcrnr = pygame.image.load("walls\cnr_stn_bl.png").convert_alpha()
-        brcrnr = pygame.image.load("walls\cnr_stn_br.png").convert_alpha()
-        topWall = pygame.image.load("walls\wal_stn_t.png").convert_alpha()
-        btmWall = pygame.image.load('walls\wal_stn_b.png').convert_alpha()
-        rgtWall = pygame.image.load('walls\wal_stn_r.png').convert_alpha()
-        lftWall = pygame.image.load('walls\wal_stn_l.png').convert_alpha()
+        floor = pygame.image.load('Animation\img_tile.png').convert_alpha()
+        tlcrnr = pygame.image.load("Animation\img_corner_tl.png").convert_alpha()
+        trcrnr = pygame.image.load("Animation\img_corner_tr.png").convert_alpha()
+        blcrnr = pygame.image.load("Animation\img_corner_bl.png").convert_alpha()
+        brcrnr = pygame.image.load("Animation\img_corner_br.png").convert_alpha()
+        topWall = pygame.image.load("Animation\img_wall.png").convert_alpha()
+        btmWall = pygame.image.load('Animation\img_wall_d.png').convert_alpha()
+        rgtWall = pygame.image.load('Animation\img_wall_r.png').convert_alpha()
+        lftWall = pygame.image.load('Animation\img_wall_l.png').convert_alpha()
         # tile set lookup
         self.image_lookup = {'f': floor,
                              'trc': trcrnr, 'tlc': tlcrnr, 'blc': blcrnr, 'brc': brcrnr,

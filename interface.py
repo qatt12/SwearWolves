@@ -262,6 +262,7 @@ class handler():
         self.hud = None
         self.my_reticle = None
         self.missiles = pygame.sprite.Group()
+        self.impacts =  pygame.sprite.Group()
         self.my_player_single = pygame.sprite.GroupSingle()
         self.other_players = pygame.sprite.Group()
         self.known_enemies = pygame.sprite.Group()
@@ -289,7 +290,7 @@ class handler():
             self.name = kwargs['name']
             message.modify(my_name=self.name)
         if 'impact' in kwargs:
-            self.missiles.add(kwargs['impact'])
+            self.impacts.add(kwargs['impact'])
             #if self.my_marker == None:
             #    self.my_marker =
             #elif self.my_marker.rect.center != kwargs['impact']:
@@ -398,6 +399,9 @@ class handler():
 
     def get_missiles(self):
         return self.missiles
+
+    def get_impacts(self):
+        return self.impacts
 
     def add(self, *args, **kwargs):
         self.attach(**kwargs)

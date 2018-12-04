@@ -98,7 +98,7 @@ class screen_handler():
         self.enemy_missiles   = pygame.sprite.Group()
 
         self.active_enemies   = pygame.sprite.Group()
-        self.inactive_enemies = pygame.sprite.Group()
+        #self.inactive_enemies = pygame.sprite.Group()
         self.allies           = pygame.sprite.Group()
 
         self.list_allies = []
@@ -135,7 +135,6 @@ class screen_handler():
         if 'room' in kwargs:
             self.current_room = kwargs['room']
             message.modify(room=kwargs['room'])
-            self.deque_enemies.clear()
             for x in range(0, config.player_layer):
                 pillar_of_hate.remove_sprites_of_layer(x)
             for x in range(config.enemy_layer, config.air_layer):
@@ -183,15 +182,17 @@ class screen_handler():
 
 
             for player_handler in self.ordered_list_of_player_HANDLERS:
-                other_players = list(self.GROUP_of_player_SPRITES)
+                other_players = deque(self.GROUP_of_player_SPRITES)
                 other_players.remove(player_handler.player)
-                player_handler.update(players=other_players, enemies=self.deque_enemies, allies=self.list_allies,
+                player_handler.update(players=other_players, enemies=self.current_room.pull_enemies(), allies=self.list_allies,
                                       me=player_handler.player, all_players=self.GROUP_of_player_SPRITES)
 
                 for each in player_handler.get_missiles():
                     pillar_of_hate.add(each, layer=each.layer)
+                for each in player_handler.get_impacts():
+                    pillar_of_hate.add(each, layer=each.layer)
 
-                self.all_missiles.add(player_handler.get_missiles())
+                self.player_missiles.add(player_handler.get_missiles())
                 player_handler.missiles.empty()
 
                 if player_handler.get_spells()['refresh']:
@@ -199,16 +200,23 @@ class screen_handler():
                     pillar_of_hate.add(player_handler.get_spells()['active'],
                                        layer=player_handler.spell_layer)
 
-                dings = pygame.sprite.groupcollide(self.player_missiles, self.active_enemies, False, False,
-                                                   spriteling.collide_hitbox)
-                for each in dings:
-                    for every in dings[each]:
-                        each(every)
+            self.all_missiles.add(self.player_missiles)
 
-                #self.current_room.collide_missiles_into_enemies(self.live_missiles)
-                self.current_room.collide_walls(missiles=self.all_missiles, enemies=self.active_enemies)
+            for each in self.active_enemies:
+                self.enemy_missiles.add(each.get_missiles())
+                each.missiles.empty()
 
-                #print(pillar_of_hate.get_sprites_from_layer(config.enemy_layer))
+            print("player misiles: ", self.player_missiles)
+            dings = pygame.sprite.groupcollide(self.player_missiles, self.active_enemies, False, False,
+                                               spriteling.collide_hitbox)
+            print("dings: ", dings)
+            for each in dings:
+                for every in dings[each]:
+                    each(every)
+
+            #self.current_room.collide_missiles_into_enemies(self.player_missiles)
+            print("all missiles: ", self.all_missiles)
+            self.current_room.collide_walls(missiles=self.all_missiles, enemies=self.active_enemies)
 
     def draw(self, display):
 
@@ -221,7 +229,11 @@ class screen_handler():
             self.current_room.draw_contents(self.disp, True)
             for each in self.ordered_list_of_player_HANDLERS:
                 each.draw(self.disp, True)
-        self.all_missiles.draw(self.disp)
+        for each in self.all_missiles:
+            each.draw(self.disp, True)
+        for each in self.active_enemies:
+            each.draw(self.disp, True)
+
         display.blit(self.disp, (0, 0))
         self.menus.draw(display)
         for each in self.overlays:
@@ -300,8 +312,8 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.DEBUG_unguided_swarm, spells.spawn_abenenoemy,
-    spells.petal_storm_s, spells.pestilence_s, spells.freeze_ray_s, spells.flak_cannon_s,
+unlocked_books = [spells.DEBUG_book(spells.freeze_ray_s,  spells.spawn_abenenoemy,
+    spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.DEBUG_unguided_swarm,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
                                     spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s,
@@ -452,8 +464,8 @@ while(game_loop and running):
     screen.update()
 
     clock.tick(config.fps)
-    print(clock.get_fps())
+    #print(clock.get_fps())
     pygame.event.pump()
     #pygame.time.wait(0)
 
-event_maker.flush_trace_buffer("Flushing on close")
+event_maker.flush_trace_buffer("Flushing on close", False)

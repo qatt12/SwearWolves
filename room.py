@@ -267,6 +267,7 @@ class room():
         self.contents.update()
 
         self.enemies.update()
+        #print("room: ", self.enemies)
         player_one_rect = player_one.rect
         # calculates the scroll, and also sort of the counter_scroll based upon the player's position
         x, y = 0, 0
@@ -356,6 +357,8 @@ class room():
                 each(every)
 
     def collide_missiles_into_enemies(self, incoming):
+        print("incoming: ", incoming)
+        print("enemies: ", self.enemies)
         dings = pygame.sprite.groupcollide(incoming, self.enemies, False, False, collide_hitbox)
         for each in dings:
             for every in dings[each]:

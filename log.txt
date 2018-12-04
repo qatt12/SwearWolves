@@ -24,7 +24,7 @@ FIRST PLAYER: player one has pressed start, we should be leaving start loop now
 	terms: crucial; start_loop; ready_up; player_one; 
 	key words:
 	loc_src: start_loop
-	player_one_Handler: <interface.handler object at 0x06B784B0>
+	player_one_Handler: <interface.handler object at 0x06C773D0>
 	num_player_handlers: 1
 	
 ***	entry #: 78 type: log
@@ -33,7 +33,7 @@ new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1300, 700)>/host: trashboat| Rect: <rect(564, 204, 173, 293)>
-	set_player_one: <interface.handler object at 0x06B784B0>
+	set_player_one: <interface.handler object at 0x06C773D0>
 	
 ***	entry #: 80 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>| loc source: spellbook abstract base class
@@ -87,42 +87,54 @@ new menu: added a new menu
 	loc_src: screen.apply()
 	opened_menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 650, 350)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 126 type: log
+***	entry #: 134 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: (<player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>)
 	
-***	entry #: 127 type: log
-file source: room| obj source: <room.theme object at 0x068C8DF0>
+***	entry #: 135 type: log
+file source: room| obj source: <room.theme object at 0x06ADAF90>
 default_theme: Testing default theme construction/initialization
 	terms: theme; init; DEBUG; 
 	key words:
-	obj_src: <room.theme object at 0x068C8DF0>
+	obj_src: <room.theme object at 0x06ADAF90>
 	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(100x100x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
 	
-***	entry #: 134 type: log
+***	entry #: 142 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.hub_room object at 0x068C8DD0>
+	room: <room.hub_room object at 0x06ADAF70>
 	
-***	entry #: 135 type: log
+***	entry #: 143 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	overlay: 67<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 433, 140)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	
-***	entry #: 12400 type: log
+***	entry #: 10965 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 15065 type: log
+***	entry #: 13628 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 14993 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 16209 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
@@ -134,121 +146,7 @@ new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 19969 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 22324 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 50885 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 52516 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 54249 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 55757 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 72361 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 74092 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 75871 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 77661 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 79492 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 81485 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 83437 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 85402 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 87330 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 89382 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 91549 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 93842 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 96067 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 98182 type: log
+***	entry #: 19120 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:

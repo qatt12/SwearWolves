@@ -1929,17 +1929,30 @@ class book_of_holy(spell_book):
         self.goddess_lookup_key = 'tattered'
         self.spell_key = {0: razor_leaf_s, 1: synthesis_s, 2: poison_spore_s, 3: solar_beam_s}
 
-from enemies import abenenoemy
+import enemies
+
+
+class spawn_enemy_m(pygame.sprite.Sprite):
+    def __init__(self, nme_class, *args, **kwargs):
+        super().__init__()
+        if 'num' in kwargs:
+            spawn = kwargs['num']
+        else:
+            spawn = 1
+        event_maker.new_event(events.spriteling_event, "spells", subtype=events.spawn_enemy,
+                              spawn_enemy=(nme_class, spawn))
+    def update(self, *args):
+        self.kill()
+
 class spawn_abenenoemy(spell):
     def __init__(self, **kwargs):
         super().__init__(abenenoemy_spawn_m, DEBUG_book_img, **kwargs)
 
-class abenenoemy_spawn_m(pygame.sprite.Sprite):
+class abenenoemy_spawn_m(spawn_enemy_m):
     def __init__(self, *args, **kwargs):
-        super().__init__()
-        event_maker.new_event(events.spriteling_event, "spells", subtype=events.spawn_enemy, spawn_enemy=(abenenoemy, 1))
-    def update(self, *args):
-        self.kill()
+        super().__init__(enemies.abenenoemy)
+
+
 
 
 class DEBUG_book(spell_book):

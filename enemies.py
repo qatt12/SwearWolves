@@ -21,9 +21,13 @@ class enemy(spriteling.spriteling):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.layer = config.enemy_layer
+        self.missiles = pygame.sprite.Group()
 
     def attack(self):
         pass
+
+    def get_missiles(self):
+        return self.missiles
 
 class simple_enemy(enemy):
     def __init__(self):

@@ -317,9 +317,8 @@ class room():
             each.move(shift=(x_scroll, y_scroll))
         for node in self.nodes:
             node.rect.move_ip(x_scroll, y_scroll)
-        #print("rooms enemies: ", self.enemies)
-        #for each in self.enemies:
-        #    each.move(shift=(x_scroll, y_scroll))
+        for each in self.enemies:
+            each.move(shift=(x_scroll, y_scroll))
 
     def counter_scroll(self, x_scroll, y_scroll, *args):
         for each in args:

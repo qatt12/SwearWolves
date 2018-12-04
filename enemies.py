@@ -3,6 +3,9 @@ from events import event_maker
 from spells import velocity
 from config import fps as sec
 
+def can_attack(bad_guy, victim):
+    return bad_guy.check_attack(victim)
+
 skull_img = pygame.image.load(    'Animation\img_skull.png').convert()
 skull_img.set_colorkey(config.default_transparency)
 
@@ -29,8 +32,24 @@ class enemy(spriteling.spriteling):
         if 'immune_to' in kwargs:
             for immunity in kwargs['immune_to']:
                 self.base_immune.add(immunity)
+        if 'hp' in kwargs:
+            self.base_hp = kwargs['hp']
+        else:
+            self.base_hp = 400
+        self.spell_layer = config.spell_layer
+        self.attack_box = self.hitbox
+
+    def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
+
+    def add(self, *args, **kwargs):
+        if 'impact' in kwargs:
+            self.missiles.add(kwargs['impact'])
 
     def attack(self):
+        pass
+
+    def check_attack(self, target):
         pass
 
     def get_missiles(self):
@@ -42,19 +61,6 @@ class enemy(spriteling.spriteling):
 class reactive_enemy(enemy):
     def __init__(self, attack_box, weapon, start_node, *args, **kwargs):
         pass
-
-
-class simple_enemy(enemy):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-
-class patrol(simple_enemy):
-    pass
-
-
-class bouncy(simple_enemy):
-    pass
 
 class nme_fire_bolt_s(spells.spell):
     def __init__(self, **kwargs):
@@ -68,7 +74,7 @@ class nme_fireball_m(spells.missile):
         super().__init__(spells.fire_ball_img, loc, velocity(mag=4, dir=dir), **kwargs, missile_name='fireball',
                          elem='fire', damage=56)
 
-class dumb_turret(simple_enemy):
+class dumb_turret(enemy):
     def __init__(self, start_node, weapon):
         super().__init__(loc=start_node.center)
         self.attack = weapon
@@ -149,11 +155,11 @@ class quintenemy(enemy):
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
+        self.dest = self.patrol_route[self.stop].rect.center
         if self.rect.collidepoint(self.dest):
             self.stop += 1
             if self.stop >= len(self.patrol_route):
                 self.stop = 0
-            self.dest = self.patrol_route[self.stop].rect.center
         else:
             x_v, y_v = 0, 0
             if self.rect.centerx < self.dest[0]:
@@ -164,7 +170,6 @@ class quintenemy(enemy):
                 y_v += 1
             elif self.rect.centery > self.dest[1]:
                 y_v -= 1
-            # LOGAN:::DEBUG inefficient, will likely change
             self.move(True, move=(x_v, y_v))
 
     def draw_boxes(self, disp):
@@ -173,25 +178,49 @@ class quintenemy(enemy):
             pygame.draw.rect(disp, config.blue, each.rect, 2)
 
 default_trap_img = pygame.image.load( 'Animation\img_trap.jpg')
-pygame.transform.scale(default_trap_img, (config.tile_scalar, config.tile_scalar))
-
-class basic_circle_shot_s():
-    pass
+default_trap_img= pygame.transform.scale(default_trap_img, (config.tile_scalar, config.tile_scalar))
 
 class node_sniper(enemy):
     def __init__(self, start_node, node_list, **kwargs):
-        super().__init__(img=default_trap_img, loc=start_node.center)
-        temp_nodes = [events.dist_rect(n, start_node) <= 250 for n in node_list]
+        super().__init__(start_node, img=default_trap_img)
+        temp_nodes = [n for n in node_list if events.dist(n, start_node) <= 250]
         self.attack_box = temp_nodes[random.randint(0, len(temp_nodes)-1)]
+        self.weapon = spells.solar_beam_s(caster=self)
+        self.layer = config.floor_cos
 
-    def check_collide(self, target):
-        if self.attack_box.colliderect(target.hitbox.rect):
+
+    def check_attack(self, target):
+        #print("checking collide for node sniper; target= ", target)
+        #print("my attack box: ", self.attack_box.rect)
+        if self.attack_box.rect.colliderect(target.hitbox.rect):
             self.snipe(target)
 
     def draw_boxes(self, disp):
         super().draw_boxes(disp)
-        for each in self.patrol_route:
-            pygame.draw.rect(disp, config.blue, each.rect, 2)
+        pygame.draw.rect(disp, config.blue, self.attack_box.rect, 2)
+
+    def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
+        self.weapon.update(True, self.rect.center, False, False, *args, **kwargs)
+
+    #def update(self, active, loc, prev, now, *args, **kwargs):
+    #    super().update(*args, **kwargs)
+    #    if self.recoil > 0:
+    #        self.recoil -= 1
+    #    if active:
+    #        self.rect.center = loc
+    #        if self.my_trigger(prev, now) and 'missile_layer' in kwargs:
+    #            kwargs['missile_layer'].add(self.cast(kwargs['direction']))
+
+    def snipe(self, target):
+        x_adj = self.rect.centerx - target.hitbox.rect.centerx + 0.01
+        y_adj = self.rect.centery - target.hitbox.rect.centery + 0.01
+        arc = x_adj/y_adj
+        angle = (arc, 1)
+        self.weapon.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
+                           caster=self)
+
+
 
 
 class skeleton(enemy):

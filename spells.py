@@ -2026,7 +2026,7 @@ class quintenemy_spawn_m(spawn_enemy_m):
 class spawn_node_sniper(spell):
     def __init__(self, **kwargs):
         super().__init__(node_sniper_spawn_m, DEBUG_book_img, **kwargs)
-class node_sniper_spawn_m(spawn_trap_m):
+class node_sniper_spawn_m(spawn_enemy_m):
     def __init__(self, *args, **kwargs):
         super().__init__(enemies.node_sniper)
 

@@ -2,10 +2,10 @@
 # contains the important config/initialization params in a central location.
 
 fps = 128
-screen_size = (1700, 850)
+screen_size = (1300, 700)
 screen_width = screen_size[0]
 screen_height = screen_size[1]
-field_size = (1400, 700)
+field_size = (1200, 600)
 
 # constants for the proportional size of the players' HUDs
 hud_width_proportion = 3

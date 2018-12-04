@@ -93,12 +93,34 @@ class quintenemy(enemy):
 
 #class skeleton
 #follows player; randomly chooses between multiple(?)
+'''
+    def __init__()
+        stuff
+        
+    def update()
+        stuff
+'''
 
 #class boss
 #avoids player, spawn beetles(?)
+#shoot swarms
+'''
+    def __init__()
+        stuff
+
+    def update()
+        stuff
+'''
 
 #class beetles
 #surround boss, shoot at player
+'''
+    def __init__()
+        stuff
+
+    def update()
+        stuff
+'''
 
 
 class brain_storm():

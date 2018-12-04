@@ -174,20 +174,20 @@ class screen_handler():
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        #display.fill(config.black)
-        #pygame.display.update(pillar_of_hate.draw(display))
+        display.fill(config.black)
+        pygame.display.update(pillar_of_hate.draw(display))
 
-        if self.current_room is not None:
-            self.current_room.draw_contents(self.disp, True)
-            for each in self.ordered_list_of_player_HANDLERS:
-                each.draw(self.disp, True)
-        self.live_missiles.draw(self.disp)
-        display.blit(self.disp, (0, 0))
-        self.menus.draw(display)
-        for each in self.overlays:
-            each.draw(display)
-##
-        pygame.display.flip()
+        #if self.current_room is not None:
+        #    self.current_room.draw_contents(self.disp, True)
+        #    for each in self.ordered_list_of_player_HANDLERS:
+        #        each.draw(self.disp, True)
+        #self.live_missiles.draw(self.disp)
+        #display.blit(self.disp, (0, 0))
+        #self.menus.draw(display)
+        #for each in self.overlays:
+        #    each.draw(display)
+###
+        #pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -392,7 +392,6 @@ while(game_loop and running):
         if event.type >= pygame.USEREVENT:
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)
-
 
 
     screen.draw(game_window)

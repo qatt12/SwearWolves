@@ -389,15 +389,10 @@ class dungeon():
                                     ],
                                     inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
         self.current_room.add_players(players)
-        #event_maker.make_entry('trace', 'next room', "entering a new room", 'room', False, False,
-        #                       'room', 'dungeon', 'doors',
-        #                       obj_src=dungeon, inst_src=self, loc_src='dungeon.next_room')
-        ret = enemies.abenenoemy((700, 800))
-        self.current_room.spawn_enemy(#enemies.quintenemy((700, 800), [(700, 800), (2700, 300)]),
-                                      ret,
+        self.current_room.spawn_enemy(
+                                    enemies.quintenemy((700, 800), [(700, 800), (2700, 300)]),
+                                    #enemies.abenenoemy((700, 800)),
                                      )
-        event_maker.make_entry("log", "does abenenoemy exist?", "", "room", True,
-                               room_nmes=self.current_room.enemies, ret=ret)
         return self.current_room
 
     def __call__(self, *args, **kwargs):

@@ -342,11 +342,14 @@ class spell_book(spriteling.spriteling):
         self.active_spell = pygame.sprite.GroupSingle()
         self.layer = config.overlayer
 
-        self.obstacles = pygame.sprite.Group()
+        self.obstacles        = pygame.sprite.Group()
+        self.apply_to_players = pygame.sprite.Group()
+        self.apply_to_enemies = pygame.sprite.Group()
 
 
     def get_active_spell(self):
         return (self.index, self.spells[self.index])
+
 
     def set_my_player_HANDLER(self, handler):
         self.my_player_HANDLER = handler

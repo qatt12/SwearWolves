@@ -80,7 +80,7 @@ class screen_handler():
         self.size = config.screen_size
 
         # the partial render rect
-        self.render_rect = partial_render(3)
+        self.render_rect = partial_render(1)
 
         # LOGAN: setting up some important containers/labels.
         self.menus = pygame.sprite.LayeredUpdates()
@@ -167,7 +167,7 @@ class screen_handler():
                     pillar_of_hate.add(player_handler.get_spells()['active'],
                                        layer=player_handler.spell_layer)
 
-                self.current_room.collide_missiles_into_enemies(player_handler.get_missiles())
+                self.current_room.collide_missiles_into_enemies(self.live_missiles)
                 self.current_room.collide_walls(missiles=self.live_missiles)
 
     def draw(self, display):

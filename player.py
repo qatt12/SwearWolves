@@ -96,9 +96,6 @@ class player(spriteling.spriteling):
         if 'stick_data' in kwargs:
             x_move_input, y_move_input = kwargs['stick_data']['move'][0], kwargs['stick_data']['move'][1]
             mod_facing, lock_facing = kwargs['stick_data']['mod_look'], kwargs['stick_data']['lock_look']
-
-            #print("mod_facing= ", mod_facing, 'lock_facing= ', lock_facing)
-
             x_look_input, y_look_input = kwargs['stick_data']['look'][0], kwargs['stick_data']['look'][1]
             self.facing = self.facing_angle(x_move_input, y_move_input, mod_facing, lock_facing)
 

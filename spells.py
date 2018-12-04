@@ -342,6 +342,9 @@ class spell_book(spriteling.spriteling):
         self.active_spell = pygame.sprite.GroupSingle()
         self.layer = config.overlayer
 
+        self.obstacles = pygame.sprite.Group()
+
+
     def get_active_spell(self):
         return (self.index, self.spells[self.index])
 

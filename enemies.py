@@ -63,6 +63,7 @@ class nme_fireball_m(spells.missile):
 class dumb_turret(simple_enemy):
     def __init__(self, start_node, weapon):
         super().__init__(loc=start_node.center)
+        self.attack = weapon
 
 class abenenoemy(enemy):
     def __init__(self, start_node, **kwargs):
@@ -163,9 +164,9 @@ pygame.transform.scale(default_trap_img, (config.tile_scalar, config.tile_scalar
 class basic_circle_shot_s():
     pass
 
-
-
-
+class node_sniper(enemy):
+    def __init__(self, start_node, node_list):
+        super().__init__()
 
 class skeleton(enemy):
 #follows player; randomly chooses between multiple(?)

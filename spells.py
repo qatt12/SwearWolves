@@ -189,7 +189,7 @@ bullet_img = pygame.image.load(    'Animation\img_neon_bullet.png').convert()
 bullet_img.set_colorkey(config.default_transparency)
 
 sun_particle_img = pygame.image.load(    'Animation\img_sunbeam.png').convert()
-sun_particle_img = pygame.transform.scale(sun_particle_img, (40, 40))
+sun_particle_img = pygame.transform.scale(sun_particle_img, (20, 20))
 sun_particle_img.set_colorkey(config.default_transparency)
 toxic_spore_img = acid_book_img
 small_fire_img = fire_book_img
@@ -1835,7 +1835,7 @@ class beacon_of_hope(spell):
 class healing_aura_m(aura):
     def __init__(self, dir, loc, **kwargs):
         super().__init__(False, config.fps*2, 150, loc, light_book_img, **kwargs, missile_name='healing_aura', damage=0,
-                         elem='holy', )
+                         elem='holy', effects=[spriteling.heal(4, sec)])
 
 
 # flak cannon
@@ -2008,6 +2008,7 @@ class spawn_trap_m(pygame.sprite.Sprite):
     def update(self, *args):
         self.kill()
 
+
 class spawn_abenenoemy(spell):
     def __init__(self, **kwargs):
         super().__init__(abenenoemy_spawn_m, DEBUG_book_img, **kwargs)
@@ -2015,12 +2016,19 @@ class abenenoemy_spawn_m(spawn_enemy_m):
     def __init__(self, *args, **kwargs):
         super().__init__(enemies.abenenoemy)
 
+class spawn_quintenemy(spell):
+    def __init__(self, **kwargs):
+        super().__init__(quintenemy_spawn_m, DEBUG_book_img, **kwargs)
+class quintenemy_spawn_m(spawn_enemy_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(enemies.quintenemy)
+
 class spawn_node_sniper(spell):
     def __init__(self, **kwargs):
         super().__init__(node_sniper_spawn_m, DEBUG_book_img, **kwargs)
 class node_sniper_spawn_m(spawn_trap_m):
     def __init__(self, *args, **kwargs):
-        super().__init__(enemies.straight_line_sniper_trap)
+        super().__init__(enemies.node_sniper)
 
 
 

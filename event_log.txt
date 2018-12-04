@@ -1,3612 +1,1057 @@
-***	entry #: 636 type: event
+***	entry #: 620 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.03033539841914121})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.03033539841914121})>
+	
+***	entry #: 675 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0391247291482284})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0391247291482284})>
+	
+***	entry #: 730 type: event
 file source: driver
 events: the received events; <Event(11-JoyButtonUp {'joy': 0, 'button': 0})>
 	terms: events; DEBUG; basic; 
 	key words:
 	log_entry: <Event(11-JoyButtonUp {'joy': 0, 'button': 0})>
 	
-***	entry #: 1285 type: event
+***	entry #: 785 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.023987548448133795})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.051332132938627276})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.023987548448133795})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.051332132938627276})>
 	
-***	entry #: 1394 type: event
+***	entry #: 840 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0073854792931913205})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06353953672902615})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0073854792931913205})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06353953672902615})>
 	
-***	entry #: 1449 type: event
+***	entry #: 1003 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05475020599993896})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05475020599993896})>
 	
-***	entry #: 2476 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.06009094515823847})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.06009094515823847})>
-	
-***	entry #: 2585 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07083346049378948})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07083346049378948})>
-	
-***	entry #: 2640 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07962279122287667})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07962279122287667})>
-	
-***	entry #: 2749 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.09378337961973937})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.09378337961973937})>
-	
-***	entry #: 2858 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1064790795617542})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1064790795617542})>
-	
-***	entry #: 2967 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1250343333231605})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1250343333231605})>
-	
-***	entry #: 3022 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1479842524491104})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1479842524491104})>
-	
-***	entry #: 3077 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.2046266060365612})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.2046266060365612})>
-	
-***	entry #: 3132 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.2759178441724906})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.2759178441724906})>
-	
-***	entry #: 3187 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.41703543198950166})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.41703543198950166})>
-	
-***	entry #: 3242 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.46537675099948117})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.46537675099948117})>
-	
-***	entry #: 3297 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6035340433973205})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6035340433973205})>
-	
-***	entry #: 3352 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7412335581530198})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7412335581530198})>
-	
-***	entry #: 3407 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8564714499343852})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8564714499343852})>
-	
-***	entry #: 3408 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02252265999328593})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02252265999328593})>
-	
-***	entry #: 3463 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9516891994994965})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9516891994994965})>
-	
-***	entry #: 3464 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.043519394512771994})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.043519394512771994})>
-	
-***	entry #: 3519 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -1.000030518509476})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -1.000030518509476})>
-	
-***	entry #: 3520 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05963316751609851})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05963316751609851})>
-	
-***	entry #: 4439 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.08111819818720054})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.08111819818720054})>
-	
-***	entry #: 4494 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0967436750389111})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0967436750389111})>
-	
-***	entry #: 4549 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1270180364391003})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1270180364391003})>
-	
-***	entry #: 4604 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1587572862941374})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1587572862941374})>
-	
-***	entry #: 4659 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.20954008606219673})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.20954008606219673})>
-	
-***	entry #: 4714 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2739951780755028})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2739951780755028})>
-	
-***	entry #: 4769 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3218482009338664})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3218482009338664})>
-	
-***	entry #: 4824 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.37263100070192573})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.37263100070192573})>
-	
-***	entry #: 4879 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.44392223883785514})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.44392223883785514})>
-	
-***	entry #: 4934 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5137180700094608})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5137180700094608})>
-	
-***	entry #: 4989 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5620593890194403})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5620593890194403})>
-	
-***	entry #: 5044 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.990264595477157})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.990264595477157})>
-	
-***	entry #: 5045 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6499526963103122})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6499526963103122})>
-	
-***	entry #: 5100 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9638966032898953})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9638966032898953})>
-	
-***	entry #: 5101 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7446821497238075})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7446821497238075})>
-	
-***	entry #: 5156 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9267860957670827})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9267860957670827})>
-	
-***	entry #: 5157 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8125553147984252})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8125553147984252})>
-	
-***	entry #: 5212 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8764915921506393})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8764915921506393})>
-	
-***	entry #: 5213 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8721274452955717})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8721274452955717})>
-	
-***	entry #: 5268 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8276619769890439})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8276619769890439})>
-	
-***	entry #: 5269 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8984954374828333})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8984954374828333})>
-	
-***	entry #: 5324 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7519760734885709})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7519760734885709})>
-	
-***	entry #: 5325 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9336527603991821})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9336527603991821})>
-	
-***	entry #: 5380 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6665242469557787})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6665242469557787})>
-	
-***	entry #: 5381 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9634388256477554})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9634388256477554})>
-	
-***	entry #: 5436 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5805841242713706})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5805841242713706})>
-	
-***	entry #: 5437 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9917600024414808})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9917600024414808})>
-	
-***	entry #: 5492 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.47221289712210457})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.47221289712210457})>
-	
-***	entry #: 5493 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.999572740867336})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.999572740867336})>
-	
-***	entry #: 5548 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.3818781090731529})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.3818781090731529})>
-	
-***	entry #: 5603 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.2881252479628895})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.2881252479628895})>
-	
-***	entry #: 5658 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.16019165623950926})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.16019165623950926})>
-	
-***	entry #: 5713 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.09183019501327555})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.09183019501327555})>
-	
-***	entry #: 5768 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
-	
-***	entry #: 5823 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.027802362132633443})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.027802362132633443})>
-	
-***	entry #: 5878 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.12448500015259255})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.12448500015259255})>
-	
-***	entry #: 5933 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.26999725333414715})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.26999725333414715})>
-	
-***	entry #: 5988 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.41013824884792627})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.41013824884792627})>
-	
-***	entry #: 6043 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.46775719473860894})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.46775719473860894})>
-	
-***	entry #: 6098 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6020691549424726})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6020691549424726})>
-	
-***	entry #: 6099 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9512314218573565})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9512314218573565})>
-	
-***	entry #: 6154 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6919156468398083})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6919156468398083})>
-	
-***	entry #: 6155 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9141209143345439})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9141209143345439})>
-	
-***	entry #: 6210 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7773674733726005})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7773674733726005})>
-	
-***	entry #: 6211 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.881405072176275})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.881405072176275})>
-	
-***	entry #: 6266 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8340098269600513})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8340098269600513})>
-	
-***	entry #: 6267 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8389233069856868})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8389233069856868})>
-	
-***	entry #: 6322 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8740501113925596})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8740501113925596})>
-	
-***	entry #: 6323 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7642139957884457})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7642139957884457})>
-	
-***	entry #: 6378 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9106723227637562})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9106723227637562})>
-	
-***	entry #: 6379 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6538590655232398})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6538590655232398})>
-	
-***	entry #: 6434 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9448530533768731})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9448530533768731})>
-	
-***	entry #: 6435 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5019989623706779})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5019989623706779})>
-	
-***	entry #: 6490 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.967802972502823})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.967802972502823})>
-	
-***	entry #: 6491 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3653065584276864})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3653065584276864})>
-	
-***	entry #: 6546 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.977568895535142})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.977568895535142})>
-	
-***	entry #: 6547 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.31452375865962706})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.31452375865962706})>
-	
-***	entry #: 6602 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9873348185674612})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9873348185674612})>
-	
-***	entry #: 6603 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.18170720542008728})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.18170720542008728})>
-	
-***	entry #: 6658 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.052308725241859186})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.052308725241859186})>
-	
-***	entry #: 6713 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	
-***	entry #: 6768 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.02728354747154149})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.02728354747154149})>
-	
-***	entry #: 6823 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.11761833552049318})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.11761833552049318})>
-	
-***	entry #: 6878 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.22016052735984373})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.22016052735984373})>
-	
-***	entry #: 6933 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.32319101535081024})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.32319101535081024})>
-	
-***	entry #: 6988 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4032715842158269})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4032715842158269})>
-	
-***	entry #: 7043 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9726859340189825})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9726859340189825})>
-	
-***	entry #: 7044 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4848170415356914})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4848170415356914})>
-	
-***	entry #: 7099 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9512009033478805})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9512009033478805})>
-	
-***	entry #: 7100 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5605334635456404})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5605334635456404})>
-	
-***	entry #: 7155 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9067659535508286})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9067659535508286})>
-	
-***	entry #: 7156 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6801660206915494})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6801660206915494})>
-	
-***	entry #: 7211 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8852809228797266})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8852809228797266})>
-	
-***	entry #: 7212 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7231360820337535})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7231360820337535})>
-	
-***	entry #: 7267 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8110599078341014})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8110599078341014})>
-	
-***	entry #: 7268 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8217719046601764})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8217719046601764})>
-	
-***	entry #: 7323 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6943571275978881})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6943571275978881})>
-	
-***	entry #: 7324 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9038056581316568})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9038056581316568})>
-	
-***	entry #: 7379 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5395672475356303})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5395672475356303})>
-	
-***	entry #: 7380 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9526352732932524})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9526352732932524})>
-	
-***	entry #: 7381 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 4, 'value': -0.027863399151585436})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 4, 'value': -0.027863399151585436})>
-	
-***	entry #: 7436 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.30613116855372785})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.30613116855372785})>
-	
-***	entry #: 7437 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9868160039063693})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9868160039063693})>
-	
-***	entry #: 7492 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
-	
-***	entry #: 7547 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.08011108737449263})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.08011108737449263})>
-	
-***	entry #: 7602 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.45072786645100255})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.45072786645100255})>
-	
-***	entry #: 7657 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7094943082979828})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7094943082979828})>
-	
-***	entry #: 7658 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9360332041383099})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9360332041383099})>
-	
-***	entry #: 7713 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7768791772209845})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7768791772209845})>
-	
-***	entry #: 7714 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8994109927671132})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8994109927671132})>
-	
-***	entry #: 7769 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8066652424695578})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8066652424695578})>
-	
-***	entry #: 7770 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8720664082766197})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8720664082766197})>
-	
-***	entry #: 7825 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8330332346568193})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8330332346568193})>
-	
-***	entry #: 7826 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8486281929990539})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8486281929990539})>
-	
-***	entry #: 7881 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8642841883602405})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8642841883602405})>
-	
-***	entry #: 7882 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7939390240180669})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7939390240180669})>
-	
-***	entry #: 7937 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8984649189733573})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8984649189733573})>
-	
-***	entry #: 7938 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.728995635853145})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.728995635853145})>
-	
-***	entry #: 7993 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9414349803155614})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9414349803155614})>
-	
-***	entry #: 7994 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6269417401654103})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6269417401654103})>
-	
-***	entry #: 8049 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9638966032898953})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9638966032898953})>
-	
-***	entry #: 8050 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5165868099002044})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5165868099002044})>
-	
-***	entry #: 8105 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9907528916287729})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9907528916287729})>
-	
-***	entry #: 8106 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.40815454573198645})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.40815454573198645})>
-	
-***	entry #: 8161 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -1.000030518509476})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -1.000030518509476})>
-	
-***	entry #: 8162 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.3212378307443464})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.3212378307443464})>
-	
-***	entry #: 8217 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2445753349406415})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2445753349406415})>
-	
-***	entry #: 8272 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0902737510299997})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0902737510299997})>
-	
-***	entry #: 8327 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	
-***	entry #: 8382 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.13385418256172368})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.13385418256172368})>
-	
-***	entry #: 8437 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3106173894466994})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3106173894466994})>
-	
-***	entry #: 8492 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.40192876979888303})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.40192876979888303})>
-	
-***	entry #: 8547 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5078585161900693})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5078585161900693})>
-	
-***	entry #: 8602 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6167485580004273})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6167485580004273})>
-	
-***	entry #: 8657 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9765923032319102})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9765923032319102})>
-	
-***	entry #: 8658 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.706595049897763})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.706595049897763})>
-	
-***	entry #: 8713 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9477828302865688})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9477828302865688})>
-	
-***	entry #: 8714 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7852107303079318})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7852107303079318})>
-	
-***	entry #: 8769 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9062776573992126})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9062776573992126})>
-	
-***	entry #: 8770 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8521073030793176})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8521073030793176})>
-	
-***	entry #: 8825 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8833277382732627})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8833277382732627})>
-	
-***	entry #: 8826 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8731040375988037})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8731040375988037})>
-	
-***	entry #: 8881 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.826685384685812})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.826685384685812})>
-	
-***	entry #: 8882 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8989837336344493})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8989837336344493})>
-	
-***	entry #: 8937 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7583239234595782})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7583239234595782})>
-	
-***	entry #: 8938 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9360942411572619})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9360942411572619})>
-	
-***	entry #: 8993 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6738486892300181})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6738486892300181})>
-	
-***	entry #: 8994 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9634388256477554})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9634388256477554})>
-	
-***	entry #: 9049 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5678884243293557})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5678884243293557})>
-	
-***	entry #: 9050 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9927365947447127})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9927365947447127})>
-	
-***	entry #: 9105 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.3999450666829432})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.3999450666829432})>
-	
-***	entry #: 9160 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1435895870845668})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1435895870845668})>
-	
-***	entry #: 9161 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9653920102542192})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9653920102542192})>
-	
-***	entry #: 9216 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.04489272743919187})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.04489272743919187})>
-	
-***	entry #: 9217 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9043549913022249})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9043549913022249})>
-	
-***	entry #: 9272 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.2905056917020173})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.2905056917020173})>
-	
-***	entry #: 9273 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8184148686178168})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8184148686178168})>
-	
-***	entry #: 9328 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.641132847071749})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.641132847071749})>
-	
-***	entry #: 9329 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5459456160161138})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5459456160161138})>
-	
-***	entry #: 9384 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7802972502822962})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7802972502822962})>
-	
-***	entry #: 9385 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.46540726950895717})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.46540726950895717})>
-	
-***	entry #: 9440 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9770805993835261})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9770805993835261})>
-	
-***	entry #: 9441 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2813196203497421})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2813196203497421})>
-	
-***	entry #: 9496 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9927060762352367})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9927060762352367})>
-	
-***	entry #: 9497 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.11871700186162908})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.11871700186162908})>
-	
-***	entry #: 9552 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0488906521805475})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0488906521805475})>
-	
-***	entry #: 9607 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	
-***	entry #: 9770 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.044862208929715874})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.044862208929715874})>
-	
-***	entry #: 9825 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.08490249336222419})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.08490249336222419})>
-	
-***	entry #: 9880 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.12543107394634845})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.12543107394634845})>
-	
-***	entry #: 9935 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.14203314310129092})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.14203314310129092})>
-	
-***	entry #: 9990 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.19379253517258216})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.19379253517258216})>
-	
-***	entry #: 10045 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.24359874263740958})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.24359874263740958})>
-	
-***	entry #: 10100 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.29438154240546893})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.29438154240546893})>
-	
-***	entry #: 10155 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.3407696768089846})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.3407696768089846})>
-	
-***	entry #: 10210 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.38178655354472485})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.38178655354472485})>
-	
-***	entry #: 10265 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.41596728415784173})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.41596728415784173})>
-	
-***	entry #: 10320 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9746391186254464})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9746391186254464})>
-	
-***	entry #: 10321 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4608905301065096})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4608905301065096})>
-	
-***	entry #: 10376 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9595019379253518})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9595019379253518})>
-	
-***	entry #: 10377 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.52195806756798})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.52195806756798})>
-	
-***	entry #: 10432 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9463179418317209})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9463179418317209})>
-	
-***	entry #: 10433 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5571153904843288})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5571153904843288})>
-	
-***	entry #: 10488 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9306924649800103})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9306924649800103})>
-	
-***	entry #: 10489 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6181524094363231})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6181524094363231})>
-	
-***	entry #: 10544 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.913113803521836})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.913113803521836})>
-	
-***	entry #: 10545 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6669820245979187})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6669820245979187})>
-	
-***	entry #: 10600 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9004181035798212})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9004181035798212})>
-	
-***	entry #: 10601 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6996978667561876})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6996978667561876})>
-	
-***	entry #: 10656 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8779564806054873})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8779564806054873})>
-	
-***	entry #: 10657 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7294839320047609})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7294839320047609})>
-	
-***	entry #: 10712 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8559831537827692})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8559831537827692})>
-	
-***	entry #: 10713 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.760734885708182})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.760734885708182})>
-	
-***	entry #: 10768 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8349864192632832})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8349864192632832})>
-	
-***	entry #: 10769 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7900326548051393})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7900326548051393})>
-	
-***	entry #: 10824 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8227790154728843})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8227790154728843})>
-	
-***	entry #: 10825 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8027283547471541})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8027283547471541})>
-	
-***	entry #: 10880 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7939695425275429})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7939695425275429})>
-	
-***	entry #: 10881 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8413037507248146})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8413037507248146})>
-	
-***	entry #: 10936 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7578356273079623})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7578356273079623})>
-	
-***	entry #: 10937 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8662068544572283})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8662068544572283})>
-	
-***	entry #: 10992 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7168187505722221})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7168187505722221})>
-	
-***	entry #: 10993 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8959929197058015})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8959929197058015})>
-	
-***	entry #: 11048 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6548051393169958})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6548051393169958})>
-	
-***	entry #: 11049 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.923825800347911})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.923825800347911})>
-	
-***	entry #: 11104 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5942564165166173})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5942564165166173})>
-	
-***	entry #: 11105 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9394512771996215})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9394512771996215})>
-	
-***	entry #: 11160 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5459150975066378})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5459150975066378})>
-	
-***	entry #: 11161 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9521469771416364})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9521469771416364})>
-	
-***	entry #: 11216 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.521988586077456})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.521988586077456})>
-	
-***	entry #: 11271 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5102694784386731})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5102694784386731})>
-	
-***	entry #: 11704 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5683767204809718})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5683767204809718})>
-	
-***	entry #: 11705 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9282204657124546})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9282204657124546})>
-	
-***	entry #: 11760 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.620136112552263})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.620136112552263})>
-	
-***	entry #: 11761 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.913571581163976})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.913571581163976})>
-	
-***	entry #: 11816 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6831263161107212})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6831263161107212})>
-	
-***	entry #: 11817 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8828089236121708})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8828089236121708})>
-	
-***	entry #: 11872 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7578356273079623})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7578356273079623})>
-	
-***	entry #: 11873 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8466750083925901})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8466750083925901})>
-	
-***	entry #: 11928 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8027588732566302})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8027588732566302})>
-	
-***	entry #: 11929 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7919858394116032})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7919858394116032})>
-	
-***	entry #: 11984 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8467055269020661})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8467055269020661})>
-	
-***	entry #: 11985 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7182531205175939})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7182531205175939})>
-	
-***	entry #: 12040 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8886989959410383})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8886989959410383})>
-	
-***	entry #: 12041 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6347544785912655})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6347544785912655})>
-	
-***	entry #: 12096 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.901882992034669})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.901882992034669})>
-	
-***	entry #: 12097 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5786004211554308})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5786004211554308})>
-	
-***	entry #: 12152 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.934598834192938})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.934598834192938})>
-	
-***	entry #: 12153 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.48921170690023497})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.48921170690023497})>
-	
-***	entry #: 12208 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9526657918027284})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9526657918027284})>
-	
-***	entry #: 12209 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.41157261879329815})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.41157261879329815})>
-	
-***	entry #: 12264 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.966338084047975})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.966338084047975})>
-	
-***	entry #: 12265 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.3534653767509995})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.3534653767509995})>
-	
-***	entry #: 12320 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9765923032319102})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9765923032319102})>
-	
-***	entry #: 12321 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2675252540665914})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2675252540665914})>
-	
-***	entry #: 12376 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.16449476607562485})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.16449476607562485})>
-	
-***	entry #: 12431 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9897762993255409})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9897762993255409})>
-	
-***	entry #: 12432 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.06292916653950621})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.06292916653950621})>
-	
-***	entry #: 12487 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.015564439832758568})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.015564439832758568})>
-	
-***	entry #: 12542 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	
-***	entry #: 12651 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02447584459974975})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02447584459974975})>
-	
-***	entry #: 12706 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05377361369670705})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05377361369670705})>
-	
-***	entry #: 12761 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10357982116153447})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10357982116153447})>
-	
-***	entry #: 12816 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1489913632618183})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1489913632618183})>
-	
-***	entry #: 12871 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.21442304757835629})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.21442304757835629})>
-	
-***	entry #: 12926 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2564165166173284})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2564165166173284})>
-	
-***	entry #: 12981 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3350321970274972})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3350321970274972})>
-	
-***	entry #: 13036 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.435132908108768})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.435132908108768})>
-	
-***	entry #: 13091 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9682912686544389})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9682912686544389})>
-	
-***	entry #: 13092 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6016113773003327})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6016113773003327})>
-	
-***	entry #: 13147 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9150669881282998})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9150669881282998})>
-	
-***	entry #: 13148 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7842341380046999})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7842341380046999})>
-	
-***	entry #: 13203 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7729728080080569})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7729728080080569})>
-	
-***	entry #: 13204 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9097262489700003})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9097262489700003})>
-	
-***	entry #: 13259 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.4716635639515366})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.4716635639515366})>
-	
-***	entry #: 13260 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.999572740867336})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.999572740867336})>
-	
-***	entry #: 13315 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.2475356303598132})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.2475356303598132})>
-	
-***	entry #: 13370 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.0522171697134312})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.0522171697134312})>
-	
-***	entry #: 13425 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.01174962614825892})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.01174962614825892})>
-	
-***	entry #: 13480 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.09427167577135533})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.09427167577135533})>
-	
-***	entry #: 13535 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.19486068300424209})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.19486068300424209})>
-	
-***	entry #: 13590 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.3633228553117466})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.3633228553117466})>
-	
-***	entry #: 13645 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5381023590807825})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5381023590807825})>
-	
-***	entry #: 13700 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7295144505142369})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7295144505142369})>
-	
-***	entry #: 13701 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.923398541215247})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.923398541215247})>
-	
-***	entry #: 13756 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8393810846278268})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8393810846278268})>
-	
-***	entry #: 13757 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8760338145084994})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8760338145084994})>
-	
-***	entry #: 13812 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9199499496444594})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9199499496444594})>
-	
-***	entry #: 13813 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7734916226691488})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7734916226691488})>
-	
-***	entry #: 13868 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.966338084047975})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.966338084047975})>
-	
-***	entry #: 13869 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.586962492751854})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.586962492751854})>
-	
-***	entry #: 13924 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9946592608417005})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9946592608417005})>
-	
-***	entry #: 13925 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.4502700888088626})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.4502700888088626})>
-	
-***	entry #: 13980 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.35798211615344705})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.35798211615344705})>
-	
-***	entry #: 14035 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2583697012237922})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2583697012237922})>
-	
-***	entry #: 14090 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.20514542069765312})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.20514542069765312})>
-	
-***	entry #: 14145 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06646931363872188})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06646931363872188})>
-	
-***	entry #: 14200 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	
-***	entry #: 14255 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.05804620502334666})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.05804620502334666})>
-	
-***	entry #: 14310 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.16595965453047273})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.16595965453047273})>
-	
-***	entry #: 14365 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2772911770989105})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2772911770989105})>
-	
-***	entry #: 14420 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.3666493728446303})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.3666493728446303})>
-	
-***	entry #: 14475 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.423780022583697})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.423780022583697})>
-	
-***	entry #: 14530 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4813989684743797})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4813989684743797})>
-	
-***	entry #: 14585 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.543443098239082})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.543443098239082})>
-	
-***	entry #: 14640 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6103396710104678})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6103396710104678})>
-	
-***	entry #: 14695 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9814752647480697})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9814752647480697})>
-	
-***	entry #: 14696 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6469618823816645})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6469618823816645})>
-	
-***	entry #: 14751 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9629200109866635})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9629200109866635})>
-	
-***	entry #: 14752 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7050691244239631})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7050691244239631})>
-	
-***	entry #: 14807 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9336222418897061})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9336222418897061})>
-	
-***	entry #: 14808 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7646412549211097})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7646412549211097})>
-	
-***	entry #: 14863 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8955351420636616})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8955351420636616})>
-	
-***	entry #: 14864 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8398388622699667})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8398388622699667})>
-	
-***	entry #: 14919 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8628192999053926})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8628192999053926})>
-	
-***	entry #: 14920 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8779259620960113})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8779259620960113})>
-	
-***	entry #: 14975 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.826685384685812})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.826685384685812})>
-	
-***	entry #: 14976 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9047822504348888})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9047822504348888})>
-	
-***	entry #: 15031 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8139896847437971})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8139896847437971})>
-	
-***	entry #: 15086 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7802972502822962})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7802972502822962})>
-	
-***	entry #: 15087 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9291970580156865})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9291970580156865})>
-	
-***	entry #: 15142 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7358623004852443})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7358623004852443})>
-	
-***	entry #: 15143 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9428693502609332})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9428693502609332})>
-	
-***	entry #: 15198 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6967986083559679})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6967986083559679})>
-	
-***	entry #: 15199 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9531235694448683})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9531235694448683})>
-	
-***	entry #: 15254 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6694540238654744})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6694540238654744})>
-	
-***	entry #: 15309 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6264839625232703})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6264839625232703})>
-	
-***	entry #: 15310 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9648426770836512})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9648426770836512})>
-	
-***	entry #: 15365 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6025574510940885})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6025574510940885})>
-	
-***	entry #: 15420 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5844904934842983})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5844904934842983})>
-	
-***	entry #: 15475 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5581225012970367})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5581225012970367})>
-	
-***	entry #: 15530 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5493331705679495})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5493331705679495})>
-	
-***	entry #: 15531 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9741203039643543})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9741203039643543})>
-	
-***	entry #: 15964 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5571459089938048})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5571459089938048})>
-	
-***	entry #: 16073 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5840021973326823})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5840021973326823})>
-	
-***	entry #: 16128 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6235541856135747})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6235541856135747})>
-	
-***	entry #: 16129 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9638660847804194})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9638660847804194})>
-	
-***	entry #: 16184 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6489455854976043})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6489455854976043})>
-	
-***	entry #: 16239 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.69533371990112})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.69533371990112})>
-	
-***	entry #: 16240 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9448225348673971})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9448225348673971})>
-	
-***	entry #: 16295 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7260963774529252})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7260963774529252})>
-	
-***	entry #: 16296 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9267555772576067})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9267555772576067})>
-	
-***	entry #: 16351 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7456282235175634})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7456282235175634})>
-	
-***	entry #: 16352 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9169896542252877})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.9169896542252877})>
-	
-***	entry #: 16407 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7734611041596728})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7734611041596728})>
-	
-***	entry #: 16408 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8989226966154973})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8989226966154973})>
-	
-***	entry #: 16463 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7954344309823909})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7954344309823909})>
-	
-***	entry #: 16464 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.879879146702475})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.879879146702475})>
-	
-***	entry #: 16519 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8247322000793481})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8247322000793481})>
-	
-***	entry #: 16520 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8549760429700614})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8549760429700614})>
-	
-***	entry #: 16575 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8466750083925901})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8466750083925901})>
-	
-***	entry #: 16630 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.858424634540849})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.858424634540849})>
-	
-***	entry #: 16631 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8080996124149297})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.8080996124149297})>
-	
-***	entry #: 16686 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7890560625019074})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7890560625019074})>
-	
-***	entry #: 16741 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8906521805475021})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8906521805475021})>
-	
-***	entry #: 16742 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7324137089144566})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.7324137089144566})>
-	
-***	entry #: 16797 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9184850611896115})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9184850611896115})>
-	
-***	entry #: 16798 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6962797936948759})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6962797936948759})>
-	
-***	entry #: 16853 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9385052034058656})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9385052034058656})>
-	
-***	entry #: 16854 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6274300363170263})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.6274300363170263})>
-	
-***	entry #: 16909 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9492477187414167})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9492477187414167})>
-	
-***	entry #: 16910 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5820184942167425})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5820184942167425})>
-	
-***	entry #: 16965 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5634632404553361})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5634632404553361})>
-	
-***	entry #: 17020 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9604785302285836})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9604785302285836})>
-	
-***	entry #: 17021 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5248878444776757})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.5248878444776757})>
-	
-***	entry #: 17076 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.978545487838374})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.978545487838374})>
-	
-***	entry #: 17077 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4638203070162053})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.4638203070162053})>
-	
-***	entry #: 17132 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9931943723868526})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9931943723868526})>
-	
-***	entry #: 17133 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.39497054963835565})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.39497054963835565})>
-	
-***	entry #: 17188 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.34614093447676014})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.34614093447676014})>
-	
-***	entry #: 17243 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.28315073091830195})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.28315073091830195})>
-	
-***	entry #: 17298 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.17377239295632801})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.17377239295632801})>
-	
-***	entry #: 17353 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.07562486648152104})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.07562486648152104})>
-	
-***	entry #: 17408 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.04046754356517228})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.04046754356517228})>
-	
-***	entry #: 17463 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
-	
-***	entry #: 17518 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04986724448377941})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04986724448377941})>
-	
-***	entry #: 17573 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.130436109500412})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.130436109500412})>
-	
-***	entry #: 17628 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2847376934110538})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2847376934110538})>
-	
-***	entry #: 17683 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.38435010834070865})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.38435010834070865})>
-	
-***	entry #: 17738 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.4707785271767327})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.4707785271767327})>
-	
-***	entry #: 17793 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5801263466292307})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5801263466292307})>
-	
-***	entry #: 17848 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9839167455061495})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9839167455061495})>
-	
-***	entry #: 17849 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6753440961943419})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6753440961943419})>
-	
-***	entry #: 17904 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9624317148350474})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9624317148350474})>
-	
-***	entry #: 17905 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7529831843012788})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7529831843012788})>
-	
-***	entry #: 17960 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9433881649220253})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9433881649220253})>
-	
-***	entry #: 17961 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7881405072176275})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7881405072176275})>
-	
-***	entry #: 18016 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9140903958250679})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9140903958250679})>
-	
-***	entry #: 18017 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8291573839533677})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8291573839533677})>
-	
-***	entry #: 18072 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8984649189733573})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8984649189733573})>
-	
-***	entry #: 18073 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8442945646534623})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8442945646534623})>
-	
-***	entry #: 18128 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8623310037537767})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8623310037537767})>
-	
-***	entry #: 18129 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8745689260536516})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8745689260536516})>
-	
-***	entry #: 18184 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8056886501663258})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8056886501663258})>
-	
-***	entry #: 18185 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8984954374828333})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8984954374828333})>
-	
-***	entry #: 18240 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.717307046723838})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.717307046723838})>
-	
-***	entry #: 18241 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9336527603991821})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9336527603991821})>
-	
-***	entry #: 18296 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6181829279457991})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6181829279457991})>
-	
-***	entry #: 18297 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9629505294961395})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9629505294961395})>
-	
-***	entry #: 18352 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.47465437788018433})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.47465437788018433})>
-	
-***	entry #: 18353 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9907834101382489})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9907834101382489})>
-	
-***	entry #: 18408 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.32767723624378187})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.32767723624378187})>
-	
-***	entry #: 18409 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.999572740867336})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.999572740867336})>
-	
-***	entry #: 18464 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.10013122959074679})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.10013122959074679})>
-	
-***	entry #: 18519 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
-	
-***	entry #: 18574 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.11423078096865749})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.11423078096865749})>
-	
-***	entry #: 18629 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.27195043794061097})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.27195043794061097})>
-	
-***	entry #: 18684 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.4076967680898465})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.4076967680898465})>
-	
-***	entry #: 18739 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5444502090517899})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.5444502090517899})>
-	
-***	entry #: 18740 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.967345194860683})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.967345194860683})>
-	
-***	entry #: 18795 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6538285470137638})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6538285470137638})>
-	
-***	entry #: 18796 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9297463911862545})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.9297463911862545})>
-	
-***	entry #: 18851 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7656483657338176})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.7656483657338176})>
-	
-***	entry #: 18852 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8862880336924345})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8862880336924345})>
-	
-***	entry #: 18907 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8301034577471237})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8301034577471237})>
-	
-***	entry #: 18908 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8467360454115421})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8467360454115421})>
-	
-***	entry #: 18963 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8613544114505448})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8613544114505448})>
-	
-***	entry #: 18964 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.793023468733787})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.793023468733787})>
-	
-***	entry #: 19019 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8960234382152775})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8960234382152775})>
-	
-***	entry #: 19020 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7036652729880672})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7036652729880672})>
-	
-***	entry #: 19075 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9150669881282998})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9150669881282998})>
-	
-***	entry #: 19076 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6426282540360729})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6426282540360729})>
-	
-***	entry #: 19131 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9306924649800103})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9306924649800103})>
-	
-***	entry #: 19132 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5571764275032808})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5571764275032808})>
-	
-***	entry #: 19187 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9424115726187933})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9424115726187933})>
-	
-***	entry #: 19188 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5054170354319895})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5054170354319895})>
-	
-***	entry #: 19243 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9536423841059603})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9536423841059603})>
-	
-***	entry #: 19244 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.45612964262825406})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.45612964262825406})>
-	
-***	entry #: 19299 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.4112063966795862})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.4112063966795862})>
-	
-***	entry #: 19354 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9668263801995911})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9668263801995911})>
-	
-***	entry #: 19355 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.38093203527939695})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.38093203527939695})>
-	
-***	entry #: 19410 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3423566393017365})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3423566393017365})>
-	
-***	entry #: 19465 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9809869685964537})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9809869685964537})>
-	
-***	entry #: 19466 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3032929471724601})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3032929471724601})>
-	
-***	entry #: 19521 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2774132511368145})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2774132511368145})>
-	
-***	entry #: 19576 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2241889706106754})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2241889706106754})>
-	
-***	entry #: 19631 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.990264595477157})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.990264595477157})>
-	
-***	entry #: 19632 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.15143284401989807})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.15143284401989807})>
-	
-***	entry #: 19687 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1109042634357738})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1109042634357738})>
-	
-***	entry #: 19742 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07574694051942503})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07574694051942503})>
-	
-***	entry #: 19797 type: event
+***	entry #: 1166 type: event
 file source: driver
 events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04303109836115604})>
 	terms: events; DEBUG; basic; 
 	key words:
 	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04303109836115604})>
 	
-***	entry #: 19852 type: event
+***	entry #: 1653 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.005920590838343455})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02447584459974975})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.005920590838343455})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02447584459974975})>
 	
-***	entry #: 20177 type: event
+***	entry #: 1762 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.010681478316599017})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.010315256202887051})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.010681478316599017})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.010315256202887051})>
 	
-***	entry #: 20232 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.03363139744254891})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.03363139744254891})>
-	
-***	entry #: 20287 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.05999938962981048})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.05999938962981048})>
-	
-***	entry #: 20342 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.06878872035889767})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.06878872035889767})>
-	
-***	entry #: 20397 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.08978545487838374})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.08978545487838374})>
-	
-***	entry #: 20452 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.11322367015594959})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.11322367015594959})>
-	
-***	entry #: 20507 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.13666188543351543})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.13666188543351543})>
-	
-***	entry #: 20562 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.15912350840784936})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.15912350840784936})>
-	
-***	entry #: 20617 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.1791436506241035})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.1791436506241035})>
-	
-***	entry #: 20672 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.19281594286935025})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.19281594286935025})>
-	
-***	entry #: 20727 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2118594927823725})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2118594927823725})>
-	
-***	entry #: 20782 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.22309030426953946})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.22309030426953946})>
-	
-***	entry #: 20891 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.24115726187932982})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.24115726187932982})>
-	
-***	entry #: 21000 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.25482955412457653})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.25482955412457653})>
-	
-***	entry #: 21109 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.26850184636982327})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.26850184636982327})>
-	
-***	entry #: 21218 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2782677694021424})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.2782677694021424})>
-	
-***	entry #: 21381 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.28656880397961365})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.28656880397961365})>
-	
-***	entry #: 22138 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.25238807336649677})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.25238807336649677})>
-	
-***	entry #: 22193 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.23334452345347453})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.23334452345347453})>
-	
-***	entry #: 22248 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.1781670583208716})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.1781670583208716})>
-	
-***	entry #: 22303 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.16498306222724082})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.16498306222724082})>
-	
-***	entry #: 22358 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.11908322397534105})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.11908322397534105})>
-	
-***	entry #: 22413 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.07415997802667318})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.07415997802667318})>
-	
-***	entry #: 22468 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.027771843623157447})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.027771843623157447})>
-	
-***	entry #: 22523 type: event
+***	entry #: 1817 type: event
 file source: driver
 events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
 	terms: events; DEBUG; basic; 
 	key words:
 	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': 0.0004272591326639607})>
 	
-***	entry #: 22686 type: event
+***	entry #: 2952 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.030823694570757166})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04596087527085177})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.030823694570757166})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04596087527085177})>
 	
-***	entry #: 22741 type: event
+***	entry #: 3061 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06207464827417829})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06353953672902615})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06207464827417829})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06353953672902615})>
 	
-***	entry #: 22796 type: event
+***	entry #: 3278 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05572679830317087})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05572679830317087})>
+	
+***	entry #: 3387 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.056672872096926785})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.056672872096926785})>
+	
+***	entry #: 3496 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04498428296761986})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04498428296761986})>
+	
+***	entry #: 3551 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.06888027588732566})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.06888027588732566})>
+	
+***	entry #: 3606 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07766960661641285})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07766960661641285})>
+	
+***	entry #: 3661 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1011078218939787})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.1011078218939787})>
+	
+***	entry #: 3716 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.12015137180700095})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.12015137180700095})>
+	
+***	entry #: 3717 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02447584459974975})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02447584459974975})>
+	
+***	entry #: 3772 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.13773003326517533})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.13773003326517533})>
+	
+***	entry #: 3827 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.18118839075899534})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.18118839075899534})>
+	
+***	entry #: 3882 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.23685415204321422})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.23685415204321422})>
+	
+***	entry #: 3937 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.29642628254036074})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.29642628254036074})>
+	
+***	entry #: 3992 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.3447676015503403})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.3447676015503403})>
+	
+***	entry #: 4047 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.38090151676992096})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.38090151676992096})>
+	
+***	entry #: 4048 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.03619495223853267})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.03619495223853267})>
+	
+***	entry #: 4103 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.41654713583788566})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.41654713583788566})>
+	
+***	entry #: 4104 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.045472579119235815})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.045472579119235815})>
+	
+***	entry #: 4159 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.4419385357219153})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.4419385357219153})>
+	
+***	entry #: 4160 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05767998290963469})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05767998290963469})>
+	
+***	entry #: 4215 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.47172460097048863})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.47172460097048863})>
+	
+***	entry #: 4270 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5034333323160497})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5034333323160497})>
+	
+***	entry #: 4325 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5141758476516007})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5141758476516007})>
+	
+***	entry #: 4380 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.565446943571276})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.565446943571276})>
+	
+***	entry #: 4381 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07672353282265694})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07672353282265694})>
+	
+***	entry #: 4436 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5971861934263131})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.5971861934263131})>
+	
+***	entry #: 4437 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06646931363872188})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06646931363872188})>
+	
+***	entry #: 4492 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6362498855555895})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6362498855555895})>
+	
+***	entry #: 4547 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6728720969267861})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.6728720969267861})>
+	
+***	entry #: 4548 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07965330973235267})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07965330973235267})>
+	
+***	entry #: 4603 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7036347544785913})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7036347544785913})>
+	
+***	entry #: 4658 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.739280373546556})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.739280373546556})>
+	
+***	entry #: 4713 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7666249580370494})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.7666249580370494})>
+	
+***	entry #: 4768 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8008056886501663})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8008056886501663})>
+	
+***	entry #: 4769 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.09137241737113559})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.09137241737113559})>
+	
+***	entry #: 4824 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8271736808374279})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8271736808374279})>
+	
+***	entry #: 4825 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10065004425183874})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10065004425183874})>
+	
+***	entry #: 4880 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8594012268440809})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8594012268440809})>
+	
+***	entry #: 4881 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.11383404034546953})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.11383404034546953})>
+	
+***	entry #: 4936 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8886989959410383})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8886989959410383})>
+	
+***	entry #: 4937 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.13629566331980347})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.13629566331980347})>
+	
+***	entry #: 4992 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9262977996154668})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9262977996154668})>
+	
+***	entry #: 5047 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9551072725608082})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9551072725608082})>
+	
+***	entry #: 5048 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.14410840174565875})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.14410840174565875})>
+	
+***	entry #: 5103 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9682912686544389})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9682912686544389})>
+	
+***	entry #: 5158 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9795220801416059})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9795220801416059})>
+	
+***	entry #: 5213 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9917294839320048})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9917294839320048})>
+	
+***	entry #: 5322 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -1.000030518509476})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -1.000030518509476})>
+	
+***	entry #: 5323 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.12994781334879604})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.12994781334879604})>
+	
+***	entry #: 5378 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10455641346476638})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10455641346476638})>
+	
+***	entry #: 5973 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0967436750389111})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0967436750389111})>
+	
+***	entry #: 6028 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9912411877803888})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9912411877803888})>
+	
+***	entry #: 6029 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0879543443098239})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0879543443098239})>
+	
+***	entry #: 6084 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9145786919766838})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.9145786919766838})>
+	
+***	entry #: 6085 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06793420209356975})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06793420209356975})>
+	
+***	entry #: 6140 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8227790154728843})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.8227790154728843})>
+	
+***	entry #: 6195 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.06009094515823847})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.06009094515823847})>
+	
+***	entry #: 6196 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05377361369670705})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05377361369670705})>
+	
+***	entry #: 6251 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07327494125186926})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07327494125186926})>
+	
+***	entry #: 6360 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06500442518387402})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06500442518387402})>
+	
+***	entry #: 6415 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10016174810022278})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10016174810022278})>
+	
+***	entry #: 6524 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.05227820673238319})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.05227820673238319})>
+	
+***	entry #: 6525 type: event
 file source: driver
 events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10992767113254188})>
 	terms: events; DEBUG; basic; 
 	key words:
 	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10992767113254188})>
 	
-***	entry #: 22851 type: event
+***	entry #: 6580 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.14654988250373852})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.02346873378704184})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.14654988250373852})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.02346873378704184})>
 	
-***	entry #: 22906 type: event
+***	entry #: 6635 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.19489120151371808})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.19489120151371808})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
 	
-***	entry #: 22961 type: event
+***	entry #: 6744 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2564165166173284})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.030732139042329173})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.2564165166173284})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.030732139042329173})>
 	
-***	entry #: 23016 type: event
+***	entry #: 6799 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.31891842402417064})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.0673543504135258})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.31891842402417064})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.0673543504135258})>
 	
-***	entry #: 23071 type: event
+***	entry #: 6800 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3638416699728385})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.11920529801324503})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.3638416699728385})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.11920529801324503})>
 	
-***	entry #: 23126 type: event
+***	entry #: 6855 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.4287850581377606})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.17868587298196356})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.4287850581377606})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.17868587298196356})>
 	
-***	entry #: 23181 type: event
+***	entry #: 6910 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.46589556566057316})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.2773216956083865})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.46589556566057316})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.2773216956083865})>
 	
-***	entry #: 23182 type: event
+***	entry #: 6965 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.511276589251381})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.38230536820581684})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.511276589251381})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.38230536820581684})>
 	
-***	entry #: 23237 type: event
+***	entry #: 7020 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9731742301705985})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.48435926389355144})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9731742301705985})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.48435926389355144})>
 	
-***	entry #: 23238 type: event
+***	entry #: 7075 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5884273812067019})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6616412854396191})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.5884273812067019})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6616412854396191})>
 	
-***	entry #: 23293 type: event
+***	entry #: 7130 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9502243110446486})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8315683462019715})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9502243110446486})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8315683462019715})>
 	
-***	entry #: 23294 type: event
+***	entry #: 7131 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6802270577105014})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06598101748710593})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6802270577105014})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06598101748710593})>
 	
-***	entry #: 23349 type: event
+***	entry #: 7186 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.934110538041322})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9824518570513017})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.934110538041322})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9824518570513017})>
 	
-***	entry #: 23350 type: event
+***	entry #: 7187 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7412640766624958})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.037659840693380534})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7412640766624958})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.037659840693380534})>
 	
-***	entry #: 23405 type: event
+***	entry #: 7242 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9092074343089084})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9951475569933165})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9092074343089084})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.9951475569933165})>
 	
-***	entry #: 23406 type: event
+***	entry #: 7297 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7920468764305552})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02838221381267739})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7920468764305552})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02838221381267739})>
 	
-***	entry #: 23461 type: event
+***	entry #: 7514 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8818628498184149})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02056947538682211})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8818628498184149})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.02056947538682211})>
 	
-***	entry #: 23462 type: event
+***	entry #: 7623 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.836970122379223})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.00445570238349559})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.836970122379223})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.00445570238349559})>
 	
-***	entry #: 23517 type: event
+***	entry #: 7732 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.848170415356914})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.01803643910031434})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.848170415356914})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.01803643910031434})>
 	
-***	entry #: 23518 type: event
+***	entry #: 7733 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8662678914761803})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.048402356028931545})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8662678914761803})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.048402356028931545})>
 	
-***	entry #: 23573 type: event
+***	entry #: 7788 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8271736808374279})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.17044587542344433})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8271736808374279})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.17044587542344433})>
 	
-***	entry #: 23574 type: event
+***	entry #: 7843 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8794518875698111})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.04879909665211951})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8794518875698111})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.04879909665211951})>
 	
-***	entry #: 23629 type: event
+***	entry #: 7898 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8178960539567247})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.8178960539567247})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
 	
-***	entry #: 24116 type: event
+***	entry #: 7953 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.869685964537492})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.01272621845149083})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.869685964537492})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.01272621845149083})>
 	
-***	entry #: 24225 type: event
+***	entry #: 8008 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.858943449201941})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07181005279702139})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.858943449201941})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07181005279702139})>
 	
-***	entry #: 24280 type: event
+***	entry #: 8009 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8418530838953826})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06012146366771447})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8418530838953826})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06012146366771447})>
 	
-***	entry #: 24335 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8135319071016571})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.8135319071016571})>
-	
-***	entry #: 24390 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7808160649433882})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7808160649433882})>
-	
-***	entry #: 24445 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7656788842432936})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7656788842432936})>
-	
-***	entry #: 24500 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7397991882076479})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.7397991882076479})>
-	
-***	entry #: 24555 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6235541856135747})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.6235541856135747})>
-	
-***	entry #: 24556 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6646015808587908})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.6646015808587908})>
-	
-***	entry #: 24611 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.21488082522049623})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.21488082522049623})>
-	
-***	entry #: 24612 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07477034821619312})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07477034821619312})>
-	
-***	entry #: 24667 type: event
-file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.09280678731650746})>
-	terms: events; DEBUG; basic; 
-	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.09280678731650746})>
-	
-***	entry #: 24668 type: event
+***	entry #: 8118 type: event
 file source: driver
 events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05182042909024323})>
 	terms: events; DEBUG; basic; 
 	key words:
 	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05182042909024323})>
 	
-***	entry #: 24723 type: event
+***	entry #: 10441 type: event
 file source: driver
-events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07620471816156499})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06402783288064211})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.07620471816156499})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06402783288064211})>
 	
-***	entry #: 25210 type: event
+***	entry #: 10496 type: event
 file source: driver
-events: the received events; <Event(1-ActiveEvent {'gain': 1, 'state': 1})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.05716116824854274})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(1-ActiveEvent {'gain': 1, 'state': 1})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.05716116824854274})>
 	
-***	entry #: 25211 type: event
+***	entry #: 10497 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1297, 57), 'rel': (-2, 57), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07965330973235267})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1297, 57), 'rel': (-2, 57), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07965330973235267})>
 	
-***	entry #: 25212 type: event
+***	entry #: 10552 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1295, 58), 'rel': (-2, 1), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.021027253028962065})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1295, 58), 'rel': (-2, 1), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.021027253028962065})>
 	
-***	entry #: 25267 type: event
+***	entry #: 10553 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1280, 69), 'rel': (-15, 11), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.09088412121951964})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1280, 69), 'rel': (-15, 11), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.09088412121951964})>
 	
-***	entry #: 25322 type: event
+***	entry #: 10608 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1265, 79), 'rel': (-15, 10), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1265, 79), 'rel': (-15, 10), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -3.051850947599719e-05})>
 	
-***	entry #: 25377 type: event
+***	entry #: 10609 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1252, 87), 'rel': (-13, 8), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.11139255958738975})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1252, 87), 'rel': (-13, 8), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.11139255958738975})>
 	
-***	entry #: 25432 type: event
+***	entry #: 10664 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1245, 92), 'rel': (-7, 5), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.12994781334879604})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1245, 92), 'rel': (-7, 5), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.12994781334879604})>
 	
-***	entry #: 25487 type: event
+***	entry #: 10719 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1241, 94), 'rel': (-4, 2), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.020477919858394117})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1241, 94), 'rel': (-4, 2), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.020477919858394117})>
 	
-***	entry #: 25542 type: event
+***	entry #: 10720 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1240, 94), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1445966978972747})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1240, 94), 'rel': (-1, 0), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.1445966978972747})>
 	
-***	entry #: 25813 type: event
+***	entry #: 10775 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1241, 91), 'rel': (1, -3), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.09762871181371502})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1241, 91), 'rel': (1, -3), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.09762871181371502})>
 	
-***	entry #: 25868 type: event
+***	entry #: 10830 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1242, 87), 'rel': (1, -4), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.14597003082369456})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1242, 87), 'rel': (1, -4), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.14597003082369456})>
 	
-***	entry #: 25923 type: event
+***	entry #: 10831 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1243, 80), 'rel': (1, -7), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.15582750938444168})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1243, 80), 'rel': (1, -7), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.15582750938444168})>
 	
-***	entry #: 25978 type: event
+***	entry #: 10886 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1243, 76), 'rel': (0, -4), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.21335489974669636})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1243, 76), 'rel': (0, -4), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.21335489974669636})>
 	
-***	entry #: 26033 type: event
+***	entry #: 10941 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1243, 74), 'rel': (0, -2), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.2773216956083865})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1243, 74), 'rel': (0, -2), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.2773216956083865})>
 	
-***	entry #: 26304 type: event
+***	entry #: 10996 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1245, 72), 'rel': (2, -2), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.3207800531022065})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1245, 72), 'rel': (2, -2), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.3207800531022065})>
 	
-***	entry #: 26359 type: event
+***	entry #: 11051 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1248, 69), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.3408001953184606})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1248, 69), 'rel': (3, -3), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.3408001953184606})>
 	
-***	entry #: 26414 type: event
+***	entry #: 11052 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1253, 64), 'rel': (5, -5), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.14703817865535448})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1253, 64), 'rel': (5, -5), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.14703817865535448})>
 	
-***	entry #: 26469 type: event
+***	entry #: 11107 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1260, 57), 'rel': (7, -7), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.12799462874233222})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1260, 57), 'rel': (7, -7), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.12799462874233222})>
 	
-***	entry #: 26524 type: event
+***	entry #: 11162 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1269, 48), 'rel': (9, -9), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10846278267769402})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1269, 48), 'rel': (9, -9), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.10846278267769402})>
 	
-***	entry #: 26579 type: event
+***	entry #: 11217 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1274, 40), 'rel': (5, -8), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0967436750389111})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1274, 40), 'rel': (5, -8), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0967436750389111})>
 	
-***	entry #: 26634 type: event
+***	entry #: 11272 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1280, 30), 'rel': (6, -10), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.31394390697958313})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1280, 30), 'rel': (6, -10), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': 0.31394390697958313})>
 	
-***	entry #: 26689 type: event
+***	entry #: 11273 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1284, 21), 'rel': (4, -9), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07330545976134525})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1284, 21), 'rel': (4, -9), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07330545976134525})>
 	
-***	entry #: 26744 type: event
+***	entry #: 11328 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1287, 11), 'rel': (3, -10), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.03616443372905667})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1287, 11), 'rel': (3, -10), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.03616443372905667})>
 	
-***	entry #: 26799 type: event
+***	entry #: 11329 type: event
 file source: driver
-events: the received events; <Event(4-MouseMotion {'pos': (1289, 3), 'rel': (2, -8), 'buttons': (0, 0, 0)})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04400769066438795})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(4-MouseMotion {'pos': (1289, 3), 'rel': (2, -8), 'buttons': (0, 0, 0)})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04400769066438795})>
 	
-***	entry #: 26854 type: event
+***	entry #: 11384 type: event
 file source: driver
-events: the received events; <Event(1-ActiveEvent {'gain': 0, 'state': 1})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.06106753746147038})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(1-ActiveEvent {'gain': 0, 'state': 1})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.06106753746147038})>
 	
-***	entry #: 35549 type: event
+***	entry #: 11385 type: event
 file source: driver
-events: the received events; <Event(12-Quit {})>
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05182042909024323})>
 	terms: events; DEBUG; basic; 
 	key words:
-	log_entry: <Event(12-Quit {})>
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05182042909024323})>
+	
+***	entry #: 11440 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06060975981933042})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06060975981933042})>
+	
+***	entry #: 13277 type: event
+file source: driver
+events: the received events; <Event(10-JoyButtonDown {'joy': 0, 'button': 2})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(10-JoyButtonDown {'joy': 0, 'button': 2})>
+	
+***	entry #: 15222 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07672353282265694})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07672353282265694})>
+	
+***	entry #: 15277 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.09625537888729514})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.09625537888729514})>
+	
+***	entry #: 15656 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.08209479049043245})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.08209479049043245})>
+	
+***	entry #: 19977 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07330545976134525})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07330545976134525})>
+	
+***	entry #: 20194 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06402783288064211})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.06402783288064211})>
+	
+***	entry #: 20465 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05572679830317087})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05572679830317087})>
+	
+***	entry #: 20790 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04693746757408368})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.04693746757408368})>
+	
+***	entry #: 22681 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.037659840693380534})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.037659840693380534})>
+	
+***	entry #: 23330 type: event
+file source: driver
+events: the received events; <Event(11-JoyButtonUp {'joy': 0, 'button': 2})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(11-JoyButtonUp {'joy': 0, 'button': 2})>
+	
+***	entry #: 23979 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.045472579119235815})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.045472579119235815})>
+	
+***	entry #: 24304 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05719168675801874})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05719168675801874})>
+	
+***	entry #: 24359 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07037568285164952})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07037568285164952})>
+	
+***	entry #: 24414 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07867671742912076})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07867671742912076})>
+	
+***	entry #: 24523 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.08844264046143986})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.08844264046143986})>
+	
+***	entry #: 24956 type: event
+file source: driver
+events: the received events; <Event(10-JoyButtonDown {'joy': 0, 'button': 5})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(10-JoyButtonDown {'joy': 0, 'button': 5})>
+	
+***	entry #: 25065 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.05227820673238319})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 0, 'value': -0.05227820673238319})>
+	
+***	entry #: 26254 type: event
+file source: driver
+events: the received events; <Event(11-JoyButtonUp {'joy': 0, 'button': 5})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(11-JoyButtonUp {'joy': 0, 'button': 5})>
+	
+***	entry #: 26364 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07672353282265694})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.07672353282265694})>
+	
+***	entry #: 26527 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0674459059419538})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.0674459059419538})>
+	
+***	entry #: 27068 type: event
+file source: driver
+events: the received events; <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05816827906125065})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(7-JoyAxisMotion {'joy': 0, 'axis': 1, 'value': -0.05816827906125065})>
+	
+***	entry #: 28149 type: event
+file source: driver
+events: the received events; <Event(10-JoyButtonDown {'joy': 0, 'button': 2})>
+	terms: events; DEBUG; basic; 
+	key words:
+	log_entry: <Event(10-JoyButtonDown {'joy': 0, 'button': 2})>
 	

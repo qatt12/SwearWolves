@@ -227,9 +227,8 @@ class screen_handler():
                 each.missiles.empty()
 
             self.collide_missiles_into(self.player_missiles, self.active_enemies)
-
-            #self.current_room.collide_missiles_into_enemies(self.player_missiles)
-            #print("all missiles: ", self.all_missiles)
+            self.collide_missiles_into(self.enemy_missiles, self.GROUP_of_player_SPRITES)
+            self.collide_missiles_into(self.apply_to_players, self.GROUP_of_player_SPRITES)
 
             self.current_room.collide_walls(missiles=self.all_missiles, enemies=self.active_enemies,
                                             obstacles=self.obstacles)
@@ -337,7 +336,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.rock_slide_s, spells.spawn_node_sniper,  spells.spawn_abenenoemy,
+unlocked_books = [spells.DEBUG_book(spells.rock_slide_s, spells.spawn_node_sniper,  spells.spawn_abenenoemy, spells.spawn_quintenemy,
     spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.DEBUG_unguided_swarm,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,

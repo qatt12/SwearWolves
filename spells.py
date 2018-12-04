@@ -1237,7 +1237,7 @@ class beam(spell):
 
         for x in range(0, num_segments_to_cross_screen):
             first = self.projectile(x+sec/2, first, pygame.rect.Rect((first.rect.centerx+(dist_per_seg_x*direction[0]),
-                                                first.rect.centery+(dist_per_seg_y*direction[1])), (3, 3)),
+                                    first.rect.centery+(dist_per_seg_y*direction[1])), (0, 0)),
                                     caster=self.my_caster)
             ret.add(first)
         return ret

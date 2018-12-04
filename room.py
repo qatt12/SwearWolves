@@ -216,7 +216,7 @@ class room():
         ret = []
         for x in range(0, number):
             s_node = self.nodes[random.randint(0, len(self.nodes) - 1)]
-            ret.append(trap_constr(start_node=s_node, nodes=self.nodes))
+            ret.append(trap_constr(start_node=s_node, node_list=self.nodes))
         for each in ret:
             self.hazard_nodes += each.get_trigger_nodes()
             for every in each.get_trigger_nodes():
@@ -228,7 +228,7 @@ class room():
         ret = []
         for x in range(0, number):
             s_node = self.nodes[random.randint(0, len(self.nodes)-1)]
-            ret.append(variety(start_node=s_node, nodes=self.nodes))
+            ret.append(variety(s_node, node_list=self.nodes))
         return ret
 
 
@@ -440,9 +440,9 @@ class dungeon():
                                        inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200))
                                        )
         self.current_room.add_players(players)
-        self.current_room.spawn_enemy(
-                                    enemies.abenenoemy, 1,
-                                     )
+        #self.current_room.spawn_enemy(
+        #                            enemies.abenenoemy, 1,
+        #                             )
         return self.current_room
 
     def __call__(self, *args, **kwargs):

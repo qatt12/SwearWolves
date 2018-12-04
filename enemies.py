@@ -19,8 +19,8 @@ skele_img.set_colorkey(config.default_transparency)
 scarab_img = pygame.image.load('Animation\img_scarab.png').convert
 
 class enemy(spriteling.spriteling):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, start_loc, *args, **kwargs):
+        super().__init__(*args, loc=start_loc.center, **kwargs)
         self.layer = config.enemy_layer
         self.missiles = pygame.sprite.Group()
         if 'resists' in kwargs:
@@ -67,7 +67,7 @@ class dumb_turret(simple_enemy):
 
 class abenenoemy(enemy):
     def __init__(self, start_node, **kwargs):
-        super().__init__(img=skull_img, loc=start_node.center)
+        super().__init__(start_node, img=skull_img)
         self.my_vel   = velocity(7, 5.489874531)
         self.stuck =0
         self.x_change =False
@@ -129,14 +129,17 @@ class abenenoemy(enemy):
 
 
 class quintenemy(enemy):
-    def __init__(self, location, patrol_route):
-        super().__init__(img=quintenemy_img, loc=location)
+    def __init__(self, start_node, **kwargs):
+        super().__init__(start_node, img=quintenemy_img)
+        valid_nodes = kwargs['node_list']
+        self.patrol_route = []
+        for x in range(0, random.randint(2, 5)):
+            self.patrol_route.append(valid_nodes[x])
 
         self.base_move = 4
 
-        self.patrol_route = patrol_route
         self.stop = 0
-        self.dest = self.patrol_route[self.stop]
+        self.dest = self.patrol_route[self.stop].center
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
@@ -144,7 +147,7 @@ class quintenemy(enemy):
             self.stop += 1
             if self.stop >= len(self.patrol_route):
                 self.stop = 0
-            self.dest = self.patrol_route[self.stop]
+            self.dest = self.patrol_route[self.stop].center
         else:
             x_v, y_v = 0, 0
             if self.rect.centerx < self.dest[0]:
@@ -165,8 +168,15 @@ class basic_circle_shot_s():
     pass
 
 class node_sniper(enemy):
-    def __init__(self, start_node, node_list):
-        super().__init__()
+    def __init__(self, start_node, node_list, **kwargs):
+        super().__init__(img=default_trap_img, loc=start_node.center)
+        temp_nodes = [events.dist_rect(n, start_node) <= 250 for n in node_list]
+        self.attack_box = temp_nodes[random.randint(0, len(temp_nodes)-1)]
+
+    def check_collide(self, target):
+        if self.attack_box.colliderect(target.hitbox.rect):
+            self.snipe(target)
+
 
 class skeleton(enemy):
 #follows player; randomly chooses between multiple(?)

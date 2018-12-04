@@ -267,6 +267,10 @@ class spriteling(pygame.sprite.Sprite):
         cls.tracking_num +=1
         return cls.tracking_num
 
+class nodebox(pygame.sprite.Sprite):
+    def __init__(self, x_pos, y_pos, width, height, **kwargs):
+        super().__init__()
+        self.rect = pygame.rect.Rect((x_pos, y_pos), (width, height))
 
 # basic hitbox class. Essentially just a slightly fancier rect, that automagically maintains its position relative to
 # its host (assuming you update it as frequently as you update the host)

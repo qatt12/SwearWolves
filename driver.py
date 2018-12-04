@@ -47,43 +47,12 @@ event_maker.make_entry('log', 'startup', 'startup has been successful', 'driver'
 pillar_of_hate = pygame.sprite.LayeredUpdates()
 
 
-# very basic rect calculating class designed to break the display window into several smaller rects so that the screen
-#  can be updated in blocks
-class partial_render():
-    # LOGAN: frag is the number of sub-rects that the display screen will be divided into
-    def __init__(self, frag):
-        self.segments = []
-        seg_size = int(config.screen_width/frag)
-        try:
-            assert (isinstance(seg_size, int)), "seg_size is not an int"
-        except AssertionError:
-            print(AssertionError, "seg_szie= ", seg_size)
-
-        for x in range(0, frag):
-            self.segments.append(pygame.rect.Rect((x*seg_size, 0), (seg_size, config.screen_height)))
-        self.index = 0
-
-    # LOGAN: once you've decided on how many sections of screen you want, simply calling the instance will return a rect
-    #  of the calculated size and position
-    def __call__(self, *args, **kwargs):
-        ret = self.segments[self.index]
-        self.index += 1
-        if self.index >= len(self.segments):
-            self.index = 0
-        return ret
-
-
-
 # important class that does its name: handles the screen
 class screen_handler():
     def __init__(self, display, pillar):
         event_maker.make_entry('log', 'game_window size', " ", 'driver', False, False, 'screen')
         self.disp = pygame.Surface(config.screen_size)
         self.size = config.screen_size
-
-        # the partial render rect
-        self.render_rect = partial_render(1)
-
         # LOGAN: setting up some important containers/labels.
         self.menus = pygame.sprite.LayeredUpdates()
         self.player_one = None
@@ -130,6 +99,10 @@ class screen_handler():
             self.ordered_list_of_player_HANDLERS.append(kwargs['next_player'])
             self.player_index += 1
             message.modify(next_player=kwargs['next_player'])
+        if 'dead_player' in kwargs:
+            self.ordered_list_of_player_HANDLERS.remove(kwargs['dead_player'])
+            #if len(self.ordered_list_of_player_HANDLERS) == 0:
+            #    event_maker.end_game()
         if 'room' in kwargs:
             self.kill_it_all()
             self.current_room = kwargs['room']
@@ -143,7 +116,6 @@ class screen_handler():
             for each in kwargs['room'].pull_enemies():
                 pillar_of_hate.add(each, layer=each.layer)
                 self.active_enemies.add(each)
-                self.deque_enemies.append(each)
         if 'overlay' in kwargs:
             self.overlays.append(kwargs['overlay'])
             message.modify(overlay=kwargs['overlay'])
@@ -162,6 +134,11 @@ class screen_handler():
             for nme in enemy_list:
                 pillar_of_hate.add(nme, layer=nme.layer)
                 self.active_enemies.add(nme)
+        #if 'spawn_trap' in kwargs:
+        #    enemy_list = self.current_room.spawn_trap(kwargs['spawn_trap'])
+        #    for nme in enemy_list:
+        #        pillar_of_hate.add(nme, layer=nme.layer)
+        #        self.active_enemies.add(nme)
 
         event_maker.send_entry(message, False, False)
 
@@ -215,20 +192,20 @@ class screen_handler():
                     pillar_of_hate.remove_sprites_of_layer(player_handler.spell_layer)
                     pillar_of_hate.add(player_handler.get_spells()['active'],
                                        layer=player_handler.spell_layer)
-
-            self.all_missiles.add(self.player_missiles)
-
             for each in self.active_enemies:
                 self.enemy_missiles.add(each.get_missiles())
                 each.missiles.empty()
 
-            self.collide_missiles_into(self.player_missiles, self.active_enemies)
+            self.all_missiles.add(self.player_missiles, self.enemy_missiles)
 
-            #self.current_room.collide_missiles_into_enemies(self.player_missiles)
-            #print("all missiles: ", self.all_missiles)
+            self.collide_missiles_into(self.player_missiles, self.active_enemies)
+            self.collide_missiles_into(self.enemy_missiles, self.GROUP_of_player_SPRITES)
+            self.collide_missiles_into(self.apply_to_players, self.GROUP_of_player_SPRITES)
+            self.enemies_attack(self.active_enemies, self.GROUP_of_player_SPRITES)
 
             self.current_room.collide_walls(missiles=self.all_missiles, enemies=self.active_enemies,
-                                            obstacles=self.obstacles)
+                                            #obstacles=self.obstacles
+                                            )
 
     def collide_missiles_into(self, incoming, receiving):
         dings = pygame.sprite.groupcollide(incoming, receiving, False, False,
@@ -237,27 +214,36 @@ class screen_handler():
             for every in dings[each]:
                 each(every)
 
+    def enemies_attack(self, aggressors, players):
+        dings = pygame.sprite.groupcollide(aggressors, players, False, False,
+                                           enemies.can_attack)
+        for each in dings:
+            for every in dings[each]:
+                each.attack(every)
+
     def draw(self, display):
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        #display.fill(config.black)
-        #pygame.display.update(pillar_of_hate.draw(display))
+        display.fill(config.black)
+        pygame.display.update(pillar_of_hate.draw(display))
 
-        if self.current_room is not None:
-            self.current_room.draw_contents(self.disp, True)
-            for each in self.ordered_list_of_player_HANDLERS:
-                each.draw(self.disp, True)
-        for each in self.all_missiles:
-            each.draw(self.disp, True)
-        for each in self.active_enemies:
-            each.draw(self.disp, True)
-
-        display.blit(self.disp, (0, 0))
-        self.menus.draw(display)
-        for each in self.overlays:
-            each.draw(display)
-        pygame.display.flip()
+        #if self.current_room is not None:
+        #    self.current_room.draw_contents(self.disp, True)
+        #    for each in self.ordered_list_of_player_HANDLERS:
+        #        each.draw(self.disp, True)
+        #for each in self.all_missiles:
+        #    each.draw(self.disp, True)
+        #for each in self.active_enemies:
+        #    each.draw(self.disp, True)
+        #for each in self.obstacles:
+        #    each.draw_boxes(self.disp)
+##
+        #display.blit(self.disp, (0, 0))
+        #self.menus.draw(display)
+        #for each in self.overlays:
+        #    each.draw(display)
+        #pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -331,14 +317,19 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.freeze_ray_s,  spells.spawn_abenenoemy,
+unlocked_books = [spells.DEBUG_book(spells.rock_slide_s, spells.spawn_node_sniper,  spells.spawn_abenenoemy, spells.spawn_quintenemy,
     spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.DEBUG_unguided_swarm,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
                                     spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s,
                                     spells.razor_leaf_s),
-                  spells.book_of_fire(3), spells.book_of_acid(3), spells.book_of_ice(3), spells.book_of_light(3),
-                  #spells.book_of_leaves(3), spells.book_of_waves(3),
+                  spells.book_of_fire(4),
+                  spells.book_of_rock(4),
+                  spells.book_of_acid(4),
+                  spells.book_of_ice(4),
+                  #spells.book_of_light(3),
+                  spells.book_of_leaves(4),
+                  #spells.book_of_waves(3),
                   ]
 
 player_num = 1
@@ -441,6 +432,9 @@ while(game_loop and running):
         event_maker.make_entry('event', 'events', "the received events", 'driver', False, True, 'events', 'DEBUG', "basic", log_entry=event)
         if event.type == pygame.QUIT:
             running = False
+        if event.type == events.player_event:
+            if event.subtype == events.player_died:
+                screen.apply(dead_player=event.dead_player)
         if event.type == events.room_event:
             if event.subtype == events.next_room:
                 screen.apply(room=DEBUG_dungeon.next_room(screen.GROUP_of_player_SPRITES))
@@ -469,11 +463,10 @@ while(game_loop and running):
 
             elif event.subtype == events.spawn_enemy:
                 screen.apply(spawn_enemy=event.spawn_enemy)
-
-            elif event.subtype == events.spawn_specific_enemy:
-                screen.apply(spawn_specific_enemy=event.spawn_specific_enemy)
             elif event.subtype == events.spawn_obstacle:
                 screen.apply(spawn_obstacle=event.spawn_obstacle)
+            elif event.subtype == events.spawn_trap:
+                screen.apply(spawn_trap=event.spawn_trap)
         if event.type >= pygame.USEREVENT:
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)

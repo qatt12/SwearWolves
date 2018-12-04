@@ -1,7 +1,7 @@
 # rooms are a sort of container class that hold and manage their contents.
 # as self-evident as the above sounds, it is an important note
 
-import pygame, blocks, config, random, events, collections
+import pygame, blocks, config, random, events, collections, spriteling
 from events import event_maker
 sGroup = pygame.sprite.Group
 
@@ -172,14 +172,14 @@ class room():
         # the walls have to be spritelings in a group in order to properly register collision
         self.contents.add(my_theme.build_walls(self.full_rect, enter_from, self.entry_door), layer=outer_walls_layer)
 
-        self.nodes = [pygame.rect.Rect((x, y), (config.tile_scalar, config.tile_scalar))
+        self.nodes = [spriteling.nodebox(x, y, config.tile_scalar, config.tile_scalar)
                       for x in range(self.full_rect.left, self.full_rect.right, config.tile_scalar)
                       for y in range(self.full_rect.top, self.full_rect.bottom, config.tile_scalar)]
 
         if 'inner_wall_rect' in kwargs:
             inner_wall_temp = kwargs['inner_wall_rect'].clamp(self.full_rect)
             self.nodes = [each for each in self.nodes
-                          if not each.colliderect(inner_wall_temp)]
+                          if not each.rect.colliderect(inner_wall_temp)]
             self.contents.add(my_theme.build_inner_walls(rect=inner_wall_temp), layer=inner_walls_layer)
         event_maker.make_entry('trace', 'door init', "", 'room', False, False,
                                'door', 'init',
@@ -190,15 +190,18 @@ class room():
         if "pit_rect" in kwargs:
             pit_rect_temp = kwargs['pit_rect'].clamp(self.full_rect)
             self.nodes = [each for each in self.nodes
-                          if not each.colliderect(pit_rect_temp)]
+                          if not each.rect.colliderect(pit_rect_temp)]
             pygame.draw(self.ground, pit_rect_temp, config.black, 0)
 
+        self.hazard_nodes = []
         self.enemies = pygame.sprite.Group()
+        self.traps = pygame.sprite.Group()
 
 
     # super basic method atm, designed to be expanded as needed in later iterations
     def add_player(self, player):
         self.entry_door.enter(player)
+        player.move(bound_rect=self.full_rect)
 
     def add_players(self, players):
         for each in players:
@@ -208,15 +211,15 @@ class room():
         nme.move(bound_rect=self.full_rect)
         self.enemies.add(nme)
 
-    def spawn_trap(self, trigger, trap):
-        pass
 
     def spawn_enemy(self, variety, number, **kwargs):
         ret = []
         for x in range(0, number):
             s_node = self.nodes[random.randint(0, len(self.nodes)-1)]
-            ret.append(variety(start_node=s_node, nodes=self.nodes))
-        #self.enemies.add(ret)
+            ret.append(variety(s_node, node_list=self.nodes))
+            self.enemies.add(ret)
+        #for each in ret:
+        #    self.contents.add(each, layer=each.layer)
         return ret
 
 
@@ -266,7 +269,6 @@ class room():
     def update(self, player_one, all_players, *args, **kwargs):
         self.contents.update()
 
-        self.enemies.update()
         #print("room: ", self.enemies)
         player_one_rect = player_one.rect
         # calculates the scroll, and also sort of the counter_scroll based upon the player's position
@@ -281,8 +283,8 @@ class room():
             y = self.scroll_rect.top - player_one_rect.centery
 
         self.scroll(x, y)
-        self.counter_scroll(x, y, player_one)
-
+        self.counter_scroll(x, y, player_one, *all_players)
+        self.enemies.update()
 
     def draw_contents(self, disp, boxes=False):
         if not boxes:
@@ -303,7 +305,7 @@ class room():
         for f in self.contents.get_sprites_from_layer(doors_layer):
             f.draw_boxes(disp)
         for r in self.nodes:
-            pygame.draw.rect(disp, config.default_transparency, r, 4)
+            pygame.draw.rect(disp, config.default_transparency, r.rect, 4)
 
         self.ground.draw_boxes(disp)
         pygame.draw.rect(disp, config.green, self.full_rect, 4)
@@ -314,13 +316,18 @@ class room():
         for each in self.contents:
             each.move(shift=(x_scroll, y_scroll))
         for node in self.nodes:
-            node.move_ip(x_scroll, y_scroll)
+            node.rect.move_ip(x_scroll, y_scroll)
+        #print("rooms enemies: ", self.enemies)
+        for each in self.enemies:
+            each.move(shift=(x_scroll, y_scroll))
 
     def counter_scroll(self, x_scroll, y_scroll, *args):
         for each in args:
             each.move(shift=(x_scroll, y_scroll))
 
     def collide_walls(self, **kwargs):
+        if 'obstacles' in kwargs:
+            self.all_walls.add(kwargs['obstacles'])
         if 'players' in kwargs:
             # only checks the collision of the outer rect, not the hitbox.
             bonks = pygame.sprite.groupcollide(kwargs['players'], self.all_walls, False, False, collide_hitbox)
@@ -337,11 +344,10 @@ class room():
         if 'enemies' in kwargs:
             bonks_a = pygame.sprite.groupcollide(kwargs['enemies'], self.all_walls, False, False, collide_hitbox)
             for each in bonks_a:
-                each.move(walls=bonks_a[each])
+                each.move(walls=bonks_a[each], bound_rect=self.full_rect)
                 for every in bonks_a[each]:
                     each.react(every)
-        if 'obstacles' in kwargs:
-            bonkstacles = pygame.sprite.groupcollide(kwargs['enemies'], self.all_walls, False, False, collide_hitbox)
+
 
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
@@ -357,12 +363,13 @@ class room():
         for each in dings:
             for every in dings[each]:
                 each(every)
+        trips = pygame.sprite.groupcollide(self.traps, players, False, False,
+                                           collide_hitbox)
+        for each in dings:
+            for every in dings[each]:
+                each(every)
 
     def collide_missiles_into_enemies(self, incoming):
-
-        #print("incoming: ", incoming)
-        #print("enemies: ", self.enemies)
-
         dings = pygame.sprite.groupcollide(incoming, self.enemies, False, False, collide_hitbox)
         for each in dings:
             for every in dings[each]:
@@ -426,9 +433,6 @@ class dungeon():
                                        inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200))
                                        )
         self.current_room.add_players(players)
-        self.current_room.spawn_enemy(
-                                    enemies.abenenoemy, 1,
-                                     )
         return self.current_room
 
     def __call__(self, *args, **kwargs):

@@ -41,6 +41,7 @@ spawn_obstacle  = 23
 spawn_enemy      = 24
 spawn_enemy_type = 25
 spawn_aura       = 26
+spawn_trap       = 27
 
 
 
@@ -454,6 +455,11 @@ class entry():
 def dist(spritelingA, spritelingB):
     x_a, y_a = spritelingA.rect.centerx, spritelingA.rect.centery
     x_b, y_b = spritelingB.rect.centerx, spritelingB.rect.centery
+    ret = math.sqrt((x_b - x_a) ** 2 + (y_b - y_a) ** 2)
+    return ret
+def dist_rect(rectA,rectB):
+    x_a, y_a = rectA.centerx, rectA.rect.centery
+    x_b, y_b = rectB.centerx, rectB.rect.centery
     ret = math.sqrt((x_b - x_a) ** 2 + (y_b - y_a) ** 2)
     return ret
 

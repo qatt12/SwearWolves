@@ -1,6 +1,8 @@
 import pygame
 import spriteling
 import config
+import events
+from events import event_maker
 import overlays
 from loader import player_img_loader
 
@@ -73,6 +75,9 @@ class player(spriteling.spriteling):
         self.hp = 1000
 
     def update(self, *args, **kwargs):
+        if self.curr_hp <= 0:
+            self.kill()
+            event_maker.new_event(events.player_event, 'player', subtype=events.player_died, dead_player=self)
         super().update(*args, **kwargs)
         # all this stuff is supposed to handle moving the player, but it doesn't work right. It does handle facing, and
         # getting the right image, which is nice, but as of now all the movement is done by the move() method in
@@ -107,9 +112,6 @@ class player(spriteling.spriteling):
                 self.activity_state['interacting'] = False
 
         self.image = self.spritesheet.subsurface(self.tuple_lookup[self.facing])
-
-    def pull_stuff(self):
-        return self.my_reticle
 
 # a side/parallel class to player.
 class multiplayer(player):

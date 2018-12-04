@@ -3,20 +3,20 @@ import pygame
 class image_loader():
     pass
 
-light_wave_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
-fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
-acid_ball_img  = pygame.image.load( 'projectiles\img_poisonball.png').convert_alpha()
-icy_ball_img   = pygame.image.load(    'projectiles\img_iceball.png').convert_alpha()
+# light_wave_img = pygame.image.load(      'projectiles\img_blast.png').convert_alpha()
+# fire_ball_img  = pygame.image.load(   'projectiles\img_fireball.png').convert_alpha()
+# acid_ball_img  = pygame.image.load( 'projectiles\img_poisonball.png').convert_alpha()
+# icy_ball_img   = pygame.image.load(    'projectiles\img_iceball.png').convert_alpha()
+#
+# basic_books    = pygame.image.load('projectiles\img_basic_books.png').convert_alpha()
+# ice_book_img   = basic_books.subsurface(( 0,  0), (20, 20))
+# fire_book_img  = basic_books.subsurface(( 0, 20), (20, 20))
+# acid_book_img  = basic_books.subsurface(( 0, 40), (20, 20))
+# light_book_img = basic_books.subsurface(( 0, 60), (20, 20))
+# blank_book_img = basic_books.subsurface(( 0, 60), (20, 20))
 
-basic_books    = pygame.image.load('projectiles\img_basic_books.png').convert_alpha()
-ice_book_img   = basic_books.subsurface(( 0,  0), (20, 20))
-fire_book_img  = basic_books.subsurface(( 0, 20), (20, 20))
-acid_book_img  = basic_books.subsurface(( 0, 40), (20, 20))
-light_book_img = basic_books.subsurface(( 0, 60), (20, 20))
-blank_book_img = basic_books.subsurface(( 0, 60), (20, 20))
 
-
-bigger_books = pygame.transform.scale2x(basic_books)
+#bigger_books = pygame.transform.scale2x(basic_books)
 
 class player_img_loader():
     def __init__(self):

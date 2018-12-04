@@ -18,24 +18,24 @@ new menu: added a new menu
 	loc_src: screen.apply()
 	opened_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1300, 700)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
 	
-***	entry #: 84 type: log
+***	entry #: 251 type: log
 file source: driver| loc source: start_loop
 FIRST PLAYER: player one has pressed start, we should be leaving start loop now
 	terms: crucial; start_loop; ready_up; player_one; 
 	key words:
 	loc_src: start_loop
-	player_one_Handler: <interface.handler object at 0x060DCFB0>
+	player_one_Handler: <interface.handler object at 0x00000209C5114470>
 	num_player_handlers: 1
 	
-***	entry #: 85 type: log
+***	entry #: 252 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1300, 700)>/host: trashboat| Rect: <rect(581, 247, 139, 206)>
-	set_player_one: <interface.handler object at 0x060DCFB0>
+	set_player_one: <interface.handler object at 0x00000209C5114470>
 	
-***	entry #: 87 type: log
+***	entry #: 254 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -44,7 +44,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 88 type: log
+***	entry #: 255 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 3<class 'spells.book_of_fire'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -53,232 +53,99 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 3<class 'spells.book_of_fire'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 89 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: 4<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
+***	entry #: 256 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: 4<class 'spells.book_of_rock'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
 	key words:
 	obj_src: <class 'spells.spell_book'>
 	loc_src: spellbook abstract base class
-	inst_src: 4<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	inst_src: 4<class 'spells.book_of_rock'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 90 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: 5<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
+***	entry #: 257 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: 5<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
 	key words:
 	obj_src: <class 'spells.spell_book'>
 	loc_src: spellbook abstract base class
-	inst_src: 5<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	inst_src: 5<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 91 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: 6<class 'spells.book_of_light'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
+***	entry #: 258 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: 6<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
 	key words:
 	obj_src: <class 'spells.spell_book'>
 	loc_src: spellbook abstract base class
-	inst_src: 6<class 'spells.book_of_light'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	inst_src: 6<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 92 type: log
+***	entry #: 259 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: 7<class 'spells.book_of_leaves'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
+spellbook: A new spell book has been made; this is the base constructor
+	terms: spellbook; spells; magic; base; 
+	key words:
+	obj_src: <class 'spells.spell_book'>
+	loc_src: spellbook abstract base class
+	inst_src: 7<class 'spells.book_of_leaves'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 260 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	opened_menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 650, 350)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
+	opened_menu: 8<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 650, 350)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
 	
-***	entry #: 145 type: log
+***	entry #: 334 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: (<player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>)
 	
-***	entry #: 146 type: log
-file source: room| obj source: <room.theme object at 0x061D55F0>
+***	entry #: 335 type: log
+file source: room| obj source: <room.theme object at 0x00000209C56FD470>
 default_theme: Testing default theme construction/initialization
 	terms: theme; init; DEBUG; 
 	key words:
-	obj_src: <room.theme object at 0x061D55F0>
+	obj_src: <room.theme object at 0x00000209C56FD470>
 	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(100x100x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
 	
-***	entry #: 153 type: log
+***	entry #: 342 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.hub_room object at 0x061D55D0>
+	room: <room.hub_room object at 0x00000209C56A1CF8>
 	
-***	entry #: 154 type: log
+***	entry #: 344 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	overlay: 67<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 433, 140)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
+	overlay: 70<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 433, 140)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
 	
-***	entry #: 27948 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 286282 type: log
+***	entry #: 15807 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 288021 type: log
+***	entry #: 41107 type: log
+file source: blocks| obj source: 14<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 50, 100, 100)>/host: trashboat| Rect: <rect(450, 50, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 14<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 50, 100, 100)>/host: trashboat| Rect: <rect(450, 50, 101, 101)>
+	loc_src: door
+	
+***	entry #: 41134 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x00000209C573EA58>
 	
-***	entry #: 289624 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 291039 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 292584 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 294158 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 318810 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 320442 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 322238 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 323912 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 325499 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 354145 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 355991 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 358024 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 359777 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 361562 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 416793 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 418451 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 421301 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 423718 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 425831 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 428072 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 430334 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 432454 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 434959 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 437391 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 439920 type: log
+***	entry #: 49476 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:

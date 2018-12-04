@@ -1,6 +1,7 @@
 import pygame, spriteling, events, spells, config, blocks, random
 from events import event_maker
 from spells import velocity
+from config import fps as sec
 
 skull_img = pygame.image.load(    'Animation\img_skull.png').convert()
 skull_img.set_colorkey(config.default_transparency)
@@ -36,14 +37,8 @@ class enemy(spriteling.spriteling):
         return self.missiles
 
 class simple_enemy(enemy):
-    def __init__(self):
-        super().__init__()
-
-
-    def update(self, *args, **kwargs):
-        self.rect.move_ip(self.move(vel=(10, 0)))
-        super().update(*args, **kwargs)
-
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
 
 
 class patrol(simple_enemy):
@@ -53,10 +48,21 @@ class patrol(simple_enemy):
 class bouncy(simple_enemy):
     pass
 
+class nme_fire_bolt_s(spells.spell):
+    def __init__(self, **kwargs):
+        super().__init__(nme_fireball_m, spells.fire_book_img,
+                         spell_name="fireball", **kwargs, trigger_method=spells.cooled(sec/4))
+
+class nme_fireball_m(spells.missile):
+    def __init__(self, dir, loc, **kwargs):
+        # fsx = pygame.mixer.Sound("Music/MM.ogg")
+        # pygame.mixer.Sound.play(fsx)
+        super().__init__(spells.fire_ball_img, loc, velocity(mag=4, dir=dir), **kwargs, missile_name='fireball',
+                         elem='fire', damage=56)
 
 class dumb_turret(simple_enemy):
-    def __init__(self, start_node):
-        super().__init__()
+    def __init__(self, start_node, weapon):
+        super().__init__(loc=start_node.center)
 
 class abenenoemy(enemy):
     def __init__(self, start_node, **kwargs):

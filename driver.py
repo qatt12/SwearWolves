@@ -73,6 +73,7 @@ class partial_render():
         return ret
 
 
+
 # important class that does its name: handles the screen
 class screen_handler():
     def __init__(self, display, pillar):
@@ -95,9 +96,11 @@ class screen_handler():
         self.active_enemies = pygame.sprite.Group()
         self.inactive_enemies = pygame.sprite.Group()
         self.allies = pygame.sprite.Group()
+
         self.list_allies = []
         self.list_players = []
         self.deque_enemies = deque([])
+
         self.obstacles = pygame.sprite.Group()
         self.apply_to_players = pygame.sprite.Group()
 
@@ -182,6 +185,12 @@ class screen_handler():
                     pillar_of_hate.remove_sprites_of_layer(player_handler.spell_layer)
                     pillar_of_hate.add(player_handler.get_spells()['active'],
                                        layer=player_handler.spell_layer)
+
+                dings = pygame.sprite.groupcollide(self.live_missiles, self.active_enemies, False, False,
+                                                   spriteling.collide_hitbox)
+                for each in dings:
+                    for every in dings[each]:
+                        each(every)
 
                 self.current_room.collide_missiles_into_enemies(self.live_missiles)
                 self.current_room.collide_walls(missiles=self.live_missiles, enemies=self.active_enemies)
@@ -429,7 +438,7 @@ while(game_loop and running):
     screen.update()
 
     clock.tick(config.fps)
-    #print(clock.get_fps())
+    print(clock.get_fps())
     pygame.event.pump()
     #pygame.time.wait(0)
 

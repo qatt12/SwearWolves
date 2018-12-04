@@ -1564,7 +1564,7 @@ class fissure_s(wave_caster):
 
 class fissure_slab_m(ground_wave):
     def __init__(self, img_set, direction, loc, *args, **kwargs):
-        super().__init__(img_set, 0, loc, (direction[0]*1.7, direction[1]*1.7), *args, **kwargs, missile_name='slab',
+        super().__init__(img_set, 0, loc, (direction[0]*2.7, direction[1]*2.7), *args, **kwargs, missile_name='slab',
                          stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30)
         event_maker.new_event(events.spriteling_event, 'spells', subtype=events.spawn_obstacle, spawn_obstacle=self)
 

@@ -356,7 +356,8 @@ class hub_room(room):
                                     #('bottom', 6),
                                     #('right', 1)
                                     ],
-                         inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200)))
+                         #inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200))
+                         )
 
 
 class multiroom(room):
@@ -364,6 +365,12 @@ class multiroom(room):
         super().__init__(enter_from, size, theme, disp, *args, **kwargs)
 
 class DEBUG_room(room):
+    def __init__(self, disp, my_theme, *args, **kwargs):
+        s_x, s_y = random.randint(5, 14), random.randint(5, 14)
+        super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
+
+
+class donut_room(room):
     def __init__(self, disp, my_theme, *args, **kwargs):
         s_x, s_y = random.randint(5, 14), random.randint(5, 14)
         super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)

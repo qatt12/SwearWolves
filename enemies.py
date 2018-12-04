@@ -19,8 +19,8 @@ skele_img.set_colorkey(config.default_transparency)
 scarab_img = pygame.image.load('Animation\img_scarab.png').convert
 
 class enemy(spriteling.spriteling):
-    def __init__(self, start_loc, *args, **kwargs):
-        super().__init__(*args, loc=start_loc.center, **kwargs)
+    def __init__(self, start_node, *args, **kwargs):
+        super().__init__(*args, loc=start_node.rect.center, **kwargs)
         self.layer = config.enemy_layer
         self.missiles = pygame.sprite.Group()
         if 'resists' in kwargs:
@@ -35,6 +35,14 @@ class enemy(spriteling.spriteling):
 
     def get_missiles(self):
         return self.missiles
+
+    def get_nodes(self):
+        return []
+
+class reactive_enemy(enemy):
+    def __init__(self, attack_box, weapon, start_node, *args, **kwargs):
+        pass
+
 
 class simple_enemy(enemy):
     def __init__(self, **kwargs):
@@ -76,7 +84,7 @@ class abenenoemy(enemy):
     def update(self, *args, **kwargs):
         super().update()
         self.rect.move_ip(self.my_vel())
-        print("Velocity: " + str(self.my_vel[0]) + ", " + str(self.my_vel[1]))
+        #print("Velocity: " + str(self.my_vel[0]) + ", " + str(self.my_vel[1]))
         if self.stuck>0:
             self.stuck-=1
 
@@ -85,12 +93,12 @@ class abenenoemy(enemy):
         if self.stuck>0:
             if self.x_change:
                 #switch x
-                print("Y needs to change")
+                #print("Y needs to change")
                 self.my_vel(-self.my_vel[1])
                 self.stuck==0
             elif self.y_change:
                 #switch y
-                print("X needs to change")
+                #print("X needs to change")
                 self.my_vel(False,-self.my_vel[0])
                 self.stuck==0
 
@@ -137,7 +145,7 @@ class quintenemy(enemy):
             self.patrol_route.append(valid_nodes[random.randint(0, len(valid_nodes)-1)])
         self.base_move = 4
         self.stop = 0
-        self.dest = self.patrol_route[self.stop].center
+        self.dest = self.patrol_route[self.stop].rect.center
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
@@ -145,7 +153,7 @@ class quintenemy(enemy):
             self.stop += 1
             if self.stop >= len(self.patrol_route):
                 self.stop = 0
-            self.dest = self.patrol_route[self.stop].center
+            self.dest = self.patrol_route[self.stop].rect.center
         else:
             x_v, y_v = 0, 0
             if self.rect.centerx < self.dest[0]:
@@ -158,6 +166,11 @@ class quintenemy(enemy):
                 y_v -= 1
             # LOGAN:::DEBUG inefficient, will likely change
             self.move(True, move=(x_v, y_v))
+
+    def draw_boxes(self, disp):
+        super().draw_boxes(disp)
+        for each in self.patrol_route:
+            pygame.draw.rect(disp, config.blue, each.rect, 2)
 
 default_trap_img = pygame.image.load( 'Animation\img_trap.jpg')
 pygame.transform.scale(default_trap_img, (config.tile_scalar, config.tile_scalar))
@@ -174,6 +187,11 @@ class node_sniper(enemy):
     def check_collide(self, target):
         if self.attack_box.colliderect(target.hitbox.rect):
             self.snipe(target)
+
+    def draw_boxes(self, disp):
+        super().draw_boxes(disp)
+        for each in self.patrol_route:
+            pygame.draw.rect(disp, config.blue, each.rect, 2)
 
 
 class skeleton(enemy):

@@ -2030,7 +2030,12 @@ class node_sniper_spawn_m(spawn_trap_m):
     def __init__(self, *args, **kwargs):
         super().__init__(enemies.node_sniper)
 
-
+class spawn_default(spell):
+    def __init__(self, **kwargs):
+        super().__init__(default_spawn_m, DEBUG_book_img, **kwargs)
+class default_spawn_m(spawn_enemy_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(enemies.enemy)
 
 
 

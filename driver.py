@@ -47,43 +47,12 @@ event_maker.make_entry('log', 'startup', 'startup has been successful', 'driver'
 pillar_of_hate = pygame.sprite.LayeredUpdates()
 
 
-# very basic rect calculating class designed to break the display window into several smaller rects so that the screen
-#  can be updated in blocks
-class partial_render():
-    # LOGAN: frag is the number of sub-rects that the display screen will be divided into
-    def __init__(self, frag):
-        self.segments = []
-        seg_size = int(config.screen_width/frag)
-        try:
-            assert (isinstance(seg_size, int)), "seg_size is not an int"
-        except AssertionError:
-            print(AssertionError, "seg_szie= ", seg_size)
-
-        for x in range(0, frag):
-            self.segments.append(pygame.rect.Rect((x*seg_size, 0), (seg_size, config.screen_height)))
-        self.index = 0
-
-    # LOGAN: once you've decided on how many sections of screen you want, simply calling the instance will return a rect
-    #  of the calculated size and position
-    def __call__(self, *args, **kwargs):
-        ret = self.segments[self.index]
-        self.index += 1
-        if self.index >= len(self.segments):
-            self.index = 0
-        return ret
-
-
-
 # important class that does its name: handles the screen
 class screen_handler():
     def __init__(self, display, pillar):
         event_maker.make_entry('log', 'game_window size', " ", 'driver', False, False, 'screen')
         self.disp = pygame.Surface(config.screen_size)
         self.size = config.screen_size
-
-        # the partial render rect
-        self.render_rect = partial_render(1)
-
         # LOGAN: setting up some important containers/labels.
         self.menus = pygame.sprite.LayeredUpdates()
         self.player_one = None
@@ -186,7 +155,7 @@ class screen_handler():
     def update(self, *args, **kwargs):
         self.menus.update()
         self.all_missiles.update()
-        self.active_enemies.update()
+        #self.active_enemies.update()
         try:
             assert (self.player_index == interface.handler.get_player_interface_num()), "this would create an error"
         except AssertionError:
@@ -336,7 +305,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.rock_slide_s, spells.spawn_node_sniper,  spells.spawn_abenenoemy, spells.spawn_quintenemy,
+unlocked_books = [spells.DEBUG_book(spells.rock_slide_s, spells.spawn_default,  spells.spawn_abenenoemy, spells.spawn_quintenemy,
     spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.DEBUG_unguided_swarm,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,

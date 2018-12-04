@@ -192,6 +192,8 @@ class screen_handler():
                 for each in player_handler.get_impacts():
                     pillar_of_hate.add(each, layer=each.layer)
 
+                self.all_missiles.add(player_handler.get_impacts())
+
                 self.player_missiles.add(player_handler.get_missiles())
                 player_handler.missiles.empty()
 

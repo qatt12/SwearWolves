@@ -134,10 +134,8 @@ class quintenemy(enemy):
         valid_nodes = kwargs['node_list']
         self.patrol_route = []
         for x in range(0, random.randint(2, 5)):
-            self.patrol_route.append(valid_nodes[x])
-
+            self.patrol_route.append(valid_nodes[random.randint(0, len(valid_nodes)-1)])
         self.base_move = 4
-
         self.stop = 0
         self.dest = self.patrol_route[self.stop].center
 

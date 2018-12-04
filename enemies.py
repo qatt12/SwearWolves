@@ -54,33 +54,59 @@ class bouncy(simple_enemy):
     pass
 
 
-class tiny_skull(enemy):
+class abenenoemy(enemy):
     def __init__(self, start_node, **kwargs):
         super().__init__(img=skull_img, loc=start_node.center)
-        self.my_vel = velocity(5, 5)
-        #self.am_stuck = 0
+        self.my_vel   = velocity(7, 5.489874531)
+        self.stuck =0
+        self.x_change =False
+        self.y_change =False
 
     def update(self, *args, **kwargs):
         super().update()
         self.rect.move_ip(self.my_vel())
+        print("Velocity: " + str(self.my_vel[0]) + ", " + str(self.my_vel[1]))
+        if self.stuck>0:
+            self.stuck-=1
 
     def react(self, to, *args, **kwargs):
-        self.move(True, walls=[to])
+
+        if self.stuck>0:
+            if self.x_change:
+                #switch x
+                print("Y needs to change")
+                self.my_vel(-self.my_vel[1])
+                self.stuck==0
+            elif self.y_change:
+                #switch y
+                print("X needs to change")
+                self.my_vel(False,-self.my_vel[0])
+                self.stuck==0
+
         #if wall to left
         if self.hitbox.rect.centerx > to.hitbox.rect.centerx:
             self.my_vel(False, -self.my_vel[1]) #go right
+            self.x_change =False
+            self.y_change =True
         #elif wall to right
-        elif self.hitbox.rect.centerx < to.hitbox.rect.centerx:
+        elif self.hitbox.rect.centerx <= to.hitbox.rect.centerx:
             self.my_vel(False, self.my_vel[1])  #go left
+            self.x_change = False
+            self.y_change = True
 
         #if wall up
         if self.hitbox.rect.centery > to.hitbox.rect.centery:
             self.my_vel(-self.my_vel[0])    #go down
+            self.y_change = False
+            self.x_change = True
 
         #if wall down
         elif self.hitbox.rect.centery < to.hitbox.rect.centery:
             self.my_vel(self.my_vel[0])     #go up
+            self.y_change = False
+            self.x_change = True
 
+        self.stuck+=2
         #if to.hitbox.rect.centery ==0:
          #   self.my_vel(flip=(False,True))
 

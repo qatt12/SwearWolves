@@ -135,6 +135,8 @@ floor_layer = 0
 # interactions between certain sprites, and to draw everything in the correct order
 class room():
     def __init__(self, enter_from, size, disp, my_theme, *args, **kwargs):
+
+
         event_maker.make_entry('trace', 'room init', 'Room constructor has been invoked', 'room', False, False,
                                'room', 'init', 'waffles',
                                found_kwargs=kwargs)
@@ -170,8 +172,14 @@ class room():
         # the walls have to be spritelings in a group in order to properly register collision
         self.contents.add(my_theme.build_walls(self.full_rect, enter_from, self.entry_door), layer=outer_walls_layer)
 
+        self.nodes = [pygame.rect.Rect((x, y), (config.tile_scalar, config.tile_scalar))
+                      for x in range(self.full_rect.left, self.full_rect.right, config.tile_scalar)
+                      for y in range(self.full_rect.top, self.full_rect.bottom, config.tile_scalar)]
+
         if 'inner_wall_rect' in kwargs:
             inner_wall_temp = kwargs['inner_wall_rect'].clamp(self.full_rect)
+            self.nodes = [each for each in self.nodes
+                          if not each.colliderect(inner_wall_temp)]
             self.contents.add(my_theme.build_inner_walls(rect=inner_wall_temp), layer=inner_walls_layer)
         event_maker.make_entry('trace', 'door init', "", 'room', False, False,
                                'door', 'init',
@@ -179,15 +187,9 @@ class room():
 
         self.all_walls = pygame.sprite.Group(self.contents.get_sprites_from_layer(outer_walls_layer),
                                              self.contents.get_sprites_from_layer(inner_walls_layer))
-        #self.contents.move_to_front(self.entry_door)
         event_maker.make_entry('log', "figuring out wtf is up with layeredupdates", "", "room", True, True,
                                entry_door_layer=self.contents.get_layer_of_sprite(self.entry_door))
         self.enemies = pygame.sprite.Group()
-
-        self.nodes = [pygame.rect.Rect((x, y), (config.tile_scalar, config.tile_scalar))
-        for x in range(self.full_rect.left, self.full_rect.right, config.tile_scalar)
-            for y in range(self.full_rect.top, self.full_rect.bottom, config.tile_scalar)]
-
 
 
     # super basic method atm, designed to be expanded as needed in later iterations
@@ -200,8 +202,7 @@ class room():
 
     def spawn_enemy(self, *args, **kwargs):
         for each in args:
-            self.contents.add(each, layer=enemies_layer)
-            self.enemies.add(self.contents.get_sprites_from_layer(enemies_layer))
+            #self.enemies.add(self.contents.get_sprites_from_layer(enemies_layer))
             each.move(bound_rect=self.full_rect)
 
     def add_door(self, side, position, *args):
@@ -317,14 +318,13 @@ class room():
             for each in dead:
                 for every in dead[each]:
                     each.react(every)
-        bonks_a = pygame.sprite.groupcollide(self.enemies, self.all_walls, False, False, collide_hitbox)
-        for each in bonks_a:
-            each.move(walls=bonks_a[each])
-            for every in bonks_a[each]:
-                each.react(every)
-        #bonks_b = pygame.sprite.groupcollide(self.enemies, self.enemies, False, False, collide_hitbox)
-        #for each in bonks_b:
-        #    each.move(push=bonks_b[each])
+        if 'enemies' in kwargs:
+            bonks_a = pygame.sprite.groupcollide(kwargs['enemies'], self.all_walls, False, False, collide_hitbox)
+            for each in bonks_a:
+                each.move(walls=bonks_a[each])
+                for every in bonks_a[each]:
+                    each.react(every)
+
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
     def collide_doors(self, players):

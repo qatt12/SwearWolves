@@ -1,587 +1,451 @@
-***	entry #: 19846 type: trace
+***	entry #: 21977 type: trace
 file source: driver
 used exit door: successful
-***	entry #: 79325 type: trace
+***	entry #: 141341 type: trace
 file source: driver
 used exit door: successful
 **********************************************************************************
 Flushing on close
-***	entry #: 79325 type: trace
+***	entry #: 141341 type: trace
 file source: driver
 used exit door: successful
-***	entry #: 79321 type: trace
+***	entry #: 141337 type: trace
 file source: room
 door init: 
 	terms: door; init; 
 	key words:
-	door_rect_at_init: <rect(100, 616, 100, 100)>
+	door_rect_at_init: <rect(31, 116, 100, 100)>
 	
-***	entry #: 79319 type: trace
-file source: room| obj source: <class 'room.room'>| instance source: <room.DEBUG_room object at 0x069D00B0>
+***	entry #: 141335 type: trace
+file source: room| obj source: <class 'room.room'>| instance source: <room.DEBUG_room object at 0x06387650>
 exit_door: found kwarg entry for exit door
 	terms: door; exit; kwargs; 
 	key words:
 	obj_src: <class 'room.room'>
-	inst_src: <room.DEBUG_room object at 0x069D00B0>
+	inst_src: <room.DEBUG_room object at 0x06387650>
 	exit_doors: [('top', 3)]
 	
-***	entry #: 79317 type: trace
+***	entry #: 141333 type: trace
 file source: room
 room init: Room constructor has been invoked
 	terms: room; init; waffles; 
 	key words:
 	found_kwargs: {'exit_door': [('top', 3)], 'inner_wall_rect': <rect(1000, 1000, 300, 200)>}
 	
-***	entry #: 19846 type: trace
+***	entry #: 21977 type: trace
 file source: driver
 used exit door: successful
-***	entry #: 19842 type: trace
+***	entry #: 21973 type: trace
 file source: room
 door init: 
 	terms: door; init; 
 	key words:
 	door_rect_at_init: <rect(300, 616, 100, 100)>
 	
-***	entry #: 19840 type: trace
-file source: room| obj source: <class 'room.room'>| instance source: <room.DEBUG_room object at 0x06B19070>
+***	entry #: 21971 type: trace
+file source: room| obj source: <class 'room.room'>| instance source: <room.DEBUG_room object at 0x0635A830>
 exit_door: found kwarg entry for exit door
 	terms: door; exit; kwargs; 
 	key words:
 	obj_src: <class 'room.room'>
-	inst_src: <room.DEBUG_room object at 0x06B19070>
+	inst_src: <room.DEBUG_room object at 0x0635A830>
 	exit_doors: [('top', 3)]
 	
-***	entry #: 19838 type: trace
+***	entry #: 21969 type: trace
 file source: room
 room init: Room constructor has been invoked
 	terms: room; init; waffles; 
 	key words:
 	found_kwargs: {'exit_door': [('top', 3)], 'inner_wall_rect': <rect(1000, 1000, 300, 200)>}
 	
-***	entry #: 148 type: trace
+***	entry #: 115 type: trace
 file source: room
 door init: 
 	terms: door; init; 
 	key words:
 	door_rect_at_init: <rect(600, 300, 100, 100)>
 	
-***	entry #: 146 type: trace
-file source: room| obj source: <class 'room.room'>| instance source: <room.hub_room object at 0x0617EDD0>
+***	entry #: 113 type: trace
+file source: room| obj source: <class 'room.room'>| instance source: <room.hub_room object at 0x059BEC50>
 exit_door: found kwarg entry for exit door
 	terms: door; exit; kwargs; 
 	key words:
 	obj_src: <class 'room.room'>
-	inst_src: <room.hub_room object at 0x0617EDD0>
+	inst_src: <room.hub_room object at 0x059BEC50>
 	exit_doors: [('top', 3)]
 	
-***	entry #: 144 type: trace
+***	entry #: 111 type: trace
 file source: room
 room init: Room constructor has been invoked
 	terms: room; init; waffles; 
 	key words:
 	found_kwargs: {'exit_door': [('top', 3)], 'inner_wall_rect': <rect(1000, 1000, 300, 200)>}
 	
-***	entry #: 143 type: trace
+***	entry #: 110 type: trace
 file source: room
 theme check: assessing the contents of theme
 	terms: theme; 
 	key words:
-	found_theme: <room.theme object at 0x0617EED0>
-	
-***	entry #: 140 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 139 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 138 type: trace
-file source: interface| instance source: <interface.handler object at 0x0683FC10>
-player handler attachments: the things that have been successfully attached to this player handler
-	terms: player; book; player_name; 
-	key words:
-	inst_src: <interface.handler object at 0x0683FC10>
-	book: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
-	
-***	entry #: 137 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 136 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 135 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 134 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 133 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 132 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 131 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 130 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 129 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 128 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 127 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 126 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 125 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 124 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 123 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 122 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 121 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 120 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 119 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 118 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 117 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 116 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 115 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 114 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 113 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 112 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 111 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 110 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 109 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 108 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
+	found_theme: <room.theme object at 0x059BEFB0>
 	
 ***	entry #: 107 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
+	inst_src: <interface.handler object at 0x0607FCB0>
 	
 ***	entry #: 106 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
 menu_update: 
 	terms: player; menu; update; quagmire; 
 	key words:
 	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
+	inst_src: <interface.handler object at 0x0607FCB0>
 	
 ***	entry #: 105 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 104 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 103 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 102 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 101 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 100 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 99 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 98 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 97 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 96 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 95 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 94 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 93 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 92 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 91 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 90 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 89 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 88 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 87 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 86 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 85 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 84 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 83 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 82 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 81 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 80 type: trace
-file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0683FC10>
-menu_update: 
-	terms: player; menu; update; quagmire; 
-	key words:
-	obj_src: <class 'interface.handler'>
-	inst_src: <interface.handler object at 0x0683FC10>
-	
-***	entry #: 79 type: trace
-file source: interface| instance source: <interface.handler object at 0x0683FC10>
+file source: interface| instance source: <interface.handler object at 0x0607FCB0>
 player handler attachments: the things that have been successfully attached to this player handler
 	terms: player; book; player_name; 
 	key words:
-	inst_src: <interface.handler object at 0x0683FC10>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	book: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(0, 0, 21, 21)>
+	
+***	entry #: 104 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 103 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 102 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 101 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 100 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 99 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 98 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 97 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 96 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 95 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 94 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 93 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 92 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 91 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 90 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 89 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 88 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 87 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 86 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 85 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 84 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 83 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 82 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 81 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 80 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 79 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 78 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 77 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 76 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 75 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 74 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 73 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 72 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 71 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 70 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 69 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 68 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 67 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 66 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 65 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 64 type: trace
+file source: interface| obj source: <class 'interface.handler'>| instance source: <interface.handler object at 0x0607FCB0>
+menu_update: 
+	terms: player; menu; update; quagmire; 
+	key words:
+	obj_src: <class 'interface.handler'>
+	inst_src: <interface.handler object at 0x0607FCB0>
+	
+***	entry #: 63 type: trace
+file source: interface| instance source: <interface.handler object at 0x0607FCB0>
+player handler attachments: the things that have been successfully attached to this player handler
+	terms: player; book; player_name; 
+	key words:
+	inst_src: <interface.handler object at 0x0607FCB0>
 	menu: 7<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 650, 350)>/host: trashboat| Rect: <rect(0, 0, 173, 293)>
 	my_name: player one
 	

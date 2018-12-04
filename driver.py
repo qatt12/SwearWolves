@@ -143,6 +143,8 @@ class screen_handler():
         if 'spawn_obstacle' in kwargs:
             pillar_of_hate.add(kwargs['spawn_obstacle'], layer=kwargs['spawn_obstacle'].layer)
             self.apply_to_players.add(kwargs['spawn_obstacle'])
+        if 'spawn_ally' in kwargs:
+            pillar_of_hate.add(kwargs['spawn_ally'], layer=kwargs['spawn_ally'].layer)
 
         event_maker.send_entry(message, False, False)
 
@@ -182,7 +184,7 @@ class screen_handler():
                                        layer=player_handler.spell_layer)
 
                 self.current_room.collide_missiles_into_enemies(self.live_missiles)
-                self.current_room.collide_walls(missiles=self.live_missiles)
+                self.current_room.collide_walls(missiles=self.live_missiles, enemies=self.active_enemies)
 
                 #print(pillar_of_hate.get_sprites_from_layer(config.enemy_layer))
 
@@ -407,6 +409,15 @@ while(game_loop and running):
                 event_maker.make_entry("log", 'detected dead spriteling at event level', "", "driver")
             elif event.subtype == events.spawn_aura:
                 screen.apply(spawn_aura=event.spawn_aura)
+            elif event.subtype == events.spawn_obstacle:
+                screen.apply(spawn_obstacle=event.spawn_obstacle)
+            elif event.subtype == events.spawn_ally:
+                screen.apply(spawn_ally=event.spawn_ally)
+            elif event.subtype == events.spawn_enemy:
+                screen.apply(spawn_enemy=event.spawn_enemy)
+
+            elif event.subtype == events.spawn_specific_enemy:
+                screen.apply(spawn_specific_enemy=event.spawn_specific_enemy)
             elif event.subtype == events.spawn_obstacle:
                 screen.apply(spawn_obstacle=event.spawn_obstacle)
         if event.type >= pygame.USEREVENT:

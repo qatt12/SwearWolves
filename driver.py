@@ -42,9 +42,8 @@ clock = pygame.time.Clock()
 
 event_maker.make_entry('log', 'startup', 'startup has been successful', 'driver')
 #sounds and music checker
-#pygame.mixer.music.load('Music/LoLD.ogg')
+#pygame.mixer.music.load('Music/KEN.ogg')
 #pygame.mixer.music.play(-1)
-
 
 pillar_of_hate = pygame.sprite.LayeredUpdates()
 

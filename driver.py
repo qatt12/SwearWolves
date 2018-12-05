@@ -427,6 +427,7 @@ plyr = player.multiplayer
 DEBUG_dungeon = room.basic_dungeon(game_window)
 screen.apply(room=DEBUG_dungeon())
 
+#event_maker.new_event(events.spriteling_event, 'driver', subtype=events.spawn_enemy, spawn_enemy=(enemies.abenenoemy,1))
 
 # may replace this with some event driven progging
 screen.game_start(plyr, DEBUG_dungeon.get_hub())
@@ -475,7 +476,13 @@ while(game_loop and running):
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)
 
+   # class spawn_quintenemy(spell):
+    #    def __init__(self, **kwargs):
+     #       super().__init__(quintenemy_spawn_m, **kwargs)
 
+#    class quintenemy_spawn_m(spawn_enemy_m):
+ #       def __init__(self, *args, **kwargs):
+  #          super().__init__(enemies.quintenemy)
     screen.draw(game_window)
     screen.update()
 

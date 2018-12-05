@@ -89,7 +89,9 @@ fire_wave_img_set = [pygame.transform.scale(fire_wave_base_img, (x, x)) for x in
 green_bubbles_img   = pygame.image.load( 'Animation\img_poisonball.png').convert()
 green_bubbles_img.set_colorkey(config.default_transparency)
 poison_drop_img = pygame.image.load( 'Animation\img_poisoned.png').convert()
-green_bubbles_img.set_colorkey(config.default_transparency)
+poison_drop_img.set_colorkey(config.default_transparency)
+p_cloud_img = pygame.image.load('Animation\img_poisonexpand.png').convert()
+p_cloud_img.set_colorkey(config.default_transparency)
 
 ice_shard_img   = pygame.image.load(    'Animation\img_iceball.png').convert()
 ice_shard_img.set_colorkey(config.default_transparency)
@@ -1657,7 +1659,7 @@ class poison_spore_s(spell):
 class poison_spore_m(missile):
     def __init__(self, dir, loc, **kwargs):
         v_mod = random.randint(0, 4) + 1
-        super().__init__(toxic_spore_img, loc, velocity(mag=v_mod, dir=dir), **kwargs, missile_name='spore',
+        super().__init__(p_cloud_img, loc, velocity(mag=v_mod, dir=dir), **kwargs, missile_name='spore',
                          elem='poison', damage=28, )
 
 class burst_shard_s(spell):
@@ -1738,7 +1740,7 @@ class pestilence_s(swarm, self_target):
 class locust_m(seeker):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
         xvel, yvel = direction[0], direction[1]
-        super().__init__(partner, 1, 8, orbital_rank, bug_book_img, loc, (xvel, yvel), *args, **kwargs,
+        super().__init__(partner, 1, 8, orbital_rank, bee_img, loc, (xvel, yvel), *args, **kwargs,
                          min_distance=30, missile_name='locust_m', max_vel=3)
 
 # not done

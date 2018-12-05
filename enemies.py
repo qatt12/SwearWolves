@@ -19,7 +19,8 @@ quintenemy_img.set_colorkey(config.default_transparency)
 skele_img = pygame.image.load('Animation\img_skeleton.png').convert()
 skele_img.set_colorkey(config.default_transparency)
 
-scarab_img = pygame.image.load('Animation\img_scarab.png').convert
+scarab_img = pygame.image.load('Animation\img_scarab_front.png').convert()
+scarab_img.set_colorkey(config.default_transparency)
 
 class enemy(spriteling.spriteling):
     def __init__(self, start_node, *args, **kwargs):
@@ -186,12 +187,12 @@ class quintenemy(enemy):
         for each in self.patrol_route:
             pygame.draw.rect(disp, config.blue, each.rect, 2)
 
-default_trap_img = pygame.image.load( 'Animation\img_trap.jpg')
+default_trap_img = pygame.image.load( 'Animation\img_scarab.png')
 default_trap_img= pygame.transform.scale(default_trap_img, (config.tile_scalar, config.tile_scalar))
 
 class node_sniper(enemy):
     def __init__(self, start_node, node_list, **kwargs):
-        super().__init__(start_node, img=default_trap_img)
+        super().__init__(start_node, img=scarab_img)
         temp_nodes = [n for n in node_list if events.dist(n, start_node) <= 250]
         self.attack_box = temp_nodes[random.randint(0, len(temp_nodes)-1)]
         self.weapon = spells.solar_beam_s(caster=self)

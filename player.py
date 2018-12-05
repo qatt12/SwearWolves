@@ -8,11 +8,11 @@ from loader import player_img_loader
 
 print("player.py has been imported")
 
-player_img_size =(38, 83)
+player_img_size =(39, 84)
 img_boundary = (40, 85)
 def calc_index(x_coord, y_coord):
-    start_x = x_coord*img_boundary[0]+1
-    start_y = y_coord*img_boundary[1]+1
+    start_x = x_coord*img_boundary[0]
+    start_y = y_coord*img_boundary[1]
     return pygame.rect.Rect((start_x, start_y), player_img_size)
 
 

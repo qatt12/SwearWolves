@@ -85,40 +85,6 @@ class theme(object):
             all_walls.add(corner('bottom_right', self.image_lookup['brc'], border.bottomright))
 
             return all_walls
-        #upper_section = sGroup()
-        #left_section = sGroup()
-        #lower_section = sGroup()
-        #right_section = sGroup()
-        #if 'tuple' in kwargs or 'specific_tuple' in kwargs:
-        #    if 'specific_tuple' in kwargs:
-        #        x, y = kwargs['specific_tuple'][0] -(kwargs['specific_tuple'][0] %tile_scalar), \
-        #               kwargs['specific_tuple'][1] -(kwargs['specific_tuple'][1] %tile_scalar)
-        #    elif 'tuple' in kwargs:
-        #        x, y = kwargs['tuple'][0] *tile_scalar, kwargs['tuple'][1] *tile_scalar
-        #    for i in range(0, x, tile_scalar):
-        #        top = wall('up', self.image_lookup['tw'], (i, 0))
-#
-        #if 'rect' in kwargs:
-        #    for i in range(kwargs['rect'].left, kwargs['rect'].right, tile_scalar):
-        #        for j in range(kwargs['rect'].top, kwargs['rect'].bottom, tile_scalar):
-        #            top = wall('up', self.image_lookup['tw'], (i + (tile_scalar/2), kwargs['rect'].top))
-        #            left = wall('left', self.image_lookup['lw'], (kwargs['rect'].left, j + (tile_scalar/2)))
-        #            bottom = wall('down', self.image_lookup['bw'], ((kwargs['rect'].right - (i + (tile_scalar/2))), kwargs['rect'].bottom))
-        #            right = wall('right', self.image_lookup['rw'], (kwargs['rect'].right, (kwargs['rect'].right - (i + (tile_scalar/2)))))
-        #            event_maker.make_entry('trace', 'inner walls', "tracking the generation of inner walls", 'room', False, False,
-        #                                   'walls', 'wall', 'block', 'blocks', 'Logan',
-        #                                   top=top, left=left, right=right, bottom=bottom)
-#
-        #            upper_section.add(top)
-        #            left_section.add(left)
-        #            lower_section.add(bottom)
-        #            right_section.add(right)
-#
-        #all_sections = sGroup(upper_section, lower_section, right_section, left_section)
-        #return all_sections
-
-
-
 
 default_theme = theme()
 

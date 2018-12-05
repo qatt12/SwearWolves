@@ -329,8 +329,9 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.cold_snap_s, spells.spawn_default, spells.spawn_node_sniper,  spells.spawn_abenenoemy, spells.spawn_quintenemy,
-    spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.DEBUG_unguided_swarm,
+unlocked_books = [spells.DEBUG_book(spells.cold_snap_s, spells.spawn_default, spells.spawn_node_sniper,
+                                    spells.spawn_abenenoemy, spells.spawn_quintenemy,
+                                    spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.slash_s,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
                                     spells.hydro_pump_s, spells.poison_spore_s, spells.chain_gun_s,
@@ -339,6 +340,7 @@ unlocked_books = [spells.DEBUG_book(spells.cold_snap_s, spells.spawn_default, sp
                   spells.book_of_rock(4),
                   spells.book_of_acid(4),
                   spells.book_of_ice(4),
+                  spells.book_of_metal(4),
                   #spells.book_of_light(3),
                   spells.book_of_leaves(4),
                   #spells.book_of_waves(3),

@@ -220,6 +220,48 @@ class node_sniper(enemy):
         self.weapon.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
                            caster=self)
 
+class slash_s(spells.wave_caster):
+    def __init__(self, **kwargs):
+        super().__init__(slashy_thing_m, True, slashy_thing_m, spells.metal_book_img, **kwargs, scaled=(7, 3), spell_name='fissure',
+                         trigger_method=spells.trailing_gate(spells.reset_gate(sec/8), spells.cap(5),
+                                                             spells.cooled(2*sec), spells.over_heated(sec)),
+                         recoil=((sec/8)+1))
+
+class slashy_thing_m(spells.ground_wave):
+    def __init__(self, img_set, direction, loc, *args, **kwargs):
+        super().__init__(img_set, 0, loc, (direction[0]*2.7, direction[1]*2.7), *args, **kwargs, missile_name='slab',
+                         stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30, hp=9, damage=45, elem='rock',
+                         knockback=(direction, 2.5))
+
+class bolt_caster(enemy):
+    def __init__(self, start_node, node_list, **kwargs):
+        super().__init__(start_node, img=default_trap_img)
+        temp_nodes = [n for n in node_list if events.dist(n, start_node) <= 250]
+        self.attack_box = temp_nodes[random.randint(0, len(temp_nodes)-1)]
+        self.weapon = spells.solar_beam_s(caster=self)
+        self.layer = config.floor_cos
+
+
+    def check_attack(self, target):
+        if self.attack_box.rect.colliderect(target.hitbox.rect):
+            self.attack(target)
+
+    def draw_boxes(self, disp):
+        super().draw_boxes(disp)
+        pygame.draw.rect(disp, config.blue, self.attack_box.rect, 2)
+
+    def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
+        self.weapon.update(True, self.rect.center, False, False, *args, **kwargs)
+
+
+    def attack(self, target):
+        x_adj = self.rect.centerx - target.hitbox.rect.centerx + 0.01
+        y_adj = self.rect.centery - target.hitbox.rect.centery + 0.01
+        arc = x_adj/y_adj
+        angle = (arc, 1)
+        self.weapon.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
+                           caster=self)
 
 
 

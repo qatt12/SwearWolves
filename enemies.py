@@ -337,6 +337,32 @@ class boss(enemy):
     #        if k is 3:
     #            #spawn enemy(?)
     #    self.timer += 1
+class smartenmy(enemy):
+    def __init__(self,start_node, **kwargs):
+        super().__init__(start_node, img=scarab_img)
+        self.timer = 0
+        self.track_player = None
+        self.middist = 300
+
+    def check_plr(self, players):
+        middist = self.middist
+        for each in players:
+            if events.dist(self,each) < middist:
+                middist = events.dist(self,each)
+                self.track_player = each
+                return True
+        else:
+            return False
+
+    def update(self, *args, **kwargs):
+        super().update(*args, **kwargs)
+        self.timer += 1
+        if self.timer >= 1:
+            if self.check_plr(kwargs["players"]):
+                self.respond()
+
+    def respond(self):
+        pass
 
 class scarab(enemy):
 #surround boss, shoot at player

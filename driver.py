@@ -109,8 +109,9 @@ class screen_handler():
                     self.player_one = self.ordered_list_of_player_HANDLERS[0]
                 else:
                     event_maker.new_event(events.game_state_event, "driver", subtype=events.game_over)
-                    ded = pygame.image.load('Animation\img_death.png').convert()
-
+         #           ded = pygame.image.load('Animation\img_death.png').convert()
+         #           self.disp.blit(ded, (0, 0))
+       #             screen.disp.flip()
                     time.sleep(3)
                     pygame.quit()
 
@@ -166,7 +167,7 @@ class screen_handler():
     def update(self, *args, **kwargs):
         self.menus.update()
         self.all_missiles.update()
-        self.active_enemies.update()
+  #      self.active_enemies.update(players=self.GROUP_of_player_SPRITES)
         try:
             assert (self.player_index == interface.handler.get_player_interface_num()), "this would create an error"
         except AssertionError:
@@ -200,6 +201,7 @@ class screen_handler():
                     pillar_of_hate.add(player_handler.get_spells()['active'],
                                        layer=player_handler.spell_layer)
             for each in self.active_enemies:
+                each.update(players=self.GROUP_of_player_SPRITES)
                 self.enemy_missiles.add(each.get_missiles())
                 for every in each.get_missiles():
                     pillar_of_hate.add(every, layer=every.layer)
@@ -483,13 +485,6 @@ while(game_loop and running):
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)
 
-   # class spawn_quintenemy(spell):
-    #    def __init__(self, **kwargs):
-     #       super().__init__(quintenemy_spawn_m, **kwargs)
-
-#    class quintenemy_spawn_m(spawn_enemy_m):
- #       def __init__(self, *args, **kwargs):
-  #          super().__init__(enemies.quintenemy)
     screen.draw(game_window)
     screen.update()
 

@@ -42,9 +42,8 @@ clock = pygame.time.Clock()
 
 event_maker.make_entry('log', 'startup', 'startup has been successful', 'driver')
 #sounds and music checker
-#pygame.mixer.music.load('Music/LoLD.ogg')
+#pygame.mixer.music.load('Music/KEN.ogg')
 #pygame.mixer.music.play(-1)
-
 
 pillar_of_hate = pygame.sprite.LayeredUpdates()
 
@@ -109,8 +108,9 @@ class screen_handler():
                     self.player_one = self.ordered_list_of_player_HANDLERS[0]
                 else:
                     event_maker.new_event(events.game_state_event, "driver", subtype=events.game_over)
-                    ded = pygame.image.load('Animation\img_death.png').convert()
-
+         #           ded = pygame.image.load('Animation\img_death.png').convert()
+         #           self.disp.blit(ded, (0, 0))
+       #             screen.disp.flip()
                     time.sleep(3)
                     pygame.quit()
 
@@ -248,7 +248,7 @@ class screen_handler():
         #    each.draw(self.disp, True)
         #for each in self.obstacles:
         #    each.draw_boxes(self.disp)
-#####
+####
         #display.blit(self.disp, (0, 0))
         #self.menus.draw(display)
         #for each in self.overlays:
@@ -486,13 +486,6 @@ while(game_loop and running):
             event_maker.make_entry('event', 'events', "user events", 'driver', False, True, 'events', 'DEBUG', 'user',
                                    "basic", log_entry=event)
 
-   # class spawn_quintenemy(spell):
-    #    def __init__(self, **kwargs):
-     #       super().__init__(quintenemy_spawn_m, **kwargs)
-
-#    class quintenemy_spawn_m(spawn_enemy_m):
- #       def __init__(self, *args, **kwargs):
-  #          super().__init__(enemies.quintenemy)
     screen.draw(game_window)
     screen.update()
 

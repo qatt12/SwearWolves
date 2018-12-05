@@ -138,7 +138,8 @@ sun_particle_img = pygame.image.load(    'Animation\img_sunbeam.png').convert()
 sun_particle_img = pygame.transform.scale(sun_particle_img, (20, 20))
 sun_particle_img.set_colorkey(config.default_transparency)
 toxic_spore_img = acid_book_img
-small_fire_img = fire_book_img
+small_fire_img = pygame.image.load('Animation\img_fireswirl.png').convert()
+small_fire_img.set_colorkey(config.default_transparency)
 water_splash_img =  pygame.image.load(    'Animation\img_watersplash.png').convert()
 water_splash_img.set_colorkey(config.default_transparency)
 
@@ -1451,7 +1452,7 @@ class fireball_m(missile):
     def __init__(self, dir, loc, **kwargs):
         # fsx = pygame.mixer.Sound("Music/MM.ogg")
         # pygame.mixer.Sound.play(fsx)
-        super().__init__(fire_ball_img, loc, velocity(mag=4, dir=dir), **kwargs, missile_name='fireball',
+        super().__init__(fire_bolt_img, loc, velocity(mag=4, dir=dir), **kwargs, missile_name='fireball',
                          elem='fire', damage=68)
 
 # still needs work, as the reset doesn't quite behave. you can cast up to the cap, release the trigger, and then cast

@@ -1941,18 +1941,6 @@ class spawn_enemy_m(pygame.sprite.Sprite):
     def update(self, *args):
         self.kill()
 
-class spawn_trap_m(pygame.sprite.Sprite):
-    def __init__(self, trap_class, *args, **kwargs):
-        super().__init__()
-        if 'num' in kwargs:
-            spawn = kwargs['num']
-        else:
-            spawn = 1
-        event_maker.new_event(events.spriteling_event, "spells", subtype=events.spawn_trap,
-                              spawn_trap=(trap_class))
-    def update(self, *args):
-        self.kill()
-
 
 class spawn_abenenoemy(spell):
     def __init__(self, **kwargs):

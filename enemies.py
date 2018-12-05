@@ -240,57 +240,57 @@ class boss(enemy):
     def __init__(self):
         super().__init__(img=boss_img)
 
-    def update(self,*args,**kwargs):
-        super().update(*args,**kwargs)
-        #move away from player
-
-        if "player" in kwargs:
-            pass
-        x_v, y_v = 0,0
-        # if player to the left and no wall to right
-        # move right
-        if self.rect.centerx < player.rect.centerx:
-            x_v -= 1
-        # elif player to the left and wall to right
-        # move up
-        elif self.rect.centerx < player.rect.centerx and hits wall:
-            y_v += 1
-        #if player to the right and no wall to left
-            #  move left
-        if self.rect.centerx > player.rect.centerx:
-            x_v += 1
-        #elif player to the right and wall to the left
-            # move down
-        elif self.rect.centerx > player.rect.centerx and hits wall:
-            y_v -= 1
-        #if player up and no wall down
-            # move down
-        if self.rect.centery < player.rect.centery:
-            y_v -= 1
-        #elif player up and wall down
-            # move right
-        elif self.rect.centery < player.rect.centery and hits wall:
-            x_v += 1
-        #if player down and no wall up
-            # move up
-        if self.rect.centery > player.rect.centery:
-            y_v += 1
-        #elif player down and wall up
-            # move left
-        elif self.rect.centery > player.rect.centery and hits wall:
-            x_v -= 1
-
-
-        if self.timer >= config.fps*3:
-            k = random.randint(1,3)
-            if k is 1:
-                 #shoot at player (on a timer somehow?)
-
-            if k is 2:
-                #fires off swarm
-            if k is 3:
-                #spawn enemy(?)
-        self.timer += 1
+    #def update(self,*args,**kwargs):
+    #    super().update(*args,**kwargs)
+    #    #move away from player
+#
+    #    if "player" in kwargs:
+    #        pass
+    #    x_v, y_v = 0,0
+    #    # if player to the left and no wall to right
+    #    # move right
+    #    if self.rect.centerx < player.rect.centerx:
+    #        x_v -= 1
+    #    # elif player to the left and wall to right
+    #    # move up
+    #    elif self.rect.centerx < player.rect.centerx and hits wall:
+    #        y_v += 1
+    #    #if player to the right and no wall to left
+    #        #  move left
+    #    if self.rect.centerx > player.rect.centerx:
+    #        x_v += 1
+    #    #elif player to the right and wall to the left
+    #        # move down
+    #    elif self.rect.centerx > player.rect.centerx and hits wall:
+    #        y_v -= 1
+    #    #if player up and no wall down
+    #        # move down
+    #    if self.rect.centery < player.rect.centery:
+    #        y_v -= 1
+    #    #elif player up and wall down
+    #        # move right
+    #    elif self.rect.centery < player.rect.centery and hits wall:
+    #        x_v += 1
+    #    #if player down and no wall up
+    #        # move up
+    #    if self.rect.centery > player.rect.centery:
+    #        y_v += 1
+    #    #elif player down and wall up
+    #        # move left
+    #    elif self.rect.centery > player.rect.centery and hits wall:
+    #        x_v -= 1
+#
+#
+    #    if self.timer >= config.fps*3:
+    #        k = random.randint(1,3)
+    #        if k is 1:
+    #             #shoot at player (on a timer somehow?)
+#
+    #        if k is 2:
+    #            #fires off swarm
+    #        if k is 3:
+    #            #spawn enemy(?)
+    #    self.timer += 1
 
 class scarab(enemy):
 #surround boss, shoot at player

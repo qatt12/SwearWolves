@@ -392,6 +392,7 @@ class multiroom(room):
     def __init__(self, enter_from, size, theme, disp, *args, **kwargs):
         super().__init__(enter_from, size, theme, disp, *args, **kwargs)
 
+
 class DEBUG_room(room):
     def __init__(self, disp, my_theme, *args, **kwargs):
         s_x, s_y = random.randint(5, 14), random.randint(5, 14)
@@ -422,8 +423,6 @@ class dungeon():
 
     def next_room(self, players):
         self.current_room = DEBUG_room(self.disp, self.my_theme, exit_door=[('top', 3),
-                                       #('bottom', 6),
-                                       #('right', 1)
                                        ],
                                        inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200))
                                        )

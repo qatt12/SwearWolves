@@ -126,6 +126,7 @@ class screen_handler():
         if 'spawn_aura' in kwargs:
             pillar_of_hate.add(kwargs['spawn_aura'], layer=kwargs['spawn_aura'].layer)
             self.apply_to_players.add(kwargs['spawn_aura'])
+            print("new aura: ", kwargs['spawn_aura'])
         if 'spawn_obstacle' in kwargs:
             pillar_of_hate.add(kwargs['spawn_obstacle'], layer=kwargs['spawn_obstacle'].layer)
             self.obstacles.add(kwargs['spawn_obstacle'])
@@ -228,25 +229,25 @@ class screen_handler():
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        #display.fill(config.black)
-        #pygame.display.update(pillar_of_hate.draw(display))
+        display.fill(config.black)
+        pygame.display.update(pillar_of_hate.draw(display))
 
-        if self.current_room is not None:
-            self.current_room.draw_contents(self.disp, True)
-            for each in self.ordered_list_of_player_HANDLERS:
-                each.draw(self.disp, True)
-        for each in self.all_missiles:
-            each.draw(self.disp, True)
-        for each in self.active_enemies:
-            each.draw(self.disp, True)
-        for each in self.obstacles:
-            each.draw_boxes(self.disp)
-##
-        display.blit(self.disp, (0, 0))
-        self.menus.draw(display)
-        for each in self.overlays:
-            each.draw(display)
-        pygame.display.flip()
+        #if self.current_room is not None:
+        #    self.current_room.draw_contents(self.disp, True)
+        #    for each in self.ordered_list_of_player_HANDLERS:
+        #        each.draw(self.disp, True)
+        #for each in self.all_missiles:
+        #    each.draw(self.disp, True)
+        #for each in self.active_enemies:
+        #    each.draw(self.disp, True)
+        #for each in self.obstacles:
+        #    each.draw_boxes(self.disp)
+###
+        #display.blit(self.disp, (0, 0))
+        #self.menus.draw(display)
+        #for each in self.overlays:
+        #    each.draw(display)
+        #pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and

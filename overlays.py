@@ -40,7 +40,8 @@ class hud(spriteling.spriteling):
             self.heal_potions = 3
         self.boss_keys = 0
         self.keys = 1
-        self.hp = player.hp
+        self.hp = player.curr_hp
+        self.max_hp = player.base_hp
         self.ankhs = 1
         self.current_spell_index = book.get_active_spell()[0]
         self.spell_list = book.spells
@@ -53,7 +54,9 @@ class hud(spriteling.spriteling):
         self.draw(self.image)
 
     def update(self, *args, **kwargs):
-        pass
+        if "hp" in kwargs:
+            self.hp = kwargs['hp']
+        self.draw(self.image)
 
     def draw(self, disp, boxes=False):
         #print("drawing a hud")

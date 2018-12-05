@@ -75,29 +75,7 @@ class player(spriteling.spriteling):
         self.hp = 1000
 
     def update(self, *args, **kwargs):
-        if self.curr_hp <= 0:
-            self.kill()
-            event_maker.new_event(events.player_event, 'player', subtype=events.player_died, dead_player=self)
         super().update(*args, **kwargs)
-        # all this stuff is supposed to handle moving the player, but it doesn't work right. It does handle facing, and
-        # getting the right image, which is nice, but as of now all the movement is done by the move() method in
-        # spriteling
-        #self.prev_facing = self.facing
-        '''if 'look' in kwargs and any in kwargs['look'] != 0:
-            self.facing = kwargs['look']
-        elif 'move' in kwargs:
-            if kwargs['move'][0] > 0.2:
-                self.facing = (1, 0)
-            elif kwargs['move'][0] < -0.2:
-                self.facing = (-1, 0)
-            elif kwargs['move'][1] > 0.2 and kwargs['move'][1] > abs(kwargs['move'][0]):
-                self.facing = (0, -1)
-            elif kwargs['move'][1] < -0.2 and abs(kwargs['move'][1]) > abs(kwargs['move'][0]):
-                self.facing = (0, 1)
-        else:
-            self.facing = self.prev_facing'''
-
-        # ********** DEBUG STUFF
         if 'stick_data' in kwargs:
             x_move_input, y_move_input = kwargs['stick_data']['move'][0], kwargs['stick_data']['move'][1]
             mod_facing, lock_facing = kwargs['stick_data']['mod_look'], kwargs['stick_data']['lock_look']

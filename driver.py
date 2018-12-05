@@ -200,6 +200,7 @@ class screen_handler():
                     pillar_of_hate.add(player_handler.get_spells()['active'],
                                        layer=player_handler.spell_layer)
             for each in self.active_enemies:
+                #print(each)
                 self.enemy_missiles.add(each.get_missiles())
                 for every in each.get_missiles():
                     pillar_of_hate.add(every, layer=every.layer)
@@ -234,25 +235,25 @@ class screen_handler():
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        #display.fill(config.black)
-        #pygame.display.update(pillar_of_hate.draw(display))
+        display.fill(config.black)
+        pygame.display.update(pillar_of_hate.draw(display))
 
-        if self.current_room is not None:
-            self.current_room.draw_contents(self.disp, True)
-            for each in self.ordered_list_of_player_HANDLERS:
-                each.draw(self.disp, True)
-        for each in self.all_missiles:
-            each.draw(self.disp, True)
-        for each in self.active_enemies:
-            each.draw(self.disp, True)
-        for each in self.obstacles:
-            each.draw_boxes(self.disp)
-####
-        display.blit(self.disp, (0, 0))
-        self.menus.draw(display)
-        for each in self.overlays:
-            each.draw(display)
-        pygame.display.flip()
+        #if self.current_room is not None:
+        #    self.current_room.draw_contents(self.disp, True)
+        #    for each in self.ordered_list_of_player_HANDLERS:
+        #        each.draw(self.disp, True)
+        #for each in self.all_missiles:
+        #    each.draw(self.disp, True)
+        #for each in self.active_enemies:
+        #    each.draw(self.disp, True)
+        #for each in self.obstacles:
+        #    each.draw_boxes(self.disp)
+#####
+        #display.blit(self.disp, (0, 0))
+        #self.menus.draw(display)
+        #for each in self.overlays:
+        #    each.draw(display)
+        #pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -326,10 +327,10 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.spawn_skeleton,
-    spells.cold_snap_s, #spells.spawn_caster,
-                                    spells.spawn_node_sniper,
-                                    spells.spawn_abenenoemy, spells.spawn_quintenemy,
+unlocked_books = [spells.DEBUG_book(spells.spawn_skeleton, spells.spawn_scarab, spells.spawn_elite_scarab, spells.spawn_boss_scarab,
+                                    spells.cold_snap_s, #spells.spawn_caster,
+                                    #spells.spawn_node_sniper,
+                                    #spells.spawn_abenenoemy, spells.spawn_quintenemy,
                                     spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.slash_s,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,
@@ -401,7 +402,7 @@ while(player_select_loop and running):
                 print("player handlers in screen: ", screen.ordered_list_of_player_HANDLERS)
 
     screen.update()
-    screen.draw(game_window)
+    #screen.draw(game_window)
     for each in screen.menus:
         pick = each.is_ready()
         if pick != -1 and pick not in banned_list:

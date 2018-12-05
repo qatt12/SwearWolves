@@ -394,7 +394,7 @@ class knockback():
         self.y_disp = direction[1] * magnitude
 
     def __call__(self, subj):
-        subj.move(knockback=(self.x_disp, self.y_disp))
+        subj.move(True, knockback=(self.x_disp, self.y_disp))
 
 class weaken():
     pass

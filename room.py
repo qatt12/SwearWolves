@@ -154,6 +154,12 @@ class room():
             self.nodes = [each for each in self.nodes
                           if not each.rect.colliderect(inner_wall_temp)]
             self.contents.add(my_theme.build_inner_walls(rect=inner_wall_temp), layer=inner_walls_layer)
+        elif 'inner_wall_rects' in kwargs:
+            for each in kwargs['inner_wall_rects']:
+                inner_wall_temp = each.clamp(self.full_rect)
+                self.nodes = [each for each in self.nodes
+                              if not each.rect.colliderect(inner_wall_temp)]
+                self.contents.add(my_theme.build_inner_walls(rect=inner_wall_temp), layer=inner_walls_layer)
         event_maker.make_entry('trace', 'door init', "", 'room', False, False,
                                'door', 'init',
                                door_rect_at_init=self.entry_door.rect)
@@ -178,6 +184,16 @@ class room():
                 self.hazards.add(pit_b)
                 self.contents.add(pit_b, layer=pit_b.layer)
             else:
+                pit = blocks.pit(pit_rect_temp)
+                self.hazards.add(pit)
+                self.contents.add(pit, layer=pit.layer)
+        if "pit_rects" in kwargs:
+            for each in kwargs['pit_rects']:
+                pit_rect_temp = each.clamp(self.ground.rect)
+                self.nodes = [each for each in self.nodes
+                              if not each.rect.colliderect(pit_rect_temp)]
+                print("floor: ", self.ground.rect)
+                print("pit: ", pit_rect_temp)
                 pit = blocks.pit(pit_rect_temp)
                 self.hazards.add(pit)
                 self.contents.add(pit, layer=pit.layer)
@@ -343,10 +359,12 @@ class room():
     # checks collision for doors, and using some crazy nesting of for-loops, checks every player against every door
     # they're in contact with
     def collide_doors(self, players):
-        dings = pygame.sprite.groupcollide(self.contents.get_sprites_from_layer(doors_layer), players, False, False, collide_hitbox)
-        for each in dings:
-            for every in dings[each]:
-                each(every)
+        if not bool(self.enemies):
+
+            dings = pygame.sprite.groupcollide(self.contents.get_sprites_from_layer(doors_layer), players, False, False, collide_hitbox)
+            for each in dings:
+                for every in dings[each]:
+                    each(every)
 
     def collide_traps(self, players):
         dings = pygame.sprite.groupcollide(self.contents.get_sprites_from_layer(doors_layer), players, False, False,
@@ -354,11 +372,11 @@ class room():
         for each in dings:
             for every in dings[each]:
                 each(every)
-        trips = pygame.sprite.groupcollide(self.traps, players, False, False,
-                                           collide_hitbox)
-        for each in dings:
-            for every in dings[each]:
-                each(every)
+        #trips = pygame.sprite.groupcollide(self.traps, players, False, False,
+        #                                   collide_hitbox)
+        #for each in trips:
+        #    for every in dings[each]:
+        #        each(every)
 
     def collide_missiles_into_enemies(self, incoming):
         dings = pygame.sprite.groupcollide(incoming, self.enemies, False, False, collide_hitbox)
@@ -391,6 +409,10 @@ class DEBUG_room(room):
         s_x, s_y = random.randint(5, 14), random.randint(5, 14)
         super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
 
+class boss_room(room):
+    def __init__(self, disp, my_theme,  *args, **kwargs):
+        s_x, s_y = random.randint(14, 24), random.randint(14, 24)
+        super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
 
 class donut_room(room):
     def __init__(self, disp, my_theme, *args, **kwargs):
@@ -433,18 +455,52 @@ class dungeon():
         self.disp = disp
         self.hub = hub_room(disp, self.my_theme)
         self.current_room = self.hub
+        self.challenge = 4
 
     def next_room(self, players):
-        event_maker.new_event(events.spriteling_event, 'driver', subtype=events.spawn_enemy,spawn_enemy=(enemies.abenenoemy, 2))
-        event_maker.new_event(events.spriteling_event, 'driver', subtype=events.spawn_enemy,spawn_enemy=(enemies.quintenemy, 3))
-        event_maker.new_event(events.spriteling_event, 'driver', subtype=events.spawn_enemy,spawn_enemy=(enemies.node_sniper, 2))
+        self.challenge += 2
+        easy_enemies = {
+            0: enemies.abenenoemy,
+            1: enemies.quintenemy,
+            2: enemies.node_sniper,
+            3: enemies.fire_spitter,
 
+        }
+        hard_enemies = {
+            0: enemies.skeleton,
+            1: enemies.beetle,
+            2: enemies.elite_beetle,
+        }
+        #event_maker.new_event(events.spriteling_event, 'room', subtype=events.spawn_enemy,
+        #                      spawn_enemy=(enemies.abenenoemy, 1)),
+        #event_maker.new_event(events.spriteling_event, 'room', subtype=events.spawn_enemy,
+        #                      spawn_enemy=(enemies.quintenemy, 3)),
+        #event_maker.new_event(events.spriteling_event, 'room', subtype=events.spawn_enemy,
+        #                      spawn_enemy=(enemies.fire_spitter, 2)),
+        #event_maker.new_event(events.spriteling_event, 'room', subtype=events.spawn_enemy,
+        #                      spawn_enemy=(enemies.node_sniper, 2))
+        for x in range(0, self.challenge):
+            selected = random.randint(0, 3)
+            event_maker.new_event(events.spriteling_event, 'room', subtype=events.spawn_enemy,
+                                  spawn_enemy=(easy_enemies[selected], 1)),
+        for x in range(4, self.challenge):
+            selected = random.randint(0, 2)
+            event_maker.new_event(events.spriteling_event, 'room', subtype=events.spawn_enemy,
+                                  spawn_enemy=(hard_enemies[selected], 1)),
         possible_rooms = {
             0: DEBUG_room,
+            1: donut_room,
+            2: bridge_room,
+            3: boss_room,
         }
-
-        #self.current_room = possible_rooms[random.randint(0, 4)](self.disp, self.my_theme, )
-        self.current_room = bridge_room(self.disp, self.my_theme, )
+        if self.challenge <= 8:
+            self.current_room = possible_rooms[random.randint(0, 2)](self.disp, self.my_theme, )
+        else:
+            self.current_room = possible_rooms[3](self.disp, self.my_theme, )
+            event_maker.new_event(events.spriteling_event, 'room', subtype=events.spawn_enemy,
+                                  spawn_enemy=(enemies.big_blue_beetle, 1)),
+        #self.current_room = bridge_room(self.disp, self.my_theme, )
+        #self.current_room = donut_room(self.disp, self.my_theme, )
         self.current_room.add_players(players)
         return self.current_room
 

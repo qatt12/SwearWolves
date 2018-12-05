@@ -1618,9 +1618,9 @@ class sharp_leaf_m(missile):
         self.curr_hp += 2
 
 
-class splash_s(spell):
-    def __init__(self, **kwargs):
-        super().__init__(splash_m, water_book_img, **kwargs, )
+#class splash_s(spell):
+#    def __init__(self, **kwargs):
+#        super().__init__(splash_m, water_book_img, **kwargs, )
 
 
 
@@ -1741,15 +1741,15 @@ class locust_m(seeker):
         super().__init__(partner, 1, 8, orbital_rank, bee_img, loc, (xvel, yvel), *args, **kwargs,
                          min_distance=30, missile_name='locust_m', max_vel=3)
 
-# not done
-class light_pulse_s(spell):
-    def __init__(self, **kwargs):
-        super().__init__(light_pulse_m, light_book_img, **kwargs, spell_name='light_pulse')
-class light_pulse_m(missile):
-    def __init__(self, dir, loc):
-        pass_vel = velocity(mag=4, dir=dir)
-        missile.__init__(self, light_pulse_img, loc, pass_vel, missile_name='light_pulse')
-        self.hitbox = spriteling.hitbox(self)
+## not done
+#class light_pulse_s(spell):
+#    def __init__(self, **kwargs):
+#        super().__init__(light_pulse_m, light_book_img, **kwargs, spell_name='light_pulse')
+#class light_pulse_m(missile):
+#    def __init__(self, dir, loc):
+#        pass_vel = velocity(mag=4, dir=dir)
+#        missile.__init__(self, light_pulse_img, loc, pass_vel, missile_name='light_pulse')
+#        self.hitbox = spriteling.hitbox(self)
 
 
 # sun lazer
@@ -1846,8 +1846,8 @@ class book_of_ice(spell_book):
 class book_of_leaves(spell_book):
     def __init__(self, level=0):
         super().__init__(level)
-        self.img = big_leaf_book_img
-        self.goddess_lookup_key = 'tattered'
+        self.image = big_leaf_book_img
+        self.goddess_lookup_key = 'robes'
         self.spell_key = {0: razor_leaf_s, 1: solar_beam_s, 2: poison_spore_s, 3: petal_storm_s}
 
 
@@ -1861,72 +1861,71 @@ class book_of_acid(spell_book):
         self.level_costs = {0: 1000, 1: 2000}
 
 
-class book_of_light(spell_book):
-    def __init__(self, level=0):
-        super().__init__(level)
-        self.image = big_light_book_img
-        self.goddess_lookup_key = 'robes'
-        self.spell_key = {0: light_pulse_s,  2: beacon_of_hope, 3: solar_beam_s}
-        self.level_costs = {0: 1000, 1: 2000}
+#class book_of_light(spell_book):
+#    def __init__(self, level=0):
+#        super().__init__(level)
+#        self.image = big_light_book_img
+#        self.goddess_lookup_key = 'robes'
+#        self.spell_key = {0: light_pulse_s,  2: beacon_of_hope, 3: solar_beam_s}
+#        self.level_costs = {0: 1000, 1: 2000}
 
 
-class book_of_waves(spell_book):
-    def __init__(self, level=0):
-        super().__init__(level)
-        self.image = big_water_book_img
-        self.special = None
-        self.goddess_lookup_key = 'robes'
-        self.spell_key = {0: splash_s, 1: cold_snap_s, 2: healing_pool_s, 3: hydro_pump_s}
-        self.level_costs = {0: 1000, 1: 2000}
+#class book_of_waves(spell_book):
+#    def __init__(self, level=0):
+#        super().__init__(level)
+#        self.image = big_water_book_img
+#        self.special = None
+#        self.goddess_lookup_key = 'robes'
+#        self.spell_key = {0: splash_s, 1: cold_snap_s, 2: healing_pool_s, 3: hydro_pump_s}
+#        self.level_costs = {0: 1000, 1: 2000}
 
-class book_of_wind(spell_book):
-    def __init__(self, level=0):
-        super().__init__(level)
-        self.image = big_water_book_img
-        self.special = None
-        self.goddess_lookup_key = 'robes'
-        self.spell_key = {0: razor_leaf_s, 1: gust_s, 2: tornado_s, 3: hurricane_s}
-        self.level_costs = {0: 1000, 1: 2000}
+#class book_of_wind(spell_book):
+#    def __init__(self, level=0):
+#        super().__init__(level)
+#        self.image = big_water_book_img
+#        self.special = None
+#        self.goddess_lookup_key = 'robes'
+#        self.spell_key = {0: razor_leaf_s, 1: gust_s, 2: tornado_s, 3: hurricane_s}
+#        self.level_costs = {0: 1000, 1: 2000}
 
 class book_of_metal(spell_book):
     def __init__(self, level=0):
         super().__init__(level)
-        self.img = big_metal_book_img
-        self.goddess_lookup_key = 'tattered'
+        self.image = big_metal_book_img
+        self.goddess_lookup_key = 'body_suit'
         self.spell_key = {0: burst_shard_s, 1: slash_s, 2: flak_cannon_s, 3: chain_gun_s}
 
-class book_of_magnets(spell_book):
-    def __init__(self, level=0):
-        super().__init__(level)
-        self.img = big_magnet_book_img
-        self.goddess_lookup_key = 'tattered'
-        self.spell_key = {0: burst_shard_s, 1: synthesis_s, 2: poison_spore_s, 3: chain_gun_s}
+#class book_of_magnets(spell_book):
+#    def __init__(self, level=0):
+#        super().__init__(level)
+#        self.img = big_magnet_book_img
+#        self.goddess_lookup_key = 'tattered'
+#        self.spell_key = {0: burst_shard_s, 1: synthesis_s, 2: poison_spore_s, 3: chain_gun_s}
 
 
 class book_of_rock(spell_book):
     def __init__(self, level=0):
         super().__init__(level)
-        self.img = big_rock_book_img
+        self.image = big_rock_book_img
         self.goddess_lookup_key = 'tattered'
         self.spell_key = {0: rock_burst_s, 1: rock_slide_s, 2: fissure_s, 3: lobbed_boulder_s}
 
-class book_of_bugs(spell_book):
-    def __init__(self, level=0):
-        super().__init__(level)
-        self.img = big_bug_book_img
-        self.goddess_lookup_key = 'tattered'
-        self.spell_key = {0: pestilence_s, 1: synthesis_s, 2: poison_spore_s, 3: solar_beam_s}
+#class book_of_bugs(spell_book):
+#    def __init__(self, level=0):
+#        super().__init__(level)
+#        self.img = big_bug_book_img
+#        self.goddess_lookup_key = 'tattered'
+#        self.spell_key = {0: pestilence_s, 1: synthesis_s, 2: poison_spore_s, 3: solar_beam_s}
 
-class book_of_holy(spell_book):
-    def __init__(self, level=0):
-        super().__init__(level)
-        self.img = big_holy_book_img
-        self.goddess_lookup_key = 'tattered'
-        self.spell_key = {0: razor_leaf_s, 1: synthesis_s, 2: poison_spore_s, 3: solar_beam_s}
+#class book_of_holy(spell_book):
+#    def __init__(self, level=0):
+#        super().__init__(level)
+#        self.img = big_holy_book_img
+#        self.goddess_lookup_key = 'tattered'
+#        self.spell_key = {0: razor_leaf_s, 1: synthesis_s, 2: poison_spore_s, 3: solar_beam_s}
 
 
 
-import enemies
 
 
 class spawn_enemy_m(pygame.sprite.Sprite):
@@ -1940,6 +1939,8 @@ class spawn_enemy_m(pygame.sprite.Sprite):
                               spawn_enemy=(nme_class, spawn))
     def update(self, *args):
         self.kill()
+
+import enemies
 
 
 class spawn_abenenoemy(spell):
@@ -1984,7 +1985,26 @@ class default_spawn_m(spawn_enemy_m):
     def __init__(self, *args, **kwargs):
         super().__init__(enemies.enemy)
 
+class spawn_scarab(spell):
+    def __init__(self, **kwargs):
+        super().__init__(scarab_spawn_m, DEBUG_book_img, **kwargs)
+class scarab_spawn_m(spawn_enemy_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(enemies.beetle)
 
+class spawn_elite_scarab(spell):
+    def __init__(self, **kwargs):
+        super().__init__(scarab_elite_spawn_m, DEBUG_book_img, **kwargs)
+class scarab_elite_spawn_m(spawn_enemy_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(enemies.elite_beetle)
+
+class spawn_boss_scarab(spell):
+    def __init__(self, **kwargs):
+        super().__init__(scarab_boss_spawn_m, DEBUG_book_img, **kwargs)
+class scarab_boss_spawn_m(spawn_enemy_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(enemies.big_blue_beetle)
 
 
 class DEBUG_book(spell_book):

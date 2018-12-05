@@ -10,6 +10,7 @@ skull_img = pygame.image.load(    'Animation\img_skull.png').convert()
 skull_img.set_colorkey(config.default_transparency)
 
 boss_img = pygame.image.load('Animation\img_scarab_boss.png').convert()
+boss_img = boss_img.subsurface((232, 0), (115, 162))
 boss_img.set_colorkey(config.default_transparency)
 
 
@@ -21,6 +22,12 @@ skele_img.set_colorkey(config.default_transparency)
 
 scarab_img = pygame.image.load('Animation\img_scarab_front.png').convert()
 scarab_img.set_colorkey(config.default_transparency)
+
+scarab_swarm_img = pygame.image.load('Animation\img_swarm.png').convert()
+scarab_swarm_img.set_colorkey(config.default_transparency)
+
+super_scarab_img = pygame.image.load('Animation\img_spellcaster.png').convert()
+super_scarab_img.set_colorkey(config.default_transparency)
 
 class enemy(spriteling.spriteling):
     def __init__(self, start_node, *args, **kwargs):
@@ -65,7 +72,7 @@ class enemy(spriteling.spriteling):
         if self.dmg_timer ==0:
             self.dmg_timer = self.dmg_cooldown
             target.damage(self.elem, self.threat)
-        target.move(walls=[self])
+        target.move(push=[self])
 
 
     def check_attack(self, target):
@@ -206,7 +213,7 @@ class node_sniper(enemy):
         super().__init__(start_node, img=scarab_img)
         temp_nodes = [n for n in node_list if events.dist(n, start_node) <= 250]
         self.attack_box = temp_nodes[random.randint(0, len(temp_nodes)-1)]
-        self.weapon = fire_bolt_s(caster=self)
+        self.weapon = solar_beam_s(caster=self)
         self.layer = config.floor_cos
 
 
@@ -265,6 +272,11 @@ class node_sniper(enemy):
         self.weapon.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
                            caster=self)
 
+class fire_spitter(node_sniper):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.weapon = fire_bolt_s(caster=self)
+
 class over_heated(spells.trigger):
     def __init__(self, max_heat, heat_per_missile):
         self.over_heated = False
@@ -306,20 +318,22 @@ class active_enemy(enemy):
         self.tracked_player = None
         self.attention_timer = 0
         self.reassess_targets = sec*3
-        self.aiming_angle = (1, 0)
-        self.min_dist = 350
+        self.accuracy = 0.2
+        self.sight = 350
+        self.weapon = fire_bolt_s(caster=self)
 
 
-    def check_players(self, players):
-        dist = self.min_dist
+    def look_for_players(self, players):
+        dist = self.sight
         self.tracked_player = None
         for each in players:
             if events.dist(self, each) <= dist:
+                print("found a close player")
                 dist = events.dist(self, each)
                 self.tracked_player = each
         return bool(self.tracked_player)
 
-    def shoot(self, target):
+    def aim(self, target):
         x_adj = self.rect.centerx - target.hitbox.rect.centerx + 0.01
         y_adj = self.rect.centery - target.hitbox.rect.centery + 0.01
         x_s = math.copysign(1, x_adj)
@@ -358,6 +372,12 @@ class active_enemy(enemy):
             else:
                 angle= (-1, 0)
         #print(angle)
+        x_acc = random.random() * self.accuracy
+        y_acc = random.random() * self.accuracy
+        #angle = (angle[0] + math.copysign(x_acc, angle[0]), angle[1] + math.copysign(y_acc, angle[1]))
+        return angle
+
+    def fire(self, angle):
         self.weapon.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
                            caster=self)
 
@@ -365,66 +385,404 @@ class active_enemy(enemy):
         start_dist = events.dist(self, target)
         if start_dist <= dist:
             if self.rect.centerx < target.rect.centerx:
-                self.move(move=(-1, 0))
+                self.move(True, move=(-1, 0))
             elif self.rect.centerx > target.rect.centerx:
-                self.move(move=(1, 0))
+                self.move(True, move=(1, 0))
             if self.rect.centery < target.rect.centery:
-                self.move(move=(0, -1))
+                self.move(True, move=(0, -1))
             elif self.rect.centerx > target.rect.centerx:
-                self.move(move=(0, 1))
+                self.move(True, move=(0, 1))
         return events.dist(self, target) > dist
 
     def approach(self, target, min_dist=270, max_dist=300):
         start_dist = events.dist(self, target)
         if start_dist <= max_dist:
             if self.rect.centerx < target.rect.centerx:
-                self.move(move=(1, 0))
+                self.move(True, move=(1, 0))
             elif self.rect.centerx > target.rect.centerx:
-                self.move(move=(-1, 0))
+                self.move(True, move=(-1, 0))
             if self.rect.centery < target.rect.centery:
-                self.move(move=(0, 1))
+                self.move(True, move=(0, 1))
             elif self.rect.centerx > target.rect.centerx:
-                self.move(move=(0, -1))
+                self.move(True, move=(0, -1))
         elif start_dist <= min_dist:
             if self.rect.centerx < target.rect.centerx:
-                self.move(move=(-1, 0))
+                self.move(True, move=(-1, 0))
             elif self.rect.centerx > target.rect.centerx:
-                self.move(move=(1, 0))
+                self.move(True, move=(1, 0))
             if self.rect.centery < target.rect.centery:
-                self.move(move=(0, -1))
+                self.move(True, move=(0, -1))
             elif self.rect.centerx > target.rect.centerx:
-                self.move(move=(0, 1))
+                self.move(True, move=(0, 1))
         return min_dist < events.dist(self, target) < max_dist
 
     def pursue(self, target, dist=30):
         start_dist = events.dist(self, target)
         if start_dist >= dist:
             if self.rect.centerx < target.rect.centerx:
-                self.move(move=(1, 0))
+                self.move(True, move=(1, 0))
             elif self.rect.centerx > target.rect.centerx:
-                self.move(move=(-1, 0))
+                self.move(True, move=(-1, 0))
             if self.rect.centery < target.rect.centery:
-                self.move(move=(0, 1))
-            elif self.rect.centerx > target.rect.centerx:
-                self.move(move=(0, -1))
+                self.move(True, move=(0, 1))
+            elif self.rect.centery > target.rect.centery:
+                self.move(True, move=(0, -1))
         return events.dist(self, target) < dist
 
+class slash_s(spells.wave_caster):
+    def __init__(self, **kwargs):
+        super().__init__(spells.swipe_img, True, swipe_thing_m, spells.rock_book_img, **kwargs,
+                         #scaled=(13, 8),
+                         stretched=(20, 16, 10),
+                         spell_name='fissure',
+                         trigger_method=over_heated(2*sec, 36),
+                         recoil=((sec/8)+1))
+
+class swipe_thing_m(spells.ground_wave):
+    def __init__(self, img_set, direction, loc, *args, **kwargs):
+        super().__init__(img_set, 0, loc, (direction[0]*1.7, direction[1]*1.7), *args, **kwargs, missile_name='slab',
+                         stage_delay=1, start_delay=20, delay_drop=1, drop_dist=-30, hp=9, damage=15, elem='rock',
+                         knockback=(direction, 2.5))
+        #event_maker.new_event(events.spriteling_event, 'spells', subtype=events.spawn_obstacle, spawn_obstacle=self)
 
 class skeleton(active_enemy):
     def __init__(self, start_node, **kwargs):
         super().__init__(start_node, img=skele_img, **kwargs)
-        
+        self.weapon = slash_s(caster=self)
+        self.curr_move = 2
+        self.base_hp = 1700
+        self.curr_hp = 1700
+        self.stalk_time = 0
+        self.attack_time = 0
+        self.sight = 1000
+        self.idle_time = 0
+
     def update(self, players, *args, **kwargs):
         super().update(*args, **kwargs)
-        if 'players' in kwargs:
-            print("skeleton got players")
-            if self.check_players(kwargs['players']):
-                self.pursue(self.tracked_player)
+        self.weapon.update(True, self.rect.center, False, False, *args, **kwargs)
+        if self.idle_time > 0:
+            print("idling")
+            self.idle_time -= 1
+        else:
+            if self.attention_timer > 0:
+                self.attention_timer -= 1
+            elif self.attention_timer == 0:
+                print("looking for players")
+                if self.look_for_players(players):
+                    print("found one")
+                    self.attention_timer = 4*sec
+                else:
+                    print("none found")
+                    self.attention_timer = 2*sec
+            if self.attention_timer > 0 and bool(self.tracked_player):
+                dist = events.dist(self, self.tracked_player)
+                if self.attack_time > 0:
+                    self.attack_time -= 1
+                    print("pursuing")
+                    if self.pursue(self.tracked_player, 65):
+                        self.fire(self.aim(self.tracked_player))
+                        self.attack_time -= 1
+                        self.stalk_time = 2*sec
+                elif self.stalk_time > 0:
+                    print("approaching")
+                    self.stalk_time -= 1
+                    self.approach(self.tracked_player)
+                    if dist < 250:
+                        self.stalk_time -= 2
+                        self.attack_time = 1*sec
+                elif self.idle_time > 0:
+                    print("handging back")
+                    if self.flee_from(self.tracked_player, 450):
+                        self.idle_time -=5
+                    else:
+                        self.idle_time -=1
+                elif dist > 550 :
+                    self.stalk_time = 2
+                elif dist < 60:
+                    self.idle_time = 1.5*sec
+                elif dist <= 550:
+                    self.attack_time = 1*sec
+
+class beetle(active_enemy):
+    def __init__(self, start_node, **kwargs):
+        super().__init__(start_node, img=scarab_img,  **kwargs)
+        self.weapon = fire_bolt_s(caster=self)
+        self.hitbox.rect = scarab_img.get_rect().inflate(-70, -20)
+        self.curr_move = 2.7
+        self.base_hp = 1400
+        self.curr_hp = 1400
+        self.stalk_time = 0
+        self.attack_time = 0
+        self.sight = 1000
+        self.idle_time = 0
+        self.melee_attack = slash_s(caster=self)
 
 
-        #walk to player
-        #attack if close
+    def melee(self, angle):
+        self.melee_attack.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
+                           caster=self)
 
+    def update(self, players, *args, **kwargs):
+        super().update(*args, **kwargs)
+        self.weapon.update(True, self.rect.center, False, False, *args, **kwargs)
+        self.melee_attack.update(True, self.rect.center, False, False, *args, **kwargs)
+        if self.idle_time > 0:
+            print("idling")
+            self.idle_time -= 1
+        else:
+            if self.attention_timer > 0:
+                self.attention_timer -= 1
+            elif self.attention_timer == 0:
+                if self.look_for_players(players):
+                    self.attention_timer = 4 * sec
+                else:
+                    self.attention_timer = 2 * sec
+            if self.attention_timer > 0 and bool(self.tracked_player):
+                dist = events.dist(self, self.tracked_player)
+                if self.stalk_time > 0:
+                    print("approaching")
+                    self.stalk_time -= 1
+                    if self.approach(self.tracked_player, 350, 500):
+                        self.stalk_time -= 1
+                        self.fire(self.aim(self.tracked_player))
+                elif self.attack_time > 0:
+                    self.attack_time -= 1
+                    if dist > 180:
+                        self.attack_time -= 1
+                    print("pursuing")
+                    if self.pursue(self.tracked_player, 45):
+                        self.melee(self.aim(self.tracked_player))
+                        self.attack_time -= 1
+                        self.stalk_time = 2 * sec
+                elif self.idle_time > 0:
+                    print("hanging back")
+                    if self.flee_from(self.tracked_player, 650):
+                        self.idle_time -= 5
+                    else:
+                        self.idle_time -= 1
+                elif dist > 150:
+                    self.stalk_time = 2
+                elif dist < 60:
+                    self.idle_time = 1.5 * sec
+                elif dist <= 550:
+                    self.attack_time = 1 * sec
+
+class elite_beetle(active_enemy):
+    def __init__(self, start_node, **kwargs):
+        super().__init__(start_node, img=super_scarab_img, **kwargs)
+        #self.image = super_scarab_img
+        self.weapon = solar_beam_s(caster=self)
+        self.hitbox.rect = scarab_img.get_rect().inflate(-70, -20)
+
+        self.curr_move = 3.8
+        self.base_hp = 2000
+        self.curr_hp = 2000
+        self.stalk_time = 0
+        self.max_stalk_time = 2 * sec
+        self.attack_time = 0
+        self.sight = 1000
+        self.idle_time = 0
+        self.melee_attack = slash_s(caster=self)
+
+    def melee(self, angle):
+        self.melee_attack.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
+                           caster=self)
+
+    def update(self, players, *args, **kwargs):
+        super().update(*args, **kwargs)
+        self.weapon.update(True, self.rect.center, False, False, *args, **kwargs)
+        self.melee_attack.update(True, self.rect.center, False, False, *args, **kwargs)
+        if self.idle_time > 0:
+            print("idling")
+            self.idle_time -= 1
+        else:
+            if self.attention_timer > 0:
+                self.attention_timer -= 1
+            elif self.attention_timer == 0:
+                if self.look_for_players(players):
+                    self.attention_timer = 4 * sec
+                else:
+                    self.attention_timer = 2 * sec
+            if self.attention_timer > 0 and bool(self.tracked_player):
+                dist = events.dist(self, self.tracked_player)
+                if dist >= 250:
+                    if self.attack_time > 3:
+                        self.attack_time -= 3
+                        self.stalk_time += 1
+                elif dist < 120 and self.attack_time < 90:
+                    self.attack_time += 4
+                elif dist >= 120:
+                    if self.attack_time > 2:
+                        self.attack_time -= 2
+                    self.stalk_time += 1
+                    self.idle_time += 1
+                if self.stalk_time > 0:
+                    print("approaching")
+                    self.stalk_time -= 1
+                    if self.approach(self.tracked_player, 500, 700):
+                        self.stalk_time -= 1
+                        self.fire(self.aim(self.tracked_player))
+                elif self.attack_time > 70:
+                    self.attack_time -= 1
+                    self.stalk_time += 4
+                    if dist > 180:
+                        self.attack_time -= 1
+                    if dist > 400:
+                        self.idle_time += 5
+                    print("pursuing")
+                    if self.pursue(self.tracked_player, 45):
+                        self.melee(self.aim(self.tracked_player))
+                        self.attack_time -= 1
+                        self.stalk_time = 2 * sec
+                elif self.idle_time > 0:
+                    print("hanging back")
+                    if self.flee_from(self.tracked_player, 700):
+                        self.idle_time -= 2
+                    else:
+                        self.idle_time -= 1
+                elif dist > 250:
+                    self.stalk_time += 2
+                elif dist < 60:
+                    self.idle_time = 1.5 * sec
+                elif dist <= 550:
+                    self.stalk_time = 1 * sec
+
+class scarab_beam_s(spells.helix):
+    def __init__(self, **kwargs):
+        super().__init__(scarab_beam_m, spells.ice_book_img, spell_name='ice_beam', **kwargs,
+                                        trigger_method=over_heated(4, 55))
+
+class scarab_beam_m(spells.threelix):
+    def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):
+        xvel, yvel = direction[0]*5, direction[1]*5
+        super().__init__(partner, 4, orbital_rank, scarab_swarm_img, loc, (xvel, yvel),
+
+                         *args, **kwargs,
+                         missile_name='ice_helix', hp=5, elem='bug', damage=40,
+                         #effects=[spriteling.slow('ice', .15, 14)]
+                         )
+
+class heavy_slash_s(spells.wave_caster):
+    def __init__(self, **kwargs):
+        super().__init__(spells.swipe_img, True, heavy_swipe_thing_m, spells.rock_book_img, **kwargs,
+                         #scaled=(13, 8),
+                         stretched=(20, 16, 10),
+                         spell_name='fissure',
+                         trigger_method=over_heated(2.8*sec, 36),
+                         recoil=((sec/8)+1))
+
+class heavy_swipe_thing_m(spells.ground_wave):
+    def __init__(self, img_set, direction, loc, *args, **kwargs):
+        super().__init__(img_set, 0, loc, (direction[0]*1.7, direction[1]*1.7), *args, **kwargs, missile_name='slab',
+                         stage_delay=1, start_delay=20, delay_drop=1, drop_dist=-30, hp=9, damage=18, elem='rock',
+                         knockback=(direction, 2.5))
+
+class spawn_scarab(spells.spell):
+    def __init__(self, **kwargs):
+        super().__init__(scarab_spawn_m, spells.DEBUG_book_img, **kwargs, trigger_method=over_heated(10*sec, 10*sec+1))
+class scarab_spawn_m(spells.spawn_enemy_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(beetle)
+
+class spawn_elite_scarab(spells.spell):
+    def __init__(self, **kwargs):
+        super().__init__(scarab_elite_spawn_m, spells.DEBUG_book_img, **kwargs, trigger_method=over_heated(20*sec, 20*sec+1))
+class scarab_elite_spawn_m(spells.spawn_enemy_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(elite_beetle)
+
+class big_blue_beetle(active_enemy):
+    def __init__(self, start_node, **kwargs):
+        super().__init__(start_node, img=boss_img, **kwargs)
+        self.weapon = scarab_beam_s(caster=self)
+        self.hitbox.rect = boss_img.get_rect().inflate(-50, -20)
+
+        self.curr_move = 3.8
+        self.base_hp = 3500
+        self.curr_hp = 3500
+        self.max_run_time = sec
+        self.run_time = 0
+        self.stalk_time = 0
+        self.max_stalk_time = 2 * sec
+        self.attack_time = 0
+        self.max_attack_time = 1 * sec
+        self.sight = 1000
+        self.idle_time = 0
+        self.melee_attack = heavy_slash_s(caster=self)
+        self.accuracy = 0.15
+        self.melee_delay = 0
+        self.summon_a = spawn_scarab(caster=self)
+        self.summon_b = spawn_elite_scarab(caster=self)
+        self.summon_timer = 10
+
+    def summon(self):
+        self.summon_a.update(True, self.rect.center, True, True, direction=(0, 0), missile_layer=self.missiles,
+                                 caster=self)
+        self.summon_b.update(True, self.rect.center, True, True, direction=(0, 0), missile_layer=self.missiles,
+                                 caster=self)
+        self.missiles.update()
+
+    def melee(self, angle):
+        self.melee_attack.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
+                           caster=self)
+
+    def update(self, players, *args, **kwargs):
+        super().update(*args, **kwargs)
+        self.weapon.update(True, self.rect.center, False, False, *args, **kwargs)
+        self.melee_attack.update(True, self.rect.center, False, False, *args, **kwargs)
+        if self.idle_time > 0:
+            print("idling")
+            self.idle_time -= 1
+        else:
+            if self.attention_timer > 0:
+                self.attention_timer -= 1
+            elif self.attention_timer == 0:
+                if self.look_for_players(players):
+                    self.attention_timer = 4 * sec
+                else:
+                    self.attention_timer = 2 * sec
+            if self.attention_timer > 0 and bool(self.tracked_player):
+                dist = events.dist(self, self.tracked_player)
+                if self.summon_timer > 0:
+                    self.summon_timer -= 1
+                    self.summon()
+                if dist >= 450:
+                    self.summon_timer += 1
+                    if self.attack_time > 3:
+                        self.attack_time -= 3
+                        self.stalk_time += 1
+                elif dist < 120:
+                    self.attack_time += 4
+
+                if self.stalk_time > 0:
+                    print("approaching")
+                    self.stalk_time -= 1
+                    if self.approach(self.tracked_player, 500, 700):
+                        self.stalk_time -= 1
+                        self.fire(self.aim(self.tracked_player))
+                elif self.attack_time > 50:
+                    self.attack_time -= 1
+                    if dist > 180:
+                        self.attack_time -= 1
+                    if dist > 400:
+                        self.idle_time += 5
+                    print("pursuing")
+                    if self.pursue(self.tracked_player, 45):
+                        self.melee(self.aim(self.tracked_player))
+                        self.attack_time -= 1
+                        self.stalk_time = 2 * sec
+                elif self.idle_time > 0:
+                    print("hanging back")
+                    if self.flee_from(self.tracked_player, 700):
+                        self.idle_time -= 2
+                    else:
+                        self.idle_time -= 1
+                elif dist > 250:
+                    self.stalk_time = 2
+                elif dist < 60:
+                    self.idle_time = 1.5 * sec
+                elif dist <= 550:
+                    self.stalk_time = 1 * sec
 
 class boss(enemy):
 #avoids player, spawn scarabs(?)

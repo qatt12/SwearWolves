@@ -197,11 +197,14 @@ class quintenemy(enemy):
 default_trap_img = pygame.image.load( 'Animation\img_scarab.png')
 default_trap_img= pygame.transform.scale(default_trap_img, (config.tile_scalar, config.tile_scalar))
 
+turret_img = pygame.image.load( 'Animation\img_turret.png')
+turret_img.set_colorkey(config.default_transparency)
+
 # sun lazer
 class solar_beam_s(spells.beam):
     def __init__(self, **kwargs):
         super().__init__(sun_particle_m, spells.leaf_book_img, **kwargs,
-                         trigger_method=spells.cooled(sec*2), spell_name="solar_beam")
+                         trigger_method=spells.cooled(sec*2.7), spell_name="solar_beam")
 class sun_particle_m(spells.beam_particle):
     def __init__(self, num, prev, loc, **kwargs):
         super().__init__(num, prev, spells.sun_particle_img, loc, missile_name="sun_particle", **kwargs, damage=26)
@@ -210,7 +213,7 @@ class sun_particle_m(spells.beam_particle):
 
 class node_sniper(enemy):
     def __init__(self, start_node, node_list, **kwargs):
-        super().__init__(start_node, img=scarab_img)
+        super().__init__(start_node, img=turret_img)
         temp_nodes = [n for n in node_list if events.dist(n, start_node) <= 250]
         self.attack_box = temp_nodes[random.randint(0, len(temp_nodes)-1)]
         self.weapon = solar_beam_s(caster=self)
@@ -306,10 +309,10 @@ class bolt_caster(node_sniper):
 class fire_bolt_s(spells.spell):
     def __init__(self, **kwargs):
         super().__init__(fire_cloud_m, spells.leaf_book_img, **kwargs,
-                         trigger_method=over_heated(sec*2, 24), spell_name="solar_beam")
+                         trigger_method=over_heated(sec*2, 30), spell_name="solar_beam")
 class fire_cloud_m(spells.missile):
     def __init__(self, dir, loc, **kwargs):
-        super().__init__(spells.fire_ball_img, loc, velocity(mag=3, dir=dir), **kwargs, missile_name='fireball',
+        super().__init__(spells.fire_ball_img, loc, velocity(mag=4.5, dir=dir), **kwargs, missile_name='fireball',
                          elem='fire', damage=37, hp=7)
 
 class active_enemy(enemy):
@@ -650,7 +653,7 @@ class elite_beetle(active_enemy):
 class scarab_beam_s(spells.helix):
     def __init__(self, **kwargs):
         super().__init__(scarab_beam_m, spells.ice_book_img, spell_name='ice_beam', **kwargs,
-                                        trigger_method=over_heated(4, 55))
+                                        trigger_method=over_heated(2*sec, 82))
 
 class scarab_beam_m(spells.threelix):
     def __init__(self, partner, orbital_rank, loc, direction, *args, **kwargs):

@@ -108,6 +108,9 @@ glacier_img.set_colorkey(config.default_transparency)
 little_rock_img = pygame.image.load(    'Animation\img_s_rock.png').convert()
 little_rock_img.set_colorkey(config.default_transparency)
 
+swipe_img = pygame.image.load(    'Animation\img_swipe.png').convert()
+swipe_img.set_colorkey(config.default_transparency)
+
 big_rock_img = pygame.image.load(    'Animation\img_b_rock.png').convert()
 big_rock_img.set_colorkey(config.default_transparency)
 med_rock_img = pygame.image.load(    'Animation\img_m_rock.png').convert()
@@ -1515,6 +1518,19 @@ class fissure_slab_m(ground_wave):
                          knockback=(direction, 2.5))
         event_maker.new_event(events.spriteling_event, 'spells', subtype=events.spawn_obstacle, spawn_obstacle=self)
 
+class slash_s(wave_caster):
+    def __init__(self, **kwargs):
+        super().__init__(swipe_img, True, swipe_thing_m, rock_book_img, **kwargs, scaled=(13, 8), spell_name='fissure',
+                         trigger_method=trailing_gate(reset_gate(sec/8), cap(5), cooled(2*sec), semi_release()),
+                         recoil=((sec/8)+1))
+
+class swipe_thing_m(ground_wave):
+    def __init__(self, img_set, direction, loc, *args, **kwargs):
+        super().__init__(img_set, 0, loc, (direction[0]*2.7, direction[1]*2.7), *args, **kwargs, missile_name='slab',
+                         stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30, hp=9, damage=45, elem='rock',
+                         knockback=(direction, 2.5))
+        event_maker.new_event(events.spriteling_event, 'spells', subtype=events.spawn_obstacle, spawn_obstacle=self)
+
 class lobbed_boulder_s(spell):
     def __init__(self, **kwargs):
         super().__init__(flop_rock_m, rock_book_img, **kwargs, spell_name='lobbed_rock')
@@ -1633,7 +1649,7 @@ class acidic_orb_s(spell):
 
 class acidic_orb_m(missile):
     def __init__(self, dir, loc, **kwargs):
-        missile.__init__(self, acid_ball_img, loc, velocity(v_mag=4, dir=dir), **kwargs, missile_name='acid_orb')
+        missile.__init__(self, poison_drop_img, loc, velocity(v_mag=4, dir=dir), **kwargs, missile_name='acid_orb')
         self.hitbox = spriteling.hitbox(self)
 
 

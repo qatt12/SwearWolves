@@ -388,6 +388,10 @@ class dungeon():
         self.current_room = self.hub
 
     def next_room(self, players):
+        event_maker.new_event(events.spriteling_event, 'driver', subtype=events.spawn_enemy,spawn_enemy=(enemies.abenenoemy, 2))
+        event_maker.new_event(events.spriteling_event, 'driver', subtype=events.spawn_enemy,spawn_enemy=(enemies.quintenemy, 3))
+        event_maker.new_event(events.spriteling_event, 'driver', subtype=events.spawn_enemy,spawn_enemy=(enemies.node_sniper, 2))
+
         self.current_room = DEBUG_room(self.disp, self.my_theme, exit_door=[('top', 3),
                                        ],
                                        inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200))

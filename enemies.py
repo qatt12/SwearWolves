@@ -36,21 +36,40 @@ class enemy(spriteling.spriteling):
             self.base_hp = kwargs['hp']
         else:
             self.base_hp = 400
+        self.layer = config.enemy_layer
         self.spell_layer = config.spell_layer
         self.attack_box = self.hitbox
+        self.elem = 'evil'
+        self.threat = 20
+        self.dmg_timer = 0
+        if "dmg_cooldown" in kwargs:
+            self.dmg_cooldown = kwargs['dmg_cooldown']
+        else:
+            self.dmg_cooldown = 10
+
+    def draw_boxes(self, disp):
+        super().draw_boxes(disp)
+        pygame.draw.rect(disp, config.blue, self.attack_box.rect, 2)
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
+        if self.dmg_cooldown > 0:
+            self.dmg_cooldown -= 1
 
     def add(self, *args, **kwargs):
         if 'impact' in kwargs:
             self.missiles.add(kwargs['impact'])
 
-    def attack(self):
-        pass
+    def attack(self, target):
+        if self.dmg_timer ==0:
+            self.dmg_timer = self.dmg_cooldown
+            target.damage(self.elem, self.threat)
+        target.move(walls=[self])
+
 
     def check_attack(self, target):
-        pass
+        if self.attack_box.rect.colliderect(target.hitbox.rect):
+            self.attack(target)
 
     def get_missiles(self):
         return self.missiles
@@ -69,8 +88,6 @@ class nme_fire_bolt_s(spells.spell):
 
 class nme_fireball_m(spells.missile):
     def __init__(self, dir, loc, **kwargs):
-        # fsx = pygame.mixer.Sound("Music/MM.ogg")
-        # pygame.mixer.Sound.play(fsx)
         super().__init__(spells.fire_ball_img, loc, velocity(mag=4, dir=dir), **kwargs, missile_name='fireball',
                          elem='fire', damage=56)
 
@@ -78,6 +95,7 @@ class dumb_turret(enemy):
     def __init__(self, start_node, weapon):
         super().__init__(loc=start_node.center)
         self.attack = weapon
+
 
 class abenenoemy(enemy):
     def __init__(self, start_node, **kwargs):
@@ -132,14 +150,6 @@ class abenenoemy(enemy):
             self.x_change = True
 
         self.stuck+=2
-        #if to.hitbox.rect.centery ==0:
-         #   self.my_vel(flip=(False,True))
-
-
-        #if to.hitbox.rect.top < self.hitbox.rect.centery < to.hitbox.rect.top:
-        #    self.my_vel(flip=(True, False))
-        #if to.hitbox.rect.left < self.hitbox.rect.centerx < to.hitbox.rect.right:
-        #    self.my_vel(flip=(False, True))
 
 
 class quintenemy(enemy):
@@ -152,7 +162,6 @@ class quintenemy(enemy):
         self.base_move = 4
         self.stop = 0
         self.dest = self.patrol_route[self.stop].rect.center
-        self.groupOfnodes.add(self.patrol_route)
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)
         self.dest = self.patrol_route[self.stop].rect.center
@@ -190,10 +199,8 @@ class node_sniper(enemy):
 
 
     def check_attack(self, target):
-        #print("checking collide for node sniper; target= ", target)
-        #print("my attack box: ", self.attack_box.rect)
         if self.attack_box.rect.colliderect(target.hitbox.rect):
-            self.snipe(target)
+            self.attack(target)
 
     def draw_boxes(self, disp):
         super().draw_boxes(disp)
@@ -203,16 +210,8 @@ class node_sniper(enemy):
         super().update(*args, **kwargs)
         self.weapon.update(True, self.rect.center, False, False, *args, **kwargs)
 
-    #def update(self, active, loc, prev, now, *args, **kwargs):
-    #    super().update(*args, **kwargs)
-    #    if self.recoil > 0:
-    #        self.recoil -= 1
-    #    if active:
-    #        self.rect.center = loc
-    #        if self.my_trigger(prev, now) and 'missile_layer' in kwargs:
-    #            kwargs['missile_layer'].add(self.cast(kwargs['direction']))
 
-    def snipe(self, target):
+    def attack(self, target):
         x_adj = self.rect.centerx - target.hitbox.rect.centerx + 0.01
         y_adj = self.rect.centery - target.hitbox.rect.centery + 0.01
         arc = x_adj/y_adj
@@ -246,52 +245,49 @@ class boss(enemy):
         #move away from player
 
         if "player" in kwargs:
-            pass
-        x_v, y_v = 0,0
+            x_v, y_v = 0,0
         # if player to the left and no wall to right
         # move right
-        if self.rect.centerx < player.rect.centerx:
-            x_v -= 1
+            if self.rect.centerx < player.rect.centerx:
+                x_v -= 1
         # elif player to the left and wall to right
         # move up
-        elif self.rect.centerx < player.rect.centerx and hits wall:
-            y_v += 1
+            elif self.rect.centerx < player.rect.centerx and hits wall:
+                y_v += 1
         #if player to the right and no wall to left
             #  move left
-        if self.rect.centerx > player.rect.centerx:
-            x_v += 1
+            if self.rect.centerx > player.rect.centerx:
+                x_v += 1
         #elif player to the right and wall to the left
             # move down
-        elif self.rect.centerx > player.rect.centerx and hits wall:
-            y_v -= 1
+            elif self.rect.centerx > player.rect.centerx and hits wall:
+                y_v -= 1
         #if player up and no wall down
             # move down
-        if self.rect.centery < player.rect.centery:
-            y_v -= 1
+            if self.rect.centery < player.rect.centery:
+                y_v -= 1
         #elif player up and wall down
             # move right
-        elif self.rect.centery < player.rect.centery and hits wall:
-            x_v += 1
+            elif self.rect.centery < player.rect.centery and hits wall:
+                x_v += 1
         #if player down and no wall up
             # move up
-        if self.rect.centery > player.rect.centery:
-            y_v += 1
+            if self.rect.centery > player.rect.centery:
+                y_v += 1
         #elif player down and wall up
             # move left
-        elif self.rect.centery > player.rect.centery and hits wall:
-            x_v -= 1
+            elif self.rect.centery > player.rect.centery and hits wall:
+                x_v -= 1
 
-
-        if self.timer >= config.fps*3:
-            k = random.randint(1,3)
-            if k is 1:
-                 #shoot at player (on a timer somehow?)
-
-            if k is 2:
-                #fires off swarm
-            if k is 3:
+   #     if self.timer >= config.fps*3:
+    #        k = random.randint(1,3)
+     #       if k is 1:
+      #          #shoot at player (on a timer somehow?)
+       #     if k is 2:
+        #        #fires off swarm
+         #   if k is 3:
                 #spawn enemy(?)
-        self.timer += 1
+        #self.timer += 1
 
 class scarab(enemy):
 #surround boss, shoot at player

@@ -269,7 +269,6 @@ class room():
     def update(self, player_one, all_players, *args, **kwargs):
         self.contents.update()
 
-        #print("room: ", self.enemies)
         player_one_rect = player_one.rect
         # calculates the scroll, and also sort of the counter_scroll based upon the player's position
         x, y = 0, 0
@@ -284,7 +283,7 @@ class room():
 
         self.scroll(x, y)
         self.counter_scroll(x, y, player_one, *all_players)
-        self.enemies.update()
+        #self.enemies.update()
 
     def draw_contents(self, disp, boxes=False):
         if not boxes:
@@ -317,7 +316,6 @@ class room():
             each.move(shift=(x_scroll, y_scroll))
         for node in self.nodes:
             node.rect.move_ip(x_scroll, y_scroll)
-        #print("rooms enemies: ", self.enemies)
         for each in self.enemies:
             each.move(shift=(x_scroll, y_scroll))
 
@@ -386,10 +384,7 @@ class hub_room(room):
     def __init__(self, disp, my_theme=default_theme):
         super().__init__(('center', 2), (7, 5), disp, my_theme,
                          exit_door=[('top', 3),
-                                    #('bottom', 6),
-                                    #('right', 1)
                                     ],
-                         #inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200))
                          )
 
 

@@ -33,6 +33,8 @@ import pygame, config, interface, events
 from events import event_maker
 from misc import controller_list as controller_list
 from collections import deque
+import time
+
 pygame.init()
 
 game_window = pygame.display.set_mode(config.screen_size)
@@ -99,6 +101,7 @@ class screen_handler():
             self.ordered_list_of_player_HANDLERS.append(kwargs['next_player'])
             self.player_index += 1
             message.modify(next_player=kwargs['next_player'])
+
         if 'dead_player' in kwargs:
             self.ordered_list_of_player_HANDLERS.remove(kwargs['dead_player'])
             if kwargs['dead_player'] == self.player_one:
@@ -106,6 +109,11 @@ class screen_handler():
                     self.player_one = self.ordered_list_of_player_HANDLERS[0]
                 else:
                     event_maker.new_event(events.game_state_event, "driver", subtype=events.game_over)
+                    ded = pygame.image.load('Animation\img_death.png').convert()
+
+                    time.sleep(3)
+                    pygame.quit()
+
         if 'room' in kwargs:
             self.kill_it_all()
             self.current_room = kwargs['room']

@@ -18,24 +18,24 @@ new menu: added a new menu
 	loc_src: screen.apply()
 	opened_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1300, 700)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
 	
-***	entry #: 144 type: log
+***	entry #: 271 type: log
 file source: driver| loc source: start_loop
 FIRST PLAYER: player one has pressed start, we should be leaving start loop now
 	terms: crucial; start_loop; ready_up; player_one; 
 	key words:
 	loc_src: start_loop
-	player_one_Handler: <interface.handler object at 0x06E70DD0>
+	player_one_Handler: <interface.handler object at 0x060D8E50>
 	num_player_handlers: 1
 	
-***	entry #: 145 type: log
+***	entry #: 272 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: 1<class 'menu.menu'>trashboatrect/hitbox: <rect(0, 0, 1300, 700)>/host: trashboat| Rect: <rect(581, 247, 139, 206)>
-	set_player_one: <interface.handler object at 0x06E70DD0>
+	set_player_one: <interface.handler object at 0x060D8E50>
 	
-***	entry #: 147 type: log
+***	entry #: 274 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -44,7 +44,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 2<class 'spells.DEBUG_book'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 148 type: log
+***	entry #: 275 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 3<class 'spells.book_of_fire'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -53,7 +53,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 3<class 'spells.book_of_fire'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 149 type: log
+***	entry #: 276 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 4<class 'spells.book_of_rock'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -62,7 +62,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 4<class 'spells.book_of_rock'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 150 type: log
+***	entry #: 277 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 5<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -71,7 +71,7 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 5<class 'spells.book_of_acid'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 151 type: log
+***	entry #: 278 type: log
 file source: spells| obj source: <class 'spells.spell_book'>| instance source: 6<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
@@ -80,432 +80,1215 @@ spellbook: A new spell book has been made; this is the base constructor
 	loc_src: spellbook abstract base class
 	inst_src: 6<class 'spells.book_of_ice'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 152 type: log
-file source: spells| obj source: <class 'spells.spell_book'>| instance source: 7<class 'spells.book_of_leaves'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
+***	entry #: 279 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: 7<class 'spells.book_of_metal'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
 spellbook: A new spell book has been made; this is the base constructor
 	terms: spellbook; spells; magic; base; 
 	key words:
 	obj_src: <class 'spells.spell_book'>
 	loc_src: spellbook abstract base class
-	inst_src: 7<class 'spells.book_of_leaves'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	inst_src: 7<class 'spells.book_of_metal'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
 	
-***	entry #: 153 type: log
+***	entry #: 280 type: log
+file source: spells| obj source: <class 'spells.spell_book'>| instance source: 8<class 'spells.book_of_leaves'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>| loc source: spellbook abstract base class
+spellbook: A new spell book has been made; this is the base constructor
+	terms: spellbook; spells; magic; base; 
+	key words:
+	obj_src: <class 'spells.spell_book'>
+	loc_src: spellbook abstract base class
+	inst_src: 8<class 'spells.book_of_leaves'>trashboatrect/hitbox: <rect(0, 0, 20, 20)>/host: trashboat| Rect: <rect(2, 3, 17, 15)>
+	
+***	entry #: 281 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	opened_menu: 8<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 650, 350)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
+	opened_menu: 9<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 0, 650, 350)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
 	
-***	entry #: 346 type: log
+***	entry #: 598 type: log
+file source: driver
+next_player: found next player
+	terms: controller; player_initialization; player_tally; 
+	key words:
+	player: 1
+	
+***	entry #: 599 type: log
+file source: driver
+next_player: player num is 1, now 2
+	terms: controller; player_initialization; player_tally; 
+***	entry #: 602 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	opened_menu: 10<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(650, 0, 650, 350)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
+	next_player: <interface.handler object at 0x06240730>
+	
+***	entry #: 647 type: log
+file source: driver
+next_player: found next player
+	terms: controller; player_initialization; player_tally; 
+	key words:
+	player: 2
+	
+***	entry #: 648 type: log
+file source: driver
+next_player: player num is 2, now 3
+	terms: controller; player_initialization; player_tally; 
+***	entry #: 651 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	opened_menu: 11<class 'menu.player_select_menu'>trashboatrect/hitbox: <rect(0, 350, 650, 350)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
+	next_player: <interface.handler object at 0x06240E30>
+	
+***	entry #: 3982 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	closed_menu: (<player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>, <player_select_menu sprite(in 0 groups)>)
 	
-***	entry #: 347 type: log
-file source: room| obj source: <room.theme object at 0x06FD5910>
+***	entry #: 3983 type: log
+file source: room| obj source: <room.theme object at 0x063536B0>
 default_theme: Testing default theme construction/initialization
 	terms: theme; init; DEBUG; 
 	key words:
-	obj_src: <room.theme object at 0x06FD5910>
+	obj_src: <room.theme object at 0x063536B0>
 	image_lookup: {'f': <Surface(100x100x32 SW)>, 'trc': <Surface(100x100x32 SW)>, 'tlc': <Surface(100x100x32 SW)>, 'blc': <Surface(100x100x32 SW)>, 'brc': <Surface(100x100x32 SW)>, 'tw': <Surface(100x100x32 SW)>, 'bw': <Surface(100x100x32 SW)>, 'rw': <Surface(100x100x32 SW)>, 'lw': <Surface(100x100x32 SW)>}
 	
-***	entry #: 354 type: log
+***	entry #: 3990 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.hub_room object at 0x06FD5B50>
+	room: <room.hub_room object at 0x062345F0>
 	
-***	entry #: 356 type: log
+***	entry #: 3992 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	overlay: 70<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 433, 140)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
+	overlay: 53<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 0, 433, 140)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
 	
-***	entry #: 57565 type: log
+***	entry #: 3994 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
+	overlay: 60<class 'overlays.hud'>trashboatrect/hitbox: <rect(866, 0, 433, 140)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
 	
-***	entry #: 58481 type: log
+***	entry #: 3996 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
+	overlay: 66<class 'overlays.hud'>trashboatrect/hitbox: <rect(0, 560, 433, 140)>/host: trashboat| Rect: <rect(17, 43, 139, 206)>
 	
-***	entry #: 59399 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 60316 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 61233 type: log
+***	entry #: 97485 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 72756 type: log
+***	entry #: 98380 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 73672 type: log
+***	entry #: 99279 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 74588 type: log
+***	entry #: 100181 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 75505 type: log
+***	entry #: 101069 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 91632 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 92548 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 108799 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 109716 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 110632 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 111549 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 112465 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 145199 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 148205 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 153062 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 154519 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 156249 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 157983 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 159564 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 161208 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 189004 type: log
-file source: blocks| obj source: 14<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 50, 100, 100)>/host: trashboat| Rect: <rect(450, 50, 101, 101)>| loc source: door
+***	entry #: 126824 type: log
+file source: blocks| obj source: 15<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 50, 100, 100)>/host: trashboat| Rect: <rect(450, 50, 101, 101)>| loc source: door
 door interact: door is receiving full player interaction
 	key words:
-	obj_src: 14<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 50, 100, 100)>/host: trashboat| Rect: <rect(450, 50, 101, 101)>
+	obj_src: 15<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 50, 100, 100)>/host: trashboat| Rect: <rect(450, 50, 101, 101)>
 	loc_src: door
 	
-***	entry #: 189033 type: log
+***	entry #: 126853 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
-	room: <room.DEBUG_room object at 0x06FF33D0>
+	room: <room.DEBUG_room object at 0x06133530>
 	
-***	entry #: 578662 type: log
-file source: driver| loc source: screen.apply()
-new menu: added a new menu
-	key words:
-	loc_src: screen.apply()
-	
-***	entry #: 590504 type: log
+***	entry #: 126947 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 644244 type: log
+***	entry #: 126950 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 650079 type: log
+***	entry #: 126953 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 684066 type: log
+***	entry #: 151280 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 155082 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 688164 type: log
+***	entry #: 156817 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 693834 type: log
+***	entry #: 158554 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 700176 type: log
+***	entry #: 160287 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 705996 type: log
+***	entry #: 162022 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 711884 type: log
+***	entry #: 166393 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 176473 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 208072 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 210645 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 569659 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 626339 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 730153 type: log
+file source: blocks| obj source: 197<class 'blocks.door'>trashboatrect/hitbox: <rect(350, 16, 100, 100)>/host: trashboat| Rect: <rect(350, 16, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 197<class 'blocks.door'>trashboatrect/hitbox: <rect(350, 16, 100, 100)>/host: trashboat| Rect: <rect(350, 16, 101, 101)>
+	loc_src: door
+	
+***	entry #: 730181 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x06178EF0>
+	
+***	entry #: 730278 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 715994 type: log
+***	entry #: 730281 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 718664 type: log
+***	entry #: 730284 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 721292 type: log
+***	entry #: 757703 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 757924 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 759422 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 761961 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 765950 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 723989 type: log
+***	entry #: 767584 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 727020 type: log
+***	entry #: 769228 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 729754 type: log
+***	entry #: 778523 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 800839 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 732808 type: log
+***	entry #: 802423 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 736584 type: log
+***	entry #: 803999 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 739383 type: log
+***	entry #: 805580 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 742653 type: log
+***	entry #: 807158 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 746273 type: log
+***	entry #: 818240 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 904535 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 971650 type: log
+file source: blocks| obj source: 987<class 'blocks.door'>trashboatrect/hitbox: <rect(271, 16, 100, 100)>/host: trashboat| Rect: <rect(271, 16, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 987<class 'blocks.door'>trashboatrect/hitbox: <rect(271, 16, 100, 100)>/host: trashboat| Rect: <rect(271, 16, 101, 101)>
+	loc_src: door
+	
+***	entry #: 971678 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x061CEA50>
+	
+***	entry #: 971767 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 750113 type: log
+***	entry #: 971770 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 753769 type: log
+***	entry #: 971773 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 757500 type: log
+***	entry #: 993180 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 993394 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1000217 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1028954 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1047367 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 761762 type: log
+***	entry #: 1048868 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 765333 type: log
+***	entry #: 1050373 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 769605 type: log
+***	entry #: 1051888 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 772992 type: log
+***	entry #: 1053411 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 777590 type: log
+***	entry #: 1060614 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1066310 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1093144 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 781771 type: log
+***	entry #: 1094568 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 786537 type: log
+***	entry #: 1096019 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 791214 type: log
+***	entry #: 1097463 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 795468 type: log
+***	entry #: 1098884 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 800514 type: log
+***	entry #: 1114578 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1180563 type: log
+file source: blocks| obj source: 1315<class 'blocks.door'>trashboatrect/hitbox: <rect(350, -140, 100, 100)>/host: trashboat| Rect: <rect(350, -140, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 1315<class 'blocks.door'>trashboatrect/hitbox: <rect(350, -140, 100, 100)>/host: trashboat| Rect: <rect(350, -140, 101, 101)>
+	loc_src: door
+	
+***	entry #: 1180591 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x064327B0>
+	
+***	entry #: 1180672 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 804754 type: log
+***	entry #: 1180675 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 809250 type: log
+***	entry #: 1180678 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 814006 type: log
+***	entry #: 1210911 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:
 	loc_src: screen.apply()
 	
-***	entry #: 818455 type: log
+***	entry #: 1212481 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1214054 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1215610 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1217146 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1222178 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1223410 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1224713 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1225593 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1226532 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1246666 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1247963 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1249290 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1250597 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1251908 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1263719 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1269680 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1302896 type: log
+file source: blocks| obj source: 1534<class 'blocks.door'>trashboatrect/hitbox: <rect(400, 14, 100, 100)>/host: trashboat| Rect: <rect(400, 14, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 1534<class 'blocks.door'>trashboatrect/hitbox: <rect(400, 14, 100, 100)>/host: trashboat| Rect: <rect(400, 14, 101, 101)>
+	loc_src: door
+	
+***	entry #: 1302898 type: log
+file source: blocks| obj source: 1534<class 'blocks.door'>trashboatrect/hitbox: <rect(400, 14, 100, 100)>/host: trashboat| Rect: <rect(400, 14, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 1534<class 'blocks.door'>trashboatrect/hitbox: <rect(400, 14, 100, 100)>/host: trashboat| Rect: <rect(400, 14, 101, 101)>
+	loc_src: door
+	
+***	entry #: 1302926 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x06153D10>
+	
+***	entry #: 1302941 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x00CA70D0>
+	
+***	entry #: 1303041 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1303044 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1303047 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1303050 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1303053 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1303056 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1323771 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1325951 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1328127 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1330292 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1331508 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1332430 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1336287 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1373889 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1375954 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1433617 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1434400 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1434403 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1435629 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1437589 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1439568 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1441534 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1450617 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1455459 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1463001 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1494021 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1495884 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1497744 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1499595 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1501446 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1508672 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1530490 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1582613 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1628196 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1658932 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1815329 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1859889 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1863993 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1863996 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 1934142 type: log
+file source: blocks| obj source: 1741<class 'blocks.door'>trashboatrect/hitbox: <rect(100, 616, 100, 100)>/host: trashboat| Rect: <rect(100, 616, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 1741<class 'blocks.door'>trashboatrect/hitbox: <rect(100, 616, 100, 100)>/host: trashboat| Rect: <rect(100, 616, 101, 101)>
+	loc_src: door
+	
+***	entry #: 1934156 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.hub_room object at 0x062345F0>
+	
+***	entry #: 1959620 type: log
+file source: blocks| obj source: 15<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 50, 100, 100)>/host: trashboat| Rect: <rect(450, 50, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 15<class 'blocks.door'>trashboatrect/hitbox: <rect(450, 50, 100, 100)>/host: trashboat| Rect: <rect(450, 50, 101, 101)>
+	loc_src: door
+	
+***	entry #: 1959642 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x00398F30>
+	
+***	entry #: 1959723 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1959726 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 1959729 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2038374 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2039925 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2041505 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2041903 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2043045 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2044566 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2045234 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2120649 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2122097 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2123562 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2125020 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2126483 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2128767 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2142434 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2164208 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2165611 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2167022 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2168448 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2169870 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2209034 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2210430 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2211838 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2212547 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2213227 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2214579 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2254029 type: log
+file source: blocks| obj source: 2069<class 'blocks.door'>trashboatrect/hitbox: <rect(350, 16, 100, 100)>/host: trashboat| Rect: <rect(350, 16, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 2069<class 'blocks.door'>trashboatrect/hitbox: <rect(350, 16, 100, 100)>/host: trashboat| Rect: <rect(350, 16, 101, 101)>
+	loc_src: door
+	
+***	entry #: 2254051 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x00D7EF90>
+	
+***	entry #: 2254143 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2254146 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2254149 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2288386 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2290118 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2291838 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2293584 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2295333 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2308140 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2311730 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2386573 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2388210 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2389839 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2391473 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2393099 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2405698 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2614332 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2615917 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2617006 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2617487 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2619025 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2620568 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2644779 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2723529 type: log
+file source: blocks| obj source: 2385<class 'blocks.door'>trashboatrect/hitbox: <rect(429, 16, 100, 100)>/host: trashboat| Rect: <rect(429, 16, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 2385<class 'blocks.door'>trashboatrect/hitbox: <rect(429, 16, 100, 100)>/host: trashboat| Rect: <rect(429, 16, 101, 101)>
+	loc_src: door
+	
+***	entry #: 2723552 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x061CB990>
+	
+***	entry #: 2723634 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2723637 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2723640 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2778513 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2780593 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2783079 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2783622 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2806738 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2840778 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2887433 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2923258 type: log
+file source: blocks| obj source: 2731<class 'blocks.door'>trashboatrect/hitbox: <rect(428, 16, 100, 100)>/host: trashboat| Rect: <rect(428, 16, 101, 101)>| loc source: door
+door interact: door is receiving full player interaction
+	key words:
+	obj_src: 2731<class 'blocks.door'>trashboatrect/hitbox: <rect(428, 16, 100, 100)>/host: trashboat| Rect: <rect(428, 16, 101, 101)>
+	loc_src: door
+	
+***	entry #: 2923281 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	room: <room.DEBUG_room object at 0x0643D410>
+	
+***	entry #: 2923373 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2923376 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2923379 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2955535 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 2955538 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 2998251 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 3083731 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 3195982 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 3197509 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 3199036 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 3200279 type: log
+file source: driver
+detected dead spriteling at event level: 
+***	entry #: 3200562 type: log
+file source: driver| loc source: screen.apply()
+new menu: added a new menu
+	key words:
+	loc_src: screen.apply()
+	
+***	entry #: 3202058 type: log
 file source: driver| loc source: screen.apply()
 new menu: added a new menu
 	key words:

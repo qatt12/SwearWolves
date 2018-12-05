@@ -138,11 +138,6 @@ class screen_handler():
             for nme in enemy_list:
                 pillar_of_hate.add(nme, layer=nme.layer)
                 self.active_enemies.add(nme)
-        #if 'spawn_trap' in kwargs:
-        #    enemy_list = self.current_room.spawn_trap(kwargs['spawn_trap'])
-        #    for nme in enemy_list:
-        #        pillar_of_hate.add(nme, layer=nme.layer)
-        #        self.active_enemies.add(nme)
 
         event_maker.send_entry(message, False, False)
 
@@ -198,6 +193,8 @@ class screen_handler():
                                        layer=player_handler.spell_layer)
             for each in self.active_enemies:
                 self.enemy_missiles.add(each.get_missiles())
+                for every in each.get_missiles():
+                    pillar_of_hate.add(every, layer=every.layer)
                 each.missiles.empty()
 
             self.all_missiles.add(self.player_missiles, self.enemy_missiles)
@@ -242,7 +239,7 @@ class screen_handler():
         #    each.draw(self.disp, True)
         #for each in self.obstacles:
         #    each.draw_boxes(self.disp)
-###
+####
         #display.blit(self.disp, (0, 0))
         #self.menus.draw(display)
         #for each in self.overlays:
@@ -321,7 +318,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.cold_snap_s, spells.spawn_default, spells.spawn_node_sniper,
+unlocked_books = [spells.DEBUG_book(spells.cold_snap_s, spells.spawn_caster, spells.spawn_node_sniper,
                                     spells.spawn_abenenoemy, spells.spawn_quintenemy,
                                     spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.slash_s,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,

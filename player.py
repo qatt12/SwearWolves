@@ -98,5 +98,6 @@ class multiplayer(player):
         print("book level is: ", book.level, "book spells are: ", book.spells)
         self.number = number
 
+
 class beetle_boss(player):
     pass

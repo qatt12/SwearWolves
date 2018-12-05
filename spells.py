@@ -1911,7 +1911,7 @@ class book_of_metal(spell_book):
         super().__init__(level)
         self.img = big_metal_book_img
         self.goddess_lookup_key = 'tattered'
-        self.spell_key = {0: burst_shard_s, 1: synthesis_s, 2: poison_spore_s, 3: chain_gun_s}
+        self.spell_key = {0: burst_shard_s, 1: slash_s, 2: flak_cannon_s, 3: chain_gun_s}
 
 class book_of_magnets(spell_book):
     def __init__(self, level=0):
@@ -1973,6 +1973,13 @@ class spawn_quintenemy(spell):
 class quintenemy_spawn_m(spawn_enemy_m):
     def __init__(self, *args, **kwargs):
         super().__init__(enemies.quintenemy)
+
+class spawn_caster(spell):
+    def __init__(self, **kwargs):
+        super().__init__(caster_spawn_m, DEBUG_book_img, **kwargs)
+class caster_spawn_m(spawn_enemy_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(enemies.bolt_caster)
 
 class spawn_node_sniper(spell):
     def __init__(self, **kwargs):

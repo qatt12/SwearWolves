@@ -101,8 +101,11 @@ class screen_handler():
             message.modify(next_player=kwargs['next_player'])
         if 'dead_player' in kwargs:
             self.ordered_list_of_player_HANDLERS.remove(kwargs['dead_player'])
-            #if len(self.ordered_list_of_player_HANDLERS) == 0:
-            #    event_maker.end_game()
+            if kwargs['dead_player'] == self.player_one:
+                if len(self.ordered_list_of_player_HANDLERS) >= 1:
+                    self.player_one = self.ordered_list_of_player_HANDLERS[0]
+                else:
+                    event_maker.new_event(events.game_state_event, "driver", subtype=events.game_over)
         if 'room' in kwargs:
             self.kill_it_all()
             self.current_room = kwargs['room']
@@ -225,25 +228,25 @@ class screen_handler():
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        display.fill(config.black)
-        pygame.display.update(pillar_of_hate.draw(display))
+        #display.fill(config.black)
+        #pygame.display.update(pillar_of_hate.draw(display))
 
-        #if self.current_room is not None:
-        #    self.current_room.draw_contents(self.disp, True)
-        #    for each in self.ordered_list_of_player_HANDLERS:
-        #        each.draw(self.disp, True)
-        #for each in self.all_missiles:
-        #    each.draw(self.disp, True)
-        #for each in self.active_enemies:
-        #    each.draw(self.disp, True)
-        #for each in self.obstacles:
-        #    each.draw_boxes(self.disp)
+        if self.current_room is not None:
+            self.current_room.draw_contents(self.disp, True)
+            for each in self.ordered_list_of_player_HANDLERS:
+                each.draw(self.disp, True)
+        for each in self.all_missiles:
+            each.draw(self.disp, True)
+        for each in self.active_enemies:
+            each.draw(self.disp, True)
+        for each in self.obstacles:
+            each.draw_boxes(self.disp)
 ##
-        #display.blit(self.disp, (0, 0))
-        #self.menus.draw(display)
-        #for each in self.overlays:
-        #    each.draw(display)
-        #pygame.display.flip()
+        display.blit(self.disp, (0, 0))
+        self.menus.draw(display)
+        for each in self.overlays:
+            each.draw(display)
+        pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -317,7 +320,7 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.rock_slide_s, spells.spawn_node_sniper,  spells.spawn_abenenoemy, spells.spawn_quintenemy,
+unlocked_books = [spells.DEBUG_book(spells.cold_snap_s, spells.spawn_default, spells.spawn_node_sniper,  spells.spawn_abenenoemy, spells.spawn_quintenemy,
     spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.DEBUG_unguided_swarm,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,
                                     spells.iceshard_s, spells.icebeam_s, spells.solar_beam_s, spells.beacon_of_hope,

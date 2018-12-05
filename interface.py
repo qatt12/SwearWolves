@@ -217,6 +217,10 @@ class handler():
             self.attach(book=self.menu.ready_up())
 
     def update(self, **kwargs):
+        if self.player.curr_hp <= 0:
+            self.player.kill()
+            event_maker.new_event(events.player_event, 'player', subtype=events.player_died, dead_player=self)
+
         # updates the controller
         self.controller.update()
         # updates the player
@@ -254,6 +258,7 @@ class handler():
         # updates spells
         # I just need to get the targeting data into the targeted spell
         self.missiles.update()
+        self.hud.update(hp=self.player.curr_hp)
 
         dump_trigger = self.controller.pull_face()['select']
         if dump_trigger[0] != dump_trigger[1]:

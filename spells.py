@@ -1147,6 +1147,8 @@ class ground_wave(missile):
             if self.timer >= self.stage_delay:
                 self.timer = 0
                 self.stage += 1
+                self.dmg += 4
+                print("my new damage= ", self.dmg)
                 self.stage_delay -= self.delay_drop
                 if self.stage > self.max_index-1:
                     self.kill()
@@ -1516,7 +1518,7 @@ class lobbed_boulder_s(spell):
         super().__init__(flop_rock_m, rock_book_img, **kwargs, spell_name='lobbed_rock')
 class flop_rock_m(lobbed):
     def __init__(self, dir, loc, **kwargs):
-        super().__init__(.3, big_rock_img, loc, velocity(mag=3, dir=dir), **kwargs, missile_name='YEET',
+        super().__init__(.03, big_rock_img, loc, velocity(mag=3, dir=dir), **kwargs, missile_name='YEET',
                          elem='rock', damage=58, knockback=(dir, 3))
 
 class rock_slide_s(alt_fire):
@@ -1554,8 +1556,8 @@ class cold_snap_s(wave_caster):
 
 class cold_snap_m(ground_wave):
     def __init__(self, img_set, direction, loc, *args, **kwargs):
-        super().__init__(img_set, 0, loc, (direction[0]*1.7, direction[1]*1.7), *args, **kwargs, missile_name='slab',
-                         stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30, hp=2, elem='ice', damage=70)
+        super().__init__(img_set, 0, loc, (direction[0]*2.4, direction[1]*2.4), *args, **kwargs, missile_name='slab',
+                         stage_delay=30, start_delay=50, delay_drop=3, drop_dist=-30, hp=2, elem='ice', damage=23)
 
 class iceshard_s(spell):
     def __init__(self, **kwargs):
@@ -1667,19 +1669,21 @@ class burst_shard_s(spell):
 class rock_burst_s(spell):
     def __init__(self, **kwargs):
         super().__init__(rock_shard_m, rock_book_img, **kwargs, spell_name='rock_burst_shard',
-                         trigger_method=gated_trigger(reset_gate(sec/8), cap(7), semi_release()),
+                         trigger_method=gated_trigger(reset_gate(sec/8), cap(3), semi_release()),
                          )
 class rock_shard_m(missile):
     def __init__(self, dir, loc, **kwargs):
-        super().__init__(little_rock_img, loc, velocity(var_mag=(5, 3), dir=dir), **kwargs, missile_name='bullet', damage=50, elem='rock')
+        super().__init__(little_rock_img, loc, velocity(var_mag=(7, 3), dir=dir), **kwargs, missile_name='bullet',
+                         damage=50, elem='rock')
 
 class chain_gun_s(spell):
     def __init__(self, **kwargs):
-        super().__init__(bullet_m, metal_book_img, **kwargs, spell_name='chain_gun', trigger_method=wind_up(3, sec/3, 3))
+        super().__init__(bullet_m, metal_book_img, **kwargs, spell_name='chain_gun', trigger_method=wind_up(3, sec/3, 3),
+                         recoil=2)
 
 class bullet_m(missile):
     def __init__(self, dir, loc, **kwargs):
-        super().__init__(bullet_img, loc, velocity(mag=7, dir=dir), **kwargs, missile_name='bullet', damage=35, elem='metal')
+        super().__init__(bullet_img, loc, velocity(mag=8, dir=dir), **kwargs, missile_name='bullet', damage=35, elem='metal')
 
 
 class bubble_beam_of_doom_s(helix):

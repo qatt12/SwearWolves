@@ -166,7 +166,7 @@ class screen_handler():
     def update(self, *args, **kwargs):
         self.menus.update()
         self.all_missiles.update()
-        self.active_enemies.update()
+        self.active_enemies.update(self.GROUP_of_player_SPRITES)
         try:
             assert (self.player_index == interface.handler.get_player_interface_num()), "this would create an error"
         except AssertionError:
@@ -234,25 +234,25 @@ class screen_handler():
 
         # I FINALLY GOT EVERYTHING INTO THE PILLAR OF HATE IT
         # SHOULD WORK, AND IT FUCKING BETTER BE FASTER THAN THE OLD WAY
-        display.fill(config.black)
-        pygame.display.update(pillar_of_hate.draw(display))
+        #display.fill(config.black)
+        #pygame.display.update(pillar_of_hate.draw(display))
 
-        #if self.current_room is not None:
-        #    self.current_room.draw_contents(self.disp, True)
-        #    for each in self.ordered_list_of_player_HANDLERS:
-        #        each.draw(self.disp, True)
-        #for each in self.all_missiles:
-        #    each.draw(self.disp, True)
-        #for each in self.active_enemies:
-        #    each.draw(self.disp, True)
-        #for each in self.obstacles:
-        #    each.draw_boxes(self.disp)
+        if self.current_room is not None:
+            self.current_room.draw_contents(self.disp, True)
+            for each in self.ordered_list_of_player_HANDLERS:
+                each.draw(self.disp, True)
+        for each in self.all_missiles:
+            each.draw(self.disp, True)
+        for each in self.active_enemies:
+            each.draw(self.disp, True)
+        for each in self.obstacles:
+            each.draw_boxes(self.disp)
 ####
-        #display.blit(self.disp, (0, 0))
-        #self.menus.draw(display)
-        #for each in self.overlays:
-        #    each.draw(display)
-        #pygame.display.flip()
+        display.blit(self.disp, (0, 0))
+        self.menus.draw(display)
+        for each in self.overlays:
+            each.draw(display)
+        pygame.display.flip()
 
     # LOGAN: this method performs the last bits of preparation necessary before the actual game can begin. It tells each
     #  handler to generate a proper player sprite and put it in screen's group of player sprites, then creates and
@@ -326,7 +326,9 @@ game_window.fill((0, 0, 0))
 
 import spells
 
-unlocked_books = [spells.DEBUG_book(spells.cold_snap_s, spells.spawn_caster, spells.spawn_node_sniper,
+unlocked_books = [spells.DEBUG_book(spells.spawn_skeleton,
+    spells.cold_snap_s, #spells.spawn_caster,
+                                    spells.spawn_node_sniper,
                                     spells.spawn_abenenoemy, spells.spawn_quintenemy,
                                     spells.petal_storm_s, spells.pestilence_s,  spells.flak_cannon_s, spells.slash_s,
                                     spells.fissure_s, spells.heatwave_s, spells.cold_snap_s,

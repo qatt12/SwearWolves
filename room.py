@@ -125,6 +125,7 @@ class room():
         #self.full_rect.inflate_ip(100, 100)
         self.scroll_rect = self.visible_rect.inflate(-150, -150)
         self.scroll_rect.center = self.visible_rect.center
+        self.hazards = pygame.sprite.Group()
 
         self.entry_door = self.add_entrance(enter_from[0], enter_from[1])
         self.contents.add(self.entry_door, layer=doors_layer)
@@ -134,6 +135,12 @@ class room():
                                    obj_src=room, inst_src=self, exit_doors=kwargs['exit_door'])
             for each in kwargs['exit_door']:
                 self.contents.add(self.add_door(each[0], each[1]), layer=doors_layer)
+        else:
+            print("making an exit")
+            num_doors = random.randint(1, 3)
+            which_wall = {1: 'top', 2: 'bottom', 3: 'right'}
+            for x in range(0, num_doors):
+                self.contents.add(self.add_door(which_wall[random.randint(1, 3)], random.randint(2, size[1])), layer=doors_layer)
 
         # the walls have to be spritelings in a group in order to properly register collision
         self.contents.add(my_theme.build_walls(self.full_rect, enter_from, self.entry_door), layer=outer_walls_layer)
@@ -154,10 +161,27 @@ class room():
         self.all_walls = pygame.sprite.Group(self.contents.get_sprites_from_layer(outer_walls_layer),
                                              self.contents.get_sprites_from_layer(inner_walls_layer))
         if "pit_rect" in kwargs:
-            pit_rect_temp = kwargs['pit_rect'].clamp(self.full_rect)
+            pit_rect_temp = kwargs['pit_rect'].clamp(self.ground.rect)
             self.nodes = [each for each in self.nodes
                           if not each.rect.colliderect(pit_rect_temp)]
-            pygame.draw(self.ground, pit_rect_temp, config.black, 0)
+            print("floor: ", self.ground.rect)
+            print("pit: ", pit_rect_temp)
+            if 'bridge_rect' in kwargs:
+                bridge_temp = kwargs['bridge_rect'].clamp(self.ground.rect)
+                print("pit_rect_temp.height-(bridge_temp.top = ", pit_rect_temp.height-(bridge_temp.top))
+                pit_rect_a = pygame.rect.Rect((pit_rect_temp.left, pit_rect_temp.top), (pit_rect_temp.width, int(pit_rect_temp.height-(bridge_temp.top)))).clamp(self.full_rect)
+                pit_rect_b = pygame.rect.Rect(( pit_rect_temp.left, bridge_temp.bottom), (pit_rect_temp.width, int(bridge_temp.top-bridge_temp.bottom))).clamp(self.full_rect)
+                pit_a = blocks.pit(pit_rect_a)
+                self.hazards.add(pit_a)
+                self.contents.add(pit_a, layer=pit_a.layer)
+                pit_b = blocks.pit(pit_rect_b)
+                self.hazards.add(pit_b)
+                self.contents.add(pit_b, layer=pit_b.layer)
+            else:
+                pit = blocks.pit(pit_rect_temp)
+                self.hazards.add(pit)
+                self.contents.add(pit, layer=pit.layer)
+
 
         self.hazard_nodes = []
         self.enemies = pygame.sprite.Group()
@@ -297,6 +321,9 @@ class room():
             bonks = pygame.sprite.groupcollide(kwargs['players'], self.all_walls, False, False, collide_hitbox)
             for each in bonks:
                 each.move(walls=bonks[each])
+            bonks_o = pygame.sprite.groupcollide(kwargs['players'], self.hazards, False, False, collide_hitbox)
+            for each in bonks_o:
+                each.move(walls=bonks_o[each])
         if 'missiles' in kwargs:
             for each in kwargs['missiles']:
                 if not self.visible_rect.colliderect(each.hitbox.rect):
@@ -360,15 +387,35 @@ class multiroom(room):
 
 
 class DEBUG_room(room):
-    def __init__(self, disp, my_theme, *args, **kwargs):
+    def __init__(self, disp, my_theme,  *args, **kwargs):
         s_x, s_y = random.randint(5, 14), random.randint(5, 14)
         super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
 
 
 class donut_room(room):
     def __init__(self, disp, my_theme, *args, **kwargs):
-        s_x, s_y = random.randint(5, 14), random.randint(5, 14)
-        super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs)
+        s_x, s_y = random.randint(12, 28), random.randint(12, 28)
+        s_x = int(max(s_x, (s_x + s_y) / 2))
+        s_y = int(max(s_y, (s_x + s_y) / 2))
+        portion = random.randint(2, 5)
+        print("portion=", portion)
+        inner_rect = pygame.rect.Rect((int((s_x/2)*config.tile_scalar), int((s_y/2)*config.tile_scalar)),
+                                      (portion*config.tile_scalar, portion*config.tile_scalar))
+
+        super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs, inner_wall_rect=inner_rect)
+
+class bridge_room(room):
+    def __init__(self, disp, my_theme, *args, **kwargs):
+        s_x = max(random.randint(14, 22), random.randint(12, 18))
+        s_y = min(random.randint(8, 22), random.randint(6, 18))
+        gap_start = random.randint(6, 10)
+        gap_length = int(random.randint(4, 7))
+        inner_rect = pygame.rect.Rect((gap_start*config.tile_scalar, 0),
+                                      (gap_length*config.tile_scalar, s_y*config.tile_scalar))
+        bridge_h = int(s_y/random.randint(2, 4))
+        bridge_rect = pygame.rect.Rect((gap_start*config.tile_scalar, random.randint(0, int(s_y-bridge_h))*config.tile_scalar), (gap_length*config.tile_scalar, bridge_h*config.tile_scalar))
+
+        super().__init__(('left', 5), (s_x, s_y), disp, my_theme, *args, **kwargs, pit_rect=inner_rect, bridge_rect=bridge_rect)
 
 
 import enemies
@@ -392,10 +439,12 @@ class dungeon():
         event_maker.new_event(events.spriteling_event, 'driver', subtype=events.spawn_enemy,spawn_enemy=(enemies.quintenemy, 3))
         event_maker.new_event(events.spriteling_event, 'driver', subtype=events.spawn_enemy,spawn_enemy=(enemies.node_sniper, 2))
 
-        self.current_room = DEBUG_room(self.disp, self.my_theme, exit_door=[('top', 3),
-                                       ],
-                                       inner_wall_rect=pygame.rect.Rect((1000, 1000), (300, 200))
-                                       )
+        possible_rooms = {
+            0: DEBUG_room,
+        }
+
+        #self.current_room = possible_rooms[random.randint(0, 4)](self.disp, self.my_theme, )
+        self.current_room = bridge_room(self.disp, self.my_theme, )
         self.current_room.add_players(players)
         return self.current_room
 

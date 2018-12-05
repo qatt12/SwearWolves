@@ -189,6 +189,16 @@ class inner_wall(wall):
     def __init__(self):
         pass
 
+class pit(block):
+    def __init__(self, start_rect):
+        print("start_rect= ", start_rect)
+        start_rect.normalize()
+        spriteling.spriteling.__init__(self, img=pygame.Surface((start_rect.width, start_rect.height)),
+                                       loc=start_rect.center, hitbox=start_rect)
+        self.layer = config.floor_cos
+        self.rooted = None
+        self.link = None
+
 
 # this is for inward facing/concave corners. the orientation is specified manually by string. Not exactly elegant,
 # fancy, or portable, but since there are at most four cases (and this is only ever called in room.py::class::theme),

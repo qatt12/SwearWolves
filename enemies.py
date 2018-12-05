@@ -1,4 +1,4 @@
-import pygame, spriteling, events, spells, config, blocks, random
+import pygame, spriteling, events, spells, config, blocks, random, math
 from events import event_maker
 from spells import velocity
 from config import fps as sec
@@ -190,12 +190,23 @@ class quintenemy(enemy):
 default_trap_img = pygame.image.load( 'Animation\img_scarab.png')
 default_trap_img= pygame.transform.scale(default_trap_img, (config.tile_scalar, config.tile_scalar))
 
+# sun lazer
+class solar_beam_s(spells.beam):
+    def __init__(self, **kwargs):
+        super().__init__(sun_particle_m, spells.leaf_book_img, **kwargs,
+                         trigger_method=spells.cooled(sec*2), spell_name="solar_beam")
+class sun_particle_m(spells.beam_particle):
+    def __init__(self, num, prev, loc, **kwargs):
+        super().__init__(num, prev, spells.sun_particle_img, loc, missile_name="sun_particle", **kwargs, damage=26)
+
+
+
 class node_sniper(enemy):
     def __init__(self, start_node, node_list, **kwargs):
         super().__init__(start_node, img=scarab_img)
         temp_nodes = [n for n in node_list if events.dist(n, start_node) <= 250]
         self.attack_box = temp_nodes[random.randint(0, len(temp_nodes)-1)]
-        self.weapon = spells.solar_beam_s(caster=self)
+        self.weapon = fire_bolt_s(caster=self)
         self.layer = config.floor_cos
 
 
@@ -215,67 +226,202 @@ class node_sniper(enemy):
     def attack(self, target):
         x_adj = self.rect.centerx - target.hitbox.rect.centerx + 0.01
         y_adj = self.rect.centery - target.hitbox.rect.centery + 0.01
-        arc = x_adj/y_adj
-        angle = (arc, 1)
+        x_s = math.copysign(1, x_adj)
+        y_s = math.copysign(1, y_adj)
+        print('x_a:', x_adj, 'y_a:', y_adj, x_s, y_s)
+        if x_adj < 0:
+            if x_adj < y_adj:
+                print("at test")
+                if x_adj > y_adj:
+                    print("case 1")
+                    arc = y_adj/x_adj
+                    angle = (-math.copysign(arc, x_s), -y_s)
+                elif x_adj < y_adj:
+                    print("case 2")
+                    arc = y_adj/x_adj
+                    angle = (-x_s, -math.copysign(arc, y_s))
+                else:
+                    angle = (-1, 0)
+            else:
+                if x_adj > y_adj:
+                    arc = x_adj/y_adj
+                    angle = (-math.copysign(arc, x_s), -y_s)
+                elif x_adj < y_adj:
+                    arc = y_adj/x_adj
+                    angle = (-x_s, math.copysign(arc, -y_s))
+                else:
+                    angle= (-1, 0)
+
+        else:
+            if x_adj < y_adj:
+                arc = x_adj/y_adj
+                angle = (-math.copysign(arc, x_s), -y_s)
+            elif x_adj > y_adj:
+                arc = y_adj/x_adj
+                angle = (-x_s, math.copysign(arc, -y_s))
+            else:
+                angle= (-1, 0)
+        print(angle)
         self.weapon.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
                            caster=self)
 
+class over_heated(spells.trigger):
+    def __init__(self, max_heat, heat_per_missile):
+        self.over_heated = False
+        self.max_temp = max_heat
+        self.buildup = heat_per_missile
+        self.temp = 0
 
-
-class fireball_s(spells.spell):
-    def __init__(self, **kwargs):
-        super().__init__(fireball_m, spells.fire_book_img,
-                         spell_name="fireball", **kwargs,
-                         )
-class fireball_m(spells.missile):
-    def __init__(self, dir, loc, **kwargs):
-        super().__init__(spells.fire_ball_img, loc, velocity(mag=4, dir=dir), **kwargs, missile_name='fireball',
-                         elem='fire', damage=68)
+    def __call__(self, prev, now):
+        if not self.over_heated and now:
+            self.temp += self.buildup
+            self.over_heated = self.temp > self.max_temp
+            return True
+        elif self.temp > 0:
+            self.temp -= 1
+            return False
+        else:
+            self.over_heated = False
+        return False
 
 class bolt_caster(node_sniper):
     def __init__(self, start_node, node_list, **kwargs):
         super().__init__(start_node, node_list, img=default_trap_img)
-        self.weapon = spells.fireball_s(caster=self)
+        self.weapon = fire_bolt_s(caster=self)
         self.layer = config.floor_cos
 
 
-   # def check_attack(self, target):
-   #     print("caster is checking attack")
-   #     if self.attack_box.rect.colliderect(target.hitbox.rect):
-   #         print("caster should have an attack")
-   #         self.attack(target)
+class fire_bolt_s(spells.spell):
+    def __init__(self, **kwargs):
+        super().__init__(fire_cloud_m, spells.leaf_book_img, **kwargs,
+                         trigger_method=over_heated(sec*2, 24), spell_name="solar_beam")
+class fire_cloud_m(spells.missile):
+    def __init__(self, dir, loc, **kwargs):
+        super().__init__(spells.fire_ball_img, loc, velocity(mag=3, dir=dir), **kwargs, missile_name='fireball',
+                         elem='fire', damage=37, hp=7)
 
-   # def draw_boxes(self, disp):
-   #     super().draw_boxes(disp)
-   #     pygame.draw.rect(disp, config.blue, self.attack_box.rect, 2)
-
-   # def update(self, *args, **kwargs):
-   #     super().update(*args, **kwargs)
-   #     self.weapon.update(True, self.rect.center, False, False, *args, **kwargs)
-
-
-   # def attack(self, target):
-   #     x_adj = self.rect.centerx - target.hitbox.rect.centerx + 0.01
-   #     y_adj = self.rect.centery - target.hitbox.rect.centery + 0.01
-   #     arc = x_adj / y_adj
-   #     if self.rect.centerx > target.hitbox.rect.centerx and self.rect.centery > target.hitbox.rect.centery:
-   #         angle = (arc, 1)
-   #     else:
-   #         angle = (1, 1)
-   #     self.weapon.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
-   #                        caster=self)
-   #     print(self.missiles)
+class active_enemy(enemy):
+    def __init__(self, start_node, *args, **kwargs):
+        super(active_enemy, self).__init__(start_node, *args, **kwargs)
+        self.tracked_player = None
+        self.attention_timer = 0
+        self.reassess_targets = sec*3
+        self.aiming_angle = (1, 0)
+        self.min_dist = 350
 
 
+    def check_players(self, players):
+        dist = self.min_dist
+        self.tracked_player = None
+        for each in players:
+            if events.dist(self, each) <= dist:
+                dist = events.dist(self, each)
+                self.tracked_player = each
+        return bool(self.tracked_player)
 
-class skeleton(enemy):
-#follows player; randomly chooses between multiple(?)
+    def shoot(self, target):
+        x_adj = self.rect.centerx - target.hitbox.rect.centerx + 0.01
+        y_adj = self.rect.centery - target.hitbox.rect.centery + 0.01
+        x_s = math.copysign(1, x_adj)
+        y_s = math.copysign(1, y_adj)
+        #print('x_a:', x_adj, 'y_a:', y_adj, x_s, y_s)
+        if x_adj < 0:
+            if x_adj < y_adj:
+                #print("at test")
+                if x_adj > y_adj:
+                    #print("case 1")
+                    arc = y_adj/x_adj
+                    angle = (-math.copysign(arc, x_s), -y_s)
+                elif x_adj < y_adj:
+                    #print("case 2")
+                    arc = y_adj/x_adj
+                    angle = (-x_s, -math.copysign(arc, y_s))
+                else:
+                    angle = (-1, 0)
+            else:
+                if x_adj > y_adj:
+                    arc = x_adj/y_adj
+                    angle = (-math.copysign(arc, x_s), -y_s)
+                elif x_adj < y_adj:
+                    arc = y_adj/x_adj
+                    angle = (-x_s, math.copysign(arc, -y_s))
+                else:
+                    angle= (-1, 0)
 
-    def __init__(self):
-        super().__init__(img=skele_img)
+        else:
+            if x_adj < y_adj:
+                arc = x_adj/y_adj
+                angle = (-math.copysign(arc, x_s), -y_s)
+            elif x_adj > y_adj:
+                arc = y_adj/x_adj
+                angle = (-x_s, math.copysign(arc, -y_s))
+            else:
+                angle= (-1, 0)
+        #print(angle)
+        self.weapon.update(True, self.rect.center, True, True, direction=angle, missile_layer=self.missiles,
+                           caster=self)
+
+    def flee_from(self, target, dist=350):
+        start_dist = events.dist(self, target)
+        if start_dist <= dist:
+            if self.rect.centerx < target.rect.centerx:
+                self.move(move=(-1, 0))
+            elif self.rect.centerx > target.rect.centerx:
+                self.move(move=(1, 0))
+            if self.rect.centery < target.rect.centery:
+                self.move(move=(0, -1))
+            elif self.rect.centerx > target.rect.centerx:
+                self.move(move=(0, 1))
+        return events.dist(self, target) > dist
+
+    def approach(self, target, min_dist=270, max_dist=300):
+        start_dist = events.dist(self, target)
+        if start_dist <= max_dist:
+            if self.rect.centerx < target.rect.centerx:
+                self.move(move=(1, 0))
+            elif self.rect.centerx > target.rect.centerx:
+                self.move(move=(-1, 0))
+            if self.rect.centery < target.rect.centery:
+                self.move(move=(0, 1))
+            elif self.rect.centerx > target.rect.centerx:
+                self.move(move=(0, -1))
+        elif start_dist <= min_dist:
+            if self.rect.centerx < target.rect.centerx:
+                self.move(move=(-1, 0))
+            elif self.rect.centerx > target.rect.centerx:
+                self.move(move=(1, 0))
+            if self.rect.centery < target.rect.centery:
+                self.move(move=(0, -1))
+            elif self.rect.centerx > target.rect.centerx:
+                self.move(move=(0, 1))
+        return min_dist < events.dist(self, target) < max_dist
+
+    def pursue(self, target, dist=30):
+        start_dist = events.dist(self, target)
+        if start_dist >= dist:
+            if self.rect.centerx < target.rect.centerx:
+                self.move(move=(1, 0))
+            elif self.rect.centerx > target.rect.centerx:
+                self.move(move=(-1, 0))
+            if self.rect.centery < target.rect.centery:
+                self.move(move=(0, 1))
+            elif self.rect.centerx > target.rect.centerx:
+                self.move(move=(0, -1))
+        return events.dist(self, target) < dist
+
+
+class skeleton(active_enemy):
+    def __init__(self, start_node, **kwargs):
+        super().__init__(start_node, img=skele_img, **kwargs)
         
-    def update(self, *args, **kwargs):
-        super().update(*args,**kwargs)
+    def update(self, players, *args, **kwargs):
+        super().update(*args, **kwargs)
+        if 'players' in kwargs:
+            print("skeleton got players")
+            if self.check_players(kwargs['players']):
+                self.pursue(self.tracked_player)
+
+
         #walk to player
         #attack if close
 

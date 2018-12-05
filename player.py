@@ -72,7 +72,8 @@ class player(spriteling.spriteling):
         self.missiles = pygame.sprite.Group()
 
         # stats and inventory
-        self.hp = 1000
+        self.base_hp = 10000000
+        self.curr_hp = 10000000
 
     def update(self, *args, **kwargs):
         super().update(*args, **kwargs)

@@ -1096,24 +1096,6 @@ class air_wave(missile):
             self.rect.center = center
         super().update(*args, **kwargs)
 
-
-class ground_wave_caster(wave_caster):
-    def __init__(self, base_img, alt_fire, alt_trigger, projectile, img, **kwargs):
-        wave_caster.__init__(self, base_img, projectile, img, **kwargs)
-        self.monitor = deque([])
-        self.secondary_fire = alt_fire
-        self.secondary_trigger = alt_trigger
-
-    def cast(self, direction):
-        self.monitor.append(self.projectile(direction, self.rect, caster=self.my_caster))
-
-    def alt_cast(self, direction):
-        ret = pygame.sprite.Group()
-        while len(self.monitor) > 0:
-            ret.add(self.secondary_fire(direction, self.monitor.pop().rect, caster=self.my_caster))
-        return ret
-
-
 class ground_wave(missile):
     def __init__(self, img_set, stage, loc, vel, *args, **kwargs):
         super().__init__(img_set[0], loc, vel, *args, **kwargs)
@@ -1181,7 +1163,7 @@ class beam(spell):
             # overlap
 
         else:           # the screen is always shorter than it is tall, so if theres any y velocity, we can go with that
-            num_segments_to_cross_screen = int(config.screen_height / first.rect.height)
+            num_segments_to_cross_screen = int(config.screen_height / first.rect.height * 2)
 
         for x in range(0, num_segments_to_cross_screen):
             first = self.projectile(x+sec/2, first, pygame.rect.Rect((first.rect.centerx+(dist_per_seg_x*direction[0]),
@@ -1480,10 +1462,10 @@ class flame_wheel_s(swarm, self_target):
                          trigger_method=gated_trigger(reset_gate(sec/2), cap(10), semi_release()),
                          **kwargs)
 
-class flame_wheel_m(strict_orbit):
-    def __init__(self, partner, radius, loc, direction, *args, **kwargs):
-        super().__init__(partner, radius, small_fire_img, loc, velocity(), **kwargs, missile_name='fire_wheel',
-                         max_angle=360, radius_growth=8)
+#class flame_wheel_m(strict_orbit):
+#    def __init__(self, partner, radius, loc, direction, *args, **kwargs):
+#        super().__init__(partner, radius, small_fire_img, loc, velocity(), **kwargs, missile_name='fire_wheel',
+#                         max_angle=360, radius_growth=8)
 
 class flame_swirl_m(swirl):
     def __init__(self, partner, radius, loc, direction, *args, **kwargs):
@@ -1987,6 +1969,13 @@ class spawn_node_sniper(spell):
 class node_sniper_spawn_m(spawn_enemy_m):
     def __init__(self, *args, **kwargs):
         super().__init__(enemies.node_sniper)
+
+class spawn_skeleton(spell):
+    def __init__(self, **kwargs):
+        super().__init__(skeleton_spawn_m, DEBUG_book_img, **kwargs)
+class skeleton_spawn_m(spawn_enemy_m):
+    def __init__(self, *args, **kwargs):
+        super().__init__(enemies.skeleton)
 
 class spawn_default(spell):
     def __init__(self, **kwargs):
